@@ -18,31 +18,36 @@
 
 ---
 
-## 🏛️ 2. Dual-Module Architecture
+## 🏛️ 2. Tri-Module Architecture
 
-The application hosts two primary curriculum modules switchable via `switchModule(moduleName)`:
+The application hosts three primary curriculum modules switchable via `switchModule(moduleName)`:
 
 ```
-                  ┌──────────────────────────────┐
-                  │      HindiLearningApp        │
-                  └──────────────┬───────────────┘
-                                 │
-             ┌───────────────────┴───────────────────┐
-             ▼                                       ▼
-  🔤 वाक्यांश के लिए एक शब्द               🖼️ रचनात्मक लेखन: चित्र वर्णन
-  (Module: 'vakyansh' — DEFAULT)          (Module: 'chitra')
-  ├── 1. 📖 सीखें व समझें (Cards & Search) ├── 1. 🔍 चित्र अवलोकन (Hotspots)
-  ├── 2. 🃏 मिलान खेल (Memory Match Game) ├── 2. 🔤 शब्द भंडार (Vocab Bank)
-  ├── 3. ❓ अभ्यास क्विज़ (12 MCQ Quiz)   ├── 3. 🧩 वाक्य खेल (Jumbled Puzzle)
-  └── 4. 🎯 60s स्पीड चैलेंज (Timed)      └── 4. ✍️ आदर्श उत्तर व नोटपैड
+                                  ┌──────────────────────────────┐
+                                  │      HindiLearningApp        │
+                                  └──────────────┬───────────────┘
+                                                 │
+            ┌────────────────────────────────────┼────────────────────────────────────┐
+            ▼                                    ▼                                    ▼
+ 🏷️ संज्ञा व संज्ञा के 5 भेद          🔤 वाक्यांश के लिए एक शब्द               🖼️ रचनात्मक लेखन: चित्र वर्णन
+ (Module: 'sangya')                   (Module: 'vakyansh' — DEFAULT)          (Module: 'chitra')
+ ├── 1. 📖 सीखें (Cards, Mirror, Lab) ├── 1. 📖 सीखें व समझें (Cards & Search) ├── 1. 🔍 चित्र अवलोकन (Hotspots)
+ ├── 2. 🏷️ भेद पहचानो (5-Bucket Game) ├── 2. 🃏 मिलान खेल (Memory Match Game) ├── 2. 🔤 शब्द भंडार (Vocab Bank)
+ ├── 3. ❓ अभ्यास क्विज़ (15 MCQs)    ├── 3. ❓ अभ्यास क्विज़ (12 MCQ Quiz)   ├── 3. 🧩 वाक्य खेल (Jumbled Puzzle)
+ └── 4. ⚡ 60s स्पीड चैलेंज (Timed)   └── 4. 🎯 60s स्पीड चैलेंज (Timed)      └── 4. ✍️ आदर्श उत्तर व नोटपैड
 ```
 
-### Module 1: वाक्यांश के लिए एक शब्द (`vakyansh` — Default Topic)
+### Module 1: संज्ञा व संज्ञा के पाँच भेद (`sangya`)
+- **CBSE Class 5 Scope**: 5 Types (व्यक्तिवाचक, जातिवाचक, भाववाचक, द्रव्यवाचक, समुदायवाचक).
+- **Data Source**: `SANGYA_TYPES_DATA`, `BHAVVACHAK_NIRMAN_DATA`, `SANGYA_COMPARISON_DATA`, `SANGYA_SORT_ITEMS`, `SANGYA_QUIZ_POOL`, `SANGYA_CHALLENGE_POOL`.
+- **Key Modules**: Grand Definition card, Comparison Mirror, Abstract Noun Formation Lab, 5-Bucket Classifier, 15-MCQ Quiz, and 60-Second Challenge.
+
+### Module 2: वाक्यांश के लिए एक शब्द (`vakyansh` — Default Launch Topic)
 - **12 CBSE Statements**: Broken down into prefixes, roots, and intuitive mental models.
 - **Data Source**: `VAKYANSH_DATA` array and `VAKYANSH_QUIZ_POOL` array in `app.js`.
 - **Search & Filter**: Real-time keyword filter across Hindi and English translations, plus category chips (*स्वभाव व आचरण*, *कर्म व परिश्रम*, *जीवन व प्रकृति*).
 
-### Module 2: रचनात्मक लेखन: चित्र वर्णन (`chitra`)
+### Module 3: रचनात्मक लेखन: चित्र वर्णन (`chitra`)
 - **6 CBSE Exam Scenes**: Park, Rainy Day, School Sports Day, Birthday Party, Village Morning, Zoo Excursion.
 - **5-Step Golden Formula**:
   1. स्थान परिचय (Setting the Scene)
@@ -122,9 +127,10 @@ When modifying HTML or JavaScript, **DO NOT rename or delete these element IDs**
 
 | Element ID | Purpose in `app.js` |
 |---|---|
+| `nav-item-sangya` | Curriculum switcher button for Sangya |
 | `nav-item-vakyansh` | Curriculum switcher button for Vakyansh |
 | `nav-item-chitra` | Curriculum switcher button for Chitra Varnan |
-| `sidebar-scenes-container`| Collapsible container for Chitra scenes (hidden in Vakyansh mode) |
+| `sidebar-scenes-container`| Collapsible container for Chitra scenes (hidden in Vakyansh & Sangya modes) |
 | `sidebar-topics` | Container where the 6 scene buttons are populated dynamically |
 | `menu-toggle-btn` | Mobile drawer hamburger button (`☰ विषय`) |
 | `btn-translate-toggle` | Bilingual English ON/OFF toggle button |
@@ -135,6 +141,8 @@ When modifying HTML or JavaScript, **DO NOT rename or delete these element IDs**
 | `picture-illustration-wrapper`| Relative wrapper hosting the image/SVG and hotspots |
 | `illustration-canvas` | Container where photo or SVG is injected |
 | `hotspot-detail-box` | Bottom bar displaying tapped hotspot word & sentence |
+| `sangya-area` | Main container for Sangya workspace |
+| `sangya-workspace` | Dynamic container rendered by Sangya mode handlers |
 | `vakyansh-area` | Main container for Vakyansh workspace |
 | `vakyansh-workspace` | Dynamic container rendered by Vakyansh mode handlers |
 | `mode-tabs` | Tab strip container (dynamically filled based on active module) |

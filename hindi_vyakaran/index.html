@@ -51,6 +51,15 @@
           <span class="topic-nav-stars" id="stars-nav-vakyansh">☆☆☆</span>
         </button>
 
+        <button class="curriculum-item" id="nav-item-sangya" data-module="sangya">
+          <span class="topic-nav-icon">🏷️</span>
+          <div class="topic-nav-info">
+            <div class="topic-nav-title">संज्ञा व पाँच भेद</div>
+            <div class="topic-nav-subtitle">Nouns & 5 Types (संपूर्ण व्याकरण)</div>
+          </div>
+          <span class="topic-nav-stars" id="stars-nav-sangya">☆☆☆</span>
+        </button>
+
         <button class="curriculum-item" id="nav-item-chitra" data-module="chitra">
           <span class="topic-nav-icon">🖼️</span>
           <div class="topic-nav-info">
@@ -243,6 +252,33 @@
         <!-- Mode Workspace Container for Vakyansh (rendered dynamically) -->
         <div class="vakyansh-workspace" id="vakyansh-workspace">
           <!-- Populated by app.js based on active mode: learn, match, quiz, challenge -->
+        </div>
+      </div>
+
+      <!-- ==================== SANGYA WORKSPACE AREA ==================== -->
+      <div class="sangya-area" id="sangya-area" style="display: none;">
+        <!-- Sangya Hero Banner -->
+        <div class="sangya-hero-banner" id="sangya-hero-banner">
+          <div class="sangya-hero-content">
+            <div class="sangya-badge">हिंदी व्याकरण — नाम व पहचान</div>
+            <h3>🏷️ संज्ञा व संज्ञा के पाँच भेद</h3>
+            <p id="sangya-hero-desc">किसी व्यक्ति, वस्तु, स्थान, प्राणी या भाव के नाम को संज्ञा कहते हैं। पाँचों भेदों को उदाहरण व ट्रिक से समझें!</p>
+          </div>
+          <div class="sangya-stats-card">
+            <div class="sangya-stat-item">
+              <span class="sangya-stat-val">5</span>
+              <span class="sangya-stat-lbl">मुख्य भेद</span>
+            </div>
+            <div class="sangya-stat-item">
+              <span class="sangya-stat-val" id="sangya-earned-stars">0 / 3</span>
+              <span class="sangya-stat-lbl">सितारे ⭐</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode Workspace Container for Sangya (rendered dynamically) -->
+        <div class="sangya-workspace" id="sangya-workspace">
+          <!-- Populated by app.js based on active mode: learn, sort, quiz, challenge -->
         </div>
       </div>
 
