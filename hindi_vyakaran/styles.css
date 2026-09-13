@@ -59,7 +59,7 @@
 
 /* --- Reset & Global --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 16px; scroll-behavior: smooth; }
+html { font-size: 16px; scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
 body {
   font-family: var(--font-family);
   background: var(--bg-primary);
@@ -713,6 +713,59 @@ body::after {
   font-size: 0.85rem;
   color: var(--text-secondary);
 }
+.picture-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.image-view-toggle-group {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.view-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  touch-action: manipulation;
+}
+
+.view-toggle-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.view-toggle-btn.active {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #111827;
+  font-weight: 700;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.4), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.view-toggle-btn .view-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
 .hotspot-counter {
   display: inline-flex;
   align-items: center;
@@ -726,7 +779,7 @@ body::after {
   font-weight: 700;
 }
 
-/* Vector Illustration Container */
+/* Vector & Photo Container */
 .picture-illustration-wrapper {
   position: relative;
   width: 100%;
@@ -736,17 +789,78 @@ body::after {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
 }
+
 .illustration-canvas {
   position: relative;
   width: 100%;
-  padding-bottom: 60%; /* 16:10 or 5:3 ratio */
+  padding-bottom: 66%; /* 3:2 to 4:3 realistic photo ratio */
+  background: #0a0f1d;
 }
+
+.scene-image-wrapper {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  animation: fadeInPhoto 0.35s ease-out;
+}
+
+.scene-real-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.scene-svg-wrapper {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  animation: fadeInPhoto 0.35s ease-out;
+}
+
 .illustration-canvas svg {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.scene-image-badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fde047;
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.74rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  pointer-events: none;
+  z-index: 4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.scene-image-badge.cartoon-badge {
+  color: #86efac;
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+@keyframes fadeInPhoto {
+  from { opacity: 0; transform: scale(0.99); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 /* Hotspot Element */
@@ -1966,6 +2080,14 @@ body::after {
    RESPONSIVE DESIGN (Mobile First ≤ 860px)
    ============================================ */
 @media (max-width: 860px) {
+  /* Layout */
+  .app-container {
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
   /* Sidebar Drawer */
   .sidebar {
     position: fixed;
@@ -2060,8 +2182,29 @@ body::after {
   .picture-card {
     padding: 14px;
   }
+  .picture-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
   .picture-title-group h3 {
     font-size: 1.15rem;
+  }
+  .picture-tools {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .image-view-toggle-group {
+    flex: 1;
+    justify-content: space-between;
+  }
+  .view-toggle-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 5px 6px;
+    font-size: 0.74rem;
+    gap: 4px;
   }
   .hotspot-btn {
     width: 32px;

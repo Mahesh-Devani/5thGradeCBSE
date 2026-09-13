@@ -47,15 +47,22 @@ Teaches the **5-Step Golden Formula** to write 5–7 grammatically accurate sent
 | **4. बारीक विवरण** | अन्य वस्तुएँ या सूक्ष्म दृश्य क्या हैं? | *मैदान में एक लड़का फुटबॉल से खेल रहा है तथा फूल खिले हैं।* |
 | **5. निष्कर्ष / भाव** | समग्र माहौल और संदेश क्या है? | *सभी बच्चे बहुत खुश हैं और वातावरण अत्यंत आनंददायक है।* |
 
-#### 🏆 6 CBSE Exam-Focused Scenes Included
-1. **बगीचा / बाल उद्यान (Children Park & Playground)**
-2. **वर्षा ऋतु / बारिश का दिन (A Rainy Day Scene)**
-3. **विद्यालय का खेल मैदान (School Playground / Sports Day)**
-4. **जन्मदिन की पार्टी (Birthday Party Celebration)**
-5. **गाँव का प्रातःकाल (A Village Morning Scene)**
-6. **चिड़ियाघर की सैर (A Visit to the Zoo)**
+#### 🏆 6 CBSE Exam-Focused Scenes (Real Exam Photos & Cartoons)
+
+Each scene features high-resolution **authentic exam-style photographs (Default)** representing the exact visual prompts given in CBSE Class 5 exams, with an instant toggle to **vector cartoon illustrations**:
+
+1. **बगीचा / बाल उद्यान (Children Park & Playground)** — Swings, slides, soccer, wooden bench, trees, morning sunlight.
+2. **वर्षा ऋतु / बारिश का दिन (A Rainy Day Scene)** — Umbrellas, paper boats sailing in puddles, raincoats, peacock on garden wall.
+3. **विद्यालय का खेल मैदान (School Playground / Sports Day)** — Running race on marked tracks, sports teacher with stopwatch, Indian flag, sports banner.
+4. **जन्मदिन की पार्टी (Birthday Party Celebration)** — Birthday boy blowing candles on chocolate cake, party hats, clapping friends, balloons, wrapped gifts.
+5. **गाँव का प्रातःकाल (A Village Morning Scene)** — Farmer with plough and white bullock, women drawing water from well, mud huts, banyan tree, sunrise.
+6. **चिड़ियाघर की सैर (A Visit to the Zoo)** — School children viewing majestic lion on rock, giraffes, safety railing, educational signboard.
+
+> **📷 Picture Style Toggle:** Students can toggle between `[📷 वास्तविक चित्र (Real Photo) | 🎨 कार्टून रेखाचित्र (Cartoon)]` anytime. All numbered hotspot buttons dynamically adjust their coordinates to match the selected picture style.
 
 ---
+
+> **🚀 Default Launch Topic:** When the app loads, **वाक्यांश के लिए एक शब्द** is presented by default. Students can switch to **रचनात्मक लेखन: चित्र वर्णन** with one tap in the sidebar drawer (`☰ विषय`).
 
 ## 🌐 Instant Bilingual Toggle (`[🌐 English: ON/OFF]`)
 

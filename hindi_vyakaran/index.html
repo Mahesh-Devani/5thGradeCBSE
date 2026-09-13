@@ -42,7 +42,7 @@
       <!-- Main Curriculum Section Switcher -->
       <div class="sidebar-section-title">📖 विषय चुनें (Choose Topic)</div>
       <div class="curriculum-selector" id="curriculum-selector">
-        <button class="curriculum-item" id="nav-item-vakyansh" data-module="vakyansh">
+        <button class="curriculum-item active" id="nav-item-vakyansh" data-module="vakyansh">
           <span class="topic-nav-icon">🔤</span>
           <div class="topic-nav-info">
             <div class="topic-nav-title">वाक्यांश के लिए एक शब्द</div>
@@ -51,7 +51,7 @@
           <span class="topic-nav-stars" id="stars-nav-vakyansh">☆☆☆</span>
         </button>
 
-        <button class="curriculum-item active" id="nav-item-chitra" data-module="chitra">
+        <button class="curriculum-item" id="nav-item-chitra" data-module="chitra">
           <span class="topic-nav-icon">🖼️</span>
           <div class="topic-nav-info">
             <div class="topic-nav-title">रचनात्मक लेखन: चित्र वर्णन</div>
@@ -62,7 +62,7 @@
       </div>
 
       <!-- Sub-navigation for Chitra Varnan Scenes (collapsible when in Vakyansh mode) -->
-      <div id="sidebar-scenes-container">
+      <div id="sidebar-scenes-container" style="display: none;">
         <div class="sidebar-section-title" id="sidebar-sub-title">चित्र विषय (Scenes)</div>
         <div id="sidebar-topics"></div>
       </div>
@@ -89,8 +89,8 @@
           <a href="../index.html" class="home-quick-btn" title="Back to Learning Hub" aria-label="Back to Learning Hub">🏠</a>
 
           <div class="top-bar-title">
-            <h2 id="top-bar-title">चित्र वर्णन मास्टर</h2>
-            <p id="top-bar-subtitle">चित्र देखकर 5-7 वाक्य लिखना सीखें</p>
+            <h2 id="top-bar-title">वाक्यांश के लिए एक शब्द</h2>
+            <p id="top-bar-subtitle">12 महत्वपूर्ण वाक्यांश — अर्थ, सूत्र, युक्ति व अभ्यास</p>
           </div>
 
           <div class="top-bar-actions">
@@ -107,8 +107,8 @@
         </div>
       </div>
 
-      <!-- Welcome Screen -->
-      <div class="welcome-screen" id="welcome-screen">
+      <!-- Welcome Screen (Chitra Varnan initial splash, shown only if user enters Chitra freshly without selecting scene) -->
+      <div class="welcome-screen" id="welcome-screen" style="display: none;">
         <div class="welcome-icon">🖼️</div>
         <h2>स्वागत है — चित्र वर्णन में!</h2>
         <p>परीक्षा में चित्र देखकर 5-7 वाक्य लिखना अब होगा बेहद आसान! 5-स्टेप फॉर्मूला सीखें, जरूरी शब्द भंडार जानें और वाक्य बनाने का अभ्यास करें।</p>
@@ -178,14 +178,24 @@
               <p id="picture-hint">चित्र पर बने नंबरों (हॉटस्पॉट) पर टैप करके विवरण देखें</p>
             </div>
             <div class="picture-tools">
-              <span class="hotspot-counter" id="hotspot-counter">हॉटस्पॉट: 0 / 6</span>
+              <div class="image-view-toggle-group" id="image-view-toggle-group" role="group" aria-label="चित्र प्रकार चुनें">
+                <button class="view-toggle-btn active" id="btn-view-real" data-view="real" title="परीक्षा प्रारूप — वास्तविक फोटो">
+                  <span class="view-icon">📷</span>
+                  <span class="view-label">वास्तविक चित्र (Real)</span>
+                </button>
+                <button class="view-toggle-btn" id="btn-view-cartoon" data-view="cartoon" title="कार्टून रेखाचित्र">
+                  <span class="view-icon">🎨</span>
+                  <span class="view-label">कार्टून (Cartoon)</span>
+                </button>
+              </div>
+              <span class="hotspot-counter" id="hotspot-counter">हॉटस्पॉट: 6 कुल</span>
             </div>
           </div>
 
-          <!-- The SVG Illustration Container with Hotspots -->
+          <!-- The SVG / Image Container with Hotspots -->
           <div class="picture-illustration-wrapper" id="picture-illustration-wrapper">
             <div class="illustration-canvas" id="illustration-canvas">
-              <!-- Inline vector SVG rendered by JS -->
+              <!-- Inline Real Photo or Vector SVG rendered by JS -->
             </div>
           </div>
 
@@ -203,7 +213,7 @@
       </div>
 
       <!-- ==================== VAKYANSH WORKSPACE AREA ==================== -->
-      <div class="vakyansh-area" id="vakyansh-area" style="display: none;">
+      <div class="vakyansh-area" id="vakyansh-area" style="display: flex;">
         <!-- Vakyansh Hero Banner -->
         <div class="vakyansh-hero-banner" id="vakyansh-hero-banner">
           <div class="vakyansh-hero-content">

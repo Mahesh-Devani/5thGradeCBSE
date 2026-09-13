@@ -125,6 +125,8 @@ class ConfettiEngine {
 const SCENE_DATA = [
   {
     id: 'park',
+    realImage: 'images/scene_park_real.jpg',
+    hotspotsReal: [{"id":1,"x":39,"y":55},{"id":2,"x":73,"y":47},{"id":3,"x":57,"y":64},{"id":4,"x":18,"y":22},{"id":5,"x":23,"y":78},{"id":6,"x":88,"y":15}],
     title: 'बगीचा / बाल उद्यान',
     titleEn: 'Children Park & Playground',
     subtitle: 'हरे-भरे पेड़, झूले, फिसलपट्टी और खेलते हुए बच्चे',
@@ -407,6 +409,8 @@ const SCENE_DATA = [
   },
   {
     id: 'rainy',
+    realImage: 'images/scene_rainy_real.jpg',
+    hotspotsReal: [{"id":1,"x":34,"y":32},{"id":2,"x":51,"y":86},{"id":3,"x":65,"y":62},{"id":4,"x":32,"y":12},{"id":5,"x":20,"y":68},{"id":6,"x":88,"y":38}],
     title: 'वर्षा ऋतु / बारिश का दिन',
     titleEn: 'A Rainy Day Scene',
     subtitle: 'काले बादल, छतरियाँ, कागज़ की नाव और पानी की बूँदें',
@@ -667,6 +671,8 @@ const SCENE_DATA = [
   },
   {
     id: 'school',
+    realImage: 'images/scene_school_real.jpg',
+    hotspotsReal: [{"id":1,"x":23,"y":25},{"id":2,"x":52,"y":11},{"id":3,"x":54,"y":60},{"id":4,"x":91,"y":56},{"id":5,"x":37,"y":38},{"id":6,"x":35,"y":84}],
     title: 'विद्यालय का खेल मैदान',
     titleEn: 'School Playground & Sports Day',
     subtitle: 'स्कूल की इमारत, दौड़ते हुए विद्यार्थी, तिरंगा झंडा और खेलकूद',
@@ -922,6 +928,8 @@ const SCENE_DATA = [
   },
   {
     id: 'birthday',
+    realImage: 'images/scene_birthday_real.jpg',
+    hotspotsReal: [{"id":1,"x":55,"y":79},{"id":2,"x":54,"y":55},{"id":3,"x":24,"y":14},{"id":4,"x":13,"y":54},{"id":5,"x":33,"y":55},{"id":6,"x":54,"y":24}],
     title: 'जन्मदिन की पार्टी',
     titleEn: 'Birthday Celebration Party',
     subtitle: 'केक, मोमबत्तियाँ, रंग-बिरंगे गुब्बारे, उपहार और खुश बच्चे',
@@ -1191,6 +1199,8 @@ const SCENE_DATA = [
   },
   {
     id: 'village',
+    realImage: 'images/scene_village_real.jpg',
+    hotspotsReal: [{"id":1,"x":33,"y":40},{"id":2,"x":82,"y":46},{"id":3,"x":79,"y":72},{"id":4,"x":38,"y":68},{"id":5,"x":23,"y":72},{"id":6,"x":16,"y":30}],
     title: 'गाँव का प्रातःकाल',
     titleEn: 'A Village Morning Scene',
     subtitle: 'उगता सूरज, कच्चे घर, कुआँ, बैलगाड़ी और खेत',
@@ -1448,6 +1458,8 @@ const SCENE_DATA = [
   },
   {
     id: 'zoo',
+    realImage: 'images/scene_zoo_real.jpg',
+    hotspotsReal: [{"id":1,"x":38,"y":41},{"id":2,"x":67,"y":35},{"id":3,"x":74,"y":47},{"id":4,"x":52,"y":68},{"id":5,"x":35,"y":70},{"id":6,"x":14,"y":48}],
     title: 'चिड़ियाघर की सैर',
     titleEn: 'A Visit to the Zoo',
     subtitle: 'जंगली जानवर, बाड़े, दर्शक, बंदर और जिराफ',
@@ -1987,8 +1999,9 @@ class HindiLearningApp {
   constructor() {
     this.confetti = new ConfettiEngine('confetti-canvas');
     this.state = {
-      activeModule: 'chitra', // 'chitra' | 'vakyansh'
+      activeModule: 'vakyansh', // 'vakyansh' (Default) | 'chitra'
       currentSceneId: 'park',
+      imageViewMode: 'real', // 'real' (Default Exam Photo) | 'cartoon'
       chitraMode: 'explore', // 'explore' | 'vocab' | 'puzzle' | 'write'
       vakyanshMode: 'learn', // 'learn' | 'match' | 'quiz' | 'challenge'
       showEnglish: true,
@@ -2027,6 +2040,7 @@ class HindiLearningApp {
     this.updateCurriculumNavUI();
     this.renderSidebarTopics();
     this.updateProgressUI();
+    this.switchModule('vakyansh'); // Vakyansh is the default topic!
   }
 
   loadStars() {
@@ -2102,6 +2116,8 @@ class HindiLearningApp {
     this.illustrationCanvas = document.getElementById('illustration-canvas');
     this.hotspotDetailBox = document.getElementById('hotspot-detail-box');
     this.modePanel = document.getElementById('mode-panel');
+    this.btnViewReal = document.getElementById('btn-view-real');
+    this.btnViewCartoon = document.getElementById('btn-view-cartoon');
 
     // Feedback Flash
     this.feedbackFlash = document.getElementById('feedback-flash');
@@ -2130,6 +2146,18 @@ class HindiLearningApp {
       this.switchModule('chitra');
       if (window.innerWidth <= 860) this.toggleSidebar(false);
     });
+
+    // Image View Mode Toggle (Real Exam Photo ↔ Vector Cartoon)
+    if (this.btnViewReal && this.btnViewCartoon) {
+      this.btnViewReal.addEventListener('click', () => {
+        synth.tap();
+        this.setImageMode('real');
+      });
+      this.btnViewCartoon.addEventListener('click', () => {
+        synth.tap();
+        this.setImageMode('cartoon');
+      });
+    }
 
     // Welcome start
     this.welcomeStartBtn.addEventListener('click', () => {
@@ -2923,10 +2951,14 @@ class HindiLearningApp {
     this.topBarTitle.textContent = scene.title;
     this.topBarSubtitle.textContent = this.state.showEnglish ? `${scene.titleEn} — ${scene.subtitle}` : scene.subtitle;
     this.pictureHeading.textContent = `${scene.icon} ${scene.title}`;
-    this.pictureHint.textContent = this.state.showEnglish ? 'Tap numbered hotspots on the illustration to inspect vocabulary' : 'चित्र पर बने नंबरों (हॉटस्पॉट) पर टैप करके शब्द और वाक्य देखें';
+    this.pictureHint.textContent = this.state.showEnglish ? 'Tap numbered hotspots on the picture to inspect vocabulary' : 'चित्र पर बने नंबरों (हॉटस्पॉट) पर टैप करके शब्द और वाक्य देखें';
     this.hotspotCounter.textContent = `हॉटस्पॉट: 6 कुल`;
 
-    // Render SVG Canvas & Hotspots
+    // Update image toggle buttons
+    if (this.btnViewReal) this.btnViewReal.classList.toggle('active', this.state.imageViewMode === 'real');
+    if (this.btnViewCartoon) this.btnViewCartoon.classList.toggle('active', this.state.imageViewMode === 'cartoon');
+
+    // Render Real Photo / SVG Canvas & Hotspots
     this.renderIllustration(scene);
 
     // Render Default Hotspot Bar
@@ -2943,11 +2975,55 @@ class HindiLearningApp {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  renderIllustration(scene) {
-    this.illustrationCanvas.innerHTML = scene.svg;
+  setImageMode(mode) {
+    this.state.imageViewMode = mode;
+    if (this.btnViewReal) this.btnViewReal.classList.toggle('active', mode === 'real');
+    if (this.btnViewCartoon) this.btnViewCartoon.classList.toggle('active', mode === 'cartoon');
+    const scene = SCENE_DATA.find(s => s.id === this.state.currentSceneId);
+    if (scene) {
+      this.renderIllustration(scene);
+      this.flash(mode === 'real' ? '📷 वास्तविक परीक्षा चित्र चालू (Real Photo)' : '🎨 कार्टून रेखाचित्र चालू (Cartoon Illustration)', 'info');
+    }
+  }
 
-    // Inject Hotspots
-    scene.hotspots.forEach(hs => {
+  getSceneHotspots(scene) {
+    const isReal = this.state.imageViewMode === 'real';
+    if (isReal && scene.hotspotsReal) {
+      return scene.hotspots.map(hs => {
+        const override = scene.hotspotsReal.find(r => r.id === hs.id);
+        return override ? { ...hs, x: override.x, y: override.y } : hs;
+      });
+    }
+    return scene.hotspots;
+  }
+
+  renderIllustration(scene) {
+    this.illustrationCanvas.innerHTML = '';
+    const isReal = this.state.imageViewMode === 'real';
+
+    if (isReal && scene.realImage) {
+      const imgWrap = document.createElement('div');
+      imgWrap.className = 'scene-image-wrapper';
+      imgWrap.innerHTML = `
+        <img src="${scene.realImage}" alt="${scene.title}" class="scene-real-photo" loading="eager" />
+        <div class="scene-image-badge">📷 परीक्षा प्रारूप — वास्तविक चित्र (Exam Photo)</div>
+      `;
+      this.illustrationCanvas.appendChild(imgWrap);
+    } else {
+      const svgWrap = document.createElement('div');
+      svgWrap.className = 'scene-svg-wrapper';
+      svgWrap.innerHTML = scene.svg;
+      const cartoonBadge = document.createElement('div');
+      cartoonBadge.className = 'scene-image-badge cartoon-badge';
+      cartoonBadge.textContent = '🎨 रेखाचित्र (Cartoon Illustration)';
+      svgWrap.appendChild(cartoonBadge);
+      this.illustrationCanvas.appendChild(svgWrap);
+    }
+
+    // Inject Hotspots based on current view mode
+    const hotspots = this.getSceneHotspots(scene);
+
+    hotspots.forEach(hs => {
       const btn = document.createElement('button');
       btn.className = `hotspot-btn ${this.state.activeHotspotId === hs.id ? 'active' : ''}`;
       btn.style.left = `${hs.x}%`;
