@@ -21,11 +21,17 @@
 
   <div class="app-container">
 
+    <!-- Sidebar Backdrop for Mobile -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
     <!-- ==================== SIDEBAR ==================== -->
-    <aside class="sidebar no-print">
-      <a href="../index.html" class="back-to-home" id="back-to-home">
-        ← Back to Home
-      </a>
+    <aside class="sidebar no-print" id="sidebar">
+      <div class="sidebar-top-row">
+        <a href="../index.html" class="back-to-home" id="back-to-home">
+          ← Back to Home
+        </a>
+        <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close menu">✕</button>
+      </div>
       <div class="sidebar-logo">
         <h1>🗺️ SST Map Master</h1>
         <p>Class 5 CBSE — I Term</p>
@@ -47,25 +53,34 @@
     <main class="main-content">
 
       <!-- Top Bar -->
-      <div class="top-bar no-print">
-        <div class="top-bar-title">
-          <h2 id="top-bar-title">SST Map Master</h2>
-          <p id="top-bar-subtitle">Select a map topic to get started</p>
+      <div class="top-bar no-print" id="top-bar">
+        <div class="top-bar-nav-row">
+          <button class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Open Map Topics">
+            <span class="hamburger-icon">☰</span>
+            <span class="menu-label">Maps</span>
+          </button>
+          <a href="../index.html" class="home-quick-btn" title="Back to Learning Hub" aria-label="Back to Learning Hub">🏠</a>
+
+          <div class="top-bar-title">
+            <h2 id="top-bar-title">SST Map Master</h2>
+            <p id="top-bar-subtitle">Select a map topic to get started</p>
+          </div>
+
+          <div class="top-bar-actions">
+            <button class="btn btn-print-action" id="btn-print" title="Print Worksheet" aria-label="Print Worksheet">
+              <span class="print-icon">🖨️</span>
+              <span class="print-text">Print Worksheet</span>
+            </button>
+            <button class="btn btn-icon" id="btn-reset" title="Reset Map" aria-label="Reset">
+              🔄
+            </button>
+          </div>
         </div>
 
-        <div class="mode-tabs">
+        <div class="mode-tabs" id="mode-tabs">
           <button class="mode-tab active" data-mode="learn" id="tab-learn">📖 Learn</button>
           <button class="mode-tab" data-mode="quiz" id="tab-quiz">❓ Quiz</button>
           <button class="mode-tab" data-mode="timed" id="tab-timed">⏱️ Timed</button>
-        </div>
-
-        <div class="top-bar-actions">
-          <button class="btn" id="btn-print" title="Print Worksheet">
-            🖨️ Print Worksheet
-          </button>
-          <button class="btn btn-icon" id="btn-reset" title="Reset">
-            🔄
-          </button>
         </div>
       </div>
 
@@ -74,6 +89,10 @@
         <div class="welcome-icon">🗺️</div>
         <h2>Welcome to SST Map Master!</h2>
         <p>Master your Social Science maps with interactive practice. Choose a map topic from the sidebar to begin your journey!</p>
+
+        <button class="btn btn-primary welcome-start-btn" id="welcome-start-btn">
+          🚀 Start Map Practice — Choose Map
+        </button>
         <div class="welcome-features">
           <div class="welcome-feature">
             <div class="feature-icon">📖</div>

@@ -494,11 +494,13 @@ function selectMap(mapId) {
   state.currentMode = 'learn';
   clearTimer();
   resetZoom();
+  closeSidebar();
   renderSidebar();
   renderTopBar();
   renderMap();
   renderInfoPanel();
   hideWelcome();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function setMode(mode) {
@@ -509,6 +511,7 @@ function setMode(mode) {
   renderMap();
   renderInfoPanel();
   if (mode === 'quiz' || mode === 'timed') startQuiz();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function hideWelcome() {
@@ -1197,6 +1200,38 @@ function setupZoomControls() {
 
 
 // ============================================
+// MOBILE NAVIGATION DRAWER
+// ============================================
+
+function openSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  if (sidebar) sidebar.classList.add('open');
+  if (backdrop) backdrop.classList.add('active');
+  if (window.innerWidth <= 860) {
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  if (sidebar) sidebar.classList.remove('open');
+  if (backdrop) backdrop.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  if (sidebar && sidebar.classList.contains('open')) {
+    closeSidebar();
+  } else {
+    openSidebar();
+  }
+}
+
+
+// ============================================
 // INIT
 // ============================================
 function init() {
@@ -1204,6 +1239,35 @@ function init() {
   renderSidebar();
   showWelcome();
   setupZoomControls();
+
+  // Mobile Drawer Toggle & Close
+  const menuBtn = document.getElementById('menu-toggle-btn');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', toggleSidebar);
+  }
+
+  const closeBtn = document.getElementById('sidebar-close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeSidebar);
+  }
+
+  const backdrop = document.getElementById('sidebar-backdrop');
+  if (backdrop) {
+    backdrop.addEventListener('click', closeSidebar);
+  }
+
+  // Welcome Screen Start Button
+  const startBtn = document.getElementById('welcome-start-btn');
+  if (startBtn) {
+    startBtn.addEventListener('click', () => {
+      if (window.innerWidth <= 860) {
+        openSidebar();
+      } else {
+        selectMap('saudiArabia');
+      }
+    });
+  }
+
   document.querySelectorAll('.mode-tab').forEach(tab => {
     tab.addEventListener('click', () => { if (state.currentMap) setMode(tab.dataset.mode); });
   });
@@ -1212,6 +1276,15 @@ function init() {
   const rb = document.getElementById('btn-reset');
   if (rb) rb.addEventListener('click', () => {
     if (state.currentMap) { state.score = { correct: 0, incorrect: 0, total: 0 }; setMode('learn'); }
+  });
+
+  // Close drawer on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeSidebar();
+      closeResultsModal();
+      closeWorksheetModal();
+    }
   });
 }
 
