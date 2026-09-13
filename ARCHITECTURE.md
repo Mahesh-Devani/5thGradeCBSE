@@ -255,6 +255,47 @@ const state = {
 
 ---
 
+### D. Mathematics Mini-App (`/maths/`)
+
+#### Directory Structure
+```
+maths/
+├── index.html                      # App shell, responsive off-canvas drawer, top bar, modals
+├── styles.css                      # Modern glassmorphic theme (Amber/Emerald/Indigo), division ladders, print sheet
+├── app.js                          # State engine, interactive calculators, solvers, practice pools, Web Audio
+├── README.md                       # Pedagogical guide & curriculum reference
+├── AGENTS.md                       # Operational rules, DOM contract, and extension recipes
+└── Multiples_and_Factors_...pdf    # Reference school worksheet PDF
+```
+
+#### State Machine (`app.js`)
+```javascript
+const state = {
+  activeMode: 'learn',              // 'learn' | 'practice' | 'challenge' | 'worksheet'
+  activeLearnModule: 'hcf_lcm_detective', // 'hcf_lcm_detective' | 'short_division' | 'long_division' | 'product_formula' | 'coprimes_twinprimes'
+  practiceFilter: 'all',            // 'all' | 'school_worksheet' | 'word_problems' | 'division_methods' | 'formula_relations'
+  currentQuestionIndex: 0,
+  scoreCorrect: 0,
+  scoreWrong: 0,
+  userAnswers: {},
+  challengeActive: false,
+  challengeTimeLeft: 60,
+  challengeTimerId: null,
+  challengeQuestions: [],
+  challengeIndex: 0,
+  challengeCorrect: 0,
+  stars: 0                          // Stars earned (0-3)
+};
+```
+
+#### Math Engine Algorithms
+- **Short Division HCF**: Prime divisor MUST divide all numbers simultaneously; stops when no prime divides all.
+- **Short Division LCM**: Prime divisor divides at least 2 numbers; non-divisible numbers are brought down unchanged until all reach 1.
+- **Long Division HCF (Euclid)**: Successive division where each remainder becomes the next divisor.
+- **Product Formula**: Verified balance $a \times b = \text{HCF} \times \text{LCM}$.
+
+---
+
 ## 5. Developer Recipes & Extension Guides
 
 ### Recipe 1: Adding a New English Grammar Topic
@@ -298,6 +339,11 @@ const state = {
 1. Save the authentic exam photograph in `hindi_vyakaran/images/scene_<id>_real.jpg`.
 2. In `hindi_vyakaran/app.js`, append a new scene object to `SCENE_DATA` with `id`, `title`, `realImage`, `hotspotsReal`, `hotspots`, `svg`, `puzzleSteps`, and `modelAnswer`.
 3. The sidebar scene list, navigation, hotspot renderer, and progress tracker will automatically recognize the new scene.
+
+### Recipe 5: Adding a New Mathematics Topic (e.g. Divisibility Rules)
+1. In `maths/index.html`, remove `.disabled` from the corresponding topic in `.sidebar-topics` and update the badge to `Ready`.
+2. In `maths/app.js`, add the topic's learn modules and practice question objects to `PRACTICE_POOL`.
+3. The curriculum drawer, progress bar, practice filters, and challenge pool will dynamically scale to include the new topic.
 
 ---
 

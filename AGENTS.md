@@ -78,8 +78,9 @@ When modifying or creating a subject mini-app:
   - `/social_sicence_maps/`
   - `/english_grammer/`
   - `/hindi_vyakaran/`
+  - `/maths/`
 - Navigation links between mini-apps and the landing hub:
-  - From landing page to mini-app: `<a href="hindi_vyakaran/index.html">`
+  - From landing page to mini-app: `<a href="maths/index.html">`
   - From mini-app back to landing page: `<a href="../index.html">`
 - Keep paths relative so the site works both locally via `file://` and on GitHub Pages subpaths (`/5thGradeCBSE/`).
 
@@ -104,6 +105,7 @@ Before completing a turn or pushing commits:
 ## 5. Architectural References
 
 - **System Architecture**: Read **[ARCHITECTURE.md](ARCHITECTURE.md)** for data schemas, state machines, and extension recipes.
+- **Mathematics Master**: Read **[maths/README.md](maths/README.md)** and **[maths/AGENTS.md](maths/AGENTS.md)**.
 - **English Grammar**: Read **[english_grammer/README.md](english_grammer/README.md)** and **[english_grammer/AGENTS.md](english_grammer/AGENTS.md)**.
 - **Social Science Maps**: Read **[social_sicence_maps/AGENTS.md](social_sicence_maps/AGENTS.md)**.
 - **Hindi Vyakaran**: Read **[hindi_vyakaran/README.md](hindi_vyakaran/README.md)** and **[hindi_vyakaran/AGENTS.md](hindi_vyakaran/AGENTS.md)**.
