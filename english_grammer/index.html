@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive English Grammar practice for Class 5 CBSE students. Master Articles, Tenses, Personification, Hyperbole and more through fun thinking exercises.">
+  <title>English Grammar Master — Class 5 CBSE</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+</head>
+<body>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Feedback Flash -->
+  <div class="feedback-flash" id="feedback-flash"></div>
+
+  <div class="app-container">
+
+    <!-- ==================== SIDEBAR ==================== -->
+    <aside class="sidebar" id="sidebar">
+      <a href="../index.html" class="back-to-home" id="back-to-home">
+        ← Back to Home
+      </a>
+      <div class="sidebar-logo">
+        <h1>📝 Grammar Master</h1>
+        <p>Class 5 CBSE</p>
+      </div>
+
+      <div class="sidebar-section-title">Topics</div>
+      <div id="sidebar-topics"></div>
+
+      <div class="progress-section">
+        <h4>Overall Progress</h4>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-label" id="progress-label">0 / 21 stars earned</div>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="main-content">
+
+      <!-- Top Bar -->
+      <div class="top-bar" id="top-bar">
+        <div class="top-bar-title">
+          <h2 id="top-bar-title">Grammar Master</h2>
+          <p id="top-bar-subtitle">Select a topic to get started</p>
+        </div>
+
+        <div class="mode-tabs" id="mode-tabs">
+          <button class="mode-tab active" data-mode="learn" id="tab-learn">📖 Learn</button>
+          <button class="mode-tab" data-mode="practice" id="tab-practice">🧩 Practice</button>
+          <button class="mode-tab" data-mode="challenge" id="tab-challenge">🎯 Challenge</button>
+        </div>
+
+        <div>
+          <button class="btn" id="btn-reset" title="Reset">🔄</button>
+        </div>
+      </div>
+
+      <!-- Welcome Screen -->
+      <div class="welcome-screen" id="welcome-screen">
+        <div class="welcome-icon">📝</div>
+        <h2>Welcome to Grammar Master!</h2>
+        <p>Learn English grammar the fun way — through detective work, time travel, and creative thinking. No boring memorization, just real understanding!</p>
+        <div class="welcome-features">
+          <div class="welcome-feature">
+            <div class="feature-icon">📖</div>
+            <h4>Learn</h4>
+            <p>Fun lessons with examples</p>
+          </div>
+          <div class="welcome-feature">
+            <div class="feature-icon">🧩</div>
+            <h4>Practice</h4>
+            <p>Thinking exercises</p>
+          </div>
+          <div class="welcome-feature">
+            <div class="feature-icon">🎯</div>
+            <h4>Challenge</h4>
+            <p>Timed quiz for stars</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Area (Learn / Practice / Challenge rendered here) -->
+      <div class="content-area" id="content-area"></div>
+
+    </main>
+  </div>
+
+  <!-- ==================== RESULTS MODAL ==================== -->
+  <div class="modal-overlay" id="results-modal">
+    <div class="modal">
+      <div class="result-icon" id="result-emoji">🏆</div>
+      <h3 id="result-title">Great Job!</h3>
+      <div class="stars-display" id="result-stars">⭐⭐⭐</div>
+      <p id="result-message">You completed the challenge!</p>
+      <div class="result-stats">
+        <div class="result-stat">
+          <div class="stat-value" id="result-correct" style="color: var(--accent-green);">0</div>
+          <div class="stat-label">Correct</div>
+        </div>
+        <div class="result-stat">
+          <div class="stat-value" id="result-total">0</div>
+          <div class="stat-label">Total</div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="btn-retry">🔁 Try Again</button>
+        <button class="btn" id="btn-review">📖 Review</button>
+        <button class="btn" id="btn-close-modal">✖ Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
