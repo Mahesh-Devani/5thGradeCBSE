@@ -766,6 +766,62 @@ body::after {
   line-height: 1;
 }
 
+/* B&W Exam Paper Print Toggle Button */
+.bw-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--text-secondary);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  touch-action: manipulation;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.bw-toggle-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.bw-toggle-btn.active {
+  background: linear-gradient(135deg, #f1f5f9, #94a3b8);
+  color: #0f172a;
+  border-color: #ffffff;
+  font-weight: 800;
+  box-shadow: 0 0 14px rgba(241, 245, 249, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.bw-toggle-btn .bw-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+/* Grayscale B&W Exam Print Effect */
+.picture-illustration-wrapper.bw-exam-mode .scene-real-photo,
+.picture-illustration-wrapper.bw-exam-mode .illustration-canvas svg {
+  filter: grayscale(100%) contrast(1.25) brightness(0.95);
+  transition: filter 0.35s ease;
+}
+
+.picture-illustration-wrapper.bw-exam-mode {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.scene-image-badge.bw-badge {
+  color: #f1f5f9;
+  background: rgba(15, 23, 42, 0.92);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
 .hotspot-counter {
   display: inline-flex;
   align-items: center;
@@ -2194,15 +2250,22 @@ body::after {
     width: 100%;
     justify-content: space-between;
     gap: 8px;
+    flex-wrap: wrap;
   }
   .image-view-toggle-group {
     flex: 1;
+    min-width: 160px;
     justify-content: space-between;
   }
   .view-toggle-btn {
     flex: 1;
     justify-content: center;
     padding: 5px 6px;
+    font-size: 0.74rem;
+    gap: 4px;
+  }
+  .bw-toggle-btn {
+    padding: 5px 10px;
     font-size: 0.74rem;
     gap: 4px;
   }

@@ -2002,6 +2002,7 @@ class HindiLearningApp {
       activeModule: 'vakyansh', // 'vakyansh' (Default) | 'chitra'
       currentSceneId: 'park',
       imageViewMode: 'real', // 'real' (Default Exam Photo) | 'cartoon'
+      isBWMode: false, // Default is Color picture (User can toggle B&W print)
       chitraMode: 'explore', // 'explore' | 'vocab' | 'puzzle' | 'write'
       vakyanshMode: 'learn', // 'learn' | 'match' | 'quiz' | 'challenge'
       showEnglish: true,
@@ -2112,12 +2113,15 @@ class HindiLearningApp {
     // Picture components (Chitra Varnan)
     this.pictureHeading = document.getElementById('picture-heading');
     this.pictureHint = document.getElementById('picture-hint');
+    this.pictureIllustrationWrapper = document.getElementById('picture-illustration-wrapper');
     this.hotspotCounter = document.getElementById('hotspot-counter');
     this.illustrationCanvas = document.getElementById('illustration-canvas');
     this.hotspotDetailBox = document.getElementById('hotspot-detail-box');
     this.modePanel = document.getElementById('mode-panel');
     this.btnViewReal = document.getElementById('btn-view-real');
     this.btnViewCartoon = document.getElementById('btn-view-cartoon');
+    this.btnToggleBw = document.getElementById('btn-toggle-bw');
+    this.bwToggleLabel = document.getElementById('bw-toggle-label');
 
     // Feedback Flash
     this.feedbackFlash = document.getElementById('feedback-flash');
@@ -2156,6 +2160,14 @@ class HindiLearningApp {
       this.btnViewCartoon.addEventListener('click', () => {
         synth.tap();
         this.setImageMode('cartoon');
+      });
+    }
+
+    // B&W Exam Paper Print Toggle
+    if (this.btnToggleBw) {
+      this.btnToggleBw.addEventListener('click', () => {
+        synth.tap();
+        this.toggleBWMode();
       });
     }
 
@@ -2986,6 +2998,43 @@ class HindiLearningApp {
     }
   }
 
+  toggleBWMode() {
+    this.state.isBWMode = !this.state.isBWMode;
+    this.updateBWModeUI();
+    this.flash(
+      this.state.isBWMode
+        ? '🖨️ प्रश्न-पत्र प्रारूप (B&W Print): वास्तविक परीक्षा जैसा श्वेत-श्याम दृश्य'
+        : '🌈 स्वाभाविक रंगीन दृश्य (Color View) पुनः चालू',
+      'info'
+    );
+  }
+
+  updateBWModeUI() {
+    const isBW = this.state.isBWMode;
+    if (this.btnToggleBw) {
+      this.btnToggleBw.classList.toggle('active', isBW);
+      this.btnToggleBw.setAttribute('aria-pressed', String(isBW));
+    }
+    if (this.bwToggleLabel) {
+      this.bwToggleLabel.textContent = isBW ? 'B&W प्रिंट (ON)' : 'B&W प्रिंट';
+    }
+    if (this.pictureIllustrationWrapper) {
+      this.pictureIllustrationWrapper.classList.toggle('bw-exam-mode', isBW);
+    }
+    const badge = this.illustrationCanvas ? this.illustrationCanvas.querySelector('.scene-image-badge') : null;
+    if (badge) {
+      if (isBW) {
+        badge.textContent = '🖨️ प्रश्न-पत्र प्रारूप — श्वेत-श्याम (B&W Exam Print)';
+        badge.classList.add('bw-badge');
+      } else {
+        badge.textContent = this.state.imageViewMode === 'real'
+          ? '📷 परीक्षा प्रारूप — वास्तविक चित्र (Exam Photo)'
+          : '🎨 रेखाचित्र (Cartoon Illustration)';
+        badge.classList.remove('bw-badge');
+      }
+    }
+  }
+
   getSceneHotspots(scene) {
     const isReal = this.state.imageViewMode === 'real';
     if (isReal && scene.hotspotsReal) {
@@ -3040,6 +3089,9 @@ class HindiLearningApp {
 
       this.illustrationCanvas.appendChild(btn);
     });
+
+    // Update B&W Mode visual styling on wrapper and badge
+    this.updateBWModeUI();
   }
 
   selectHotspot(hsId) {

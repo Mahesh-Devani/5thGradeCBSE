@@ -59,6 +59,8 @@ Each scene features high-resolution **authentic exam-style photographs (Default)
 6. **चिड़ियाघर की सैर (A Visit to the Zoo)** — School children viewing majestic lion on rock, giraffes, safety railing, educational signboard.
 
 > **📷 Picture Style Toggle:** Students can toggle between `[📷 वास्तविक चित्र (Real Photo) | 🎨 कार्टून रेखाचित्र (Cartoon)]` anytime. All numbered hotspot buttons dynamically adjust their coordinates to match the selected picture style.
+>
+> **🖨️ B&W Exam Paper Print Toggle:** As most school exam papers are printed in black and white, students can click `[🖨️ B&W प्रिंट]` to simulate the grayscale examination paper view, training their visual deduction for both color and monochrome question papers. Full color is retained as the default view.
 
 ---
 
