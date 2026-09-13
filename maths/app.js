@@ -1081,6 +1081,256 @@ function computePalindromeSteps(n) {
 }
 
 /* ==========================================================================
+   5.8 TOPIC 5: GEOMETRY, LINES & ANGLES DATA & ENGINES
+   ========================================================================== */
+
+const GEOMETRY_FOUNDATIONS = [
+  {
+    id: 'point',
+    name: 'Point',
+    symbol: 'P (or • P)',
+    symbolHtml: '<strong>• P</strong>',
+    endpoints: '0 endpoints',
+    measurable: 'No (Dimensionless)',
+    desc: 'An exact location in space. It has zero length, width, or thickness. Denoted by a capital letter like A, B, or P.',
+    realLife: 'Sharp pencil tip, pinpoint on a map, star in the night sky.',
+    svg: `<svg width="240" height="90" viewBox="0 0 240 90">
+      <circle cx="120" cy="45" r="6" fill="#38bdf8" />
+      <text x="132" y="48" fill="#ffffff" font-size="16" font-weight="bold">P</text>
+    </svg>`
+  },
+  {
+    id: 'line',
+    name: 'Line',
+    symbol: '↔ AB',
+    symbolHtml: '<strong><span style="border-top:2px solid; padding-top:2px;">↔</span> AB</strong>',
+    endpoints: '0 endpoints',
+    measurable: 'No (Extends infinitely both ways)',
+    desc: 'A continuous straight path of points that extends indefinitely in BOTH directions without ending. Marked with arrowheads at both ends.',
+    realLife: 'Endless horizon, long telephone line stretching across the desert.',
+    svg: `<svg width="240" height="90" viewBox="0 0 240 90">
+      <defs>
+        <marker id="arrow-both-1" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#38bdf8"/>
+        </marker>
+        <marker id="arrow-both-2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#38bdf8"/>
+        </marker>
+      </defs>
+      <line x1="25" y1="45" x2="215" y2="45" stroke="#38bdf8" stroke-width="3" marker-start="url(#arrow-both-1)" marker-end="url(#arrow-both-2)" />
+      <circle cx="70" cy="45" r="4" fill="#f59e0b" />
+      <text x="65" y="32" fill="#ffffff" font-size="14" font-weight="bold">A</text>
+      <circle cx="170" cy="45" r="4" fill="#f59e0b" />
+      <text x="165" y="32" fill="#ffffff" font-size="14" font-weight="bold">B</text>
+    </svg>`
+  },
+  {
+    id: 'line_segment',
+    name: 'Line Segment',
+    symbol: '— AB',
+    symbolHtml: '<strong><span style="text-decoration:overline;">AB</span></strong>',
+    endpoints: '2 fixed endpoints',
+    measurable: 'Yes (Can be measured with a ruler!)',
+    desc: 'A definite, measurable part of a line bounded by two fixed endpoints A and B. It has a definite, measurable length.',
+    realLife: 'Edge of a 15 cm ruler, matchstick, side of a tablet screen.',
+    svg: `<svg width="240" height="90" viewBox="0 0 240 90">
+      <line x1="50" y1="45" x2="190" y2="45" stroke="#10b981" stroke-width="4" stroke-linecap="round" />
+      <circle cx="50" cy="45" r="5" fill="#f59e0b" />
+      <text x="45" y="32" fill="#ffffff" font-size="14" font-weight="bold">A</text>
+      <circle cx="190" cy="45" r="5" fill="#f59e0b" />
+      <text x="185" y="32" fill="#ffffff" font-size="14" font-weight="bold">B</text>
+    </svg>`
+  },
+  {
+    id: 'ray',
+    name: 'Ray',
+    symbol: '→ AB',
+    symbolHtml: '<strong><span style="border-top:2px solid; padding-top:2px;">→</span> AB</strong>',
+    endpoints: '1 starting endpoint (origin)',
+    measurable: 'No (Extends infinitely in one direction)',
+    desc: 'Starts at a fixed starting point (origin A) and extends infinitely in one direction through B. Note: Ray AB (starts at A) is NOT the same as Ray BA (starts at B)!',
+    realLife: 'Sun rays radiating into space, beam of light from a torch/flashlight, arrow in flight.',
+    svg: `<svg width="240" height="90" viewBox="0 0 240 90">
+      <defs>
+        <marker id="arrow-ray" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#f43f5e"/>
+        </marker>
+      </defs>
+      <line x1="50" y1="45" x2="205" y2="45" stroke="#f43f5e" stroke-width="3" marker-end="url(#arrow-ray)" />
+      <circle cx="50" cy="45" r="5" fill="#f59e0b" />
+      <text x="43" y="32" fill="#ffffff" font-size="14" font-weight="bold">A (Origin)</text>
+      <circle cx="140" cy="45" r="4" fill="#ffffff" />
+      <text x="135" y="32" fill="#ffffff" font-size="14" font-weight="bold">B</text>
+    </svg>`
+  }
+];
+
+const LINE_RELATIONSHIPS_DATA = [
+  {
+    id: 'intersecting',
+    title: 'Intersecting Lines',
+    symbol: 'Lines crossing at P',
+    desc: 'Two lines in the same plane that cross or meet at exactly ONE common point called the <strong>Point of Intersection</strong>.',
+    keyRule: 'Intersecting lines create 4 angles. The vertically opposite angles are always equal in measure!',
+    examples: ['Letter X', 'Pair of open scissors', 'Road crossroads', 'Crosshairs in telescope'],
+    svg: `<svg width="240" height="150" viewBox="0 0 240 150">
+      <defs>
+        <marker id="arr-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 2 L 10 5 L 0 8 z" fill="#38bdf8"/>
+        </marker>
+        <marker id="arr-amber" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 2 L 10 5 L 0 8 z" fill="#f59e0b"/>
+        </marker>
+      </defs>
+      <line x1="30" y1="125" x2="210" y2="25" stroke="#38bdf8" stroke-width="3" marker-end="url(#arr-blue)" />
+      <line x1="30" y1="25" x2="210" y2="125" stroke="#f59e0b" stroke-width="3" marker-end="url(#arr-amber)" />
+      <circle cx="120" cy="75" r="5" fill="#ef4444" />
+      <text x="128" y="70" fill="#ffffff" font-size="14" font-weight="bold">P (Intersection)</text>
+    </svg>`
+  },
+  {
+    id: 'parallel',
+    title: 'Parallel Lines',
+    symbol: 'AB ∥ CD',
+    desc: 'Lines in the same plane that <strong>never intersect or cross</strong>, no matter how far they are extended in either direction.',
+    keyRule: 'The perpendicular distance between parallel lines remains <strong>strictly constant</strong> at all points! Symbol: ∥',
+    examples: ['Railway track rails', 'Opposite edges of a ruler', 'Opposite margins of a textbook', 'Electric cables'],
+    svg: `<svg width="240" height="150" viewBox="0 0 240 150">
+      <defs>
+        <marker id="arr-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 2 L 10 5 L 0 8 z" fill="#10b981"/>
+        </marker>
+      </defs>
+      <line x1="25" y1="45" x2="215" y2="45" stroke="#10b981" stroke-width="3" marker-end="url(#arr-green)" />
+      <text x="25" y="35" fill="#a7f3d0" font-size="13" font-weight="bold">Line AB</text>
+      <line x1="25" y1="105" x2="215" y2="105" stroke="#10b981" stroke-width="3" marker-end="url(#arr-green)" />
+      <text x="25" y="125" fill="#a7f3d0" font-size="13" font-weight="bold">Line CD</text>
+      <line x1="120" y1="45" x2="120" y2="105" stroke="#f59e0b" stroke-dasharray="4,4" stroke-width="2" />
+      <text x="126" y="80" fill="#fcd34d" font-size="12">Distance d = constant</text>
+    </svg>`
+  },
+  {
+    id: 'perpendicular',
+    title: 'Perpendicular Lines',
+    symbol: 'AB ⊥ CD',
+    desc: 'Two intersecting lines that meet at an exact <strong>90° Right Angle</strong> (quarter turn). Symbol: ⊥',
+    keyRule: 'All 4 adjacent angles formed at the intersection point are exact 90° right angles! Marked with a square corner ∟.',
+    examples: ['Letter L and Letter T', 'Adjacent sides of a rectangular paper', 'Floor and wall meeting edge', 'Cross (+) sign'],
+    svg: `<svg width="240" height="150" viewBox="0 0 240 150">
+      <defs>
+        <marker id="arr-purple" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 2 L 10 5 L 0 8 z" fill="#a855f7"/>
+        </marker>
+      </defs>
+      <line x1="30" y1="100" x2="210" y2="100" stroke="#a855f7" stroke-width="3" marker-end="url(#arr-purple)" />
+      <line x1="120" y1="140" x2="120" y2="20" stroke="#a855f7" stroke-width="3" marker-end="url(#arr-purple)" />
+      <path d="M 120 85 L 135 85 L 135 100" fill="none" stroke="#fcd34d" stroke-width="2.5" />
+      <text x="142" y="80" fill="#fcd34d" font-size="13" font-weight="bold">90° (Right Angle)</text>
+    </svg>`
+  },
+  {
+    id: 'concurrent',
+    title: 'Concurrent Lines',
+    symbol: '3+ lines at point O',
+    desc: 'Three or more lines in a plane that all pass through the exact <strong>same common point</strong> (Point of Concurrence).',
+    keyRule: 'Unlike intersecting lines (only 2 lines), concurrent lines involve 3, 4, or more lines meeting at one single hub!',
+    examples: ['Spokes of a bicycle wheel', 'Hands of a clock radiating from central pinion', 'Star pattern'],
+    svg: `<svg width="240" height="150" viewBox="0 0 240 150">
+      <line x1="30" y1="75" x2="210" y2="75" stroke="#38bdf8" stroke-width="2" />
+      <line x1="45" y1="30" x2="195" y2="120" stroke="#ec4899" stroke-width="2" />
+      <line x1="45" y1="120" x2="195" y2="30" stroke="#10b981" stroke-width="2" />
+      <line x1="120" y1="20" x2="120" y2="130" stroke="#f59e0b" stroke-width="2" />
+      <circle cx="120" cy="75" r="5" fill="#ffffff" />
+      <text x="126" y="70" fill="#ffffff" font-size="13" font-weight="bold">O (Point of Concurrence)</text>
+    </svg>`
+  }
+];
+
+const ANGLE_TYPES_DATA = [
+  {
+    id: 'zero',
+    name: 'Zero Angle',
+    degrees: '0°',
+    range: 'Exactly 0°',
+    badgeClass: 'acute',
+    desc: 'Both rays lie directly on top of each other without any rotation or opening.',
+    realLife: 'Clock hands at 12:00 overlapping, closed pair of compasses.',
+    symbol: 'θ = 0°'
+  },
+  {
+    id: 'acute',
+    name: 'Acute Angle',
+    degrees: '< 90°',
+    range: 'Greater than 0° and less than 90°',
+    badgeClass: 'acute',
+    desc: 'A sharp, narrow angle that is smaller than a right angle. Mnemonic: Think "A cute little angle"!',
+    realLife: 'Slice of pizza, open scissors slightly, alligator mouth open a little, clock at 2:00 (60°).',
+    symbol: '0° < θ < 90°'
+  },
+  {
+    id: 'right',
+    name: 'Right Angle',
+    degrees: '90°',
+    range: 'Exactly 90° (Quarter of a full turn)',
+    badgeClass: 'right',
+    desc: 'A perfect square corner formed by perpendicular rays. Always marked with a square corner box ∟.',
+    realLife: 'Corner of a textbook, adjacent edges of a laptop screen, cross of window pane, clock at 3:00.',
+    symbol: 'θ = 90°'
+  },
+  {
+    id: 'obtuse',
+    name: 'Obtuse Angle',
+    degrees: '> 90° & < 180°',
+    range: 'Greater than 90° and less than 180°',
+    badgeClass: 'obtuse',
+    desc: 'A wide angle that is larger than a right angle, but smaller than a straight line.',
+    realLife: 'Reclined lounge chair, open laptop screen tilted back, hand fan opened wide, clock at 4:00 (120°).',
+    symbol: '90° < θ < 180°'
+  },
+  {
+    id: 'straight',
+    name: 'Straight Angle',
+    degrees: '180°',
+    range: 'Exactly 180° (Half of a full turn)',
+    badgeClass: 'straight',
+    desc: 'Two opposite rays extending in opposite directions to form a single continuous straight line.',
+    realLife: 'Completely flat open book, horizontal ruler, clock hands at 6:00 (180°).',
+    symbol: 'θ = 180°'
+  },
+  {
+    id: 'reflex',
+    name: 'Reflex Angle',
+    degrees: '> 180° & < 360°',
+    range: 'Greater than 180° and less than 360°',
+    badgeClass: 'reflex',
+    desc: 'An angle that is larger than a straight line but less than a complete rotation.',
+    realLife: 'Outside bend of an elbow, major reflex angle of an open door, reflex angle at 8:00 (240°).',
+    symbol: '180° < θ < 360°'
+  },
+  {
+    id: 'complete',
+    name: 'Complete Angle',
+    degrees: '360°',
+    range: 'Exactly 360° (One full revolution)',
+    badgeClass: 'complete',
+    desc: 'One full complete turn of a ray around its vertex back to where it started.',
+    realLife: 'Full rotation of minute hand in 1 hour, spinning top complete spin.',
+    symbol: 'θ = 360°'
+  }
+];
+
+const CLOCK_ANGLES_PRESETS = [
+  { time: '1:00', hour: 1, min: 0, deg: 30, type: 'Acute Angle', reason: '1 hour gap = 1 × 30° = 30°.' },
+  { time: '2:00', hour: 2, min: 0, deg: 60, type: 'Acute Angle', reason: '2 hour gaps = 2 × 30° = 60°.' },
+  { time: '3:00', hour: 3, min: 0, deg: 90, type: 'Right Angle ∟', reason: '3 hour gaps = 3 × 30° = 90° (Exact Quarter Turn!).' },
+  { time: '4:00', hour: 4, min: 0, deg: 120, type: 'Obtuse Angle', reason: '4 hour gaps = 4 × 30° = 120° (> 90°).' },
+  { time: '5:00', hour: 5, min: 0, deg: 150, type: 'Obtuse Angle', reason: '5 hour gaps = 5 × 30° = 150°.' },
+  { time: '6:00', hour: 6, min: 0, deg: 180, type: 'Straight Angle', reason: '6 hour gaps = 6 × 30° = 180° (Forms a straight line!).' },
+  { time: '8:00', hour: 8, min: 0, deg: 120, type: 'Obtuse Angle (Inside)', reason: 'Shortest angle between 8 and 12 is 4 hour gaps = 120° (Reflex outside = 240°).' },
+  { time: '9:00', hour: 9, min: 0, deg: 90, type: 'Right Angle ∟', reason: 'Shortest angle between 9 and 12 is 3 hour gaps = 90° (Quarter Turn!).' }
+];
+
+/* ==========================================================================
    6. LEARN MODULES DATA
    ========================================================================== */
 
@@ -1237,6 +1487,41 @@ const LEARN_MODULES_TOPIC_4 = {
     tag: 'Fun Puzzles',
     lead: 'Explore the famous <strong>3×3 Magic Square</strong> where all rows, columns, and diagonals add up to 15! Plus, learn the NCERT algorithm to turn ANY number into a <strong>Palindromic Special Number</strong>.',
     renderContent: renderMagicShapesModule
+  }
+};
+
+const LEARN_MODULES_TOPIC_5 = {
+  geom_foundations: {
+    id: 'geom_foundations',
+    pillTitle: '📍 Points, Lines & Rays',
+    title: 'Basic Geometric Concepts: Point, Line, Segment & Ray',
+    tag: 'Foundations & Notations',
+    lead: 'Master the fundamental building blocks of CBSE Class 5 geometry. Learn how to identify, draw, and correctly write mathematical notations for <strong>Points</strong>, <strong>Lines (↔)</strong>, <strong>Line Segments (—)</strong>, and <strong>Rays (→)</strong>.',
+    renderContent: renderGeomFoundationsModule
+  },
+  line_relationships: {
+    id: 'line_relationships',
+    pillTitle: '🛤️ Parallel & Perpendicular Lines',
+    title: 'Line Relationships: Intersecting, Parallel (∥) & Perpendicular (⊥)',
+    tag: 'Spatial Reasoning',
+    lead: 'Discover how pairs of lines relate in a plane! Explore why <strong>railway tracks must be parallel (constant distance)</strong>, how <strong>perpendicular lines meet at exact 90° right angles (∟)</strong>, and when lines are <strong>concurrent</strong>.',
+    renderContent: renderLineRelationshipsModule
+  },
+  angles_protractor: {
+    id: 'angles_protractor',
+    pillTitle: '🧭 Angles & Virtual Protractor',
+    title: 'Understanding Angles & The Interactive Virtual Protractor',
+    tag: 'Measurement & Types',
+    lead: 'An angle is formed when two rays meet at a common vertex. Use the <strong>Interactive Virtual Protractor</strong> to rotate arms from 0° to 360° and master all 7 CBSE Class 5 angle types: <strong>Zero, Acute, Right, Obtuse, Straight, Reflex, and Complete</strong>!',
+    renderContent: renderAnglesProtractorModule
+  },
+  clock_angles: {
+    id: 'clock_angles',
+    pillTitle: '⏰ Clock Hands & Real-Life Angles',
+    title: 'Clock Face Angles: The 30° Per Hour Rule',
+    tag: 'Real-Life Application',
+    lead: 'A clock face is a circular 360° protractor divided into 12 hours! Discover the secret CBSE formula: <strong>Each 1-hour jump equals exactly 30°</strong> ($360° ÷ 12 = 30°$). Test hands at 3:00, 6:00, 2:00, 4:00, and more.',
+    renderContent: renderClockAnglesModule
   }
 };
 
@@ -2511,6 +2796,314 @@ const CHALLENGE_QUESTIONS_TOPIC_4 = [
   }
 ];
 
+const PRACTICE_POOL_TOPIC_5 = [
+  // Category 1: foundations
+  {
+    id: 'geom_1',
+    skill: 'foundations',
+    type: 'mcq',
+    question: 'A part of a line that has two fixed endpoints and a definite, measurable length is called a:',
+    options: ['Line', 'Line Segment', 'Ray', 'Point'],
+    correct: 1,
+    explanation: 'A line segment has two fixed endpoints (A and B). It is the only linear figure that has a definite length that can be measured with a ruler.',
+    source: 'CBSE Class 5 Geometry'
+  },
+  {
+    id: 'geom_2',
+    skill: 'foundations',
+    type: 'mcq',
+    question: 'How many endpoints does a Ray have?',
+    options: ['0 endpoints', '1 starting endpoint (origin)', '2 endpoints', 'Infinite endpoints'],
+    correct: 1,
+    explanation: 'A ray has exactly 1 endpoint called its initial point or origin. It extends endlessly in the other direction.',
+    source: 'CBSE Class 5 Geometry'
+  },
+  {
+    id: 'geom_3',
+    skill: 'foundations',
+    type: 'mcq',
+    question: 'Which of the following geometric figures extends indefinitely in both directions with no endpoints?',
+    options: ['Line Segment', 'Ray', 'Line', 'Angle'],
+    correct: 2,
+    explanation: 'A line has no endpoints and extends infinitely in both opposite directions. It is marked with arrowheads on both ends.',
+    source: 'CBSE Class 5 Geometry'
+  },
+  {
+    id: 'geom_4',
+    skill: 'foundations',
+    type: 'mcq',
+    question: 'Which statement about Ray AB and Ray BA is TRUE?',
+    options: [
+      'Ray AB and Ray BA are identical rays.',
+      'Ray AB starts at A and extends through B; Ray BA starts at B and extends through A.',
+      'Neither ray has any endpoints.',
+      'Both rays have two fixed endpoints.'
+    ],
+    correct: 1,
+    explanation: 'For a ray, the first letter is the starting origin point! Ray AB starts at A, while Ray BA starts at B. Therefore, they are two completely different rays!',
+    source: 'CBSE Class 5 Geometry Trap'
+  },
+  {
+    id: 'geom_5',
+    skill: 'foundations',
+    type: 'mcq',
+    question: 'Three or more points that lie on the exact same straight line are called:',
+    options: ['Collinear points', 'Concurrent points', 'Perpendicular points', 'Intersecting points'],
+    correct: 0,
+    explanation: 'Points lying on the same straight line are called collinear points. If they do not lie on the same line, they are non-collinear.',
+    source: 'CBSE Class 5 Geometry'
+  },
+
+  // Category 2: line_relationships
+  {
+    id: 'geom_6',
+    skill: 'line_relationships',
+    type: 'mcq',
+    question: 'Lines in the same plane that never meet or intersect no matter how far they are extended are called:',
+    options: ['Intersecting lines', 'Perpendicular lines', 'Parallel lines', 'Collinear lines'],
+    correct: 2,
+    explanation: 'Parallel lines (symbol: ∥) lie in the same plane and never intersect, keeping a constant perpendicular distance throughout.',
+    source: 'CBSE Class 5 Geometry'
+  },
+  {
+    id: 'geom_7',
+    skill: 'line_relationships',
+    type: 'mcq',
+    question: 'The rails of a straight railway track are an excellent real-life example of:',
+    options: ['Parallel lines', 'Perpendicular lines', 'Intersecting lines', 'Concurrent lines'],
+    correct: 0,
+    explanation: 'Railway track rails must remain parallel so the wheels of the train never derail or slip off the track!',
+    source: 'CBSE Class 5 Real-Life Geometry'
+  },
+  {
+    id: 'geom_8',
+    skill: 'line_relationships',
+    type: 'mcq',
+    question: 'Two lines that intersect to form an exact 90° right angle (quarter turn) are called:',
+    options: ['Parallel lines', 'Perpendicular lines', 'Concurrent lines', 'Opposite rays'],
+    correct: 1,
+    explanation: 'Perpendicular lines (symbol: ⊥) intersect at an exact 90° right angle, forming a square corner ∟.',
+    source: 'CBSE Class 5 Geometry'
+  },
+  {
+    id: 'geom_9',
+    skill: 'line_relationships',
+    type: 'mcq',
+    question: 'Which of the following symbols is used to represent "is perpendicular to"?',
+    options: ['∥', '⊥', '∠', '≈'],
+    correct: 1,
+    explanation: 'The upside-down T symbol (⊥) denotes perpendicularity (e.g., AB ⊥ CD means Line AB is perpendicular to Line CD).',
+    source: 'CBSE Class 5 Notations'
+  },
+  {
+    id: 'geom_10',
+    skill: 'line_relationships',
+    type: 'mcq',
+    question: 'Three or more lines that pass through the exact same common point are called:',
+    options: ['Concurrent lines', 'Parallel lines', 'Collinear lines', 'Intersecting pairs'],
+    correct: 0,
+    explanation: 'When 3 or more lines pass through a single common point, they are called concurrent lines, and the meeting point is the Point of Concurrence (like spokes of a bicycle wheel).',
+    source: 'CBSE Class 5 Geometry'
+  },
+
+  // Category 3: angle_types
+  {
+    id: 'geom_11',
+    skill: 'angle_types',
+    type: 'mcq',
+    question: 'An angle whose measure is greater than 0° but less than 90° is called an:',
+    options: ['Right angle', 'Acute angle', 'Obtuse angle', 'Straight angle'],
+    correct: 1,
+    explanation: 'An acute angle measures between 0° and 90°. Think: "A-cute little angle" smaller than a square corner.',
+    source: 'CBSE Class 5 Angles'
+  },
+  {
+    id: 'geom_12',
+    skill: 'angle_types',
+    type: 'mcq',
+    question: 'An angle measuring exactly 90° is called a:',
+    options: ['Acute angle', 'Straight angle', 'Right angle', 'Reflex angle'],
+    correct: 2,
+    explanation: 'A 90° angle is a Right Angle, representing one-quarter of a full turn (marked with a square corner ∟).',
+    source: 'CBSE Class 5 Angles'
+  },
+  {
+    id: 'geom_13',
+    skill: 'angle_types',
+    type: 'mcq',
+    question: 'An angle measuring 135° is classified as an:',
+    options: ['Acute angle', 'Right angle', 'Obtuse angle', 'Straight angle'],
+    correct: 2,
+    explanation: 'Because 135° is greater than 90° and less than 180°, it is an Obtuse Angle.',
+    source: 'CBSE Class 5 Angles'
+  },
+  {
+    id: 'geom_14',
+    skill: 'angle_types',
+    type: 'mcq',
+    question: 'An angle that measures exactly 180° is called a:',
+    options: ['Right angle', 'Straight angle', 'Reflex angle', 'Complete angle'],
+    correct: 1,
+    explanation: 'A 180° angle forms a flat straight line (half turn of a full circle) and is called a Straight Angle.',
+    source: 'CBSE Class 5 Angles'
+  },
+  {
+    id: 'geom_15',
+    skill: 'angle_types',
+    type: 'mcq',
+    question: 'In the angle written as ∠PQR, which letter represents the vertex?',
+    options: ['Point P', 'Point Q (the middle letter)', 'Point R', 'Any letter'],
+    correct: 1,
+    explanation: 'In angle notation, the middle letter is ALWAYS the vertex where the two arms meet! Here, Q is the vertex, and QP and QR are the arms.',
+    source: 'CBSE Class 5 Angle Rules'
+  },
+
+  // Category 4: clock_geometry
+  {
+    id: 'geom_16',
+    skill: 'clock_geometry',
+    type: 'mcq',
+    question: 'At 3:00, what type of angle is formed between the hour hand and minute hand of a clock?',
+    options: ['Acute angle (45°)', 'Right angle (90°)', 'Obtuse angle (120°)', 'Straight angle (180°)'],
+    correct: 1,
+    explanation: 'At 3:00, the minute hand points at 12 and the hour hand points at 3. The 3-hour gap equals 3 × 30° = 90°, which is an exact Right Angle ∟.',
+    source: 'CBSE Class 5 Clock Geometry'
+  },
+  {
+    id: 'geom_17',
+    skill: 'clock_geometry',
+    type: 'mcq',
+    question: 'At 6:00, what angle do the hands of a clock form?',
+    options: ['Right angle (90°)', 'Straight angle (180°)', 'Reflex angle (270°)', 'Acute angle (60°)'],
+    correct: 1,
+    explanation: 'At 6:00, the minute hand is at 12 and hour hand is at 6, forming a continuous straight line = 180° (Straight Angle).',
+    source: 'CBSE Class 5 Clock Geometry'
+  },
+  {
+    id: 'geom_18',
+    skill: 'clock_geometry',
+    type: 'mcq',
+    question: 'On a 12-hour clock face (360° total), how many degrees are between each consecutive hour number?',
+    options: ['15°', '30°', '45°', '60°'],
+    correct: 1,
+    explanation: 'There are 12 hour divisions in a full 360° circle. 360° ÷ 12 = 30° per hour.',
+    source: 'CBSE Class 5 Clock Geometry'
+  },
+  {
+    id: 'geom_19',
+    skill: 'clock_geometry',
+    type: 'mcq',
+    question: 'At 2:00, what is the measure of the smaller angle between the clock hands?',
+    options: ['30° (Acute)', '60° (Acute)', '90° (Right)', '120° (Obtuse)'],
+    correct: 1,
+    explanation: 'There are 2 hour gaps between 12 and 2. 2 × 30° = 60°, which is an Acute Angle (< 90°).',
+    source: 'CBSE Class 5 Clock Geometry'
+  },
+  {
+    id: 'geom_20',
+    skill: 'clock_geometry',
+    type: 'mcq',
+    question: 'At 5:00, what is the classification of the smaller angle between the hands of a clock?',
+    options: ['Acute angle (75°)', 'Right angle (90°)', 'Obtuse angle (150°)', 'Straight angle (180°)'],
+    correct: 2,
+    explanation: '5 hour gaps × 30° = 150°. Since 150° is between 90° and 180°, it is an Obtuse Angle.',
+    source: 'CBSE Class 5 Clock Geometry'
+  }
+];
+
+const CHALLENGE_QUESTIONS_TOPIC_5 = [
+  {
+    question: 'How many endpoints does a line segment have?',
+    options: ['2', '1', '0', 'Infinite'],
+    correct: 0,
+    explanation: 'A line segment has 2 fixed endpoints.'
+  },
+  {
+    question: 'How many endpoints does a line have?',
+    options: ['0', '1', '2', 'Infinite'],
+    correct: 0,
+    explanation: 'A line extends endlessly both ways, so it has 0 endpoints.'
+  },
+  {
+    question: 'Which figure can be measured with a ruler?',
+    options: ['Line Segment', 'Line', 'Ray', 'Point'],
+    correct: 0,
+    explanation: 'Only a line segment has a fixed measurable length.'
+  },
+  {
+    question: 'Symbol for perpendicular lines is:',
+    options: ['⊥', '∥', '∠', '°'],
+    correct: 0,
+    explanation: '⊥ denotes perpendicular.'
+  },
+  {
+    question: 'Symbol for parallel lines is:',
+    options: ['∥', '⊥', '∠', '↔'],
+    correct: 0,
+    explanation: '∥ denotes parallel.'
+  },
+  {
+    question: 'An angle of 89° is:',
+    options: ['Acute', 'Right', 'Obtuse', 'Straight'],
+    correct: 0,
+    explanation: '89° is less than 90°, so it is acute.'
+  },
+  {
+    question: 'An angle of 91° is:',
+    options: ['Obtuse', 'Right', 'Acute', 'Reflex'],
+    correct: 0,
+    explanation: '91° is greater than 90° and less than 180°, so it is obtuse.'
+  },
+  {
+    question: 'An angle of exactly 90° is:',
+    options: ['Right angle', 'Acute', 'Obtuse', 'Straight'],
+    correct: 0,
+    explanation: '90° is a right angle.'
+  },
+  {
+    question: 'An angle of exactly 180° is:',
+    options: ['Straight angle', 'Right angle', 'Complete angle', 'Reflex angle'],
+    correct: 0,
+    explanation: '180° is a straight angle.'
+  },
+  {
+    question: 'At 4:00, the angle between clock hands is:',
+    options: ['120° (Obtuse)', '90° (Right)', '60° (Acute)', '150° (Obtuse)'],
+    correct: 0,
+    explanation: '4 hour gaps × 30° = 120°.'
+  },
+  {
+    question: 'At 9:00, the smaller angle between clock hands is:',
+    options: ['90° (Right angle)', '120°', '60°', '180°'],
+    correct: 0,
+    explanation: '3 hour gaps between 9 and 12 = 90°.'
+  },
+  {
+    question: 'In ∠ABC, which point is the vertex?',
+    options: ['B', 'A', 'C', 'None'],
+    correct: 0,
+    explanation: 'The middle letter B is the vertex.'
+  },
+  {
+    question: 'Points on the same straight line are called:',
+    options: ['Collinear', 'Concurrent', 'Parallel', 'Coplanar'],
+    correct: 0,
+    explanation: 'Collinear points lie on the same line.'
+  },
+  {
+    question: 'An angle of 210° is called a:',
+    options: ['Reflex angle', 'Obtuse angle', 'Straight angle', 'Complete angle'],
+    correct: 0,
+    explanation: 'Between 180° and 360° is a reflex angle.'
+  },
+  {
+    question: 'Railway tracks never meet. They are:',
+    options: ['Parallel lines', 'Perpendicular lines', 'Intersecting lines', 'Collinear'],
+    correct: 0,
+    explanation: 'Parallel lines never intersect.'
+  }
+];
+
 /* ==========================================================================
    8. CURRICULUM TOPICS CONFIGURATION & REGISTRY
    ========================================================================== */
@@ -2592,6 +3185,25 @@ const TOPICS_CONFIG = {
     ],
     challengePool: CHALLENGE_QUESTIONS_TOPIC_4,
     worksheetRenderer: renderWorksheetViewTopic4
+  },
+  geometry_angles: {
+    id: 'geometry_angles',
+    title: 'Geometry, Lines & Angles',
+    subtitle: 'CBSE Class 5 — Points, Lines, Rays, Relationships, Notations & Angles',
+    starsKey: 'cbse_maths_geometry_stars',
+    sidebarStarId: 'stars-geometry',
+    defaultLearnModule: 'geom_foundations',
+    learnModules: LEARN_MODULES_TOPIC_5,
+    practicePool: PRACTICE_POOL_TOPIC_5,
+    practiceCategories: [
+      { id: 'all', label: '🌟 All Questions' },
+      { id: 'foundations', label: '📍 Points, Lines & Rays' },
+      { id: 'line_relationships', label: '🛤️ Parallel & Perpendicular' },
+      { id: 'angle_types', label: '📐 Angle Types & Symbols' },
+      { id: 'clock_geometry', label: '⏰ Clock Hands & Real-Life' }
+    ],
+    challengePool: CHALLENGE_QUESTIONS_TOPIC_5,
+    worksheetRenderer: renderWorksheetViewTopic5
   }
 };
 
@@ -4564,6 +5176,731 @@ function renderMagicShapesModule(container) {
   render();
 }
 
+/* ==========================================================================
+   TOPIC 5: GEOMETRY LEARN MODULE RENDERERS
+   ========================================================================== */
+
+/* Topic 5 - Module 1: Basic Geometric Concepts (Point, Line, Segment, Ray) */
+function renderGeomFoundationsModule(container) {
+  let activeFigId = 'line_segment';
+  let isCollinear = true;
+
+  function render() {
+    const activeFig = GEOMETRY_FOUNDATIONS.find(f => f.id === activeFigId) || GEOMETRY_FOUNDATIONS[2];
+
+    container.innerHTML = `
+      <div class="learn-container">
+        <!-- Interactive Concept Selector -->
+        <div class="learn-card">
+          <div class="learn-card-header">
+            <div>
+              <h3>📍 Geometric Foundations: Point, Line, Segment & Ray</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                Explore the 4 core building blocks of geometry, their symbols, and measurable properties
+              </p>
+            </div>
+          </div>
+
+          <!-- Selector Pills -->
+          <div class="learn-subnav" style="margin: 0.75rem 0 1.25rem 0;">
+            ${GEOMETRY_FOUNDATIONS.map(f => `
+              <button class="learn-pill ${f.id === activeFigId ? 'active' : ''}" data-fig="${f.id}">
+                ${f.name}
+              </button>
+            `).join('')}
+          </div>
+
+          <!-- Active Concept Spotlight Card -->
+          <div class="geom-canvas-box" style="margin-bottom: 1.25rem;">
+            ${activeFig.svg}
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+            <div style="background: rgba(0,0,0,0.3); border-radius: var(--radius-md); padding: 1rem;">
+              <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Symbol Notation:</span>
+              <div class="geom-notation-badge" style="margin-top: 0.35rem;">${activeFig.symbolHtml}</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); border-radius: var(--radius-md); padding: 1rem;">
+              <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Number of Endpoints:</span>
+              <div style="font-size: 1.1rem; font-weight: 800; color: #ffffff; margin-top: 0.35rem;">${activeFig.endpoints}</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); border-radius: var(--radius-md); padding: 1rem;">
+              <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Can Measure with Ruler?</span>
+              <div style="font-size: 1.1rem; font-weight: 800; color: ${activeFig.id === 'line_segment' ? 'var(--accent-emerald-light)' : '#f87171'}; margin-top: 0.35rem;">
+                ${activeFig.measurable}
+              </div>
+            </div>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.04); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem;">
+            <p style="font-size: 0.95rem; color: #f1f5f9; line-height: 1.5; margin-bottom: 0.5rem;">
+              ${activeFig.desc}
+            </p>
+            <p style="font-size: 0.85rem; color: var(--accent-amber-light);">
+              🌍 <strong>Real-Life Examples:</strong> ${activeFig.realLife}
+            </p>
+          </div>
+
+          <!-- CBSE Trap Alert -->
+          <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; color: #fca5a5; font-weight: 700; margin-bottom: 0.35rem;">
+              <span>🚨 CBSE EXAM TRAP:</span> Why Ray AB ≠ Ray BA!
+            </div>
+            <p style="font-size: 0.85rem; color: #e2e8f0; line-height: 1.45;">
+              For a ray, the <strong>first letter is always the fixed starting point (origin)</strong>!
+              <br>• <strong>Ray AB (<span style="border-top:2px solid;">→</span> AB)</strong> starts at point A and shoots forever through B.
+              <br>• <strong>Ray BA (<span style="border-top:2px solid;">→</span> BA)</strong> starts at point B and shoots forever through A in the opposite direction.
+              <br>They travel in completely different directions with different origins, so they are <strong>NOT the same ray</strong>!
+            </p>
+          </div>
+        </div>
+
+        <!-- Collinear vs Non-Collinear Interactive Studio -->
+        <div class="learn-card" style="margin-top: 1.5rem;">
+          <div class="learn-card-header">
+            <div>
+              <h3>📏 Collinear vs Non-Collinear Points</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                3 or more points lying on the exact same straight line are collinear
+              </p>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <button class="btn ${isCollinear ? 'btn-primary' : 'btn-outline'}" id="btn-collinear">
+              ✓ Points in a Straight Line (Collinear)
+            </button>
+            <button class="btn ${!isCollinear ? 'btn-primary' : 'btn-outline'}" id="btn-non-collinear">
+              ✗ Points Scattered (Non-Collinear)
+            </button>
+          </div>
+
+          <div class="geom-canvas-box" style="margin-bottom: 1rem;">
+            ${isCollinear ? `
+              <svg width="280" height="120" viewBox="0 0 280 120">
+                <line x1="20" y1="60" x2="260" y2="60" stroke="#10b981" stroke-width="3" stroke-dasharray="0" />
+                <circle cx="60" cy="60" r="5" fill="#f59e0b" />
+                <text x="55" y="45" fill="#ffffff" font-size="14" font-weight="bold">A</text>
+                <circle cx="140" cy="60" r="5" fill="#f59e0b" />
+                <text x="135" y="45" fill="#ffffff" font-size="14" font-weight="bold">B</text>
+                <circle cx="220" cy="60" r="5" fill="#f59e0b" />
+                <text x="215" y="45" fill="#ffffff" font-size="14" font-weight="bold">C</text>
+                <text x="75" y="95" fill="#34d399" font-size="13" font-weight="bold">Single straight line passes through all 3 points!</text>
+              </svg>
+            ` : `
+              <svg width="280" height="120" viewBox="0 0 280 120">
+                <!-- Triangle formed by non-collinear points -->
+                <polygon points="60,85 140,25 220,85" fill="rgba(239,68,68,0.12)" stroke="#f87171" stroke-width="2" stroke-dasharray="4,4" />
+                <circle cx="60" cy="85" r="5" fill="#f59e0b" />
+                <text x="45" y="90" fill="#ffffff" font-size="14" font-weight="bold">A</text>
+                <circle cx="140" cy="25" r="5" fill="#f59e0b" />
+                <text x="135" y="15" fill="#ffffff" font-size="14" font-weight="bold">B</text>
+                <circle cx="220" cy="85" r="5" fill="#f59e0b" />
+                <text x="230" y="90" fill="#ffffff" font-size="14" font-weight="bold">C</text>
+                <text x="45" y="115" fill="#f87171" font-size="13" font-weight="bold">No single straight line can pass through all 3 points!</text>
+              </svg>
+            `}
+          </div>
+
+          <div style="background: rgba(0,0,0,0.25); border-radius: var(--radius-sm); padding: 0.75rem; font-size: 0.85rem; color: #cbd5e1;">
+            📖 <strong>Key Rule:</strong> 3 or more points are <strong>collinear</strong> if they lie on a single straight line. If they do not lie on the same straight line, they are <strong>non-collinear</strong> and form a triangle!
+          </div>
+        </div>
+
+        <!-- Master Comparison Table -->
+        <div class="learn-card" style="margin-top: 1.5rem;">
+          <div class="learn-card-header">
+            <div>
+              <h3>📊 Quick Comparison: Point vs Line vs Segment vs Ray</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                Summary table frequently tested in CBSE Class 5 exams
+              </p>
+            </div>
+          </div>
+
+          <table class="geom-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Point</th>
+                <th>Line</th>
+                <th>Line Segment</th>
+                <th>Ray</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Endpoints</strong></td>
+                <td>0 endpoints</td>
+                <td>0 endpoints</td>
+                <td><strong style="color: var(--accent-amber-light);">2 fixed endpoints</strong></td>
+                <td>1 starting origin</td>
+              </tr>
+              <tr>
+                <td><strong>Definite Length?</strong></td>
+                <td>No (0 size)</td>
+                <td>No (Infinite both ways)</td>
+                <td><strong style="color: var(--accent-emerald-light);">Yes (Definite length)</strong></td>
+                <td>No (Infinite one way)</td>
+              </tr>
+              <tr>
+                <td><strong>Measurable with Ruler?</strong></td>
+                <td>❌ No</td>
+                <td>❌ No</td>
+                <td><strong style="color: var(--accent-emerald-light);">✓ Yes!</strong></td>
+                <td>❌ No</td>
+              </tr>
+              <tr>
+                <td><strong>Symbol Notation</strong></td>
+                <td>• P</td>
+                <td><span style="border-top:2px solid;">↔</span> AB</td>
+                <td><span style="text-decoration:overline;">AB</span></td>
+                <td><span style="border-top:2px solid;">→</span> AB</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+
+    container.querySelectorAll('[data-fig]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playClickSound();
+        activeFigId = btn.getAttribute('data-fig');
+        render();
+      });
+    });
+
+    const btnCol = container.querySelector('#btn-collinear');
+    const btnNonCol = container.querySelector('#btn-non-collinear');
+    if (btnCol) {
+      btnCol.addEventListener('click', () => {
+        playClickSound();
+        isCollinear = true;
+        render();
+      });
+    }
+    if (btnNonCol) {
+      btnNonCol.addEventListener('click', () => {
+        playClickSound();
+        isCollinear = false;
+        render();
+      });
+    }
+  }
+
+  render();
+}
+
+/* Topic 5 - Module 2: Line Relationships (Parallel, Perpendicular, Intersecting, Concurrent) */
+function renderLineRelationshipsModule(container) {
+  let activeRelId = 'parallel';
+  let quizAnswered = false;
+  let quizResult = null;
+
+  function render() {
+    const rel = LINE_RELATIONSHIPS_DATA.find(r => r.id === activeRelId) || LINE_RELATIONSHIPS_DATA[1];
+
+    container.innerHTML = `
+      <div class="learn-container">
+        <div class="learn-card">
+          <div class="learn-card-header">
+            <div>
+              <h3>🛤️ Line Relationships in a Plane</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                Intersecting, Parallel (∥), Perpendicular (⊥), and Concurrent Lines
+              </p>
+            </div>
+          </div>
+
+          <!-- Selector Pills -->
+          <div class="learn-subnav" style="margin: 0.75rem 0 1.25rem 0;">
+            ${LINE_RELATIONSHIPS_DATA.map(r => `
+              <button class="learn-pill ${r.id === activeRelId ? 'active' : ''}" data-rel="${r.id}">
+                ${r.title}
+              </button>
+            `).join('')}
+          </div>
+
+          <!-- Visual Canvas Box -->
+          <div class="geom-canvas-box" style="margin-bottom: 1.25rem;">
+            ${rel.svg}
+          </div>
+
+          <!-- Property & Notation Strip -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+            <div style="background: rgba(0,0,0,0.3); border-radius: var(--radius-md); padding: 1rem;">
+              <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Mathematical Symbol:</span>
+              <div class="geom-notation-badge" style="margin-top: 0.35rem;">${rel.symbol}</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); border-radius: var(--radius-md); padding: 1rem;">
+              <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Key Rule:</span>
+              <div style="font-size: 0.95rem; color: #f1f5f9; margin-top: 0.35rem;">${rel.keyRule}</div>
+            </div>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.04); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem;">
+            <p style="font-size: 0.95rem; color: #f1f5f9; line-height: 1.5; margin-bottom: 0.75rem;">
+              ${rel.desc}
+            </p>
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Real-Life Models:</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
+              ${rel.examples.map(ex => `
+                <span style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); color: #fcd34d; padding: 4px 10px; border-radius: 9999px; font-size: 0.82rem;">
+                  ✦ ${ex}
+                </span>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-Life Relationship Detective Quiz -->
+        <div class="learn-card" style="margin-top: 1.5rem;">
+          <div class="learn-card-header">
+            <div>
+              <h3>🕵️ Relationship Detective: Spot the Lines</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                Test your understanding on real-life objects
+              </p>
+            </div>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.3); border-radius: var(--radius-md); padding: 1.25rem;">
+            <p style="font-size: 1rem; color: #ffffff; font-weight: 600; margin-bottom: 1rem;">
+              "The adjacent edges of a notebook or rectangular sheet of paper meet at a square corner. Which line relationship is this?"
+            </p>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+              <button class="btn ${quizAnswered && quizResult === false ? 'btn-outline' : 'btn-outline'}" data-quiz-ans="parallel">
+                Parallel Lines (AB ∥ CD)
+              </button>
+              <button class="btn ${quizAnswered && quizResult === true ? 'btn-primary' : 'btn-outline'}" data-quiz-ans="perpendicular">
+                Perpendicular Lines (AB ⊥ CD)
+              </button>
+              <button class="btn btn-outline" data-quiz-ans="concurrent">
+                Concurrent Lines
+              </button>
+            </div>
+
+            ${quizAnswered ? `
+              <div style="margin-top: 1rem; padding: 0.85rem; border-radius: var(--radius-sm); background: ${quizResult ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)'}; border: 1px solid ${quizResult ? 'rgba(16,185,129,0.4)' : 'rgba(239,68,68,0.4)'};">
+                <strong style="color: ${quizResult ? 'var(--accent-emerald-light)' : '#fca5a5'};">
+                  ${quizResult ? '🎉 Correct!' : '❌ Not quite!'}
+                </strong>
+                <p style="font-size: 0.85rem; color: #e2e8f0; margin-top: 0.25rem;">
+                  ${quizResult ? 'Adjacent edges meet at an exact 90° right angle forming a square corner ∟, so they are Perpendicular Lines (AB ⊥ CD)!' : 'Adjacent edges cross at an exact 90° right angle, which means they are Perpendicular Lines (AB ⊥ CD). Opposite edges would be parallel!'}
+                </p>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.querySelectorAll('[data-rel]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playClickSound();
+        activeRelId = btn.getAttribute('data-rel');
+        render();
+      });
+    });
+
+    container.querySelectorAll('[data-quiz-ans]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const choice = btn.getAttribute('data-quiz-ans');
+        quizAnswered = true;
+        if (choice === 'perpendicular') {
+          playCorrectSound();
+          launchConfetti();
+          quizResult = true;
+        } else {
+          playWrongSound();
+          quizResult = false;
+        }
+        render();
+      });
+    });
+  }
+
+  render();
+}
+
+/* Topic 5 - Module 3: Angles & Virtual Protractor Studio */
+function renderAnglesProtractorModule(container) {
+  let currentAngle = 60; // 0 to 360
+
+  function getAngleType(deg) {
+    if (deg === 0) return ANGLE_TYPES_DATA[0]; // Zero
+    if (deg > 0 && deg < 90) return ANGLE_TYPES_DATA[1]; // Acute
+    if (deg === 90) return ANGLE_TYPES_DATA[2]; // Right
+    if (deg > 90 && deg < 180) return ANGLE_TYPES_DATA[3]; // Obtuse
+    if (deg === 180) return ANGLE_TYPES_DATA[4]; // Straight
+    if (deg > 180 && deg < 360) return ANGLE_TYPES_DATA[5]; // Reflex
+    return ANGLE_TYPES_DATA[6]; // Complete 360
+  }
+
+  function render() {
+    const angleType = getAngleType(currentAngle);
+    const rad = (currentAngle * Math.PI) / 180;
+
+    // Protractor center at (180, 170), radius = 130
+    const cx = 180;
+    const cy = 170;
+    const armLen = 135;
+    const armX = cx + armLen * Math.cos(rad);
+    const armY = cy - armLen * Math.sin(rad);
+
+    // Angle arc path
+    const arcRadius = 45;
+    const arcEndX = cx + arcRadius * Math.cos(rad);
+    const arcEndY = cy - arcRadius * Math.sin(rad);
+    const largeArc = currentAngle > 180 ? 1 : 0;
+    const arcPath = `M ${cx + arcRadius} ${cy} A ${arcRadius} ${arcRadius} 0 ${largeArc} 0 ${arcEndX} ${arcEndY}`;
+
+    container.innerHTML = `
+      <div class="learn-container">
+        <!-- Protractor Studio Card -->
+        <div class="learn-card">
+          <div class="learn-card-header">
+            <div>
+              <h3>🧭 Interactive Virtual Protractor Studio</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                Drag the angle slider or click presets to measure angles from 0° to 360°
+              </p>
+            </div>
+            <div class="angle-badge ${angleType.badgeClass}" style="font-size: 1rem; padding: 0.4rem 1rem;">
+              ${angleType.name} (${currentAngle}°)
+            </div>
+          </div>
+
+          <!-- Virtual Protractor SVG Canvas -->
+          <div class="protractor-studio" style="margin: 1rem 0;">
+            <div class="protractor-svg-wrapper">
+              <svg width="360" height="240" viewBox="0 0 360 240">
+                <!-- Semicircular protractor body -->
+                <path d="M 50 170 A 130 130 0 0 1 310 170 Z" fill="rgba(99, 102, 241, 0.08)" stroke="rgba(255, 255, 255, 0.25)" stroke-width="2" />
+                <!-- Inner cutout -->
+                <path d="M 120 170 A 60 60 0 0 1 240 170 Z" fill="rgba(0, 0, 0, 0.4)" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" />
+                
+                <!-- Baseline -->
+                <line x1="35" y1="170" x2="325" y2="170" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" />
+
+                <!-- Protractor ticks every 10 degrees -->
+                ${Array.from({ length: 19 }, (_, i) => i * 10).map(deg => {
+                  const tickRad = (deg * Math.PI) / 180;
+                  const x1 = cx + 130 * Math.cos(tickRad);
+                  const y1 = cy - 130 * Math.sin(tickRad);
+                  const isMajor = deg % 30 === 0 || deg === 90;
+                  const len = isMajor ? 12 : 6;
+                  const x2 = cx + (130 - len) * Math.cos(tickRad);
+                  const y2 = cy - (130 - len) * Math.sin(tickRad);
+                  const textX = cx + (130 - 24) * Math.cos(tickRad);
+                  const textY = cy - (130 - 24) * Math.sin(tickRad);
+                  return `
+                    <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${isMajor ? '#fcd34d' : 'rgba(255,255,255,0.4)'}" stroke-width="${isMajor ? '2' : '1'}" />
+                    ${isMajor && deg > 0 && deg < 180 ? `
+                      <text x="${textX}" y="${textY + 4}" fill="#94a3b8" font-size="10" text-anchor="middle" font-weight="600">${deg}°</text>
+                    ` : ''}
+                  `;
+                }).join('')}
+
+                <!-- Angle Arc -->
+                ${currentAngle > 0 && currentAngle < 360 ? `
+                  <path d="${arcPath}" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" />
+                ` : ''}
+
+                <!-- 90 Degree Square Marker if right angle -->
+                ${currentAngle === 90 ? `
+                  <path d="M 180 145 L 205 145 L 205 170" fill="none" stroke="#f59e0b" stroke-width="2.5" />
+                ` : ''}
+
+                <!-- Base Fixed Arm (Ray BC) -->
+                <line x1="${cx}" y1="${cy}" x2="${cx + armLen}" y2="${cy}" stroke="#10b981" stroke-width="4" stroke-linecap="round" />
+                <circle cx="${cx + armLen - 15}" cy="${cy}" r="3" fill="#ffffff" />
+                <text x="${cx + armLen - 18}" y="${cy + 18}" fill="#a7f3d0" font-size="12" font-weight="bold">C (Arm)</text>
+
+                <!-- Rotating Dynamic Arm (Ray BA) -->
+                <line x1="${cx}" y1="${cy}" x2="${armX}" y2="${armY}" stroke="#f43f5e" stroke-width="4" stroke-linecap="round" />
+                <circle cx="${cx + (armLen - 15) * Math.cos(rad)}" cy="${cy - (armLen - 15) * Math.sin(rad)}" r="3" fill="#ffffff" />
+                <text x="${cx + (armLen - 10) * Math.cos(rad) + 6}" y="${cy - (armLen - 10) * Math.sin(rad) + 4}" fill="#fecdd3" font-size="12" font-weight="bold">A (Arm)</text>
+
+                <!-- Vertex Center Point B -->
+                <circle cx="${cx}" cy="${cy}" r="6" fill="#f59e0b" />
+                <text x="${cx - 24}" y="${cy + 18}" fill="#fcd34d" font-size="13" font-weight="bold">B (Vertex)</text>
+
+                <!-- Live angle label at center -->
+                <text x="180" y="225" fill="#38bdf8" font-size="18" font-weight="bold" text-anchor="middle">
+                  ∠ABC = ${currentAngle}°
+                </text>
+              </svg>
+            </div>
+
+            <!-- Slider Control Bar -->
+            <div class="slider-control-bar" style="width: 100%; max-width: 480px; margin: 0.5rem 0;">
+              <span style="font-weight: 700; color: #ffffff; white-space: nowrap;">Angle (θ):</span>
+              <input type="range" id="angle-slider" min="0" max="360" step="5" value="${currentAngle}" style="flex: 1; accent-color: var(--accent-indigo); cursor: pointer;" />
+              <span style="font-family: monospace; font-size: 1.2rem; font-weight: 800; color: var(--accent-amber-light); min-width: 50px; text-align: right;">
+                ${currentAngle}°
+              </span>
+            </div>
+
+            <!-- Presets Bar -->
+            <div class="protractor-presets-bar">
+              <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; align-self: center;">CBSE Presets:</span>
+              ${[0, 30, 45, 60, 90, 120, 150, 180, 270, 360].map(p => `
+                <button class="btn btn-outline ${currentAngle === p ? 'btn-primary' : ''}" style="padding: 4px 10px; font-size: 0.8rem;" data-deg="${p}">
+                  ${p}°
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Angle Details Strip -->
+          <div style="background: rgba(255,255,255,0.04); border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <h4 style="color: var(--accent-amber-light); margin: 0;">${angleType.name} (${angleType.degrees})</h4>
+              <span style="font-size: 0.85rem; color: #a5b4fc; font-family: monospace; font-weight: 700;">Range: ${angleType.range}</span>
+            </div>
+            <p style="font-size: 0.92rem; color: #f1f5f9; line-height: 1.5; margin-bottom: 0.5rem;">
+              ${angleType.desc}
+            </p>
+            <p style="font-size: 0.85rem; color: #94a3b8;">
+              🔍 <strong>Real-Life Analogy:</strong> ${angleType.realLife}
+            </p>
+          </div>
+        </div>
+
+        <!-- 7 Types of Angles Guide Grid -->
+        <div class="learn-card" style="margin-top: 1.5rem;">
+          <div class="learn-card-header">
+            <div>
+              <h3>📐 All 7 CBSE Class 5 Angle Types at a Glance</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                Official NCERT classifications from 0° (Zero) to 360° (Complete)
+              </p>
+            </div>
+          </div>
+
+          <div class="geom-cards-grid">
+            ${ANGLE_TYPES_DATA.map(t => `
+              <div class="geom-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <strong style="color: #ffffff; font-size: 1rem;">${t.name}</strong>
+                  <span class="angle-badge ${t.badgeClass}">${t.degrees}</span>
+                </div>
+                <div style="font-size: 0.8rem; color: var(--accent-amber-light); font-family: monospace;">${t.symbol}</div>
+                <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.4; margin: 0;">
+                  ${t.desc}
+                </p>
+                <div style="font-size: 0.78rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.5rem; margin-top: auto;">
+                  e.g., ${t.realLife}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+
+    const slider = container.querySelector('#angle-slider');
+    if (slider) {
+      slider.addEventListener('input', (e) => {
+        currentAngle = parseInt(e.target.value);
+        render();
+      });
+    }
+
+    container.querySelectorAll('[data-deg]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playClickSound();
+        currentAngle = parseInt(btn.getAttribute('data-deg'));
+        render();
+      });
+    });
+  }
+
+  render();
+}
+
+/* Topic 5 - Module 4: Clock Hands & Real-Life Angle Detective */
+function renderClockAnglesModule(container) {
+  let activeHour = 3; // 1 to 12
+
+  function render() {
+    const preset = CLOCK_ANGLES_PRESETS.find(p => p.hour === activeHour) || {
+      time: `${activeHour}:00`,
+      hour: activeHour,
+      min: 0,
+      deg: Math.min(activeHour, 12 - activeHour) * 30,
+      type: Math.min(activeHour, 12 - activeHour) * 30 < 90 ? 'Acute Angle' : (Math.min(activeHour, 12 - activeHour) * 30 === 90 ? 'Right Angle ∟' : (Math.min(activeHour, 12 - activeHour) * 30 < 180 ? 'Obtuse Angle' : 'Straight Angle')),
+      reason: `${Math.min(activeHour, 12 - activeHour)} hour gaps × 30° = ${Math.min(activeHour, 12 - activeHour) * 30}°.`
+    };
+
+    const shortestGap = Math.min(activeHour, 12 - activeHour);
+    const angleDeg = shortestGap * 30;
+
+    // Clock center (100, 100), radius = 80
+    const ccx = 100;
+    const ccy = 100;
+
+    // Minute hand points straight UP at 12
+    const minX = ccx;
+    const minY = 32;
+
+    // Hour hand position (angle from top = activeHour * 30 deg)
+    const hourAngleRad = ((activeHour * 30 - 90) * Math.PI) / 180;
+    const hourX = ccx + 50 * Math.cos(hourAngleRad);
+    const hourY = ccy + 50 * Math.sin(hourAngleRad);
+
+    container.innerHTML = `
+      <div class="learn-container">
+        <!-- Clock Hands Hero Card -->
+        <div class="learn-card">
+          <div class="learn-card-header">
+            <div>
+              <h3>⏰ Clock Hands Angle Detective</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                Every 1 hour jump on a clock face equals exactly 30° ($360° ÷ 12 = 30°$)
+              </p>
+            </div>
+            <div class="angle-badge ${angleDeg < 90 ? 'acute' : (angleDeg === 90 ? 'right' : (angleDeg < 180 ? 'obtuse' : 'straight'))}" style="font-size: 0.95rem; padding: 0.35rem 0.85rem;">
+              ${preset.type} (${angleDeg}°)
+            </div>
+          </div>
+
+          <!-- Studio Layout -->
+          <div class="clock-studio" style="margin: 1rem 0;">
+            <!-- Analog Clock SVG -->
+            <div class="clock-svg-wrapper">
+              <svg width="220" height="220" viewBox="0 0 200 200">
+                <!-- Outer clock rim -->
+                <circle cx="${ccx}" cy="${ccy}" r="90" fill="rgba(15, 23, 42, 0.9)" stroke="rgba(255, 255, 255, 0.25)" stroke-width="4" />
+                <circle cx="${ccx}" cy="${ccy}" r="82" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" />
+
+                <!-- Hour Numbers (1 to 12) -->
+                ${Array.from({ length: 12 }, (_, i) => i + 1).map(h => {
+                  const hRad = ((h * 30 - 90) * Math.PI) / 180;
+                  const numX = ccx + 68 * Math.cos(hRad);
+                  const numY = ccy + 68 * Math.sin(hRad);
+                  const isCurrent = h === activeHour || h === 12;
+                  return `
+                    <text x="${numX}" y="${numY + 5}" fill="${isCurrent ? '#fcd34d' : '#94a3b8'}" font-size="${isCurrent ? '13' : '11'}" font-weight="${isCurrent ? '800' : '600'}" text-anchor="middle">
+                      ${h}
+                    </text>
+                  `;
+                }).join('')}
+
+                <!-- Minute Hand (points at 12, Rose color) -->
+                <line x1="${ccx}" y1="${ccy}" x2="${minX}" y2="${minY}" stroke="#f43f5e" stroke-width="3.5" stroke-linecap="round" />
+
+                <!-- Hour Hand (points at activeHour, Amber/Cyan color) -->
+                <line x1="${ccx}" y1="${ccy}" x2="${hourX}" y2="${hourY}" stroke="#38bdf8" stroke-width="5" stroke-linecap="round" />
+
+                <!-- Center Pinion -->
+                <circle cx="${ccx}" cy="${ccy}" r="6" fill="#f59e0b" />
+                <circle cx="${ccx}" cy="${ccy}" r="2.5" fill="#ffffff" />
+              </svg>
+            </div>
+
+            <!-- Interactive Hour Controls & Math Breakdown -->
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div style="background: rgba(0,0,0,0.3); border-radius: var(--radius-md); padding: 1rem;">
+                <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Selected Time:</span>
+                <div style="font-size: 1.8rem; font-weight: 800; color: #ffffff; font-family: monospace; margin-top: 0.25rem;">
+                  ${activeHour}:00
+                </div>
+              </div>
+
+              <!-- Hour Slider -->
+              <div class="slider-control-bar">
+                <span style="font-weight: 700; color: #ffffff;">Hour:</span>
+                <input type="range" id="clock-hour-slider" min="1" max="12" step="1" value="${activeHour}" style="flex: 1; accent-color: var(--accent-indigo); cursor: pointer;" />
+                <span style="font-family: monospace; font-size: 1.1rem; font-weight: 800; color: var(--accent-amber-light); min-width: 35px; text-align: right;">
+                  ${activeHour}
+                </span>
+              </div>
+
+              <!-- Step by Step Math Card -->
+              <div style="background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.35); border-radius: var(--radius-md); padding: 1rem;">
+                <div style="font-size: 0.8rem; color: #a5b4fc; font-weight: 700; text-transform: uppercase;">Step-by-Step Calculation:</div>
+                <div style="font-size: 0.95rem; color: #ffffff; margin-top: 0.4rem; line-height: 1.45;">
+                  • Gap between hands: <strong>${shortestGap} hour spaces</strong>
+                  <br>• Degrees per hour: <strong>30°</strong>
+                  <br>• Angle measure: <strong>${shortestGap} × 30° = ${angleDeg}°</strong>
+                  <br>• Classification: <strong style="color: var(--accent-amber-light);">${preset.type}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Presets -->
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; align-self: center;">Popular CBSE Clock Angles:</span>
+            ${CLOCK_ANGLES_PRESETS.map(p => `
+              <button class="btn btn-outline ${activeHour === p.hour ? 'btn-primary' : ''}" style="padding: 4px 10px; font-size: 0.8rem;" data-clock-h="${p.hour}">
+                ${p.time} (${p.deg}°)
+              </button>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- The 30 Degree Secret Explanation Card -->
+        <div class="learn-card" style="margin-top: 1.5rem;">
+          <div class="learn-card-header">
+            <div>
+              <h3>💡 The CBSE Clock Angle Formula Decoded</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                Why does each 1 hour mark equal 30 degrees?
+              </p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+            <div style="background: rgba(0,0,0,0.25); border-radius: var(--radius-md); padding: 1rem;">
+              <h4 style="color: var(--accent-amber-light); margin-bottom: 0.5rem;">1. Full Revolution = 360°</h4>
+              <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.45;">
+                A clock face is a complete circle. One complete revolution around the dial is <strong>360°</strong>.
+              </p>
+            </div>
+            <div style="background: rgba(0,0,0,0.25); border-radius: var(--radius-md); padding: 1rem;">
+              <h4 style="color: var(--accent-amber-light); margin-bottom: 0.5rem;">2. 12 Equal Hour Numbers</h4>
+              <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.45;">
+                The dial is divided into 12 equal hours:
+                <br><code>360° ÷ 12 = 30° per hour</code>
+              </p>
+            </div>
+            <div style="background: rgba(0,0,0,0.25); border-radius: var(--radius-md); padding: 1rem;">
+              <h4 style="color: var(--accent-amber-light); margin-bottom: 0.5rem;">3. 60 Minute Marks</h4>
+              <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.45;">
+                The dial also has 60 equal minute marks:
+                <br><code>360° ÷ 60 = 6° per minute</code>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const hourSlider = container.querySelector('#clock-hour-slider');
+    if (hourSlider) {
+      hourSlider.addEventListener('input', (e) => {
+        activeHour = parseInt(e.target.value);
+        render();
+      });
+    }
+
+    container.querySelectorAll('[data-clock-h]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playClickSound();
+        activeHour = parseInt(btn.getAttribute('data-clock-h'));
+        render();
+      });
+    });
+  }
+
+  render();
+}
+
 /* --------------------------------------------------------------------------
    PRACTICE MODE RENDERER
    -------------------------------------------------------------------------- */
@@ -5176,6 +6513,67 @@ function renderWorksheetViewTopic4(container) {
   });
 }
 
+function renderWorksheetViewTopic5(container) {
+  container.innerHTML = `
+    <div class="learn-container">
+      <div class="learn-card">
+        <div class="learn-card-header">
+          <div>
+            <h3>📄 CBSE Class 5 Practice Sheet: Geometry, Lines & Angles</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+              Class V Mathematics — Points, Lines, Rays, Relationships (∥, ⊥), Angle Types & Clock Hands
+            </p>
+          </div>
+          <button class="btn btn-primary" id="btn-print-action-t5">
+            🖨️ Print Worksheet
+          </button>
+        </div>
+
+        <div class="worksheet-preview">
+          <h4 style="color: var(--accent-amber-light); margin-bottom: 0.75rem;">I. Basic Concepts & Notations (Fill in the Blanks):</h4>
+          <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li>A _____________________ has 2 fixed endpoints and can be measured with a ruler.</li>
+            <li>A ray has exactly _____________________ starting endpoint called its origin.</li>
+            <li>A line extends endlessly in _____________________ directions and has _____________________ endpoints.</li>
+            <li>Three or more points that lie on the exact same straight line are called _____________________ points.</li>
+            <li>In the angle denoted as ∠ABC, point _____________________ is the vertex.</li>
+          </ol>
+
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">II. Line Relationships (Identify the Relationship):</h4>
+          <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li>Railway track rails never meet. They are _____________________ lines (Symbol: _________).</li>
+            <li>Adjacent sides of a rectangular sheet of paper form an angle of 90°. They are _____________________ lines (Symbol: _________).</li>
+            <li>Lines that cross each other at a single common point are called _____________________ lines.</li>
+            <li>The spokes of a bicycle wheel meeting at the central axle are _____________________ lines.</li>
+          </ol>
+
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">III. Classify the Following Angles:</h4>
+          <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li>45° : _________________________________</li>
+            <li>90° : _________________________________</li>
+            <li>120° : _________________________________</li>
+            <li>180° : _________________________________</li>
+            <li>260° : _________________________________</li>
+            <li>89° : _________________________________</li>
+          </ol>
+
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">IV. Clock Hands & Real-Life Angle Problems:</h4>
+          <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li>What angle do the hands of a clock make at 3:00? Calculate the degrees and classify it.</li>
+            <li>What angle do the hands of a clock make at 6:00?</li>
+            <li>At 2:00, how many degrees is the angle between the hour and minute hands?</li>
+            <li>Explain why Ray AB is not the same as Ray BA.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  `;
+
+  container.querySelector('#btn-print-action-t5').addEventListener('click', () => {
+    printWorksheetTopic5();
+  });
+}
+
 /* --------------------------------------------------------------------------
    PRINT ENGINES
    -------------------------------------------------------------------------- */
@@ -5187,6 +6585,8 @@ function printWorksheet() {
     printWorksheetTopic3();
   } else if (state.currentTopic === 'number_patterns') {
     printWorksheetTopic4();
+  } else if (state.currentTopic === 'geometry_angles') {
+    printWorksheetTopic5();
   } else {
     printWorksheetTopic1();
   }
@@ -5484,6 +6884,87 @@ function printWorksheetTopic4() {
         <li>
           Turn the number 69 into a palindrome using Reverse-and-Add steps:
           <div class="workspace-box" style="height: 60px;"></div>
+        </li>
+      </ol>
+    </div>
+  `;
+
+  window.print();
+}
+
+function printWorksheetTopic5() {
+  const printContainer = document.getElementById('print-container');
+  if (!printContainer) return;
+
+  printContainer.innerHTML = `
+    <div class="worksheet-header">
+      <h2>CENTRAL BOARD OF SECONDARY EDUCATION (CBSE)</h2>
+      <h3>MATHEMATICS — CLASS V</h3>
+      <p><strong>Topic: Geometry, Lines, Relationships & Angle Measurements</strong></p>
+      <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+        <span>Name: __________________________</span>
+        <span>Roll No: ______</span>
+        <span>Date: ____________</span>
+      </div>
+    </div>
+
+    <div class="worksheet-q">
+      <h4>I. Basic Concepts & Notations (Fill in the blanks):</h4>
+      <ol>
+        <li>A geometric figure with two fixed endpoints and a definite length is a ____________________________.</li>
+        <li>A ray has ________ endpoint(s) and extends infinitely in ________ direction(s).</li>
+        <li>Write the mathematical notation for:
+          <br>a) Line Segment AB: _______________ &nbsp;&nbsp;&nbsp;&nbsp; b) Ray AB: _______________ &nbsp;&nbsp;&nbsp;&nbsp; c) Line AB: _______________
+        </li>
+        <li>Three or more points lying on the exact same straight line are called ____________________________.</li>
+        <li>In angle ∠PQR, the vertex is point _______________ and the arms are rays _______________ and _______________.</li>
+      </ol>
+    </div>
+
+    <div class="worksheet-q" style="margin-top: 15px;">
+      <h4>II. Line Relationships (Identify & Write Symbols):</h4>
+      <ol>
+        <li>
+          Lines that never meet and keep a constant perpendicular distance are _____________________ (Symbol: _________).
+        </li>
+        <li>
+          Two lines that meet at an exact 90° right angle are _____________________ (Symbol: _________).
+        </li>
+        <li>
+          Give two real-life examples of parallel lines: __________________________________________________
+        </li>
+        <li>
+          Give two real-life examples of perpendicular lines: __________________________________________________
+        </li>
+      </ol>
+    </div>
+
+    <div class="worksheet-q" style="margin-top: 15px;">
+      <h4>III. Angle Classifications (Acute, Right, Obtuse, Straight, Reflex):</h4>
+      <ol>
+        <li>35° &nbsp;&nbsp;&nbsp;&nbsp; : _________________________________</li>
+        <li>90° &nbsp;&nbsp;&nbsp;&nbsp; : _________________________________</li>
+        <li>140° &nbsp;&nbsp; : _________________________________</li>
+        <li>180° &nbsp;&nbsp; : _________________________________</li>
+        <li>235° &nbsp;&nbsp; : _________________________________</li>
+        <li>89° &nbsp;&nbsp;&nbsp;&nbsp; : _________________________________</li>
+      </ol>
+    </div>
+
+    <div class="worksheet-q" style="margin-top: 15px;">
+      <h4>IV. Solve with Working / Explanations:</h4>
+      <ol>
+        <li>
+          Calculate the angle formed by the hands of a clock at 4:00. Show formula and step-by-step working:
+          <div class="workspace-box" style="height: 60px;"></div>
+        </li>
+        <li>
+          Explain clearly why Ray AB is NOT the same ray as Ray BA:
+          <div class="workspace-box" style="height: 60px;"></div>
+        </li>
+        <li>
+          Draw a rough sketch of two perpendicular lines AB and CD meeting at point O, and mark the 90° square symbol:
+          <div class="workspace-box" style="height: 75px;"></div>
         </li>
       </ol>
     </div>

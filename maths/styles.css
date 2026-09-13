@@ -2538,6 +2538,170 @@ body::after {
   font-weight: 700;
 }
 
+/* ==========================================================================
+   TOPIC 5: GEOMETRY, LINES & ANGLES STYLES
+   ========================================================================== */
+
+.geom-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.geom-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.geom-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+.geom-canvas-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 140px;
+}
+
+.geom-notation-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(99, 102, 241, 0.18);
+  border: 1px solid rgba(99, 102, 241, 0.45);
+  color: #a5b4fc;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.geom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.geom-table th, .geom-table td {
+  padding: 0.75rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.geom-table th {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--accent-amber-light);
+  font-weight: 700;
+}
+
+.geom-table tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.angle-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.angle-badge.acute {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.angle-badge.right {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.angle-badge.obtuse {
+  background: rgba(168, 85, 247, 0.2);
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+}
+
+.angle-badge.straight {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+.angle-badge.reflex {
+  background: rgba(236, 72, 153, 0.2);
+  color: #f472b6;
+  border: 1px solid rgba(236, 72, 153, 0.4);
+}
+
+.angle-badge.complete {
+  background: rgba(20, 184, 166, 0.2);
+  color: #5eead4;
+  border: 1px solid rgba(20, 184, 166, 0.4);
+}
+
+.protractor-studio {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.protractor-svg-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  justify-content: center;
+}
+
+.protractor-presets-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.clock-studio {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.clock-svg-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* ==================== RESPONSIVE MOBILE DRAWER RULES ==================== */
 .desktop-only {
   display: inline;
@@ -2860,6 +3024,26 @@ body::after {
   }
   .magic-grid-3x3 {
     grid-template-columns: repeat(3, 50px);
+  }
+
+  /* Topic 5 Mobile Responsive Rules */
+  .geom-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .clock-studio {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .geom-table {
+    font-size: 0.8rem;
+  }
+  .geom-table th, .geom-table td {
+    padding: 0.5rem 0.4rem;
+  }
+  .protractor-svg-wrapper svg {
+    max-width: 100%;
+    height: auto;
   }
 }
 
