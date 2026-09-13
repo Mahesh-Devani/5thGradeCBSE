@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="कक्षा 5 CBSE हिंदी व्याकरण व रचनात्मक लेखन — चित्र वर्णन (Picture Description). 5-वाक्य विधि, शब्द भंडार, और वाक्य निर्माण के साथ आसानी से सीखें।">
+  <title>चित्र वर्णन — हिंदी व्याकरण व रचना | Class 5 CBSE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇮🇳</text></svg>">
+</head>
+<body>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Feedback Flash -->
+  <div class="feedback-flash" id="feedback-flash"></div>
+
+  <div class="app-container">
+
+    <!-- Sidebar Backdrop for Mobile -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- ==================== SIDEBAR ==================== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top-row">
+        <a href="../index.html" class="back-to-home" id="back-to-home">
+          ← मुख्य पृष्ठ (Home)
+        </a>
+        <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close menu">✕</button>
+      </div>
+
+      <div class="sidebar-logo">
+        <div class="logo-badge">रचनात्मक लेखन</div>
+        <h1>🖼️ चित्र वर्णन</h1>
+        <p>Class 5 CBSE — हिंदी व्याकरण</p>
+      </div>
+
+      <div class="sidebar-section-title">चित्र विषय (Topics)</div>
+      <div id="sidebar-topics"></div>
+
+      <div class="progress-section">
+        <h4>कुल प्रगति (Progress)</h4>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-label" id="progress-label">0 / 18 सितारे (stars)</div>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="main-content">
+
+      <!-- Top Bar -->
+      <div class="top-bar" id="top-bar">
+        <div class="top-bar-nav-row">
+          <button class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Open Topics Menu">
+            <span class="hamburger-icon">☰</span>
+            <span class="menu-label">चित्र</span>
+          </button>
+          <a href="../index.html" class="home-quick-btn" title="Back to Learning Hub" aria-label="Back to Learning Hub">🏠</a>
+
+          <div class="top-bar-title">
+            <h2 id="top-bar-title">चित्र वर्णन मास्टर</h2>
+            <p id="top-bar-subtitle">चित्र देखकर 5-7 वाक्य लिखना सीखें</p>
+          </div>
+
+          <div class="top-bar-actions">
+            <button class="btn btn-trans" id="btn-translate-toggle" title="Toggle English Translation">
+              <span class="trans-icon">🌐</span>
+              <span class="trans-text" id="trans-toggle-label">English: ON</span>
+            </button>
+            <button class="btn btn-icon" id="btn-reset" title="Reset Scene" aria-label="Reset">🔄</button>
+          </div>
+        </div>
+
+        <div class="mode-tabs" id="mode-tabs">
+          <button class="mode-tab active" data-mode="explore" id="tab-explore">🔍 चित्र अवलोकन</button>
+          <button class="mode-tab" data-mode="vocab" id="tab-vocab">🔤 शब्द भंडार</button>
+          <button class="mode-tab" data-mode="puzzle" id="tab-puzzle">🧩 वाक्य खेल</button>
+          <button class="mode-tab" data-mode="write" id="tab-write">✍️ 5-वाक्य रचना</button>
+        </div>
+      </div>
+
+      <!-- Welcome Screen -->
+      <div class="welcome-screen" id="welcome-screen">
+        <div class="welcome-icon">🖼️</div>
+        <h2>स्वागत है — चित्र वर्णन में!</h2>
+        <p>परीक्षा में चित्र देखकर 5-7 वाक्य लिखना अब होगा बेहद आसान! 5-स्टेप फॉर्मूला सीखें, जरूरी शब्द भंडार जानें और वाक्य बनाने का अभ्यास करें।</p>
+
+        <button class="btn btn-primary welcome-start-btn" id="welcome-start-btn">
+          🚀 अभ्यास शुरू करें — चित्र चुनें
+        </button>
+
+        <div class="rule-summary-card">
+          <h4>💡 परीक्षा में पूरे अंक पाने का 5-स्टेप फॉर्मूला:</h4>
+          <div class="rule-steps">
+            <div class="rule-step">
+              <span class="step-num">1</span>
+              <div><strong>पहला वाक्य:</strong> चित्र किस स्थान का है? (स्थान का परिचय)</div>
+            </div>
+            <div class="rule-step">
+              <span class="step-num">2</span>
+              <div><strong>दूसरा वाक्य:</strong> मौसम / वातावरण कैसा है? (आसमान, हरियाली)</div>
+            </div>
+            <div class="rule-step">
+              <span class="step-num">3</span>
+              <div><strong>तीसरा वाक्य:</strong> चित्र में कौन क्या कर रहा है? (मुख्य क्रिया)</div>
+            </div>
+            <div class="rule-step">
+              <span class="step-num">4</span>
+              <div><strong>चौथा वाक्य:</strong> अन्य विशेष वस्तुएँ क्या हैं? (बारीक विवरण)</div>
+            </div>
+            <div class="rule-step">
+              <span class="step-num">5</span>
+              <div><strong>पांचवा वाक्य:</strong> चित्र का संदेश या सभी का मूड कैसा है? (निष्कर्ष)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="welcome-features">
+          <div class="welcome-feature">
+            <div class="feature-icon">🔍</div>
+            <h4>चित्र अवलोकन</h4>
+            <p>हॉटस्पॉट पर टैप करके शब्दों और वाक्यों को पहचानें</p>
+          </div>
+          <div class="welcome-feature">
+            <div class="feature-icon">🔤</div>
+            <h4>शब्द भंडार</h4>
+            <p>संज्ञा, क्रिया व विशेषण शब्दों का अर्थ समझें</p>
+          </div>
+          <div class="welcome-feature">
+            <div class="feature-icon">🧩</div>
+            <h4>वाक्य खेल</h4>
+            <p>सही क्रम में शब्द जोड़कर वाक्य बनाएं</p>
+          </div>
+          <div class="welcome-feature">
+            <div class="feature-icon">✍️</div>
+            <h4>आदर्श उत्तर</h4>
+            <p>5-7 वाक्यों का संपूर्ण उत्तर और अंग्रेज़ी अनुवाद</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene / Content Area -->
+      <div class="scene-area" id="scene-area" style="display: none;">
+        
+        <!-- Picture Presentation Card -->
+        <div class="picture-card" id="picture-card">
+          <div class="picture-header">
+            <div class="picture-title-group">
+              <h3 id="picture-heading">चित्र शीर्षक</h3>
+              <p id="picture-hint">चित्र पर बने नंबरों (हॉटस्पॉट) पर टैप करके विवरण देखें</p>
+            </div>
+            <div class="picture-tools">
+              <span class="hotspot-counter" id="hotspot-counter">हॉटस्पॉट: 0 / 6</span>
+            </div>
+          </div>
+
+          <!-- The SVG Illustration Container with Hotspots -->
+          <div class="picture-illustration-wrapper" id="picture-illustration-wrapper">
+            <div class="illustration-canvas" id="illustration-canvas">
+              <!-- Inline vector SVG rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Hotspot Detail Bar (appears when hotspot is tapped) -->
+          <div class="hotspot-detail-box" id="hotspot-detail-box">
+            <div class="hs-empty">💡 चित्र पर किसी भी नंबर 🔵 पर टैप करके शब्द और वाक्य सीखें!</div>
+          </div>
+        </div>
+
+        <!-- Mode Specific Interactive Panel -->
+        <div class="mode-panel" id="mode-panel">
+          <!-- Rendered dynamically by app.js according to active mode -->
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ==================== RESULTS MODAL ==================== -->
+  <div class="modal-overlay" id="results-modal">
+    <div class="modal">
+      <div class="result-icon" id="result-emoji">🏆</div>
+      <h3 id="result-title">बहुत बढ़िया! (Great Job!)</h3>
+      <div class="stars-display" id="result-stars">⭐⭐⭐</div>
+      <p id="result-message">आपने इस चित्र के सभी अभ्यास पूरे किए!</p>
+      <div class="result-stats">
+        <div class="result-stat">
+          <div class="stat-value" id="result-score" style="color: var(--accent-amber);">100%</div>
+          <div class="stat-label">सटीकता (Accuracy)</div>
+        </div>
+        <div class="result-stat">
+          <div class="stat-value" id="result-stars-count" style="color: var(--accent-green);">3</div>
+          <div class="stat-label">सितारे (Stars)</div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="btn-next-scene">अगला चित्र देखें →</button>
+        <button class="btn" id="btn-close-modal">✖ बंद करें (Close)</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

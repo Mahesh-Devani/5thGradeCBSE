@@ -1,0 +1,2440 @@
+/* ============================================
+   Hindi Vyakaran — Chitra Varnan (चित्र वर्णन)
+   Class 5 CBSE — Interactive Engine
+   ============================================ */
+
+// --- Audio Synthesizer (Native Web Audio API) ---
+class SoundSynth {
+  constructor() {
+    this.ctx = null;
+  }
+  init() {
+    if (!this.ctx) {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (AudioContext) {
+        this.ctx = new AudioContext();
+      }
+    }
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume();
+    }
+  }
+  playBeep(freq, duration = 0.12, type = 'sine') {
+    this.init();
+    if (!this.ctx) return;
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+      gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + duration);
+    } catch (e) {
+      console.warn('Audio play error:', e);
+    }
+  }
+  tap() { this.playBeep(520, 0.08, 'triangle'); }
+  success() {
+    this.playBeep(587.33, 0.1, 'sine');
+    setTimeout(() => this.playBeep(880, 0.2, 'sine'), 100);
+  }
+  error() {
+    this.playBeep(240, 0.15, 'sawtooth');
+  }
+  fanfare() {
+    const notes = [523.25, 659.25, 783.99, 1046.5];
+    notes.forEach((freq, idx) => {
+      setTimeout(() => this.playBeep(freq, 0.22, 'triangle'), idx * 110);
+    });
+  }
+}
+const synth = new SoundSynth();
+
+// --- Confetti Particle System ---
+class ConfettiEngine {
+  constructor(canvasId) {
+    this.canvas = document.getElementById(canvasId);
+    this.ctx = this.canvas ? this.canvas.getContext('2d') : null;
+    this.particles = [];
+    this.animId = null;
+    this.resize();
+    window.addEventListener('resize', () => this.resize());
+  }
+  resize() {
+    if (!this.canvas) return;
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+  }
+  burst(count = 60) {
+    if (!this.canvas || !this.ctx) return;
+    const colors = ['#f59e0b', '#10b981', '#06b6d4', '#ec4899', '#8b5cf6', '#fbbf24'];
+    for (let i = 0; i < count; i++) {
+      this.particles.push({
+        x: this.canvas.width / 2 + (Math.random() - 0.5) * 200,
+        y: this.canvas.height * 0.45,
+        vx: (Math.random() - 0.5) * 14,
+        vy: (Math.random() - 0.9) * 16,
+        size: Math.random() * 8 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        vr: (Math.random() - 0.5) * 10,
+        opacity: 1
+      });
+    }
+    if (!this.animId) {
+      this.animate();
+    }
+  }
+  animate() {
+    if (!this.ctx) return;
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.particles.forEach((p, idx) => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.4; // gravity
+      p.rotation += p.vr;
+      p.opacity -= 0.012;
+
+      this.ctx.save();
+      this.ctx.translate(p.x, p.y);
+      this.ctx.rotate((p.rotation * Math.PI) / 180);
+      this.ctx.fillStyle = p.color;
+      this.ctx.globalAlpha = Math.max(0, p.opacity);
+      this.ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+      this.ctx.restore();
+
+      if (p.opacity <= 0 || p.y > this.canvas.height) {
+        this.particles.splice(idx, 1);
+      }
+    });
+
+    if (this.particles.length > 0) {
+      this.animId = requestAnimationFrame(() => this.animate());
+    } else {
+      this.animId = null;
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+  }
+}
+
+// --- SCENE DATABASE: 6 Rich CBSE Class 5 Scenarios ---
+const SCENE_DATA = [
+  {
+    id: 'park',
+    title: 'बगीचा / बाल उद्यान',
+    titleEn: 'Children Park & Playground',
+    subtitle: 'हरे-भरे पेड़, झूले, फिसलपट्टी और खेलते हुए बच्चे',
+    icon: '🌳',
+    svg: `
+      <svg viewBox="0 0 800 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skyPark" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#38bdf8"/>
+            <stop offset="60%" stop-color="#bae6fd"/>
+            <stop offset="100%" stop-color="#fef08a"/>
+          </linearGradient>
+          <linearGradient id="grassPark" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#84cc16"/>
+            <stop offset="100%" stop-color="#4d7c0f"/>
+          </linearGradient>
+          <linearGradient id="sunGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#fef08a"/>
+            <stop offset="100%" stop-color="#f59e0b"/>
+          </linearGradient>
+        </defs>
+        <!-- Sky -->
+        <rect width="800" height="280" fill="url(#skyPark)" />
+        <!-- Sun -->
+        <circle cx="700" cy="80" r="45" fill="url(#sunGrad)" opacity="0.9" />
+        <!-- Clouds -->
+        <path d="M 120 70 q 20 -25 45 -10 q 25 -30 55 -10 q 30 -15 50 15 q 20 15 0 30 l -140 0 z" fill="#ffffff" opacity="0.85" />
+        <path d="M 460 90 q 15 -20 35 -8 q 20 -20 45 -8 q 25 -10 40 12 q 15 12 0 24 l -110 0 z" fill="#ffffff" opacity="0.8" />
+        <!-- Distant hills -->
+        <path d="M 0 240 Q 200 160 400 230 T 800 220 L 800 280 L 0 280 Z" fill="#65a30d" opacity="0.5" />
+        <!-- Ground / Grass -->
+        <rect y="260" width="800" height="220" fill="url(#grassPark)" />
+        <!-- Winding pathway -->
+        <path d="M 320 480 C 350 400 380 340 450 280 L 510 280 C 440 340 420 400 400 480 Z" fill="#fde047" opacity="0.5" />
+        <!-- Big Tree Left -->
+        <rect x="75" y="180" width="30" height="130" rx="6" fill="#78350f" />
+        <circle cx="90" cy="160" r="65" fill="#15803d" />
+        <circle cx="60" cy="140" r="50" fill="#16a34a" />
+        <circle cx="120" cy="145" r="50" fill="#22c55e" />
+        <!-- Flower bed right -->
+        <circle cx="680" cy="380" r="8" fill="#ef4444" />
+        <circle cx="700" cy="390" r="7" fill="#ec4899" />
+        <circle cx="720" cy="375" r="8" fill="#a855f7" />
+        <circle cx="740" cy="390" r="8" fill="#f59e0b" />
+        <path d="M 660 400 Q 710 370 760 400" stroke="#15803d" stroke-width="4" fill="none" />
+        <!-- Swing (झूला) in middle-left -->
+        <line x1="210" y1="210" x2="250" y2="350" stroke="#475569" stroke-width="6" stroke-linecap="round"/>
+        <line x1="290" y1="210" x2="250" y2="350" stroke="#475569" stroke-width="6" stroke-linecap="round"/>
+        <line x1="320" y1="210" x2="360" y2="350" stroke="#475569" stroke-width="6" stroke-linecap="round"/>
+        <line x1="200" y1="210" x2="370" y2="210" stroke="#0284c7" stroke-width="8" stroke-linecap="round" />
+        <!-- Swing rope & plank -->
+        <line x1="260" y1="210" x2="260" y2="290" stroke="#f59e0b" stroke-width="3" />
+        <line x1="290" y1="210" x2="290" y2="290" stroke="#f59e0b" stroke-width="3" />
+        <rect x="250" y="290" width="50" height="8" rx="3" fill="#b45309" />
+        <!-- Kid on swing -->
+        <circle cx="275" cy="265" r="12" fill="#fed7aa" />
+        <rect x="268" y="277" width="14" height="20" rx="4" fill="#ef4444" />
+        <!-- Slide (फिसलपट्टी) on middle-right -->
+        <line x1="560" y1="220" x2="560" y2="360" stroke="#64748b" stroke-width="5" />
+        <line x1="575" y1="220" x2="575" y2="360" stroke="#64748b" stroke-width="5" />
+        <!-- Ladder steps -->
+        <line x1="560" y1="260" x2="575" y2="260" stroke="#64748b" stroke-width="3" />
+        <line x1="560" y1="290" x2="575" y2="290" stroke="#64748b" stroke-width="3" />
+        <line x1="560" y1="320" x2="575" y2="320" stroke="#64748b" stroke-width="3" />
+        <!-- Slide slope -->
+        <path d="M 575 220 Q 610 240 660 360" stroke="#e11d48" stroke-width="12" stroke-linecap="round" fill="none" />
+        <!-- Kid sliding -->
+        <circle cx="620" cy="275" r="10" fill="#fed7aa" />
+        <rect x="614" y="285" width="12" height="16" rx="3" fill="#3b82f6" />
+        <!-- Park Bench (बेंच) in bottom-left -->
+        <rect x="120" y="380" width="90" height="12" rx="3" fill="#92400e" />
+        <line x1="130" y1="392" x2="130" y2="425" stroke="#334155" stroke-width="5" />
+        <line x1="200" y1="392" x2="200" y2="425" stroke="#334155" stroke-width="5" />
+        <rect x="120" y="360" width="90" height="14" rx="2" fill="#b45309" />
+        <!-- Football & Playing Kid in foreground center -->
+        <circle cx="460" cy="410" r="14" fill="#ffffff" stroke="#000000" stroke-width="3" />
+        <circle cx="460" cy="410" r="5" fill="#000000" />
+        <circle cx="420" cy="380" r="12" fill="#fed7aa" />
+        <rect x="413" y="392" width="14" height="22" rx="4" fill="#10b981" />
+        <!-- Flying birds in sky -->
+        <path d="M 330 90 q 10 -8 18 0 q 10 -8 18 0" stroke="#334155" stroke-width="2" fill="none" />
+        <path d="M 380 75 q 8 -6 15 0 q 8 -6 15 0" stroke="#334155" stroke-width="2" fill="none" />
+      </svg>
+    `,
+    hotspots: [
+      {
+        id: 1,
+        x: 35,
+        y: 57,
+        title: 'झूला (Swing)',
+        translit: 'Jhoola',
+        meaningEn: 'Swing',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'एक बच्चा आनंद से झूले पर झूल रहा है।',
+        sentenceEn: 'A child is joyfully swinging on the swing.'
+      },
+      {
+        id: 2,
+        x: 77,
+        y: 60,
+        title: 'फिसलपट्टी (Slide)',
+        translit: 'Phisal-patti',
+        meaningEn: 'Slide',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'बच्चे फिसलपट्टी से नीचे फिसलने का मज़ा ले रहे हैं।',
+        sentenceEn: 'Children are enjoying sliding down the slide.'
+      },
+      {
+        id: 3,
+        x: 58,
+        y: 84,
+        title: 'फुटबॉल (Football)',
+        translit: 'Football',
+        meaningEn: 'Football / Ball',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'मैदान पर लड़का फुटबॉल से खेल रहा है।',
+        sentenceEn: 'A boy is playing with a football on the ground.'
+      },
+      {
+        id: 4,
+        x: 12,
+        y: 35,
+        title: 'हरा-भरा पेड़ (Green Tree)',
+        translit: 'Hara-bhara Ped',
+        meaningEn: 'Lush Green Tree',
+        type: 'विशेषण + संज्ञा',
+        sentenceHi: 'बगीचे में छायादार और हरे-भरे पेड़ लगे हैं।',
+        sentenceEn: 'There are shady and lush green trees planted in the garden.'
+      },
+      {
+        id: 5,
+        x: 20,
+        y: 80,
+        title: 'बेंच (Park Bench)',
+        translit: 'Bench',
+        meaningEn: 'Wooden Bench',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'रास्ते के किनारे बैठने के लिए लकड़ी की बेंच रखी है।',
+        sentenceEn: 'A wooden bench is placed by the pathway for sitting.'
+      },
+      {
+        id: 6,
+        x: 88,
+        y: 18,
+        title: 'चमकता सूरज (Bright Sun)',
+        translit: 'Chamakta Suraj',
+        meaningEn: 'Bright Sun',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'आसमान में चमकदार सूरज चमक रहा है और मौसम सुहावना है।',
+        sentenceEn: 'The bright sun is shining in the sky and the weather is pleasant.'
+      }
+    ],
+    vocabulary: [
+      { hi: 'बगीचा', en: 'Garden / Park', translit: 'Bageecha', category: 'noun' },
+      { hi: 'झूला', en: 'Swing', translit: 'Jhoola', category: 'noun' },
+      { hi: 'फिसलपट्टी', en: 'Slide', translit: 'Phisalpatti', category: 'noun' },
+      { hi: 'गेंद / फुटबॉल', en: 'Ball / Football', translit: 'Gend / Football', category: 'noun' },
+      { hi: 'पेड़-पौधे', en: 'Trees and plants', translit: 'Ped-paudhe', category: 'noun' },
+      { hi: 'फूल', en: 'Flowers', translit: 'Phool', category: 'noun' },
+      { hi: 'झूलना', en: 'To swing', translit: 'Jhoolna', category: 'verb' },
+      { hi: 'खेलना', en: 'To play', translit: 'Khelna', category: 'verb' },
+      { hi: 'फिसलना', en: 'To slide', translit: 'Phisalna', category: 'verb' },
+      { hi: 'दौड़ना', en: 'To run', translit: 'Daudna', category: 'verb' },
+      { hi: 'हरा-भरा', en: 'Lush green', translit: 'Hara-bhara', category: 'adj' },
+      { hi: 'सुहावना', en: 'Pleasant', translit: 'Suhaavana', category: 'adj' },
+      { hi: 'प्रसन्न / खुश', en: 'Happy / Joyful', translit: 'Prasann / Khush', category: 'adj' },
+      { hi: 'के ऊपर / पर', en: 'On / Above', translit: 'Ke oopar / Par', category: 'position' },
+      { hi: 'चारों ओर', en: 'All around', translit: 'Chaaron aur', category: 'position' },
+      { hi: 'और / तथा', en: 'And / As well as', translit: 'Aur / Tatha', category: 'connector' }
+    ],
+    puzzles: [
+      {
+        step: 1,
+        promptHi: 'वाक्य 1: चित्र किस स्थान का है? (स्थान का परिचय दें)',
+        promptEn: 'Sentence 1: Introduce the place (This picture is of a beautiful park)',
+        correctWords: ['यह', 'चित्र', 'एक', 'सुंदर', 'बगीचे', 'का', 'है।'],
+        scrambledWords: [
+          { hi: 'बगीचे', en: 'garden' },
+          { hi: 'यह', en: 'this' },
+          { hi: 'है।', en: 'is.' },
+          { hi: 'एक', en: 'a' },
+          { hi: 'चित्र', en: 'picture' },
+          { hi: 'का', en: 'of' },
+          { hi: 'सुंदर', en: 'beautiful' }
+        ],
+        fullSentenceHi: 'यह चित्र एक सुंदर बगीचे का है।',
+        fullSentenceEn: 'This picture is of a beautiful garden.'
+      },
+      {
+        step: 2,
+        promptHi: 'वाक्य 2: मौसम और हरियाली कैसी है? (वातावरण)',
+        promptEn: 'Sentence 2: Describe the environment (The park has lush green trees and fresh air)',
+        correctWords: ['बगीचे', 'में', 'चारों', 'ओर', 'हरी', 'घास', 'और', 'पेड़', 'हैं।'],
+        scrambledWords: [
+          { hi: 'हरी', en: 'green' },
+          { hi: 'बगीचे', en: 'garden' },
+          { hi: 'पेड़', en: 'trees' },
+          { hi: 'में', en: 'in' },
+          { hi: 'चारों', en: 'four' },
+          { hi: 'हैं।', en: 'are.' },
+          { hi: 'ओर', en: 'sides' },
+          { hi: 'और', en: 'and' },
+          { hi: 'घास', en: 'grass' }
+        ],
+        fullSentenceHi: 'बगीचे में चारों ओर हरी घास और पेड़ हैं।',
+        fullSentenceEn: 'There is green grass and trees all around in the garden.'
+      },
+      {
+        step: 3,
+        promptHi: 'वाक्य 3: बच्चे क्या कर रहे हैं? (मुख्य क्रिया)',
+        promptEn: 'Sentence 3: Describe the main action (Children are playing on swings and slides)',
+        correctWords: ['बच्चे', 'झूले', 'और', 'फिसलपट्टी', 'पर', 'खेल', 'रहे', 'हैं।'],
+        scrambledWords: [
+          { hi: 'फिसलपट्टी', en: 'slide' },
+          { hi: 'खेल', en: 'play' },
+          { hi: 'झूले', en: 'swings' },
+          { hi: 'हैं।', en: 'are.' },
+          { hi: 'बच्चे', en: 'children' },
+          { hi: 'पर', en: 'on' },
+          { hi: 'रहे', en: 'ing' },
+          { hi: 'और', en: 'and' }
+        ],
+        fullSentenceHi: 'बच्चे झूले और फिसलपट्टी पर खेल रहे हैं।',
+        fullSentenceEn: 'Children are playing on the swings and the slide.'
+      },
+      {
+        step: 4,
+        promptHi: 'वाक्य 4: बारीक विवरण (रंग-बिरंगे फूल व फुटबॉल)',
+        promptEn: 'Sentence 4: Specific details (Lawn has colorful flowers and a football)',
+        correctWords: ['मैदान', 'में', 'रंग-बिरंगे', 'फूल', 'खिले', 'हुए', 'हैं।'],
+        scrambledWords: [
+          { hi: 'खिले', en: 'bloomed' },
+          { hi: 'में', en: 'in' },
+          { hi: 'फूल', en: 'flowers' },
+          { hi: 'मैदान', en: 'ground' },
+          { hi: 'हैं।', en: 'are.' },
+          { hi: 'रंग-बिरंगे', en: 'colorful' },
+          { hi: 'हुए', en: 'been' }
+        ],
+        fullSentenceHi: 'मैदान में रंग-बिरंगे फूल खिले हुए हैं।',
+        fullSentenceEn: 'Colorful flowers are blooming in the park ground.'
+      },
+      {
+        step: 5,
+        promptHi: 'वाक्य 5: निष्कर्ष / मूड (सभी बहुत खुश हैं)',
+        promptEn: 'Sentence 5: Conclusion & mood (Everyone looks very joyful and happy)',
+        correctWords: ['सभी', 'बच्चे', 'बहुत', 'प्रसन्न', 'और', 'उत्साहित', 'दिखाई', 'दे', 'रहे', 'हैं।'],
+        scrambledWords: [
+          { hi: 'बहुत', en: 'very' },
+          { hi: 'सभी', en: 'all' },
+          { hi: 'दिखाई', en: 'looking' },
+          { hi: 'प्रसन्न', en: 'happy' },
+          { hi: 'रहे', en: 'ing' },
+          { hi: 'बच्चे', en: 'children' },
+          { hi: 'हैं।', en: 'are.' },
+          { hi: 'और', en: 'and' },
+          { hi: 'दे', en: 'give' },
+          { hi: 'उत्साहित', en: 'excited' }
+        ],
+        fullSentenceHi: 'सभी बच्चे बहुत प्रसन्न और उत्साहित दिखाई दे रहे हैं।',
+        fullSentenceEn: 'All the children look very happy and excited.'
+      }
+    ],
+    modelAnswer: {
+      steps: [
+        { num: 1, role: 'स्थान परिचय', hi: 'यह दृश्य एक सुंदर और हरे-भरे बगीचे का है।', en: 'This scene is of a beautiful and lush green garden.' },
+        { num: 2, role: 'वातावरण', hi: 'बगीचे में चारों ओर हरी घास, रंग-बिरंगे फूल और छायादार पेड़ हैं।', en: 'There is green grass, colorful flowers, and shady trees all around the park.' },
+        { num: 3, role: 'मुख्य क्रिया', hi: 'यहाँ कई बच्चे तरह-तरह के खेलों का आनंद ले रहे हैं।', en: 'Several children here are enjoying different kinds of games.' },
+        { num: 4, role: 'बारीक विवरण', hi: 'एक बच्चा झूले पर झूल रहा है तथा अन्य बच्चे फिसलपट्टी पर फिसल रहे हैं।', en: 'One child is swinging on a swing while other children are sliding on the slide.' },
+        { num: 5, role: 'निष्कर्ष', hi: 'बगीचे का वातावरण अत्यंत शांत, मनोरंजक और आनंददायक है।', en: 'The atmosphere of the park is extremely peaceful, entertaining, and delightful.' }
+      ],
+      fullParagraphHi: 'यह दृश्य एक सुंदर और हरे-भरे बगीचे का है। बगीचे में चारों ओर हरी घास, रंग-बिरंगे फूल और छायादार पेड़ हैं। यहाँ कई बच्चे तरह-तरह के खेलों का आनंद ले रहे हैं। एक बच्चा झूले पर झूल रहा है तथा अन्य बच्चे फिसलपट्टी पर फिसल रहे हैं। मैदान में एक लड़का फुटबॉल से भी खेल रहा है। बगीचे का वातावरण अत्यंत शांत, मनोरंजक और आनंददायक है। सभी बच्चे बहुत खुश दिखाई दे रहे हैं।',
+      fullParagraphEn: 'This scene depicts a beautiful and lush green garden. There is fresh green grass, colorful flowers, and shady trees all around the park. Several children are enjoying various games here. One child is swinging on a swing while other children are sliding down the slide. In the ground, a boy is also playing with a football. The atmosphere of the park is very peaceful, entertaining, and delightful. All the children appear to be very happy.',
+      tips: [
+        'चित्र वर्णन हमेशा वर्तमान काल (Present Tense जैसे है, हैं, रहा है) में लिखें।',
+        'वाक्य छोटे, सरल और व्याकरण की दृष्टि से शुद्ध होने चाहिए।',
+        'संज्ञा और विशेषण शब्दों (जैसे हरा-भरा, सुंदर, रंग-बिरंगा) का प्रयोग करने से पूरे अंक मिलते हैं।'
+      ]
+    }
+  },
+  {
+    id: 'rainy',
+    title: 'वर्षा ऋतु / बारिश का दिन',
+    titleEn: 'A Rainy Day Scene',
+    subtitle: 'काले बादल, छतरियाँ, कागज़ की नाव और पानी की बूँदें',
+    icon: '🌧️',
+    svg: `
+      <svg viewBox="0 0 800 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skyRain" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#475569"/>
+            <stop offset="60%" stop-color="#64748b"/>
+            <stop offset="100%" stop-color="#94a3b8"/>
+          </linearGradient>
+          <linearGradient id="puddleGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#38bdf8"/>
+            <stop offset="100%" stop-color="#0284c7"/>
+          </linearGradient>
+        </defs>
+        <!-- Dark Monsoon Sky -->
+        <rect width="800" height="300" fill="url(#skyRain)" />
+        <!-- Big Rain Clouds -->
+        <path d="M 80 80 q 40 -40 90 -20 q 50 -40 110 -10 q 50 -30 90 20 q 40 30 0 60 l -290 0 z" fill="#334155" opacity="0.95" />
+        <path d="M 400 90 q 40 -35 80 -15 q 60 -45 120 -10 q 50 -20 80 25 q 30 30 -10 60 l -270 0 z" fill="#1e293b" opacity="0.9" />
+        <!-- Lightning streak -->
+        <polygon points="350,110 330,160 345,160 320,210 370,150 350,150" fill="#facc15" opacity="0.9" />
+        <!-- Ground / Street -->
+        <rect y="280" width="800" height="200" fill="#334155" />
+        <!-- Rain puddles (पानी के गड्ढे) -->
+        <ellipse cx="280" cy="410" rx="140" ry="35" fill="url(#puddleGrad)" opacity="0.8" />
+        <ellipse cx="640" cy="390" rx="90" ry="25" fill="url(#puddleGrad)" opacity="0.75" />
+        <!-- Rain Drops (slanting lines) -->
+        <g stroke="#93c5fd" stroke-width="2" stroke-linecap="round" opacity="0.65">
+          <line x1="80" y1="140" x2="50" y2="200" /><line x1="160" y1="130" x2="130" y2="190" /><line x1="240" y1="150" x2="210" y2="210" />
+          <line x1="420" y1="140" x2="390" y2="200" /><line x1="500" y1="120" x2="470" y2="180" /><line x1="680" y1="150" x2="650" y2="210" />
+          <line x1="110" y1="230" x2="80" y2="290" /><line x1="320" y1="240" x2="290" y2="300" /><line x1="560" y1="230" x2="530" y2="290" />
+          <line x1="220" y1="340" x2="190" y2="400" /><line x1="460" y1="340" x2="430" y2="400" /><line x1="720" y1="330" x2="690" y2="390" />
+        </g>
+        <!-- Girl with Umbrella on left -->
+        <!-- Umbrella (छतरी) -->
+        <path d="M 120 280 A 55 55 0 0 1 230 280 Z" fill="#ec4899" stroke="#db2777" stroke-width="3" />
+        <line x1="175" y1="280" x2="175" y2="360" stroke="#475569" stroke-width="4" />
+        <path d="M 175 360 q 0 12 -12 12" stroke="#475569" stroke-width="4" fill="none" />
+        <!-- Child -->
+        <circle cx="175" cy="300" r="12" fill="#fed7aa" />
+        <path d="M 160 315 L 190 315 L 182 375 L 168 375 Z" fill="#fbbf24" /><!-- Yellow raincoat -->
+        <!-- Boy in Raincoat releasing Paper Boat (कागज़ की नाव) -->
+        <circle cx="380" cy="345" r="12" fill="#fed7aa" />
+        <path d="M 368 358 L 395 358 L 390 405 L 372 405 Z" fill="#10b981" />
+        <!-- Paper Boat 1 in puddle -->
+        <polygon points="250,410 310,410 295,425 265,425" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" />
+        <polygon points="280,390 280,410 300,410" fill="#f87171" />
+        <!-- Paper Boat 2 -->
+        <polygon points="320,405 360,405 350,418 330,418" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+        <!-- Peacock / Bird dancing on wall -->
+        <rect x="680" y="270" width="100" height="90" fill="#475569" rx="4" />
+        <ellipse cx="730" cy="255" rx="14" ry="18" fill="#0284c7" />
+        <path d="M 725 240 Q 770 210 775 265 Q 755 270 725 255 Z" fill="#059669" />
+        <!-- Dancing Frog in puddle -->
+        <ellipse cx="190" cy="425" rx="10" ry="8" fill="#84cc16" />
+        <circle cx="186" cy="420" r="2.5" fill="#000" />
+      </svg>
+    `,
+    hotspots: [
+      {
+        id: 1,
+        x: 23,
+        y: 54,
+        title: 'रंग-बिरंगी छतरी (Umbrella)',
+        translit: 'Rang-birangi Chhatri',
+        meaningEn: 'Colorful Umbrella',
+        type: 'विशेषण + संज्ञा',
+        sentenceHi: 'लड़की ने बारिश से बचने के लिए गुलाबी छतरी पकड़ी है।',
+        sentenceEn: 'The girl is holding a pink umbrella to protect herself from rain.'
+      },
+      {
+        id: 2,
+        x: 35,
+        y: 84,
+        title: 'कागज़ की नाव (Paper Boat)',
+        translit: 'Kaagaz ki Naav',
+        meaningEn: 'Paper Boat',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'बच्चा पानी के गड्ढे में कागज़ की नाव तैरा रहा है।',
+        sentenceEn: 'The child is floating a paper boat in the water puddle.'
+      },
+      {
+        id: 3,
+        x: 48,
+        y: 74,
+        title: 'रेनकोट (Raincoat)',
+        translit: 'Raincoat / Barsati',
+        meaningEn: 'Raincoat',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'लड़के ने भीगने से बचने के लिए हरा रेनकोट पहना है।',
+        sentenceEn: 'The boy is wearing a green raincoat to avoid getting drenched.'
+      },
+      {
+        id: 4,
+        x: 28,
+        y: 18,
+        title: 'काले बादल (Dark Clouds)',
+        translit: 'Kaale Baadal',
+        meaningEn: 'Dark Clouds',
+        type: 'विशेषण + संज्ञा',
+        sentenceHi: 'आसमान में घने काले बादल छाए हुए हैं।',
+        sentenceEn: 'Dense dark clouds have covered the sky.'
+      },
+      {
+        id: 5,
+        x: 42,
+        y: 35,
+        title: 'बिजली की चमक (Lightning)',
+        translit: 'Bijli ki Chamak',
+        meaningEn: 'Flash of Lightning',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'बादलों के बीच तेज़ बिजली चमक रही है।',
+        sentenceEn: 'Bright lightning is flashing between the clouds.'
+      },
+      {
+        id: 6,
+        x: 92,
+        y: 52,
+        title: 'मयूर / मोर (Peacock)',
+        translit: 'Mor / Mayoor',
+        meaningEn: 'Peacock',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'दीवार पर बैठा मोर वर्षा देखकर पंख फैलाकर खुश हो रहा है।',
+        sentenceEn: 'The peacock sitting on the wall is joyful spreading feathers upon seeing rain.'
+      }
+    ],
+    vocabulary: [
+      { hi: 'वर्षा / बारिश', en: 'Rain', translit: 'Varsha / Baarish', category: 'noun' },
+      { hi: 'बादल', en: 'Clouds', translit: 'Baadal', category: 'noun' },
+      { hi: 'छतरी / छाता', en: 'Umbrella', translit: 'Chhatri / Chhaata', category: 'noun' },
+      { hi: 'नाव', en: 'Boat', translit: 'Naav', category: 'noun' },
+      { hi: 'रेनकोट', en: 'Raincoat', translit: 'Raincoat', category: 'noun' },
+      { hi: 'बिजली', en: 'Lightning', translit: 'Bijli', category: 'noun' },
+      { hi: 'बरसना', en: 'To rain / pour', translit: 'Barasna', category: 'verb' },
+      { hi: 'तैरना / तैराना', en: 'To float / swim', translit: 'Tairaana', category: 'verb' },
+      { hi: 'भीगना', en: 'To get wet', translit: 'Bheegna', category: 'verb' },
+      { hi: 'चमकना', en: 'To flash / shine', translit: 'Chamakna', category: 'verb' },
+      { hi: 'काले / घने', en: 'Dark / Dense', translit: 'Kaale / Ghane', category: 'adj' },
+      { hi: 'मूसलाधार', en: 'Torrential / Heavy', translit: 'Moosladhaar', category: 'adj' },
+      { hi: 'प्रसन्नचित्त', en: 'Delighted', translit: 'Prasannachitta', category: 'adj' },
+      { hi: 'के नीचे', en: 'Under / Beneath', translit: 'Ke neeche', category: 'position' },
+      { hi: 'आसपास', en: 'Nearby', translit: 'Aas-paas', category: 'position' },
+      { hi: 'क्योंकि', en: 'Because', translit: 'Kyonki', category: 'connector' }
+    ],
+    puzzles: [
+      {
+        step: 1,
+        promptHi: 'वाक्य 1: चित्र किस ऋतु या दृश्य का है?',
+        promptEn: 'Sentence 1: Describe the scene (This is a scene of a rainy day)',
+        correctWords: ['यह', 'चित्र', 'वर्षा', 'ऋतु', 'का', 'है।'],
+        scrambledWords: [
+          { hi: 'का', en: 'of' },
+          { hi: 'चित्र', en: 'picture' },
+          { hi: 'यह', en: 'this' },
+          { hi: 'वर्षा', en: 'rain' },
+          { hi: 'है।', en: 'is.' },
+          { hi: 'ऋतु', en: 'season' }
+        ],
+        fullSentenceHi: 'यह चित्र वर्षा ऋतु का है।',
+        fullSentenceEn: 'This picture is of the rainy season.'
+      },
+      {
+        step: 2,
+        promptHi: 'वाक्य 2: आसमान में क्या हो रहा है?',
+        promptEn: 'Sentence 2: Describe sky & clouds (Dark clouds are gathered in the sky and rain is falling)',
+        correctWords: ['आसमान', 'में', 'काले', 'बादल', 'छाए', 'हैं', 'और', 'बारिश', 'हो', 'रही', 'है।'],
+        scrambledWords: [
+          { hi: 'काले', en: 'dark' },
+          { hi: 'आसमान', en: 'sky' },
+          { hi: 'हो', en: 'happening' },
+          { hi: 'हैं', en: 'are' },
+          { hi: 'छाए', en: 'covered' },
+          { hi: 'बादल', en: 'clouds' },
+          { hi: 'में', en: 'in' },
+          { hi: 'बारिश', en: 'rain' },
+          { hi: 'रही', en: 'ing' },
+          { hi: 'और', en: 'and' },
+          { hi: 'है।', en: 'is.' }
+        ],
+        fullSentenceHi: 'आसमान में काले बादल छाए हैं और बारिश हो रही है।',
+        fullSentenceEn: 'Dark clouds have gathered in the sky and it is raining.'
+      },
+      {
+        step: 3,
+        promptHi: 'वाक्य 3: बच्चों का रेनकोट व छतरी',
+        promptEn: 'Sentence 3: Umbrella & raincoat (Children are holding umbrellas and wearing raincoats)',
+        correctWords: ['बच्चों', 'ने', 'रंग-बिरंगी', 'छतरियाँ', 'ली', 'हुई', 'हैं।'],
+        scrambledWords: [
+          { hi: 'छतरियाँ', en: 'umbrellas' },
+          { hi: 'हुई', en: 'been' },
+          { hi: 'बच्चों', en: 'children' },
+          { hi: 'रंग-बिरंगी', en: 'colorful' },
+          { hi: 'हैं।', en: 'are.' },
+          { hi: 'ने', en: 'by' },
+          { hi: 'ली', en: 'taken' }
+        ],
+        fullSentenceHi: 'बच्चों ने रंग-बिरंगी छतरियाँ ली हुई हैं।',
+        fullSentenceEn: 'The children are holding colorful umbrellas.'
+      },
+      {
+        step: 4,
+        promptHi: 'वाक्य 4: कागज़ की नाव तैराना',
+        promptEn: 'Sentence 4: Floating paper boats (A boy is floating a paper boat in water)',
+        correctWords: ['एक', 'लड़का', 'पानी', 'में', 'कागज़', 'की', 'नाव', 'तैरा', 'रहा', 'है।'],
+        scrambledWords: [
+          { hi: 'कागज़', en: 'paper' },
+          { hi: 'लड़का', en: 'boy' },
+          { hi: 'पानी', en: 'water' },
+          { hi: 'है।', en: 'is.' },
+          { hi: 'नाव', en: 'boat' },
+          { hi: 'एक', en: 'a' },
+          { hi: 'में', en: 'in' },
+          { hi: 'तैरा', en: 'floating' },
+          { hi: 'की', en: 'of' },
+          { hi: 'रहा', en: 'ing' }
+        ],
+        fullSentenceHi: 'एक लड़का पानी में कागज़ की नाव तैरा रहा है।',
+        fullSentenceEn: 'A boy is floating a paper boat in the water.'
+      },
+      {
+        step: 5,
+        promptHi: 'वाक्य 5: बारिश का आनंद / निष्कर्ष',
+        promptEn: 'Sentence 5: Conclusion (All children are enjoying the rain very much)',
+        correctWords: ['सभी', 'लोग', 'वर्षा', 'का', 'भरपूर', 'आनंद', 'उठा', 'रहे', 'हैं।'],
+        scrambledWords: [
+          { hi: 'भरपूर', en: 'full' },
+          { hi: 'लोग', en: 'people' },
+          { hi: 'आनंद', en: 'joy' },
+          { hi: 'वर्षा', en: 'rain' },
+          { hi: 'रहे', en: 'ing' },
+          { hi: 'सभी', en: 'all' },
+          { hi: 'हैं।', en: 'are.' },
+          { hi: 'का', en: 'of' },
+          { hi: 'उठा', en: 'taking' }
+        ],
+        fullSentenceHi: 'सभी लोग वर्षा का भरपूर आनंद उठा रहे हैं।',
+        fullSentenceEn: 'Everyone is thoroughly enjoying the rain.'
+      }
+    ],
+    modelAnswer: {
+      steps: [
+        { num: 1, role: 'स्थान परिचय', hi: 'यह चित्र वर्षा ऋतु के एक सुहावने दिन का है।', en: 'This picture represents a pleasant day of the rainy season.' },
+        { num: 2, role: 'वातावरण', hi: 'आसमान में काले-घने बादल छाए हैं और तेज़ी से बारिश हो रही है।', en: 'Dark dense clouds cover the sky and rain is pouring rapidly.' },
+        { num: 3, role: 'मुख्य क्रिया', hi: 'सड़क पर पानी भरा है और बच्चे पानी में मस्ती कर रहे हैं।', en: 'Water is accumulated on the street and kids are having fun in the water.' },
+        { num: 4, role: 'बारीक विवरण', hi: 'लड़की ने गुलाबी छतरी पकड़ी है और एक लड़का कागज़ की नाव चला रहा है।', en: 'A girl is holding a pink umbrella and a boy is sailing a paper boat.' },
+        { num: 5, role: 'निष्कर्ष', hi: 'बारिश होने से मौसम ठंडा और अत्यंत मनमोहक बन गया है।', en: 'Due to rain, the weather has become cool and extremely pleasant.' }
+      ],
+      fullParagraphHi: 'यह चित्र वर्षा ऋतु के एक सुहावने दिन का है। आसमान में काले-घने बादल छाए हैं और मूसलाधार बारिश हो रही है। बादलों के बीच बिजली भी चमक रही है। सड़क पर पानी के छोटे-छोटे गड्ढे बन गए हैं। एक लड़की रंग-बिरंगी छतरी लेकर खड़ी है, जबकि एक लड़का कागज़ की नाव पानी में तैरा रहा है। दूर दीवार पर बैठा मोर वर्षा देखकर खुश हो रहा है। सभी बच्चे बारिश के इस मौसम का खूब आनंद ले रहे हैं।',
+      fullParagraphEn: 'This picture depicts a pleasant day during the rainy season. Dark dense clouds have gathered in the sky and torrential rain is pouring down. Lightning is also flashing between the clouds. Small puddles of water have formed on the road. A girl is standing with a colorful umbrella, while a boy is floating a paper boat in the water. A peacock sitting on a distant wall looks delighted watching the rain. All the children are thoroughly enjoying this rainy weather.',
+      tips: [
+        'प्राकृतिक घटनाओं (जैसे बिजली, बादल, वर्षा) के लिए उचित विशेषणों का प्रयोग करें।',
+        'कारक चिह्नों (ने, को, से, में, पर) का सही उपयोग वाक्य को सशक्त बनाता है।'
+      ]
+    }
+  },
+  {
+    id: 'school',
+    title: 'विद्यालय का खेल मैदान',
+    titleEn: 'School Playground & Sports Day',
+    subtitle: 'स्कूल की इमारत, दौड़ते हुए विद्यार्थी, तिरंगा झंडा और खेलकूद',
+    icon: '🏫',
+    svg: `
+      <svg viewBox="0 0 800 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skySchool" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#60a5fa"/>
+            <stop offset="100%" stop-color="#dbeafe"/>
+          </linearGradient>
+        </defs>
+        <!-- Sky -->
+        <rect width="800" height="240" fill="url(#skySchool)" />
+        <!-- School Building -->
+        <rect x="220" y="70" width="360" height="150" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3" rx="4" />
+        <polygon points="400,20 330,70 470,70" fill="#dc2626" />
+        <circle cx="400" cy="50" r="12" fill="#ffffff" stroke="#991b1b" stroke-width="2" />
+        <!-- School Windows & Doors -->
+        <rect x="250" y="90" width="40" height="35" rx="3" fill="#38bdf8" />
+        <rect x="310" y="90" width="40" height="35" rx="3" fill="#38bdf8" />
+        <rect x="450" y="90" width="40" height="35" rx="3" fill="#38bdf8" />
+        <rect x="510" y="90" width="40" height="35" rx="3" fill="#38bdf8" />
+        <rect x="380" y="145" width="40" height="75" fill="#78350f" rx="3" />
+        <!-- Flag pole & Indian Flag -->
+        <line x1="140" y1="80" x2="140" y2="240" stroke="#94a3b8" stroke-width="5" />
+        <rect x="140" y="80" width="55" height="11" fill="#f97316" />
+        <rect x="140" y="91" width="55" height="11" fill="#ffffff" />
+        <circle cx="167" cy="96" r="4.5" fill="#1e3a8a" />
+        <rect x="140" y="102" width="55" height="11" fill="#15803d" />
+        <!-- Playground Green Grass -->
+        <rect y="220" width="800" height="260" fill="#65a30d" />
+        <!-- Running Track (Oval) -->
+        <path d="M 100 370 C 100 290 700 290 700 370 C 700 450 100 450 100 370 Z" stroke="#fbbf24" stroke-width="16" fill="none" opacity="0.6" stroke-dasharray="16,8" />
+        <!-- Running Student 1 (Boy in Red Uniform) -->
+        <circle cx="280" cy="330" r="12" fill="#fed7aa" />
+        <rect x="272" y="342" width="16" height="25" rx="4" fill="#ef4444" />
+        <line x1="272" y1="367" x2="260" y2="390" stroke="#1e293b" stroke-width="4" />
+        <line x1="288" y1="367" x2="305" y2="385" stroke="#1e293b" stroke-width="4" />
+        <!-- Running Student 2 (Girl in Blue Uniform) -->
+        <circle cx="370" cy="325" r="12" fill="#fed7aa" />
+        <rect x="362" y="337" width="16" height="25" rx="4" fill="#2563eb" />
+        <line x1="362" y1="362" x2="350" y2="385" stroke="#1e293b" stroke-width="4" />
+        <line x1="378" y1="362" x2="395" y2="380" stroke="#1e293b" stroke-width="4" />
+        <!-- Teacher with Whistle / Clipboard -->
+        <circle cx="560" cy="310" r="14" fill="#fed7aa" />
+        <rect x="550" y="324" width="20" height="38" rx="4" fill="#047857" />
+        <rect x="540" y="332" width="12" height="16" rx="2" fill="#f8fafc" stroke="#475569" stroke-width="1" />
+        <!-- Cheer banner / Students cheering -->
+        <rect x="630" y="340" width="110" height="25" fill="#f59e0b" rx="4" />
+        <text x="685" y="357" font-family="'Outfit', sans-serif" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle">SPORTS DAY</text>
+      </svg>
+    `,
+    hotspots: [
+      {
+        id: 1,
+        x: 50,
+        y: 28,
+        title: 'विद्यालय की इमारत (School Building)',
+        translit: 'Vidyalay ki Imaarat',
+        meaningEn: 'School Building',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'पीछे विद्यालय की भव्य और विशाल इमारत दिखाई दे रही है।',
+        sentenceEn: 'The grand and spacious school building is visible in the background.'
+      },
+      {
+        id: 2,
+        x: 19,
+        y: 24,
+        title: 'तिरंगा झंडा (National Flag)',
+        translit: 'Tiranga Jhanda',
+        meaningEn: 'Tricolor Flag',
+        type: 'विशेषण + संज्ञा',
+        sentenceHi: 'मैदान के पास ऊँचे खंभे पर हमारा प्यारा तिरंगा लहरा रहा है।',
+        sentenceEn: 'Our beloved tricolor flag is fluttering on a high pole near the field.'
+      },
+      {
+        id: 3,
+        x: 37,
+        y: 74,
+        title: 'दौड़ प्रतियोगिता (Running Race)',
+        translit: 'Daud Pratiyogita',
+        meaningEn: 'Running Race',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'विद्यार्थी ट्रैक पर दौड़ प्रतियोगिता में उत्साह से भाग ले रहे हैं।',
+        sentenceEn: 'Students are enthusiastically taking part in the race on the track.'
+      },
+      {
+        id: 4,
+        x: 70,
+        y: 72,
+        title: 'खेल शिक्षक (Sports Teacher)',
+        translit: 'Khel Shikshak',
+        meaningEn: 'Sports Teacher / Coach',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'खेल शिक्षक सीटी बजाकर दौड़ का संचालन कर रहे हैं।',
+        sentenceEn: 'The sports teacher is conducting the race by blowing a whistle.'
+      },
+      {
+        id: 5,
+        x: 85,
+        y: 75,
+        title: 'खेल दिवस का बैनर (Sports Banner)',
+        translit: 'Khel Divas Banner',
+        meaningEn: 'Sports Day Banner',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'मैदान में खेल दिवस का बड़ा बैनर लगा हुआ है।',
+        sentenceEn: 'A big Sports Day banner is put up in the ground.'
+      },
+      {
+        id: 6,
+        x: 52,
+        y: 86,
+        title: 'दौड़ ट्रैक (Running Track)',
+        translit: 'Daud Track',
+        meaningEn: 'Running Track',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'मैदान में चूने से सफेद रेखाओं वाला ट्रैक बनाया गया है।',
+        sentenceEn: 'A running track with white chalk lines is drawn on the ground.'
+      }
+    ],
+    vocabulary: [
+      { hi: 'विद्यालय / स्कूल', en: 'School', translit: 'Vidyalay / School', category: 'noun' },
+      { hi: 'खेल का मैदान', en: 'Playground', translit: 'Khel ka Maidan', category: 'noun' },
+      { hi: 'विद्यार्थी / छात्र', en: 'Students', translit: 'Vidyarthi / Chhaatra', category: 'noun' },
+      { hi: 'प्रतियोगिता', en: 'Competition / Race', translit: 'Pratiyogita', category: 'noun' },
+      { hi: 'शिक्षक / अध्यापिका', en: 'Teacher', translit: 'Shikshak', category: 'noun' },
+      { hi: 'दौड़ना', en: 'To run', translit: 'Daudna', category: 'verb' },
+      { hi: 'भाग लेना', en: 'To participate', translit: 'Bhaag lena', category: 'verb' },
+      { hi: 'प्रोत्साहन देना', en: 'To encourage / cheer', translit: 'Protsahan dena', category: 'verb' },
+      { hi: 'सीटी बजाना', en: 'To whistle', translit: 'Seeti bajaana', category: 'verb' },
+      { hi: 'उत्साही / फुर्तीले', en: 'Enthusiastic / Agile', translit: 'Utsaahi / Phurteele', category: 'adj' },
+      { hi: 'भव्य / विशाल', en: 'Grand / Spacious', translit: 'Bhavya / Vishaal', category: 'adj' },
+      { hi: 'अनुशासित', en: 'Disciplined', translit: 'Anushaasit', category: 'adj' },
+      { hi: 'के सामने', en: 'In front of', translit: 'Ke saamne', category: 'position' },
+      { hi: 'के बीच', en: 'Between / Among', translit: 'Ke beech', category: 'position' },
+      { hi: 'तथापि / लेकिन', en: 'However / But', translit: 'Tathaapi / Lekin', category: 'connector' }
+    ],
+    puzzles: [
+      {
+        step: 1,
+        promptHi: 'वाक्य 1: यह चित्र किस विद्यालय का है?',
+        promptEn: 'Sentence 1: Introduce the school scene (This picture is of a school playground)',
+        correctWords: ['यह', 'चित्र', 'विद्यालय', 'के', 'खेल', 'मैदान', 'का', 'है।'],
+        scrambledWords: [
+          { hi: 'खेल', en: 'play' },
+          { hi: 'यह', en: 'this' },
+          { hi: 'विद्यालय', en: 'school' },
+          { hi: 'का', en: 'of' },
+          { hi: 'मैदान', en: 'ground' },
+          { hi: 'चित्र', en: 'picture' },
+          { hi: 'है।', en: 'is.' },
+          { hi: 'के', en: 'of' }
+        ],
+        fullSentenceHi: 'यह चित्र विद्यालय के खेल मैदान का है।',
+        fullSentenceEn: 'This picture is of the school playground.'
+      },
+      {
+        step: 2,
+        promptHi: 'वाक्य 2: आज विद्यालय में क्या हो रहा है?',
+        promptEn: 'Sentence 2: Mention event (Annual sports competition is organized today)',
+        correctWords: ['आज', 'विद्यालय', 'में', 'वार्षिक', 'खेल', 'दिवस', 'मनाया', 'जा', 'रहा', 'है।'],
+        scrambledWords: [
+          { hi: 'दिवस', en: 'day' },
+          { hi: 'वार्षिक', en: 'annual' },
+          { hi: 'आज', en: 'today' },
+          { hi: 'मनाया', en: 'celebrated' },
+          { hi: 'में', en: 'in' },
+          { hi: 'विद्यालय', en: 'school' },
+          { hi: 'जा', en: 'going' },
+          { hi: 'खेल', en: 'sports' },
+          { hi: 'रहा', en: 'ing' },
+          { hi: 'है।', en: 'is.' }
+        ],
+        fullSentenceHi: 'आज विद्यालय में वार्षिक खेल दिवस मनाया जा रहा है।',
+        fullSentenceEn: 'Annual Sports Day is being celebrated at school today.'
+      },
+      {
+        step: 3,
+        promptHi: 'वाक्य 3: छात्र क्या कर रहे हैं?',
+        promptEn: 'Sentence 3: Running competition (Students are participating in running race)',
+        correctWords: ['छात्र', 'ट्रैक', 'पर', 'दौड़', 'प्रतियोगिता', 'में', 'दौड़', 'रहे', 'हैं।'],
+        scrambledWords: [
+          { hi: 'दौड़', en: 'running' },
+          { hi: 'प्रतियोगिता', en: 'contest' },
+          { hi: 'छात्र', en: 'students' },
+          { hi: 'ट्रैक', en: 'track' },
+          { hi: 'में', en: 'in' },
+          { hi: 'रहे', en: 'ing' },
+          { hi: 'पर', en: 'on' },
+          { hi: 'दौड़', en: 'run' },
+          { hi: 'हैं।', en: 'are.' }
+        ],
+        fullSentenceHi: 'छात्र ट्रैक पर दौड़ प्रतियोगिता में दौड़ रहे हैं।',
+        fullSentenceEn: 'Students are running in the race competition on the track.'
+      },
+      {
+        step: 4,
+        promptHi: 'वाक्य 4: शिक्षक व दर्शक',
+        promptEn: 'Sentence 4: Teacher & cheers (Teacher is blowing whistle and students are cheering)',
+        correctWords: ['खेल', 'शिक्षक', 'सीटी', 'बजाकर', 'छात्रों', 'का', 'उत्साह', 'बढ़ा', 'रहे', 'हैं।'],
+        scrambledWords: [
+          { hi: 'सीटी', en: 'whistle' },
+          { hi: 'शिक्षक', en: 'teacher' },
+          { hi: 'बढ़ा', en: 'raising' },
+          { hi: 'खेल', en: 'sports' },
+          { hi: 'बजाकर', en: 'blowing' },
+          { hi: 'का', en: 'of' },
+          { hi: 'छात्रों', en: 'students' },
+          { hi: 'रहे', en: 'ing' },
+          { hi: 'उत्साह', en: 'cheer' },
+          { hi: 'हैं।', en: 'are.' }
+        ],
+        fullSentenceHi: 'खेल शिक्षक सीटी बजाकर छात्रों का उत्साह बढ़ा रहे हैं।',
+        fullSentenceEn: 'The sports teacher is encouraging students by blowing the whistle.'
+      },
+      {
+        step: 5,
+        promptHi: 'वाक्य 5: वातावरण व खेल भावना',
+        promptEn: 'Sentence 5: Conclusion (The entire field is filled with zeal and sportsmanship)',
+        correctWords: ['पूरा', 'मैदान', 'जोश', 'और', 'खेल', 'भावना', 'से', 'गूंज', 'रहा', 'है।'],
+        scrambledWords: [
+          { hi: 'जोश', en: 'enthusiasm' },
+          { hi: 'पूरा', en: 'whole' },
+          { hi: 'भावना', en: 'spirit' },
+          { hi: 'मैदान', en: 'ground' },
+          { hi: 'से', en: 'with' },
+          { hi: 'गूंज', en: 'echoing' },
+          { hi: 'और', en: 'and' },
+          { hi: 'खेल', en: 'sports' },
+          { hi: 'रहा', en: 'ing' },
+          { hi: 'है।', en: 'is.' }
+        ],
+        fullSentenceHi: 'पूरा मैदान जोश और खेल भावना से गूंज रहा है।',
+        fullSentenceEn: 'The entire field is resonating with energy and sportsmanship.'
+      }
+    ],
+    modelAnswer: {
+      steps: [
+        { num: 1, role: 'स्थान परिचय', hi: 'यह दृश्य एक विद्यालय के विशाल खेल मैदान का है।', en: 'This scene is of the large playground of a school.' },
+        { num: 2, role: 'अवसर व वातावरण', hi: 'विद्यालय में आज खेल दिवस (Sports Day) का भव्य आयोजन किया गया है।', en: 'A grand Sports Day has been organized at the school today.' },
+        { num: 3, role: 'मुख्य गतिविधि', hi: 'मैदान के दौड़-ट्रैक पर कई विद्यार्थी उत्साहपूर्वक दौड़ रहे हैं।', en: 'Several students are enthusiastically running on the running track.' },
+        { num: 4, role: 'बारीक विवरण', hi: 'खेल शिक्षक सीटी बजाकर दौड़ का संचालन कर रहे हैं तथा दर्शक तालियाँ बजा रहे हैं।', en: 'The sports teacher is conducting the race by blowing a whistle and spectators are clapping.' },
+        { num: 5, role: 'निष्कर्ष', hi: 'सभी बच्चे खेल भावना और अनुशासन का सुंदर परिचय दे रहे हैं।', en: 'All the children are displaying a fine example of sportsmanship and discipline.' }
+      ],
+      fullParagraphHi: 'यह दृश्य एक विद्यालय के विशाल खेल मैदान का है। पृष्ठभूमि में विद्यालय की भव्य इमारत और लहराता हुआ तिरंगा झंडा दिखाई दे रहा है। विद्यालय में आज खेल दिवस का आयोजन किया गया है। मैदान पर बने ट्रैक पर छात्र दौड़ प्रतियोगिता में भाग ले रहे हैं। खेल शिक्षक हाथ में सीटी लेकर दौड़ का संचालन कर रहे हैं। अन्य विद्यार्थी ताली बजाकर अपने मित्रों का उत्साहवर्धन कर रहे हैं। चारों ओर उत्साह, अनुशासन और खेल भावना का सुंदर वातावरण है।',
+      fullParagraphEn: 'This scene depicts the vast playground of a school. In the background, the grand school building and the fluttering national flag are visible. Today, Sports Day is being organized at the school. On the ground track, students are participating in a running race. The sports teacher is managing the race with a whistle in hand. Other students are clapping and cheering for their friends. All around, there is a wonderful atmosphere of enthusiasm, discipline, and sportsmanship.',
+      tips: [
+        'विद्यालय संबंधी शब्दों (जैसे अनुशासन, खेल भावना, शिक्षक, विद्यार्थी) का प्रयोग करें।',
+        'वाक्यों को क्रमबद्ध रखें: स्थान → अवसर → मुख्य क्रिया → दर्शक/शिक्षक → निष्कर्ष।'
+      ]
+    }
+  },
+  {
+    id: 'birthday',
+    title: 'जन्मदिन की पार्टी',
+    titleEn: 'Birthday Celebration Party',
+    subtitle: 'केक, मोमबत्तियाँ, रंग-बिरंगे गुब्बारे, उपहार और खुश बच्चे',
+    icon: '🎂',
+    svg: `
+      <svg viewBox="0 0 800 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="wallParty" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#4c1d95"/>
+            <stop offset="100%" stop-color="#831843"/>
+          </linearGradient>
+        </defs>
+        <!-- Room Wall -->
+        <rect width="800" height="480" fill="url(#wallParty)" />
+        <!-- Bunting / Flags (झालर) -->
+        <polygon points="50,40 100,40 75,90" fill="#f59e0b" />
+        <polygon points="110,40 160,40 135,90" fill="#10b981" />
+        <polygon points="170,40 220,40 195,90" fill="#3b82f6" />
+        <polygon points="230,40 280,40 255,90" fill="#ec4899" />
+        <polygon points="290,40 340,40 315,90" fill="#8b5cf6" />
+        <polygon points="460,40 510,40 485,90" fill="#f59e0b" />
+        <polygon points="520,40 570,40 545,90" fill="#10b981" />
+        <polygon points="580,40 630,40 605,90" fill="#3b82f6" />
+        <polygon points="640,40 690,40 665,90" fill="#ec4899" />
+        <polygon points="700,40 750,40 725,90" fill="#8b5cf6" />
+        <path d="M 40 40 Q 400 70 760 40" stroke="#fcd34d" stroke-width="2" fill="none" />
+        <!-- Balloons (गुब्बारे) -->
+        <circle cx="80" cy="160" r="28" fill="#ef4444" />
+        <line x1="80" y1="188" x2="90" y2="240" stroke="#cbd5e1" stroke-width="1.5" />
+        <circle cx="125" cy="140" r="28" fill="#f59e0b" />
+        <line x1="125" y1="168" x2="115" y2="240" stroke="#cbd5e1" stroke-width="1.5" />
+        <circle cx="680" cy="150" r="28" fill="#3b82f6" />
+        <line x1="680" y1="178" x2="670" y2="240" stroke="#cbd5e1" stroke-width="1.5" />
+        <circle cx="720" cy="170" r="28" fill="#10b981" />
+        <line x1="720" y1="198" x2="710" y2="240" stroke="#cbd5e1" stroke-width="1.5" />
+        <!-- Table (मेज़) -->
+        <rect x="220" y="270" width="360" height="24" rx="4" fill="#92400e" />
+        <rect x="230" y="294" width="340" height="150" fill="#b45309" />
+        <polygon points="210,270 590,270 570,300 230,300" fill="#fef08a" opacity="0.9" /><!-- Tablecloth -->
+        <!-- Big Birthday Cake (केक) -->
+        <rect x="340" y="225" width="120" height="45" rx="6" fill="#f43f5e" />
+        <rect x="355" y="190" width="90" height="35" rx="5" fill="#fbcfe8" />
+        <!-- Candles (मोमबत्तियाँ) -->
+        <rect x="375" y="170" width="6" height="20" fill="#38bdf8" />
+        <ellipse cx="378" cy="166" rx="4" ry="7" fill="#f59e0b" />
+        <rect x="400" y="170" width="6" height="20" fill="#facc15" />
+        <ellipse cx="403" cy="166" rx="4" ry="7" fill="#f59e0b" />
+        <rect x="420" y="170" width="6" height="20" fill="#4ade80" />
+        <ellipse cx="423" cy="166" rx="4" ry="7" fill="#f59e0b" />
+        <!-- Birthday Boy in Middle with Party Cap -->
+        <circle cx="400" cy="115" r="18" fill="#fed7aa" />
+        <polygon points="388,102 412,102 400,65" fill="#e11d48" />
+        <rect x="385" y="133" width="30" height="40" rx="5" fill="#0284c7" />
+        <!-- Friend Left (Clapping) -->
+        <circle cx="270" cy="160" r="16" fill="#fed7aa" />
+        <polygon points="260,148 280,148 270,120" fill="#10b981" />
+        <rect x="256" y="176" width="28" height="36" rx="4" fill="#ec4899" />
+        <!-- Friend Right (Clapping) -->
+        <circle cx="530" cy="160" r="16" fill="#fed7aa" />
+        <polygon points="520,148 540,148 530,120" fill="#f59e0b" />
+        <rect x="516" y="176" width="28" height="36" rx="4" fill="#8b5cf6" />
+        <!-- Gift Boxes on Floor / Table -->
+        <rect x="130" y="360" width="65" height="55" rx="4" fill="#3b82f6" />
+        <rect x="157" y="360" width="10" height="55" fill="#facc15" />
+        <rect x="130" y="382" width="65" height="10" fill="#facc15" />
+        <rect x="610" y="370" width="55" height="48" rx="4" fill="#10b981" />
+        <rect x="633" y="370" width="8" height="48" fill="#f43f5e" />
+      </svg>
+    `,
+    hotspots: [
+      {
+        id: 1,
+        x: 50,
+        y: 47,
+        title: 'स्वादिष्ट केक (Delicious Cake)',
+        translit: 'Swaadisht Cake',
+        meaningEn: 'Delicious Birthday Cake',
+        type: 'विशेषण + संज्ञा',
+        sentenceHi: 'मेज़ पर मोमबत्तियों से सजा दो मंज़िला स्वादिष्ट केक रखा है।',
+        sentenceEn: 'A two-tiered delicious cake decorated with candles is placed on the table.'
+      },
+      {
+        id: 2,
+        x: 50,
+        y: 22,
+        title: 'जन्मदिन वाला बच्चा (Birthday Boy)',
+        translit: 'Janamdin ka Bachha',
+        meaningEn: 'Birthday Boy with Party Cap',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'जन्मदिन वाले लड़के ने सिर पर रंग-बिरंगी टोपी पहनी है।',
+        sentenceEn: 'The birthday boy is wearing a colorful party cap on his head.'
+      },
+      {
+        id: 3,
+        x: 13,
+        y: 32,
+        title: 'गुब्बारे (Balloons)',
+        translit: 'Gubbaare',
+        meaningEn: 'Balloons',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'कमरे को सजाने के लिए रंग-बिरंगे गुब्बारे लगाए गए हैं।',
+        sentenceEn: 'Colorful balloons have been hung to decorate the room.'
+      },
+      {
+        id: 4,
+        x: 20,
+        y: 80,
+        title: 'उपहार / तोहफ़े (Gifts)',
+        translit: 'Upahaar / Tohfe',
+        meaningEn: 'Gifts & Presents',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'मित्रों ने सुंदर रिबन से बंधे उपहार भेंट किए हैं।',
+        sentenceEn: 'Friends have presented gifts wrapped with pretty ribbons.'
+      },
+      {
+        id: 5,
+        x: 34,
+        y: 38,
+        title: 'ताली बजाते मित्र (Clapping Friends)',
+        translit: 'Taali Bajaate Mitra',
+        meaningEn: 'Friends Clapping & Cheering',
+        type: 'संज्ञा + क्रिया',
+        sentenceHi: 'सभी दोस्त ताली बजाकर जन्मदिन की बधाई गा रहे हैं।',
+        sentenceEn: 'All friends are clapping and singing the birthday greeting.'
+      },
+      {
+        id: 6,
+        x: 50,
+        y: 9,
+        title: 'सजावट की झालर (Festive Bunting)',
+        translit: 'Sajaawat ki Jhaalar',
+        meaningEn: 'Festive Bunting Flags',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'दीवार पर रंग-बिरंगी पताकाएँ और झालरें लगाई गई हैं।',
+        sentenceEn: 'Colorful flags and buntings are hung on the wall.'
+      }
+    ],
+    vocabulary: [
+      { hi: 'जन्मदिन', en: 'Birthday', translit: 'Janamdin', category: 'noun' },
+      { hi: 'केक', en: 'Cake', translit: 'Cake', category: 'noun' },
+      { hi: 'मोमबत्ती', en: 'Candle', translit: 'Mombatti', category: 'noun' },
+      { hi: 'उपहार / भेंट', en: 'Gift / Present', translit: 'Upahaar / Bhent', category: 'noun' },
+      { hi: 'गुब्बारा', en: 'Balloon', translit: 'Gubbaara', category: 'noun' },
+      { hi: 'टोपी', en: 'Cap / Hat', translit: 'Topi', category: 'noun' },
+      { hi: 'काटना', en: 'To cut', translit: 'Kaatna', category: 'verb' },
+      { hi: 'बधाई देना', en: 'To congratulate / wish', translit: 'Badhaai dena', category: 'verb' },
+      { hi: 'ताली बजाना', en: 'To clap', translit: 'Taali bajaana', category: 'verb' },
+      { hi: 'सजाना', en: 'To decorate', translit: 'Sajaana', category: 'verb' },
+      { hi: 'स्वादिष्ट', en: 'Delicious', translit: 'Swaadisht', category: 'adj' },
+      { hi: 'रंग-बिरंगा', en: 'Colorful', translit: 'Rang-biranga', category: 'adj' },
+      { hi: 'उत्साहित', en: 'Excited', translit: 'Utsaahit', category: 'adj' },
+      { hi: 'के चारों ओर', en: 'Around', translit: 'Ke chaaron aur', category: 'position' },
+      { hi: 'के पास', en: 'Near / Next to', translit: 'Ke paas', category: 'position' },
+      { hi: 'साथ ही', en: 'Along with', translit: 'Saath hi', category: 'connector' }
+    ],
+    puzzles: [
+      {
+        step: 1,
+        promptHi: 'वाक्य 1: यह चित्र किस उत्सव का है?',
+        promptEn: 'Sentence 1: Describe the event (This picture is of a birthday party celebration)',
+        correctWords: ['यह', 'चित्र', 'जन्मदिन', 'की', 'पार्टी', 'का', 'है।'],
+        scrambledWords: [
+          { hi: 'पार्टी', en: 'party' },
+          { hi: 'यह', en: 'this' },
+          { hi: 'की', en: 'of' },
+          { hi: 'जन्मदिन', en: 'birthday' },
+          { hi: 'चित्र', en: 'picture' },
+          { hi: 'है।', en: 'is.' },
+          { hi: 'का', en: 'of' }
+        ],
+        fullSentenceHi: 'यह चित्र जन्मदिन की पार्टी का है।',
+        fullSentenceEn: 'This picture is of a birthday party.'
+      },
+      {
+        step: 2,
+        promptHi: 'वाक्य 2: कमरे की सजावट कैसी है?',
+        promptEn: 'Sentence 2: Room decoration (The room is decorated with colorful balloons and buntings)',
+        correctWords: ['कमरे', 'को', 'रंग-बिरंगे', 'गुब्बारों', 'और', 'झालरों', 'से', 'सजाया', 'गया', 'है।'],
+        scrambledWords: [
+          { hi: 'सजाया', en: 'decorated' },
+          { hi: 'कमरे', en: 'room' },
+          { hi: 'गुब्बारों', en: 'balloons' },
+          { hi: 'से', en: 'with' },
+          { hi: 'रंग-बिरंगे', en: 'colorful' },
+          { hi: 'गया', en: 'been' },
+          { hi: 'को', en: 'to' },
+          { hi: 'झालरों', en: 'buntings' },
+          { hi: 'और', en: 'and' },
+          { hi: 'है।', en: 'is.' }
+        ],
+        fullSentenceHi: 'कमरे को रंग-बिरंगे गुब्बारों और झालरों से सजाया गया है।',
+        fullSentenceEn: 'The room has been decorated with colorful balloons and buntings.'
+      },
+      {
+        step: 3,
+        promptHi: 'वाक्य 3: केक और मेज़',
+        promptEn: 'Sentence 3: The cake (A delicious cake with candles is placed on the table)',
+        correctWords: ['मेज़', 'पर', 'मोमबत्तियों', 'से', 'सजा', 'एक', 'सुंदर', 'केक', 'रखा', 'है।'],
+        scrambledWords: [
+          { hi: 'केक', en: 'cake' },
+          { hi: 'मेज़', en: 'table' },
+          { hi: 'सजा', en: 'decorated' },
+          { hi: 'सुंदर', en: 'pretty' },
+          { hi: 'पर', en: 'on' },
+          { hi: 'मोमबत्तियों', en: 'candles' },
+          { hi: 'एक', en: 'a' },
+          { hi: 'से', en: 'with' },
+          { hi: 'रखा', en: 'kept' },
+          { hi: 'है।', en: 'is.' }
+        ],
+        fullSentenceHi: 'मेज़ पर मोमबत्तियों से सजा एक सुंदर केक रखा है।',
+        fullSentenceEn: 'A beautiful cake decorated with candles is placed on the table.'
+      },
+      {
+        step: 4,
+        promptHi: 'वाक्य 4: मित्रों द्वारा बधाई व तालियाँ',
+        promptEn: 'Sentence 4: Friends clapping and gifting (Friends are clapping and giving gifts to the boy)',
+        correctWords: ['मित्र', 'ताली', 'बजाकर', 'जन्मदिन', 'की', 'बधाई', 'दे', 'रहे', 'हैं।'],
+        scrambledWords: [
+          { hi: 'बधाई', en: 'congratulations' },
+          { hi: 'ताली', en: 'clapping' },
+          { hi: 'मित्र', en: 'friends' },
+          { hi: 'रहे', en: 'ing' },
+          { hi: 'जन्मदिन', en: 'birthday' },
+          { hi: 'बजाकर', en: 'beating' },
+          { hi: 'दे', en: 'giving' },
+          { hi: 'की', en: 'of' },
+          { hi: 'हैं।', en: 'are.' }
+        ],
+        fullSentenceHi: 'मित्र ताली बजाकर जन्मदिन की बधाई दे रहे हैं।',
+        fullSentenceEn: 'Friends are clapping and wishing a happy birthday.'
+      },
+      {
+        step: 5,
+        promptHi: 'वाक्य 5: खुशी का माहौल / निष्कर्ष',
+        promptEn: 'Sentence 5: Conclusion (The entire house is filled with happiness and celebration)',
+        correctWords: ['चारों', 'तरफ', 'हर्ष', 'और', 'उल्लास', 'का', 'माहौल', 'है।'],
+        scrambledWords: [
+          { hi: 'माहौल', en: 'atmosphere' },
+          { hi: 'तरफ', en: 'side' },
+          { hi: 'उल्लास', en: 'joy' },
+          { hi: 'चारों', en: 'four' },
+          { hi: 'हर्ष', en: 'delight' },
+          { hi: 'है।', en: 'is.' },
+          { hi: 'और', en: 'and' },
+          { hi: 'का', en: 'of' }
+        ],
+        fullSentenceHi: 'चारों तरफ हर्ष और उल्लास का माहौल है।',
+        fullSentenceEn: 'There is an atmosphere of joy and celebration all around.'
+      }
+    ],
+    modelAnswer: {
+      steps: [
+        { num: 1, role: 'स्थान परिचय', hi: 'यह दृश्य एक घर में आयोजित जन्मदिन की पार्टी का है।', en: 'This scene is of a birthday party organized at a home.' },
+        { num: 2, role: 'सजावट', hi: 'कमरे को रंग-बिरंगे गुब्बारों, झालरों और मोमबत्तियों से सजाया गया है।', en: 'The room is adorned with colorful balloons, buntings, and candles.' },
+        { num: 3, role: 'मुख्य क्रिया', hi: 'मेज़ पर एक सुंदर केक रखा है जिसे जन्मदिन वाला बालक काटने जा रहा है।', en: 'A beautiful cake is kept on the table which the birthday boy is about to cut.' },
+        { num: 4, role: 'मित्र व उपहार', hi: 'सभी मित्रों ने पार्टी टोपियाँ पहनी हैं और वे ताली बजाकर बधाई दे रहे हैं।', en: 'All the friends are wearing party hats and clapping to wish him.' },
+        { num: 5, role: 'निष्कर्ष', hi: 'कमरे में बहुत सारे उपहार रखे हैं और चारों ओर खुशी का वातावरण है।', en: 'Many gifts are kept in the room and there is a joyous atmosphere all around.' }
+      ],
+      fullParagraphHi: 'यह दृश्य एक घर में आयोजित जन्मदिन की पार्टी का है। कमरे को सुंदर रंग-बिरंगे गुब्बारों और झालरों से बहुत आकर्षक सजाया गया है। बीच में रखी मेज़ पर मोमबत्तियों से सजा एक स्वादिष्ट केक रखा है। जन्मदिन वाले बालक ने सुंदर पार्टी टोपी पहनी है। उसके चारों ओर खड़े मित्र ताली बजाते हुए गीत गा रहे हैं। मेज़ के पास कई सुंदर उपहार रखे हुए हैं। सभी बच्चे अत्यंत प्रसन्न और प्रफुल्लित दिखाई दे रहे हैं।',
+      fullParagraphEn: 'This scene depicts a birthday party organized at home. The room is attractively decorated with vibrant balloons and buntings. A delicious cake decorated with candles is placed on the table in the center. The birthday boy is wearing a lovely party hat. Friends standing around him are singing songs while clapping. Several beautiful gifts are kept near the table. All the children appear extremely joyful and cheerful.',
+      tips: [
+        'समारोह से जुड़े शब्दों (जैसे उपहार, बधाई, मोमबत्तियाँ, उल्लास) का सटीक प्रयोग करें।',
+        'अतिशयोक्ति से बचें, चित्र में जो दिखाई दे रहा है उसी का वर्णन करें।'
+      ]
+    }
+  },
+  {
+    id: 'village',
+    title: 'गाँव का प्रातःकाल',
+    titleEn: 'A Village Morning Scene',
+    subtitle: 'उगता सूरज, कच्चे घर, कुआँ, बैलगाड़ी और खेत',
+    icon: '🌾',
+    svg: `
+      <svg viewBox="0 0 800 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skyVillage" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fdba74"/>
+            <stop offset="40%" stop-color="#fef08a"/>
+            <stop offset="100%" stop-color="#bfdbfe"/>
+          </linearGradient>
+          <linearGradient id="hutWall" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#d97706"/>
+            <stop offset="100%" stop-color="#92400e"/>
+          </linearGradient>
+        </defs>
+        <!-- Golden Morning Sky -->
+        <rect width="800" height="260" fill="url(#skyVillage)" />
+        <!-- Rising Sun between Hills -->
+        <path d="M 0 220 Q 200 130 400 200 T 800 190 L 800 260 L 0 260 Z" fill="#4d7c0f" opacity="0.6" />
+        <circle cx="340" cy="160" r="42" fill="#f59e0b" opacity="0.95" />
+        <!-- Flying birds in V-formation -->
+        <path d="M 280 80 q 8 -6 16 0 q 8 -6 16 0" stroke="#78350f" stroke-width="2" fill="none" />
+        <path d="M 330 65 q 7 -5 14 0 q 7 -5 14 0" stroke="#78350f" stroke-width="2" fill="none" />
+        <path d="M 370 85 q 6 -5 12 0 q 6 -5 12 0" stroke="#78350f" stroke-width="2" fill="none" />
+        <!-- Ground / Field -->
+        <rect y="240" width="800" height="240" fill="#ca8a04" opacity="0.85" />
+        <!-- Mud Hut 1 (झोपड़ी) on left -->
+        <rect x="80" y="230" width="140" height="110" fill="url(#hutWall)" rx="4" />
+        <polygon points="60,230 150,150 240,230" fill="#78350f" stroke="#451a03" stroke-width="2" />
+        <rect x="130" y="275" width="40" height="65" fill="#451a03" rx="3" />
+        <!-- Neem / Banyan Tree -->
+        <rect x="250" y="160" width="26" height="140" fill="#78350f" rx="4" />
+        <circle cx="263" cy="130" r="55" fill="#15803d" />
+        <circle cx="290" cy="115" r="45" fill="#16a34a" />
+        <!-- Well (कुआँ) in middle-right -->
+        <ellipse cx="480" cy="360" rx="45" ry="20" fill="#64748b" />
+        <ellipse cx="480" cy="355" rx="36" ry="14" fill="#0284c7" />
+        <line x1="450" y1="360" x2="450" y2="300" stroke="#475569" stroke-width="4" />
+        <line x1="510" y1="360" x2="510" y2="300" stroke="#475569" stroke-width="4" />
+        <line x1="440" y1="300" x2="520" y2="300" stroke="#475569" stroke-width="4" />
+        <circle cx="480" cy="305" r="6" fill="#f59e0b" stroke="#b45309" stroke-width="2" /><!-- Pulley -->
+        <!-- Woman with Pitcher (घड़ा) near well -->
+        <circle cx="420" cy="320" r="12" fill="#fed7aa" />
+        <path d="M 410 334 L 430 334 L 425 390 L 415 390 Z" fill="#dc2626" />
+        <ellipse cx="420" cy="305" rx="8" ry="9" fill="#d97706" stroke="#92400e" stroke-width="1.5" /><!-- Earthen Pot -->
+        <!-- Farmer going to fields with Bullocks (किसान व बैल) -->
+        <circle cx="680" cy="325" r="13" fill="#fed7aa" />
+        <polygon points="670,314 690,314 680,298" fill="#ffffff" /><!-- Turban -->
+        <rect x="672" y="338" width="16" height="32" rx="3" fill="#2563eb" />
+        <line x1="690" y1="335" x2="710" y2="315" stroke="#78350f" stroke-width="3" /><!-- Plough handle -->
+        <!-- Bullocks / Cow (गाय/बैल) -->
+        <ellipse cx="610" cy="355" rx="32" ry="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+        <circle cx="585" cy="345" r="12" fill="#f8fafc" />
+        <line x1="595" y1="375" x2="595" y2="405" stroke="#94a3b8" stroke-width="4" />
+        <line x1="625" y1="375" x2="625" y2="405" stroke="#94a3b8" stroke-width="4" />
+      </svg>
+    `,
+    hotspots: [
+      {
+        id: 1,
+        x: 43,
+        y: 33,
+        title: 'उगता सूरज (Rising Sun)',
+        translit: 'Ugta Suraj',
+        meaningEn: 'Rising Sun / Dawn',
+        type: 'विशेषण + संज्ञा',
+        sentenceHi: 'पहाड़ियों के पीछे से सुनहरा सूरज निकल रहा है।',
+        sentenceEn: 'The golden sun is rising from behind the hills.'
+      },
+      {
+        id: 2,
+        x: 19,
+        y: 53,
+        title: 'मिट्टी की झोपड़ी (Mud Hut)',
+        translit: 'Mitti ki Jhopdi',
+        meaningEn: 'Thatched Mud Hut',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'गाँव में फूस की छत वाली कच्ची झोपड़ियाँ बनी हैं।',
+        sentenceEn: 'Mud huts with thatched roofs are built in the village.'
+      },
+      {
+        id: 3,
+        x: 59,
+        y: 74,
+        title: 'गाँव का कुआँ (Village Well)',
+        translit: 'Kuan',
+        meaningEn: 'Village Water Well',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'महिलाएँ कुएँ से पीने का स्वच्छ पानी भर रही हैं।',
+        sentenceEn: 'Women are drawing clean drinking water from the well.'
+      },
+      {
+        id: 4,
+        x: 84,
+        y: 69,
+        title: 'किसान (Farmer with Plough)',
+        translit: 'Kisaan',
+        meaningEn: 'Hardworking Farmer',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'किसान हल लेकर अपने खेतों की ओर जा रहा है।',
+        sentenceEn: 'The farmer is heading towards his fields carrying a plough.'
+      },
+      {
+        id: 5,
+        x: 75,
+        y: 77,
+        title: 'बैल (Bullock / Cattle)',
+        translit: 'Bail / Gaay',
+        meaningEn: 'Bullock / Farm Animal',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'खेत जोतने के लिए किसान के साथ सफेद बैल चल रहा है।',
+        sentenceEn: 'A white bullock is walking along with the farmer to plough the field.'
+      },
+      {
+        id: 6,
+        x: 41,
+        y: 16,
+        title: 'उड़ते पक्षी (Flying Birds)',
+        translit: 'Udte Pakshi',
+        meaningEn: 'Flock of Flying Birds',
+        type: 'विशेषण + संज्ञा',
+        sentenceHi: 'सुबह होते ही पक्षियों का झुंड चहचहाते हुए आसमान में उड़ रहा है।',
+        sentenceEn: 'At dawn, a flock of birds is flying in the sky chirping.'
+      }
+    ],
+    vocabulary: [
+      { hi: 'प्रातःकाल / सवेरा', en: 'Morning / Dawn', translit: 'Praatahkaal / Saveraa', category: 'noun' },
+      { hi: 'गाँव / ग्राम', en: 'Village', translit: 'Gaanv / Graam', category: 'noun' },
+      { hi: 'किसान', en: 'Farmer', translit: 'Kisaan', category: 'noun' },
+      { hi: 'हल', en: 'Plough', translit: 'Hal', category: 'noun' },
+      { hi: 'कुआँ', en: 'Well', translit: 'Kuan', category: 'noun' },
+      { hi: 'झोपड़ी', en: 'Hut', translit: 'Jhopdi', category: 'noun' },
+      { hi: 'उगना', en: 'To rise / sprout', translit: 'Ugana', category: 'verb' },
+      { hi: 'जोतना', en: 'To plough', translit: 'Jotna', category: 'verb' },
+      { hi: 'पानी भरना', en: 'To fetch water', translit: 'Paani bharna', category: 'verb' },
+      { hi: 'चहचहाना', en: 'To chirp', translit: 'Chahchahaana', category: 'verb' },
+      { hi: 'सुनहरा', en: 'Golden', translit: 'Sunhara', category: 'adj' },
+      { hi: 'परिश्रमी / मेहनती', en: 'Hardworking', translit: 'Parishrami / Mehnati', category: 'adj' },
+      { hi: 'शांत व निर्मल', en: 'Peaceful & Pure', translit: 'Shaant va Nirmal', category: 'adj' },
+      { hi: 'की ओर', en: 'Towards', translit: 'Ki aur', category: 'position' },
+      { hi: 'के पीछे', en: 'Behind', translit: 'Ke peeche', category: 'position' },
+      { hi: 'जबकि / वहीं', en: 'Whereas / Meanwhile', translit: 'Jabki / Waheen', category: 'connector' }
+    ],
+    puzzles: [
+      {
+        step: 1,
+        promptHi: 'वाक्य 1: यह किस जगह का प्रातःकाल है?',
+        promptEn: 'Sentence 1: Scene of village morning (This picture is of a village morning)',
+        correctWords: ['यह', 'चित्र', 'भारतीय', 'गाँव', 'के', 'प्रातःकाल', 'का', 'है।'],
+        scrambledWords: [
+          { hi: 'गाँव', en: 'village' },
+          { hi: 'यह', en: 'this' },
+          { hi: 'का', en: 'of' },
+          { hi: 'भारतीय', en: 'Indian' },
+          { hi: 'चित्र', en: 'picture' },
+          { hi: 'प्रातःकाल', en: 'morning' },
+          { hi: 'के', en: 'of' },
+          { hi: 'है।', en: 'is.' }
+        ],
+        fullSentenceHi: 'यह चित्र भारतीय गाँव के प्रातःकाल का है।',
+        fullSentenceEn: 'This picture is of an Indian village morning.'
+      },
+      {
+        step: 2,
+        promptHi: 'वाक्य 2: सूर्योदय और प्रकृति',
+        promptEn: 'Sentence 2: Sunrise (Golden sun is rising behind hills and birds are flying)',
+        correctWords: ['पूरब', 'में', 'सुनहरा', 'सूरज', 'निकल', 'रहा', 'है।'],
+        scrambledWords: [
+          { hi: 'सूरज', en: 'sun' },
+          { hi: 'पूरब', en: 'east' },
+          { hi: 'रहा', en: 'ing' },
+          { hi: 'में', en: 'in' },
+          { hi: 'सुनहरा', en: 'golden' },
+          { hi: 'है।', en: 'is.' },
+          { hi: 'निकल', en: 'rising' }
+        ],
+        fullSentenceHi: 'पूरब में सुनहरा सूरज निकल रहा है।',
+        fullSentenceEn: 'The golden sun is rising in the east.'
+      },
+      {
+        step: 3,
+        promptHi: 'वाक्य 3: किसान का खेत जाना',
+        promptEn: 'Sentence 3: Farmer heading to fields (Farmer is going to his fields with bullocks)',
+        correctWords: ['किसान', 'बैल', 'लेकर', 'खेतों', 'की', 'ओर', 'जा', 'रहा', 'है।'],
+        scrambledWords: [
+          { hi: 'खेतों', en: 'fields' },
+          { hi: 'बैल', en: 'bull' },
+          { hi: 'किसान', en: 'farmer' },
+          { hi: 'जा', en: 'go' },
+          { hi: 'ओर', en: 'towards' },
+          { hi: 'की', en: 'of' },
+          { hi: 'लेकर', en: 'taking' },
+          { hi: 'रहा', en: 'ing' },
+          { hi: 'है।', en: 'is.' }
+        ],
+        fullSentenceHi: 'किसान बैल लेकर खेतों की ओर जा रहा है।',
+        fullSentenceEn: 'The farmer is heading towards the fields with bullocks.'
+      },
+      {
+        step: 4,
+        promptHi: 'वाक्य 4: कुएँ से पानी भरना',
+        promptEn: 'Sentence 4: Women fetching water (A woman is drawing water from the well)',
+        correctWords: ['एक', 'महिला', 'कुएँ', 'से', 'घड़े', 'में', 'पानी', 'भर', 'रही', 'है।'],
+        scrambledWords: [
+          { hi: 'घड़े', en: 'pot' },
+          { hi: 'कुएँ', en: 'well' },
+          { hi: 'महिला', en: 'woman' },
+          { hi: 'में', en: 'in' },
+          { hi: 'पानी', en: 'water' },
+          { hi: 'एक', en: 'a' },
+          { hi: 'से', en: 'from' },
+          { hi: 'रही', en: 'ing' },
+          { hi: 'भर', en: 'fill' },
+          { hi: 'है।', en: 'is.' }
+        ],
+        fullSentenceHi: 'एक महिला कुएँ से घड़े में पानी भर रही है।',
+        fullSentenceEn: 'A woman is fetching water in an earthen pot from the well.'
+      },
+      {
+        step: 5,
+        promptHi: 'वाक्य 5: गाँव का शांत वातावरण',
+        promptEn: 'Sentence 5: Conclusion (The morning atmosphere of the village is calm and pollution-free)',
+        correctWords: ['गाँव', 'का', 'वातावरण', 'अत्यंत', 'शांत', 'और', 'प्रदूषण-मुक्त', 'है।'],
+        scrambledWords: [
+          { hi: 'शांत', en: 'calm' },
+          { hi: 'वातावरण', en: 'environment' },
+          { hi: 'प्रदूषण-मुक्त', en: 'pollution-free' },
+          { hi: 'गाँव', en: 'village' },
+          { hi: 'है।', en: 'is.' },
+          { hi: 'का', en: 'of' },
+          { hi: 'अत्यंत', en: 'extremely' },
+          { hi: 'और', en: 'and' }
+        ],
+        fullSentenceHi: 'गाँव का वातावरण अत्यंत शांत और प्रदूषण-मुक्त है।',
+        fullSentenceEn: 'The village environment is very peaceful and pollution-free.'
+      }
+    ],
+    modelAnswer: {
+      steps: [
+        { num: 1, role: 'स्थान परिचय', hi: 'यह चित्र एक भारतीय गाँव के सुंदर प्रातःकाल का है।', en: 'This picture depicts a beautiful morning in an Indian village.' },
+        { num: 2, role: 'वातावरण', hi: 'पहाड़ों के पीछे से सूर्य उदय हो रहा है और आसमान में पक्षी उड़ रहे हैं।', en: 'The sun is rising from behind the mountains and birds are flying in the sky.' },
+        { num: 3, role: 'किसान की क्रिया', hi: 'परिश्रमी किसान अपने बैलों के साथ खेतों में काम करने जा रहा है।', en: 'The hardworking farmer is heading to work in the fields with his bullocks.' },
+        { num: 4, role: 'अन्य विवरण', hi: 'मिट्टी की झोपड़ियों के पास स्थित कुएँ से एक महिला घड़े में पानी भर रही है।', en: 'Near the mud huts, a woman is drawing water into a pitcher from the well.' },
+        { num: 5, role: 'निष्कर्ष', hi: 'गाँव की सुबह बहुत ही शांत, स्वच्छ और प्राकृतिक सुंदरता से भरपूर है।', en: 'The morning in the village is very peaceful, clean, and full of natural beauty.' }
+      ],
+      fullParagraphHi: 'यह चित्र एक भारतीय गाँव के सुंदर प्रातःकाल का है। पहाड़ों के पीछे से लाल-सुनहरा सूरज उदय हो रहा है। खुले नीले आकाश में पक्षियों का झुंड चहचहाते हुए उड़ रहा है। गाँव में मिट्टी और घास-फूस की बनी झोपड़ियाँ दिखाई दे रही हैं। एक परिश्रमी किसान हल और बैल लेकर अपने खेत की ओर जा रहा है। कुएँ के पास एक ग्रामीण महिला घड़े में पानी भर रही है। गाँव का वातावरण प्रदूषण-मुक्त, शांत और मनमोहक है।',
+      fullParagraphEn: 'This picture is of a beautiful morning in an Indian village. The reddish-golden sun is rising behind the mountains. A flock of chirping birds is flying in the open blue sky. Mud and thatched huts are visible in the village. A hardworking farmer is going towards his field with his plough and bullock. Near the well, a village woman is fetching water in an earthen pot. The village environment is pollution-free, tranquil, and enchanting.',
+      tips: [
+        'ग्रामीण परिवेश के शब्दों (जैसे हल, बैल, झोपड़ी, कुआँ, प्रातःकाल) का प्रयोग करें।',
+        'प्रदूषण-मुक्त वातावरण और शांति की तुलना शहर से करने पर अतिरिक्त प्रभाव पड़ता है।'
+      ]
+    }
+  },
+  {
+    id: 'zoo',
+    title: 'चिड़ियाघर की सैर',
+    titleEn: 'A Visit to the Zoo',
+    subtitle: 'जंगली जानवर, बाड़े, दर्शक, बंदर और जिराफ',
+    icon: '🦁',
+    svg: `
+      <svg viewBox="0 0 800 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skyZoo" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#38bdf8"/>
+            <stop offset="100%" stop-color="#e0f2fe"/>
+          </linearGradient>
+        </defs>
+        <!-- Sky -->
+        <rect width="800" height="260" fill="url(#skyZoo)" />
+        <!-- Trees in background -->
+        <circle cx="80" cy="180" r="70" fill="#15803d" />
+        <circle cx="720" cy="180" r="75" fill="#16a34a" />
+        <!-- Zoo Ground -->
+        <rect y="240" width="800" height="240" fill="#84cc16" />
+        <!-- Pathway for Visitors -->
+        <rect y="380" width="800" height="100" fill="#d97706" opacity="0.3" />
+        <!-- Protective Fence (सुरक्षा बाड़ा) -->
+        <g stroke="#334155" stroke-width="4">
+          <line x1="100" y1="360" x2="700" y2="360" />
+          <line x1="100" y1="380" x2="700" y2="380" />
+          <line x1="120" y1="350" x2="120" y2="400" /><line x1="200" y1="350" x2="200" y2="400" />
+          <line x1="280" y1="350" x2="280" y2="400" /><line x1="360" y1="350" x2="360" y2="400" />
+          <line x1="440" y1="350" x2="440" y2="400" /><line x1="520" y1="350" x2="520" y2="400" />
+          <line x1="600" y1="350" x2="600" y2="400" /><line x1="680" y1="350" x2="680" y2="400" />
+        </g>
+        <!-- Lion on rock (गुफा / चट्टान पर शेर) -->
+        <polygon points="120,350 260,350 240,260 140,260" fill="#78716c" />
+        <ellipse cx="190" cy="245" rx="35" ry="22" fill="#d97706" />
+        <circle cx="160" cy="235" r="18" fill="#b45309" stroke="#78350f" stroke-width="6" /><!-- Mane -->
+        <circle cx="160" cy="235" r="12" fill="#f59e0b" />
+        <!-- Giraffe (जिराफ) on right -->
+        <rect x="580" y="160" width="20" height="130" fill="#eab308" rx="4" />
+        <ellipse cx="610" cy="290" rx="45" ry="26" fill="#eab308" />
+        <ellipse cx="590" cy="150" rx="14" ry="10" fill="#eab308" />
+        <circle cx="585" cy="200" r="4" fill="#854d0e" /><circle cx="595" cy="240" r="5" fill="#854d0e" />
+        <circle cx="620" cy="285" r="6" fill="#854d0e" /><circle cx="640" cy="295" r="5" fill="#854d0e" />
+        <line x1="585" y1="316" x2="585" y2="370" stroke="#ca8a04" stroke-width="6" />
+        <line x1="635" y1="316" x2="635" y2="370" stroke="#ca8a04" stroke-width="6" />
+        <!-- Monkey on Tree Branch (पेड़ पर बंदर) -->
+        <ellipse cx="280" cy="180" rx="14" ry="18" fill="#78350f" />
+        <circle cx="280" cy="160" r="10" fill="#a16207" />
+        <path d="M 285 195 Q 310 210 300 230" stroke="#78350f" stroke-width="4" fill="none" /><!-- Tail -->
+        <!-- Visitors (Family / Children) outside fence in bottom -->
+        <circle cx="360" cy="415" r="13" fill="#fed7aa" />
+        <rect x="350" y="428" width="20" height="35" rx="4" fill="#0284c7" />
+        <circle cx="410" cy="425" r="11" fill="#fed7aa" />
+        <rect x="402" y="436" width="16" height="30" rx="3" fill="#ec4899" />
+        <!-- Signboard (चिड़ियाघर सूचना पट्ट) -->
+        <rect x="40" y="270" width="70" height="35" rx="3" fill="#f8fafc" stroke="#334155" stroke-width="2" />
+        <text x="75" y="292" font-family="'Outfit', sans-serif" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">ZOO PARK</text>
+        <line x1="75" y1="305" x2="75" y2="350" stroke="#334155" stroke-width="4" />
+      </svg>
+    `,
+    hotspots: [
+      {
+        id: 1,
+        x: 24,
+        y: 50,
+        title: 'जंगल का राजा शेर (Lion on Rock)',
+        translit: 'Jungle ka Raja Sher',
+        meaningEn: 'Lion on the Rock',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'चट्टान पर बैठा शेर दहाड़ रहा है और सबका ध्यान खींच रहा है।',
+        sentenceEn: 'The lion sitting on the rock is roaring and attracting attention.'
+      },
+      {
+        id: 2,
+        x: 77,
+        y: 45,
+        title: 'लंबी गर्दन वाला जिराफ (Giraffe)',
+        translit: 'Lambi Gardan waala Giraffe',
+        meaningEn: 'Tall Long-necked Giraffe',
+        type: 'विशेषण + संज्ञा',
+        sentenceHi: 'जिराफ अपनी लंबी गर्दन से पेड़ के ऊँचे पत्ते खा रहा है।',
+        sentenceEn: 'The giraffe is eating high leaves of the tree with its long neck.'
+      },
+      {
+        id: 3,
+        x: 35,
+        y: 38,
+        title: 'नटखट बंदर (Naughty Monkey)',
+        translit: 'Natkhat Bandar',
+        meaningEn: 'Playful Monkey',
+        type: 'विशेषण + संज्ञा',
+        sentenceHi: 'पेड़ की डाल पर बैठा बंदर उछल-कूद कर रहा है।',
+        sentenceEn: 'The monkey sitting on the tree branch is hopping around.'
+      },
+      {
+        id: 4,
+        x: 48,
+        y: 89,
+        title: 'दर्शक व बच्चे (Visitors & Kids)',
+        translit: 'Darshak va Bachhe',
+        meaningEn: 'Visitors and Children',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'बच्चे अपने माता-पिता के साथ जानवरों को देखकर खुश हो रहे हैं।',
+        sentenceEn: 'Children are overjoyed seeing the animals with their parents.'
+      },
+      {
+        id: 5,
+        x: 50,
+        y: 76,
+        title: 'सुरक्षा बाड़ा (Safety Fence)',
+        translit: 'Suraksha Baada',
+        meaningEn: 'Protective Railing / Fence',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'जानवरों और दर्शकों की सुरक्षा के लिए लोहे का बाड़ा बना है।',
+        sentenceEn: 'An iron fence is built for the safety of animals and visitors.'
+      },
+      {
+        id: 6,
+        x: 9,
+        y: 63,
+        title: 'सूचना पट्ट (Signboard)',
+        translit: 'Soochna Patt',
+        meaningEn: 'Zoo Information Board',
+        type: 'संज्ञा (Noun)',
+        sentenceHi: 'रास्ते के किनारे जानवरों के नाम वाला बोर्ड लगा है।',
+        sentenceEn: 'A board with animals names is placed along the walkway.'
+      }
+    ],
+    vocabulary: [
+      { hi: 'चिड़ियाघर', en: 'Zoo', translit: 'Chidiyaaghar', category: 'noun' },
+      { hi: 'शेर / सिंह', en: 'Lion', translit: 'Sher / Singh', category: 'noun' },
+      { hi: 'जिराफ', en: 'Giraffe', translit: 'Giraffe', category: 'noun' },
+      { hi: 'बंदर', en: 'Monkey', translit: 'Bandar', category: 'noun' },
+      { hi: 'बाड़ा / पिंजरा', en: 'Enclosure / Cage', translit: 'Baada / Pinjra', category: 'noun' },
+      { hi: 'दर्शक', en: 'Spectators / Visitors', translit: 'Darshak', category: 'noun' },
+      { hi: 'दहाड़ना', en: 'To roar', translit: 'Dahaadna', category: 'verb' },
+      { hi: 'उछल-कूद करना', en: 'To hop / jump around', translit: 'Uchhal-kood karna', category: 'verb' },
+      { hi: 'देखना', en: 'To watch / observe', translit: 'Dekhna', category: 'verb' },
+      { hi: 'सैर करना', en: 'To tour / visit', translit: 'Sair karna', category: 'verb' },
+      { hi: 'जंगली', en: 'Wild', translit: 'Jangli', category: 'adj' },
+      { hi: 'विशालकाय', en: 'Gigantic', translit: 'Vishaal-kaay', category: 'adj' },
+      { hi: 'रोमांचक', en: 'Thrilling / Exciting', translit: 'Romaanchak', category: 'adj' },
+      { hi: 'के अंदर', en: 'Inside', translit: 'Ke andar', category: 'position' },
+      { hi: 'के बाहर', en: 'Outside', translit: 'Ke baahar', category: 'position' },
+      { hi: 'जिससे कि', en: 'So that', translit: 'Jisse ki', category: 'connector' }
+    ],
+    puzzles: [
+      {
+        step: 1,
+        promptHi: 'वाक्य 1: यह किस जगह का दृश्य है?',
+        promptEn: 'Sentence 1: Zoo scene (This picture shows a scene of a visit to the zoo)',
+        correctWords: ['यह', 'चित्र', 'चिड़ियाघर', 'की', 'सैर', 'का', 'है।'],
+        scrambledWords: [
+          { hi: 'सैर', en: 'tour' },
+          { hi: 'यह', en: 'this' },
+          { hi: 'की', en: 'of' },
+          { hi: 'चित्र', en: 'picture' },
+          { hi: 'है।', en: 'is.' },
+          { hi: 'चिड़ियाघर', en: 'zoo' },
+          { hi: 'का', en: 'of' }
+        ],
+        fullSentenceHi: 'यह चित्र चिड़ियाघर की सैर का है।',
+        fullSentenceEn: 'This picture is of a visit to the zoo.'
+      },
+      {
+        step: 2,
+        promptHi: 'वाक्य 2: यहाँ कौन-कौन से जानवर हैं?',
+        promptEn: 'Sentence 2: Variety of animals (There are different wild animals in the zoo)',
+        correctWords: ['यहाँ', 'कई', 'तरह', 'के', 'जंगली', 'जानवर', 'दिखाई', 'दे', 'रहे', 'हैं।'],
+        scrambledWords: [
+          { hi: 'जानवर', en: 'animals' },
+          { hi: 'यहाँ', en: 'here' },
+          { hi: 'रहे', en: 'ing' },
+          { hi: 'जंगली', en: 'wild' },
+          { hi: 'दिखाई', en: 'visible' },
+          { hi: 'हैं।', en: 'are.' },
+          { hi: 'तरह', en: 'types' },
+          { hi: 'दे', en: 'give' },
+          { hi: 'कई', en: 'many' },
+          { hi: 'के', en: 'of' }
+        ],
+        fullSentenceHi: 'यहाँ कई तरह के जंगली जानवर दिखाई दे रहे हैं।',
+        fullSentenceEn: 'Several kinds of wild animals are visible here.'
+      },
+      {
+        step: 3,
+        promptHi: 'वाक्य 3: शेर और जिराफ की गतिविधि',
+        promptEn: 'Sentence 3: Actions of lion and giraffe (The lion is sitting on rock and giraffe is eating leaves)',
+        correctWords: ['शेर', 'चट्टान', 'पर', 'बैठा', 'है', 'और', 'जिराफ', 'पत्ते', 'खा', 'रहा', 'है।'],
+        scrambledWords: [
+          { hi: 'बैठा', en: 'sitting' },
+          { hi: 'शेर', en: 'lion' },
+          { hi: 'पत्ते', en: 'leaves' },
+          { hi: 'जिराफ', en: 'giraffe' },
+          { hi: 'पर', en: 'on' },
+          { hi: 'है', en: 'is' },
+          { hi: 'खा', en: 'eating' },
+          { hi: 'चट्टान', en: 'rock' },
+          { hi: 'और', en: 'and' },
+          { hi: 'रहा', en: 'ing' },
+          { hi: 'है।', en: 'is.' }
+        ],
+        fullSentenceHi: 'शेर चट्टान पर बैठा है और जिराफ पत्ते खा रहा है।',
+        fullSentenceEn: 'The lion is sitting on the rock and the giraffe is eating leaves.'
+      },
+      {
+        step: 4,
+        promptHi: 'वाक्य 4: दर्शकों और बच्चों का कौतूहल',
+        promptEn: 'Sentence 4: Children observing (Children are watching the animals with wonder)',
+        correctWords: ['बच्चे', 'हैरानी', 'और', 'खुशी', 'से', 'जानवरों', 'को', 'देख', 'रहे', 'हैं।'],
+        scrambledWords: [
+          { hi: 'जानवरों', en: 'animals' },
+          { hi: 'बच्चे', en: 'children' },
+          { hi: 'देख', en: 'watch' },
+          { hi: 'हैरानी', en: 'wonder' },
+          { hi: 'को', en: 'to' },
+          { hi: 'रहे', en: 'ing' },
+          { hi: 'खुशी', en: 'joy' },
+          { hi: 'से', en: 'with' },
+          { hi: 'और', en: 'and' },
+          { hi: 'हैं।', en: 'are.' }
+        ],
+        fullSentenceHi: 'बच्चे हैरानी और खुशी से जानवरों को देख रहे हैं।',
+        fullSentenceEn: 'Children are watching the animals with wonder and happiness.'
+      },
+      {
+        step: 5,
+        promptHi: 'वाक्य 5: चिड़ियाघर की सैर का अनुभव',
+        promptEn: 'Sentence 5: Conclusion (A visit to the zoo is educational and full of thrills)',
+        correctWords: ['चिड़ियाघर', 'की', 'सैर', 'ज्ञानवर्धक', 'और', 'रोमांचक', 'होती', 'है।'],
+        scrambledWords: [
+          { hi: 'ज्ञानवर्धक', en: 'educational' },
+          { hi: 'सैर', en: 'tour' },
+          { hi: 'रोमांचक', en: 'thrilling' },
+          { hi: 'चिड़ियाघर', en: 'zoo' },
+          { hi: 'है।', en: 'is.' },
+          { hi: 'होती', en: 'happens' },
+          { hi: 'की', en: 'of' },
+          { hi: 'और', en: 'and' }
+        ],
+        fullSentenceHi: 'चिड़ियाघर की सैर ज्ञानवर्धक और रोमांचक होती है।',
+        fullSentenceEn: 'A visit to the zoo is informative and thrilling.'
+      }
+    ],
+    modelAnswer: {
+      steps: [
+        { num: 1, role: 'स्थान परिचय', hi: 'यह दृश्य एक बड़े और सुंदर चिड़ियाघर का है।', en: 'This scene is of a large and beautiful zoo.' },
+        { num: 2, role: 'वातावरण व व्यवस्था', hi: 'जानवरों के लिए सुरक्षित बाड़े बने हैं तथा चारों ओर हरियाली है।', en: 'Safe enclosures are built for animals and there is greenery all around.' },
+        { num: 3, role: 'जानवरों की हरकतें', hi: 'चट्टान पर बैठा शेर दहाड़ रहा है तथा लंबी गर्दन वाला जिराफ पत्ते खा रहा है।', en: 'The lion sitting on the rock is roaring and the tall-necked giraffe is eating leaves.' },
+        { num: 4, role: 'दर्शकों का व्यवहार', hi: 'कई लोग और छोटे बच्चे रेलिंग के बाहर खड़े होकर जानवरों को निहार रहे हैं।', en: 'Many people and small kids are standing outside the railing watching the animals.' },
+        { num: 5, role: 'निष्कर्ष', hi: 'चिड़ियाघर में घूमना बच्चों के लिए अत्यंत ज्ञानवर्धक और आनंददायक होता है।', en: 'Touring a zoo is very educational and enjoyable for children.' }
+      ],
+      fullParagraphHi: 'यह दृश्य एक बड़े और प्रसिद्ध चिड़ियाघर का है। यहाँ तरह-तरह के जंगली जीव-जंतुओं के लिए खुले और सुरक्षित बाड़े बनाए गए हैं। एक ऊँची चट्टान पर बैठा शेर बड़े गर्व से बैठा है। पास ही एक लंबी गर्दन वाला जिराफ पेड़ की ऊँची टहनियों से हरी पत्तियाँ खा रहा है। पेड़ की शाखा पर बैठा बंदर उछल-कूद कर रहा है। बाड़े के बाहर खड़े दर्शक व बच्चे इन जीवों को देखकर बेहद रोमांचित और प्रसन्न हैं। चिड़ियाघर की सैर बच्चों के लिए ज्ञानवर्धक और मनोरंजक दोनों है।',
+      fullParagraphEn: 'This scene depicts a large and famous zoo. Spacious and secure enclosures have been made here for a variety of wild creatures. A lion is sitting proudly on a high rock. Nearby, a long-necked giraffe is nibbling green leaves from tall tree branches. A monkey is playfully hopping on a tree branch. Visitors and children standing outside the fence are thrilled and overjoyed seeing these animals. A visit to the zoo is both educational and entertaining for kids.',
+      tips: [
+        'जानवरों के नाम और उनकी विशेषताओं (जैसे लंबी गर्दन, भारी शरीर, दहाड़ना) को जोड़कर वाक्य बनाएं।',
+        'चिड़ियाघर के नियमों (जैसे जानवरों को न छेड़ना) का भी एक वाक्य में उल्लेख कर सकते हैं।'
+      ]
+    }
+  }
+];
+
+// --- APP CONTROLLER CLASS ---
+class ChitraVarnanApp {
+  constructor() {
+    this.confetti = new ConfettiEngine('confetti-canvas');
+    this.state = {
+      currentSceneId: 'park',
+      currentMode: 'explore', // 'explore' | 'vocab' | 'puzzle' | 'write'
+      showEnglish: true,
+      activeHotspotId: null,
+      vocabFilter: 'all',
+      stars: this.loadStars(),
+      puzzleProgress: {
+        stepIdx: 0,
+        selectedWords: [],
+        isCompleted: false
+      }
+    };
+
+    this.initElements();
+    this.bindEvents();
+    this.renderSidebarTopics();
+    this.updateProgressUI();
+  }
+
+  loadStars() {
+    try {
+      const saved = localStorage.getItem('cbse5_chitra_varnan_stars');
+      return saved ? JSON.parse(saved) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  saveStars() {
+    try {
+      localStorage.setItem('cbse5_chitra_varnan_stars', JSON.stringify(this.state.stars));
+    } catch (e) {
+      console.warn('Storage save failed:', e);
+    }
+  }
+
+  initElements() {
+    // Top Bar
+    this.menuToggleBtn = document.getElementById('menu-toggle-btn');
+    this.sidebar = document.getElementById('sidebar');
+    this.sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    this.sidebarCloseBtn = document.getElementById('sidebar-close-btn');
+    this.sidebarTopics = document.getElementById('sidebar-topics');
+    this.progressFill = document.getElementById('progress-fill');
+    this.progressLabel = document.getElementById('progress-label');
+
+    this.topBarTitle = document.getElementById('top-bar-title');
+    this.topBarSubtitle = document.getElementById('top-bar-subtitle');
+    this.btnTranslateToggle = document.getElementById('btn-translate-toggle');
+    this.transToggleLabel = document.getElementById('trans-toggle-label');
+    this.btnReset = document.getElementById('btn-reset');
+
+    // Tabs
+    this.modeTabs = document.getElementById('mode-tabs');
+    this.tabButtons = document.querySelectorAll('.mode-tab');
+
+    // Screens
+    this.welcomeScreen = document.getElementById('welcome-screen');
+    this.welcomeStartBtn = document.getElementById('welcome-start-btn');
+    this.sceneArea = document.getElementById('scene-area');
+
+    // Picture components
+    this.pictureHeading = document.getElementById('picture-heading');
+    this.pictureHint = document.getElementById('picture-hint');
+    this.hotspotCounter = document.getElementById('hotspot-counter');
+    this.illustrationCanvas = document.getElementById('illustration-canvas');
+    this.hotspotDetailBox = document.getElementById('hotspot-detail-box');
+    this.modePanel = document.getElementById('mode-panel');
+
+    // Feedback Flash
+    this.feedbackFlash = document.getElementById('feedback-flash');
+
+    // Modal
+    this.resultsModal = document.getElementById('results-modal');
+    this.btnNextScene = document.getElementById('btn-next-scene');
+    this.btnCloseModal = document.getElementById('btn-close-modal');
+    this.resultStars = document.getElementById('result-stars');
+    this.resultScore = document.getElementById('result-score');
+    this.resultStarsCount = document.getElementById('result-stars-count');
+  }
+
+  bindEvents() {
+    // Sidebar Drawer Toggle
+    this.menuToggleBtn.addEventListener('click', () => this.toggleSidebar(true));
+    this.sidebarCloseBtn.addEventListener('click', () => this.toggleSidebar(false));
+    this.sidebarBackdrop.addEventListener('click', () => this.toggleSidebar(false));
+
+    // Welcome start
+    this.welcomeStartBtn.addEventListener('click', () => {
+      synth.tap();
+      this.welcomeScreen.style.display = 'none';
+      this.sceneArea.style.display = 'flex';
+      this.loadScene(this.state.currentSceneId);
+    });
+
+    // Translation Toggle
+    this.btnTranslateToggle.addEventListener('click', () => {
+      synth.tap();
+      this.state.showEnglish = !this.state.showEnglish;
+      this.updateTranslateButtonUI();
+      this.renderCurrentMode();
+      this.renderHotspotDetail(this.state.activeHotspotId);
+    });
+
+    // Reset button
+    this.btnReset.addEventListener('click', () => {
+      synth.tap();
+      this.state.puzzleProgress = { stepIdx: 0, selectedWords: [], isCompleted: false };
+      this.state.activeHotspotId = null;
+      this.loadScene(this.state.currentSceneId);
+      this.flash('चित्र और अभ्यास रीसेट किए गए (Reset done)', 'info');
+    });
+
+    // Mode Tabs
+    this.modeTabs.addEventListener('click', (e) => {
+      const tab = e.target.closest('.mode-tab');
+      if (!tab) return;
+      synth.tap();
+      const mode = tab.dataset.mode;
+      this.switchMode(mode);
+    });
+
+    // Results Modal actions
+    this.btnCloseModal.addEventListener('click', () => {
+      this.resultsModal.classList.remove('open');
+    });
+    this.btnNextScene.addEventListener('click', () => {
+      this.resultsModal.classList.remove('open');
+      const curIdx = SCENE_DATA.findIndex(s => s.id === this.state.currentSceneId);
+      const nextIdx = (curIdx + 1) % SCENE_DATA.length;
+      this.loadScene(SCENE_DATA[nextIdx].id);
+    });
+  }
+
+  toggleSidebar(open) {
+    synth.tap();
+    if (open) {
+      this.sidebar.classList.add('open');
+      this.sidebarBackdrop.classList.add('active');
+    } else {
+      this.sidebar.classList.remove('open');
+      this.sidebarBackdrop.classList.remove('active');
+    }
+  }
+
+  updateTranslateButtonUI() {
+    if (this.state.showEnglish) {
+      this.btnTranslateToggle.classList.add('active');
+      this.transToggleLabel.textContent = 'English: ON';
+    } else {
+      this.btnTranslateToggle.classList.remove('active');
+      this.transToggleLabel.textContent = 'English: OFF';
+    }
+  }
+
+  flash(msg, type = 'success') {
+    this.feedbackFlash.textContent = msg;
+    this.feedbackFlash.className = `feedback-flash ${type} show`;
+    setTimeout(() => {
+      this.feedbackFlash.classList.remove('show');
+    }, 2400);
+  }
+
+  renderSidebarTopics() {
+    this.sidebarTopics.innerHTML = '';
+    SCENE_DATA.forEach((scene) => {
+      const btn = document.createElement('button');
+      btn.className = `topic-nav-item ${scene.id === this.state.currentSceneId ? 'active' : ''}`;
+      btn.dataset.id = scene.id;
+
+      const stars = this.state.stars[scene.id] || 0;
+      const starsDisplay = '⭐'.repeat(stars) || '☆☆☆';
+
+      btn.innerHTML = `
+        <div class="topic-nav-icon">${scene.icon}</div>
+        <div class="topic-nav-info">
+          <div class="topic-nav-title">${scene.title}</div>
+          <div class="topic-nav-subtitle">${scene.titleEn}</div>
+        </div>
+        <div class="topic-nav-stars">${starsDisplay}</div>
+      `;
+
+      btn.addEventListener('click', () => {
+        synth.tap();
+        this.welcomeScreen.style.display = 'none';
+        this.sceneArea.style.display = 'flex';
+        this.loadScene(scene.id);
+        if (window.innerWidth <= 860) {
+          this.toggleSidebar(false);
+        }
+      });
+
+      this.sidebarTopics.appendChild(btn);
+    });
+  }
+
+  updateProgressUI() {
+    const totalPossible = SCENE_DATA.length * 3;
+    let earned = 0;
+    Object.values(this.state.stars).forEach(s => earned += s);
+    const pct = Math.round((earned / totalPossible) * 100);
+    this.progressFill.style.width = `${pct}%`;
+    this.progressLabel.textContent = `${earned} / ${totalPossible} सितारे (stars)`;
+  }
+
+  loadScene(sceneId) {
+    this.state.currentSceneId = sceneId;
+    this.state.activeHotspotId = null;
+    this.state.puzzleProgress = { stepIdx: 0, selectedWords: [], isCompleted: false };
+
+    const scene = SCENE_DATA.find(s => s.id === sceneId);
+    if (!scene) return;
+
+    // Update Top Bar
+    this.topBarTitle.textContent = scene.title;
+    this.topBarSubtitle.textContent = this.state.showEnglish ? `${scene.titleEn} — ${scene.subtitle}` : scene.subtitle;
+    this.pictureHeading.textContent = `${scene.icon} ${scene.title}`;
+    this.pictureHint.textContent = this.state.showEnglish ? 'Tap numbered hotspots on the illustration to inspect vocabulary' : 'चित्र पर बने नंबरों (हॉटस्पॉट) पर टैप करके शब्द और वाक्य देखें';
+    this.hotspotCounter.textContent = `हॉटस्पॉट: 6 कुल`;
+
+    // Render SVG Canvas & Hotspots
+    this.renderIllustration(scene);
+
+    // Render Default Hotspot Bar
+    this.renderHotspotDetail(null);
+
+    // Render Mode Panel
+    this.renderCurrentMode();
+
+    // Highlight active topic in sidebar
+    document.querySelectorAll('.topic-nav-item').forEach(el => {
+      el.classList.toggle('active', el.dataset.id === sceneId);
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  renderIllustration(scene) {
+    this.illustrationCanvas.innerHTML = scene.svg;
+
+    // Inject Hotspots
+    scene.hotspots.forEach(hs => {
+      const btn = document.createElement('button');
+      btn.className = `hotspot-btn ${this.state.activeHotspotId === hs.id ? 'active' : ''}`;
+      btn.style.left = `${hs.x}%`;
+      btn.style.top = `${hs.y}%`;
+      btn.textContent = hs.id;
+      btn.title = `${hs.title} (${hs.meaningEn})`;
+      btn.setAttribute('aria-label', `Hotspot ${hs.id}: ${hs.title}`);
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        synth.tap();
+        this.selectHotspot(hs.id);
+      });
+
+      this.illustrationCanvas.appendChild(btn);
+    });
+  }
+
+  selectHotspot(hsId) {
+    this.state.activeHotspotId = hsId;
+
+    // Update buttons in illustration
+    document.querySelectorAll('.hotspot-btn').forEach(el => {
+      el.classList.toggle('active', el.textContent.trim() === String(hsId));
+    });
+
+    // Update explore mode cards if currently active
+    document.querySelectorAll('.explore-card').forEach(el => {
+      el.classList.toggle('active', el.dataset.id === String(hsId));
+    });
+
+    this.renderHotspotDetail(hsId);
+  }
+
+  renderHotspotDetail(hsId) {
+    const scene = SCENE_DATA.find(s => s.id === this.state.currentSceneId);
+    if (!scene) return;
+
+    if (!hsId) {
+      this.hotspotDetailBox.innerHTML = `
+        <div class="hs-empty">💡 चित्र पर किसी भी नंबर 🔵 पर टैप करके शब्द और वाक्य सीखें! (Tap numbered hotspots to inspect)</div>
+      `;
+      return;
+    }
+
+    const hs = scene.hotspots.find(h => h.id === hsId);
+    if (!hs) return;
+
+    const translitHtml = this.state.showEnglish ? `<span class="hs-translit">(${hs.translit})</span>` : '';
+    const enWordHtml = this.state.showEnglish ? `<span class="hs-english-word">${hs.meaningEn}</span>` : '';
+    const enSentenceHtml = this.state.showEnglish ? `<div class="hs-sentence-english">🌐 ${hs.sentenceEn}</div>` : '';
+
+    this.hotspotDetailBox.innerHTML = `
+      <div class="hs-content">
+        <div class="hs-header-row">
+          <div class="hs-word-group">
+            <span class="hs-hindi-word">${hs.title}</span>
+            ${translitHtml}
+            ${enWordHtml}
+          </div>
+          <span class="hs-tag">${hs.type}</span>
+        </div>
+        <div class="hs-sentence-row">
+          <div class="hs-sentence-hindi">✍️ ${hs.sentenceHi}</div>
+          ${enSentenceHtml}
+        </div>
+      </div>
+    `;
+  }
+
+  switchMode(mode) {
+    this.state.currentMode = mode;
+    this.tabButtons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.mode === mode);
+    });
+    this.renderCurrentMode();
+  }
+
+  renderCurrentMode() {
+    const scene = SCENE_DATA.find(s => s.id === this.state.currentSceneId);
+    if (!scene) return;
+
+    switch (this.state.currentMode) {
+      case 'explore':
+        this.renderExploreMode(scene);
+        break;
+      case 'vocab':
+        this.renderVocabMode(scene);
+        break;
+      case 'puzzle':
+        this.renderPuzzleMode(scene);
+        break;
+      case 'write':
+        this.renderWriteMode(scene);
+        break;
+    }
+  }
+
+  // ============================================
+  // MODE 1: चित्र अवलोकन (OBSERVE & HOTSPOTS)
+  // ============================================
+  renderExploreMode(scene) {
+    this.modePanel.innerHTML = `
+      <div class="explore-panel">
+        <div class="explore-grid">
+          ${scene.hotspots.map(hs => `
+            <div class="explore-card ${this.state.activeHotspotId === hs.id ? 'active' : ''}" data-id="${hs.id}">
+              <div class="explore-badge">${hs.id}</div>
+              <div class="explore-info">
+                <h5>${hs.title} ${this.state.showEnglish ? `<small style="font-weight:normal; color:var(--text-secondary);">(${hs.meaningEn})</small>` : ''}</h5>
+                <p>${hs.sentenceHi}</p>
+                ${this.state.showEnglish ? `<p style="font-size:0.75rem; color:var(--text-muted);">${hs.sentenceEn}</p>` : ''}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    // Click handler on cards
+    this.modePanel.querySelectorAll('.explore-card').forEach(card => {
+      card.addEventListener('click', () => {
+        synth.tap();
+        const id = parseInt(card.dataset.id, 10);
+        this.selectHotspot(id);
+      });
+    });
+  }
+
+  // ============================================
+  // MODE 2: शब्द भंडार (VOCABULARY BANK)
+  // ============================================
+  renderVocabMode(scene) {
+    const filter = this.state.vocabFilter;
+    const filteredVocab = filter === 'all'
+      ? scene.vocabulary
+      : scene.vocabulary.filter(v => v.category === filter);
+
+    const typeLabels = {
+      noun: 'संज्ञा (Noun)',
+      verb: 'क्रिया (Verb)',
+      adj: 'विशेषण (Adjective)',
+      position: 'दिशा / स्थिति',
+      connector: 'योजक शब्द (Connector)'
+    };
+
+    this.modePanel.innerHTML = `
+      <div class="vocab-panel">
+        <div class="vocab-header">
+          <h3>🔤 शब्द भंडार (Vocabulary Bank)</h3>
+          <div class="vocab-filters">
+            <button class="vocab-filter-btn ${filter === 'all' ? 'active' : ''}" data-filter="all">सभी (${scene.vocabulary.length})</button>
+            <button class="vocab-filter-btn ${filter === 'noun' ? 'active' : ''}" data-filter="noun">संज्ञा (Nouns)</button>
+            <button class="vocab-filter-btn ${filter === 'verb' ? 'active' : ''}" data-filter="verb">क्रिया (Verbs)</button>
+            <button class="vocab-filter-btn ${filter === 'adj' ? 'active' : ''}" data-filter="adj">विशेषण (Adjectives)</button>
+            <button class="vocab-filter-btn ${filter === 'position' ? 'active' : ''}" data-filter="position">दिशा / स्थिति</button>
+            <button class="vocab-filter-btn ${filter === 'connector' ? 'active' : ''}" data-filter="connector">योजक (Connectors)</button>
+          </div>
+        </div>
+
+        <div class="vocab-grid">
+          ${filteredVocab.map(item => `
+            <div class="vocab-card">
+              <div class="vocab-top">
+                <span class="vocab-hindi">${item.hi}</span>
+                <span class="vocab-type-badge">${typeLabels[item.category] || item.category}</span>
+              </div>
+              ${this.state.showEnglish ? `<span class="vocab-translit">${item.translit}</span>` : ''}
+              ${this.state.showEnglish ? `<span class="vocab-english">🌐 ${item.en}</span>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    // Bind filter buttons
+    this.modePanel.querySelectorAll('.vocab-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        synth.tap();
+        this.state.vocabFilter = btn.dataset.filter;
+        this.renderVocabMode(scene);
+      });
+    });
+  }
+
+  // ============================================
+  // MODE 3: वाक्य खेल (JUMBLED SENTENCE PUZZLE)
+  // ============================================
+  renderPuzzleMode(scene) {
+    const pProg = this.state.puzzleProgress;
+    const currentPuzzle = scene.puzzles[pProg.stepIdx];
+
+    if (!currentPuzzle) {
+      // Completed all 5 sentences
+      this.modePanel.innerHTML = `
+        <div class="puzzle-panel" style="text-align: center; padding: 32px 16px;">
+          <div style="font-size: 3.5rem; margin-bottom: 12px;">🎉</div>
+          <h3 style="font-size: 1.5rem; color: var(--accent-saffron-light); margin-bottom: 8px;">अद्भुत! आपने सभी 5 वाक्य सही बना लिए!</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 24px;">आपने 5-स्टेप फॉर्मूले के अनुसार चित्र का संपूर्ण वर्णन पूरा कर लिया है।</p>
+          <div style="display: flex; gap: 10px; justify-content: center;">
+            <button class="btn btn-primary" id="btn-show-model-answer">✍️ आदर्श उत्तर और 5-वाक्य देखें →</button>
+            <button class="btn" id="btn-replay-puzzle">🔄 दोबारा खेलें</button>
+          </div>
+        </div>
+      `;
+
+      this.modePanel.querySelector('#btn-show-model-answer').addEventListener('click', () => {
+        synth.tap();
+        this.switchMode('write');
+      });
+      this.modePanel.querySelector('#btn-replay-puzzle').addEventListener('click', () => {
+        synth.tap();
+        this.state.puzzleProgress = { stepIdx: 0, selectedWords: [], isCompleted: false };
+        this.renderPuzzleMode(scene);
+      });
+
+      // Award stars if not yet awarded
+      if (!this.state.stars[scene.id] || this.state.stars[scene.id] < 3) {
+        this.state.stars[scene.id] = 3;
+        this.saveStars();
+        this.updateProgressUI();
+        this.renderSidebarTopics();
+        this.confetti.burst(80);
+        synth.fanfare();
+      }
+      return;
+    }
+
+    // Prepare bank words (excluding selected words by index)
+    const selectedIndices = pProg.selectedWords;
+    const isSlotFilled = selectedIndices.length === currentPuzzle.correctWords.length;
+
+    this.modePanel.innerHTML = `
+      <div class="puzzle-panel">
+        <div class="puzzle-header">
+          <span class="puzzle-step-badge">कदम ${currentPuzzle.step} / 5 (Step ${currentPuzzle.step})</span>
+          <span style="font-size: 0.84rem; color: var(--text-muted);">शब्दों पर टैप करके वाक्य जोड़ें</span>
+        </div>
+
+        <div>
+          <div class="puzzle-prompt">${currentPuzzle.promptHi}</div>
+          ${this.state.showEnglish ? `<div class="puzzle-prompt-english">🌐 ${currentPuzzle.promptEn}</div>` : ''}
+        </div>
+
+        <!-- Answer Slot Area -->
+        <div class="puzzle-slot-area ${isSlotFilled ? 'filled' : ''}" id="puzzle-slot">
+          ${selectedIndices.length === 0
+            ? '<div class="puzzle-slot-placeholder">यहाँ शब्द जोड़कर वाक्य बनाएं (Tap words below to arrange sentence)</div>'
+            : selectedIndices.map((origIdx, slotPos) => {
+                const item = currentPuzzle.scrambledWords[origIdx];
+                return `
+                  <button class="puzzle-word-chip in-slot" data-slot-pos="${slotPos}">
+                    <span>${item.hi}</span>
+                    ${this.state.showEnglish ? `<span class="chip-en">${item.en}</span>` : ''}
+                  </button>
+                `;
+              }).join('')
+          }
+        </div>
+
+        <!-- Word Bank -->
+        <div>
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 8px;">उपलब्ध शब्द (Word Bank):</div>
+          <div class="puzzle-bank" id="puzzle-bank">
+            ${currentPuzzle.scrambledWords.map((item, idx) => {
+              const isUsed = selectedIndices.includes(idx);
+              if (isUsed) return '';
+              return `
+                <button class="puzzle-word-chip" data-idx="${idx}">
+                  <span>${item.hi}</span>
+                  ${this.state.showEnglish ? `<span class="chip-en">${item.en}</span>` : ''}
+                </button>
+              `;
+            }).join('')}
+          </div>
+        </div>
+
+        <!-- Feedback Msg -->
+        <div class="puzzle-feedback" id="puzzle-feedback"></div>
+
+        <!-- Controls -->
+        <div class="puzzle-actions">
+          <div class="puzzle-action-btns">
+            <button class="btn" id="btn-undo-word" ${selectedIndices.length === 0 ? 'disabled' : ''}>↩️ अंतिम शब्द हटाएं (Undo)</button>
+            <button class="btn" id="btn-reset-puzzle">🔄 रीसेट (Clear)</button>
+          </div>
+          <button class="btn btn-primary" id="btn-check-puzzle" ${!isSlotFilled ? 'disabled style="opacity:0.5;"' : ''}>
+            ✓ वाक्य जांचें (Check Answer)
+          </button>
+        </div>
+      </div>
+    `;
+
+    // Bind Bank word tap
+    this.modePanel.querySelectorAll('#puzzle-bank .puzzle-word-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        synth.tap();
+        const idx = parseInt(btn.dataset.idx, 10);
+        this.state.puzzleProgress.selectedWords.push(idx);
+        this.renderPuzzleMode(scene);
+      });
+    });
+
+    // Bind In-Slot tap (removes that word)
+    this.modePanel.querySelectorAll('#puzzle-slot .puzzle-word-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        synth.tap();
+        const slotPos = parseInt(btn.dataset.slotPos, 10);
+        this.state.puzzleProgress.selectedWords.splice(slotPos, 1);
+        this.renderPuzzleMode(scene);
+      });
+    });
+
+    // Undo button
+    this.modePanel.querySelector('#btn-undo-word').addEventListener('click', () => {
+      synth.tap();
+      this.state.puzzleProgress.selectedWords.pop();
+      this.renderPuzzleMode(scene);
+    });
+
+    // Reset button
+    this.modePanel.querySelector('#btn-reset-puzzle').addEventListener('click', () => {
+      synth.tap();
+      this.state.puzzleProgress.selectedWords = [];
+      this.renderPuzzleMode(scene);
+    });
+
+    // Check Answer button
+    this.modePanel.querySelector('#btn-check-puzzle').addEventListener('click', () => {
+      const fb = this.modePanel.querySelector('#puzzle-feedback');
+      const slot = this.modePanel.querySelector('#puzzle-slot');
+
+      // Form user sentence
+      const userWords = selectedIndices.map(i => currentPuzzle.scrambledWords[i].hi);
+      const isCorrect = userWords.join(' ') === currentPuzzle.correctWords.join(' ');
+
+      if (isCorrect) {
+        synth.success();
+        this.confetti.burst(30);
+        slot.className = 'puzzle-slot-area filled correct';
+        fb.className = 'puzzle-feedback show success';
+        fb.innerHTML = `
+          <strong>🎉 बिल्कुल सही! (Perfect!)</strong><br>
+          ${currentPuzzle.fullSentenceHi}
+          ${this.state.showEnglish ? `<br><small style="color:var(--text-secondary);">🌐 ${currentPuzzle.fullSentenceEn}</small>` : ''}
+        `;
+
+        setTimeout(() => {
+          this.state.puzzleProgress.stepIdx++;
+          this.state.puzzleProgress.selectedWords = [];
+          this.renderPuzzleMode(scene);
+        }, 1800);
+
+      } else {
+        synth.error();
+        slot.className = 'puzzle-slot-area filled wrong';
+        fb.className = 'puzzle-feedback show wrong';
+        fb.innerHTML = `
+          <strong>❌ थोड़ा क्रम गलत हो गया (Order is incorrect):</strong><br>
+          शब्दों के सही स्थान पर ध्यान दें। पहले कर्ता, फिर कर्म व विशेषण, और अंत में क्रिया आती है।
+        `;
+      }
+    });
+  }
+
+  // ============================================
+  // MODE 4: 5-वाक्य रचना (GUIDED WRITING & MODEL)
+  // ============================================
+  renderWriteMode(scene) {
+    const ans = scene.modelAnswer;
+
+    this.modePanel.innerHTML = `
+      <div class="write-panel">
+        <!-- Complete Model Answer Card -->
+        <div class="model-answer-card">
+          <div class="model-header">
+            <h4>🏆 आदर्श उत्तर (Complete 5-7 Sentences Model Answer)</h4>
+            <span class="hotspot-counter">CBSE Class 5 परीक्षा प्रारूप</span>
+          </div>
+
+          <div class="model-paragraph-hindi">
+            ${ans.fullParagraphHi}
+          </div>
+
+          ${this.state.showEnglish ? `
+            <div class="model-paragraph-english">
+              <strong>English Translation:</strong><br>
+              ${ans.fullParagraphEn}
+            </div>
+          ` : ''}
+
+          <!-- Exam Tips -->
+          <div class="rule-summary-card" style="margin-bottom:0; background:rgba(255,255,255,0.02);">
+            <h4>💡 परीक्षा में पूरे अंक पाने के टिप्स:</h4>
+            <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">
+              ${ans.tips.map(tip => `<li>${tip}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+
+        <!-- 5-Step Formula Breakdown -->
+        <div class="steps-breakdown-list">
+          <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary);">
+            📋 5-स्टेप फॉर्मूला संरचना (Step-by-Step Sentence Analysis):
+          </h4>
+          ${ans.steps.map(s => `
+            <div class="step-item-card">
+              <div class="step-badge-mini">${s.num}</div>
+              <div class="step-item-content">
+                <div class="step-item-role">${s.role}</div>
+                <div class="step-item-sentence-hi">${s.hi}</div>
+                ${this.state.showEnglish ? `<div class="step-item-sentence-en">🌐 ${s.en}</div>` : ''}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- Student Self Practice Editor -->
+        <div class="student-editor-card">
+          <h4>✍️ अपना उत्तर यहाँ लिखकर अभ्यास करें (Student Practice Area):</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">
+            ऊपर दिए गए 5 चरणों का पालन करते हुए चित्र देखकर 5 से 7 वाक्य स्वयं लिखें:
+          </p>
+          <textarea
+            class="student-textarea"
+            id="student-textarea"
+            placeholder="1. यह चित्र ... का है।&#10;2. चित्र में ...&#10;3. बच्चे ...&#10;4. ...&#10;5. अंत में ..."></textarea>
+          
+          <div class="student-editor-footer">
+            <div class="word-counter" id="student-word-counter">शब्द संख्या: 0 शब्द | 0 वाक्य</div>
+            <div class="editor-btns">
+              <button class="btn" id="btn-copy-text">📋 प्रतिलिपि (Copy)</button>
+              <button class="btn btn-primary" id="btn-complete-practice">⭐ अभ्यास पूर्ण किया!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Editor live word counter
+    const textarea = this.modePanel.querySelector('#student-textarea');
+    const counter = this.modePanel.querySelector('#student-word-counter');
+
+    textarea.addEventListener('input', () => {
+      const text = textarea.value.trim();
+      const words = text ? text.split(/\s+/).length : 0;
+      const sentences = text ? (text.match(/[।?!.]/g) || []).length : 0;
+      counter.textContent = `शब्द संख्या: ${words} शब्द | ${sentences} वाक्य पूर्ण`;
+    });
+
+    // Copy text
+    this.modePanel.querySelector('#btn-copy-text').addEventListener('click', () => {
+      synth.tap();
+      if (textarea.value.trim()) {
+        navigator.clipboard.writeText(textarea.value);
+        this.flash('आपका उत्तर क्लिपबोर्ड पर कॉपी हो गया! (Copied)', 'success');
+      } else {
+        this.flash('कृपया पहले कुछ वाक्य लिखें! (Please write something)', 'info');
+      }
+    });
+
+    // Complete Practice
+    this.modePanel.querySelector('#btn-complete-practice').addEventListener('click', () => {
+      synth.fanfare();
+      this.confetti.burst(60);
+      this.state.stars[scene.id] = 3;
+      this.saveStars();
+      this.updateProgressUI();
+      this.renderSidebarTopics();
+
+      // Show modal
+      this.resultStars.textContent = '⭐⭐⭐';
+      this.resultScore.textContent = '100%';
+      this.resultStarsCount.textContent = '3';
+      this.resultsModal.classList.add('open');
+    });
+  }
+}
+
+// Initialize on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+  window.chitraApp = new ChitraVarnanApp();
+});
