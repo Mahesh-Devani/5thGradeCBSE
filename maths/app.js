@@ -913,14 +913,16 @@ function renderShortDivisionModule(container) {
       <p>Enter 2 or 3 numbers to compare how Short Division operates for HCF vs LCM:</p>
       
       <div class="calc-inputs">
-        <input type="number" id="sd-num1" class="calc-input" value="144" min="2" max="999">
-        <input type="number" id="sd-num2" class="calc-input" value="216" min="2" max="999">
-        <input type="number" id="sd-num3" class="calc-input" value="288" min="2" max="999">
+        <div class="calc-inputs-row">
+          <input type="number" id="sd-num1" class="calc-input" value="144" min="2" max="999" placeholder="Num 1">
+          <input type="number" id="sd-num2" class="calc-input" value="216" min="2" max="999" placeholder="Num 2">
+          <input type="number" id="sd-num3" class="calc-input" value="288" min="2" max="999" placeholder="Num 3">
+        </div>
         <button class="btn btn-primary" id="btn-calc-sd">Generate Division Ladders 🪜</button>
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.25rem;" id="sd-results-grid">
+    <div class="sd-results-grid" id="sd-results-grid">
       <!-- Generated below -->
     </div>
   `;
@@ -1006,9 +1008,11 @@ function renderLongDivisionModule(container) {
       <p>Enter 2 or 3 numbers to see the step-by-step division brackets (from School Worksheet Q III.3):</p>
       
       <div class="calc-inputs">
-        <input type="number" id="ld-num1" class="calc-input" value="96" min="2" max="9999">
-        <input type="number" id="ld-num2" class="calc-input" value="144" min="2" max="9999">
-        <input type="number" id="ld-num3" class="calc-input" value="192" min="2" max="9999">
+        <div class="calc-inputs-row">
+          <input type="number" id="ld-num1" class="calc-input" value="96" min="2" max="9999" placeholder="Num 1">
+          <input type="number" id="ld-num2" class="calc-input" value="144" min="2" max="9999" placeholder="Num 2">
+          <input type="number" id="ld-num3" class="calc-input" value="192" min="2" max="9999" placeholder="Num 3">
+        </div>
         <button class="btn btn-primary" id="btn-calc-ld">Calculate Long Division ➗</button>
       </div>
     </div>
@@ -1112,9 +1116,11 @@ function renderProductFormulaModule(container) {
       <p>Enter any 2 numbers to verify that their product equals the product of their HCF and LCM:</p>
       
       <div class="calc-inputs">
-        <input type="number" id="rel-num1" class="calc-input" value="48" min="1" max="999">
-        <span style="font-size: 1.2rem; font-weight: bold;">×</span>
-        <input type="number" id="rel-num2" class="calc-input" value="32" min="1" max="999">
+        <div class="calc-inputs-row">
+          <input type="number" id="rel-num1" class="calc-input" value="48" min="1" max="999" placeholder="Number a">
+          <span style="font-size: 1.2rem; font-weight: bold; align-self: center;">×</span>
+          <input type="number" id="rel-num2" class="calc-input" value="32" min="1" max="999" placeholder="Number b">
+        </div>
         <button class="btn btn-primary" id="btn-verify-product">Verify Relation ⚖️</button>
       </div>
 
@@ -1133,7 +1139,7 @@ function renderProductFormulaModule(container) {
 
     const res = container.querySelector('#product-verification-result');
     res.innerHTML = `
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.75rem;">
+      <div class="product-verify-grid">
         <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 8px;">
           <strong>Left Side (Product of Numbers):</strong><br>
           ${a} × ${b} = <span style="font-size: 1.2rem; font-weight: bold; color: var(--accent-amber-light);">${prodNums}</span>
@@ -1166,7 +1172,7 @@ function renderProductFormulaModule(container) {
 /* Module 5: Co-Primes & Twin Primes */
 function renderCoprimesModule(container) {
   container.innerHTML = `
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+    <div class="coprimes-grid">
       <div class="decision-card hcf-theme">
         <h4>🤝 Co-Prime Numbers</h4>
         <p>Two numbers are co-prime if their <strong>Highest Common Factor (HCF) is strictly 1</strong>.</p>
@@ -1202,8 +1208,10 @@ function renderCoprimesModule(container) {
       <p>Enter any two numbers to inspect whether they are co-prime and/or twin prime:</p>
       
       <div class="calc-inputs">
-        <input type="number" id="test-num1" class="calc-input" value="8" min="1" max="999">
-        <input type="number" id="test-num2" class="calc-input" value="9" min="1" max="999">
+        <div class="calc-inputs-row">
+          <input type="number" id="test-num1" class="calc-input" value="8" min="1" max="999" placeholder="Number a">
+          <input type="number" id="test-num2" class="calc-input" value="9" min="1" max="999" placeholder="Number b">
+        </div>
         <button class="btn btn-primary" id="btn-test-pair">Test Numbers 🔬</button>
       </div>
 

@@ -839,6 +839,32 @@ body::after {
   border: 1px solid var(--border-glass);
 }
 
+.calc-inputs-row {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.sd-results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.product-verify-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.coprimes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
 /* ==================== PRACTICE MODE ==================== */
 .practice-container {
   max-width: 900px;
@@ -1251,26 +1277,196 @@ body::after {
   }
 
   .top-bar {
-    padding: 0.65rem 1rem 0.5rem 1rem;
+    padding: 0.65rem 0.85rem 0.5rem 0.85rem;
+    gap: 0.5rem;
   }
   .top-bar-title-wrap h2 {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
   .top-bar-title-wrap p {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
   }
 
   .content-viewport {
-    padding: 1rem;
+    padding: 0.75rem;
   }
 
+  /* Horizontal touch scrolling subnavs */
+  .learn-subnav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.35rem;
+    gap: 0.4rem;
+  }
+  .learn-subnav::-webkit-scrollbar {
+    display: none;
+  }
+  .learn-pill {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    padding: 0.45rem 0.75rem;
+  }
+
+  .skill-filter-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.35rem;
+    gap: 0.4rem;
+  }
+  .skill-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .skill-filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.78rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  /* Card paddings and spacing */
+  .learn-card {
+    padding: 1.15rem 0.85rem;
+    border-radius: var(--radius-md);
+    gap: 1rem;
+  }
+  .learn-card-title h3 {
+    font-size: 1.15rem;
+  }
+  .concept-lead {
+    font-size: 0.95rem;
+  }
+  .question-card {
+    padding: 1.15rem 0.85rem;
+    border-radius: var(--radius-md);
+    gap: 1rem;
+  }
+  .question-prompt {
+    font-size: 1.02rem;
+  }
+  .calc-card {
+    padding: 1rem 0.85rem;
+  }
+
+  /* Input stacking */
+  .calc-inputs {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.6rem;
+  }
+  .calc-inputs-row {
+    display: flex;
+    width: 100%;
+    gap: 0.45rem;
+  }
+  .calc-inputs-row .calc-input {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0.55rem 0.4rem;
+    font-size: 0.95rem;
+  }
+  .calc-inputs .btn {
+    width: 100%;
+    min-height: 44px;
+    font-size: 0.95rem;
+  }
+
+  /* Grids to single column */
   .decision-matrix {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .sd-results-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .product-verify-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .coprimes-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
+  /* Division ladders on mobile */
+  .ladder-container {
+    padding: 1rem 0.75rem;
+  }
+  .ladder-table {
+    font-size: 0.95rem;
+  }
+  .ladder-divisor {
+    width: 38px;
+    padding-right: 0.5rem;
+  }
   .ladder-values {
-    gap: 0.75rem;
+    gap: 0.6rem;
+    padding: 0.35rem 0.5rem;
+  }
+  .ladder-diff-callout {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+
+  /* Formula box on mobile */
+  .formula-box {
+    padding: 1rem 0.75rem;
+  }
+  .formula-headline {
+    font-size: 1.05rem;
+    line-height: 1.4;
+  }
+  .formula-subs {
+    flex-direction: column;
+    gap: 0.45rem;
+    align-items: stretch;
+    margin-top: 0.6rem;
+  }
+  .formula-sub-item {
+    text-align: center;
+    font-size: 0.82rem;
     padding: 0.35rem 0.6rem;
+  }
+
+  /* Euclidean Long Division steps on mobile */
+  .euclid-steps {
+    padding: 0.85rem;
+    font-size: 0.88rem;
+  }
+  .euclid-step {
+    padding: 0.6rem;
+    gap: 0.6rem;
+  }
+
+  /* Option buttons on mobile */
+  .option-btn {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.92rem;
+    min-height: 46px;
+  }
+  .option-label {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+  }
+
+  /* Results modal on mobile */
+  .modal-card {
+    padding: 1.5rem 1rem;
+  }
+  .result-emoji {
+    font-size: 2.75rem;
+  }
+  .stat-num {
+    font-size: 1.25rem;
   }
 }
 
