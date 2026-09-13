@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive SST Map Practice for Class 5 CBSE students. Practice Saudi Arabia, World Equatorial Regions, Major Deserts, and Africa DRC maps with quizzes and printable worksheets.">
+  <title>SST Map Master — Class 5 CBSE Practice</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
+</head>
+<body>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Feedback Flash -->
+  <div class="feedback-flash" id="feedback-flash"></div>
+
+  <!-- Learn Mode Tooltip -->
+  <div class="learn-tooltip" id="learn-tooltip"></div>
+
+  <div class="app-container">
+
+    <!-- ==================== SIDEBAR ==================== -->
+    <aside class="sidebar no-print">
+      <a href="../index.html" class="back-to-home" id="back-to-home">
+        ← Back to Home
+      </a>
+      <div class="sidebar-logo">
+        <h1>🗺️ SST Map Master</h1>
+        <p>Class 5 CBSE — I Term</p>
+      </div>
+
+      <div class="sidebar-section-title">Map Topics</div>
+      <div id="sidebar-maps"></div>
+
+      <div class="progress-section">
+        <h4>Overall Progress</h4>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-label" id="progress-label">0 / 12 stars earned</div>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="main-content">
+
+      <!-- Top Bar -->
+      <div class="top-bar no-print">
+        <div class="top-bar-title">
+          <h2 id="top-bar-title">SST Map Master</h2>
+          <p id="top-bar-subtitle">Select a map topic to get started</p>
+        </div>
+
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-mode="learn" id="tab-learn">📖 Learn</button>
+          <button class="mode-tab" data-mode="quiz" id="tab-quiz">❓ Quiz</button>
+          <button class="mode-tab" data-mode="timed" id="tab-timed">⏱️ Timed</button>
+        </div>
+
+        <div class="top-bar-actions">
+          <button class="btn" id="btn-print" title="Print Worksheet">
+            🖨️ Print Worksheet
+          </button>
+          <button class="btn btn-icon" id="btn-reset" title="Reset">
+            🔄
+          </button>
+        </div>
+      </div>
+
+      <!-- Welcome Screen -->
+      <div class="welcome-screen" id="welcome-screen">
+        <div class="welcome-icon">🗺️</div>
+        <h2>Welcome to SST Map Master!</h2>
+        <p>Master your Social Science maps with interactive practice. Choose a map topic from the sidebar to begin your journey!</p>
+        <div class="welcome-features">
+          <div class="welcome-feature">
+            <div class="feature-icon">📖</div>
+            <h4>Learn</h4>
+            <p>Study maps with labels and info</p>
+          </div>
+          <div class="welcome-feature">
+            <div class="feature-icon">❓</div>
+            <h4>Quiz</h4>
+            <p>Test your knowledge interactively</p>
+          </div>
+          <div class="welcome-feature">
+            <div class="feature-icon">🖨️</div>
+            <h4>Print</h4>
+            <p>Print worksheets for practice</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map Area -->
+      <div class="map-area" id="map-area" style="display: none;">
+        <div class="map-container-wrapper">
+          <div class="zoom-controls no-print" id="zoom-controls">
+            <button class="zoom-btn" id="btn-zoom-in" title="Zoom In (or Scroll Up)">➕</button>
+            <button class="zoom-btn" id="btn-zoom-reset" title="Reset Zoom">100%</button>
+            <button class="zoom-btn" id="btn-zoom-out" title="Zoom Out (or Scroll Down)">➖</button>
+          </div>
+          <div class="map-container" id="map-svg-container">
+            <!-- SVG map rendered here by JS -->
+          </div>
+        </div>
+        <div class="info-panel" id="info-panel">
+          <!-- Quiz prompt, score, legend rendered here -->
+        </div>
+      </div>
+
+      <!-- Print Worksheet Container (hidden on screen) -->
+      <div class="print-worksheet" id="print-worksheet"></div>
+
+    </main>
+  </div>
+
+  <!-- ==================== RESULTS MODAL ==================== -->
+  <div class="modal-overlay" id="results-modal">
+    <div class="modal">
+      <div class="result-icon">🏆</div>
+      <h3>Great Job!</h3>
+      <div class="stars-display">⭐⭐⭐</div>
+      <p>You completed the quiz!</p>
+      <div class="result-stats">
+        <div class="result-stat">
+          <div class="stat-value" id="result-correct">0</div>
+          <div class="stat-label">Correct</div>
+        </div>
+        <div class="result-stat">
+          <div class="stat-value" id="result-total">0</div>
+          <div class="stat-label">Total</div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" onclick="retryQuiz()">🔁 Try Again</button>
+        <button class="btn" onclick="closeResultsModal(); setMode('learn');">📖 Review</button>
+        <button class="btn" onclick="closeResultsModal()">✖ Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== WORKSHEET MODAL ==================== -->
+  <div class="modal-overlay worksheet-modal" id="worksheet-modal">
+    <div class="modal">
+      <div class="result-icon">🖨️</div>
+      <h3>Print Worksheet</h3>
+      <p>Choose a worksheet type to print</p>
+      <div class="worksheet-options">
+        <div class="worksheet-option selected" data-type="blank" onclick="selectWorksheetType('blank')">
+          <div class="ws-icon">📝</div>
+          <h5>Blank Outline</h5>
+          <p>Numbered regions, fill in the names</p>
+        </div>
+        <div class="worksheet-option" data-type="labeled" onclick="selectWorksheetType('labeled')">
+          <div class="ws-icon">🏷️</div>
+          <h5>Labeled Reference</h5>
+          <p>All names visible for study</p>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" onclick="printWorksheet()">🖨️ Print Now</button>
+        <button class="btn" onclick="closeWorksheetModal()">✖ Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive learning app for 5th Grade CBSE students. Practice Social Science Maps, English Grammar, Maths, and more with quizzes, games, and printable worksheets.">
+  <title>5th Grade CBSE — Interactive Learning Hub</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+
+  <div class="page-container">
+
+    <!-- ==================== HERO ==================== -->
+    <header class="hero">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        CBSE Curriculum 2025–26
+      </div>
+      <h1><span class="gradient-text">5th Grade CBSE</span></h1>
+      <p class="hero-class">Interactive Learning Hub</p>
+      <p class="hero-subtitle">
+        Master your subjects with interactive quizzes, visual learning tools, and printable worksheets — all aligned to the CBSE curriculum.
+      </p>
+    </header>
+
+    <!-- ==================== SUBJECTS GRID ==================== -->
+    <div class="section-header">
+      <div class="section-line"></div>
+      <h2>Choose a Subject</h2>
+      <div class="section-line" style="background: linear-gradient(270deg, rgba(255,255,255,0.08) 0%, transparent 100%);"></div>
+    </div>
+
+    <div class="subjects-grid" id="subjects-grid">
+
+      <!-- Social Science Maps — ACTIVE -->
+      <a href="social_sicence_maps/index.html" class="subject-card" id="card-sst-maps">
+        <div class="card-icon theme-blue">🗺️</div>
+        <div class="card-content">
+          <h3>Social Science Maps</h3>
+          <p>Practice SST maps with interactive quizzes — Saudi Arabia, World Deserts, Equatorial Regions, and DRC & Neighbours.</p>
+        </div>
+        <div class="card-tags">
+          <span class="card-tag tag-active">✅ 4 Maps</span>
+          <span class="card-tag">📖 Learn</span>
+          <span class="card-tag">❓ Quiz</span>
+          <span class="card-tag">⏱️ Timed</span>
+          <span class="card-tag">🖨️ Print</span>
+        </div>
+        <div class="card-footer">
+          <div class="card-status status-ready">
+            <span class="status-dot"></span>
+            Ready to Practice
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </a>
+
+      <!-- English Grammar — COMING SOON -->
+      <div class="subject-card coming-soon" id="card-english">
+        <span class="coming-soon-badge">🔒 Coming Soon</span>
+        <div class="card-icon theme-green">📝</div>
+        <div class="card-content">
+          <h3>English Grammar</h3>
+          <p>Master tenses, parts of speech, sentence structure, comprehension passages, and creative writing exercises.</p>
+        </div>
+        <div class="card-tags">
+          <span class="card-tag">Nouns & Pronouns</span>
+          <span class="card-tag">Tenses</span>
+          <span class="card-tag">Comprehension</span>
+        </div>
+        <div class="card-footer">
+          <div class="card-status status-coming">
+            <span class="status-dot"></span>
+            In Development
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+
+      <!-- Maths — COMING SOON -->
+      <div class="subject-card coming-soon" id="card-maths">
+        <span class="coming-soon-badge">🔒 Coming Soon</span>
+        <div class="card-icon theme-amber">🔢</div>
+        <div class="card-content">
+          <h3>Mathematics</h3>
+          <p>Practice arithmetic, fractions, decimals, geometry, and word problems with step-by-step solutions and timed drills.</p>
+        </div>
+        <div class="card-tags">
+          <span class="card-tag">Fractions</span>
+          <span class="card-tag">Geometry</span>
+          <span class="card-tag">Word Problems</span>
+        </div>
+        <div class="card-footer">
+          <div class="card-status status-coming">
+            <span class="status-dot"></span>
+            In Development
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+
+      <!-- Science — COMING SOON -->
+      <div class="subject-card coming-soon" id="card-science">
+        <span class="coming-soon-badge">🔒 Coming Soon</span>
+        <div class="card-icon theme-cyan">🔬</div>
+        <div class="card-content">
+          <h3>Science (EVS)</h3>
+          <p>Explore the human body, plants, animals, environment, and simple machines through interactive diagrams and quizzes.</p>
+        </div>
+        <div class="card-tags">
+          <span class="card-tag">Human Body</span>
+          <span class="card-tag">Plants</span>
+          <span class="card-tag">Environment</span>
+        </div>
+        <div class="card-footer">
+          <div class="card-status status-coming">
+            <span class="status-dot"></span>
+            In Development
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+
+      <!-- Hindi — COMING SOON -->
+      <div class="subject-card coming-soon" id="card-hindi">
+        <span class="coming-soon-badge">🔒 Coming Soon</span>
+        <div class="card-icon theme-pink">🇮🇳</div>
+        <div class="card-content">
+          <h3>हिंदी (Hindi)</h3>
+          <p>अभ्यास करें — व्याकरण, मुहावरे, अपठित गद्यांश, पत्र लेखन और रचनात्मक लेखन के साथ।</p>
+        </div>
+        <div class="card-tags">
+          <span class="card-tag">व्याकरण</span>
+          <span class="card-tag">मुहावरे</span>
+          <span class="card-tag">पत्र लेखन</span>
+        </div>
+        <div class="card-footer">
+          <div class="card-status status-coming">
+            <span class="status-dot"></span>
+            In Development
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="page-footer">
+      <div class="footer-divider"></div>
+      <p>Built with ❤️ for Class 5 CBSE students</p>
+      <p style="margin-top: 4px; font-size: 0.78rem;">Aligned to CBSE / NCERT Curriculum 2025–26</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
