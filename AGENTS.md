@@ -54,6 +54,21 @@ When modifying or creating a subject mini-app:
 ### C. Confetti Particle Canvas
 - For celebratory reward feedback (e.g. 3 stars earned), use the canvas-based confetti particle system rather than heavy third-party CDNs.
 
+### D. CSS Brace Balance & Media Query Isolation (CRITICAL GOTCHA)
+- **Silent Parser Failure**: In vanilla CSS, an unclosed `{` or extra `}` before an `@media` block causes the browser parser to treat the `@media` rule as nested inside the preceding selector. This **silently disables all responsive mobile drawer rules** with ZERO browser console errors!
+- **Mandatory Brace Verification**: Whenever editing any `styles.css` file, always run this command before testing or committing:
+  ```bash
+  node -e "const css=require('fs').readFileSync('<path_to_styles.css>','utf8');let o=0;for(let c of css){if(c==='{')o++;if(c==='}')o--;}console.log('Open braces:',o);"
+  ```
+  The output MUST be `Open braces: 0`.
+- **Mobile Container Overflow**: On mobile screens (`max-width: 860px`), `.app-container` must be styled with:
+  ```css
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
+  ```
+  Ensure `html, body { overflow-x: hidden; width: 100%; }` to prevent horizontal page scrolling.
+
 ---
 
 ## 3. Directory Layout & Link Conventions
@@ -62,8 +77,9 @@ When modifying or creating a subject mini-app:
 - Mini-apps are in subdirectories:
   - `/social_sicence_maps/`
   - `/english_grammer/`
+  - `/hindi_vyakaran/`
 - Navigation links between mini-apps and the landing hub:
-  - From landing page to mini-app: `<a href="english_grammer/index.html">`
+  - From landing page to mini-app: `<a href="hindi_vyakaran/index.html">`
   - From mini-app back to landing page: `<a href="../index.html">`
 - Keep paths relative so the site works both locally via `file://` and on GitHub Pages subpaths (`/5thGradeCBSE/`).
 
@@ -74,16 +90,21 @@ When modifying or creating a subject mini-app:
 Before completing a turn or pushing commits:
 1. **Validate JavaScript Syntax**:
    Run `node -c <path_to_js>` to catch syntax errors or misplaced brackets.
-2. **Browser Subagent Check**:
+2. **Verify CSS Brace Balance**:
+   Run `node -e "const css=require('fs').readFileSync('<path_to_styles.css>','utf8');let o=0;for(let c of css){if(c==='{')o++;if(c==='}')o--;}console.log('Open braces:',o);"` (must be 0).
+3. **Browser Subagent Check**:
    Use `browser_subagent` to open the page at mobile viewport (390x844), test clicks, and verify there is no horizontal scroll (`overflow-x: hidden`).
-3. **Inspect Console**:
+4. **Inspect Console**:
    Ensure zero uncaught exceptions in browser developer console.
-4. **Git Sync**:
+5. **Git Sync**:
    Stage changes, write descriptive commit messages, and push to branch `main`.
 
 ---
 
 ## 5. Architectural References
 
-- Read **[ARCHITECTURE.md](ARCHITECTURE.md)** for data schemas and state machines.
-- Read **[english_grammer/README.md](english_grammer/README.md)** for grammar topic definitions.
+- **System Architecture**: Read **[ARCHITECTURE.md](ARCHITECTURE.md)** for data schemas, state machines, and extension recipes.
+- **English Grammar**: Read **[english_grammer/README.md](english_grammer/README.md)** and **[english_grammer/AGENTS.md](english_grammer/AGENTS.md)**.
+- **Social Science Maps**: Read **[social_sicence_maps/AGENTS.md](social_sicence_maps/AGENTS.md)**.
+- **Hindi Vyakaran**: Read **[hindi_vyakaran/README.md](hindi_vyakaran/README.md)** and **[hindi_vyakaran/AGENTS.md](hindi_vyakaran/AGENTS.md)**.
+

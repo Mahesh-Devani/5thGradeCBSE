@@ -84,30 +84,36 @@ xdg-open index.html
 │   ├── styles.css                  # Map styling, responsive layout & print sheet
 │   ├── app.js                      # SVG coordinate engine, quiz logic & timer
 │   ├── scripts/                    # Map data builders & GeoJSON processors
-│   └── extracted_pages/            # CBSE reference worksheets & syllabus scans
+│   ├── extracted_pages/            # CBSE reference worksheets & syllabus scans
+│   └── AGENTS.md                   # Operational guidelines & Survey of India compliance
 │
 ├── english_grammer/                # Mini-App 2: English Grammar Master
 │   ├── index.html                  # App shell, mobile header & results modal
 │   ├── styles.css                  # Glassmorphic styles, mobile off-canvas drawer
 │   ├── app.js                      # Grammar lesson data, exercise engine & timer
-│   └── README.md                   # Dedicated English Grammar module guide
+│   ├── README.md                   # Pedagogical concepts & curriculum catalog
+│   └── AGENTS.md                   # DOM contract, synthesizer, & extension recipes
 │
-└── hindi_vyakaran/                 # Mini-App 3: Hindi Vyakaran (चित्र वर्णन + वाक्यांश)
+└── hindi_vyakaran/                 # Mini-App 3: Hindi Vyakaran (वाक्यांश + चित्र वर्णन)
     ├── index.html                  # App shell, unified curriculum selector & drawer
     ├── styles.css                  # Saffron theme, match cards, quiz & mobile drawer
     ├── app.js                      # Chitra Varnan scenes & Vakyansh interactive engine
-    └── README.md                   # Dedicated Hindi guide (Formulas, clues & modes)
+    ├── images/                     # Real exam photos & vector illustrations
+    ├── README.md                   # Dedicated Hindi guide (Root formulas & clues)
+    └── AGENTS.md                   # Dual-module state, real vs cartoon photo mapping & recipes
 ```
 
 ---
 
 ## 🛠️ Architecture & Development Standards
 
-For in-depth technical details on state management, data schemas, cartography compliance, responsive design rules, and step-by-step guides for adding new subjects or exercises, please read:
+For in-depth technical details on state management, data schemas, cartography compliance, responsive design rules, and step-by-step guides for adding new subjects or exercises, please refer to:
 
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** — Architectural design, schemas, and extension guides.
-- **[AGENTS.md](AGENTS.md)** — Operational guidelines, gotchas, and patterns for AI pair programmers.
-- **[english_grammer/README.md](english_grammer/README.md)** — Topic catalog and question authoring guide.
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** — Comprehensive architectural blueprint, data schemas, state machines, and extension recipes.
+- **[AGENTS.md](AGENTS.md)** — Core operational guidelines, mobile drawer stack rules, CSS brace checks, and verification workflow.
+- **[english_grammer/README.md](english_grammer/README.md)** & **[english_grammer/AGENTS.md](english_grammer/AGENTS.md)** — English Grammar lessons, exercises, Web Audio patterns, and extension steps.
+- **[social_sicence_maps/AGENTS.md](social_sicence_maps/AGENTS.md)** — Map projection mathematics, official Survey of India boundary enforcement, and rebuild scripts.
+- **[hindi_vyakaran/README.md](hindi_vyakaran/README.md)** & **[hindi_vyakaran/AGENTS.md](hindi_vyakaran/AGENTS.md)** — Hindi Vyakaran dual-module architecture, real vs cartoon hotspot mapping, B&W print simulator, and DOM contract.
 
 ---
 

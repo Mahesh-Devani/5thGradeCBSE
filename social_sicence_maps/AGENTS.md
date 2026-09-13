@@ -7,12 +7,12 @@
 ## 📌 Project Overview
 - **Project Name:** SST Map Master — Class 5 CBSE Practice
 - **Primary Users:** Class 5 CBSE students (e.g. studying for school Social Studies / SST exams) and parents/teachers.
-- **Curriculum Source:** Based directly on the school worksheet PDF [`I_TERM_SST_MAP_1789047876.pdf`](file:///c:/Users/mdevani/images_pdf/tools/social_sicence_maps/I_TERM_SST_MAP_1789047876.pdf).
+- **Curriculum Source:** Based directly on the school worksheet PDF [`I_TERM_SST_MAP_1789047876.pdf`](extracted_pages/).
 - **Core Files:**
-  - [`index.html`](file:///c:/Users/mdevani/images_pdf/tools/social_sicence_maps/index.html): Semantic HTML5 structure.
-  - [`styles.css`](file:///c:/Users/mdevani/images_pdf/tools/social_sicence_maps/styles.css): Curated modern CSS design system (dark/light themes, animations, print styling).
-  - [`app.js`](file:///c:/Users/mdevani/images_pdf/tools/social_sicence_maps/app.js): Pure Vanilla JavaScript application logic and bundled geographic SVG path data.
-  - [`scripts/build_app.py`](file:///c:/Users/mdevani/images_pdf/tools/social_sicence_maps/scripts/build_app.py): Regeneration script that bundles map path data and application logic into `app.js`.
+  - [`index.html`](index.html): Semantic HTML5 structure.
+  - [`styles.css`](styles.css): Curated modern CSS design system (dark/light themes, animations, print styling).
+  - [`app.js`](app.js): Pure Vanilla JavaScript application logic and bundled geographic SVG path data.
+  - [`scripts/build_app.py`](scripts/build_app.py): Regeneration script that bundles map path data and application logic into `app.js`.
 
 ---
 
@@ -22,7 +22,7 @@
 > 1. **Jammu & Kashmir and Ladakh** (including Pakistan-occupied Jammu & Kashmir / Gilgit-Baltistan and Aksai Chin) MUST be shown as integral parts of India (the northern "crown").
 > 2. **Arunachal Pradesh** MUST be shown as part of India.
 > 3. Standard open international datasets (like Natural Earth standard `admin_0_countries`) default to de facto control lines which truncate Kashmir and remove Aksai Chin. **DO NOT** use default Natural Earth Admin-0 country polygons for India.
-> 4. For India, always use the Survey of India composite boundary (available in [`scripts/india_world_svg.txt`](file:///c:/Users/mdevani/images_pdf/tools/social_sicence_maps/scripts/india_world_svg.txt)).
+> 4. For India, always use the Survey of India composite boundary (available in [`scripts/india_world_svg.txt`](scripts/india_world_svg.txt)).
 
 ---
 
@@ -71,6 +71,11 @@ When modifying code, **DO NOT rename or break these DOM element IDs**:
 
 | Element ID in `index.html` | Purpose in `app.js` |
 |---|---|
+| `sidebar` | Sidebar container (`.sidebar-open` applied on mobile drawer toggle) |
+| `sidebar-backdrop` | Blurred dimming overlay when mobile drawer is open |
+| `sidebar-close-btn` | Close button (✕) inside the mobile drawer |
+| `menu-toggle-btn` | Hamburger button (☰ Maps) in mobile sticky top bar |
+| `mobile-home-btn` | Quick home navigation button (🏠) in mobile top bar |
 | `sidebar-maps` | Container where sidebar map cards are rendered by `renderSidebar()` |
 | `progress-fill` | Overall progress bar fill element (`style.width = pct + '%'`) |
 | `progress-label` | Overall progress label text (e.g. `"X / 12 stars earned"`) |
@@ -90,6 +95,19 @@ When modifying code, **DO NOT rename or break these DOM element IDs**:
 
 ---
 
+## 📱 Mobile-First Drawer & CSS Isolation Gotcha
+
+1. **CSS Brace Balance Check**:
+   Before committing changes to `styles.css`, run:
+   ```bash
+   node -e "const css=require('fs').readFileSync('styles.css','utf8');let o=0;for(let c of css){if(c==='{')o++;if(c==='}')o--;}console.log('Open braces:',o);"
+   ```
+   An unclosed brace before `@media (max-width: 860px)` silently disables mobile drawer styling without any console errors.
+2. **Mobile Overflow Isolation**:
+   On mobile viewports, `.app-container` must be `flex-direction: column; width: 100%; overflow-x: hidden;` so the map SVG viewport scales cleanly without causing horizontal body scrolling.
+
+---
+
 ## 🛠️ How to Rebuild `app.js`
 
 If you ever modify map data or geographic paths:
@@ -106,7 +124,7 @@ If you ever modify map data or geographic paths:
    node -c app.js
    ```
 4. Verify visually in a browser:
-   Open `file:///c:/Users/mdevani/images_pdf/tools/social_sicence_maps/index.html`.
+   Open `social_sicence_maps/index.html` (or serve locally).
 
 ---
 

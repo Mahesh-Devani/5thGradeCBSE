@@ -183,11 +183,83 @@ Instead of downloading external audio files, `app.js` synthesizes sounds using t
 
 ---
 
+### C. हिंदी व्याकरण व रचना (`/hindi_vyakaran/`)
+
+#### Dual-Module State Model
+```javascript
+const state = {
+  activeModule: 'vakyansh',     // 'vakyansh' (Default) | 'chitra'
+  currentSceneId: 'park',       // Active picture scene ('park', 'rainy', 'school', etc.)
+  imageViewMode: 'real',        // 'real' (Default Exam Photo) | 'cartoon' (Vector SVG)
+  isBWMode: false,              // false (Default Full Color) | true (B&W Exam Print)
+  chitraMode: 'explore',        // 'explore' | 'vocab' | 'puzzle' | 'write'
+  vakyanshMode: 'learn',        // 'learn' | 'match' | 'quiz' | 'challenge'
+  showEnglish: true,            // Real-time bilingual gloss toggle
+  activeHotspotId: null,
+  vocabFilter: 'all',
+  vakyanshFilter: 'all',        // 'all' | 'behavior' | 'action' | 'nature'
+  stars: {},                    // Chitra Varnan stars per scene (0-3 each)
+  vakyanshStars: 0              // Vakyansh challenge stars (0-3)
+};
+```
+
+#### Vakyansh Data Schema (`VAKYANSH_DATA`)
+```javascript
+{
+  id: 1,
+  phraseHi: 'जो कभी न मरे',
+  phraseEn: 'One who never dies',
+  wordHi: 'अमर',
+  wordEn: 'Immortal',
+  translit: 'Amar',
+  formula: 'अ (नहीं) + मर (मरना)',
+  clue: 'देवलोक के देवता और देश के अमर शहीद कभी नहीं मरते।',
+  exampleHi: 'भगत सिंह देश के लिए अपना बलिदान देकर अमर हो गए।',
+  exampleEn: 'Bhagat Singh became immortal by sacrificing his life for the nation.',
+  oppositeHi: 'मर्त्य (नाशवान)',
+  category: 'nature' // 'behavior' | 'action' | 'nature'
+}
+```
+
+#### Chitra Varnan Scene Schema (`SCENE_DATA`)
+```javascript
+{
+  id: 'park',
+  title: 'बगीचा / बाल उद्यान',
+  titleEn: 'Children Park & Playground',
+  subtitle: 'हरे-भरे पेड़, झूले, फिसलपट्टी और खेलते हुए बच्चे',
+  icon: '🌳',
+  realImage: 'images/scene_park_real.jpg',
+  hotspotsReal: [{ id: 1, x: 39, y: 55 }, ...],  // Coordinates mapped to real exam photo
+  hotspots: [                                      // Coordinates & linguistic data for SVG
+    {
+      id: 1, x: 35, y: 57,
+      title: 'झूला (Swing)',
+      translit: 'Jhoola',
+      meaningEn: 'Swing',
+      type: 'संज्ञा (Noun)',
+      sentenceHi: 'एक बच्चा आनंद से झूले पर झूल रहा है।',
+      sentenceEn: 'A child is joyfully swinging on the swing.'
+    },
+    ...
+  ],
+  svg: '<svg>...</svg>',
+  puzzleSteps: [ ... ],
+  modelAnswer: { steps: [...], fullParagraphHi: '...', fullParagraphEn: '...', tips: [...] }
+}
+```
+
+#### Exam Simulation Controls
+- **Real Photo vs Vector Cartoon**: Toggled via `#btn-view-real` and `#btn-view-cartoon`. Numbered hotspots dynamically remap between `hotspotsReal` and `hotspots`.
+- **Black & White Exam Paper Print**: Toggled via `#btn-toggle-bw`. Applies `.bw-exam-mode` with CSS `filter: grayscale(100%) contrast(1.25) brightness(0.95);` to simulate photocopied school examination question sheets.
+
+---
+
 ## 5. Developer Recipes & Extension Guides
 
 ### Recipe 1: Adding a New English Grammar Topic
 1. Open `english_grammer/app.js`.
-2. Add a new key to the `TOPIC_DATA` object matching the schema in Section 4.
+2. Add a new key to the `TOPIC_DATA` object matching the schema in Section 4.A.
 3. Include at least 8–12 questions with varied types (`mcq`, `fill`, `spot`).
 4. The sidebar, stars tracker, lesson viewer, and challenge modes will automatically discover and render the new topic with zero additional HTML changes.
 
@@ -216,14 +288,27 @@ Instead of downloading external audio files, `app.js` synthesizes sounds using t
    ```
 4. Create `subject_folder/` following the zero-dependency structure.
 
+### Recipe 3: Adding a New Hindi Vakyansh Statement
+1. Open `hindi_vyakaran/app.js`.
+2. Append a new object to `VAKYANSH_DATA` with `id`, `phraseHi`, `phraseEn`, `wordHi`, `wordEn`, `translit`, `formula`, `clue`, `exampleHi`, `exampleEn`, `oppositeHi`, and `category`.
+3. Add corresponding multiple-choice question(s) to `VAKYANSH_QUIZ_POOL`.
+4. The Learn card grid, search bar, Match Game, Practice Quiz, and 60s Challenge will automatically include the new phrase!
+
+### Recipe 4: Adding a New Chitra Varnan Scene
+1. Save the authentic exam photograph in `hindi_vyakaran/images/scene_<id>_real.jpg`.
+2. In `hindi_vyakaran/app.js`, append a new scene object to `SCENE_DATA` with `id`, `title`, `realImage`, `hotspotsReal`, `hotspots`, `svg`, `puzzleSteps`, and `modelAnswer`.
+3. The sidebar scene list, navigation, hotspot renderer, and progress tracker will automatically recognize the new scene.
+
 ---
 
 ## 6. Testing & Quality Checklist
 
 Before committing changes to this repository, verify:
 
-- [ ] **Mobile Viewport (390px × 844px)**: Drawer slides out cleanly, backdrop dims background, all buttons have min 44px touch height, no horizontal scrolling.
+- [ ] **CSS Brace Balance (MANDATORY)**: Run `node -e "const css=require('fs').readFileSync('<path_to_css>','utf8');let o=0;for(let c of css){if(c==='{')o++;if(c==='}')o--;}console.log(o);"` to ensure open brace count is strictly `0`. (An unclosed brace silently kills all subsequent `@media` queries!).
+- [ ] **Mobile Viewport (390px × 844px)**: Drawer slides out cleanly, backdrop dims background, all buttons have min 44px touch height, no horizontal scrolling (`overflow-x: hidden`).
 - [ ] **Desktop Viewport (1280px × 800px)**: Sidebar stays pinned, layout fills viewport comfortably.
 - [ ] **Zero Console Errors**: Open Developer Tools (`F12`) and ensure 0 uncaught exceptions or network 404s.
+- [ ] **Bilingual Toggle Verification**: English translation labels appear and disappear correctly when toggled.
 - [ ] **Keyboard & Focus Accessibility**: Tab key navigates between interactive buttons; `Escape` key closes drawers/modals.
 - [ ] **Cartographic Integrity**: Indian boundaries strictly respect Survey of India demarcations.
