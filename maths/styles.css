@@ -1170,11 +1170,588 @@ body::after {
   text-transform: uppercase;
   margin-top: 0.2rem;
 }
-.modal-actions {
+/* ==================== TOPIC 2: DIVISIBILITY RULES STYLES ==================== */
+
+/* Rules Matrix Filter Row */
+.rules-filter-row {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+  -webkit-overflow-scrolling: touch;
+}
+.rules-filter-row::-webkit-scrollbar {
+  height: 4px;
+}
+.rules-filter-row::-webkit-scrollbar-thumb {
+  background: var(--border-active);
+  border-radius: 4px;
+}
+.rule-filter-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.82rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+.rule-filter-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+}
+.rule-filter-btn.active {
+  background: var(--accent-amber-glow);
+  border-color: var(--accent-amber);
+  color: var(--accent-amber-light);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+}
+
+/* Rules Grid */
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+.rule-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
+  gap: 0.85rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.rule-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+.rule-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rule-badge-pill {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.35rem;
+  background: var(--accent-amber-glow);
+  color: var(--accent-amber-light);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+}
+.rule-category-tag {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+}
+.rule-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+.rule-stmt {
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  line-height: 1.45;
+  background: rgba(0, 0, 0, 0.25);
+  border-left: 3px solid var(--accent-amber);
+  padding: 0.6rem 0.85rem;
+  border-radius: 0 8px 8px 0;
+}
+.rule-why-box {
+  background: rgba(16, 185, 129, 0.07);
+  border: 1px dashed rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  font-size: 0.86rem;
+  color: #d1fae5;
+  line-height: 1.45;
+}
+.rule-why-box strong {
+  color: var(--accent-emerald-light);
+}
+.rule-example-box {
+  background: rgba(99, 102, 241, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  font-size: 0.88rem;
+  color: #e0e7ff;
+}
+.rule-trap-alert {
+  background: rgba(244, 63, 94, 0.08);
+  border-left: 3px solid var(--accent-rose);
+  border-radius: 0 6px 6px 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.82rem;
+  color: #fecdd3;
+}
+
+/* Inspector / Live Tester */
+.tester-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.tester-input-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-glass);
+}
+.tester-label {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+.tester-num-input {
+  background: rgba(15, 23, 42, 0.9);
+  border: 2px solid var(--border-active);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.85rem;
+  width: 180px;
+  text-align: center;
+}
+.tester-num-input:focus {
+  outline: none;
+  border-color: var(--accent-amber-light);
+  box-shadow: 0 0 15px var(--accent-amber-glow);
+}
+.tester-presets {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.tester-preset-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  border-radius: 20px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  touch-action: manipulation;
+}
+.tester-preset-btn:hover {
+  background: var(--accent-amber-glow);
+  border-color: var(--accent-amber);
+  color: var(--accent-amber-light);
+}
+
+/* Divisibility Inspector Table / Grid */
+.inspector-table-container {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-glass);
+  background: rgba(15, 23, 42, 0.6);
+}
+.inspector-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.inspector-table th {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.85rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-glass);
+}
+.inspector-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.92rem;
+  vertical-align: middle;
+}
+.inspector-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+.divisor-cell {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.divisor-chip {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--accent-amber-light);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+.status-badge.pass {
+  background: rgba(16, 185, 129, 0.18);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+.status-badge.fail {
+  background: rgba(244, 63, 94, 0.18);
+  color: #fb7185;
+  border: 1px solid rgba(244, 63, 94, 0.35);
+}
+.reason-text {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.reason-text strong {
+  color: #fff;
+}
+.reason-calc-highlight {
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  color: var(--accent-amber-light);
+}
+
+/* Co-Prime Composite Divisors */
+.coprime-rule-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.coprime-vs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.coprime-box {
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.coprime-box.valid {
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.coprime-box.invalid {
+  background: rgba(244, 63, 94, 0.06);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+.coprime-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.coprime-box-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.coprime-status-tag {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+.coprime-box.valid .coprime-status-tag {
+  background: var(--accent-emerald-glow);
+  color: var(--accent-emerald-light);
+}
+.coprime-box.invalid .coprime-status-tag {
+  background: rgba(244, 63, 94, 0.2);
+  color: #fda4af;
+}
+.counterexample-callout {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  border-left: 3px solid var(--accent-rose);
+}
+
+/* Missing Digit Exam Puzzles */
+.missing-digit-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.puzzle-picker-row {
+  display: flex;
   gap: 0.6rem;
-  margin-top: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+.puzzle-picker-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.85rem;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+.puzzle-picker-btn.active {
+  background: var(--accent-indigo-glow);
+  border-color: var(--accent-indigo);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.25);
+}
+.puzzle-board-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+.puzzle-target-header {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+}
+.puzzle-digits-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.digit-tile {
+  width: 52px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  border-radius: var(--radius-md);
+  background: rgba(15, 23, 42, 0.8);
+  border: 2px solid var(--border-glass);
+  color: #fff;
+}
+.digit-tile.blank-tile {
+  background: var(--accent-amber-glow);
+  border-color: var(--accent-amber);
+  color: var(--accent-amber-light);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+  animation: pulse 2s infinite;
+}
+.candidate-digits-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+}
+.candidate-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.candidate-tiles-row {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.candidate-tile-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  touch-action: manipulation;
+}
+.candidate-tile-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.candidate-tile-btn.selected {
+  background: var(--accent-amber);
+  color: #000;
+  font-weight: 800;
+  border-color: var(--accent-amber-light);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+.puzzle-solution-box {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #cbd5e1;
+  border-left: 4px solid var(--accent-amber);
+}
+
+/* Rule 11 Hopscotch */
+.hopscotch-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.hopscotch-demo-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.hopscotch-number-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-md);
+}
+.hopscotch-digit-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+.hopscotch-digit-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+}
+.hopscotch-digit-box.odd-place {
+  background: rgba(245, 158, 11, 0.2);
+  border: 2px solid var(--accent-amber);
+  color: var(--accent-amber-light);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.25);
+}
+.hopscotch-digit-box.even-place {
+  background: rgba(99, 102, 241, 0.2);
+  border: 2px solid var(--accent-indigo);
+  color: #c7d2fe;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.25);
+}
+.hopscotch-pos-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.hopscotch-pos-label.odd {
+  color: var(--accent-amber-light);
+}
+.hopscotch-pos-label.even {
+  color: #818cf8;
+}
+.hopscotch-calc-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.hop-calc-card {
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.hop-calc-card.card-odd {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+.hop-calc-card.card-even {
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+.hop-calc-card.card-diff {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+.hop-card-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.hop-calc-card.card-odd .hop-card-label { color: var(--accent-amber-light); }
+.hop-calc-card.card-even .hop-card-label { color: #818cf8; }
+.hop-calc-card.card-diff .hop-card-label { color: var(--accent-emerald-light); }
+.hop-card-val {
+  font-size: 1.4rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: #fff;
+}
+.hop-card-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
 }
 
 /* ==================== PRINTABLE WORKSHEET ==================== */
@@ -1462,11 +2039,35 @@ body::after {
   .modal-card {
     padding: 1.5rem 1rem;
   }
-  .result-emoji {
-    font-size: 2.75rem;
+  /* Topic 2 Mobile Responsive Rules */
+  .rules-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
-  .stat-num {
-    font-size: 1.25rem;
+  .tester-input-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .tester-num-input {
+    width: 100%;
+  }
+  .coprime-vs-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .hopscotch-calc-cards {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .digit-tile {
+    width: 44px;
+    height: 52px;
+    font-size: 1.45rem;
+  }
+  .hopscotch-digit-box {
+    width: 44px;
+    height: 44px;
+    font-size: 1.35rem;
   }
 }
 
