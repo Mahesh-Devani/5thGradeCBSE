@@ -953,6 +953,134 @@ const REAL_WORLD_PRESETS = [
 ];
 
 /* ==========================================================================
+   5.7 TOPIC 4: NUMBER PATTERNS DATA & ENGINES
+   ========================================================================== */
+
+const PATTERN_PRESETS = [
+  {
+    id: 'pat_1',
+    title: 'Multiples of 7 (Constant Step)',
+    terms: [7, 14, 21, 28, '?', 42],
+    missingIndex: 4,
+    correctAnswer: 35,
+    options: [32, 35, 34, 36],
+    diffs: ['+7', '+7', '+7', '+7', '+7'],
+    rule: 'Rule: Add 7 to the previous number (+7 step pattern).',
+    explanation: '28 + 7 = 35, and 35 + 7 = 42. Each term is a multiple of 7!'
+  },
+  {
+    id: 'pat_2',
+    title: 'Subtracting 9 (Decreasing Step)',
+    terms: [85, 76, 67, 58, '?', 40],
+    missingIndex: 4,
+    correctAnswer: 49,
+    options: [50, 48, 49, 47],
+    diffs: ['−9', '−9', '−9', '−9', '−9'],
+    rule: 'Rule: Subtract 9 from the previous number (−9 step pattern).',
+    explanation: '58 − 9 = 49, and 49 − 9 = 40. The numbers decrease by 9 each step.'
+  },
+  {
+    id: 'pat_3',
+    title: 'Growing Differences (+2, +4, +6, +8...)',
+    terms: [1, 3, 7, 13, 21, '?'],
+    missingIndex: 5,
+    correctAnswer: 31,
+    options: [29, 31, 33, 30],
+    diffs: ['+2', '+4', '+6', '+8', '+10'],
+    rule: 'Rule: The amount added grows by +2 each step (+2, +4, +6, +8, +10).',
+    explanation: '1 + 2 = 3; 3 + 4 = 7; 7 + 6 = 13; 13 + 8 = 21; 21 + 10 = 31!'
+  },
+  {
+    id: 'pat_4',
+    title: 'Tripling Pattern (Multiplication ×3)',
+    terms: [2, 6, 18, 54, '?'],
+    missingIndex: 4,
+    correctAnswer: 162,
+    options: [108, 162, 144, 156],
+    diffs: ['×3', '×3', '×3', '×3'],
+    rule: 'Rule: Multiply by 3 each step (geometric progression).',
+    explanation: '2 × 3 = 6; 6 × 3 = 18; 18 × 3 = 54; 54 × 3 = 162!'
+  },
+  {
+    id: 'pat_5',
+    title: 'Fibonacci Sequence (Sum of Previous Two)',
+    terms: [1, 1, 2, 3, 5, 8, '?', 21],
+    missingIndex: 6,
+    correctAnswer: 13,
+    options: [11, 12, 13, 14],
+    diffs: ['1+1', '1+2', '2+3', '3+5', '5+8', '8+13'],
+    rule: 'Rule: Each number is the sum of the two numbers immediately before it.',
+    explanation: '5 + 8 = 13, and 8 + 13 = 21!'
+  }
+];
+
+const TRIANGULAR_NUMBERS_DATA = [
+  { n: 1, val: 1, sumText: '1' },
+  { n: 2, val: 3, sumText: '1 + 2 = 3' },
+  { n: 3, val: 6, sumText: '1 + 2 + 3 = 6' },
+  { n: 4, val: 10, sumText: '1 + 2 + 3 + 4 = 10' },
+  { n: 5, val: 15, sumText: '1 + 2 + 3 + 4 + 5 = 15' },
+  { n: 6, val: 21, sumText: '1 + 2 + 3 + 4 + 5 + 6 = 21' },
+  { n: 7, val: 28, sumText: '1 + 2 + 3 + 4 + 5 + 6 + 7 = 28' },
+  { n: 8, val: 36, sumText: '1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 = 36' }
+];
+
+const SQUARE_NUMBERS_DATA = [
+  { n: 1, val: 1, oddSum: '1' },
+  { n: 2, val: 4, oddSum: '1 + 3 = 4' },
+  { n: 3, val: 9, oddSum: '1 + 3 + 5 = 9' },
+  { n: 4, val: 16, oddSum: '1 + 3 + 5 + 7 = 16' },
+  { n: 5, val: 25, oddSum: '1 + 3 + 5 + 7 + 9 = 25' },
+  { n: 6, val: 36, oddSum: '1 + 3 + 5 + 7 + 9 + 11 = 36' },
+  { n: 7, val: 49, oddSum: '1 + 3 + 5 + 7 + 9 + 11 + 13 = 49' },
+  { n: 8, val: 64, oddSum: '1 + 3 + 5 + 7 + 9 + 11 + 13 + 15 = 64' }
+];
+
+function buildNumberTower(baseArray) {
+  const levels = [baseArray];
+  while (levels[levels.length - 1].length > 1) {
+    const current = levels[levels.length - 1];
+    const nextLevel = [];
+    for (let i = 0; i < current.length - 1; i++) {
+      nextLevel.push(current[i] + current[i + 1]);
+    }
+    levels.push(nextLevel);
+  }
+  return levels;
+}
+
+function computePalindromeSteps(n) {
+  const steps = [];
+  let cur = Math.abs(parseInt(n)) || 43;
+  let iterations = 0;
+
+  function isPal(num) {
+    const s = num.toString();
+    return s === s.split('').reverse().join('');
+  }
+
+  while (!isPal(cur) && iterations < 8) {
+    const rev = parseInt(cur.toString().split('').reverse().join(''));
+    const next = cur + rev;
+    steps.push({
+      original: cur,
+      reversed: rev,
+      sum: next,
+      isPalindrome: isPal(next)
+    });
+    cur = next;
+    iterations++;
+  }
+
+  return {
+    initial: n,
+    steps,
+    final: cur,
+    isFinalPalindrome: isPal(cur)
+  };
+}
+
+/* ==========================================================================
    6. LEARN MODULES DATA
    ========================================================================== */
 
@@ -1074,6 +1202,41 @@ const LEARN_MODULES_TOPIC_3 = {
     tag: 'CBSE Word Problems',
     lead: 'Discover how to represent age comparisons, shopping bills, geometry perimeters, and number riddles using algebraic variables.',
     renderContent: renderRealWorldModule
+  }
+};
+
+const LEARN_MODULES_TOPIC_4 = {
+  pattern_detective: {
+    id: 'pattern_detective',
+    pillTitle: '🕵️ Pattern Detective',
+    title: 'Pattern Detective: Discover Rules & Missing Terms',
+    tag: 'Core Logic',
+    lead: 'Every mathematical pattern follows a hidden rule! Discover step patterns, growing differences, and multiplication rules by inspecting the differences between consecutive terms.',
+    renderContent: renderPatternDetectiveModule
+  },
+  triangular_square_numbers: {
+    id: 'triangular_square_numbers',
+    pillTitle: '🔺 Triangular & Square Dots',
+    title: 'Geometric Numbers: Triangular & Square Patterns',
+    tag: 'Visual Geometry',
+    lead: 'Numbers can form shapes! Explore <strong>Triangular Numbers</strong> arranged as dot pyramids, and discover why the sum of any two consecutive triangular numbers makes a <strong>Square Number</strong> ($T_{n-1} + T_n = n^2$)!',
+    renderContent: renderTriangularSquareModule
+  },
+  number_towers: {
+    id: 'number_towers',
+    pillTitle: '🏰 Number Towers (Pyramids)',
+    title: 'Number Towers: The Block-Sum Pyramid Rule',
+    tag: 'CBSE Classic',
+    lead: 'In a CBSE number tower, <strong>each block is the sum of the two blocks directly beneath it</strong>. Test presets or build your own custom pyramid to watch the addition bubble up!',
+    renderContent: renderNumberTowersModule
+  },
+  magic_shapes_palindromes: {
+    id: 'magic_shapes_palindromes',
+    pillTitle: '✨ Magic Shapes & Special Numbers',
+    title: '3×3 Magic Square & Palindromic Special Numbers',
+    tag: 'Fun Puzzles',
+    lead: 'Explore the famous <strong>3×3 Magic Square</strong> where all rows, columns, and diagonals add up to 15! Plus, learn the NCERT algorithm to turn ANY number into a <strong>Palindromic Special Number</strong>.',
+    renderContent: renderMagicShapesModule
   }
 };
 
@@ -1852,6 +2015,221 @@ const PRACTICE_POOL_TOPIC_3 = [
   }
 ];
 
+const PRACTICE_POOL_TOPIC_4 = [
+  // Category 1: Arithmetic & Step Patterns
+  {
+    id: 'pat_q1',
+    skill: 'arithmetic_patterns',
+    type: 'mcq',
+    question: 'Find the next number in the sequence: 12, 19, 26, 33, 40, _____',
+    options: ['47', '46', '48', '45'],
+    correct: 0,
+    explanation: 'Check the difference between consecutive terms: 19 − 12 = 7; 26 − 19 = 7; 33 − 26 = 7; 40 − 33 = 7. The rule is (+7). Therefore, 40 + 7 = 47.',
+    source: 'CBSE Class 5 Pattern Rule'
+  },
+  {
+    id: 'pat_q2',
+    skill: 'arithmetic_patterns',
+    type: 'mcq',
+    question: 'Find the missing number in: 95, 87, 79, 71, _____, 55',
+    options: ['63', '64', '62', '65'],
+    correct: 0,
+    explanation: 'The difference between each term is: 95 − 87 = 8; 87 − 79 = 8; 79 − 71 = 8. The rule is (−8). So 71 − 8 = 63, and 63 − 8 = 55.',
+    source: 'CBSE Class 5 Decreasing Pattern'
+  },
+  {
+    id: 'pat_q3',
+    skill: 'arithmetic_patterns',
+    type: 'mcq',
+    question: 'What comes next in the growing pattern: 2, 4, 8, 14, 22, _____?',
+    options: ['32', '30', '34', '36'],
+    correct: 0,
+    explanation: 'Look at the differences: 4 − 2 = +2; 8 − 4 = +4; 14 − 8 = +6; 22 − 14 = +8. The difference grows by +2 each step! Next difference is +10: 22 + 10 = 32.',
+    source: 'CBSE Growing Differences'
+  },
+  {
+    id: 'pat_q4',
+    skill: 'arithmetic_patterns',
+    type: 'mcq',
+    question: 'Find the next term in: 3, 6, 12, 24, 48, _____',
+    options: ['96', '92', '84', '108'],
+    correct: 0,
+    explanation: 'Each number is doubled (multiplied by 2): 3 × 2 = 6, 6 × 2 = 12, 12 × 2 = 24, 24 × 2 = 48, 48 × 2 = 96.',
+    source: 'CBSE Multiplicative Pattern'
+  },
+  {
+    id: 'pat_q5',
+    skill: 'arithmetic_patterns',
+    type: 'mcq',
+    question: 'In the Fibonacci sequence 1, 1, 2, 3, 5, 8, 13, what is the next number?',
+    options: ['21', '20', '19', '22'],
+    correct: 0,
+    explanation: 'In the Fibonacci sequence, each term is the sum of the two preceding terms: 8 + 13 = 21.',
+    source: 'NCERT Fibonacci Sequence'
+  },
+
+  // Category 2: Geometric Numbers (Triangular & Square Numbers)
+  {
+    id: 'pat_q6',
+    skill: 'geom_numbers',
+    type: 'mcq',
+    question: 'Which of the following numbers is a Triangular Number?',
+    options: ['15', '14', '16', '18'],
+    correct: 0,
+    explanation: 'Triangular numbers are formed by sum of consecutive natural numbers: 1 + 2 + 3 + 4 + 5 = 15. The first triangular numbers are 1, 3, 6, 10, 15, 21...',
+    source: 'NCERT Triangular Numbers'
+  },
+  {
+    id: 'pat_q7',
+    skill: 'geom_numbers',
+    type: 'mcq',
+    question: 'What is the sum of any two consecutive triangular numbers, such as 6 and 10?',
+    options: ['16, which is always a square number (4²)', '16, which is always a prime number', '16, which is always an odd number', '16, which is always a triangular number'],
+    correct: 0,
+    explanation: 'A fundamental theorem in Class 5 geometry: The sum of two consecutive triangular numbers is always a square number! E.g. 1+3=4 (2²), 3+6=9 (3²), 6+10=16 (4²), 10+15=25 (5²).',
+    source: 'NCERT Geometry Theorem'
+  },
+  {
+    id: 'pat_q8',
+    skill: 'geom_numbers',
+    type: 'mcq',
+    question: 'What is the sum of the first 5 odd numbers (1 + 3 + 5 + 7 + 9)?',
+    options: ['25 (which is 5²)', '20', '24', '30'],
+    correct: 0,
+    explanation: 'The sum of the first n odd numbers is always n²! For 5 odd numbers: 1 + 3 + 5 + 7 + 9 = 25 = 5².',
+    source: 'NCERT Odd Sum Theorem'
+  },
+  {
+    id: 'pat_q9',
+    skill: 'geom_numbers',
+    type: 'mcq',
+    question: 'How many dots are in the 6th triangular number?',
+    options: ['21', '20', '18', '24'],
+    correct: 0,
+    explanation: 'Formula for nth triangular number = n(n + 1) / 2 = 6 × 7 / 2 = 42 / 2 = 21 dots. (1 + 2 + 3 + 4 + 5 + 6 = 21).',
+    source: 'NCERT Triangular Formula'
+  },
+  {
+    id: 'pat_q10',
+    skill: 'geom_numbers',
+    type: 'mcq',
+    question: 'Which of the following is BOTH a triangular number and a square number?',
+    options: ['36', '16', '25', '49'],
+    correct: 0,
+    explanation: '36 is a square number (6 × 6 = 36) AND a triangular number (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 = 36)!',
+    source: 'CBSE Math Olympiad'
+  },
+
+  // Category 3: Number Towers (Pyramids)
+  {
+    id: 'pat_q11',
+    skill: 'number_towers',
+    type: 'mcq',
+    question: 'In a number tower with base [10, 20, 30], what is the number at the top of the tower?',
+    options: ['80', '60', '70', '90'],
+    correct: 0,
+    explanation: 'Base row: 10, 20, 30.\\nMiddle row: 10 + 20 = 30, and 20 + 30 = 50.\\nTop block: 30 + 50 = 80.',
+    source: 'NCERT Number Towers'
+  },
+  {
+    id: 'pat_q12',
+    skill: 'number_towers',
+    type: 'mcq',
+    question: 'In a number tower with base [5, 15, 25], what is the number at the top?',
+    options: ['60', '50', '70', '45'],
+    correct: 0,
+    explanation: 'Base row: 5, 15, 25.\\nMiddle row: 5 + 15 = 20, and 15 + 25 = 40.\\nTop block: 20 + 40 = 60.',
+    source: 'NCERT Number Towers'
+  },
+  {
+    id: 'pat_q13',
+    skill: 'number_towers',
+    type: 'mcq',
+    question: 'In a 4-level number tower with base [1, 2, 3, 4], what is the top block?',
+    options: ['20', '18', '24', '16'],
+    correct: 0,
+    explanation: 'Row 1 (base): [1, 2, 3, 4].\\nRow 2: [1+2=3, 2+3=5, 3+4=7] = [3, 5, 7].\\nRow 3: [3+5=8, 5+7=12] = [8, 12].\\nTop block: 8 + 12 = 20.',
+    source: 'NCERT Number Towers 4-Level'
+  },
+  {
+    id: 'pat_q14',
+    skill: 'number_towers',
+    type: 'mcq',
+    question: 'In a number tower, the top block is 50. The middle row has 22 and another block X. What is X?',
+    options: ['28', '26', '30', '32'],
+    correct: 0,
+    explanation: 'Since the top block is the sum of the middle row: 22 + X = 50 ➔ X = 50 − 22 = 28.',
+    source: 'CBSE Missing Block Puzzle'
+  },
+  {
+    id: 'pat_q15',
+    skill: 'number_towers',
+    type: 'mcq',
+    question: 'In a number tower with base [a, b, c], the top block is mathematically equal to:',
+    options: ['a + 2b + c', 'a + b + c', '2(a + b + c)', '3(a + b + c)'],
+    correct: 0,
+    explanation: 'Middle row: (a + b) and (b + c).\\nTop block = (a + b) + (b + c) = a + 2b + c. Notice the middle block b counts twice!',
+    source: 'CBSE Tower Algebraic Property'
+  },
+
+  // Category 4: Magic Shapes & Special Palindromes
+  {
+    id: 'pat_q16',
+    skill: 'magic_palindromes',
+    type: 'mcq',
+    question: 'In a 3×3 Magic Square using digits 1 to 9, what must be the sum of each row, column, and diagonal?',
+    options: ['15', '12', '18', '21'],
+    correct: 0,
+    explanation: 'Sum of digits 1 to 9 is 45. Since there are 3 rows, each row must sum to 45 ÷ 3 = 15! The magic constant is 15.',
+    source: 'NCERT Magic Square'
+  },
+  {
+    id: 'pat_q17',
+    skill: 'magic_palindromes',
+    type: 'mcq',
+    question: 'In a standard 3×3 Magic Square (numbers 1 to 9), what digit MUST be in the exact center cell?',
+    options: ['5', '1', '9', '3'],
+    correct: 0,
+    explanation: 'The center cell participates in 4 lines (row 2, col 2, and both diagonals). It must be the median number of 1 to 9, which is 5!',
+    source: 'NCERT Magic Square Center Rule'
+  },
+  {
+    id: 'pat_q18',
+    skill: 'magic_palindromes',
+    type: 'mcq',
+    question: 'What is a "Special Number" (Palindrome number) in NCERT Class 5?',
+    options: [
+      'A number that reads the same forwards and backwards (e.g. 121, 353, 4884)',
+      'Any number divisible by 10',
+      'Any number ending in 5',
+      'A number with only even digits'
+    ],
+    correct: 0,
+    explanation: 'In NCERT Chapter "Can You See the Pattern?", special numbers are palindromes that read the exact same from left to right and right to left (like 121, 656, 1331).',
+    source: 'NCERT Special Numbers'
+  },
+  {
+    id: 'pat_q19',
+    skill: 'magic_palindromes',
+    type: 'mcq',
+    question: 'Apply the palindrome rule to 43: Add 43 to its reverse. What is the special number formed?',
+    options: ['77', '74', '86', '66'],
+    correct: 0,
+    explanation: 'Number = 43. Reversed digits = 34. Sum = 43 + 34 = 77. 77 reads the same forwards and backwards, so it is a special palindromic number!',
+    source: 'NCERT Palindrome Algorithm'
+  },
+  {
+    id: 'pat_q20',
+    skill: 'magic_palindromes',
+    type: 'mcq',
+    question: 'Secret Number Riddle: "It is larger than half of 100 (50). More than 6 tens and less than 7 tens. The tens digit is 1 more than the ones digit. Sum of digits is 11." What is the number?',
+    options: ['65', '74', '64', '56'],
+    correct: 0,
+    explanation: '• Larger than 50, between 60 and 70 ➔ tens digit is 6.\\n• Tens digit is 1 more than ones digit ➔ ones digit = 6 − 1 = 5.\\n• Sum of digits: 6 + 5 = 11 (matches!).\\nThe number is 65!',
+    source: 'NCERT Secret Number Clues'
+  }
+];
+
 const CHALLENGE_QUESTIONS_TOPIC_1 = [...PRACTICE_POOL_TOPIC_1];
 
 const CHALLENGE_QUESTIONS_TOPIC_2 = [
@@ -2040,6 +2418,99 @@ const CHALLENGE_QUESTIONS_TOPIC_3 = [
   }
 ];
 
+const CHALLENGE_QUESTIONS_TOPIC_4 = [
+  {
+    question: 'Next term: 5, 11, 17, 23, _____?',
+    options: ['29', '28', '30', '27'],
+    correct: 0,
+    explanation: 'Difference is +6. 23 + 6 = 29.'
+  },
+  {
+    question: 'Next term in decreasing pattern: 100, 85, 70, 55, _____?',
+    options: ['40', '45', '35', '30'],
+    correct: 0,
+    explanation: 'Subtracting 15 each step. 55 − 15 = 40.'
+  },
+  {
+    question: 'Is 10 a Triangular Number?',
+    options: ['Yes (1 + 2 + 3 + 4 = 10)', 'No'],
+    correct: 0,
+    explanation: '1 + 2 + 3 + 4 = 10 dots form a triangle!'
+  },
+  {
+    question: 'Sum of first 4 odd numbers (1 + 3 + 5 + 7) equals:',
+    options: ['16 (4²)', '14', '15', '18'],
+    correct: 0,
+    explanation: '1 + 3 + 5 + 7 = 16 = 4².'
+  },
+  {
+    question: 'Base of tower is [20, 30, 40]. What is the top block?',
+    options: ['120', '100', '110', '90'],
+    correct: 0,
+    explanation: 'Middle: [50, 70]. Top: 50 + 70 = 120.'
+  },
+  {
+    question: 'Magic sum of 3×3 square using digits 1 to 9 is:',
+    options: ['15', '18', '12', '20'],
+    correct: 0,
+    explanation: 'Total sum 45 ÷ 3 = 15.'
+  },
+  {
+    question: 'Which digit is in the center of the 3×3 magic square?',
+    options: ['5', '1', '9', '4'],
+    correct: 0,
+    explanation: 'Center is always 5.'
+  },
+  {
+    question: 'Turn 28 into a palindrome: 28 + 82 = 110, then 110 + 011 = _____?',
+    options: ['121', '111', '122', '131'],
+    correct: 0,
+    explanation: '110 + 11 = 121 (a palindrome!).'
+  },
+  {
+    question: 'Sum of triangular numbers 3 and 6 is:',
+    options: ['9 (which is 3²)', '10', '8', '12'],
+    correct: 0,
+    explanation: 'Two consecutive triangular numbers sum to a square: 3 + 6 = 9 = 3².'
+  },
+  {
+    question: 'Next term: 1, 4, 9, 16, 25, _____?',
+    options: ['36', '35', '49', '30'],
+    correct: 0,
+    explanation: 'Square numbers: 6² = 36.'
+  },
+  {
+    question: 'Next term in Fibonacci: 3, 5, 8, 13, _____?',
+    options: ['21', '20', '19', '22'],
+    correct: 0,
+    explanation: '8 + 13 = 21.'
+  },
+  {
+    question: 'Base of tower is [7, 8, 9]. Top block is:',
+    options: ['32', '30', '28', '34'],
+    correct: 0,
+    explanation: 'Middle: [15, 17]. Top: 15 + 17 = 32.'
+  },
+  {
+    question: 'Growing pattern: 10, 11, 13, 16, 20, _____?',
+    options: ['25', '24', '26', '23'],
+    correct: 0,
+    explanation: 'Differences are +1, +2, +3, +4, +5. 20 + 5 = 25.'
+  },
+  {
+    question: 'Is 252 a palindromic special number?',
+    options: ['Yes', 'No'],
+    correct: 0,
+    explanation: '252 reads the same forwards and backwards!'
+  },
+  {
+    question: 'Secret riddle: "Between 70 and 80. Sum of digits is 12. Tens is 2 more than ones." The number is:',
+    options: ['75', '74', '76', '84'],
+    correct: 0,
+    explanation: 'Tens is 7, ones is 5. 7 + 5 = 12. Number is 75!'
+  }
+];
+
 /* ==========================================================================
    8. CURRICULUM TOPICS CONFIGURATION & REGISTRY
    ========================================================================== */
@@ -2102,6 +2573,25 @@ const TOPICS_CONFIG = {
     ],
     challengePool: CHALLENGE_QUESTIONS_TOPIC_3,
     worksheetRenderer: renderWorksheetViewTopic3
+  },
+  number_patterns: {
+    id: 'number_patterns',
+    title: 'Number Patterns',
+    subtitle: 'CBSE Class 5 — Can You See The Pattern? Triangular, Square & Towers',
+    starsKey: 'cbse_maths_patterns_stars',
+    sidebarStarId: 'stars-patterns',
+    defaultLearnModule: 'pattern_detective',
+    learnModules: LEARN_MODULES_TOPIC_4,
+    practicePool: PRACTICE_POOL_TOPIC_4,
+    practiceCategories: [
+      { id: 'all', label: '🌟 All Questions' },
+      { id: 'arithmetic_patterns', label: '🔢 Step & Growing Patterns' },
+      { id: 'geom_numbers', label: '🔺 Triangular & Square Dots' },
+      { id: 'number_towers', label: '🏰 Number Towers (Pyramids)' },
+      { id: 'magic_palindromes', label: '✨ Magic Squares & Palindromes' }
+    ],
+    challengePool: CHALLENGE_QUESTIONS_TOPIC_4,
+    worksheetRenderer: renderWorksheetViewTopic4
   }
 };
 
@@ -3686,6 +4176,394 @@ function renderRealWorldModule(container) {
   `;
 }
 
+/* ==========================================================================
+   TOPIC 4 LEARN RENDERERS: NUMBER PATTERNS
+   ========================================================================== */
+
+/* Topic 4 - Module 1: Pattern Detective */
+function renderPatternDetectiveModule(container) {
+  let activePresetId = PATTERN_PRESETS[0].id;
+  let solved = false;
+  let chosenAnswer = null;
+
+  function render() {
+    const p = PATTERN_PRESETS.find(item => item.id === activePresetId) || PATTERN_PRESETS[0];
+
+    container.innerHTML = `
+      <div class="pattern-board">
+        <!-- Preset Selector -->
+        <div class="trans-presets-row">
+          <span class="trans-presets-label">Choose Pattern:</span>
+          ${PATTERN_PRESETS.map(item => `
+            <button class="trans-preset-btn ${item.id === activePresetId ? 'active' : ''}" data-pid="${item.id}">
+              ${item.title}
+            </button>
+          `).join('')}
+        </div>
+
+        <!-- Pattern Display Strip -->
+        <div class="pattern-seq-strip">
+          ${p.terms.map((term, idx) => {
+            const isMissing = idx === p.missingIndex;
+            const diff = idx < p.diffs.length ? p.diffs[idx] : null;
+
+            return `
+              <div class="seq-item-wrap">
+                <div class="seq-tile ${isMissing ? (solved ? 'seq-known' : 'seq-mystery') : 'seq-known'}" style="${isMissing && solved ? 'border-color: var(--accent-emerald); color: var(--accent-emerald-light);' : ''}">
+                  ${isMissing ? (solved ? p.correctAnswer : '?') : term}
+                </div>
+                ${diff ? `<span class="seq-diff-badge">${diff}</span>` : ''}
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+        <!-- Mystery Candidate Buttons -->
+        <div style="text-align: center; margin-top: 0.5rem;">
+          <span style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600;">
+            ${solved ? '🎉 Excellent Deduction!' : 'What number replaces the mystery (?) tile?'}
+          </span>
+          <div style="display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-top: 0.6rem;">
+            ${p.options.map(opt => {
+              const isCorrect = opt === p.correctAnswer;
+              const isChosen = chosenAnswer === opt;
+              let btnClass = 'candidate-tile-btn';
+              if (solved && isCorrect) btnClass += ' active-match';
+              if (!solved && isChosen && !isCorrect) btnClass += ' wrong-match';
+
+              return `
+                <button class="${btnClass}" data-opt="${opt}" style="min-width: 60px; height: 48px; font-size: 1.25rem;">
+                  ${opt}
+                </button>
+              `;
+            }).join('')}
+          </div>
+        </div>
+
+        <!-- Rule Explanation Card -->
+        <div class="rule-explain-box">
+          <div style="font-weight: 700; color: var(--accent-emerald-light); font-size: 1.05rem; margin-bottom: 0.35rem;">
+            🔍 ${p.rule}
+          </div>
+          <p style="margin: 0; color: #cbd5e1; font-size: 0.88rem;">
+            ${p.explanation}
+          </p>
+        </div>
+      </div>
+    `;
+
+    container.querySelectorAll('.trans-preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playClickSound();
+        activePresetId = btn.getAttribute('data-pid');
+        solved = false;
+        chosenAnswer = null;
+        render();
+      });
+    });
+
+    container.querySelectorAll('.candidate-tile-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = parseInt(btn.getAttribute('data-opt'));
+        chosenAnswer = val;
+        if (val === p.correctAnswer) {
+          playCorrectSound();
+          launchConfetti();
+          solved = true;
+        } else {
+          playWrongSound();
+        }
+        render();
+      });
+    });
+  }
+
+  render();
+}
+
+/* Topic 4 - Module 2: Geometric Numbers (Triangular & Square Dots) */
+function renderTriangularSquareModule(container) {
+  let activeTriN = 4; // 1 to 6
+  let activeSqN = 4;  // 1 to 6
+
+  function render() {
+    const tri = TRIANGULAR_NUMBERS_DATA.find(t => t.n === activeTriN) || TRIANGULAR_NUMBERS_DATA[3];
+    const sq = SQUARE_NUMBERS_DATA.find(s => s.n === activeSqN) || SQUARE_NUMBERS_DATA[3];
+
+    // Build triangular dot rows (row 1 has 1, row 2 has 2, ..., row n has n)
+    const triRows = [];
+    for (let r = 1; r <= activeTriN; r++) {
+      triRows.push(Array(r).fill(0));
+    }
+
+    container.innerHTML = `
+      <div class="geom-numbers-wrap">
+        <div style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.5rem;">
+          In Class 5 CBSE, numbers that can be arranged in geometric shapes have special names: <strong>Triangular Numbers</strong> and <strong>Square Numbers</strong>!
+        </div>
+
+        <div class="geom-numbers-grid">
+          <!-- TRIANGULAR NUMBERS CARD -->
+          <div class="geom-number-card geom-card-tri">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="margin: 0; color: var(--accent-amber-light);">🔺 Triangular Number T<sub>${activeTriN}</sub> = ${tri.val}</h4>
+              <span class="badge badge-active">n = ${activeTriN}</span>
+            </div>
+
+            <!-- Selector Buttons -->
+            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+              <span style="font-size: 0.78rem; color: var(--text-muted); align-self: center;">Select n:</span>
+              ${[1, 2, 3, 4, 5, 6].map(n => `
+                <button class="trans-preset-btn ${n === activeTriN ? 'active' : ''}" data-tri="${n}">
+                  T<sub>${n}</sub> (${TRIANGULAR_NUMBERS_DATA[n-1].val})
+                </button>
+              `).join('')}
+            </div>
+
+            <!-- Dot Pyramid Canvas -->
+            <div class="dot-canvas-wrap">
+              <div style="display: flex; flex-direction: column; align-items: center;">
+                ${triRows.map(row => `
+                  <div class="dot-triangle-row">
+                    ${row.map(() => `<span class="dot-particle"></span>`).join('')}
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="clue-example-box" style="border-left-color: var(--accent-amber);">
+              <strong>Sum of consecutive natural numbers:</strong><br>
+              ${tri.sumText}
+            </div>
+
+            <div style="background: rgba(0, 0, 0, 0.25); border-radius: var(--radius-sm); padding: 0.75rem; font-size: 0.82rem; color: #cbd5e1; line-height: 1.4;">
+              ✨ <strong>CBSE Magic Theorem:</strong> Any two consecutive triangular numbers sum to a SQUARE number!<br>
+              For example: <strong>T<sub>3</sub> (6) + T<sub>4</sub> (10) = 16 = 4²</strong>!
+            </div>
+          </div>
+
+          <!-- SQUARE NUMBERS CARD -->
+          <div class="geom-number-card geom-card-sq">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="margin: 0; color: var(--accent-emerald-light);">🟩 Square Number ${activeSqN}² = ${sq.val}</h4>
+              <span class="badge badge-active">n = ${activeSqN}</span>
+            </div>
+
+            <!-- Selector Buttons -->
+            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+              <span style="font-size: 0.78rem; color: var(--text-muted); align-self: center;">Select n:</span>
+              ${[1, 2, 3, 4, 5, 6].map(n => `
+                <button class="trans-preset-btn ${n === activeSqN ? 'active' : ''}" data-sq="${n}">
+                  ${n}² (${n * n})
+                </button>
+              `).join('')}
+            </div>
+
+            <!-- Dot Square Grid -->
+            <div class="dot-canvas-wrap">
+              <div class="dot-sq-grid" style="grid-template-columns: repeat(${activeSqN}, 14px);">
+                ${Array(activeSqN * activeSqN).fill(0).map(() => `<span class="dot-particle dot-sq"></span>`).join('')}
+              </div>
+            </div>
+
+            <div class="clue-example-box" style="border-left-color: var(--accent-emerald);">
+              <strong>Sum of First ${activeSqN} Consecutive Odd Numbers:</strong><br>
+              ${sq.oddSum}
+            </div>
+
+            <div style="background: rgba(0, 0, 0, 0.25); border-radius: var(--radius-sm); padding: 0.75rem; font-size: 0.82rem; color: #cbd5e1; line-height: 1.4;">
+              ✨ <strong>CBSE Magic Theorem:</strong> The sum of the first <em>n</em> odd numbers is always equal to <strong>n²</strong>!
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.querySelectorAll('[data-tri]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playClickSound();
+        activeTriN = parseInt(btn.getAttribute('data-tri')) || 4;
+        render();
+      });
+    });
+
+    container.querySelectorAll('[data-sq]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playClickSound();
+        activeSqN = parseInt(btn.getAttribute('data-sq')) || 4;
+        render();
+      });
+    });
+  }
+
+  render();
+}
+
+/* Topic 4 - Module 3: Number Towers (Pyramids) */
+function renderNumberTowersModule(container) {
+  let currentBase = [10, 20, 30];
+
+  function render() {
+    const tower = buildNumberTower(currentBase);
+
+    container.innerHTML = `
+      <div class="number-tower-wrap">
+        <!-- Presets Row -->
+        <div class="trans-presets-row" style="margin-bottom: 0.75rem;">
+          <span class="trans-presets-label">Presets:</span>
+          <button class="trans-preset-btn ${currentBase.join(',') === '10,20,30' ? 'active' : ''}" data-tower="10,20,30">[10, 20, 30]</button>
+          <button class="trans-preset-btn ${currentBase.join(',') === '5,15,25' ? 'active' : ''}" data-tower="5,15,25">[5, 15, 25]</button>
+          <button class="trans-preset-btn ${currentBase.join(',') === '7,8,9' ? 'active' : ''}" data-tower="7,8,9">[7, 8, 9]</button>
+          <button class="trans-preset-btn ${currentBase.join(',') === '1,2,3,4' ? 'active' : ''}" data-tower="1,2,3,4">[1, 2, 3, 4] (4-Level)</button>
+        </div>
+
+        <!-- Interactive Tower Visualization -->
+        <div class="tower-container">
+          ${tower.slice().reverse().map((row, rowIdx) => {
+            const isTop = row.length === 1;
+            const isBase = row.length === currentBase.length;
+            const blockClass = isTop ? 'top-block' : isBase ? 'base-block' : 'mid-block';
+
+            return `
+              <div class="tower-row">
+                ${row.map(val => `
+                  <div class="tower-block ${blockClass}">
+                    ${val}
+                  </div>
+                `).join('')}
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+        <!-- Rule and Working Explanation -->
+        <div class="rule-explain-box" style="margin-top: 1rem;">
+          <div style="font-weight: 700; color: var(--accent-emerald-light); font-size: 1.05rem; margin-bottom: 0.4rem;">
+            🏰 The Number Tower Rule: Block = Sum of Two Blocks Beneath
+          </div>
+          <p style="margin: 0; color: #cbd5e1; font-size: 0.88rem; line-height: 1.5;">
+            ${currentBase.length === 3 ? `
+              • <strong>Middle row:</strong> ${currentBase[0]} + ${currentBase[1]} = <strong>${currentBase[0] + currentBase[1]}</strong>, and ${currentBase[1]} + ${currentBase[2]} = <strong>${currentBase[1] + currentBase[2]}</strong>.<br>
+              • <strong>Top block:</strong> ${currentBase[0] + currentBase[1]} + ${currentBase[1] + currentBase[2]} = <strong>${tower[tower.length-1][0]}</strong>.<br>
+              💡 Notice that the middle base block (<strong>${currentBase[1]}</strong>) contributes to BOTH branches, so it is counted TWICE: <code>${currentBase[0]} + 2(${currentBase[1]}) + ${currentBase[2]} = ${tower[tower.length-1][0]}</code>!
+            ` : `
+              Each block is formed by adding the two adjacent blocks directly under it. The addition bubbles all the way to the top summit block!
+            `}
+          </p>
+        </div>
+      </div>
+    `;
+
+    container.querySelectorAll('[data-tower]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playClickSound();
+        const str = btn.getAttribute('data-tower');
+        currentBase = str.split(',').map(Number);
+        render();
+      });
+    });
+  }
+
+  render();
+}
+
+/* Topic 4 - Module 4: Magic Shapes & Palindromes */
+function renderMagicShapesModule(container) {
+  let activePalNum = 43;
+
+  function render() {
+    const palData = computePalindromeSteps(activePalNum);
+
+    container.innerHTML = `
+      <div class="magic-shapes-wrap">
+        <div style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.5rem;">
+          Two of the most delightful topics in the NCERT Class 5 syllabus: <strong>The 3×3 Magic Square</strong> and <strong>Palindromic Special Numbers</strong>!
+        </div>
+
+        <div class="geom-numbers-grid">
+          <!-- 3x3 MAGIC SQUARE CARD -->
+          <div class="geom-number-card geom-card-tri">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="margin: 0; color: var(--accent-amber-light);">✨ 3×3 Magic Square (Sum = 15)</h4>
+              <span class="badge badge-active">Constant: 15</span>
+            </div>
+
+            <!-- 3x3 Grid -->
+            <div class="magic-grid-3x3">
+              <div class="magic-cell">8</div>
+              <div class="magic-cell">1</div>
+              <div class="magic-cell">6</div>
+              <div class="magic-cell">3</div>
+              <div class="magic-cell center-cell">5</div>
+              <div class="magic-cell">7</div>
+              <div class="magic-cell">4</div>
+              <div class="magic-cell">9</div>
+              <div class="magic-cell">2</div>
+            </div>
+
+            <!-- Sums Verification Legend -->
+            <div class="magic-sums-legend">
+              <span class="seq-diff-badge">Row 1: 8+1+6 = 15</span>
+              <span class="seq-diff-badge">Row 2: 3+5+7 = 15</span>
+              <span class="seq-diff-badge">Row 3: 4+9+2 = 15</span>
+              <span class="seq-diff-badge">Col 1: 8+3+4 = 15</span>
+              <span class="seq-diff-badge">Diagonal: 8+5+2 = 15</span>
+            </div>
+
+            <div style="background: rgba(0, 0, 0, 0.25); border-radius: var(--radius-sm); padding: 0.75rem; font-size: 0.82rem; color: #cbd5e1; line-height: 1.4;">
+              💡 <strong>Why 5 is in the center:</strong> Digits 1 to 9 add up to 45. There are 3 rows, so 45 ÷ 3 = 15. The center cell is used in 4 different lines, so it must be the exact median digit (5)!
+            </div>
+          </div>
+
+          <!-- PALINDROMIC SPECIAL NUMBERS CARD -->
+          <div class="geom-number-card geom-card-sq">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="margin: 0; color: var(--accent-emerald-light);">🔄 Special Numbers (Palindromes)</h4>
+              <span class="badge badge-active">Reverse & Add</span>
+            </div>
+
+            <div class="trans-presets-row" style="margin: 0.25rem 0;">
+              <span class="trans-presets-label">Test Number:</span>
+              <button class="trans-preset-btn ${activePalNum === 43 ? 'active' : ''}" data-pal="43">43 (1 step)</button>
+              <button class="trans-preset-btn ${activePalNum === 28 ? 'active' : ''}" data-pal="28">28 (2 steps)</button>
+              <button class="trans-preset-btn ${activePalNum === 78 ? 'active' : ''}" data-pal="78">78 (4 steps)</button>
+            </div>
+
+            <!-- Step by Step Palindrome Card -->
+            <div class="palindrome-step-card">
+              <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">
+                Algorithm Steps to Palindrome:
+              </span>
+              ${palData.steps.map((s, idx) => `
+                <div class="palindrome-math-row">
+                  <span style="color: var(--accent-amber-light);">Step ${idx + 1}:</span>
+                  <span>${s.original} + ${s.reversed} =</span>
+                  <strong style="color: ${s.isPalindrome ? 'var(--accent-emerald-light)' : '#ffffff'};">${s.sum}</strong>
+                  ${s.isPalindrome ? '<span class="badge badge-active" style="padding: 2px 6px; font-size: 0.7rem;">✓ Special Palindrome!</span>' : ''}
+                </div>
+              `).join('')}
+            </div>
+
+            <div style="background: rgba(0, 0, 0, 0.25); border-radius: var(--radius-sm); padding: 0.75rem; font-size: 0.82rem; color: #cbd5e1; line-height: 1.4;">
+              📖 <strong>NCERT Definition:</strong> Special numbers read the same from left-to-right as right-to-left. <strong>${palData.final}</strong> reads the same backwards and forwards!
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.querySelectorAll('[data-pal]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playClickSound();
+        activePalNum = parseInt(btn.getAttribute('data-pal')) || 43;
+        render();
+      });
+    });
+  }
+
+  render();
+}
+
 /* --------------------------------------------------------------------------
    PRACTICE MODE RENDERER
    -------------------------------------------------------------------------- */
@@ -4240,6 +5118,64 @@ function renderWorksheetViewTopic3(container) {
   });
 }
 
+function renderWorksheetViewTopic4(container) {
+  container.innerHTML = `
+    <div class="learn-container">
+      <div class="learn-card">
+        <div class="learn-card-header">
+          <div>
+            <h3>📄 CBSE Class 5 Practice Sheet: Number Patterns & Sequences</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+              Class V Mathematics — Growing Patterns, Triangular & Square Numbers, Number Towers & Magic Squares
+            </p>
+          </div>
+          <button class="btn btn-primary" id="btn-print-action-t4">
+            🖨️ Print Worksheet
+          </button>
+        </div>
+
+        <div class="worksheet-preview">
+          <h4 style="color: var(--accent-amber-light); margin-bottom: 0.75rem;">I. Pattern Detective (Identify the Rule and Complete the Series):</h4>
+          <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><code>3, 7, 11, 15, ____, ____</code> &nbsp; (Rule: _____________________)</li>
+            <li><code>2, 6, 18, 54, ____, ____</code> &nbsp; (Rule: _____________________)</li>
+            <li><code>100, 93, 86, 79, ____, ____</code> &nbsp; (Rule: _____________________)</li>
+            <li><code>1, 4, 9, 16, 25, ____, ____</code> &nbsp; (Rule: _____________________)</li>
+            <li><code>1, 3, 6, 10, 15, ____, ____</code> &nbsp; (Rule: _____________________)</li>
+            <li><code>2, 6, 12, 20, 30, ____, ____</code> &nbsp; (Rule: _____________________)</li>
+          </ol>
+
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">II. Geometric Dot Numbers (Triangular & Square Numbers):</h4>
+          <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li>Write the first 6 triangular numbers: __________________________________________________</li>
+            <li>Sum of consecutive triangular numbers: 3rd Triangular (6) + 4th Triangular (10) = ________ (Which square number is this?)</li>
+            <li>Express the square number 36 as the sum of first n odd numbers: 36 = 1 + 3 + __________________________________</li>
+            <li>Find the 7th triangular number using the formula T = n × (n + 1) ÷ 2: __________________________________</li>
+          </ol>
+
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">III. Number Towers & Pyramids (Each block = Sum of two blocks beneath):</h4>
+          <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li>Base row has numbers [5, 10, 15]. Calculate the middle tier and the top peak number.</li>
+            <li>In a 3-tier tower with base [a, b, c], prove why the top number equals a + 2b + c. Which number counts twice?</li>
+            <li>If base row is [1, 2, 3, 4], find the top number of this 4-tier pyramid step by step.</li>
+          </ol>
+
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">IV. Magic Squares & Special Palindromes:</h4>
+          <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li>In a 3×3 magic square with digits 1 to 9, what is the magic sum of every row, column, and diagonal? What digit must always be at the center?</li>
+            <li>Turn the number 57 into a palindromic special number using the Reverse & Add rule (show each step).</li>
+            <li>Turn the number 28 into a palindromic special number (show each step).</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  `;
+
+  container.querySelector('#btn-print-action-t4').addEventListener('click', () => {
+    printWorksheetTopic4();
+  });
+}
+
 /* --------------------------------------------------------------------------
    PRINT ENGINES
    -------------------------------------------------------------------------- */
@@ -4249,6 +5185,8 @@ function printWorksheet() {
     printWorksheetTopic2();
   } else if (state.currentTopic === 'expressions_statements') {
     printWorksheetTopic3();
+  } else if (state.currentTopic === 'number_patterns') {
+    printWorksheetTopic4();
   } else {
     printWorksheetTopic1();
   }
@@ -4456,6 +5394,96 @@ function printWorksheetTopic3() {
         <li>
           A boy had ₹100. He bought m chocolates at ₹12 each. Write the expression for remaining money, and find the change if m = 6:
           <div class="workspace-box"></div>
+        </li>
+      </ol>
+    </div>
+  `;
+
+  window.print();
+}
+
+function printWorksheetTopic4() {
+  const printContainer = document.getElementById('print-container');
+  if (!printContainer) return;
+
+  printContainer.innerHTML = `
+    <div class="worksheet-header">
+      <h2>CENTRAL BOARD OF SECONDARY EDUCATION (CBSE)</h2>
+      <h3>MATHEMATICS — CLASS V</h3>
+      <p><strong>Topic: Number Patterns, Triangular & Square Numbers, Towers & Magic Shapes</strong></p>
+      <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+        <span>Name: __________________________</span>
+        <span>Roll No: ______</span>
+        <span>Date: ____________</span>
+      </div>
+    </div>
+
+    <div class="worksheet-q">
+      <h4>I. Pattern Detective — Find the Rule & Fill the Missing Terms:</h4>
+      <ol>
+        <li>3, 7, 11, 15, _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; Rule: _________________________________________</li>
+        <li>2, 6, 18, 54, _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; Rule: _________________________________________</li>
+        <li>100, 93, 86, 79, _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; Rule: _________________________________________</li>
+        <li>1, 4, 9, 16, 25, _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; Rule: _________________________________________</li>
+        <li>1, 3, 6, 10, 15, _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; Rule: _________________________________________</li>
+        <li>2, 6, 12, 20, 30, _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; Rule: _________________________________________</li>
+      </ol>
+    </div>
+
+    <div class="worksheet-q" style="margin-top: 15px;">
+      <h4>II. Geometric Dot Numbers (Triangular & Square Numbers):</h4>
+      <ol>
+        <li>
+          List the first 6 triangular numbers: __________________________________________________
+        </li>
+        <li>
+          Add two consecutive triangular numbers: 3rd Triangular (6) + 4th Triangular (10) = _______
+          <br>Does this make a perfect square number? Which one? ____________________
+        </li>
+        <li>
+          Express 25 as the sum of first 5 consecutive odd numbers:
+          <br>25 = 1 + _____ + _____ + _____ + _____
+        </li>
+        <li>
+          Calculate the 8th triangular number using the formula T = n × (n + 1) ÷ 2:
+          <div class="workspace-box" style="height: 50px;"></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="worksheet-q" style="margin-top: 15px;">
+      <h4>III. Number Towers (Pyramids):</h4>
+      <ol>
+        <li>
+          Given the base row [10, 20, 30], calculate Tier 2 and the top peak number:
+          <div class="workspace-box" style="height: 60px;"></div>
+        </li>
+        <li>
+          In a 3-tier tower with base [a, b, c], why does the top block equal a + 2b + c? Explain:
+          <div class="workspace-box" style="height: 60px;"></div>
+        </li>
+        <li>
+          Complete this 4-tier number tower step by step with base row [2, 3, 4, 5]:
+          <div class="workspace-box" style="height: 75px;"></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="worksheet-q" style="margin-top: 15px;">
+      <h4>IV. Magic Squares & Special Palindromes:</h4>
+      <ol>
+        <li>
+          Complete the 3×3 Magic Square using digits 1 to 9 (Magic Sum = 15):
+          <br>Center number is 5. Corner numbers are even (2, 4, 6, 8). Edge numbers are odd (1, 3, 7, 9).
+          <div class="workspace-box" style="height: 70px;"></div>
+        </li>
+        <li>
+          Turn the number 57 into a palindrome using Reverse-and-Add steps:
+          <div class="workspace-box" style="height: 60px;"></div>
+        </li>
+        <li>
+          Turn the number 69 into a palindrome using Reverse-and-Add steps:
+          <div class="workspace-box" style="height: 60px;"></div>
         </li>
       </ol>
     </div>
