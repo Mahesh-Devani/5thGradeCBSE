@@ -14,7 +14,7 @@ A modern, responsive, zero-dependency web application designed for **Class 5 CBS
 |---|---|---|---|
 | 🗺️ **Social Science Maps** | ✅ **Live & Ready** | • Saudi Arabia (Deserts, Gulfs, Cities)<br>• World Hot Deserts (Sahara, Kalahari, Gobi, etc.)<br>• Equatorial Regions (Amazon, Congo, SE Asia)<br>• DRC & Neighbours (Central Africa)<br>• Learn Mode, Interactive Map Quiz, Timed Speed Drills, Printable Homework Worksheets | [`/social_sicence_maps/`](social_sicence_maps/) |
 | 📝 **English Grammar Master** | ✅ **Live & Ready** | • **Articles** (A, An, The & sound rules)<br>• **Simple Tenses** (Past, Present, Future habits & facts)<br>• **Continuous Tenses** (Present, Past, Future ongoing actions)<br>• **Personification** (Poetic human qualities for objects)<br>• **Present Perfect Tense** (Past actions connected to now)<br>• **Past Perfect Tense** (The "earlier past" time-traveler)<br>• **Hyperbole** (Playful exaggeration for emphasis)<br>• Learn Mode with Detective Clues, Practice Mode with Instant Explanations, Timed Star Challenges, Mobile Off-Canvas Drawer | [`/english_grammer/`](english_grammer/) |
-| 🇮🇳 **हिंदी व्याकरण व रचना** | ✅ **Live & Ready** | • **रचनात्मक लेखन: चित्र वर्णन (Picture Description)**<br>• 6 CBSE Exam-focused Scenes (बगीचा, बारिश, खेल दिवस, जन्मदिन, गाँव, चिड़ियाघर)<br>• 5-Step Golden Formula (स्थान, वातावरण, मुख्य क्रिया, बारीक विवरण, निष्कर्ष)<br>• Interactive Hotspots with SVG illustrations<br>• Curated Vocabulary Bank (Nouns, Verbs, Adjectives, Connectors)<br>• Jumbled Sentence Puzzles with drag/tap builder<br>• Guided 5-7 sentence model answers & Student notepad<br>• Instant Bilingual [🌐 English: ON/OFF] toggle | [`/hindi_vyakaran/`](hindi_vyakaran/) |
+| 🇮🇳 **हिंदी व्याकरण व रचना** | ✅ **Live & Ready** | • **रचनात्मक लेखन: चित्र वर्णन (Picture Description)**<br>  - 6 CBSE Exam-focused Scenes (बगीचा, बारिश, खेल दिवस, जन्मदिन, गाँव, चिड़ियाघर)<br>  - 5-Step Golden Formula (स्थान, वातावरण, मुख्य क्रिया, बारीक विवरण, निष्कर्ष)<br>  - Interactive Hotspots, Curated Vocabulary Bank, Jumbled Puzzles & Guided Notepad<br>• **व्याकरण: वाक्यांश के लिए एक शब्द (One Word Substitution)**<br>  - 12 Core CBSE Statements (अमर, परोपकारी, मितभाषी, वाचाल, सत्यवादी, आस्तिक, अनपढ़, परिश्रमी, क्षम्य, सुलभ, अपव्ययी, ईर्ष्यालु)<br>  - Deductive Root Breakdown (उपसर्ग + मूल शब्द) & Mind-Clue Logic<br>  - 🃏 Memory Match Game, ❓ Practice Quiz with In-Depth Explanations, 🎯 60s Star Challenge<br>• Instant Bilingual [🌐 English: ON/OFF] toggle | [`/hindi_vyakaran/`](hindi_vyakaran/) |
 | 🔢 **Mathematics** | 🟡 *In Planning* | Fractions, Decimals, Visual Geometry, Factors & Multiples, Word Problem Solvers | *Upcoming* |
 | 🔬 **Science (EVS)** | 🟡 *In Planning* | Skeletal & Nervous Systems, Seeds & Germination, Simple Machines, Aquatic Life, Ecosystems | *Upcoming* |
 
@@ -92,11 +92,11 @@ xdg-open index.html
 │   ├── app.js                      # Grammar lesson data, exercise engine & timer
 │   └── README.md                   # Dedicated English Grammar module guide
 │
-└── hindi_vyakaran/                 # Mini-App 3: Hindi Vyakaran (चित्र वर्णन)
-    ├── index.html                  # App shell, bilingual top bar & drawer
-    ├── styles.css                  # Saffron theme, responsive mobile drawer
-    ├── app.js                      # 6 CBSE vector scenes, hotspot & puzzle logic
-    └── README.md                   # Dedicated Hindi module & 5-step formula guide
+└── hindi_vyakaran/                 # Mini-App 3: Hindi Vyakaran (चित्र वर्णन + वाक्यांश)
+    ├── index.html                  # App shell, unified curriculum selector & drawer
+    ├── styles.css                  # Saffron theme, match cards, quiz & mobile drawer
+    ├── app.js                      # Chitra Varnan scenes & Vakyansh interactive engine
+    └── README.md                   # Dedicated Hindi guide (Formulas, clues & modes)
 ```
 
 ---

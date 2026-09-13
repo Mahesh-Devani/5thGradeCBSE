@@ -1708,26 +1708,323 @@ const SCENE_DATA = [
   }
 ];
 
+// ============================================
+// VAKYANSH DATA (वाक्यांश के लिए एक शब्द — 12 शब्द)
+// ============================================
+const VAKYANSH_DATA = [
+  {
+    id: 1,
+    phraseHi: 'जो कभी न मरे',
+    phraseEn: 'One who never dies / Immortal',
+    wordHi: 'अमर',
+    wordEn: 'Immortal',
+    translit: 'Amar',
+    category: 'nature',
+    formula: 'अ (नहीं / बिना) + मर (मरना) = अमर (जो न मरे)',
+    clue: 'देवलोक के देवता और देश के लिए प्राण न्योछावर करने वाले वीर हमेशा के लिए अमर कहलाते हैं।',
+    exampleHi: 'शहीद भगत सिंह देश के लिए अपना सर्वोच्च बलिदान देकर अमर हो गए।',
+    exampleEn: 'Martyr Bhagat Singh became immortal by sacrificing his life for the nation.',
+    oppositeHi: 'नश्वर / मर्त्य (Mortal)',
+    oppositeEn: 'Mortal'
+  },
+  {
+    id: 2,
+    phraseHi: 'जो दूसरों की भलाई करते हैं',
+    phraseEn: 'One who does good to others / Benevolent',
+    wordHi: 'परोपकारी',
+    wordEn: 'Benevolent / Altruistic',
+    translit: 'Paropkaari',
+    category: 'behavior',
+    formula: 'पर (दूसरा) + उपकार (भलाई) = परोपकार करने वाला',
+    clue: 'प्रकृति सबसे बड़ी परोपकारी है—पेड़ अपने फल और नदियाँ अपना जल दूसरों की भलाई के लिए देती हैं।',
+    exampleHi: 'परोपकारी मनुष्य सदैव असहाय और निर्धन लोगों की सेवा में लगा रहता है।',
+    exampleEn: 'A benevolent person is always engaged in helping helpless and poor people.',
+    oppositeHi: 'स्वार्थी (Selfish)',
+    oppositeEn: 'Selfish'
+  },
+  {
+    id: 3,
+    phraseHi: 'जो कम बोलता है',
+    phraseEn: 'One who speaks very little / Reserved',
+    wordHi: 'मितभाषी',
+    wordEn: 'Soft-spoken / Reserved',
+    translit: 'Mitbhaashi',
+    category: 'behavior',
+    formula: 'मित (कम / नपा-तुला) + भाषी (बोलने वाला) = मितभाषी',
+    clue: "'मित' का अर्थ होता है कम। मितभाषी व्यर्थ बातें नहीं करता, पर जो बोलता है वह बहुत ज्ञानवर्धक होता है।",
+    exampleHi: 'रोहन बहुत शांत और मितभाषी बालक है, वह केवल आवश्यकता पड़ने पर ही बोलता है।',
+    exampleEn: 'Rohan is a very calm and reserved boy, he speaks only when necessary.',
+    oppositeHi: 'वाचाल (Talkative)',
+    oppositeEn: 'Talkative'
+  },
+  {
+    id: 4,
+    phraseHi: 'जो अधिक बोलता है',
+    phraseEn: 'One who talks excessively / Talkative',
+    wordHi: 'वाचाल',
+    wordEn: 'Talkative / Loquacious',
+    translit: 'Vaachaal',
+    category: 'behavior',
+    formula: 'वाच् (वाणी / बोलना) → वाचाल (बहुत ज़्यादा बोलने वाला / बड़बोला)',
+    clue: 'जो बिना रुके लगातार बोलता ही रहे—यह मितभाषी का ठीक विलोम (उल्टा) शब्द है।',
+    exampleHi: 'कक्षा में शिक्षक के पढ़ाते समय वाचाल नहीं बनना चाहिए, बल्कि ध्यान से सुनना चाहिए।',
+    exampleEn: 'One should not be talkative while the teacher is teaching in class.',
+    oppositeHi: 'मितभाषी (Soft-spoken)',
+    oppositeEn: 'Soft-spoken'
+  },
+  {
+    id: 5,
+    phraseHi: 'जो सत्य बोलता है',
+    phraseEn: 'One who always speaks the truth / Truthful',
+    wordHi: 'सत्यवादी',
+    wordEn: 'Truthful',
+    translit: 'Satyavaadi',
+    category: 'behavior',
+    formula: 'सत्य (सच) + वादी (कहने वाला / बोलने वाला) = सत्यवादी',
+    clue: 'महाराजा हरिश्चंद्र और राष्ट्रपिता महात्मा गांधी ने आजीवन सत्य बोला, इसलिए वे सत्यवादी कहलाए।',
+    exampleHi: 'सत्यवादी मनुष्य का समाज में हमेशा मान-सम्मान और आदर होता है।',
+    exampleEn: 'A truthful person is always respected and honored in society.',
+    oppositeHi: 'झूठा / असत्यवादी (Liar)',
+    oppositeEn: 'Liar'
+  },
+  {
+    id: 6,
+    phraseHi: 'जो ईश्वर में विश्वास रखता है',
+    phraseEn: 'One who believes in God / Theist',
+    wordHi: 'आस्तिक',
+    wordEn: 'Theist / Believer',
+    translit: 'Aastik',
+    category: 'behavior',
+    formula: 'अस्ति (है — ईश्वर का अस्तित्व है) मानने वाला = आस्तिक',
+    clue: 'जो मानता है कि परमात्मा की सत्ता है = आस्तिक। (जो ईश्वर को नहीं मानता = नास्तिक)',
+    exampleHi: 'दादीजी प्रतिदिन ईश्वर की आराधना और पूजा करती हैं, वे बहुत आस्तिक हैं।',
+    exampleEn: 'Grandmother worships God everyday, she is a devout believer.',
+    oppositeHi: 'नास्तिक (Atheist)',
+    oppositeEn: 'Atheist'
+  },
+  {
+    id: 7,
+    phraseHi: 'जो पढ़ा-लिखा न हो',
+    phraseEn: 'One who cannot read or write / Illiterate',
+    wordHi: 'अनपढ़',
+    wordEn: 'Illiterate',
+    translit: 'Anpadh',
+    category: 'action',
+    formula: 'अन् (बिना / रहित) + पढ़ (पढ़ा हुआ) = जिसे अक्षरों व पुस्तकों का ज्ञान न हो',
+    clue: 'जिसने कभी विद्यालय जाकर पढ़ाई न की हो। (इसका विलोम साक्षर या पढ़ा-लिखा होता है)',
+    exampleHi: 'सरकार अनपढ़ लोगों को साक्षर बनाने के लिए प्रौढ़ शिक्षा केंद्र चला रही है।',
+    exampleEn: 'The government is running adult education centers to make illiterate people literate.',
+    oppositeHi: 'पढ़ा-लिखा / साक्षर (Literate)',
+    oppositeEn: 'Literate'
+  },
+  {
+    id: 8,
+    phraseHi: 'जो कठिन परिश्रम करता है',
+    phraseEn: 'One who works very hard / Hardworking',
+    wordHi: 'परिश्रमी',
+    wordEn: 'Hardworking / Diligent',
+    translit: 'Parishrami',
+    category: 'action',
+    formula: 'परिश्रम (मेहनत) + ई (करने वाला) = परिश्रमी (मेहनती)',
+    clue: 'चींटी दिन-रात दाना जुटाती है, किसान कड़ी धूप में खेत जोतता है—वे अत्यंत परिश्रमी जीव हैं।',
+    exampleHi: 'परिश्रमी छात्र अपनी लगन और कठिन मेहनत से परीक्षा में सदा प्रथम आते हैं।',
+    exampleEn: 'Hardworking students always top the examinations through dedication and effort.',
+    oppositeHi: 'आलसी / कामचोर (Lazy)',
+    oppositeEn: 'Lazy'
+  },
+  {
+    id: 9,
+    phraseHi: 'जो क्षमा करने योग्य हो',
+    phraseEn: 'That which can be forgiven / Pardonable',
+    wordHi: 'क्षम्य',
+    wordEn: 'Pardonable / Forgivable',
+    translit: 'Kshamya',
+    category: 'behavior',
+    formula: 'क्षमा (माफी) + य (योग्य) = क्षम्य (माफ करने लायक)',
+    clue: 'अनजाने में हुई छोटी-मोटी भूल क्षमा करने योग्य यानी क्षम्य होती है। (उल्टा: अक्षम्य)',
+    exampleHi: 'रवि ने अपनी गलती स्वीकार कर ली, इसलिए उसकी भूल क्षम्य मानी गई।',
+    exampleEn: 'Ravi admitted his mistake, so his error was considered pardonable.',
+    oppositeHi: 'अक्षम्य (Unpardonable)',
+    oppositeEn: 'Unpardonable'
+  },
+  {
+    id: 10,
+    phraseHi: 'जो आसानी से प्राप्त हो जाए',
+    phraseEn: 'That which is easily available / Accessible',
+    wordHi: 'सुलभ',
+    wordEn: 'Easily Available / Accessible',
+    translit: 'Sulabh',
+    category: 'nature',
+    formula: 'सु (सरल / आसान) + लभ (प्राप्त होना) = सुलभ',
+    clue: 'जो चीज़ बिना ज्यादा भागदौड़ या कठिनाई के मिल जाए। (दुर् + लभ = दुर्लभ, जो मुश्किल से मिले)',
+    exampleHi: 'प्रातःकाल बगीचे में ताज़ी और शुद्ध हवा सुलभ रूप से उपलब्ध होती है।',
+    exampleEn: 'Fresh and clean air is easily available in the garden in the morning.',
+    oppositeHi: 'दुर्लभ (Rare / Hard to find)',
+    oppositeEn: 'Rare'
+  },
+  {
+    id: 11,
+    phraseHi: 'जो बहुत धन खर्च करता है',
+    phraseEn: 'One who spends money lavishly / Spendthrift',
+    wordHi: 'अपव्ययी',
+    wordEn: 'Spendthrift / Extravagant',
+    translit: 'Apavyayi',
+    category: 'action',
+    formula: 'अप (अनुचित / बुरा / व्यर्थ) + व्यय (खर्च) करने वाला = अपव्ययी',
+    clue: 'जो बिना सोचे-समझे फ़िज़ूलखर्ची में पैसे उड़ाता है। (मितव्ययी = सोच-समझकर बचत करने वाला)',
+    exampleHi: 'अपव्ययी व्यक्ति धन का महत्व नहीं समझता और संकट के समय परेशान होता है।',
+    exampleEn: 'A spendthrift person does not realize the value of money and suffers during crises.',
+    oppositeHi: 'मितव्ययी (Frugal / Economical)',
+    oppositeEn: 'Frugal'
+  },
+  {
+    id: 12,
+    phraseHi: 'जो दूसरों से ईर्ष्या करता है',
+    phraseEn: 'One who is jealous of others / Envious',
+    wordHi: 'ईर्ष्यालु',
+    wordEn: 'Envious / Jealous',
+    translit: 'Eershyaalu',
+    category: 'behavior',
+    formula: 'ईर्ष्या (जलन) + आलु (स्वभाव रखने वाला) = ईर्ष्यालु',
+    clue: 'जो दूसरों की सफलता, तरक्की या खुशी देखकर मन ही मन जलता है।',
+    exampleHi: 'हमें किसी की तरक्की देखकर ईर्ष्यालु नहीं होना चाहिए, बल्कि स्वयं मेहनत करनी चाहिए।',
+    exampleEn: 'We should not feel envious seeing someone\'s progress, but rather work hard ourselves.',
+    oppositeHi: 'उदार / सहृदय (Generous / Broad-minded)',
+    oppositeEn: 'Generous'
+  }
+];
+
+// Practice Quiz Questions Pool for Vakyansh
+const VAKYANSH_QUIZ_POOL = [
+  {
+    qHi: '‘जो कभी न मरे’, उसके लिए एक शब्द क्या होगा?',
+    qEn: 'What is the one word for "One who never dies"?',
+    options: ['अमर', 'परोपकारी', 'सत्यवादी', 'सुलभ'],
+    correct: 0,
+    exp: '‘अमर’ का अर्थ है जो कभी न मरे (अ + मर)। ‘परोपकारी’ दूसरों की भलाई करने वाला होता है और ‘सत्यवादी’ सच बोलने वाला।'
+  },
+  {
+    qHi: '‘जो दूसरों की भलाई करते हैं’, उन्हें क्या कहा जाता है?',
+    qEn: 'What are those called who do good to others?',
+    options: ['स्वार्थी', 'परोपकारी', 'मितभाषी', 'अनपढ़'],
+    correct: 1,
+    exp: '‘पर (दूसरा) + उपकार (भलाई)’ करने वाला ‘परोपकारी’ कहलाता है। ‘स्वार्थी’ केवल अपना भला सोचता है।'
+  },
+  {
+    qHi: '‘जो कम बोलता है’, उसके लिए सबसे सही शब्द चुनिए:',
+    qEn: 'Choose the most appropriate word for "One who speaks very little":',
+    options: ['वाचाल', 'मितभाषी', 'परिश्रमी', 'ईर्ष्यालु'],
+    correct: 1,
+    exp: '‘मित (कम) + भाषी (बोलने वाला)’ = ‘मितभाषी’। इसके विपरीत जो बहुत अधिक बोलता है उसे ‘वाचाल’ कहते हैं।'
+  },
+  {
+    qHi: '‘वाचाल’ शब्द का सही अर्थ क्या है?',
+    qEn: 'What is the correct meaning of the word "Vaachaal"?',
+    options: ['जो अधिक बोलता है', 'जो सच बोलता है', 'जो कम बोलता है', 'जो पढ़ा-लिखा न हो'],
+    correct: 0,
+    exp: '‘वाचाल’ का अर्थ है जो बहुत अधिक बोलता हो (बड़बोला)। कम बोलने वाले को ‘मितभाषी’ कहा जाता है।'
+  },
+  {
+    qHi: '‘सदा सत्य बोलने वाले’ व्यक्ति को क्या कहते हैं?',
+    qEn: 'What is a person who always speaks the truth called?',
+    options: ['सत्यवादी', 'आस्तिक', 'अमर', 'अपव्ययी'],
+    correct: 0,
+    exp: '‘सत्य (सच) + वादी (कहने वाला)’ = ‘सत्यवादी’। जैसे राजा हरिश्चंद्र और महात्मा गांधी सत्यवादी थे।'
+  },
+  {
+    qHi: '‘जो ईश्वर में विश्वास रखता है’, उसे क्या कहा जाता है?',
+    qEn: 'What is one who believes in God called?',
+    options: ['नास्तिक', 'आस्तिक', 'परोपकारी', 'अनपढ़'],
+    correct: 1,
+    exp: 'जो ईश्वर की सत्ता मानता है उसे ‘आस्तिक’ कहते हैं। जो ईश्वर में विश्वास नहीं रखता उसे ‘नास्तिक’ कहते हैं।'
+  },
+  {
+    qHi: '‘जो पढ़ा-लिखा न हो’, उसके लिए एक शब्द है:',
+    qEn: 'One word for "One who cannot read or write":',
+    options: ['साक्षर', 'अनपढ़', 'विद्वान', 'वाचाल'],
+    correct: 1,
+    exp: '‘अन् (बिना) + पढ़ (पढ़ा हुआ)’ = ‘अनपढ़’। पढ़े-लिखे व्यक्ति को ‘साक्षर’ कहा जाता है।'
+  },
+  {
+    qHi: '‘जो कठिन परिश्रम करता है’, उसे क्या कहते हैं?',
+    qEn: 'What is one who works very hard called?',
+    options: ['परिश्रमी', 'आलसी', 'अपव्ययी', 'सुलभ'],
+    correct: 0,
+    exp: '‘परिश्रम (कड़ी मेहनत)’ करने वाले को ‘परिश्रमी’ कहते हैं। जो काम से जी चुराए उसे ‘आलसी’ कहते हैं।'
+  },
+  {
+    qHi: '‘जो क्षमा करने योग्य हो’, उसके लिए एक शब्द क्या होगा?',
+    qEn: 'What is the word for "That which can be forgiven"?',
+    options: ['अक्षम्य', 'क्षम्य', 'ईर्ष्यालु', 'मितभाषी'],
+    correct: 1,
+    exp: '‘क्षमा + य (योग्य)’ = ‘क्षम्य’। जिस भूल को क्षमा न किया जा सके उसे ‘अक्षम्य’ कहते हैं।'
+  },
+  {
+    qHi: '‘जो वस्तु आसानी से प्राप्त हो जाए’, उसे क्या कहते हैं?',
+    qEn: 'What is that which is easily available called?',
+    options: ['दुर्लभ', 'सुलभ', 'अमर', 'परोपकारी'],
+    correct: 1,
+    exp: '‘सु (सरल) + लभ (मिलना)’ = ‘सुलभ’। जो कठिनाई से मिले उसे ‘दुर्लभ’ कहते हैं।'
+  },
+  {
+    qHi: '‘जो बहुत धन व्यर्थ खर्च करता है’, उसे क्या कहते हैं?',
+    qEn: 'What is one who spends money lavishly called?',
+    options: ['मितव्ययी', 'अपव्ययी', 'परिश्रमी', 'सत्यवादी'],
+    correct: 1,
+    exp: '‘अप (बुरा/व्यर्थ) + व्ययी (खर्च करने वाला)’ = ‘अपव्ययी’। जो सोच-समझकर बचत करता है उसे ‘मितव्ययी’ कहते हैं।'
+  },
+  {
+    qHi: '‘जो दूसरों से ईर्ष्या या जलन करता है’, उसे कहते हैं:',
+    qEn: 'What is one who is jealous of others called?',
+    options: ['ईर्ष्यालु', 'परोपकारी', 'आस्तिक', 'सुलभ'],
+    correct: 0,
+    exp: '‘ईर्ष्या (जलन) + आलु’ = ‘ईर्ष्यालु’। जो दूसरों का भला चाहे वह ‘परोपकारी’ होता है।'
+  }
+];
+
 // --- APP CONTROLLER CLASS ---
-class ChitraVarnanApp {
+class HindiLearningApp {
   constructor() {
     this.confetti = new ConfettiEngine('confetti-canvas');
     this.state = {
+      activeModule: 'chitra', // 'chitra' | 'vakyansh'
       currentSceneId: 'park',
-      currentMode: 'explore', // 'explore' | 'vocab' | 'puzzle' | 'write'
+      chitraMode: 'explore', // 'explore' | 'vocab' | 'puzzle' | 'write'
+      vakyanshMode: 'learn', // 'learn' | 'match' | 'quiz' | 'challenge'
       showEnglish: true,
       activeHotspotId: null,
       vocabFilter: 'all',
+      vakyanshFilter: 'all',
       stars: this.loadStars(),
+      vakyanshStars: this.loadVakyanshStars(),
       puzzleProgress: {
         stepIdx: 0,
         selectedWords: [],
         isCompleted: false
+      },
+      matchState: {
+        cards: [],
+        firstCard: null,
+        matchedPairIds: [],
+        moves: 0
+      },
+      quizState: {
+        qIndex: 0,
+        score: { correct: 0, wrong: 0 },
+        answered: false
+      },
+      challengeState: {
+        timer: 60,
+        timerInterval: null,
+        qIndex: 0,
+        score: 0,
+        answered: false
       }
     };
 
     this.initElements();
     this.bindEvents();
+    this.updateCurriculumNavUI();
     this.renderSidebarTopics();
     this.updateProgressUI();
   }
@@ -1749,32 +2046,56 @@ class ChitraVarnanApp {
     }
   }
 
+  loadVakyanshStars() {
+    try {
+      const saved = localStorage.getItem('cbse5_hindi_vakyansh_stars');
+      return saved ? parseInt(saved, 10) : 0;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  saveVakyanshStars(stars) {
+    this.state.vakyanshStars = Math.max(this.state.vakyanshStars, stars);
+    try {
+      localStorage.setItem('cbse5_hindi_vakyansh_stars', String(this.state.vakyanshStars));
+    } catch (e) {
+      console.warn('Storage save failed:', e);
+    }
+  }
+
   initElements() {
-    // Top Bar
-    this.menuToggleBtn = document.getElementById('menu-toggle-btn');
+    // Sidebar Navigation Elements
     this.sidebar = document.getElementById('sidebar');
     this.sidebarBackdrop = document.getElementById('sidebar-backdrop');
     this.sidebarCloseBtn = document.getElementById('sidebar-close-btn');
+    this.navItemVakyansh = document.getElementById('nav-item-vakyansh');
+    this.navItemChitra = document.getElementById('nav-item-chitra');
+    this.starsNavVakyansh = document.getElementById('stars-nav-vakyansh');
+    this.starsNavChitra = document.getElementById('stars-nav-chitra');
+    this.sidebarScenesContainer = document.getElementById('sidebar-scenes-container');
     this.sidebarTopics = document.getElementById('sidebar-topics');
     this.progressFill = document.getElementById('progress-fill');
     this.progressLabel = document.getElementById('progress-label');
 
+    // Top Bar Elements
+    this.menuToggleBtn = document.getElementById('menu-toggle-btn');
     this.topBarTitle = document.getElementById('top-bar-title');
     this.topBarSubtitle = document.getElementById('top-bar-subtitle');
     this.btnTranslateToggle = document.getElementById('btn-translate-toggle');
     this.transToggleLabel = document.getElementById('trans-toggle-label');
     this.btnReset = document.getElementById('btn-reset');
-
-    // Tabs
     this.modeTabs = document.getElementById('mode-tabs');
-    this.tabButtons = document.querySelectorAll('.mode-tab');
 
-    // Screens
+    // Workspaces
     this.welcomeScreen = document.getElementById('welcome-screen');
     this.welcomeStartBtn = document.getElementById('welcome-start-btn');
     this.sceneArea = document.getElementById('scene-area');
+    this.vakyanshArea = document.getElementById('vakyansh-area');
+    this.vakyanshWorkspace = document.getElementById('vakyansh-workspace');
+    this.vakyanshEarnedStars = document.getElementById('vakyansh-earned-stars');
 
-    // Picture components
+    // Picture components (Chitra Varnan)
     this.pictureHeading = document.getElementById('picture-heading');
     this.pictureHint = document.getElementById('picture-hint');
     this.hotspotCounter = document.getElementById('hotspot-counter');
@@ -1800,6 +2121,16 @@ class ChitraVarnanApp {
     this.sidebarCloseBtn.addEventListener('click', () => this.toggleSidebar(false));
     this.sidebarBackdrop.addEventListener('click', () => this.toggleSidebar(false));
 
+    // Curriculum Topic Selectors
+    this.navItemVakyansh.addEventListener('click', () => {
+      this.switchModule('vakyansh');
+      if (window.innerWidth <= 860) this.toggleSidebar(false);
+    });
+    this.navItemChitra.addEventListener('click', () => {
+      this.switchModule('chitra');
+      if (window.innerWidth <= 860) this.toggleSidebar(false);
+    });
+
     // Welcome start
     this.welcomeStartBtn.addEventListener('click', () => {
       synth.tap();
@@ -1813,26 +2144,43 @@ class ChitraVarnanApp {
       synth.tap();
       this.state.showEnglish = !this.state.showEnglish;
       this.updateTranslateButtonUI();
-      this.renderCurrentMode();
-      this.renderHotspotDetail(this.state.activeHotspotId);
+      if (this.state.activeModule === 'chitra') {
+        this.renderCurrentMode();
+        this.renderHotspotDetail(this.state.activeHotspotId);
+      } else {
+        this.renderVakyanshWorkspace();
+      }
     });
 
     // Reset button
     this.btnReset.addEventListener('click', () => {
       synth.tap();
-      this.state.puzzleProgress = { stepIdx: 0, selectedWords: [], isCompleted: false };
-      this.state.activeHotspotId = null;
-      this.loadScene(this.state.currentSceneId);
-      this.flash('चित्र और अभ्यास रीसेट किए गए (Reset done)', 'info');
+      if (this.state.activeModule === 'chitra') {
+        this.state.puzzleProgress = { stepIdx: 0, selectedWords: [], isCompleted: false };
+        this.state.activeHotspotId = null;
+        this.loadScene(this.state.currentSceneId);
+        this.flash('चित्र और अभ्यास रीसेट किए गए (Reset done)', 'info');
+      } else {
+        this.resetVakyanshMode();
+        this.flash('व्याकरण अभ्यास रीसेट किया गया (Reset done)', 'info');
+      }
     });
 
-    // Mode Tabs
+    // Mode Tabs Click Delegation
     this.modeTabs.addEventListener('click', (e) => {
       const tab = e.target.closest('.mode-tab');
       if (!tab) return;
       synth.tap();
       const mode = tab.dataset.mode;
-      this.switchMode(mode);
+      if (this.state.activeModule === 'chitra') {
+        this.state.chitraMode = mode;
+        this.updateModeTabsUI();
+        this.renderCurrentMode();
+      } else {
+        this.state.vakyanshMode = mode;
+        this.updateModeTabsUI();
+        this.renderVakyanshWorkspace();
+      }
     });
 
     // Results Modal actions
@@ -1841,9 +2189,15 @@ class ChitraVarnanApp {
     });
     this.btnNextScene.addEventListener('click', () => {
       this.resultsModal.classList.remove('open');
-      const curIdx = SCENE_DATA.findIndex(s => s.id === this.state.currentSceneId);
-      const nextIdx = (curIdx + 1) % SCENE_DATA.length;
-      this.loadScene(SCENE_DATA[nextIdx].id);
+      if (this.state.activeModule === 'chitra') {
+        const curIdx = SCENE_DATA.findIndex(s => s.id === this.state.currentSceneId);
+        const nextIdx = (curIdx + 1) % SCENE_DATA.length;
+        this.loadScene(SCENE_DATA[nextIdx].id);
+      } else {
+        this.state.vakyanshMode = 'learn';
+        this.updateModeTabsUI();
+        this.renderVakyanshWorkspace();
+      }
     });
   }
 
@@ -1876,6 +2230,654 @@ class ChitraVarnanApp {
     }, 2400);
   }
 
+  updateCurriculumNavUI() {
+    this.navItemChitra.classList.toggle('active', this.state.activeModule === 'chitra');
+    this.navItemVakyansh.classList.toggle('active', this.state.activeModule === 'vakyansh');
+
+    // Chitra stars
+    let chitraStars = 0;
+    Object.values(this.state.stars).forEach(s => chitraStars += s);
+    this.starsNavChitra.textContent = `${chitraStars}⭐`;
+
+    // Vakyansh stars
+    const vStars = this.state.vakyanshStars || 0;
+    this.starsNavVakyansh.textContent = '⭐'.repeat(vStars) || '☆☆☆';
+    if (this.vakyanshEarnedStars) {
+      this.vakyanshEarnedStars.textContent = `${vStars} / 3`;
+    }
+  }
+
+  updateProgressUI() {
+    this.updateCurriculumNavUI();
+    const chitraTotal = SCENE_DATA.length * 3;
+    let earnedChitra = 0;
+    Object.values(this.state.stars).forEach(s => earnedChitra += s);
+
+    const totalPossible = chitraTotal + 3; // 18 + 3 = 21
+    const totalEarned = earnedChitra + this.state.vakyanshStars;
+    const pct = Math.round((totalEarned / totalPossible) * 100);
+
+    this.progressFill.style.width = `${pct}%`;
+    this.progressLabel.textContent = `${totalEarned} / ${totalPossible} सितारे (${pct}%)`;
+  }
+
+  // ============================================
+  // MODULE SWITCHER (Chitra Varnan ↔ Vakyansh)
+  // ============================================
+  switchModule(moduleName) {
+    synth.tap();
+    this.state.activeModule = moduleName;
+    this.welcomeScreen.style.display = 'none';
+    this.updateCurriculumNavUI();
+    this.updateModeTabsUI();
+
+    if (moduleName === 'chitra') {
+      this.sidebarScenesContainer.style.display = 'block';
+      this.vakyanshArea.style.display = 'none';
+      this.sceneArea.style.display = 'flex';
+      this.loadScene(this.state.currentSceneId);
+    } else {
+      this.sidebarScenesContainer.style.display = 'none';
+      this.sceneArea.style.display = 'none';
+      this.vakyanshArea.style.display = 'flex';
+
+      this.topBarTitle.textContent = 'वाक्यांश के लिए एक शब्द';
+      this.topBarSubtitle.textContent = this.state.showEnglish
+        ? 'One Word Substitution — Understand, learn & practice with memory clues'
+        : '12 महत्वपूर्ण वाक्यांश — अर्थ, सूत्र, युक्ति व अभ्यास';
+
+      this.renderVakyanshWorkspace();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  updateModeTabsUI() {
+    this.modeTabs.innerHTML = '';
+    if (this.state.activeModule === 'chitra') {
+      const tabs = [
+        { mode: 'explore', label: '🔍 चित्र अवलोकन' },
+        { mode: 'vocab', label: '🔤 शब्द भंडार' },
+        { mode: 'puzzle', label: '🧩 वाक्य खेल' },
+        { mode: 'write', label: '✍️ 5-वाक्य रचना' }
+      ];
+      tabs.forEach(t => {
+        const btn = document.createElement('button');
+        btn.className = `mode-tab ${this.state.chitraMode === t.mode ? 'active' : ''}`;
+        btn.dataset.mode = t.mode;
+        btn.textContent = t.label;
+        this.modeTabs.appendChild(btn);
+      });
+    } else {
+      const tabs = [
+        { mode: 'learn', label: '📖 सीखें व समझें' },
+        { mode: 'match', label: '🃏 मिलान खेल' },
+        { mode: 'quiz', label: '❓ अभ्यास क्विज़' },
+        { mode: 'challenge', label: '🎯 60s चैलेंज' }
+      ];
+      tabs.forEach(t => {
+        const btn = document.createElement('button');
+        btn.className = `mode-tab ${this.state.vakyanshMode === t.mode ? 'active' : ''}`;
+        btn.dataset.mode = t.mode;
+        btn.textContent = t.label;
+        this.modeTabs.appendChild(btn);
+      });
+    }
+  }
+
+  // ============================================
+  // VAKYANSH WORKSPACE ENGINE
+  // ============================================
+  renderVakyanshWorkspace() {
+    if (this.state.challengeState.timerInterval) {
+      clearInterval(this.state.challengeState.timerInterval);
+      this.state.challengeState.timerInterval = null;
+    }
+
+    switch (this.state.vakyanshMode) {
+      case 'learn':
+        this.renderVakyanshLearnMode();
+        break;
+      case 'match':
+        this.renderVakyanshMatchMode();
+        break;
+      case 'quiz':
+        this.renderVakyanshQuizMode();
+        break;
+      case 'challenge':
+        this.renderVakyanshChallengeMode();
+        break;
+    }
+  }
+
+  resetVakyanshMode() {
+    if (this.state.vakyanshMode === 'match') {
+      this.initMatchGame();
+    } else if (this.state.vakyanshMode === 'quiz') {
+      this.state.quizState = { qIndex: 0, score: { correct: 0, wrong: 0 }, answered: false };
+      this.renderVakyanshQuizMode();
+    } else if (this.state.vakyanshMode === 'challenge') {
+      this.startVakyanshChallenge();
+    } else {
+      this.state.vakyanshFilter = 'all';
+      this.renderVakyanshLearnMode();
+    }
+  }
+
+  // --- VAKYANSH MODE 1: LEARN CARDS ---
+  renderVakyanshLearnMode() {
+    const filter = this.state.vakyanshFilter;
+    const filteredList = filter === 'all'
+      ? VAKYANSH_DATA
+      : VAKYANSH_DATA.filter(item => item.category === filter);
+
+    this.vakyanshWorkspace.innerHTML = `
+      <div class="vakyansh-learn-panel">
+        <div class="vakyansh-controls-bar">
+          <div class="vocab-filters">
+            <button class="vocab-filter-btn ${filter === 'all' ? 'active' : ''}" data-filter="all">सभी 12 शब्द</button>
+            <button class="vocab-filter-btn ${filter === 'behavior' ? 'active' : ''}" data-filter="behavior">स्वभाव व आचरण</button>
+            <button class="vocab-filter-btn ${filter === 'action' ? 'active' : ''}" data-filter="action">कर्म व परिश्रम</button>
+            <button class="vocab-filter-btn ${filter === 'nature' ? 'active' : ''}" data-filter="nature">जीवन व प्रकृति</button>
+          </div>
+          <input
+            type="text"
+            class="vakyansh-search-input"
+            id="vakyansh-search-input"
+            placeholder="🔍 शब्द या वाक्यांश खोजें (Search)...">
+        </div>
+
+        <div class="vakyansh-cards-grid" id="vakyansh-cards-grid">
+          ${filteredList.map(item => this.getVakyanshCardHtml(item)).join('')}
+        </div>
+      </div>
+    `;
+
+    // Category filter click
+    this.vakyanshWorkspace.querySelectorAll('.vocab-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        synth.tap();
+        this.state.vakyanshFilter = btn.dataset.filter;
+        this.renderVakyanshLearnMode();
+      });
+    });
+
+    // Live search
+    const searchInput = this.vakyanshWorkspace.querySelector('#vakyansh-search-input');
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.toLowerCase().trim();
+      const cards = this.vakyanshWorkspace.querySelectorAll('.vakyansh-card');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    });
+  }
+
+  getVakyanshCardHtml(item) {
+    const enPhrase = this.state.showEnglish ? `<div class="vakyansh-phrase-en">${item.phraseEn}</div>` : '';
+    const enWord = this.state.showEnglish ? `<span class="vakyansh-word-en">${item.wordEn} (${item.translit})</span>` : '';
+    const enExample = this.state.showEnglish ? `<div class="vakyansh-example-en">🌐 ${item.exampleEn}</div>` : '';
+    const oppositeTag = item.oppositeHi ? `<div class="vakyansh-opposite-tag">🔄 विलोम: ${item.oppositeHi}</div>` : '';
+
+    return `
+      <div class="vakyansh-card" data-id="${item.id}">
+        <div class="vakyansh-card-header">
+          <div class="vakyansh-num-badge">${item.id}</div>
+          <div class="vakyansh-phrase-group">
+            <div class="vakyansh-phrase-title">${item.phraseHi}</div>
+            ${enPhrase}
+          </div>
+          <div class="vakyansh-word-badge">
+            <span class="vakyansh-word-hi">${item.wordHi}</span>
+            ${enWord}
+          </div>
+        </div>
+
+        <div class="vakyansh-formula-box">
+          <div class="vakyansh-formula-label">💡 समझने का सूत्र (Root Breakdown):</div>
+          <div class="vakyansh-formula-code">${item.formula}</div>
+        </div>
+
+        <div class="vakyansh-clue-box">
+          <strong>🧠 याद रखने की युक्ति:</strong> ${item.clue}
+        </div>
+
+        <div class="vakyansh-example-box">
+          <div class="vakyansh-example-hi">📝 <strong>वाक्य प्रयोग:</strong> ${item.exampleHi}</div>
+          ${enExample}
+        </div>
+
+        ${oppositeTag}
+      </div>
+    `;
+  }
+
+  // --- VAKYANSH MODE 2: MATCH CARDS GAME ---
+  renderVakyanshMatchMode() {
+    if (!this.state.matchState.cards || this.state.matchState.cards.length === 0) {
+      this.initMatchGame();
+      return;
+    }
+
+    const ms = this.state.matchState;
+    const totalPairs = ms.cards.length / 2;
+    const matchedCount = ms.matchedPairIds.length;
+    const isCompleted = matchedCount === totalPairs;
+
+    this.vakyanshWorkspace.innerHTML = `
+      <div class="match-game-container">
+        <div class="match-status-bar">
+          <span class="match-score-pill">जोड़ियाँ: ${matchedCount} / ${totalPairs} मिलाईं</span>
+          <span class="match-score-pill">कुल चालें: ${ms.moves}</span>
+          <span class="match-instruction">वाक्यांश और उसके सही एक शब्द पर टैप करके जोड़ी बनाएं</span>
+          <button class="btn" id="btn-restart-match" style="min-height:36px; padding:4px 12px;">🔄 नया खेल (Shuffle)</button>
+        </div>
+
+        ${isCompleted ? `
+          <div style="text-align:center; padding: 24px; background: rgba(16,185,129,0.12); border-radius: var(--radius-lg); border: 1px solid rgba(16,185,129,0.4);">
+            <div style="font-size:3rem; margin-bottom:8px;">🎉</div>
+            <h3 style="color:#6ee7b7; font-size:1.35rem; margin-bottom:6px;">शाबाश! आपने सभी ${totalPairs} जोड़ियाँ सफलतापूर्वक मिला लीं!</h3>
+            <p style="color:var(--text-secondary); margin-bottom:16px;">आपने कुल ${ms.moves} चालों में यह खेल पूरा किया।</p>
+            <button class="btn btn-primary" id="btn-play-next-round">🚀 अगला राउंड खेलें →</button>
+          </div>
+        ` : `
+          <div class="match-board" id="match-board">
+            ${ms.cards.map((card, idx) => {
+              const isMatched = ms.matchedPairIds.includes(card.pairId);
+              const isSelected = ms.firstCard && ms.firstCard.idx === idx;
+              return `
+                <button
+                  class="match-card ${card.type === 'phrase' ? 'type-phrase' : 'type-word'} ${isMatched ? 'matched' : ''} ${isSelected ? 'selected' : ''}"
+                  data-idx="${idx}"
+                  data-pair-id="${card.pairId}"
+                  ${isMatched ? 'disabled' : ''}>
+                  <div class="match-card-hi">${card.textHi}</div>
+                  ${this.state.showEnglish ? `<div class="match-card-en">${card.textEn}</div>` : ''}
+                </button>
+              `;
+            }).join('')}
+          </div>
+        `}
+      </div>
+    `;
+
+    // Restart button
+    this.vakyanshWorkspace.querySelector('#btn-restart-match')?.addEventListener('click', () => {
+      synth.tap();
+      this.initMatchGame();
+    });
+    this.vakyanshWorkspace.querySelector('#btn-play-next-round')?.addEventListener('click', () => {
+      synth.tap();
+      this.initMatchGame();
+    });
+
+    // Card Click Binding
+    if (!isCompleted) {
+      this.vakyanshWorkspace.querySelectorAll('.match-card:not(.matched)').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt(btn.dataset.idx, 10);
+          this.handleMatchCardClick(idx);
+        });
+      });
+    }
+  }
+
+  initMatchGame() {
+    // Pick 6 random items from the 12 phrases
+    const shuffledItems = [...VAKYANSH_DATA].sort(() => 0.5 - Math.random()).slice(0, 6);
+    const cards = [];
+
+    shuffledItems.forEach(item => {
+      cards.push({
+        pairId: item.id,
+        type: 'phrase',
+        textHi: item.phraseHi,
+        textEn: item.phraseEn
+      });
+      cards.push({
+        pairId: item.id,
+        type: 'word',
+        textHi: item.wordHi,
+        textEn: `${item.wordEn} (${item.translit})`
+      });
+    });
+
+    // Shuffle the 12 cards
+    cards.sort(() => 0.5 - Math.random());
+
+    this.state.matchState = {
+      cards,
+      firstCard: null,
+      matchedPairIds: [],
+      moves: 0
+    };
+
+    this.renderVakyanshMatchMode();
+  }
+
+  handleMatchCardClick(idx) {
+    const ms = this.state.matchState;
+    const clickedCard = ms.cards[idx];
+
+    // Don't allow clicking an already matched card or re-clicking the same card
+    if (ms.matchedPairIds.includes(clickedCard.pairId)) return;
+    if (ms.firstCard && ms.firstCard.idx === idx) return;
+
+    synth.tap();
+
+    if (!ms.firstCard) {
+      // First card chosen
+      ms.firstCard = { idx, ...clickedCard };
+      this.renderVakyanshMatchMode();
+    } else {
+      // Second card chosen
+      ms.moves++;
+      const first = ms.firstCard;
+      const isMatch = first.pairId === clickedCard.pairId && first.type !== clickedCard.type;
+
+      if (isMatch) {
+        synth.success();
+        ms.matchedPairIds.push(first.pairId);
+        ms.firstCard = null;
+
+        if (ms.matchedPairIds.length === ms.cards.length / 2) {
+          synth.fanfare();
+          this.confetti.burst(50);
+        }
+        this.renderVakyanshMatchMode();
+      } else {
+        synth.error();
+        // Highlight wrong pair
+        const board = this.vakyanshWorkspace.querySelector('#match-board');
+        if (board) {
+          const btn1 = board.querySelector(`[data-idx="${first.idx}"]`);
+          const btn2 = board.querySelector(`[data-idx="${idx}"]`);
+          if (btn1) btn1.classList.add('wrong');
+          if (btn2) btn2.classList.add('wrong');
+        }
+
+        setTimeout(() => {
+          ms.firstCard = null;
+          this.renderVakyanshMatchMode();
+        }, 700);
+      }
+    }
+  }
+
+  // --- VAKYANSH MODE 3: PRACTICE QUIZ ---
+  renderVakyanshQuizMode() {
+    const qs = this.state.quizState;
+    const questions = VAKYANSH_QUIZ_POOL;
+    const totalQ = questions.length;
+    const q = questions[qs.qIndex];
+
+    const letters = ['क', 'ख', 'ग', 'घ'];
+
+    this.vakyanshWorkspace.innerHTML = `
+      <div class="vakyansh-quiz-panel">
+        <!-- Score Bar -->
+        <div class="score-bar" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; background:rgba(0,0,0,0.3); padding:10px 14px; border-radius:var(--radius-md); border:var(--border-glass);">
+          <div class="score-item" style="text-align:center;">
+            <div class="score-value" style="font-size:1.3rem; font-weight:800; color:var(--accent-green);">${qs.score.correct}</div>
+            <div class="score-label" style="font-size:0.7rem; color:var(--text-muted);">सही (Correct)</div>
+          </div>
+          <div class="score-item" style="text-align:center;">
+            <div class="score-value" style="font-size:1.3rem; font-weight:800; color:var(--accent-red);">${qs.score.wrong}</div>
+            <div class="score-label" style="font-size:0.7rem; color:var(--text-muted);">गलत (Wrong)</div>
+          </div>
+          <div class="score-item" style="text-align:center;">
+            <div class="score-value" style="font-size:1.3rem; font-weight:800; color:var(--accent-saffron-light);">${totalQ - qs.qIndex}</div>
+            <div class="score-label" style="font-size:0.7rem; color:var(--text-muted);">शेष (Remaining)</div>
+          </div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="vakyansh-quiz-card">
+          <div class="quiz-q-num">प्रश्न ${qs.qIndex + 1} / ${totalQ}</div>
+          <div class="quiz-q-prompt">${q.qHi}</div>
+          ${this.state.showEnglish ? `<div class="quiz-q-prompt-en">🌐 ${q.qEn}</div>` : ''}
+
+          <!-- Options Grid -->
+          <div class="quiz-options-grid" id="quiz-options-grid">
+            ${q.options.map((opt, i) => `
+              <button class="quiz-opt-btn" data-opt-idx="${i}" ${qs.answered ? 'disabled' : ''}>
+                <span class="quiz-opt-letter">${letters[i]}</span>
+                <span>${opt}</span>
+              </button>
+            `).join('')}
+          </div>
+
+          <!-- Explanation Box -->
+          <div class="quiz-explanation-box" id="quiz-exp-box" style="display:none;"></div>
+
+          <!-- Next Button -->
+          <div style="display:flex; justify-content:flex-end; margin-top:8px;">
+            <button class="btn btn-primary" id="btn-quiz-next" style="display:none;">
+              ${qs.qIndex < totalQ - 1 ? 'अगला प्रश्न →' : 'परिणाम देखें 🏆'}
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Bind Option clicks
+    this.vakyanshWorkspace.querySelectorAll('#quiz-options-grid .quiz-opt-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (qs.answered) return;
+        qs.answered = true;
+        const chosenIdx = parseInt(btn.dataset.optIdx, 10);
+        const expBox = this.vakyanshWorkspace.querySelector('#quiz-exp-box');
+        const nextBtn = this.vakyanshWorkspace.querySelector('#btn-quiz-next');
+
+        if (chosenIdx === q.correct) {
+          synth.success();
+          btn.classList.add('correct');
+          qs.score.correct++;
+          expBox.innerHTML = `<strong>🎉 बिल्कुल सही उत्तर!</strong><br>${q.exp}`;
+        } else {
+          synth.error();
+          btn.classList.add('wrong');
+          qs.score.wrong++;
+          // Highlight correct one
+          const correctBtn = this.vakyanshWorkspace.querySelector(`[data-opt-idx="${q.correct}"]`);
+          if (correctBtn) correctBtn.classList.add('correct');
+          expBox.innerHTML = `<strong>❌ सही उत्तर ‘${q.options[q.correct]}’ है:</strong><br>${q.exp}`;
+        }
+
+        expBox.style.display = 'block';
+        nextBtn.style.display = 'inline-flex';
+      });
+    });
+
+    // Next Question Button
+    this.vakyanshWorkspace.querySelector('#btn-quiz-next')?.addEventListener('click', () => {
+      synth.tap();
+      if (qs.qIndex < totalQ - 1) {
+        qs.qIndex++;
+        qs.answered = false;
+        this.renderVakyanshQuizMode();
+      } else {
+        // Quiz complete modal
+        const pct = Math.round((qs.score.correct / totalQ) * 100);
+        const starsEarned = pct >= 80 ? 3 : (pct >= 50 ? 2 : 1);
+
+        this.saveVakyanshStars(starsEarned);
+        this.updateProgressUI();
+
+        if (starsEarned === 3) {
+          synth.fanfare();
+          this.confetti.burst(60);
+        }
+
+        this.resultStars.textContent = '⭐'.repeat(starsEarned);
+        this.resultScore.textContent = `${pct}%`;
+        this.resultStarsCount.textContent = String(starsEarned);
+        this.resultsModal.classList.add('open');
+      }
+    });
+  }
+
+  // --- VAKYANSH MODE 4: 60s TIMED CHALLENGE ---
+  renderVakyanshChallengeMode() {
+    this.startVakyanshChallenge();
+  }
+
+  startVakyanshChallenge() {
+    if (this.state.challengeState.timerInterval) {
+      clearInterval(this.state.challengeState.timerInterval);
+    }
+
+    // Pick 10 randomized questions
+    const pool = [...VAKYANSH_QUIZ_POOL].sort(() => 0.5 - Math.random()).slice(0, 10);
+
+    this.state.challengeState = {
+      timer: 60,
+      timerInterval: null,
+      qIndex: 0,
+      score: 0,
+      answered: false,
+      questions: pool
+    };
+
+    this.renderChallengeQuestion();
+
+    // Start timer interval
+    this.state.challengeState.timerInterval = setInterval(() => {
+      const cs = this.state.challengeState;
+      cs.timer--;
+      const timerFill = document.getElementById('challenge-timer-fill');
+      const timerText = document.getElementById('challenge-timer-text');
+
+      if (timerFill) {
+        const pct = (cs.timer / 60) * 100;
+        timerFill.style.width = `${pct}%`;
+        if (cs.timer <= 15) timerFill.classList.add('urgent');
+      }
+      if (timerText) {
+        timerText.textContent = `⏱️ समय शेष: ${cs.timer}s`;
+      }
+
+      if (cs.timer <= 0) {
+        clearInterval(cs.timerInterval);
+        cs.timerInterval = null;
+        this.finishChallenge();
+      }
+    }, 1000);
+  }
+
+  renderChallengeQuestion() {
+    const cs = this.state.challengeState;
+    const totalQ = cs.questions.length;
+
+    if (cs.qIndex >= totalQ) {
+      if (cs.timerInterval) clearInterval(cs.timerInterval);
+      this.finishChallenge();
+      return;
+    }
+
+    const q = cs.questions[cs.qIndex];
+    const letters = ['क', 'ख', 'ग', 'घ'];
+
+    this.vakyanshWorkspace.innerHTML = `
+      <div class="challenge-panel">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <span style="font-size:0.9rem; font-weight:700; color:var(--accent-saffron-light);">
+            ⚡ 60-सेकंड चैलेंज — प्रश्न ${cs.qIndex + 1} / ${totalQ}
+          </span>
+          <span id="challenge-timer-text" style="font-size:0.92rem; font-weight:800; color:var(--text-primary);">
+            ⏱️ समय शेष: ${cs.timer}s
+          </span>
+          <span style="font-size:0.9rem; font-weight:700; color:var(--accent-green);">
+            स्कोर: ${cs.score}
+          </span>
+        </div>
+
+        <!-- Timer bar -->
+        <div class="challenge-timer-bar">
+          <div class="challenge-timer-fill ${cs.timer <= 15 ? 'urgent' : ''}" id="challenge-timer-fill" style="width:${(cs.timer/60)*100}%;"></div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="vakyansh-quiz-card">
+          <div class="quiz-q-prompt">${q.qHi}</div>
+          ${this.state.showEnglish ? `<div class="quiz-q-prompt-en">🌐 ${q.qEn}</div>` : ''}
+
+          <div class="quiz-options-grid" id="challenge-options-grid">
+            ${q.options.map((opt, i) => `
+              <button class="quiz-opt-btn" data-opt-idx="${i}">
+                <span class="quiz-opt-letter">${letters[i]}</span>
+                <span>${opt}</span>
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Fast-paced Option Click
+    this.vakyanshWorkspace.querySelectorAll('#challenge-options-grid .quiz-opt-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (cs.answered) return;
+        cs.answered = true;
+        const chosenIdx = parseInt(btn.dataset.optIdx, 10);
+
+        if (chosenIdx === q.correct) {
+          synth.success();
+          btn.classList.add('correct');
+          cs.score++;
+        } else {
+          synth.error();
+          btn.classList.add('wrong');
+        }
+
+        setTimeout(() => {
+          cs.qIndex++;
+          cs.answered = false;
+          this.renderChallengeQuestion();
+        }, 600);
+      });
+    });
+  }
+
+  finishChallenge() {
+    const cs = this.state.challengeState;
+    const totalQ = cs.questions.length;
+    const pct = Math.round((cs.score / totalQ) * 100);
+    const starsEarned = cs.score >= 8 ? 3 : (cs.score >= 5 ? 2 : 1);
+
+    this.saveVakyanshStars(starsEarned);
+    this.updateProgressUI();
+
+    if (starsEarned === 3) {
+      synth.fanfare();
+      this.confetti.burst(70);
+    } else {
+      synth.success();
+    }
+
+    this.resultStars.textContent = '⭐'.repeat(starsEarned);
+    this.resultScore.textContent = `${pct}% (${cs.score}/${totalQ})`;
+    this.resultStarsCount.textContent = String(starsEarned);
+    this.resultsModal.classList.add('open');
+
+    this.vakyanshWorkspace.innerHTML = `
+      <div style="text-align:center; padding:32px 16px; background:var(--bg-card); border-radius:var(--radius-xl); border:var(--border-glass);">
+        <div style="font-size:3.5rem; margin-bottom:12px;">🏆</div>
+        <h3 style="font-size:1.5rem; color:var(--accent-saffron-light); margin-bottom:6px;">चैलेंज पूरा हुआ! (Challenge Complete!)</h3>
+        <p style="color:var(--text-secondary); margin-bottom:18px;">आपने 60 सेकंड में ${cs.score} / ${totalQ} अंक प्राप्त किए और ${starsEarned} सितारे अर्जित किए!</p>
+        <button class="btn btn-primary" id="btn-challenge-retry">🚀 दोबारा खेलें (Try Again)</button>
+      </div>
+    `;
+
+    this.vakyanshWorkspace.querySelector('#btn-challenge-retry').addEventListener('click', () => {
+      synth.tap();
+      this.startVakyanshChallenge();
+    });
+  }
+
+  // ============================================
+  // CHITRA VARNAN METHODS (Original Engine Preserved)
+  // ============================================
   renderSidebarTopics() {
     this.sidebarTopics.innerHTML = '';
     SCENE_DATA.forEach((scene) => {
@@ -1907,15 +2909,6 @@ class ChitraVarnanApp {
 
       this.sidebarTopics.appendChild(btn);
     });
-  }
-
-  updateProgressUI() {
-    const totalPossible = SCENE_DATA.length * 3;
-    let earned = 0;
-    Object.values(this.state.stars).forEach(s => earned += s);
-    const pct = Math.round((earned / totalPossible) * 100);
-    this.progressFill.style.width = `${pct}%`;
-    this.progressLabel.textContent = `${earned} / ${totalPossible} सितारे (stars)`;
   }
 
   loadScene(sceneId) {
@@ -2025,19 +3018,11 @@ class ChitraVarnanApp {
     `;
   }
 
-  switchMode(mode) {
-    this.state.currentMode = mode;
-    this.tabButtons.forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.mode === mode);
-    });
-    this.renderCurrentMode();
-  }
-
   renderCurrentMode() {
     const scene = SCENE_DATA.find(s => s.id === this.state.currentSceneId);
     if (!scene) return;
 
-    switch (this.state.currentMode) {
+    switch (this.state.chitraMode) {
       case 'explore':
         this.renderExploreMode(scene);
         break;
@@ -2053,9 +3038,6 @@ class ChitraVarnanApp {
     }
   }
 
-  // ============================================
-  // MODE 1: चित्र अवलोकन (OBSERVE & HOTSPOTS)
-  // ============================================
   renderExploreMode(scene) {
     this.modePanel.innerHTML = `
       <div class="explore-panel">
@@ -2074,7 +3056,6 @@ class ChitraVarnanApp {
       </div>
     `;
 
-    // Click handler on cards
     this.modePanel.querySelectorAll('.explore-card').forEach(card => {
       card.addEventListener('click', () => {
         synth.tap();
@@ -2084,9 +3065,6 @@ class ChitraVarnanApp {
     });
   }
 
-  // ============================================
-  // MODE 2: शब्द भंडार (VOCABULARY BANK)
-  // ============================================
   renderVocabMode(scene) {
     const filter = this.state.vocabFilter;
     const filteredVocab = filter === 'all'
@@ -2130,7 +3108,6 @@ class ChitraVarnanApp {
       </div>
     `;
 
-    // Bind filter buttons
     this.modePanel.querySelectorAll('.vocab-filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         synth.tap();
@@ -2140,15 +3117,11 @@ class ChitraVarnanApp {
     });
   }
 
-  // ============================================
-  // MODE 3: वाक्य खेल (JUMBLED SENTENCE PUZZLE)
-  // ============================================
   renderPuzzleMode(scene) {
     const pProg = this.state.puzzleProgress;
     const currentPuzzle = scene.puzzles[pProg.stepIdx];
 
     if (!currentPuzzle) {
-      // Completed all 5 sentences
       this.modePanel.innerHTML = `
         <div class="puzzle-panel" style="text-align: center; padding: 32px 16px;">
           <div style="font-size: 3.5rem; margin-bottom: 12px;">🎉</div>
@@ -2163,7 +3136,9 @@ class ChitraVarnanApp {
 
       this.modePanel.querySelector('#btn-show-model-answer').addEventListener('click', () => {
         synth.tap();
-        this.switchMode('write');
+        this.state.chitraMode = 'write';
+        this.updateModeTabsUI();
+        this.renderWriteMode(scene);
       });
       this.modePanel.querySelector('#btn-replay-puzzle').addEventListener('click', () => {
         synth.tap();
@@ -2171,7 +3146,6 @@ class ChitraVarnanApp {
         this.renderPuzzleMode(scene);
       });
 
-      // Award stars if not yet awarded
       if (!this.state.stars[scene.id] || this.state.stars[scene.id] < 3) {
         this.state.stars[scene.id] = 3;
         this.saveStars();
@@ -2183,7 +3157,6 @@ class ChitraVarnanApp {
       return;
     }
 
-    // Prepare bank words (excluding selected words by index)
     const selectedIndices = pProg.selectedWords;
     const isSlotFilled = selectedIndices.length === currentPuzzle.correctWords.length;
 
@@ -2199,7 +3172,6 @@ class ChitraVarnanApp {
           ${this.state.showEnglish ? `<div class="puzzle-prompt-english">🌐 ${currentPuzzle.promptEn}</div>` : ''}
         </div>
 
-        <!-- Answer Slot Area -->
         <div class="puzzle-slot-area ${isSlotFilled ? 'filled' : ''}" id="puzzle-slot">
           ${selectedIndices.length === 0
             ? '<div class="puzzle-slot-placeholder">यहाँ शब्द जोड़कर वाक्य बनाएं (Tap words below to arrange sentence)</div>'
@@ -2215,7 +3187,6 @@ class ChitraVarnanApp {
           }
         </div>
 
-        <!-- Word Bank -->
         <div>
           <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 8px;">उपलब्ध शब्द (Word Bank):</div>
           <div class="puzzle-bank" id="puzzle-bank">
@@ -2232,10 +3203,8 @@ class ChitraVarnanApp {
           </div>
         </div>
 
-        <!-- Feedback Msg -->
         <div class="puzzle-feedback" id="puzzle-feedback"></div>
 
-        <!-- Controls -->
         <div class="puzzle-actions">
           <div class="puzzle-action-btns">
             <button class="btn" id="btn-undo-word" ${selectedIndices.length === 0 ? 'disabled' : ''}>↩️ अंतिम शब्द हटाएं (Undo)</button>
@@ -2248,7 +3217,6 @@ class ChitraVarnanApp {
       </div>
     `;
 
-    // Bind Bank word tap
     this.modePanel.querySelectorAll('#puzzle-bank .puzzle-word-chip').forEach(btn => {
       btn.addEventListener('click', () => {
         synth.tap();
@@ -2258,7 +3226,6 @@ class ChitraVarnanApp {
       });
     });
 
-    // Bind In-Slot tap (removes that word)
     this.modePanel.querySelectorAll('#puzzle-slot .puzzle-word-chip').forEach(btn => {
       btn.addEventListener('click', () => {
         synth.tap();
@@ -2268,26 +3235,22 @@ class ChitraVarnanApp {
       });
     });
 
-    // Undo button
     this.modePanel.querySelector('#btn-undo-word').addEventListener('click', () => {
       synth.tap();
       this.state.puzzleProgress.selectedWords.pop();
       this.renderPuzzleMode(scene);
     });
 
-    // Reset button
     this.modePanel.querySelector('#btn-reset-puzzle').addEventListener('click', () => {
       synth.tap();
       this.state.puzzleProgress.selectedWords = [];
       this.renderPuzzleMode(scene);
     });
 
-    // Check Answer button
     this.modePanel.querySelector('#btn-check-puzzle').addEventListener('click', () => {
       const fb = this.modePanel.querySelector('#puzzle-feedback');
       const slot = this.modePanel.querySelector('#puzzle-slot');
 
-      // Form user sentence
       const userWords = selectedIndices.map(i => currentPuzzle.scrambledWords[i].hi);
       const isCorrect = userWords.join(' ') === currentPuzzle.correctWords.join(' ');
 
@@ -2320,15 +3283,11 @@ class ChitraVarnanApp {
     });
   }
 
-  // ============================================
-  // MODE 4: 5-वाक्य रचना (GUIDED WRITING & MODEL)
-  // ============================================
   renderWriteMode(scene) {
     const ans = scene.modelAnswer;
 
     this.modePanel.innerHTML = `
       <div class="write-panel">
-        <!-- Complete Model Answer Card -->
         <div class="model-answer-card">
           <div class="model-header">
             <h4>🏆 आदर्श उत्तर (Complete 5-7 Sentences Model Answer)</h4>
@@ -2346,7 +3305,6 @@ class ChitraVarnanApp {
             </div>
           ` : ''}
 
-          <!-- Exam Tips -->
           <div class="rule-summary-card" style="margin-bottom:0; background:rgba(255,255,255,0.02);">
             <h4>💡 परीक्षा में पूरे अंक पाने के टिप्स:</h4>
             <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">
@@ -2355,7 +3313,6 @@ class ChitraVarnanApp {
           </div>
         </div>
 
-        <!-- 5-Step Formula Breakdown -->
         <div class="steps-breakdown-list">
           <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary);">
             📋 5-स्टेप फॉर्मूला संरचना (Step-by-Step Sentence Analysis):
@@ -2372,7 +3329,6 @@ class ChitraVarnanApp {
           `).join('')}
         </div>
 
-        <!-- Student Self Practice Editor -->
         <div class="student-editor-card">
           <h4>✍️ अपना उत्तर यहाँ लिखकर अभ्यास करें (Student Practice Area):</h4>
           <p style="font-size: 0.85rem; color: var(--text-secondary);">
@@ -2394,7 +3350,6 @@ class ChitraVarnanApp {
       </div>
     `;
 
-    // Editor live word counter
     const textarea = this.modePanel.querySelector('#student-textarea');
     const counter = this.modePanel.querySelector('#student-word-counter');
 
@@ -2405,7 +3360,6 @@ class ChitraVarnanApp {
       counter.textContent = `शब्द संख्या: ${words} शब्द | ${sentences} वाक्य पूर्ण`;
     });
 
-    // Copy text
     this.modePanel.querySelector('#btn-copy-text').addEventListener('click', () => {
       synth.tap();
       if (textarea.value.trim()) {
@@ -2416,7 +3370,6 @@ class ChitraVarnanApp {
       }
     });
 
-    // Complete Practice
     this.modePanel.querySelector('#btn-complete-practice').addEventListener('click', () => {
       synth.fanfare();
       this.confetti.burst(60);
@@ -2425,7 +3378,6 @@ class ChitraVarnanApp {
       this.updateProgressUI();
       this.renderSidebarTopics();
 
-      // Show modal
       this.resultStars.textContent = '⭐⭐⭐';
       this.resultScore.textContent = '100%';
       this.resultStarsCount.textContent = '3';
@@ -2436,5 +3388,5 @@ class ChitraVarnanApp {
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-  window.chitraApp = new ChitraVarnanApp();
+  window.chitraApp = new HindiLearningApp();
 });

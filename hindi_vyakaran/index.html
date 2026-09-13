@@ -34,20 +34,45 @@
       </div>
 
       <div class="sidebar-logo">
-        <div class="logo-badge">रचनात्मक लेखन</div>
-        <h1>🖼️ चित्र वर्णन</h1>
-        <p>Class 5 CBSE — हिंदी व्याकरण</p>
+        <div class="logo-badge">कक्षा 5 CBSE</div>
+        <h1>🇮🇳 हिंदी व्याकरण व रचना</h1>
+        <p>Class 5 CBSE — Interactive Learning Hub</p>
       </div>
 
-      <div class="sidebar-section-title">चित्र विषय (Topics)</div>
-      <div id="sidebar-topics"></div>
+      <!-- Main Curriculum Section Switcher -->
+      <div class="sidebar-section-title">📖 विषय चुनें (Choose Topic)</div>
+      <div class="curriculum-selector" id="curriculum-selector">
+        <button class="curriculum-item" id="nav-item-vakyansh" data-module="vakyansh">
+          <span class="topic-nav-icon">🔤</span>
+          <div class="topic-nav-info">
+            <div class="topic-nav-title">वाक्यांश के लिए एक शब्द</div>
+            <div class="topic-nav-subtitle">One Word Substitution (12 शब्द)</div>
+          </div>
+          <span class="topic-nav-stars" id="stars-nav-vakyansh">☆☆☆</span>
+        </button>
+
+        <button class="curriculum-item active" id="nav-item-chitra" data-module="chitra">
+          <span class="topic-nav-icon">🖼️</span>
+          <div class="topic-nav-info">
+            <div class="topic-nav-title">रचनात्मक लेखन: चित्र वर्णन</div>
+            <div class="topic-nav-subtitle">Picture Description (6 चित्र)</div>
+          </div>
+          <span class="topic-nav-stars" id="stars-nav-chitra">☆☆☆</span>
+        </button>
+      </div>
+
+      <!-- Sub-navigation for Chitra Varnan Scenes (collapsible when in Vakyansh mode) -->
+      <div id="sidebar-scenes-container">
+        <div class="sidebar-section-title" id="sidebar-sub-title">चित्र विषय (Scenes)</div>
+        <div id="sidebar-topics"></div>
+      </div>
 
       <div class="progress-section">
-        <h4>कुल प्रगति (Progress)</h4>
+        <h4>कुल प्रगति (Overall Progress)</h4>
         <div class="progress-bar-container">
           <div class="progress-bar-fill" id="progress-fill"></div>
         </div>
-        <div class="progress-label" id="progress-label">0 / 18 सितारे (stars)</div>
+        <div class="progress-label" id="progress-label">0 सितारे (stars)</div>
       </div>
     </aside>
 
@@ -59,7 +84,7 @@
         <div class="top-bar-nav-row">
           <button class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Open Topics Menu">
             <span class="hamburger-icon">☰</span>
-            <span class="menu-label">चित्र</span>
+            <span class="menu-label">विषय</span>
           </button>
           <a href="../index.html" class="home-quick-btn" title="Back to Learning Hub" aria-label="Back to Learning Hub">🏠</a>
 
@@ -73,15 +98,12 @@
               <span class="trans-icon">🌐</span>
               <span class="trans-text" id="trans-toggle-label">English: ON</span>
             </button>
-            <button class="btn btn-icon" id="btn-reset" title="Reset Scene" aria-label="Reset">🔄</button>
+            <button class="btn btn-icon" id="btn-reset" title="Reset Current View" aria-label="Reset">🔄</button>
           </div>
         </div>
 
         <div class="mode-tabs" id="mode-tabs">
-          <button class="mode-tab active" data-mode="explore" id="tab-explore">🔍 चित्र अवलोकन</button>
-          <button class="mode-tab" data-mode="vocab" id="tab-vocab">🔤 शब्द भंडार</button>
-          <button class="mode-tab" data-mode="puzzle" id="tab-puzzle">🧩 वाक्य खेल</button>
-          <button class="mode-tab" data-mode="write" id="tab-write">✍️ 5-वाक्य रचना</button>
+          <!-- Populated dynamically by JavaScript according to active module -->
         </div>
       </div>
 
@@ -178,6 +200,33 @@
           <!-- Rendered dynamically by app.js according to active mode -->
         </div>
 
+      </div>
+
+      <!-- ==================== VAKYANSH WORKSPACE AREA ==================== -->
+      <div class="vakyansh-area" id="vakyansh-area" style="display: none;">
+        <!-- Vakyansh Hero Banner -->
+        <div class="vakyansh-hero-banner" id="vakyansh-hero-banner">
+          <div class="vakyansh-hero-content">
+            <div class="vakyansh-badge">हिंदी व्याकरण — शब्द संपदा</div>
+            <h3>🔤 वाक्यांश के लिए एक शब्द</h3>
+            <p id="vakyansh-hero-desc">कम से कम शब्दों में अपनी बात प्रभावशाली ढंग से कहना सीखें। समझकर और युक्ति से याद रखें!</p>
+          </div>
+          <div class="vakyansh-stats-card">
+            <div class="vakyansh-stat-item">
+              <span class="vakyansh-stat-val">12</span>
+              <span class="vakyansh-stat-lbl">कुल शब्द</span>
+            </div>
+            <div class="vakyansh-stat-item">
+              <span class="vakyansh-stat-val" id="vakyansh-earned-stars">0 / 3</span>
+              <span class="vakyansh-stat-lbl">सितारे ⭐</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode Workspace Container for Vakyansh (rendered dynamically) -->
+        <div class="vakyansh-workspace" id="vakyansh-workspace">
+          <!-- Populated by app.js based on active mode: learn, match, quiz, challenge -->
+        </div>
       </div>
 
     </main>
