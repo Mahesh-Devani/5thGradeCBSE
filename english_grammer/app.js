@@ -700,8 +700,10 @@ function selectTopic(topicId) {
   document.getElementById('welcome-screen').style.display = 'none';
   document.getElementById('content-area').classList.add('visible');
 
+  closeSidebar();
   renderSidebar();
   setMode('learn');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function setMode(mode) {
@@ -718,6 +720,8 @@ function setMode(mode) {
   if (mode === 'learn') renderLearnMode();
   else if (mode === 'practice') startExercises(false);
   else if (mode === 'challenge') startExercises(true);
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function showWelcome() {
@@ -993,6 +997,37 @@ function closeModal() {
 }
 
 // ============================================
+// MOBILE NAVIGATION DRAWER
+// ============================================
+
+function openSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  if (sidebar) sidebar.classList.add('open');
+  if (backdrop) backdrop.classList.add('active');
+  if (window.innerWidth <= 860) {
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  if (sidebar) sidebar.classList.remove('open');
+  if (backdrop) backdrop.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  if (sidebar && sidebar.classList.contains('open')) {
+    closeSidebar();
+  } else {
+    openSidebar();
+  }
+}
+
+// ============================================
 // INIT
 // ============================================
 
@@ -1000,6 +1035,34 @@ function init() {
   loadProgress();
   renderSidebar();
   showWelcome();
+
+  // Mobile Drawer Toggle & Close
+  const menuBtn = document.getElementById('menu-toggle-btn');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', toggleSidebar);
+  }
+
+  const closeBtn = document.getElementById('sidebar-close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeSidebar);
+  }
+
+  const backdrop = document.getElementById('sidebar-backdrop');
+  if (backdrop) {
+    backdrop.addEventListener('click', closeSidebar);
+  }
+
+  // Welcome Screen Start Button
+  const startBtn = document.getElementById('welcome-start-btn');
+  if (startBtn) {
+    startBtn.addEventListener('click', () => {
+      if (window.innerWidth <= 860) {
+        openSidebar();
+      } else {
+        selectTopic('articles');
+      }
+    });
+  }
 
   // Mode tabs
   document.querySelectorAll('.mode-tab').forEach(tab => {
@@ -1028,6 +1091,15 @@ function init() {
     setMode('learn');
   });
   document.getElementById('btn-close-modal').addEventListener('click', closeModal);
+
+  // Close drawer on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeSidebar();
+      closeModal();
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);
+

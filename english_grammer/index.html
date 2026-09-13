@@ -18,11 +18,17 @@
 
   <div class="app-container">
 
+    <!-- Sidebar Backdrop for Mobile -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
     <!-- ==================== SIDEBAR ==================== -->
     <aside class="sidebar" id="sidebar">
-      <a href="../index.html" class="back-to-home" id="back-to-home">
-        ← Back to Home
-      </a>
+      <div class="sidebar-top-row">
+        <a href="../index.html" class="back-to-home" id="back-to-home">
+          ← Back to Home
+        </a>
+        <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close menu">✕</button>
+      </div>
       <div class="sidebar-logo">
         <h1>📝 Grammar Master</h1>
         <p>Class 5 CBSE</p>
@@ -45,19 +51,25 @@
 
       <!-- Top Bar -->
       <div class="top-bar" id="top-bar">
-        <div class="top-bar-title">
-          <h2 id="top-bar-title">Grammar Master</h2>
-          <p id="top-bar-subtitle">Select a topic to get started</p>
+        <div class="top-bar-nav-row">
+          <button class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Open Topics Menu">
+            <span class="hamburger-icon">☰</span>
+            <span class="menu-label">Topics</span>
+          </button>
+          <a href="../index.html" class="home-quick-btn" title="Back to Learning Hub" aria-label="Back to Learning Hub">🏠</a>
+
+          <div class="top-bar-title">
+            <h2 id="top-bar-title">Grammar Master</h2>
+            <p id="top-bar-subtitle">Select a topic to get started</p>
+          </div>
+
+          <button class="btn btn-icon" id="btn-reset" title="Reset Topic Progress" aria-label="Reset">🔄</button>
         </div>
 
         <div class="mode-tabs" id="mode-tabs">
           <button class="mode-tab active" data-mode="learn" id="tab-learn">📖 Learn</button>
           <button class="mode-tab" data-mode="practice" id="tab-practice">🧩 Practice</button>
           <button class="mode-tab" data-mode="challenge" id="tab-challenge">🎯 Challenge</button>
-        </div>
-
-        <div>
-          <button class="btn" id="btn-reset" title="Reset">🔄</button>
         </div>
       </div>
 
@@ -66,6 +78,11 @@
         <div class="welcome-icon">📝</div>
         <h2>Welcome to Grammar Master!</h2>
         <p>Learn English grammar the fun way — through detective work, time travel, and creative thinking. No boring memorization, just real understanding!</p>
+
+        <button class="btn btn-primary welcome-start-btn" id="welcome-start-btn">
+          🚀 Start Learning — Choose Topic
+        </button>
+
         <div class="welcome-features">
           <div class="welcome-feature">
             <div class="feature-icon">📖</div>
