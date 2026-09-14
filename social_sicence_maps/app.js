@@ -437,6 +437,27 @@ function saveProgress() {
   } catch (e) {}
 }
 
+const ACTIVE_STATE_KEY = 'sst-map-active-state';
+
+function loadActiveState() {
+  try {
+    const saved = localStorage.getItem(ACTIVE_STATE_KEY);
+    if (saved) return JSON.parse(saved);
+  } catch (e) {}
+  return null;
+}
+
+function saveActiveState() {
+  try {
+    if (state.currentMap) {
+      localStorage.setItem(ACTIVE_STATE_KEY, JSON.stringify({
+        currentMapId: state.currentMap.id,
+        currentMode: state.currentMode
+      }));
+    }
+  } catch (e) {}
+}
+
 function getStars(mapId) {
   const best = state.bestScores[mapId];
   if (!best) return 0;
@@ -489,9 +510,9 @@ function updateOverallProgress() {
 // ============================================
 // MAP SELECTION & MODE
 // ============================================
-function selectMap(mapId) {
+function selectMap(mapId, targetMode = 'learn') {
   state.currentMap = MAP_DATA[mapId];
-  state.currentMode = 'learn';
+  state.currentMode = targetMode;
   clearTimer();
   resetZoom();
   closeSidebar();
@@ -499,7 +520,9 @@ function selectMap(mapId) {
   renderTopBar();
   renderMap();
   renderInfoPanel();
+  if (targetMode === 'quiz' || targetMode === 'timed') startQuiz();
   hideWelcome();
+  saveActiveState();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -511,6 +534,7 @@ function setMode(mode) {
   renderMap();
   renderInfoPanel();
   if (mode === 'quiz' || mode === 'timed') startQuiz();
+  saveActiveState();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1237,8 +1261,14 @@ function toggleSidebar() {
 function init() {
   loadProgress();
   renderSidebar();
-  showWelcome();
   setupZoomControls();
+
+  const active = loadActiveState();
+  if (active && active.currentMapId && MAP_DATA[active.currentMapId]) {
+    selectMap(active.currentMapId, active.currentMode || 'learn');
+  } else {
+    showWelcome();
+  }
 
   // Mobile Drawer Toggle & Close
   const menuBtn = document.getElementById('menu-toggle-btn');

@@ -106,6 +106,12 @@ When modifying code, **DO NOT rename or break these DOM element IDs**:
 2. **Mobile Overflow Isolation**:
    On mobile viewports, `.app-container` must be `flex-direction: column; width: 100%; overflow-x: hidden;` so the map SVG viewport scales cleanly without causing horizontal body scrolling.
 
+3. **State & Session Persistence Across Refreshes (MANDATORY)**:
+   - When users select a map or switch modes (`learn`, `quiz`, `timed`), the state is saved via `saveActiveState()`.
+   - On `init()`, `loadActiveState()` restores the last selected map and mode instead of bouncing to the welcome screen.
+   - Storage key: `sst-map-active-state`.
+   - **Future Scope (User Accounts)**: In upcoming phases, Google Sign-In or direct account sync will be added. Ensure JSON state payloads remain clean and serializable.
+
 ---
 
 ## 🛠️ How to Rebuild `app.js`

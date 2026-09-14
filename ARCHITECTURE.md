@@ -17,6 +17,10 @@ This document details the architectural decisions, code conventions, state manag
    - The root (`index.html`) acts as a central springboard.
    - Each subject resides in an isolated directory (`social_sicence_maps/`, `english_grammer/`, etc.) with its own `index.html`, `styles.css`, and `app.js`.
    - Mini-apps share design tokens and visual consistency, but maintain independent runtimes so bugs in one subject never cascade to another.
+4. **Seamless State Persistence & Session Recovery**:
+   - Every subject automatically saves the student's active topic, mode (`learn`, `practice`, `challenge`, `worksheet`), subtabs, filters, and earned stars to `localStorage`.
+   - On page refresh or reopening, the application immediately resumes where the student left off instead of bouncing to a welcome screen.
+   - **Future Scope (User Accounts & Cloud Sync)**: In future phases, student authentication (Google Sign-In or direct accounts) will be integrated to sync progress across devices. All client-side `localStorage` state schemas are modeled as clean, JSON-serializable payloads to ensure friction-free sync with user profiles.
 
 ---
 

@@ -109,6 +109,12 @@ Do **NOT** rename, remove, or alter the IDs of these DOM elements. They are hard
    ```
    Ensure touch targets have min 44px to 50px height with `touch-action: manipulation;`.
 
+3. **State & Session Persistence Across Refreshes (MANDATORY)**:
+   - When users switch topics, modes (`learn`, `practice`, `challenge`, `worksheet`), learn pills, or skill filters, persist them via `saveActiveState()`.
+   - On `DOMContentLoaded`, restore via `loadActiveState()` so the student resumes directly without being bounced to Topic 1.
+   - Storage key: `cbse5_maths_active_state`.
+   - **Future Scope (User Accounts)**: In upcoming phases, Google Sign-In or direct account sync will be added. Ensure JSON state payloads remain clean and serializable.
+
 ---
 
 ## 5. Extension Recipes: Adding Subsequent Topics

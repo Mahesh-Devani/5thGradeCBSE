@@ -3302,6 +3302,7 @@ function renderLearnView(container) {
     pill.addEventListener('click', () => {
       playClickSound();
       state.activeLearnModule = pill.getAttribute('data-mod-id');
+      saveActiveState();
       renderLearnView(container);
     });
   });
@@ -5996,6 +5997,7 @@ function renderPracticeView(container) {
       playClickSound();
       state.practiceFilter = btn.getAttribute('data-skill');
       state.currentQuestionIndex = 0;
+      saveActiveState();
       renderViewport();
     });
   });
@@ -7066,7 +7068,44 @@ function updateProgressUI() {
   }
 }
 
-function switchTopic(topicId) {
+function loadActiveState() {
+  try {
+    const saved = localStorage.getItem('cbse5_maths_active_state');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed.currentTopic && TOPICS_CONFIG[parsed.currentTopic]) {
+        state.currentTopic = parsed.currentTopic;
+      }
+      if (['learn', 'practice', 'challenge', 'worksheet'].includes(parsed.activeMode)) {
+        state.activeMode = parsed.activeMode;
+      }
+      if (parsed.activeLearnModule) {
+        state.activeLearnModule = parsed.activeLearnModule;
+      }
+      if (parsed.practiceFilter) {
+        state.practiceFilter = parsed.practiceFilter;
+      }
+    }
+  } catch (e) {
+    console.warn('Failed to load active state:', e);
+  }
+}
+
+function saveActiveState() {
+  try {
+    const toSave = {
+      currentTopic: state.currentTopic,
+      activeMode: state.activeMode,
+      activeLearnModule: state.activeLearnModule,
+      practiceFilter: state.practiceFilter
+    };
+    localStorage.setItem('cbse5_maths_active_state', JSON.stringify(toSave));
+  } catch (e) {
+    console.warn('Failed to save active state:', e);
+  }
+}
+
+function switchTopic(topicId, resetSubmodes = true) {
   if (!TOPICS_CONFIG[topicId]) return;
   state.currentTopic = topicId;
   const config = TOPICS_CONFIG[topicId];
@@ -7083,13 +7122,15 @@ function switchTopic(topicId) {
   if (subEl) subEl.textContent = config.subtitle;
 
   // Reset view mode & learn module
-  state.activeMode = 'learn';
-  state.activeLearnModule = config.defaultLearnModule;
-  state.practiceFilter = 'all';
-  state.currentQuestionIndex = 0;
-  state.scoreCorrect = 0;
-  state.scoreWrong = 0;
-  state.userAnswers = {};
+  if (resetSubmodes) {
+    state.activeMode = 'learn';
+    state.activeLearnModule = config.defaultLearnModule;
+    state.practiceFilter = 'all';
+    state.currentQuestionIndex = 0;
+    state.scoreCorrect = 0;
+    state.scoreWrong = 0;
+    state.userAnswers = {};
+  }
 
   // Close mobile drawer if open
   const sidebar = document.getElementById('sidebar');
@@ -7100,7 +7141,7 @@ function switchTopic(topicId) {
   // Update tabs UI
   const modeTabs = document.querySelectorAll('.mode-tab');
   modeTabs.forEach(t => {
-    t.classList.toggle('active', t.getAttribute('data-mode') === 'learn');
+    t.classList.toggle('active', t.getAttribute('data-mode') === state.activeMode);
   });
 
   // Load progress for this topic
@@ -7111,6 +7152,7 @@ function switchTopic(topicId) {
     state.stars = 0;
   }
   updateProgressUI();
+  saveActiveState();
   renderViewport();
 }
 
@@ -7119,7 +7161,17 @@ function switchTopic(topicId) {
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  loadActiveState();
   loadProgress();
+
+  const currentConfig = TOPICS_CONFIG[state.currentTopic] || TOPICS_CONFIG.factors_multiples_hcf_lcm;
+  document.querySelectorAll('.sidebar-topics .topic-item').forEach(item => {
+    item.classList.toggle('active', item.getAttribute('data-topic-id') === state.currentTopic);
+  });
+  const titleEl = document.getElementById('top-bar-title');
+  const subEl = document.getElementById('top-bar-subtitle');
+  if (titleEl) titleEl.textContent = currentConfig.title;
+  if (subEl) subEl.textContent = currentConfig.subtitle;
 
   // Mobile Drawer toggles
   const menuToggleBtn = document.getElementById('menu-toggle-btn');
@@ -7157,6 +7209,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnPrint = document.getElementById('btn-print');
   if (btnPrint) btnPrint.addEventListener('click', () => {
     state.activeMode = 'worksheet';
+    saveActiveState();
     updateTabsUI();
     renderViewport();
     printWorksheet();
@@ -7183,6 +7236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tab.addEventListener('click', () => {
       playClickSound();
       state.activeMode = tab.getAttribute('data-mode');
+      saveActiveState();
       updateTabsUI();
       renderViewport();
     });
@@ -7193,6 +7247,7 @@ document.addEventListener('DOMContentLoaded', () => {
       t.classList.toggle('active', t.getAttribute('data-mode') === state.activeMode);
     });
   }
+  updateTabsUI();
 
   // Modal actions
   const modal = document.getElementById('results-modal');
@@ -7208,6 +7263,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnModalReview) btnModalReview.addEventListener('click', () => {
     modal.classList.remove('active');
     state.activeMode = 'learn';
+    saveActiveState();
     updateTabsUI();
     renderViewport();
   });

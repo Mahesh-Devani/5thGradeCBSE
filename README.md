@@ -32,12 +32,25 @@ A modern, responsive, zero-dependency web application designed for **Class 5 CBS
 - **⚡ 100% Zero Dependencies**:
   - Pure HTML5, CSS3, and ES6+ JavaScript.
   - Zero build step, zero package managers, runs completely offline from a local browser.
+- **💾 State & Session Persistence Across Refreshes**:
+  - Automatically saves the student's active topic, mode (`Learn`, `Practice`, `Challenge`, `Worksheet`), subtabs, and filters in `localStorage`.
+  - When students refresh the browser, their exact learning position and accumulated star badges are seamlessly restored without bouncing back to a welcome screen.
 - **🎨 Modern Aesthetic**:
   - Dark glassmorphic design system, smooth ambient background blobs, Google Font Outfit, glowing neon accents, and celebratory confetti animations.
 - **🖨️ Classroom & Homework Ready**:
   - Dedicated print stylesheets in Social Science Maps to generate clean, ink-friendly blank and labeled outline worksheets.
 - **🇮🇳 Cartographic Compliance**:
   - All Indian maps strictly follow **Survey of India** official standards, accurately depicting Jammu & Kashmir, Ladakh, and Arunachal Pradesh.
+
+---
+
+## 🔮 Future Roadmap & Scope
+
+- 🔐 **User Accounts & Cloud Sync**:
+  - Sign in using **Google OAuth** or direct student/parent accounts to synchronize star badges, bookmarks, practice history, and customized notes across multiple phones, tablets, and laptops.
+  - Architecture is designed with clean, modular, and JSON-serializable state schemas to ensure effortless migration to cloud storage without altering frontend engines.
+- 🔬 **Science (EVS)**:
+  - Complete Class 5 CBSE modules covering Skeletal & Nervous Systems, Seeds & Germination, Simple Machines, Aquatic Life, and Ecosystems with interactive diagrams.
 
 ---
 

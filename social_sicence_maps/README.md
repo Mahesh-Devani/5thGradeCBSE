@@ -44,8 +44,10 @@ Under Indian curriculum guidelines (CBSE / NCERT) and Survey of India standards:
 - Perfect for building rapid exam recall.
 - Timer turns amber and red in the final 10 seconds.
 
-### 4. 🏆 Progress Tracking & Star Badges
+### 4. 🏆 Progress Tracking, Persistence & Star Badges
 - Performance is saved automatically in the browser (`localStorage`).
+- **💾 Session & State Persistence**: The active map selection and mode (`learn`, `quiz`, `timed`, `worksheet`) are preserved in `localStorage` (`sst-map-active-state`). If a student refreshes or reopens the page, their selected map and current mode resume seamlessly.
+- **🔐 Future Scope (User Accounts & Cloud Sync)**: Designed with modular, JSON-serializable state payloads to support future Google Sign-In and student profile sync across multiple devices.
 - Star ratings earned per map:
   - ⭐ **1 Star**: $\ge 40\%$
   - ⭐⭐ **2 Stars**: $\ge 70\%$

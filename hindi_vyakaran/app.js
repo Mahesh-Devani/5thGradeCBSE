@@ -2599,11 +2599,87 @@ class HindiLearningApp {
     };
 
     this.initElements();
+    this.loadAppState();
     this.bindEvents();
     this.updateCurriculumNavUI();
     this.renderSidebarTopics();
     this.updateProgressUI();
-    this.switchModule('vakyansh'); // Vakyansh is default
+    this.updateTranslateButtonUI();
+    if (this.state.isBWMode) {
+      if (this.pictureIllustrationWrapper) this.pictureIllustrationWrapper.classList.add('bw-exam-mode');
+      if (this.btnToggleBw) this.btnToggleBw.classList.add('active');
+      if (this.bwToggleLabel) this.bwToggleLabel.textContent = 'B&W प्रिंट (ON)';
+    }
+    if (this.state.imageViewMode === 'cartoon') {
+      if (this.btnViewReal) this.btnViewReal.classList.remove('active');
+      if (this.btnViewCartoon) this.btnViewCartoon.classList.add('active');
+    }
+    this.switchModule(this.state.activeModule, false);
+  }
+
+  loadAppState() {
+    try {
+      const saved = localStorage.getItem('cbse5_hindi_active_state');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (['vakyansh', 'sangya', 'chitra'].includes(parsed.activeModule)) {
+          this.state.activeModule = parsed.activeModule;
+        }
+        if (parsed.currentSceneId && SCENE_DATA.some(s => s.id === parsed.currentSceneId)) {
+          this.state.currentSceneId = parsed.currentSceneId;
+        }
+        if (['explore', 'vocab', 'puzzle', 'write'].includes(parsed.chitraMode)) {
+          this.state.chitraMode = parsed.chitraMode;
+        }
+        if (['learn', 'match', 'quiz', 'challenge'].includes(parsed.vakyanshMode)) {
+          this.state.vakyanshMode = parsed.vakyanshMode;
+        }
+        if (['learn', 'sort', 'quiz', 'challenge'].includes(parsed.sangyaMode)) {
+          this.state.sangyaMode = parsed.sangyaMode;
+        }
+        if (['types', 'mirror', 'lab'].includes(parsed.sangyaSubtab)) {
+          this.state.sangyaSubtab = parsed.sangyaSubtab;
+        }
+        if (['all', 'jati', 'visheshan', 'kriya'].includes(parsed.sangyaLabFilter)) {
+          this.state.sangyaLabFilter = parsed.sangyaLabFilter;
+        }
+        if (['all', 'behavior', 'action', 'nature'].includes(parsed.vakyanshFilter)) {
+          this.state.vakyanshFilter = parsed.vakyanshFilter;
+        }
+        if (typeof parsed.showEnglish === 'boolean') {
+          this.state.showEnglish = parsed.showEnglish;
+        }
+        if (['real', 'cartoon'].includes(parsed.imageViewMode)) {
+          this.state.imageViewMode = parsed.imageViewMode;
+        }
+        if (typeof parsed.isBWMode === 'boolean') {
+          this.state.isBWMode = parsed.isBWMode;
+        }
+      }
+    } catch (e) {
+      console.warn('Failed to load active state:', e);
+    }
+  }
+
+  saveAppState() {
+    try {
+      const toSave = {
+        activeModule: this.state.activeModule,
+        currentSceneId: this.state.currentSceneId,
+        chitraMode: this.state.chitraMode,
+        vakyanshMode: this.state.vakyanshMode,
+        sangyaMode: this.state.sangyaMode,
+        sangyaSubtab: this.state.sangyaSubtab,
+        sangyaLabFilter: this.state.sangyaLabFilter,
+        vakyanshFilter: this.state.vakyanshFilter,
+        showEnglish: this.state.showEnglish,
+        imageViewMode: this.state.imageViewMode,
+        isBWMode: this.state.isBWMode
+      };
+      localStorage.setItem('cbse5_hindi_active_state', JSON.stringify(toSave));
+    } catch (e) {
+      console.warn('Failed to save active state:', e);
+    }
   }
 
   loadStars() {
@@ -2775,6 +2851,7 @@ class HindiLearningApp {
       synth.tap();
       this.state.showEnglish = !this.state.showEnglish;
       this.updateTranslateButtonUI();
+      this.saveAppState();
       if (this.state.activeModule === 'chitra') {
         this.renderCurrentMode();
         this.renderHotspotDetail(this.state.activeHotspotId);
@@ -2821,6 +2898,7 @@ class HindiLearningApp {
         this.updateModeTabsUI();
         this.renderSangyaWorkspace();
       }
+      this.saveAppState();
     });
 
     // Results Modal actions
@@ -2920,8 +2998,8 @@ class HindiLearningApp {
   // ============================================
   // MODULE SWITCHER (Chitra Varnan ↔ Vakyansh ↔ Sangya)
   // ============================================
-  switchModule(moduleName) {
-    synth.tap();
+  switchModule(moduleName, playSound = true) {
+    if (playSound) synth.tap();
     this.state.activeModule = moduleName;
     this.welcomeScreen.style.display = 'none';
     this.updateCurriculumNavUI();
@@ -2960,6 +3038,7 @@ class HindiLearningApp {
       this.renderSangyaWorkspace();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+    this.saveAppState();
   }
 
   updateModeTabsUI() {
@@ -3082,6 +3161,7 @@ class HindiLearningApp {
       btn.addEventListener('click', () => {
         synth.tap();
         this.state.vakyanshFilter = btn.dataset.filter;
+        this.saveAppState();
         this.renderVakyanshLearnMode();
       });
     });
@@ -3737,6 +3817,7 @@ class HindiLearningApp {
       btn.addEventListener('click', () => {
         synth.tap();
         this.state.sangyaSubtab = btn.dataset.subtab;
+        this.saveAppState();
         this.renderSangyaLearnMode();
       });
     });
@@ -3746,6 +3827,7 @@ class HindiLearningApp {
       btn.addEventListener('click', () => {
         synth.tap();
         this.state.sangyaLabFilter = btn.dataset.filter;
+        this.saveAppState();
         this.renderSangyaLearnMode();
       });
     });
@@ -4311,11 +4393,13 @@ class HindiLearningApp {
       el.classList.toggle('active', el.dataset.id === sceneId);
     });
 
+    this.saveAppState();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   setImageMode(mode) {
     this.state.imageViewMode = mode;
+    this.saveAppState();
     if (this.btnViewReal) this.btnViewReal.classList.toggle('active', mode === 'real');
     if (this.btnViewCartoon) this.btnViewCartoon.classList.toggle('active', mode === 'cartoon');
     const scene = SCENE_DATA.find(s => s.id === this.state.currentSceneId);
@@ -4327,6 +4411,7 @@ class HindiLearningApp {
 
   toggleBWMode() {
     this.state.isBWMode = !this.state.isBWMode;
+    this.saveAppState();
     this.updateBWModeUI();
     this.flash(
       this.state.isBWMode

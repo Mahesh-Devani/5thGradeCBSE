@@ -493,7 +493,27 @@ const state = {
 };
 
 const STORAGE_KEY = 'grammar-master-progress';
+const ACTIVE_STATE_KEY = 'grammar-master-active-state';
 const CHALLENGE_TIME_PER_Q = 15;
+
+function loadActiveState() {
+  try {
+    const saved = localStorage.getItem(ACTIVE_STATE_KEY);
+    if (saved) return JSON.parse(saved);
+  } catch (e) {}
+  return null;
+}
+
+function saveActiveState() {
+  try {
+    if (state.currentTopic) {
+      localStorage.setItem(ACTIVE_STATE_KEY, JSON.stringify({
+        currentTopic: state.currentTopic,
+        currentMode: state.currentMode
+      }));
+    }
+  } catch (e) {}
+}
 
 // ============================================
 // AUDIO FEEDBACK (Web Audio API)
@@ -685,9 +705,9 @@ function renderSidebar() {
 // TOPIC SELECTION & MODE SWITCHING
 // ============================================
 
-function selectTopic(topicId) {
+function selectTopic(topicId, targetMode = 'learn') {
   state.currentTopic = topicId;
-  state.currentMode = 'learn';
+  state.currentMode = targetMode;
   state.exerciseIndex = 0;
   state.score = { correct: 0, incorrect: 0, total: 0 };
   state.answered = false;
@@ -702,7 +722,8 @@ function selectTopic(topicId) {
 
   closeSidebar();
   renderSidebar();
-  setMode('learn');
+  setMode(targetMode);
+  saveActiveState();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -721,6 +742,7 @@ function setMode(mode) {
   else if (mode === 'practice') startExercises(false);
   else if (mode === 'challenge') startExercises(true);
 
+  saveActiveState();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1034,7 +1056,13 @@ function toggleSidebar() {
 function init() {
   loadProgress();
   renderSidebar();
-  showWelcome();
+
+  const active = loadActiveState();
+  if (active && active.currentTopic && TOPIC_DATA[active.currentTopic]) {
+    selectTopic(active.currentTopic, active.currentMode || 'learn');
+  } else {
+    showWelcome();
+  }
 
   // Mobile Drawer Toggle & Close
   const menuBtn = document.getElementById('menu-toggle-btn');

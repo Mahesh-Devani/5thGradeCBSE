@@ -107,3 +107,5 @@ Each scene features high-resolution **authentic exam-style photographs (Default)
 - **Off-Canvas Responsive Drawer**: Collapses navigation into a slide-out drawer on screens `≤ 860px` with an accessible `☰ विषय` button.
 - **Pure Static Web Stack**: 100% vanilla HTML5, CSS3, ES6+ JS. No npm dependencies, runs offline, deployed to GitHub Pages.
 - **Native Synthesizer**: Uses Web Audio API `AudioContext` for non-intrusive sound feedback and HTML5 Canvas for confetti.
+- **💾 Session & State Persistence**: Active module (संज्ञा, वाक्यांश, चित्र वर्णन), current scene, learning mode, subtabs (e.g. Types, Mirror, Formation Lab), and active filters are saved to `localStorage` (`cbse5_hindi_active_state`). Refreshing the browser instantly restores the student's exact workspace.
+- **🔐 Future Scope (User Accounts & Cloud Sync)**: Architecture uses clean JSON-serializable state structures ready for future Google OAuth and direct account sync across devices.

@@ -132,6 +132,12 @@ playFanfare();      // Celebratory multi-tone fanfare for 3-star challenge victo
 3. **Touch Targets**:
    All interactive buttons, mode tabs, and quiz option cards must have a minimum tap height of **44px to 50px** with `touch-action: manipulation;`.
 
+4. **State & Session Persistence Across Refreshes (MANDATORY)**:
+   - When users switch topics or modes (`learn`, `practice`, `challenge`), active state is saved to `localStorage` via `saveActiveState()`.
+   - On `init()`, `loadActiveState()` checks for saved topic/mode and resumes directly without showing the welcome screen.
+   - Storage key: `grammar-master-active-state`.
+   - **Future Scope (User Accounts)**: In upcoming phases, Google Sign-In or direct account sync will be added. Ensure JSON state payloads remain clean and serializable.
+
 ---
 
 ## 6. How to Add a New Grammar Topic (e.g. Prepositions)

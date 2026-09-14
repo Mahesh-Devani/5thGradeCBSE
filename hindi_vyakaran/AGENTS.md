@@ -119,6 +119,13 @@ Inside `.app-container`, `#sidebar-backdrop` and `#sidebar` must remain direct s
 - `#sidebar`: `z-index: 100; position: fixed;`
 - `#menu-toggle-btn`: Visible only on mobile (`display: flex` at `≤ 860px`).
 
+### Gotcha 4: Session State Persistence Across Refreshes (MANDATORY)
+Whenever adding or modifying interactive modes, subtabs, or filters in `hindi_vyakaran/`:
+- Always persist state changes via `this.saveAppState()` and restore them in `this.loadAppState()`.
+- Storage key: `cbse5_hindi_active_state`.
+- Fields persisted: `activeModule`, `currentSceneId`, `chitraMode`, `vakyanshMode`, `sangyaMode`, `sangyaSubtab`, `sangyaLabFilter`, `vakyanshFilter`, `showEnglish`, `imageViewMode`, `isBWMode`.
+- **Future Scope (User Accounts)**: Maintain clean, structured JSON schemas to support upcoming Google Sign-In / account profile sync.
+
 ---
 
 ## 🔗 5. DOM Contract (Element IDs in `index.html`)

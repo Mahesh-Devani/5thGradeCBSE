@@ -129,3 +129,5 @@ $$\text{First Number } (a) \times \text{Second Number } (b) = \text{HCF} \times 
 - **Off-Canvas Responsive Drawer**: Pinned sidebar on desktop, smooth slide-out drawer on screens $\le 860$px with sticky top bar `☰ Topics` button and `🏠` home shortcut.
 - **100% Vanilla Web Stack**: HTML5, CSS3, ES6+ JS. No node/npm runtime dependencies, works on GitHub Pages.
 - **Synthesizer & Particle Systems**: Native Web Audio API `AudioContext` and Canvas confetti.
+- **💾 Session & State Persistence**: Active topic (e.g. Topic 1 to Topic 5), learning mode (`learn`, `practice`, `challenge`, `worksheet`), sub-learning module, and practice filter are saved to `localStorage` (`cbse5_maths_active_state`) and restored on page refresh.
+- **🔐 Future Scope (User Accounts & Cloud Sync)**: State schemas are structured as clean, modular JSON payloads for future sync with Google OAuth and student user profiles.

@@ -19,6 +19,12 @@ Welcome, AI Agent! This guide defines the rules, technical constraints, pedagogi
 3. **Cartographic Compliance (MANDATORY)**:
    - Any map depicting India **MUST** strictly adhere to the official boundaries published by the **Survey of India** (depicting Jammu & Kashmir, Ladakh, and Arunachal Pradesh as integral parts of India).
 
+4. **State & Session Persistence Across Browser Refreshes (MANDATORY)**:
+   - Students must **never lose their active place or progress** when refreshing the browser or navigating away.
+   - Whenever students change topics, modes (`learn`, `practice`, `challenge`, `worksheet`), subtabs, or filters, the active state MUST be saved to `localStorage` and automatically restored during initialization (`DOMContentLoaded`).
+   - Students should NEVER be booted back to the generic welcome screen or reset to topic 1 on page reload.
+   - **Future Scope (User Accounts & Cloud Sync)**: In future phases, user authentication (Google Sign-In or direct email/password accounts) will be integrated to synchronize progress across devices. All client-side state schemas must remain clean, modular, and serializable JSON objects to facilitate effortless future migration and sync with user accounts.
+
 ---
 
 ## 2. Front-End Standards & Patterns
@@ -68,6 +74,21 @@ When modifying or creating a subject mini-app:
   overflow-x: hidden;
   ```
   Ensure `html, body { overflow-x: hidden; width: 100%; }` to prevent horizontal page scrolling.
+
+### E. State Persistence & Session Restore Pattern
+Whenever creating or enhancing an interactive mini-app:
+- Implement `loadActiveState()` and `saveActiveState()` to persist active topic, mode, and subtabs alongside star progress.
+- On initialization (`DOMContentLoaded` or `init()`), invoke `loadActiveState()`: if a previously viewed topic/mode exists, restore it immediately so the student resumes directly without being bounced to a welcome screen.
+- Call `saveActiveState()` on every state change:
+  - Topic/chapter selection
+  - Mode/tab changes (`learn`, `practice`, `challenge`, `worksheet`)
+  - Subtab/filter changes (math learn pills, grammar subtopics, categorization filters)
+  - View toggles (bilingual English, exam photo vs cartoon, monochrome print)
+- **Namespaced Storage Keys**:
+  - Hindi: `cbse5_hindi_active_state`, `cbse5_hindi_sangya_stars`, `cbse5_hindi_vakyansh_stars`, `cbse5_chitra_varnan_stars`
+  - Mathematics: `cbse5_maths_active_state`, `cbse5_math_topic_*_stars`
+  - English Grammar: `grammar-master-active-state`, `grammar-master-progress`
+  - Social Science Maps: `sst-map-active-state`, `sst-map-progress`
 
 ---
 

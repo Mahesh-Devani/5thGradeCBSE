@@ -50,6 +50,11 @@ The application is engineered with an **off-canvas responsive drawer** pattern:
   - All quiz options provide minimum **50px** touch height and active state feedback.
 - **Desktop Screens (`> 860px`)**:
   - Sticky sidebar with persistent progress indicator and topic list.
+- **💾 Session & State Persistence**:
+  - Active grammar topic and mode (`learn`, `practice`, `challenge`) are automatically stored in `localStorage` (`grammar-master-active-state`).
+  - Refreshing the browser preserves the student's exact topic and exercise mode without kicking back to the landing screen.
+- **🔐 Future Scope (User Accounts & Cloud Sync)**:
+  - Ready for future integration with Google Sign-In and student account authentication to synchronize stars, badges, and learning progress across devices.
 
 ---
 
