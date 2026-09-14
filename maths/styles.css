@@ -3155,3 +3155,308 @@ select.calc-input option {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.08); }
 }
+
+/* ==========================================================================
+   THINKING-FIRST COMPONENTS (Mental Estimator, Spot the Trap & Metacognition)
+   ========================================================================== */
+
+/* Think About It Callout */
+.think-callout-math {
+  background: rgba(245, 158, 11, 0.08);
+  border-left: 4px solid var(--accent-amber, #f59e0b);
+  border-radius: var(--radius-md, 12px);
+  padding: 1.1rem 1.25rem;
+  margin: 1.25rem 0;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.06);
+  position: relative;
+}
+.think-callout-math .callout-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-amber-light, #fbbf24);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+.think-callout-math p {
+  color: var(--text-main, #f8fafc);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+.think-callout-math strong {
+  color: #fff;
+}
+
+/* Mental Estimator Module */
+.estimator-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.estimator-rule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.estimator-rule-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-md, 12px);
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.estimator-rule-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+.estimator-rule-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent-cyan-light, #38bdf8);
+}
+.estimator-rule-body {
+  font-size: 0.9rem;
+  color: var(--text-muted, #94a3b8);
+  line-height: 1.5;
+}
+.estimator-rule-body strong {
+  color: #fff;
+}
+.estimator-rule-example {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.4rem 0.65rem;
+  border-radius: 6px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  color: var(--accent-amber-light, #fbbf24);
+  margin-top: 0.2rem;
+}
+
+/* Estimator Interactive Tester */
+.estimator-challenge-box {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.08), rgba(99, 102, 241, 0.06));
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.estimator-prompt {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+}
+.estimator-prompt .prompt-hl {
+  color: var(--accent-amber-light, #fbbf24);
+  background: rgba(245, 158, 11, 0.12);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+.estimator-btn-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.estimator-btn {
+  flex: 1;
+  min-width: 140px;
+  max-width: 200px;
+  min-height: 46px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius-md, 12px);
+  border: 1px solid transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.estimator-btn-possible {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.35);
+}
+.estimator-btn-possible:hover:not(:disabled) {
+  background: rgba(16, 185, 129, 0.3);
+  transform: translateY(-2px);
+}
+.estimator-btn-impossible {
+  background: rgba(244, 63, 94, 0.15);
+  color: #fb7185;
+  border-color: rgba(244, 63, 94, 0.35);
+}
+.estimator-btn-impossible:hover:not(:disabled) {
+  background: rgba(244, 63, 94, 0.3);
+  transform: translateY(-2px);
+}
+.estimator-verdict {
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: var(--radius-md, 12px);
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border-glass, rgba(255, 255, 255, 0.1));
+  animation: fadeIn 0.3s ease;
+  line-height: 1.6;
+}
+
+/* Spot the Exam Trap Module */
+.trap-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.trap-nav-pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.trap-nav-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass, rgba(255, 255, 255, 0.1));
+  border-radius: 9999px;
+  padding: 0.45rem 1rem;
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.trap-nav-pill.active {
+  background: var(--accent-rose, #f43f5e);
+  color: #fff;
+  border-color: var(--accent-rose, #f43f5e);
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.4);
+}
+.trap-notebook-slip {
+  background: #0f172a;
+  border: 1px dashed rgba(244, 63, 94, 0.45);
+  border-radius: var(--radius-md, 12px);
+  padding: 1.25rem;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.trap-notebook-badge {
+  position: absolute;
+  top: -12px;
+  right: 15px;
+  background: #f43f5e;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.trap-student-meta {
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+.trap-question-banner {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+  border-left: 3px solid #f43f5e;
+}
+.trap-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.trap-step-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-height: 48px;
+  touch-action: manipulation;
+}
+.trap-step-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(4px);
+}
+.trap-step-item.selected-blunder {
+  border-color: #f43f5e;
+  background: rgba(244, 63, 94, 0.15);
+  box-shadow: 0 0 10px rgba(244, 63, 94, 0.25);
+}
+.trap-step-item.selected-correct {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+}
+.trap-step-label {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--accent-cyan-light, #38bdf8);
+  min-width: 65px;
+}
+.trap-step-content {
+  flex-grow: 1;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.95rem;
+  color: var(--text-main, #f8fafc);
+  padding: 0 0.5rem;
+}
+.trap-step-action {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted, #94a3b8);
+}
+.trap-verdict-card {
+  margin-top: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-md, 12px);
+  animation: fadeIn 0.3s ease;
+  line-height: 1.6;
+}
+.trap-verdict-card.success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #d1fae5;
+}
+.trap-verdict-card.retry {
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  color: #ffe4e6;
+}
+
+/* No-Pen Practice Badge */
+.badge-no-pen {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 9999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 0.5rem;
+}
+

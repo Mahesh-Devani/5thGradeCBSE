@@ -11,7 +11,9 @@ Welcome, AI Agent! This document defines the operational rules, DOM contracts, m
    - Do NOT install npm packages or build tools. Runs directly from root static files on GitHub Pages.
 2. **CBSE / NCERT Class 5 Curriculum Target (Ages 9–11)**:
    - Foster thinking and deductive reasoning over rote memorization.
-   - Explain *why* a problem needs HCF vs LCM (e.g., cutting/splitting into equal parts vs repeating cycles meeting together).
+   - Explain *why* a problem needs HCF vs LCM (e.g., *The Equal Cutter* vs *The Cycle Synchronizer*).
+   - Maintain the **Mental Estimator** boundary rules (Upper/Lower bounds, Co-Prime shortcuts) and **Spot the Exam Trap** diagnostic slips.
+   - Provide concept-first "No-Pen" practice questions that reward logical deduction over tedious scratchpad calculation.
 3. **Verified Mathematical Accuracy**:
    - All HCF, LCM, divisibility rules, and product relations must be mathematically validated before rendering.
    - School worksheet questions from `Multiples_and_Factors_1788791719.pdf` must strictly match syllabus expectations.

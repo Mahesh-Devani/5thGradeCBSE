@@ -30,7 +30,29 @@ One of the most frequent stumbling blocks for Class 5 students is knowing whethe
 
 ---
 
-### 2. 🪜 Short Division Method: The Crucial HCF vs LCM Difference
+### 2. ⚡ The Mental Estimator: Deduction Before Computation
+
+Mathematicians don't jump into long division blindly. They eliminate impossible choices in 5 seconds using 4 core boundary rules:
+
+1. **🛑 Upper Bound Rule (HCF)**: $\text{HCF}(a, b) \le \min(a, b)$. The HCF can *never* exceed the smallest number! (e.g. For 18 and 24, HCF cannot be 36; it must be $\le 18$).
+2. **🚀 Lower Bound Rule (LCM)**: $\text{LCM}(a, b) \ge \max(a, b)$. The LCM can *never* be smaller than the largest number! (e.g. For 15 and 20, LCM cannot be 10; it must be $\ge 20$).
+3. **⚡ The Co-Prime Shortcut**: If two numbers are consecutive (like 14 and 15) or share no common factors, $\text{HCF} = 1$ and $\text{LCM} = a \times b$ instantly without running any division!
+4. **🎯 The Factor-Multiple Pair**: If the smaller number divides the larger evenly (e.g. 8 and 32), the smaller number is the HCF (8) and the larger number is the LCM (32).
+
+---
+
+### 3. 🕵️ Be the Teacher: Spot the Exam Trap
+
+Diagnosing subtle flaws teaches deep mathematical reasoning. Students inspect real handwritten test slips to find classic traps:
+
+- **Trap 1: The Non-Stopping HCF Ladder**: Rohan had bottom numbers 2, 3, 4 and divided 2 & 4 by 2 in HCF. Students learn that HCF prime divisors must divide *all* numbers simultaneously; Rohan should have stopped at Step 3!
+- **Trap 2: The Composite Divisor Tree**: Priya used composite 4 instead of prime 2, obscuring the true prime factor decomposition.
+- **Trap 3: The Divisibility Converse Fallacy**: Aman claimed that because 12 is divisible by 3, it must be divisible by 9. Students deduce that every multiple of 9 divides by 3, but the converse is false.
+- **Trap 4: Subtraction Reversal**: Tina translated "Subtract 7 from $4x$" as $7 - 4x$. Students recognize the "#1 CBSE Exam Trap" where the number after "from" is the starting dividend ($4x - 7$).
+
+---
+
+### 4. 🪜 Short Division Method: The Crucial HCF vs LCM Difference
 
 When performing short division on numbers (e.g. 144, 216, 288 for HCF and 60, 72, 90 for LCM):
 

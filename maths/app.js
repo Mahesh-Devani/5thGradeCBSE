@@ -1343,6 +1343,22 @@ const LEARN_MODULES_TOPIC_1 = {
     lead: 'Class 5 students often get confused by word problems. Here is the secret detective rule: <strong>HCF divides/splits things down</strong> into the biggest possible equal groups, whereas <strong>LCM multiples/grows things up</strong> to find when cycles meet together again!',
     renderContent: renderDetectiveModule
   },
+  mental_estimator: {
+    id: 'mental_estimator',
+    pillTitle: '⚡ The Mental Estimator',
+    title: 'The Mental Estimator: Deduce Before You Calculate!',
+    tag: 'Deductive Thinking',
+    lead: 'Great mathematicians never blindly start dividing. They use common-sense boundaries to test if an answer is even mathematically possible in 5 seconds!',
+    renderContent: renderMentalEstimatorModule
+  },
+  spot_the_trap: {
+    id: 'spot_the_trap',
+    pillTitle: '🕵️ Spot the Exam Trap',
+    title: 'Be the Teacher: Spot the Exam Trap!',
+    tag: 'Diagnostic Thinking',
+    lead: 'Diagnosing mistakes is the fastest way to master mathematics. Step into the shoes of the teacher, examine student test sheets, and spot the exact blunder!',
+    renderContent: renderSpotTheTrapModule
+  },
   short_division: {
     id: 'short_division',
     pillTitle: '🪜 Short Division Ladder',
@@ -1778,6 +1794,63 @@ const PRACTICE_POOL_TOPIC_1 = [
     correct: 1,
     explanation: 'Keyword detective: "Smallest number for complete groups" = LCM! LCM(4, 6) = 12 (3 packs of pencils and 2 packs of erasers).',
     source: 'Worksheet 2026-27 (Q III.14)'
+  },
+
+  // Deductive Reasoning & No-Pen Thinking Questions
+  {
+    id: 'nopen_1',
+    skill: 'word_problems',
+    type: 'mcq',
+    question: '🧠 [No-Pen Thinking] What is the HCF of 99 and 100 without doing any long division?',
+    options: ['1', '9', '10', '99'],
+    correct: 0,
+    explanation: 'Deductive rule: Any two consecutive integers (like 99 and 100) are ALWAYS co-prime! Their only common factor is 1, so HCF(99, 100) = 1 immediately without calculating.',
+    source: 'Deductive Thinking Master'
+  },
+  {
+    id: 'nopen_2',
+    skill: 'word_problems',
+    type: 'mcq',
+    question: '🧠 [No-Pen Thinking] Can the HCF of 16 and 24 ever be 32? Why or why not?',
+    options: [
+      'No, because HCF can never exceed the smaller number (16)',
+      'Yes, because 32 is a multiple of 16',
+      'Yes, because 16 + 24 = 40 > 32',
+      'No, because both numbers are even'
+    ],
+    correct: 0,
+    explanation: 'Upper Bound Rule! The Highest Common Factor divides both numbers, so it can NEVER be greater than the smallest number (16). 32 is larger than 16, so it is impossible.',
+    source: 'Deductive Thinking Master'
+  },
+  {
+    id: 'nopen_3',
+    skill: 'word_problems',
+    type: 'mcq',
+    question: '🧠 [No-Pen Thinking] If two numbers a and b are co-prime, what is their LCM?',
+    options: [
+      'The product of the two numbers (a × b)',
+      'Always 1',
+      'The sum of the two numbers (a + b)',
+      'The larger of the two numbers'
+    ],
+    correct: 0,
+    explanation: 'Product Relation formula: a × b = HCF × LCM. Since co-prime numbers have HCF = 1, we get a × b = 1 × LCM, which means LCM = a × b!',
+    source: 'Deductive Thinking Master'
+  },
+  {
+    id: 'nopen_4',
+    skill: 'word_problems',
+    type: 'mcq',
+    question: '🧠 [No-Pen Thinking] Two bells toll at 12:00 PM. Bell A tolls every 6 minutes, Bell B tolls every 9 minutes. Will they toll together at 12:12 PM?',
+    options: [
+      'No, because 12 is not a multiple of 9',
+      'Yes, because 12 is divisible by 6',
+      'Yes, because 12 is an even number',
+      'No, bells never toll at 12 minutes'
+    ],
+    correct: 0,
+    explanation: 'Meeting points require a COMMON multiple! 12 is a multiple of 6 (6 × 2 = 12), but 12 is NOT a multiple of 9 (9, 18, 27...). The first time they meet is at LCM(6, 9) = 18 minutes (12:18 PM).',
+    source: 'Deductive Thinking Master'
   }
 ];
 
@@ -3316,6 +3389,11 @@ function renderLearnView(container) {
 /* Module 1: HCF vs LCM Detective */
 function renderDetectiveModule(container) {
   container.innerHTML = `
+    <div class="think-callout-math">
+      <div class="callout-header">💡 Think About It — The Detective's Rule of Thumb</div>
+      <p>Ask yourself one simple question before solving any word problem: <strong>Are you chopping/splitting things into smaller equal packages, or waiting for repeating clocks/runners to meet in the future?</strong> Chopping down into parts = <strong>HCF (The Equal Cutter)</strong>. Growing up & synchronizing cycles = <strong>LCM (The Cycle Synchronizer)</strong>.</p>
+    </div>
+
     <div class="decision-matrix">
       <!-- HCF CARD -->
       <div class="decision-card hcf-theme">
@@ -3418,6 +3496,11 @@ function renderDetectiveModule(container) {
 /* Module 2: Short Division Ladder (HCF vs LCM Comparison) */
 function renderShortDivisionModule(container) {
   container.innerHTML = `
+    <div class="think-callout-math">
+      <div class="callout-header">💡 Think About It — The HCF Stop Sign 🛑</div>
+      <p>Before dividing each row, ask yourself: <em>"Does this prime divide EVERY single number?"</em> If not, <strong>STOP immediately for HCF</strong>! In LCM, you keep going until all numbers reach 1, but in HCF, the moment one number can't be divided by the common prime, you must stop!</p>
+    </div>
+
     <div class="calc-card">
       <h4>Interactive Short Division Generator</h4>
       <p>Enter 2 or 3 numbers to compare how Short Division operates for HCF vs LCM:</p>
@@ -3611,6 +3694,11 @@ function renderLongDivisionModule(container) {
 /* Module 4: Product Formula */
 function renderProductFormulaModule(container) {
   container.innerHTML = `
+    <div class="think-callout-math">
+      <div class="callout-header">💡 Think About It — The Balancing Seesaw ⚖️</div>
+      <p>Think of the product relation like a balanced scale: <strong>(Number a &times; Number b) must balance with (HCF &times; LCM)</strong>. If you know any three of these values, you can find the fourth without doing any division from scratch!</p>
+    </div>
+
     <div class="formula-box">
       <div class="formula-headline">First Number (a) × Second Number (b) = HCF × LCM</div>
       <div class="formula-subs">
@@ -3767,6 +3855,319 @@ function renderCoprimesModule(container) {
 }
 
 /* ==========================================================================
+   MODULE: THE MENTAL ESTIMATOR (Deduction Before Calculation)
+   ========================================================================== */
+function renderMentalEstimatorModule(container) {
+  const challenges = [
+    {
+      q: 'Can HCF(18, 24) be 36?',
+      hl: 'HCF(18, 24) = 36',
+      possible: false,
+      reason: '🛑 <strong>Impossible! (Upper Bound Rule)</strong> The Highest Common Factor can NEVER be greater than the smaller number (18)! Since 36 is larger than 18, it cannot possibly be a factor of 18.'
+    },
+    {
+      q: 'Can LCM(12, 15) be 60?',
+      hl: 'LCM(12, 15) = 60',
+      possible: true,
+      reason: '✅ <strong>Possible! (Lower Bound & Multiples)</strong> LCM must be at least the largest number (15). And 60 is a multiple of both 12 (12 × 5 = 60) and 15 (15 × 4 = 60). In fact, 60 is the exact LCM!'
+    },
+    {
+      q: 'Can LCM(20, 30) be 15?',
+      hl: 'LCM(20, 30) = 15',
+      possible: false,
+      reason: '🛑 <strong>Impossible! (Lower Bound Rule)</strong> A multiple of 30 can NEVER be smaller than 30 itself! 15 is smaller than both numbers, so it can only be a factor, never a multiple!'
+    },
+    {
+      q: 'Can HCF(25, 75) be 25?',
+      hl: 'HCF(25, 75) = 25',
+      possible: true,
+      reason: '✅ <strong>Possible! (Multiple-Factor Shortcut)</strong> Since 25 divides 75 evenly (25 × 3 = 75), the smaller number 25 is the exact HCF! The larger number 75 is the LCM.'
+    },
+    {
+      q: 'Can HCF(14, 15) be 2?',
+      hl: 'HCF(14, 15) = 2',
+      possible: false,
+      reason: '🛑 <strong>Impossible! (Co-Prime Consecutive Rule)</strong> Any two consecutive integers (like 14 and 15) are ALWAYS co-prime! Their only common factor is 1, so HCF must be 1, never 2.'
+    },
+    {
+      q: 'Can two odd numbers have an HCF of 4?',
+      hl: 'HCF(odd, odd) = 4',
+      possible: false,
+      reason: '🛑 <strong>Impossible! (Parity Rule)</strong> Any multiple of 4 is an even number. If 4 were a factor of both numbers, both numbers would have to be even! Odd numbers can never have an even factor.'
+    }
+  ];
+
+  let currentIdx = 0;
+
+  function renderView() {
+    const ch = challenges[currentIdx];
+    container.innerHTML = `
+      <div class="estimator-container">
+        <!-- Core Boundary Rules -->
+        <div class="estimator-rule-grid">
+          <div class="estimator-rule-card">
+            <div class="estimator-rule-title">🛑 1. Upper Bound Rule (HCF)</div>
+            <div class="estimator-rule-body">HCF can <strong>never exceed</strong> the smallest number. HCF(a, b) &le; min(a, b).</div>
+            <div class="estimator-rule-example">Between 18 & 24 &rarr; Max possible HCF is 18.</div>
+          </div>
+
+          <div class="estimator-rule-card">
+            <div class="estimator-rule-title">🚀 2. Lower Bound Rule (LCM)</div>
+            <div class="estimator-rule-body">LCM can <strong>never be smaller</strong> than the largest number. LCM(a, b) &ge; max(a, b).</div>
+            <div class="estimator-rule-example">Between 15 & 20 &rarr; Min possible LCM is 20.</div>
+          </div>
+
+          <div class="estimator-rule-card">
+            <div class="estimator-rule-title">⚡ 3. The Co-Prime Shortcut</div>
+            <div class="estimator-rule-body">If numbers are consecutive (14 & 15) or share no common factors, <strong>HCF = 1</strong> and <strong>LCM = a &times; b</strong> instantly with zero division!</div>
+            <div class="estimator-rule-example">HCF(9, 10) = 1 | LCM(9, 10) = 90.</div>
+          </div>
+
+          <div class="estimator-rule-card">
+            <div class="estimator-rule-title">🎯 4. The Factor-Multiple Pair</div>
+            <div class="estimator-rule-body">If smaller number divides larger number evenly, the <strong>smaller is HCF</strong> and <strong>larger is LCM</strong>.</div>
+            <div class="estimator-rule-example">For 8 & 32 &rarr; HCF = 8, LCM = 32.</div>
+          </div>
+        </div>
+
+        <div class="think-callout-math">
+          <div class="callout-header">💡 Think About It — The 5-Second Estimation Rule</div>
+          <p>Before touching your scratchpad, test the bounds! If a choice in an exam violates the Upper Bound or Lower Bound, cross it out immediately. That is pure mathematical deduction!</p>
+        </div>
+
+        <!-- Interactive Challenge Widget -->
+        <div class="estimator-challenge-box">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="color: var(--accent-cyan-light); font-weight: 700; font-size: 0.9rem;">DEDUCTIVE ESTIMATION CHALLENGE (${currentIdx + 1} of ${challenges.length})</span>
+            <button class="btn btn-sm" id="btn-next-estimator" style="background: rgba(255,255,255,0.08); color: var(--text-main); font-size: 0.8rem; border-radius: 9999px; padding: 0.25rem 0.75rem; border: 1px solid var(--border-glass);">Next Challenge &rarr;</button>
+          </div>
+
+          <div class="estimator-prompt">
+            ${ch.q} <br>
+            <span class="prompt-hl">${ch.hl}</span>
+          </div>
+
+          <div class="estimator-btn-row">
+            <button class="estimator-btn estimator-btn-possible" id="btn-guess-possible">Possible ✅</button>
+            <button class="estimator-btn estimator-btn-impossible" id="btn-guess-impossible">Impossible! 🚫</button>
+          </div>
+
+          <div id="estimator-verdict-box" style="display: none;"></div>
+        </div>
+      </div>
+    `;
+
+    const btnPossible = container.querySelector('#btn-guess-possible');
+    const btnImpossible = container.querySelector('#btn-guess-impossible');
+    const verdictBox = container.querySelector('#estimator-verdict-box');
+    const btnNext = container.querySelector('#btn-next-estimator');
+
+    function checkAnswer(userGuess) {
+      playClickSound();
+      btnPossible.disabled = true;
+      btnImpossible.disabled = true;
+      verdictBox.style.display = 'block';
+
+      const isCorrect = (userGuess === ch.possible);
+      if (isCorrect) {
+        playCorrectSound();
+        verdictBox.className = 'estimator-verdict';
+        verdictBox.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+        verdictBox.style.background = 'rgba(16, 185, 129, 0.1)';
+        verdictBox.innerHTML = `
+          <div style="color: #34d399; font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem;">
+            🎯 Spot On! You deduced correctly.
+          </div>
+          <p style="margin: 0; color: #f8fafc; font-size: 0.95rem;">${ch.reason}</p>
+        `;
+      } else {
+        playWrongSound();
+        verdictBox.className = 'estimator-verdict';
+        verdictBox.style.borderColor = 'rgba(244, 63, 94, 0.4)';
+        verdictBox.style.background = 'rgba(244, 63, 94, 0.1)';
+        verdictBox.innerHTML = `
+          <div style="color: #fb7185; font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem;">
+            🤔 Not quite! Let's examine the boundary:
+          </div>
+          <p style="margin: 0; color: #f8fafc; font-size: 0.95rem;">${ch.reason}</p>
+        `;
+      }
+    }
+
+    btnPossible.addEventListener('click', () => checkAnswer(true));
+    btnImpossible.addEventListener('click', () => checkAnswer(false));
+    btnNext.addEventListener('click', () => {
+      playClickSound();
+      currentIdx = (currentIdx + 1) % challenges.length;
+      renderView();
+    });
+  }
+
+  renderView();
+}
+
+/* ==========================================================================
+   MODULE: BE THE TEACHER (Spot the Exam Trap)
+   ========================================================================== */
+function renderSpotTheTrapModule(container) {
+  const trapCases = [
+    {
+      id: 'trap_hcf_ladder',
+      title: '1. Rohan\'s Non-Stopping Ladder',
+      topic: 'HCF Short Division',
+      student: 'Student: Rohan (Class 5-B)',
+      question: 'Find the HCF of 24, 36, and 48 using short division.',
+      steps: [
+        { label: 'Step 1', text: 'Divide 24, 36, 48 by 2 ➔ Leaves 12, 18, 24', isBlunder: false },
+        { label: 'Step 2', text: 'Divide 12, 18, 24 by 3 ➔ Leaves 4, 6, 8', isBlunder: false },
+        { label: 'Step 3', text: 'Divide 4, 6, 8 by 2 ➔ Leaves 2, 3, 4', isBlunder: false },
+        { label: 'Step 4', text: 'Divide 2 & 4 by 2 ➔ Leaves 1, 3, 2. Calculates HCF = 2 × 3 × 2 × 2 = 24', isBlunder: true }
+      ],
+      diagnosis: '🛑 <strong>Trap Caught! (The Stopping Rule)</strong> In HCF short division, the prime divisor <em>must divide ALL numbers simultaneously</em>! At Step 3, the numbers were 2, 3, and 4. No prime number divides all three together. Rohan should have <strong>STOPPED at Step 3</strong>! Bringing numbers down is strictly for LCM, NEVER for HCF! The correct HCF is 2 × 3 × 2 = 12.'
+    },
+    {
+      id: 'trap_composite_tree',
+      title: '2. Priya\'s Composite Factor Tree',
+      topic: 'Prime Factorization',
+      student: 'Student: Priya (Class 5-A)',
+      question: 'Find the prime factorization of 72.',
+      steps: [
+        { label: 'Step 1', text: 'Divide 72 by 4 ➔ Leaves 18', isBlunder: true },
+        { label: 'Step 2', text: 'Divide 18 by 2 ➔ Leaves 9', isBlunder: false },
+        { label: 'Step 3', text: 'Divide 9 by 3 ➔ Leaves 3', isBlunder: false },
+        { label: 'Step 4', text: 'Writes prime factors: 4 × 2 × 3 × 3', isBlunder: false }
+      ],
+      diagnosis: '🛑 <strong>Trap Caught! (Composite Divisor)</strong> 4 is a composite number (2 × 2), NOT a prime number! In prime factorization, every divisor must strictly be a prime number (2, 3, 5, 7, etc.). The correct prime factorization is 2 × 2 × 2 × 3 × 3 = 2³ × 3².'
+    },
+    {
+      id: 'trap_divisibility_converse',
+      title: '3. Aman\'s Divisibility Fallacy',
+      topic: 'Divisibility by 3 & 9',
+      student: 'Student: Aman (Class 5-C)',
+      question: 'Is 846 divisible by 9?',
+      steps: [
+        { label: 'Step 1', text: 'Check ones place: 6 is even, so divisible by 2', isBlunder: false },
+        { label: 'Step 2', text: 'Sum of digits: 8 + 4 + 6 = 18. 18 is divisible by 3', isBlunder: false },
+        { label: 'Step 3', text: 'Concludes: "Since 846 is divisible by 3, it MUST also be divisible by 9!"', isBlunder: true }
+      ],
+      diagnosis: '🛑 <strong>Trap Caught! (False Converse)</strong> Every multiple of 9 is divisible by 3, but the reverse is FALSE! For example, 12, 15, 21, and 24 are all divisible by 3, but NONE of them are divisible by 9! To test for 9, the digit sum itself must be a multiple of 9 (which 18 happens to be, but Aman\'s logic was completely invalid!).'
+    },
+    {
+      id: 'trap_subtraction_order',
+      title: '4. Tina\'s Subtraction Reversal',
+      topic: 'Expressions & Statements',
+      student: 'Student: Tina (Class 5-A)',
+      question: 'Write an algebraic expression for "Subtract 7 from 4 times a number x".',
+      steps: [
+        { label: 'Step 1', text: 'Translate "4 times a number x" ➔ 4x', isBlunder: false },
+        { label: 'Step 2', text: 'Translate "Subtract 7 from ..." ➔ Tina writes: 7 − 4x', isBlunder: true }
+      ],
+      diagnosis: '🛑 <strong>Trap Caught! (#1 CBSE Exam Trap)</strong> In English, "Subtract A from B" means you start with B and take A away (B − A). Tina wrote 7 − 4x, which means "Subtract 4x from 7"! The correct expression is <strong>4x − 7</strong>.'
+    }
+  ];
+
+  let activeCaseIdx = 0;
+
+  function renderView() {
+    const c = trapCases[activeCaseIdx];
+    container.innerHTML = `
+      <div class="trap-container">
+        <div class="think-callout-math">
+          <div class="callout-header">💡 Think About It — The Teacher's Lens</div>
+          <p>When you learn to spot why an answer is wrong, you become immune to making the same mistake yourself! Look at each step below and ask: <em>"Did the student break a fundamental math rule?"</em></p>
+        </div>
+
+        <!-- Case Navigation Tabs -->
+        <div class="trap-nav-pills">
+          ${trapCases.map((tc, idx) => `
+            <button class="trap-nav-pill ${idx === activeCaseIdx ? 'active' : ''}" data-idx="${idx}">
+              ${tc.title}
+            </button>
+          `).join('')}
+        </div>
+
+        <!-- Student Notebook Slip -->
+        <div class="trap-notebook-slip">
+          <div class="trap-notebook-badge">Exam Slip</div>
+          <div class="trap-student-meta">
+            📝 <strong>${c.student}</strong> &bull; Topic: <em>${c.topic}</em>
+          </div>
+
+          <div class="trap-question-banner">
+            ❓ Question: ${c.question}
+          </div>
+
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+            👇 <strong>Tap the step where the student made a blunder:</strong>
+          </p>
+
+          <div class="trap-steps-list">
+            ${c.steps.map((st, sIdx) => `
+              <div class="trap-step-item" data-step="${sIdx}">
+                <span class="trap-step-label">${st.label}</span>
+                <span class="trap-step-content">${st.text}</span>
+                <span class="trap-step-action">Tap to inspect 🔍</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <div id="trap-verdict-area"></div>
+        </div>
+      </div>
+    `;
+
+    // Case selection pills
+    container.querySelectorAll('.trap-nav-pill').forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        playClickSound();
+        activeCaseIdx = parseInt(e.currentTarget.dataset.idx, 10);
+        renderView();
+      });
+    });
+
+    // Step tap inspection
+    const stepItems = container.querySelectorAll('.trap-step-item');
+    const verdictArea = container.querySelector('#trap-verdict-area');
+
+    stepItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        playClickSound();
+        const sIdx = parseInt(e.currentTarget.dataset.step, 10);
+        const step = c.steps[sIdx];
+
+        stepItems.forEach(si => si.classList.remove('selected-blunder', 'selected-correct'));
+
+        if (step.isBlunder) {
+          playCorrectSound();
+          item.classList.add('selected-blunder');
+          verdictArea.innerHTML = `
+            <div class="trap-verdict-card success">
+              <div style="font-weight: 700; font-size: 1.05rem; margin-bottom: 0.4rem; color: #34d399;">
+                🎉 Excellent Teacher Diagnostic! You caught the blunder!
+              </div>
+              <p style="margin: 0; font-size: 0.95rem; line-height: 1.55;">${c.diagnosis}</p>
+            </div>
+          `;
+        } else {
+          playTone(261.63, 'sine', 0.08, 0.12);
+          item.classList.add('selected-correct');
+          verdictArea.innerHTML = `
+            <div class="trap-verdict-card retry">
+              <div style="font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: #fb7185;">
+                🔍 ${step.label} is actually correct!
+              </div>
+              <p style="margin: 0; font-size: 0.9rem;">The arithmetic in this step is valid. Look closer at the other steps to find where the student broke a core rule!</p>
+            </div>
+          `;
+        }
+      });
+    });
+  }
+
+  renderView();
+}
+
+/* ==========================================================================
    TOPIC 2 LEARN MODULES RENDERERS
    ========================================================================== */
 
@@ -3875,6 +4276,11 @@ function renderAllRulesTable(container) {
   ];
 
   container.innerHTML = `
+    <div class="think-callout-math">
+      <div class="callout-header">💡 Think About It — The Secret Codebreaker 🕵️</div>
+      <p>Divisibility rules are not arbitrary formulas. They are <strong>number fingerprints</strong>! Why do 3 and 9 use digit sums? Because 10 = 9 + 1, 100 = 99 + 1, 1000 = 999 + 1 — every place value is just a multiple of 9 plus 1 leftover! Adding digits simply collects all the leftovers to see if they form another multiple of 3 or 9.</p>
+    </div>
+
     <div class="rules-filter-row" id="rules-filter-bar">
       <button class="rule-filter-btn active" data-filter="all">🌟 All Rules (2–12)</button>
       <button class="rule-filter-btn" data-filter="last_digit">🎯 Last Digit (2, 5, 10)</button>
@@ -4408,6 +4814,11 @@ function renderClueWordsModule(container) {
 
     container.innerHTML = `
       <div class="clue-words-wrap">
+        <div class="think-callout-math">
+          <div class="callout-header">💡 Think About It — The Mystery Box & The Bubble 📦</div>
+          <p>In algebra, think of the unknown variable <em>x</em> as a <strong>sealed mystery gift box</strong>. The number outside (like 3 in 3x) tells you how many mystery boxes you have. Brackets (x + 4) are a <strong>protective bubble</strong>: whatever is inside must be grouped together before applying outside operations!</p>
+        </div>
+
         <!-- Sub-filter pills -->
         <div class="filter-pills-bar" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
           <button class="filter-pill-btn ${activeFilter === 'all' ? 'active' : ''}" data-cat="all">🌟 All Operations</button>
@@ -4804,6 +5215,11 @@ function renderPatternDetectiveModule(container) {
 
     container.innerHTML = `
       <div class="pattern-board">
+        <div class="think-callout-math">
+          <div class="callout-header">💡 Think About It — The Gap Detective 🔍</div>
+          <p>Every number sequence has a hidden clockwork rule! First calculate the gap between term 1 and term 2, then between term 2 and term 3. If the gap stays constant (+3, +3), it is an additive step. If the gap is multiplying (&times;2, &times;2), it is geometric. If the gap itself grows (+1, +2, +3), it is a triangular pattern!</p>
+        </div>
+
         <!-- Preset Selector -->
         <div class="trans-presets-row">
           <span class="trans-presets-label">Choose Pattern:</span>
@@ -5560,6 +5976,11 @@ function renderAnglesProtractorModule(container) {
 
     container.innerHTML = `
       <div class="learn-container">
+        <div class="think-callout-math">
+          <div class="callout-header">💡 Think About It — The Steering Wheel Metaphor 🧭</div>
+          <p>Don't think of an angle as two stiff wooden sticks on paper. Think of it as a <strong>turn of a steering wheel</strong>! Facing straight ahead (0°), a quarter turn to the right is 90° (Right Angle ∟). Turning all the way around to face backwards is 180° (Straight Angle). Any turn past backwards is a Reflex Angle!</p>
+        </div>
+
         <!-- Protractor Studio Card -->
         <div class="learn-card">
           <div class="learn-card-header">

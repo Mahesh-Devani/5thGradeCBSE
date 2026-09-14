@@ -25,6 +25,14 @@ Welcome, AI Agent! This guide defines the rules, technical constraints, pedagogi
    - Students should NEVER be booted back to the generic welcome screen or reset to topic 1 on page reload.
    - **Future Scope (User Accounts & Cloud Sync)**: In future phases, user authentication (Google Sign-In or direct email/password accounts) will be integrated to synchronize progress across devices. All client-side state schemas must remain clean, modular, and serializable JSON objects to facilitate effortless future migration and sync with user accounts.
 
+5. **Pedagogical Philosophy — Thinking & Deductive Reasoning Over Rote Learning (MANDATORY)**:
+   - The primary objective across all apps is to foster **analytical thinking, common-sense deduction, and conceptual reasoning** rather than mechanical formula memorization or scratchpad arithmetic exhaustion.
+   - Every subject module MUST embody the **4 Thinking Pillars**:
+     1. **Unforgettable Mental Metaphors**: Anchor concepts to memorable models (*The Equal Cutter* vs *The Cycle Synchronizer*, *The Snapshot Camera*, *The Finger Pointer*, *The Secret Codebreaker*, *The Mystery Box & Bubble*).
+     2. **Metacognitive Self-Talk (`💡 Think About It` Prompts)**: Guide students on *how to think through a problem* before solving (*"Ask yourself: Are you chopping down or waiting for cycles to meet?"*).
+     3. **Diagnostic "Spot the Exam Trap / Be the Teacher"**: Students diagnose subtle flaws in sample test sheets, building immunity against classic CBSE exam blunders.
+     4. **Common-Sense Estimation & "No-Pen" Reasoning**: Teach mathematical boundary rules (Upper Bound: $\text{HCF} \le \min$; Lower Bound: $\text{LCM} \ge \max$; Consecutive integers are always co-prime $\implies \text{HCF} = 1$) so students eliminate impossible answers in seconds without tedious scratchpad calculations.
+
 ---
 
 ## 2. Front-End Standards & Patterns
