@@ -450,10 +450,20 @@ function loadActiveState() {
 function saveActiveState() {
   try {
     if (state.currentMap) {
-      localStorage.setItem(ACTIVE_STATE_KEY, JSON.stringify({
+      const payload = {
         currentMapId: state.currentMap.id,
         currentMode: state.currentMode
-      }));
+      };
+      if (state.currentMode === 'quiz' && state.quizQueue && state.quizQueue.length > 0) {
+        payload.quizSession = {
+          mapId: state.currentMap.id,
+          queueRegionIds: state.quizQueue.map(r => r.id),
+          quizIndex: state.quizIndex,
+          score: state.score,
+          answeredRegionIds: state.quizQueue.slice(0, state.quizIndex).map(r => r.id)
+        };
+      }
+      localStorage.setItem(ACTIVE_STATE_KEY, JSON.stringify(payload));
     }
   } catch (e) {}
 }
@@ -510,7 +520,7 @@ function updateOverallProgress() {
 // ============================================
 // MAP SELECTION & MODE
 // ============================================
-function selectMap(mapId, targetMode = 'learn') {
+function selectMap(mapId, targetMode = 'learn', isResume = false) {
   state.currentMap = MAP_DATA[mapId];
   state.currentMode = targetMode;
   clearTimer();
@@ -520,20 +530,20 @@ function selectMap(mapId, targetMode = 'learn') {
   renderTopBar();
   renderMap();
   renderInfoPanel();
-  if (targetMode === 'quiz' || targetMode === 'timed') startQuiz();
+  if (targetMode === 'quiz' || targetMode === 'timed') startQuiz(isResume);
   hideWelcome();
   saveActiveState();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function setMode(mode) {
+function setMode(mode, isResume = false) {
   state.currentMode = mode;
   clearTimer();
-  state.score = { correct: 0, incorrect: 0, total: 0 };
+  if (!isResume) state.score = { correct: 0, incorrect: 0, total: 0 };
   renderTopBar();
   renderMap();
   renderInfoPanel();
-  if (mode === 'quiz' || mode === 'timed') startQuiz();
+  if (mode === 'quiz' || mode === 'timed') startQuiz(isResume);
   saveActiveState();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -657,6 +667,9 @@ function renderMap() {
 // ============================================
 // INFO PANEL
 // ============================================
+// ============================================
+// INFO PANEL
+// ============================================
 function renderInfoPanel() {
   const panel = document.getElementById('info-panel');
   if (!panel || !state.currentMap) return;
@@ -665,7 +678,10 @@ function renderInfoPanel() {
 
   if (state.currentMode === 'quiz' || state.currentMode === 'timed') {
     html += '<div class="quiz-prompt" id="quiz-prompt">' +
+            '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">' +
             '<div class="prompt-label">Find on the map</div>' +
+            '<button class="btn btn-restart-quiz" id="btn-restart-map-quiz" onclick="restartQuiz()" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.18); color:var(--text-secondary); padding:3px 9px; border-radius:4px; font-size:0.75rem; cursor:pointer;" title="Restart Quiz from Question 1">🔄 Restart</button>' +
+            '</div>' +
             '<div class="prompt-text" id="prompt-text">Loading...</div>' +
             '<div class="prompt-hint" id="prompt-hint"></div></div>';
   }
@@ -698,15 +714,36 @@ function renderInfoPanel() {
 // ============================================
 // QUIZ ENGINE
 // ============================================
-function startQuiz() {
+function startQuiz(isResume = false) {
   if (!state.currentMap) return;
   const quizRegions = state.currentMap.regions.filter(r =>
     !r.isContinent && !r.isBackground && !r.isIndia &&
     r.id !== 'saudi-arabia' && r.id !== 'drc' && r.id !== 'saudi-bg' && r.id !== 'africa-bg'
   );
-  state.quizQueue = shuffleArray([...quizRegions]);
-  state.quizIndex = 0;
-  state.score = { correct: 0, incorrect: 0, total: quizRegions.length };
+
+  const active = loadActiveState();
+  const savedSession = (state.currentMode === 'quiz' && isResume && active && active.quizSession && active.quizSession.mapId === state.currentMap.id)
+    ? active.quizSession
+    : null;
+
+  if (savedSession && Array.isArray(savedSession.queueRegionIds) && savedSession.queueRegionIds.length > 0) {
+    state.quizQueue = savedSession.queueRegionIds.map(id => state.currentMap.regions.find(r => r.id === id)).filter(Boolean);
+    state.quizIndex = Math.min(savedSession.quizIndex || 0, state.quizQueue.length);
+    state.score = savedSession.score || { correct: 0, incorrect: 0, total: state.quizQueue.length };
+
+    if (Array.isArray(savedSession.answeredRegionIds)) {
+      setTimeout(() => {
+        savedSession.answeredRegionIds.forEach(id => {
+          const el = document.querySelector('#region-' + id.replace(/[^a-zA-Z0-9-]/g, ''));
+          if (el) el.classList.add('answered');
+        });
+      }, 100);
+    }
+  } else {
+    state.quizQueue = shuffleArray([...quizRegions]);
+    state.quizIndex = 0;
+    state.score = { correct: 0, incorrect: 0, total: quizRegions.length };
+  }
 
   if (state.currentMode === 'timed') {
     state.timeTotal = quizRegions.length * 8;
@@ -715,6 +752,14 @@ function startQuiz() {
   }
   renderInfoPanel();
   showNextQuestion();
+  saveActiveState();
+}
+
+function restartQuiz() {
+  clearTimer();
+  document.querySelectorAll('.map-region.answered').forEach(el => el.classList.remove('answered'));
+  document.querySelectorAll('.map-region.target-highlight').forEach(el => el.classList.remove('target-highlight'));
+  startQuiz(false);
 }
 
 function showNextQuestion() {
@@ -750,6 +795,7 @@ function onRegionClick(regionId) {
     }
     showFeedback(true, target.name);
     state.quizIndex++;
+    saveActiveState();
     setTimeout(() => showNextQuestion(), 900);
   } else {
     state.score.incorrect++;
@@ -766,11 +812,13 @@ function onRegionClick(regionId) {
         correctEl.classList.add('answered');
         state.score.total--;
         state.quizIndex++;
+        saveActiveState();
         showNextQuestion();
       }, 1500);
     } else {
       state.score.total--;
       state.quizIndex++;
+      saveActiveState();
       setTimeout(() => showNextQuestion(), 1000);
     }
   }
@@ -778,6 +826,12 @@ function onRegionClick(regionId) {
 
 function endQuiz() {
   clearTimer();
+  try {
+    const active = loadActiveState() || {};
+    delete active.quizSession;
+    localStorage.setItem(ACTIVE_STATE_KEY, JSON.stringify(active));
+  } catch (e) {}
+
   const total = state.quizQueue.length;
   const correct = state.score.correct;
   const pct = total > 0 ? correct / total : 0;
@@ -1265,7 +1319,7 @@ function init() {
 
   const active = loadActiveState();
   if (active && active.currentMapId && MAP_DATA[active.currentMapId]) {
-    selectMap(active.currentMapId, active.currentMode || 'learn');
+    selectMap(active.currentMapId, active.currentMode || 'learn', true);
   } else {
     showWelcome();
   }

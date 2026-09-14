@@ -5938,13 +5938,16 @@ function renderPracticeView(container) {
           <span>Question:</span>
           <strong>${qIndex + 1} / ${questions.length}</strong>
         </div>
-        <div style="display: flex; gap: 1rem;">
+        <div style="display: flex; gap: 1rem; align-items: center;">
           <div class="stat-pill text-success">
             <span>✓ Correct:</span> <strong>${state.scoreCorrect}</strong>
           </div>
           <div class="stat-pill text-danger">
             <span>✗ Wrong:</span> <strong>${state.scoreWrong}</strong>
           </div>
+          <button class="btn btn-restart-practice" id="btn-restart-practice" title="Restart Practice from Question 1">
+            🔄 Restart
+          </button>
         </div>
       </div>
 
@@ -6002,6 +6005,17 @@ function renderPracticeView(container) {
     });
   });
 
+  // Attach restart button
+  container.querySelector('#btn-restart-practice')?.addEventListener('click', () => {
+    playClickSound();
+    state.currentQuestionIndex = 0;
+    state.scoreCorrect = 0;
+    state.scoreWrong = 0;
+    state.userAnswers = {};
+    saveActiveState();
+    renderViewport();
+  });
+
   if (!q) return;
 
   // Options click handler
@@ -6056,23 +6070,27 @@ function renderPracticeView(container) {
         state.stars = 3;
         saveProgress();
       }
+
+      saveActiveState();
     });
   });
 
   // Navigation handlers
-  container.querySelector('#btn-prev-q').addEventListener('click', () => {
+  container.querySelector('#btn-prev-q')?.addEventListener('click', () => {
     playClickSound();
     if (state.currentQuestionIndex > 0) {
       state.currentQuestionIndex--;
+      saveActiveState();
       renderViewport();
     }
   });
 
-  container.querySelector('#btn-next-q').addEventListener('click', () => {
+  container.querySelector('#btn-next-q')?.addEventListener('click', () => {
     playClickSound();
     const qs = getFilteredPracticeQuestions();
     if (state.currentQuestionIndex < qs.length - 1) {
       state.currentQuestionIndex++;
+      saveActiveState();
       renderViewport();
     }
   });
@@ -7085,6 +7103,15 @@ function loadActiveState() {
       if (parsed.practiceFilter) {
         state.practiceFilter = parsed.practiceFilter;
       }
+      if (parsed.practiceProgress && parsed.practiceProgress.topicId === state.currentTopic) {
+        state.currentQuestionIndex = parsed.practiceProgress.currentQuestionIndex || 0;
+        state.scoreCorrect = parsed.practiceProgress.scoreCorrect || 0;
+        state.scoreWrong = parsed.practiceProgress.scoreWrong || 0;
+        state.userAnswers = parsed.practiceProgress.userAnswers || {};
+        if (parsed.practiceProgress.practiceFilter) {
+          state.practiceFilter = parsed.practiceProgress.practiceFilter;
+        }
+      }
     }
   } catch (e) {
     console.warn('Failed to load active state:', e);
@@ -7099,6 +7126,16 @@ function saveActiveState() {
       activeLearnModule: state.activeLearnModule,
       practiceFilter: state.practiceFilter
     };
+    if (state.activeMode === 'practice') {
+      toSave.practiceProgress = {
+        topicId: state.currentTopic,
+        currentQuestionIndex: state.currentQuestionIndex,
+        scoreCorrect: state.scoreCorrect,
+        scoreWrong: state.scoreWrong,
+        userAnswers: state.userAnswers,
+        practiceFilter: state.practiceFilter
+      };
+    }
     localStorage.setItem('cbse5_maths_active_state', JSON.stringify(toSave));
   } catch (e) {
     console.warn('Failed to save active state:', e);

@@ -485,6 +485,8 @@ const state = {
   exerciseIndex: 0,
   score: { correct: 0, incorrect: 0, total: 0 },
   answered: false,
+  selectedOption: null,
+  exerciseIndices: [],
   timerInterval: null,
   timeLeft: 0,
   progress: {},
@@ -507,10 +509,21 @@ function loadActiveState() {
 function saveActiveState() {
   try {
     if (state.currentTopic) {
-      localStorage.setItem(ACTIVE_STATE_KEY, JSON.stringify({
+      const payload = {
         currentTopic: state.currentTopic,
         currentMode: state.currentMode
-      }));
+      };
+      if (state.currentMode === 'practice' && Array.isArray(state.exerciseIndices) && state.exerciseIndices.length > 0) {
+        payload.practiceSession = {
+          topicId: state.currentTopic,
+          exerciseIndices: state.exerciseIndices,
+          exerciseIndex: state.exerciseIndex,
+          score: state.score,
+          answered: state.answered,
+          selectedOption: state.selectedOption
+        };
+      }
+      localStorage.setItem(ACTIVE_STATE_KEY, JSON.stringify(payload));
     }
   } catch (e) {}
 }
@@ -523,6 +536,22 @@ let audioCtx = null;
 function getAudioCtx() {
   if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   return audioCtx;
+}
+
+function playTapSound() {
+  try {
+    const ctx = getAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(440, ctx.currentTime);
+    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.1);
+  } catch (e) {}
 }
 
 function playCorrectSound() {
@@ -705,12 +734,16 @@ function renderSidebar() {
 // TOPIC SELECTION & MODE SWITCHING
 // ============================================
 
-function selectTopic(topicId, targetMode = 'learn') {
+function selectTopic(topicId, targetMode = 'learn', isResume = false) {
   state.currentTopic = topicId;
   state.currentMode = targetMode;
-  state.exerciseIndex = 0;
-  state.score = { correct: 0, incorrect: 0, total: 0 };
-  state.answered = false;
+  if (!isResume) {
+    state.exerciseIndex = 0;
+    state.score = { correct: 0, incorrect: 0, total: 0 };
+    state.answered = false;
+    state.selectedOption = null;
+    state.exerciseIndices = [];
+  }
   clearTimer();
 
   const topic = TOPIC_DATA[topicId];
@@ -722,16 +755,19 @@ function selectTopic(topicId, targetMode = 'learn') {
 
   closeSidebar();
   renderSidebar();
-  setMode(targetMode);
+  setMode(targetMode, isResume);
   saveActiveState();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function setMode(mode) {
+function setMode(mode, isResume = false) {
   state.currentMode = mode;
-  state.exerciseIndex = 0;
-  state.score = { correct: 0, incorrect: 0, total: 0 };
-  state.answered = false;
+  if (!isResume) {
+    state.exerciseIndex = 0;
+    state.score = { correct: 0, incorrect: 0, total: 0 };
+    state.answered = false;
+    state.selectedOption = null;
+  }
   clearTimer();
 
   document.querySelectorAll('.mode-tab').forEach(tab => {
@@ -739,8 +775,8 @@ function setMode(mode) {
   });
 
   if (mode === 'learn') renderLearnMode();
-  else if (mode === 'practice') startExercises(false);
-  else if (mode === 'challenge') startExercises(true);
+  else if (mode === 'practice') startExercises(false, isResume);
+  else if (mode === 'challenge') startExercises(true, isResume);
 
   saveActiveState();
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -808,24 +844,78 @@ function shuffleArray(arr) {
   return a;
 }
 
-function startExercises(timed) {
+function startExercises(timed, isResume = false) {
   const topic = TOPIC_DATA[state.currentTopic];
   if (!topic) return;
 
-  state.shuffledExercises = shuffleArray(topic.exercises);
-  if (timed) {
-    state.shuffledExercises = state.shuffledExercises.slice(0, 10);
+  const active = loadActiveState();
+  const savedSession = (!timed && isResume && active && active.practiceSession && active.practiceSession.topicId === state.currentTopic)
+    ? active.practiceSession
+    : null;
+
+  if (savedSession && Array.isArray(savedSession.exerciseIndices) && savedSession.exerciseIndices.length > 0) {
+    state.exerciseIndices = savedSession.exerciseIndices;
+    state.shuffledExercises = state.exerciseIndices.map(idx => topic.exercises[idx]).filter(Boolean);
+    state.exerciseIndex = Math.min(savedSession.exerciseIndex || 0, Math.max(0, state.shuffledExercises.length - 1));
+    state.score = savedSession.score || { correct: 0, incorrect: 0, total: state.shuffledExercises.length };
+    state.answered = !!savedSession.answered;
+    state.selectedOption = savedSession.selectedOption !== undefined ? savedSession.selectedOption : null;
+  } else {
+    const indices = topic.exercises.map((_, i) => i);
+    const shuffledIdxs = shuffleArray(indices);
+    state.exerciseIndices = timed ? shuffledIdxs.slice(0, 10) : shuffledIdxs;
+    state.shuffledExercises = state.exerciseIndices.map(i => topic.exercises[i]);
+    state.exerciseIndex = 0;
+    state.score = { correct: 0, incorrect: 0, total: state.shuffledExercises.length };
+    state.answered = false;
+    state.selectedOption = null;
   }
-  state.exerciseIndex = 0;
-  state.score = { correct: 0, incorrect: 0, total: state.shuffledExercises.length };
-  state.answered = false;
 
   if (timed) {
     state.timeLeft = state.shuffledExercises.length * CHALLENGE_TIME_PER_Q;
     startTimer();
   }
 
+  saveActiveState();
   renderExercise();
+}
+
+function restartExercises() {
+  playTapSound();
+  state.exerciseIndex = 0;
+  state.score = { correct: 0, incorrect: 0, total: 0 };
+  state.answered = false;
+  state.selectedOption = null;
+  startExercises(false, false);
+}
+
+function showExplanationAndOptions(selectedIndex, isCorrect) {
+  const ex = state.shuffledExercises[state.exerciseIndex];
+  const buttons = document.querySelectorAll('.option-btn');
+  buttons.forEach((btn, i) => {
+    btn.classList.add('disabled');
+    if (i === ex.correct) btn.classList.add('correct');
+    if (i === selectedIndex && !isCorrect) btn.classList.add('incorrect');
+  });
+
+  const expArea = document.getElementById('explanation-area');
+  if (expArea) {
+    expArea.innerHTML = `
+      <div class="explanation-box ${isCorrect ? 'correct-exp' : 'incorrect-exp'}">
+        <strong>${isCorrect ? '✅ Correct!' : '❌ Not quite!'}</strong> ${ex.explanation}
+      </div>
+      <div class="next-btn-row">
+        <button class="btn btn-primary" onclick="nextExercise()">
+          ${state.exerciseIndex < state.shuffledExercises.length - 1 ? 'Next Question →' : 'See Results 🏆'}
+        </button>
+      </div>
+    `;
+  }
+
+  const correctEl = document.querySelector('.score-correct .score-value');
+  const wrongEl = document.querySelector('.score-wrong .score-value');
+  if (correctEl) correctEl.textContent = state.score.correct;
+  if (wrongEl) wrongEl.textContent = state.score.incorrect;
 }
 
 function renderExercise() {
@@ -838,7 +928,6 @@ function renderExercise() {
   const ex = state.shuffledExercises[state.exerciseIndex];
   const total = state.shuffledExercises.length;
   const num = state.exerciseIndex + 1;
-  state.answered = false;
 
   let html = `<div class="exercise-container">`;
 
@@ -855,10 +944,15 @@ function renderExercise() {
     html += `<div class="exercise-timer ${timerClass}" id="timer-display">⏱️ ${formatTime(state.timeLeft)}</div>`;
   }
 
-  // Progress bar
+  // Progress bar with restart button
   html += `<div class="exercise-progress">
     <div class="exercise-progress-bar"><div class="exercise-progress-fill" style="width: ${(num - 1) / total * 100}%"></div></div>
     <div class="exercise-progress-text">${num} / ${total}</div>
+    ${state.currentMode === 'practice' ? `
+      <button class="btn-restart-exercise" id="btn-restart-exercise" onclick="restartExercises()" title="Restart Practice from Question 1">
+        🔄 Restart
+      </button>
+    ` : ''}
   </div>`;
 
   // Question card
@@ -888,11 +982,17 @@ function renderExercise() {
   html += `</div>`; // exercise-container
 
   area.innerHTML = html;
+
+  if (state.answered && state.selectedOption !== null) {
+    const isCorrect = state.selectedOption === ex.correct;
+    showExplanationAndOptions(state.selectedOption, isCorrect);
+  }
 }
 
 function handleAnswer(selectedIndex) {
   if (state.answered) return;
   state.answered = true;
+  state.selectedOption = selectedIndex;
 
   const ex = state.shuffledExercises[state.exerciseIndex];
   const isCorrect = selectedIndex === ex.correct;
@@ -908,36 +1008,15 @@ function handleAnswer(selectedIndex) {
     flashFeedback('incorrect');
   }
 
-  // Highlight options
-  const buttons = document.querySelectorAll('.option-btn');
-  buttons.forEach((btn, i) => {
-    btn.classList.add('disabled');
-    if (i === ex.correct) btn.classList.add('correct');
-    if (i === selectedIndex && !isCorrect) btn.classList.add('incorrect');
-  });
-
-  // Show explanation
-  const expArea = document.getElementById('explanation-area');
-  if (expArea) {
-    expArea.innerHTML = `
-      <div class="explanation-box ${isCorrect ? 'correct-exp' : 'incorrect-exp'}">
-        <strong>${isCorrect ? '✅ Correct!' : '❌ Not quite!'}</strong> ${ex.explanation}
-      </div>
-      <div class="next-btn-row">
-        <button class="btn btn-primary" onclick="nextExercise()">
-          ${state.exerciseIndex < state.shuffledExercises.length - 1 ? 'Next Question →' : 'See Results 🏆'}
-        </button>
-      </div>
-    `;
-  }
-
-  // Update score display
-  document.querySelector('.score-correct .score-value').textContent = state.score.correct;
-  document.querySelector('.score-wrong .score-value').textContent = state.score.incorrect;
+  showExplanationAndOptions(selectedIndex, isCorrect);
+  saveActiveState();
 }
 
 function nextExercise() {
   state.exerciseIndex++;
+  state.answered = false;
+  state.selectedOption = null;
+  saveActiveState();
   if (state.exerciseIndex >= state.shuffledExercises.length) {
     finishExercises();
   } else {
@@ -985,6 +1064,12 @@ function formatTime(seconds) {
 
 function finishExercises() {
   clearTimer();
+
+  try {
+    const active = loadActiveState() || {};
+    delete active.practiceSession;
+    localStorage.setItem(ACTIVE_STATE_KEY, JSON.stringify(active));
+  } catch (e) {}
 
   const correct = state.score.correct;
   const total = state.shuffledExercises.length;
@@ -1059,7 +1144,7 @@ function init() {
 
   const active = loadActiveState();
   if (active && active.currentTopic && TOPIC_DATA[active.currentTopic]) {
-    selectTopic(active.currentTopic, active.currentMode || 'learn');
+    selectTopic(active.currentTopic, active.currentMode || 'learn', true);
   } else {
     showWelcome();
   }

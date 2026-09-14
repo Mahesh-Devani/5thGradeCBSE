@@ -77,12 +77,21 @@ When modifying or creating a subject mini-app:
 
 ### E. State Persistence & Session Restore Pattern
 Whenever creating or enhancing an interactive mini-app:
-- Implement `loadActiveState()` and `saveActiveState()` to persist active topic, mode, and subtabs alongside star progress.
-- On initialization (`DOMContentLoaded` or `init()`), invoke `loadActiveState()`: if a previously viewed topic/mode exists, restore it immediately so the student resumes directly without being bounced to a welcome screen.
+- Implement `loadActiveState()` and `saveActiveState()` to persist active topic, mode, subtabs, and star progress.
+- **In-Progress Practice & Quiz Session Persistence (MANDATORY)**:
+  - When students are mid-practice or mid-quiz and accidentally reload, switch apps on a tablet/mobile, or leave the page, their in-progress session MUST be saved and restored:
+    - Current question index and randomized question queue/indices
+    - Current score (correct/incorrect counters)
+    - If a question was already answered: preserve the selected answer, show the explanation card, disable choice buttons, and display the "Next Question" button
+    - Free-form text drafts (e.g., *Chitra Varnan* student essay notepad) must be autosaved to state on every input event
+  - **Restart Drill Control (MANDATORY)**:
+    - Always provide an easily accessible `🔄 Restart` (`🔄 पुनः आरंभ`) button in the practice/quiz header or stats bar so students can voluntarily reset and start fresh from Question 1 anytime.
+- On initialization (`DOMContentLoaded` or `init()`), invoke `loadActiveState()`: if a previously viewed topic/mode exists, restore it immediately along with any in-progress practice session so the student resumes directly without being bounced to a welcome screen.
 - Call `saveActiveState()` on every state change:
   - Topic/chapter selection
   - Mode/tab changes (`learn`, `practice`, `challenge`, `worksheet`)
   - Subtab/filter changes (math learn pills, grammar subtopics, categorization filters)
+  - Answering a question, selecting an option, or clicking "Next Question"
   - View toggles (bilingual English, exam photo vs cartoon, monochrome print)
 - **Namespaced Storage Keys**:
   - Hindi: `cbse5_hindi_active_state`, `cbse5_hindi_sangya_stars`, `cbse5_hindi_vakyansh_stars`, `cbse5_chitra_varnan_stars`

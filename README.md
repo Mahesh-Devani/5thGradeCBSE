@@ -34,7 +34,9 @@ A modern, responsive, zero-dependency web application designed for **Class 5 CBS
   - Zero build step, zero package managers, runs completely offline from a local browser.
 - **💾 State & Session Persistence Across Refreshes**:
   - Automatically saves the student's active topic, mode (`Learn`, `Practice`, `Challenge`, `Worksheet`), subtabs, and filters in `localStorage`.
-  - When students refresh the browser, their exact learning position and accumulated star badges are seamlessly restored without bouncing back to a welcome screen.
+  - **In-Progress Practice & Quiz Recovery**: Students can switch between apps or reload on tablets and smartphones without losing their spot mid-drill (saves question queue, index, score, selected answers, and essay drafts).
+  - **Quick Restart Controls**: One-tap `🔄 Restart` / `🔄 पुनः आरंभ` buttons allow students to reset and start a fresh practice run anytime.
+  - When students refresh the browser, their exact learning position, practice state, and accumulated star badges are seamlessly restored without bouncing back to a welcome screen.
 - **🎨 Modern Aesthetic**:
   - Dark glassmorphic design system, smooth ambient background blobs, Google Font Outfit, glowing neon accents, and celebratory confetti animations.
 - **🖨️ Classroom & Homework Ready**:

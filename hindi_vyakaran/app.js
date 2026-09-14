@@ -2563,7 +2563,8 @@ class HindiLearningApp {
       sangyaQuizState: {
         qIndex: 0,
         score: { correct: 0, wrong: 0 },
-        answered: false
+        answered: false,
+        selectedOption: null
       },
       sangyaChallengeState: {
         timer: 60,
@@ -2587,7 +2588,8 @@ class HindiLearningApp {
       quizState: {
         qIndex: 0,
         score: { correct: 0, wrong: 0 },
-        answered: false
+        answered: false,
+        selectedOption: null
       },
       challengeState: {
         timer: 60,
@@ -2595,7 +2597,8 @@ class HindiLearningApp {
         qIndex: 0,
         score: 0,
         answered: false
-      }
+      },
+      chitraDrafts: {}
     };
 
     this.initElements();
@@ -2655,6 +2658,25 @@ class HindiLearningApp {
         if (typeof parsed.isBWMode === 'boolean') {
           this.state.isBWMode = parsed.isBWMode;
         }
+        if (parsed.vakyanshQuizSession && typeof parsed.vakyanshQuizSession === 'object') {
+          this.state.quizState = {
+            qIndex: parsed.vakyanshQuizSession.qIndex || 0,
+            score: parsed.vakyanshQuizSession.score || { correct: 0, wrong: 0 },
+            answered: !!parsed.vakyanshQuizSession.answered,
+            selectedOption: parsed.vakyanshQuizSession.selectedOption !== undefined ? parsed.vakyanshQuizSession.selectedOption : null
+          };
+        }
+        if (parsed.sangyaQuizSession && typeof parsed.sangyaQuizSession === 'object') {
+          this.state.sangyaQuizState = {
+            qIndex: parsed.sangyaQuizSession.qIndex || 0,
+            score: parsed.sangyaQuizSession.score || { correct: 0, wrong: 0 },
+            answered: !!parsed.sangyaQuizSession.answered,
+            selectedOption: parsed.sangyaQuizSession.selectedOption !== undefined ? parsed.sangyaQuizSession.selectedOption : null
+          };
+        }
+        if (parsed.chitraDrafts && typeof parsed.chitraDrafts === 'object') {
+          this.state.chitraDrafts = parsed.chitraDrafts;
+        }
       }
     } catch (e) {
       console.warn('Failed to load active state:', e);
@@ -2674,8 +2696,25 @@ class HindiLearningApp {
         vakyanshFilter: this.state.vakyanshFilter,
         showEnglish: this.state.showEnglish,
         imageViewMode: this.state.imageViewMode,
-        isBWMode: this.state.isBWMode
+        isBWMode: this.state.isBWMode,
+        chitraDrafts: this.state.chitraDrafts || {}
       };
+      if (this.state.quizState && (this.state.quizState.qIndex > 0 || this.state.quizState.score.correct > 0 || this.state.quizState.score.wrong > 0 || this.state.quizState.answered)) {
+        toSave.vakyanshQuizSession = {
+          qIndex: this.state.quizState.qIndex,
+          score: this.state.quizState.score,
+          answered: this.state.quizState.answered,
+          selectedOption: this.state.quizState.selectedOption !== undefined ? this.state.quizState.selectedOption : null
+        };
+      }
+      if (this.state.sangyaQuizState && (this.state.sangyaQuizState.qIndex > 0 || this.state.sangyaQuizState.score.correct > 0 || this.state.sangyaQuizState.score.wrong > 0 || this.state.sangyaQuizState.answered)) {
+        toSave.sangyaQuizSession = {
+          qIndex: this.state.sangyaQuizState.qIndex,
+          score: this.state.sangyaQuizState.score,
+          answered: this.state.sangyaQuizState.answered,
+          selectedOption: this.state.sangyaQuizState.selectedOption !== undefined ? this.state.sangyaQuizState.selectedOption : null
+        };
+      }
       localStorage.setItem('cbse5_hindi_active_state', JSON.stringify(toSave));
     } catch (e) {
       console.warn('Failed to save active state:', e);
@@ -3374,26 +3413,32 @@ class HindiLearningApp {
     const qs = this.state.quizState;
     const questions = VAKYANSH_QUIZ_POOL;
     const totalQ = questions.length;
+    if (qs.qIndex >= totalQ) qs.qIndex = 0;
     const q = questions[qs.qIndex];
 
     const letters = ['क', 'ख', 'ग', 'घ'];
 
     this.vakyanshWorkspace.innerHTML = `
       <div class="vakyansh-quiz-panel">
-        <!-- Score Bar -->
-        <div class="score-bar" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; background:rgba(0,0,0,0.3); padding:10px 14px; border-radius:var(--radius-md); border:var(--border-glass);">
-          <div class="score-item" style="text-align:center;">
-            <div class="score-value" style="font-size:1.3rem; font-weight:800; color:var(--accent-green);">${qs.score.correct}</div>
-            <div class="score-label" style="font-size:0.7rem; color:var(--text-muted);">सही (Correct)</div>
+        <!-- Score Bar & Restart Button -->
+        <div class="score-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; background:rgba(0,0,0,0.3); padding:10px 14px; border-radius:var(--radius-md); border:var(--border-glass);">
+          <div style="display:flex; gap:16px; align-items:center;">
+            <div class="score-item" style="text-align:center;">
+              <div class="score-value" style="font-size:1.3rem; font-weight:800; color:var(--accent-green);">${qs.score.correct}</div>
+              <div class="score-label" style="font-size:0.7rem; color:var(--text-muted);">सही (Correct)</div>
+            </div>
+            <div class="score-item" style="text-align:center;">
+              <div class="score-value" style="font-size:1.3rem; font-weight:800; color:var(--accent-red);">${qs.score.wrong}</div>
+              <div class="score-label" style="font-size:0.7rem; color:var(--text-muted);">गलत (Wrong)</div>
+            </div>
+            <div class="score-item" style="text-align:center;">
+              <div class="score-value" style="font-size:1.3rem; font-weight:800; color:var(--accent-saffron-light);">${Math.max(0, totalQ - qs.qIndex)}</div>
+              <div class="score-label" style="font-size:0.7rem; color:var(--text-muted);">शेष (Remaining)</div>
+            </div>
           </div>
-          <div class="score-item" style="text-align:center;">
-            <div class="score-value" style="font-size:1.3rem; font-weight:800; color:var(--accent-red);">${qs.score.wrong}</div>
-            <div class="score-label" style="font-size:0.7rem; color:var(--text-muted);">गलत (Wrong)</div>
-          </div>
-          <div class="score-item" style="text-align:center;">
-            <div class="score-value" style="font-size:1.3rem; font-weight:800; color:var(--accent-saffron-light);">${totalQ - qs.qIndex}</div>
-            <div class="score-label" style="font-size:0.7rem; color:var(--text-muted);">शेष (Remaining)</div>
-          </div>
+          <button class="btn btn-restart-quiz" id="btn-restart-vakyansh-quiz" style="padding:6px 12px; font-size:0.78rem; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.18); color:var(--text-secondary); border-radius:var(--radius-sm); cursor:pointer;">
+            🔄 पुनः आरंभ (Restart)
+          </button>
         </div>
 
         <!-- Question Card -->
@@ -3405,7 +3450,7 @@ class HindiLearningApp {
           <!-- Options Grid -->
           <div class="quiz-options-grid" id="quiz-options-grid">
             ${q.options.map((opt, i) => `
-              <button class="quiz-opt-btn" data-opt-idx="${i}" ${qs.answered ? 'disabled' : ''}>
+              <button class="quiz-opt-btn" data-opt-idx="${i}">
                 <span class="quiz-opt-letter">${letters[i]}</span>
                 <span>${opt}</span>
               </button>
@@ -3425,14 +3470,43 @@ class HindiLearningApp {
       </div>
     `;
 
+    const optBtns = this.vakyanshWorkspace.querySelectorAll('#quiz-options-grid .quiz-opt-btn');
+    const expBox = this.vakyanshWorkspace.querySelector('#quiz-exp-box');
+    const nextBtn = this.vakyanshWorkspace.querySelector('#btn-quiz-next');
+
+    // Restart button handler
+    this.vakyanshWorkspace.querySelector('#btn-restart-vakyansh-quiz')?.addEventListener('click', () => {
+      synth.tap();
+      this.state.quizState = { qIndex: 0, score: { correct: 0, wrong: 0 }, answered: false, selectedOption: null };
+      this.saveAppState();
+      this.renderVakyanshQuizMode();
+    });
+
+    // If restored in already answered state
+    if (qs.answered && qs.selectedOption !== null && qs.selectedOption !== undefined) {
+      optBtns.forEach(b => b.setAttribute('disabled', 'true'));
+      const chosenIdx = qs.selectedOption;
+      if (chosenIdx === q.correct) {
+        if (optBtns[chosenIdx]) optBtns[chosenIdx].classList.add('correct');
+        expBox.innerHTML = `<strong>🎉 बिल्कुल सही उत्तर!</strong><br>${q.exp}`;
+      } else {
+        if (optBtns[chosenIdx]) optBtns[chosenIdx].classList.add('wrong');
+        if (optBtns[q.correct]) optBtns[q.correct].classList.add('correct');
+        expBox.innerHTML = `<strong>❌ सही उत्तर ‘${q.options[q.correct]}’ है:</strong><br>${q.exp}`;
+      }
+      expBox.style.display = 'block';
+      nextBtn.style.display = 'inline-flex';
+    }
+
     // Bind Option clicks
-    this.vakyanshWorkspace.querySelectorAll('#quiz-options-grid .quiz-opt-btn').forEach(btn => {
+    optBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         if (qs.answered) return;
         qs.answered = true;
         const chosenIdx = parseInt(btn.dataset.optIdx, 10);
-        const expBox = this.vakyanshWorkspace.querySelector('#quiz-exp-box');
-        const nextBtn = this.vakyanshWorkspace.querySelector('#btn-quiz-next');
+        qs.selectedOption = chosenIdx;
+
+        optBtns.forEach(b => b.setAttribute('disabled', 'true'));
 
         if (chosenIdx === q.correct) {
           synth.success();
@@ -3451,15 +3525,18 @@ class HindiLearningApp {
 
         expBox.style.display = 'block';
         nextBtn.style.display = 'inline-flex';
+        this.saveAppState();
       });
     });
 
     // Next Question Button
-    this.vakyanshWorkspace.querySelector('#btn-quiz-next')?.addEventListener('click', () => {
+    nextBtn?.addEventListener('click', () => {
       synth.tap();
       if (qs.qIndex < totalQ - 1) {
         qs.qIndex++;
         qs.answered = false;
+        qs.selectedOption = null;
+        this.saveAppState();
         this.renderVakyanshQuizMode();
       } else {
         // Quiz complete modal
@@ -3478,6 +3555,10 @@ class HindiLearningApp {
         this.resultScore.textContent = `${pct}%`;
         this.resultStarsCount.textContent = String(starsEarned);
         this.resultsModal.classList.add('open');
+
+        // Reset quiz session on completion
+        this.state.quizState = { qIndex: 0, score: { correct: 0, wrong: 0 }, answered: false, selectedOption: null };
+        this.saveAppState();
       }
     });
   }
@@ -4069,9 +4150,14 @@ class HindiLearningApp {
         </div>
       `;
 
+      // Reset quiz session on complete
+      this.state.sangyaQuizState = { qIndex: 0, score: { correct: 0, wrong: 0 }, answered: false, selectedOption: null };
+      this.saveAppState();
+
       this.sangyaWorkspace.querySelector('#btn-quiz-retry').addEventListener('click', () => {
         synth.tap();
-        this.state.sangyaQuizState = { qIndex: 0, score: { correct: 0, wrong: 0 }, answered: false };
+        this.state.sangyaQuizState = { qIndex: 0, score: { correct: 0, wrong: 0 }, answered: false, selectedOption: null };
+        this.saveAppState();
         this.renderSangyaQuizMode();
       });
       this.sangyaWorkspace.querySelector('#btn-quiz-challenge').addEventListener('click', () => {
@@ -4088,15 +4174,20 @@ class HindiLearningApp {
 
     this.sangyaWorkspace.innerHTML = `
       <div class="vakyansh-quiz-panel">
-        <div class="quiz-header-row">
+        <div class="quiz-header-row" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
           <div>
             <span class="quiz-badge">प्रश्न ${qs.qIndex + 1} / ${questions.length}</span>
             <div class="quiz-progress-track" style="margin-top:6px; width:160px; height:6px; background:rgba(255,255,255,0.1); border-radius:10px; overflow:hidden;">
               <div style="width:${progressPct}%; height:100%; background:var(--gradient-saffron); transition:width 0.3s;"></div>
             </div>
           </div>
-          <div class="quiz-score-badge">
-            स्कोर: <strong style="color:var(--accent-saffron-light);">${qs.score.correct}</strong> / ${qs.qIndex}
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="quiz-score-badge">
+              स्कोर: <strong style="color:var(--accent-saffron-light);">${qs.score.correct}</strong> / ${qs.qIndex}
+            </div>
+            <button class="btn btn-restart-quiz" id="btn-restart-sangya-quiz" style="padding:4px 10px; font-size:0.75rem; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.18); color:var(--text-secondary); border-radius:var(--radius-sm); cursor:pointer;">
+              🔄 पुनः आरंभ (Restart)
+            </button>
           </div>
         </div>
 
@@ -4128,11 +4219,36 @@ class HindiLearningApp {
     const expBox = this.sangyaWorkspace.querySelector('#quiz-explanation-box');
     const nextBtn = this.sangyaWorkspace.querySelector('#btn-quiz-next');
 
+    // Restart button handler
+    this.sangyaWorkspace.querySelector('#btn-restart-sangya-quiz')?.addEventListener('click', () => {
+      synth.tap();
+      this.state.sangyaQuizState = { qIndex: 0, score: { correct: 0, wrong: 0 }, answered: false, selectedOption: null };
+      this.saveAppState();
+      this.renderSangyaQuizMode();
+    });
+
+    // If restored in already answered state
+    if (qs.answered && qs.selectedOption !== null && qs.selectedOption !== undefined) {
+      optBtns.forEach(b => b.setAttribute('disabled', 'true'));
+      const chosen = qs.selectedOption;
+      if (chosen === curQ.correct) {
+        if (optBtns[chosen]) optBtns[chosen].classList.add('correct');
+      } else {
+        if (optBtns[chosen]) optBtns[chosen].classList.add('wrong');
+        if (optBtns[curQ.correct]) optBtns[curQ.correct].classList.add('correct');
+      }
+      expBox.style.display = 'block';
+      nextBtn.style.display = 'inline-flex';
+    }
+
     optBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         if (qs.answered) return;
         qs.answered = true;
         const chosen = parseInt(btn.dataset.idx, 10);
+        qs.selectedOption = chosen;
+
+        optBtns.forEach(b => b.setAttribute('disabled', 'true'));
 
         if (chosen === curQ.correct) {
           synth.success();
@@ -4141,12 +4257,13 @@ class HindiLearningApp {
         } else {
           synth.error();
           btn.classList.add('wrong');
-          optBtns[curQ.correct].classList.add('correct');
+          if (optBtns[curQ.correct]) optBtns[curQ.correct].classList.add('correct');
           qs.score.wrong++;
         }
 
         expBox.style.display = 'block';
         nextBtn.style.display = 'inline-flex';
+        this.saveAppState();
       });
     });
 
@@ -4154,6 +4271,8 @@ class HindiLearningApp {
       synth.tap();
       qs.qIndex++;
       qs.answered = false;
+      qs.selectedOption = null;
+      this.saveAppState();
       this.renderSangyaQuizMode();
     });
   }
@@ -4893,11 +5012,22 @@ class HindiLearningApp {
     const textarea = this.modePanel.querySelector('#student-textarea');
     const counter = this.modePanel.querySelector('#student-word-counter');
 
+    if (this.state.chitraDrafts && this.state.chitraDrafts[scene.id]) {
+      textarea.value = this.state.chitraDrafts[scene.id];
+      const text = textarea.value.trim();
+      const words = text ? text.split(/\s+/).length : 0;
+      const sentences = text ? (text.match(/[।?!.]/g) || []).length : 0;
+      counter.textContent = `शब्द संख्या: ${words} शब्द | ${sentences} वाक्य पूर्ण`;
+    }
+
     textarea.addEventListener('input', () => {
       const text = textarea.value.trim();
       const words = text ? text.split(/\s+/).length : 0;
       const sentences = text ? (text.match(/[।?!.]/g) || []).length : 0;
       counter.textContent = `शब्द संख्या: ${words} शब्द | ${sentences} वाक्य पूर्ण`;
+      if (!this.state.chitraDrafts) this.state.chitraDrafts = {};
+      this.state.chitraDrafts[scene.id] = textarea.value;
+      this.saveAppState();
     });
 
     this.modePanel.querySelector('#btn-copy-text').addEventListener('click', () => {

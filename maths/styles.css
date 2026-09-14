@@ -926,6 +926,28 @@ body::after {
 .text-danger { color: var(--accent-rose); }
 .text-amber { color: var(--accent-amber-light); }
 
+.btn-restart-practice {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--text-secondary);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+  touch-action: manipulation;
+}
+.btn-restart-practice:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
 /* Question Card */
 .question-card {
   background: var(--bg-card);
