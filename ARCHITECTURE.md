@@ -185,22 +185,71 @@ Instead of downloading external audio files, `app.js` synthesizes sounds using t
 
 ### C. हिंदी व्याकरण व रचना (`/hindi_vyakaran/`)
 
-#### Dual-Module State Model
+#### Tri-Module State Model
 ```javascript
 const state = {
-  activeModule: 'vakyansh',     // 'vakyansh' (Default) | 'chitra'
+  activeModule: 'vakyansh',     // 'vakyansh' (Default) | 'sangya' | 'chitra'
   currentSceneId: 'park',       // Active picture scene ('park', 'rainy', 'school', etc.)
   imageViewMode: 'real',        // 'real' (Default Exam Photo) | 'cartoon' (Vector SVG)
   isBWMode: false,              // false (Default Full Color) | true (B&W Exam Print)
   chitraMode: 'explore',        // 'explore' | 'vocab' | 'puzzle' | 'write'
   vakyanshMode: 'learn',        // 'learn' | 'match' | 'quiz' | 'challenge'
+  sangyaMode: 'learn',          // 'learn' | 'sort' | 'quiz' | 'challenge'
+  sangyaSubtab: 'types',        // 'types' | 'mirror' | 'lab'
+  sangyaLabFilter: 'all',       // 'all' | 'jati' | 'visheshan' | 'kriya'
   showEnglish: true,            // Real-time bilingual gloss toggle
   activeHotspotId: null,
   vocabFilter: 'all',
   vakyanshFilter: 'all',        // 'all' | 'behavior' | 'action' | 'nature'
   stars: {},                    // Chitra Varnan stars per scene (0-3 each)
-  vakyanshStars: 0              // Vakyansh challenge stars (0-3)
+  vakyanshStars: 0,             // Vakyansh challenge stars (0-3)
+  sangyaStars: 0,               // Sangya challenge stars (0-3)
+  sangyaSortState: { items: [], currentIndex: 0, score: 0, streak: 0, answered: false },
+  sangyaQuizState: { qIndex: 0, score: { correct: 0, wrong: 0 }, answered: false },
+  sangyaChallengeState: { timer: 60, timerInterval: null, qIndex: 0, score: 0, streak: 0, answered: false }
 };
+```
+
+#### Sangya Data Schemas
+- **5 Types (`SANGYA_TYPES_DATA`)**: Schema for Proper, Common, Abstract, Material, and Collective nouns with bilingual definition, clue, examples, and exam trap.
+```javascript
+{
+  id: 'proper',                 // 'proper' | 'common' | 'abstract' | 'material' | 'collective'
+  titleHi: 'व्यक्तिवाचक संज्ञा',
+  titleEn: 'Proper Noun',
+  badge: 'विशेष नाम • केवल एक (Unique)',
+  themeClass: 'theme-proper',
+  defHi: 'किसी विशेष व्यक्ति, विशेष स्थान या विशेष वस्तु के नाम को व्यक्तिवाचक संज्ञा कहते हैं।',
+  defEn: 'Name of a specific person, specific place, or specific object.',
+  clueHi: 'यह दुनिया में अपने प्रकार का केवल एक होता है। इसका बहुवचन नहीं बनता।',
+  clueEn: 'Represents a one-of-a-kind entity; plural form is typically not used.',
+  examples: ['भारत', 'गंगा', 'हिमालय', 'महात्मा गांधी', 'रामायण', 'दिल्ली', 'सोमवार', 'सचिन'],
+  trapHi: '⚠️ परीक्षा सावधानी: ‘नदी’ जातिवाचक है, किंतु ‘गंगा’ व्यक्तिवाचक है।'
+}
+```
+
+- **Comparison Mirror (`SANGYA_COMPARISON_DATA`)**: Traps and contrasts (e.g. Proper vs Common, Material vs Common, Collective vs Common).
+```javascript
+{
+  typeA: 'जातिवाचक संज्ञा (Common)',
+  wordA: 'नदी (River)',
+  typeB: 'व्यक्तिवाचक संज्ञा (Proper)',
+  wordB: 'गंगा (Ganga)',
+  reason: '‘नदी’ दुनिया की किसी भी नदी के लिए प्रयुक्त हो सकती है, जबकि ‘गंगा’ एक विशेष पवित्र नदी का नाम है।'
+}
+```
+
+- **Abstract Formation Lab (`BHAVVACHAK_NIRMAN_DATA`)**: Derivation of abstract nouns from common nouns, adjectives, and verbs with suffixes.
+```javascript
+{
+  originType: 'jati',           // 'jati' (Common Noun) | 'visheshan' (Adjective) | 'kriya' (Verb)
+  baseWord: 'मित्र',
+  baseMeaning: 'Friend',
+  abstractNoun: 'मित्रता',
+  abstractMeaning: 'Friendship',
+  suffix: '+ ता',
+  sentenceHi: 'कृष्ण और सुदामा की मित्रता अमर है।'
+}
 ```
 
 #### Vakyansh Data Schema (`VAKYANSH_DATA`)
@@ -329,18 +378,32 @@ const state = {
    ```
 4. Create `subject_folder/` following the zero-dependency structure.
 
-### Recipe 3: Adding a New Hindi Vakyansh Statement
+### Recipe 3: Adding a New Hindi Sangya Word, Formation Pair, or Quiz Question
+1. **Adding to 5-Bucket Classifier**: In `hindi_vyakaran/app.js`, append an object to `SANGYA_SORT_ITEMS`:
+   ```javascript
+   { word: 'सोना', type: 'material', hint: 'मापा या तौला जाता है (Material)', en: 'Gold' }
+   ```
+2. **Adding to Abstract Formation Lab**: Append an object to `BHAVVACHAK_NIRMAN_DATA`:
+   ```javascript
+   { originType: 'jati', baseWord: 'शिशु', baseMeaning: 'Infant', abstractNoun: 'शैशव', abstractMeaning: 'Infancy', suffix: '+ अ', sentenceHi: 'शैशव काल जीवन का सबसे कोमल समय होता है।' }
+   ```
+3. **Adding to Practice Quiz**: Append a question object to `SANGYA_QUIZ_POOL`:
+   ```javascript
+   { question: '...', options: ['A', 'B', 'C', 'D'], correct: 0, clue: '...', explanation: '...', explanationEn: '...' }
+   ```
+
+### Recipe 4: Adding a New Hindi Vakyansh Statement
 1. Open `hindi_vyakaran/app.js`.
 2. Append a new object to `VAKYANSH_DATA` with `id`, `phraseHi`, `phraseEn`, `wordHi`, `wordEn`, `translit`, `formula`, `clue`, `exampleHi`, `exampleEn`, `oppositeHi`, and `category`.
 3. Add corresponding multiple-choice question(s) to `VAKYANSH_QUIZ_POOL`.
 4. The Learn card grid, search bar, Match Game, Practice Quiz, and 60s Challenge will automatically include the new phrase!
 
-### Recipe 4: Adding a New Chitra Varnan Scene
+### Recipe 5: Adding a New Chitra Varnan Scene
 1. Save the authentic exam photograph in `hindi_vyakaran/images/scene_<id>_real.jpg`.
 2. In `hindi_vyakaran/app.js`, append a new scene object to `SCENE_DATA` with `id`, `title`, `realImage`, `hotspotsReal`, `hotspots`, `svg`, `puzzleSteps`, and `modelAnswer`.
 3. The sidebar scene list, navigation, hotspot renderer, and progress tracker will automatically recognize the new scene.
 
-### Recipe 5: Adding a New Mathematics Topic (e.g. Divisibility Rules)
+### Recipe 6: Adding a New Mathematics Topic (e.g. Divisibility Rules)
 1. In `maths/index.html`, remove `.disabled` from the corresponding topic in `.sidebar-topics` and update the badge to `Ready`.
 2. In `maths/app.js`, add the topic's learn modules and practice question objects to `PRACTICE_POOL`.
 3. The curriculum drawer, progress bar, practice filters, and challenge pool will dynamically scale to include the new topic.

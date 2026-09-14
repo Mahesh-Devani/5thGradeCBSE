@@ -14,7 +14,7 @@ A modern, responsive, zero-dependency web application designed for **Class 5 CBS
 |---|---|---|---|
 | 🗺️ **Social Science Maps** | ✅ **Live & Ready** | • Saudi Arabia (Deserts, Gulfs, Cities)<br>• World Hot Deserts (Sahara, Kalahari, Gobi, etc.)<br>• Equatorial Regions (Amazon, Congo, SE Asia)<br>• DRC & Neighbours (Central Africa)<br>• Learn Mode, Interactive Map Quiz, Timed Speed Drills, Printable Homework Worksheets | [`/social_sicence_maps/`](social_sicence_maps/) |
 | 📝 **English Grammar Master** | ✅ **Live & Ready** | • **Articles** (A, An, The & sound rules)<br>• **Simple Tenses** (Past, Present, Future habits & facts)<br>• **Continuous Tenses** (Present, Past, Future ongoing actions)<br>• **Personification** (Poetic human qualities for objects)<br>• **Present Perfect Tense** (Past actions connected to now)<br>• **Past Perfect Tense** (The "earlier past" time-traveler)<br>• **Hyperbole** (Playful exaggeration for emphasis)<br>• Learn Mode with Detective Clues, Practice Mode with Instant Explanations, Timed Star Challenges, Mobile Off-Canvas Drawer | [`/english_grammer/`](english_grammer/) |
-| 🇮🇳 **हिंदी व्याकरण व रचना** | ✅ **Live & Ready** | • **रचनात्मक लेखन: चित्र वर्णन (Picture Description)**<br>  - 6 CBSE Exam-focused Scenes (बगीचा, बारिश, खेल दिवस, जन्मदिन, गाँव, चिड़ियाघर)<br>  - 5-Step Golden Formula (स्थान, वातावरण, मुख्य क्रिया, बारीक विवरण, निष्कर्ष)<br>  - Interactive Hotspots, Curated Vocabulary Bank, Jumbled Puzzles & Guided Notepad<br>• **व्याकरण: वाक्यांश के लिए एक शब्द (One Word Substitution)**<br>  - 12 Core CBSE Statements (अमर, परोपकारी, मितभाषी, वाचाल, सत्यवादी, आस्तिक, अनपढ़, परिश्रमी, क्षम्य, सुलभ, अपव्ययी, ईर्ष्यालु)<br>  - Deductive Root Breakdown (उपसर्ग + मूल शब्द) & Mind-Clue Logic<br>  - 🃏 Memory Match Game, ❓ Practice Quiz with In-Depth Explanations, 🎯 60s Star Challenge<br>• Instant Bilingual [🌐 English: ON/OFF] toggle | [`/hindi_vyakaran/`](hindi_vyakaran/) |
+| 🇮🇳 **हिंदी व्याकरण व रचना** | ✅ **Live & Ready** | • **संज्ञा व संज्ञा के पाँच भेद (Nouns & 5 Types)**<br>  - व्यक्तिवाचक, जातिवाचक, भाववाचक, द्रव्यवाचक, समुदायवाचक (Definitions, Clues & Exam Traps)<br>  - 🪞 तुलना दर्पण (Proper vs Common, Material vs Common, Collective vs Common)<br>  - 🧪 भाववाचक निर्माण प्रयोगशाला (Forming abstract nouns from Common Nouns, Adjectives, Verbs)<br>  - 🏺 5-घड़े वर्गीकरण खेल, ❓ 15 अभ्यास क्विज़ प्रश्न, ⚡ 60s स्पीड चैलेंज<br>• **व्याकरण: वाक्यांश के लिए एक शब्द (One Word Substitution)**<br>  - 12 Core CBSE Statements (अमर, परोपकारी, मितभाषी, वाचाल, सत्यवादी, आस्तिक, अनपढ़, परिश्रमी, क्षम्य, सुलभ, अपव्ययी, ईर्ष्यालु)<br>  - Deductive Root Breakdown (उपसर्ग + मूल शब्द) & Mind-Clue Logic<br>  - 🃏 Memory Match Game, ❓ Practice Quiz with In-Depth Explanations, 🎯 60s Star Challenge<br>• **रचनात्मक लेखन: चित्र वर्णन (Picture Description)**<br>  - 6 CBSE Exam-focused Scenes (बगीचा, बारिश, खेल दिवस, जन्मदिन, गाँव, चिड़ियाघर)<br>  - 5-Step Golden Formula (स्थान, वातावरण, मुख्य क्रिया, बारीक विवरण, निष्कर्ष)<br>  - Interactive Hotspots, Curated Vocabulary Bank, Jumbled Puzzles & Guided Notepad<br>• Instant Bilingual [🌐 English: ON/OFF] toggle | [`/hindi_vyakaran/`](hindi_vyakaran/) |
 | 🔢 **Mathematics Master** | ✅ **Live & Ready** | • **Topic 1: Multiples, Factors, HCF & LCM**<br>  - 🧠 HCF vs LCM Detective: Real-life word problems (traffic lights, pencil sets, tiling, packaging)<br>  - 🪜 Short Division Method: Live side-by-side comparison (HCF stopping point vs LCM continuation)<br>  - ➗ Long Division Method: Successive division / Euclidean method for large numbers (96, 144, 192)<br>  - ⚖️ Product Relation: $a \times b = \text{HCF} \times \text{LCM}$ interactive verifier<br>  - 🤝 Co-Primes & Twin Primes live tester<br>  - 🏫 School Worksheet 2026-27 (Freedom International School) questions & printable worksheet<br>• 🎯 60s Speed Challenge & 🖨️ Printable Worksheets | [`/maths/`](maths/) |
 | 🔬 **Science (EVS)** | 🟡 *In Planning* | Skeletal & Nervous Systems, Seeds & Germination, Simple Machines, Aquatic Life, Ecosystems | *Upcoming* |
 
@@ -94,13 +94,13 @@ xdg-open index.html
 │   ├── README.md                   # Pedagogical concepts & curriculum catalog
 │   └── AGENTS.md                   # DOM contract, synthesizer, & extension recipes
 │
-├── hindi_vyakaran/                 # Mini-App 3: Hindi Vyakaran (वाक्यांश + चित्र वर्णन)
+├── hindi_vyakaran/                 # Mini-App 3: Hindi Vyakaran (संज्ञा + वाक्यांश + चित्र वर्णन)
 │   ├── index.html                  # App shell, unified curriculum selector & drawer
-│   ├── styles.css                  # Saffron theme, match cards, quiz & mobile drawer
-│   ├── app.js                      # Chitra Varnan scenes & Vakyansh interactive engine
+│   ├── styles.css                  # Saffron theme, 5-bucket sort, quiz, match cards & drawer
+│   ├── app.js                      # Sangya, Vakyansh & Chitra Varnan interactive engines
 │   ├── images/                     # Real exam photos & vector illustrations
-│   ├── README.md                   # Dedicated Hindi guide (Root formulas & clues)
-│   └── AGENTS.md                   # Dual-module state, real vs cartoon photo mapping & recipes
+│   ├── README.md                   # Dedicated Hindi guide (Formulas, clues, traps & rules)
+│   └── AGENTS.md                   # Tri-module architecture, DOM contract & extension recipes
 │
 └── maths/                          # Mini-App 4: Mathematics Master (Multiples, Factors, HCF & LCM)
     ├── index.html                  # App shell, responsive off-canvas drawer, top bar, modals
@@ -122,7 +122,7 @@ For in-depth technical details on state management, data schemas, cartography co
 - **[maths/README.md](maths/README.md)** & **[maths/AGENTS.md](maths/AGENTS.md)** — Mathematics curriculum catalog, short vs long division rules, and extension recipes.
 - **[english_grammer/README.md](english_grammer/README.md)** & **[english_grammer/AGENTS.md](english_grammer/AGENTS.md)** — English Grammar lessons, exercises, Web Audio patterns, and extension steps.
 - **[social_sicence_maps/AGENTS.md](social_sicence_maps/AGENTS.md)** — Map projection mathematics, official Survey of India boundary enforcement, and rebuild scripts.
-- **[hindi_vyakaran/README.md](hindi_vyakaran/README.md)** & **[hindi_vyakaran/AGENTS.md](hindi_vyakaran/AGENTS.md)** — Hindi Vyakaran dual-module architecture, real vs cartoon hotspot mapping, B&W print simulator, and DOM contract.
+- **[hindi_vyakaran/README.md](hindi_vyakaran/README.md)** & **[hindi_vyakaran/AGENTS.md](hindi_vyakaran/AGENTS.md)** — Hindi Vyakaran tri-module architecture (संज्ञा, वाक्यांश, चित्र वर्णन), real vs cartoon hotspot mapping, B&W print simulator, and DOM contract.
 
 ---
 

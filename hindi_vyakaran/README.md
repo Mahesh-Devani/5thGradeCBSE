@@ -64,7 +64,7 @@ In Class 5 CBSE Hindi examinations, students are evaluated on identifying concis
 
 ---
 
-### 2. 🖼️ रचनात्मक लेखन: चित्र वर्णन (Picture Description)
+### 3. 🖼️ रचनात्मक लेखन: चित्र वर्णन (Picture Description)
 
 Teaches the **5-Step Golden Formula** to write 5–7 grammatically accurate sentences about any image in CBSE examinations:
 
@@ -93,7 +93,7 @@ Each scene features high-resolution **authentic exam-style photographs (Default)
 
 ---
 
-> **🚀 Default Launch Topic:** When the app loads, **वाक्यांश के लिए एक शब्द** is presented by default. Students can switch to **रचनात्मक लेखन: चित्र वर्णन** with one tap in the sidebar drawer (`☰ विषय`).
+> **🚀 Topic Navigation:** Students can seamlessly navigate across all three modules — **संज्ञा व पाँच भेद**, **वाक्यांश के लिए एक शब्द**, and **रचनात्मक लेखन: चित्र वर्णन** — with one tap in the sidebar drawer (`☰ विषय`).
 
 ## 🌐 Instant Bilingual Toggle (`[🌐 English: ON/OFF]`)
 
