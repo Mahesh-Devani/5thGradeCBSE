@@ -104,6 +104,7 @@ Whenever creating or enhancing an interactive mini-app:
 - **Namespaced Storage Keys**:
   - Hindi: `cbse5_hindi_active_state`, `cbse5_hindi_sangya_stars`, `cbse5_hindi_vakyansh_stars`, `cbse5_chitra_varnan_stars`
   - Mathematics: `cbse5_maths_active_state`, `cbse5_math_topic_*_stars`
+  - Social Science Chapters: `cbse5_sst_active_state`, `cbse5_sst_stars_*`
   - English Grammar: `grammar-master-active-state`, `grammar-master-progress`
   - Social Science Maps: `sst-map-active-state`, `sst-map-progress`
 
@@ -114,6 +115,7 @@ Whenever creating or enhancing an interactive mini-app:
 - Landing page: `/index.html`
 - Mini-apps are in subdirectories:
   - `/social_sicence_maps/`
+  - `/sst_chapters/`
   - `/english_grammer/`
   - `/hindi_vyakaran/`
   - `/maths/`

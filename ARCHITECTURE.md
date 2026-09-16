@@ -349,6 +349,40 @@ const state = {
 
 ---
 
+### E. Social Science (SST) Chapters Practice Mini-App (`/sst_chapters/`)
+
+#### Directory Structure
+```
+sst_chapters/
+├── index.html                      # App shell, responsive off-canvas drawer, top bar, modals
+├── styles.css                      # Modern dark theme (Gold/Emerald/Rose/Blue), Chunk & Conquer UI, print layout
+├── app.js                          # State engine, 4 Term 1 chapters, Long Answer Scaffolder, Web Audio, Confetti
+├── README.md                       # Comprehensive guide, pedagogical principles, extension schema
+└── REV_WS_T1_G5__1788952775.pdf    # Term 1 school revision worksheet
+```
+
+#### State Machine & Storage Keys (`app.js`)
+- **Active State (`cbse5_sst_active_state`)**:
+  ```javascript
+  {
+    activeChapterId: 'ch5_drc',       // 'ch5_drc' | 'ch7_saudi' | 'ch17_british_raj' | 'ch20_government'
+    activeMode: 'learn',              // 'learn' | 'practice' | 'challenge' | 'worksheet'
+    activePracticeFilter: 'all',      // 'all' | 'blank' | 'tf' | 'match' | 'short' | 'long'
+    practiceIndex: 0,
+    practiceAnswered: { qId: { answered: true, correct: true, studentAnswer: '...' } },
+    practiceScore: { correct: 0, incorrect: 0 },
+    studentDrafts: { qId: '...' }      // Free-form student essay/bullet drafts
+  }
+  ```
+- **Star Progress (`cbse5_sst_stars_<chapterId>`)**: Tracks 0–3 stars earned per chapter.
+
+#### Long Answer Chunk & Conquer Engine
+- Breaks heavy 5-mark subjective questions into 3–4 bite-sized visual **Pillars**.
+- Real-time client-side keyword detector monitors student drafts and highlights covered concepts without test anxiety.
+- Standard CBSE 5-mark model answer presentation with bold keywords and examiner formatting tips.
+
+---
+
 ## 5. Developer Recipes & Extension Guides
 
 ### Recipe 1: Adding a New English Grammar Topic
