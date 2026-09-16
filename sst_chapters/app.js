@@ -2172,31 +2172,97 @@ class SSTApp {
       box.appendChild(clue);
     }
 
+    // Student answer input textarea
+    const inputWrapper = document.createElement('div');
+    inputWrapper.className = 'short-input-wrapper';
+    inputWrapper.innerHTML = `
+      <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px;">
+        ✍️ Your Answer (Write 1-2 points in your own words):
+      </label>
+    `;
+
+    const textarea = document.createElement('textarea');
+    textarea.className = 'student-textarea';
+    textarea.style.minHeight = '90px';
+    textarea.placeholder = 'Type your answer here... (e.g., mention key reasons or examples)';
+    const savedDraft = this.studentDrafts[question.id] || qState.studentAnswer || '';
+    textarea.value = savedDraft;
+
+    textarea.addEventListener('input', e => {
+      this.studentDrafts[question.id] = e.target.value;
+      this.saveActiveState();
+    });
+    inputWrapper.appendChild(textarea);
+    box.appendChild(inputWrapper);
+
+    // Action buttons row
+    const btnRow = document.createElement('div');
+    btnRow.style.display = 'flex';
+    btnRow.style.gap = '10px';
+    btnRow.style.flexWrap = 'wrap';
+
+    const checkBtn = document.createElement('button');
+    checkBtn.className = 'btn btn-primary';
+    checkBtn.textContent = qState.answered ? '✅ Check / Update Answer' : 'Submit & Check My Answer';
+
     const revealBtn = document.createElement('button');
     revealBtn.className = 'btn btn-secondary';
-    revealBtn.style.alignSelf = 'flex-start';
     revealBtn.textContent = qState.revealed ? '🔒 Hide Model Key Points' : '👁️ Reveal 2-Mark Model Key Points';
 
-    revealBtn.addEventListener('click', () => {
-      sfx.click();
+    checkBtn.addEventListener('click', () => {
+      const val = textarea.value.trim();
+      if (!val) {
+        alert('Please type a few words or bullet points first!');
+        textarea.focus();
+        return;
+      }
+      sfx.correct();
+      this.flashFeedback('correct');
+
+      if (!qState.answered) {
+        this.practiceScore.correct++;
+      }
+
       this.practiceAnswered[question.id] = {
         answered: true,
         correct: true,
-        revealed: !qState.revealed
+        revealed: true,
+        studentAnswer: val
+      };
+      this.studentDrafts[question.id] = val;
+      this.saveActiveState();
+      rerender();
+    });
+
+    revealBtn.addEventListener('click', () => {
+      sfx.click();
+      const nextRevealed = !qState.revealed;
+      this.practiceAnswered[question.id] = {
+        answered: qState.answered || false,
+        correct: qState.correct || false,
+        revealed: nextRevealed,
+        studentAnswer: textarea.value.trim() || qState.studentAnswer || ''
       };
       this.saveActiveState();
       rerender();
     });
-    box.appendChild(revealBtn);
 
+    btnRow.appendChild(checkBtn);
+    btnRow.appendChild(revealBtn);
+    box.appendChild(btnRow);
+
+    // If revealed or answered, show model key points
     if (qState.revealed) {
       const pointsCard = document.createElement('div');
       pointsCard.className = 'self-check-points';
       pointsCard.innerHTML = `
-        <h4>Must-Include Key Points for Full Marks:</h4>
+        <h4>🎯 2-Mark Standard CBSE Key Points (Self-Check):</h4>
         <ul>
           ${question.keyPoints.map(pt => `<li>${pt}</li>`).join('')}
         </ul>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px;">
+          💡 <em>Compare your answer above with these CBSE examiner points. Did you cover both key reasons?</em>
+        </p>
       `;
       box.appendChild(pointsCard);
     }
