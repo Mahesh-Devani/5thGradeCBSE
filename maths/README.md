@@ -8,11 +8,11 @@ An interactive, discovery-based Mathematics platform engineered for **Class 5 CB
 
 | Topic # | Topic Name | Status | Key Sub-Skills / Concepts |
 |---|---|---|---|
-| **Topic 1** | **Multiples, Factors, HCF & LCM** | ✅ **Live & Ready** | • 🧠 **HCF vs LCM Detective**: Real-life decision models (traffic lights, pencil sets, floor tiling, packaging)<br>• 🪜 **Short Division Method**: Side-by-side comparison of HCF (must divide all) vs LCM (brings down numbers)<br>• ➗ **Long Division Method**: Successive division (Euclidean method) for 2 & 3 large numbers (e.g. 96, 144, 192)<br>• ⚖️ **Product Relation Formula**: $a \times b = \text{HCF} \times \text{LCM}$<br>• 🤝 **Co-Primes & Twin Primes**: Properties, consecutive integers, factor analysis<br>• 🏫 **School Worksheet 2026-27**: Complete question bank & printable worksheet (Freedom International School) |
-| **Topic 2** | **Divisibility Rules (2 to 12)** | ✅ **Live & Ready** | • 📋 **Cheat Sheet**: Master rules for 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 & 12<br>• 🔍 **Live Inspector**: Instant interactive rule breakdown for any user-inputted number<br>• 🧩 **Missing Digit Puzzles**: Find unknown digits (*) to satisfy divisibility conditions<br>• 🦘 **Rule of 11 Hopscotch**: Visual alternating sum & difference calculator for 11 |
-| **Topic 3** | **Expressions & Statements** | ✅ **Live & Ready** | • 📖 **Clue Words Dictionary**: Operation triggers (+, −, ×, ÷, brackets) & "#1 CBSE Exam Trap" reversal card<br>• 🔄 **Dual-Way Live Translator**: Interactive statements ➔ expressions and expressions ➔ statements builder<br>• 🧪 **Parentheses Lab**: Dynamic variable slider comparing $3(x + 4)$ vs $3x + 4$<br>• 🌍 **Real-World Modeler**: Age comparisons, shopping bills, geometry perimeters, and number riddles |
-| **Topic 4** | **Number Patterns** | ✅ **Live & Ready** | • 🕵️ **Pattern Detective**: Constant step, decreasing patterns, tripling rules, and Fibonacci sequence<br>• 🔺 **Geometric Dot Numbers**: Triangular numbers ($T_n$) and square numbers ($n^2$), proving $T_{n-1} + T_n = n^2$<br>• 🏰 **Number Towers (Pyramids)**: Additive block-sum pyramids with custom base calculator<br>• ✨ **Magic Shapes & Palindromes**: 3×3 magic square (constant sum 15) and step-by-step reverse-and-add palindrome transformer |
-| **Topic 5** | **Geometry, Shapes & Angles** | ✅ **Live & Ready** | • 📍 **Geometric Foundations**: Point, Line ($\overleftrightarrow{AB}$), Segment ($\overline{AB}$), Ray ($\vec{AB}$), and Collinear points<br>• 🛤️ **Line Relationships**: Intersecting, Parallel ($\parallel$), Perpendicular ($\perp$, 90° ∟), and Concurrent lines<br>• 🧭 **Virtual Protractor Studio**: Dynamic angle rotator (0° to 360°) with real-time classification for all 7 angle types<br>• ⏰ **Clock Angle Detective**: Analog SVG clock with hour slider and the 30° per hour formula<br>• 🔺 **Triangles & Polygons**: Polygon triangulation formula $(n - 2) \times 180^\circ$, angle sum for nonagon (1260°), triangle classification by angles (Acute, Right, Obtuse)<br>• ⬠ **Quadrilaterals & Circles**: Rhombus vs Trapezium properties, quadrilateral angle sum (360°), parallelogram opposite/adjacent angles, circle anatomy ($r = d \div 2$), and ruler/compass/protractor construction guides |
+| **Topic 1** | **Multiples, Factors, HCF & LCM** | ✅ **Live & Ready** | • 🧠 **HCF vs LCM Detective**: Real-life decision models (traffic lights, pencil sets, floor tiling, packaging)<br>• 🕵️ **Spot the Mistakes**: 4 diagnostic test slips (stopping rule, composite tree, factor vs multiple, co-prime fallacy)<br>• 🪜 **Short Division Method**: Side-by-side comparison of HCF (must divide all) vs LCM (brings down numbers)<br>• ➗ **Long Division Method**: Successive division (Euclidean method) for 2 & 3 large numbers (e.g. 96, 144, 192)<br>• ⚖️ **Product Relation Formula**: $a \times b = \text{HCF} \times \text{LCM}$<br>• 🤝 **Co-Primes & Twin Primes**: Properties, consecutive integers, factor analysis<br>• 🏫 **School Worksheet 2026-27**: Complete question bank & printable worksheet (Freedom International School) |
+| **Topic 2** | **Divisibility Rules (2 to 12)** | ✅ **Live & Ready** | • 📋 **Cheat Sheet**: Master rules for 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 & 12<br>• 🕵️ **Spot the Mistakes**: 4 diagnostic slips (false converse of 3/9, single-digit trap for 4, non-coprime composite test for 12, negative difference trap for 11)<br>• 🔍 **Live Inspector**: Instant interactive rule breakdown for any user-inputted number<br>• 🧩 **Missing Digit Puzzles**: Find unknown digits (*) to satisfy divisibility conditions<br>• 🦘 **Rule of 11 Hopscotch**: Visual alternating sum & difference calculator for 11 |
+| **Topic 3** | **Expressions & Statements** | ✅ **Live & Ready** | • 📖 **Clue Words Dictionary**: Operation triggers (+, −, ×, ÷, brackets) & "#1 CBSE Exam Trap" reversal card<br>• 🕵️ **Spot the Mistakes**: 4 diagnostic slips (subtraction order reversal, missing division brackets, BODMAS blindness, distributive expansion slip)<br>• 🔄 **Dual-Way Live Translator**: Interactive statements ➔ expressions and expressions ➔ statements builder<br>• 🧪 **Parentheses Lab**: Dynamic variable slider comparing $3(x + 4)$ vs $3x + 4$<br>• 🌍 **Real-World Modeler**: Age comparisons, shopping bills, geometry perimeters, and number riddles |
+| **Topic 4** | **Number Patterns** | ✅ **Live & Ready** | • 🕵️ **Pattern Detective**: Constant step, decreasing patterns, tripling rules, and Fibonacci sequence<br>• 🕵️ **Spot the Mistakes**: 4 diagnostic slips (adding vs doubling, triangular halving trap, pyramid base-sum fallacy, premature palindrome stop)<br>• 🔺 **Geometric Dot Numbers**: Triangular numbers ($T_n$) and square numbers ($n^2$), proving $T_{n-1} + T_n = n^2$<br>• 🏰 **Number Towers (Pyramids)**: Additive block-sum pyramids with custom base calculator<br>• ✨ **Magic Shapes & Palindromes**: 3×3 magic square (constant sum 15) and step-by-step reverse-and-add palindrome transformer |
+| **Topic 5** | **Geometry, Shapes & Angles** | ✅ **Live & Ready** | • 📍 **Geometric Foundations**: Point, Line ($\overleftrightarrow{AB}$), Segment ($\overline{AB}$), Ray ($\vec{AB}$), and Collinear points<br>• 🕵️ **Spot the Mistakes**: 4 diagnostic slips (ray reversal fallacy, two right angles in a triangle, compass radius vs diameter, trapezium diagonals)<br>• 🛤️ **Line Relationships**: Intersecting, Parallel ($\parallel$), Perpendicular ($\perp$, 90° ∟), and Concurrent lines<br>• 🧭 **Virtual Protractor Studio**: Dynamic angle rotator (0° to 360°) with real-time classification for all 7 angle types<br>• ⏰ **Clock Angle Detective**: Analog SVG clock with hour slider and the 30° per hour formula<br>• 🔺 **Triangles & Polygons**: Polygon triangulation formula $(n - 2) \times 180^\circ$, angle sum for nonagon (1260°), triangle classification by angles (Acute, Right, Obtuse)<br>• ⬠ **Quadrilaterals & Circles**: Rhombus vs Trapezium properties, quadrilateral angle sum (360°), parallelogram opposite/adjacent angles, circle anatomy ($r = d \div 2$), and ruler/compass/protractor construction guides |
 | **Topic 6** | **Fractions & Decimals** | 🟡 *Next Phase* | Visual pizza/bar models, equivalent fractions, decimals on number lines & word problems |
 
 ---
@@ -30,25 +30,45 @@ One of the most frequent stumbling blocks for Class 5 students is knowing whethe
 
 ---
 
-### 2. ⚡ The Mental Estimator: Deduction Before Computation
+### 2. ⚡ The Mental Estimator: Boundary Deductions
 
-Mathematicians don't jump into long division blindly. They eliminate impossible choices in 5 seconds using 4 core boundary rules:
-
-1. **🛑 Upper Bound Rule (HCF)**: $\text{HCF}(a, b) \le \min(a, b)$. The HCF can *never* exceed the smallest number! (e.g. For 18 and 24, HCF cannot be 36; it must be $\le 18$).
-2. **🚀 Lower Bound Rule (LCM)**: $\text{LCM}(a, b) \ge \max(a, b)$. The LCM can *never* be smaller than the largest number! (e.g. For 15 and 20, LCM cannot be 10; it must be $\ge 20$).
-3. **⚡ The Co-Prime Shortcut**: If two numbers are consecutive (like 14 and 15) or share no common factors, $\text{HCF} = 1$ and $\text{LCM} = a \times b$ instantly without running any division!
+Maths Master trains students to think deductively before writing scratchpad calculations:
+1. **📉 Upper Bound for HCF**: $\text{HCF}(a, b) \le \min(a, b)$.
+2. **📈 Lower Bound for LCM**: $\text{LCM}(a, b) \ge \max(a, b)$.
+3. **🤝 Consecutive Integers Shortcut**: Any two consecutive numbers (e.g. 14 & 15) are always co-prime $\implies \text{HCF} = 1, \text{LCM} = a \times b$.
 4. **🎯 The Factor-Multiple Pair**: If the smaller number divides the larger evenly (e.g. 8 and 32), the smaller number is the HCF (8) and the larger number is the LCM (32).
 
 ---
 
-### 3. 🕵️ Be the Teacher: Spot the Exam Trap
+### 3. 🕵️ Be the Teacher: Spot the Mistakes (Diagnostic Suite Across All Topics)
 
-Diagnosing subtle flaws teaches deep mathematical reasoning. Students inspect real handwritten test slips to find classic traps:
+Diagnosing subtle flaws teaches deep mathematical reasoning. Across all 5 topics, students inspect simulated student test slips to catch classic curriculum blunders:
 
-- **Trap 1: The Non-Stopping HCF Ladder**: Rohan had bottom numbers 2, 3, 4 and divided 2 & 4 by 2 in HCF. Students learn that HCF prime divisors must divide *all* numbers simultaneously; Rohan should have stopped at Step 3!
-- **Trap 2: The Composite Divisor Tree**: Priya used composite 4 instead of prime 2, obscuring the true prime factor decomposition.
-- **Trap 3: The Divisibility Converse Fallacy**: Aman claimed that because 12 is divisible by 3, it must be divisible by 9. Students deduce that every multiple of 9 divides by 3, but the converse is false.
-- **Trap 4: Subtraction Reversal**: Tina translated "Subtract 7 from $4x$" as $7 - 4x$. Students recognize the "#1 CBSE Exam Trap" where the number after "from" is the starting dividend ($4x - 7$).
+- **Topic 1 (Multiples, Factors, HCF & LCM)**:
+  1. *Rohan's Non-Stopping Ladder*: In HCF short division, divisors must divide all numbers simultaneously; stopping rule violation.
+  2. *Priya's Composite Factor Tree*: Using composite 4 instead of prime factors in prime factor decomposition.
+  3. *Kabir's Factor vs Multiple Slip*: Confusing factor with multiple (claiming $\text{HCF}(8, 32) = 32$ instead of 8).
+  4. *Ananya's Co-Prime Misconception*: Claiming composite numbers like 8 and 15 cannot be co-prime ($\text{HCF} = 1$).
+- **Topic 2 (Divisibility Rules)**:
+  1. *Aman's False Converse Fallacy*: Claiming divisibility by 3 implies divisibility by 9.
+  2. *Kavya's Single-Digit Trap for 4*: Checking only the last digit (6) instead of the last two digits (26) for 5,826.
+  3. *Rahul's Non-Co-Prime Composite Test*: Testing 12 using 2 and 6 instead of co-prime 3 and 4 (fails on 18).
+  4. *Sneha's Rule 11 Negative Difference Trap*: Mistaking difference $6 - 17 = -11$ as non-divisible, ignoring $|-11| = 11$.
+- **Topic 3 (Expressions & Statements)**:
+  1. *Tina's Subtraction Reversal*: Translating "Subtract 7 from $4x$" as $7 - 4x$ instead of $4x - 7$.
+  2. *Vikram's Missing Brackets*: Translating "Divide 45 by sum of 2 and 3" as $45 \div 2 + 3$ instead of $45 \div (2 + 3)$.
+  3. *Arjun's BODMAS Blindness*: Evaluating $20 + 30 \div 5 \times 2$ from left to right instead of operations precedence.
+  4. *Meera's Distributive Slip*: Expanding $5(x + 4)$ as $5x + 4$ instead of $5x + 20$.
+- **Topic 4 (Number Patterns)**:
+  1. *Aditya's Adding vs Doubling Slip*: Assuming $2, 4, 8, 16$ is $+2 \implies 18$ instead of doubling $\times 2 \implies 32$.
+  2. *Pooja's Triangular Halving Trap*: Calculating $5 \times 6 = 30$ and forgetting to divide by 2 for $T_5 = 15$.
+  3. *Sameer's Pyramid Base-Sum Fallacy*: Adding bottom row instead of cascading adjacent blocks ($10 + 2(20) + 30 = 80 \ne 60$).
+  4. *Diya's Premature Palindrome Stop*: Stopping at $48 + 84 = 132$ without continuing to $132 + 231 = 363$.
+- **Topic 5 (Geometry, Shapes & Angles)**:
+  1. *Varun's Ray Reversal Fallacy*: Claiming Ray AB ($\vec{AB}$) equals Ray BA ($\vec{BA}$).
+  2. *Siddharth's Two Right Angles Trap*: Claiming a triangle can have two 90° angles ($90 + 90 + 0 = 180^\circ$).
+  3. *Nisha's Compass Radius Trap*: Opening compass to 12 cm for a 12 cm diameter circle instead of radius 6 cm.
+  4. *Aryan's Diagonal Confusion*: Claiming trapezium diagonals bisect at 90° instead of rhombus/square.
 
 ---
 

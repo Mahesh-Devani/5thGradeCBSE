@@ -1371,13 +1371,13 @@ const LEARN_MODULES_TOPIC_1 = {
     lead: 'Great mathematicians never blindly start dividing. They use common-sense boundaries to test if an answer is even mathematically possible in 5 seconds!',
     renderContent: renderMentalEstimatorModule
   },
-  spot_the_trap: {
-    id: 'spot_the_trap',
-    pillTitle: '🕵️ Spot the Exam Trap',
-    title: 'Be the Teacher: Spot the Exam Trap!',
+  spot_the_mistakes: {
+    id: 'spot_the_mistakes',
+    pillTitle: '🕵️ Spot the Mistakes',
+    title: 'Be the Teacher: Spot the Mistakes!',
     tag: 'Diagnostic Thinking',
     lead: 'Diagnosing mistakes is the fastest way to master mathematics. Step into the shoes of the teacher, examine student test sheets, and spot the exact blunder!',
-    renderContent: renderSpotTheTrapModule
+    renderContent: renderSpotMistakesTopic1
   },
   short_division: {
     id: 'short_division',
@@ -1412,6 +1412,8 @@ const LEARN_MODULES_TOPIC_1 = {
     renderContent: renderCoprimesModule
   }
 };
+// Backward compatibility alias
+LEARN_MODULES_TOPIC_1.spot_the_trap = LEARN_MODULES_TOPIC_1.spot_the_mistakes;
 
 const LEARN_MODULES_TOPIC_2 = {
   all_rules_table: {
@@ -1453,6 +1455,14 @@ const LEARN_MODULES_TOPIC_2 = {
     tag: 'Visual Method',
     lead: 'Rule 11 is the most famous divisibility trick in math! Jump between odd and even place digits to find the difference without any confusion.',
     renderContent: renderRule11HopscotchModule
+  },
+  spot_the_mistakes: {
+    id: 'spot_the_mistakes',
+    pillTitle: '🕵️ Spot the Mistakes',
+    title: 'Be the Teacher: Spot the Mistakes!',
+    tag: 'Diagnostic Thinking',
+    lead: 'Diagnosing divisibility mistakes is the fastest way to master mental division tricks. Step into the teacher\'s shoes and catch sneaky divisibility blunders!',
+    renderContent: renderSpotMistakesTopic2
   }
 };
 
@@ -1488,6 +1498,14 @@ const LEARN_MODULES_TOPIC_3 = {
     tag: 'CBSE Word Problems',
     lead: 'Discover how to represent age comparisons, shopping bills, geometry perimeters, and number riddles using algebraic variables.',
     renderContent: renderRealWorldModule
+  },
+  spot_the_mistakes: {
+    id: 'spot_the_mistakes',
+    pillTitle: '🕵️ Spot the Mistakes',
+    title: 'Be the Teacher: Spot the Mistakes!',
+    tag: 'Diagnostic Thinking',
+    lead: 'Diagnosing algebraic translation and order-of-operation slips builds total exam immunity. Catch classic bracket omissions, BODMAS slips, and subtraction reversals!',
+    renderContent: renderSpotMistakesTopic3
   }
 };
 
@@ -1523,6 +1541,14 @@ const LEARN_MODULES_TOPIC_4 = {
     tag: 'Fun Puzzles',
     lead: 'Explore the famous <strong>3×3 Magic Square</strong> where all rows, columns, and diagonals add up to 15! Plus, learn the NCERT algorithm to turn ANY number into a <strong>Palindromic Special Number</strong>.',
     renderContent: renderMagicShapesModule
+  },
+  spot_the_mistakes: {
+    id: 'spot_the_mistakes',
+    pillTitle: '🕵️ Spot the Mistakes',
+    title: 'Be the Teacher: Spot the Mistakes!',
+    tag: 'Diagnostic Thinking',
+    lead: 'Can you spot where students made a false pattern assumption? Inspect number towers, geometric dots, and palindrome algorithms to catch the slip!',
+    renderContent: renderSpotMistakesTopic4
   }
 };
 
@@ -1574,6 +1600,14 @@ const LEARN_MODULES_TOPIC_5 = {
     tag: 'Real-Life Application',
     lead: 'A clock face is a circular 360° protractor divided into 12 hours! Discover the secret CBSE formula: <strong>Each 1-hour jump equals exactly 30°</strong> ($360° ÷ 12 = 30°$). Test hands at 3:00, 6:00, 2:00, 4:00, and more.',
     renderContent: renderClockAnglesModule
+  },
+  spot_the_mistakes: {
+    id: 'spot_the_mistakes',
+    pillTitle: '🕵️ Spot the Mistakes',
+    title: 'Be the Teacher: Spot the Mistakes!',
+    tag: 'Diagnostic Thinking',
+    lead: 'Master geometric concepts by debugging common student errors in ray directions, triangle angle limits, compass diameter settings, and quadrilateral diagonals!',
+    renderContent: renderSpotMistakesTopic5
   }
 };
 
@@ -4356,69 +4390,290 @@ function renderMentalEstimatorModule(container) {
 }
 
 /* ==========================================================================
-   MODULE: BE THE TEACHER (Spot the Exam Trap)
+   MODULE: BE THE TEACHER (Spot the Mistakes) — ALL 5 TOPICS
    ========================================================================== */
-function renderSpotTheTrapModule(container) {
-  const trapCases = [
-    {
-      id: 'trap_hcf_ladder',
-      title: '1. Rohan\'s Non-Stopping Ladder',
-      topic: 'HCF Short Division',
-      student: 'Student: Rohan (Class 5-B)',
-      question: 'Find the HCF of 24, 36, and 48 using short division.',
-      steps: [
-        { label: 'Step 1', text: 'Divide 24, 36, 48 by 2 ➔ Leaves 12, 18, 24', isBlunder: false },
-        { label: 'Step 2', text: 'Divide 12, 18, 24 by 3 ➔ Leaves 4, 6, 8', isBlunder: false },
-        { label: 'Step 3', text: 'Divide 4, 6, 8 by 2 ➔ Leaves 2, 3, 4', isBlunder: false },
-        { label: 'Step 4', text: 'Divide 2 & 4 by 2 ➔ Leaves 1, 3, 2. Calculates HCF = 2 × 3 × 2 × 2 = 24', isBlunder: true }
-      ],
-      diagnosis: '🛑 <strong>Trap Caught! (The Stopping Rule)</strong> In HCF short division, the prime divisor <em>must divide ALL numbers simultaneously</em>! At Step 3, the numbers were 2, 3, and 4. No prime number divides all three together. Rohan should have <strong>STOPPED at Step 3</strong>! Bringing numbers down is strictly for LCM, NEVER for HCF! The correct HCF is 2 × 3 × 2 = 12.'
-    },
-    {
-      id: 'trap_composite_tree',
-      title: '2. Priya\'s Composite Factor Tree',
-      topic: 'Prime Factorization',
-      student: 'Student: Priya (Class 5-A)',
-      question: 'Find the prime factorization of 72.',
-      steps: [
-        { label: 'Step 1', text: 'Divide 72 by 4 ➔ Leaves 18', isBlunder: true },
-        { label: 'Step 2', text: 'Divide 18 by 2 ➔ Leaves 9', isBlunder: false },
-        { label: 'Step 3', text: 'Divide 9 by 3 ➔ Leaves 3', isBlunder: false },
-        { label: 'Step 4', text: 'Writes prime factors: 4 × 2 × 3 × 3', isBlunder: false }
-      ],
-      diagnosis: '🛑 <strong>Trap Caught! (Composite Divisor)</strong> 4 is a composite number (2 × 2), NOT a prime number! In prime factorization, every divisor must strictly be a prime number (2, 3, 5, 7, etc.). The correct prime factorization is 2 × 2 × 2 × 3 × 3 = 2³ × 3².'
-    },
-    {
-      id: 'trap_divisibility_converse',
-      title: '3. Aman\'s Divisibility Fallacy',
-      topic: 'Divisibility by 3 & 9',
-      student: 'Student: Aman (Class 5-C)',
-      question: 'Is 846 divisible by 9?',
-      steps: [
-        { label: 'Step 1', text: 'Check ones place: 6 is even, so divisible by 2', isBlunder: false },
-        { label: 'Step 2', text: 'Sum of digits: 8 + 4 + 6 = 18. 18 is divisible by 3', isBlunder: false },
-        { label: 'Step 3', text: 'Concludes: "Since 846 is divisible by 3, it MUST also be divisible by 9!"', isBlunder: true }
-      ],
-      diagnosis: '🛑 <strong>Trap Caught! (False Converse)</strong> Every multiple of 9 is divisible by 3, but the reverse is FALSE! For example, 12, 15, 21, and 24 are all divisible by 3, but NONE of them are divisible by 9! To test for 9, the digit sum itself must be a multiple of 9 (which 18 happens to be, but Aman\'s logic was completely invalid!).'
-    },
-    {
-      id: 'trap_subtraction_order',
-      title: '4. Tina\'s Subtraction Reversal',
-      topic: 'Expressions & Statements',
-      student: 'Student: Tina (Class 5-A)',
-      question: 'Write an algebraic expression for "Subtract 7 from 4 times a number x".',
-      steps: [
-        { label: 'Step 1', text: 'Translate "4 times a number x" ➔ 4x', isBlunder: false },
-        { label: 'Step 2', text: 'Translate "Subtract 7 from ..." ➔ Tina writes: 7 − 4x', isBlunder: true }
-      ],
-      diagnosis: '🛑 <strong>Trap Caught! (#1 CBSE Exam Trap)</strong> In English, "Subtract A from B" means you start with B and take A away (B − A). Tina wrote 7 − 4x, which means "Subtract 4x from 7"! The correct expression is <strong>4x − 7</strong>.'
-    }
-  ];
 
+const MISTAKES_TOPIC_1 = [
+  {
+    id: 'mistake_t1_stopping_ladder',
+    title: '1. Rohan\'s Non-Stopping Ladder',
+    topic: 'HCF Short Division',
+    student: 'Student: Rohan (Class 5-B)',
+    question: 'Find the HCF of 24, 36, and 48 using short division.',
+    steps: [
+      { label: 'Step 1', text: 'Divide 24, 36, 48 by 2 ➔ Leaves 12, 18, 24', isBlunder: false },
+      { label: 'Step 2', text: 'Divide 12, 18, 24 by 3 ➔ Leaves 4, 6, 8', isBlunder: false },
+      { label: 'Step 3', text: 'Divide 4, 6, 8 by 2 ➔ Leaves 2, 3, 4', isBlunder: false },
+      { label: 'Step 4', text: 'Divide 2 & 4 by 2 ➔ Leaves 1, 3, 2. Calculates HCF = 2 × 3 × 2 × 2 = 24', isBlunder: true }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (The Stopping Rule)</strong> In HCF short division, the prime divisor <em>must divide ALL numbers simultaneously</em>! At Step 3, the numbers were 2, 3, and 4. No prime number divides all three together. Rohan should have <strong>STOPPED at Step 3</strong>! Bringing numbers down is strictly for LCM, NEVER for HCF! The correct HCF is 2 × 3 × 2 = 12.'
+  },
+  {
+    id: 'mistake_t1_composite_tree',
+    title: '2. Priya\'s Composite Factor Tree',
+    topic: 'Prime Factorization',
+    student: 'Student: Priya (Class 5-A)',
+    question: 'Find the prime factorization of 72.',
+    steps: [
+      { label: 'Step 1', text: 'Splits 72 into 4 × 18 ➔ Divides 18 into 2 × 9', isBlunder: false },
+      { label: 'Step 2', text: 'Splits 9 into 3 × 3', isBlunder: false },
+      { label: 'Step 3', text: 'Writes the prime factorization as: 4 × 2 × 3 × 3', isBlunder: true },
+      { label: 'Step 4', text: 'Concludes 72 = 4 × 2 × 3²', isBlunder: false }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (Composite Factor Trap)</strong> 4 is a <em>composite number</em> (2 × 2), NOT a prime number! In prime factorization, every factor must strictly be a prime number (2, 3, 5, 7, etc.). Priya left 4 un-split! The correct prime factorization is <strong>2 × 2 × 2 × 3 × 3 = 2³ × 3²</strong>.'
+  },
+  {
+    id: 'mistake_t1_factor_vs_multiple',
+    title: '3. Kabir\'s Factor vs Multiple Slip',
+    topic: 'HCF Boundary Rule',
+    student: 'Student: Kabir (Class 5-C)',
+    question: 'Find the HCF of 8 and 32.',
+    steps: [
+      { label: 'Step 1', text: 'Lists factors of 8: 1, 2, 4, 8', isBlunder: false },
+      { label: 'Step 2', text: 'Lists factors of 32: 1, 2, 4, 8, 16, 32', isBlunder: false },
+      { label: 'Step 3', text: 'Thinks: "Highest means the largest number on the sheet, so HCF = 32!"', isBlunder: true }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (The Upper Bound Rule)</strong> A factor can NEVER be larger than the numbers themselves! HCF must always be &le; smaller number (&le; 8). 32 is a multiple of 8, not a factor of 8! The common factors are 1, 2, 4, 8, so the Highest Common Factor is <strong>8</strong>.'
+  },
+  {
+    id: 'mistake_t1_coprime_fallacy',
+    title: '4. Ananya\'s Co-Prime Misconception',
+    topic: 'Co-Prime Numbers',
+    student: 'Student: Ananya (Class 5-A)',
+    question: 'Are 8 and 15 co-prime numbers? Explain your answer.',
+    steps: [
+      { label: 'Step 1', text: 'Finds factors of 8: 1, 2, 4, 8 (composite number)', isBlunder: false },
+      { label: 'Step 2', text: 'Finds factors of 15: 1, 3, 5, 15 (composite number)', isBlunder: false },
+      { label: 'Step 3', text: 'Concludes: "No, 8 and 15 CANNOT be co-prime because neither 8 nor 15 is a prime number!"', isBlunder: true }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (Co-Primes Do NOT Have to Be Prime)</strong> Two numbers are co-prime if their <strong>ONLY common factor is 1</strong> (HCF = 1). They do NOT need to be prime numbers themselves! Factors of 8 are {1, 2, 4, 8} and factors of 15 are {1, 3, 5, 15}. Their only shared factor is 1, so <strong>8 and 15 ARE indeed co-prime</strong>!'
+  }
+];
+
+const MISTAKES_TOPIC_2 = [
+  {
+    id: 'mistake_t2_converse_fallacy',
+    title: '1. Aman\'s False Converse Fallacy',
+    topic: 'Divisibility by 3 & 9',
+    student: 'Student: Aman (Class 5-C)',
+    question: 'Is 426 divisible by 9?',
+    steps: [
+      { label: 'Step 1', text: 'Calculates sum of digits: 4 + 2 + 6 = 12', isBlunder: false },
+      { label: 'Step 2', text: 'Checks: 12 is divisible by 3, so 426 is divisible by 3', isBlunder: false },
+      { label: 'Step 3', text: 'Concludes: "Since 426 is divisible by 3, it MUST also be divisible by 9!"', isBlunder: true }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (False Converse)</strong> Divisibility by 3 does NOT guarantee divisibility by 9! Every multiple of 9 is divisible by 3, but the reverse is false (e.g. 12, 15, 21, 24, 30 are divisible by 3, but NOT by 9). For 9, the sum of digits must itself be a multiple of 9. Here 4 + 2 + 6 = 12, which is NOT divisible by 9. So 426 is NOT divisible by 9!'
+  },
+  {
+    id: 'mistake_t2_single_digit_trap',
+    title: '2. Kavya\'s Single-Digit Trap',
+    topic: 'Divisibility by 4',
+    student: 'Student: Kavya (Class 5-B)',
+    question: 'Is 5,826 divisible by 4?',
+    steps: [
+      { label: 'Step 1', text: 'Looks at the last digit of 5,826: ones digit is 6', isBlunder: false },
+      { label: 'Step 2', text: 'Claims: "Since 6 is even and divisible by 2, 5,826 is divisible by 4!"', isBlunder: true },
+      { label: 'Step 3', text: 'Concludes: 5,826 is divisible by 4', isBlunder: false }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (Two-Digit Rule for 4)</strong> The rule of 4 requires checking the <strong>last TWO digits</strong>, NOT just the last digit! (Because 100 is divisible by 4, only the last two digits matter). The last two digits of 5,826 are <strong>26</strong>. 26 ÷ 4 = 6 remainder 2. Since 26 is not divisible by 4, <strong>5,826 is NOT divisible by 4</strong>!'
+  },
+  {
+    id: 'mistake_t2_non_coprime_rule12',
+    title: '3. Rahul\'s Non-Co-Prime Trap',
+    topic: 'Divisibility by 12',
+    student: 'Student: Rahul (Class 5-A)',
+    question: 'Test if 18 is divisible by 12 using factor rules.',
+    steps: [
+      { label: 'Step 1', text: 'Chooses factors of 12: 2 × 6 = 12', isBlunder: false },
+      { label: 'Step 2', text: 'Checks 18: 18 is even (divisible by 2) and 18 is divisible by 6 (6 × 3 = 18)', isBlunder: false },
+      { label: 'Step 3', text: 'Concludes: "Since 18 is divisible by both 2 and 6, it MUST be divisible by 12!"', isBlunder: true }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (The Co-Prime Factor Law)</strong> You can only test a composite divisor using two factors that are <strong>CO-PRIME</strong> (HCF = 1)! 2 and 6 share a common factor of 2 (HCF = 2, not 1). 18 ÷ 12 = 1.5 (leaves remainder 6). To test for 12, Rahul MUST test divisibility by <strong>3 and 4</strong> (which are co-prime). 18 is NOT divisible by 4, so it is NOT divisible by 12!'
+  },
+  {
+    id: 'mistake_t2_negative_rule11',
+    title: '4. Sneha\'s Rule 11 Negative Trap',
+    topic: 'Divisibility by 11',
+    student: 'Student: Sneha (Class 5-B)',
+    question: 'Test if 9,185 is divisible by 11 using the alternate sum rule.',
+    steps: [
+      { label: 'Step 1', text: 'Sum of digits at odd places (from right): 5 + 1 = 6', isBlunder: false },
+      { label: 'Step 2', text: 'Sum of digits at even places (from right): 8 + 9 = 17', isBlunder: false },
+      { label: 'Step 3', text: 'Calculates difference: 6 − 17 = −11', isBlunder: false },
+      { label: 'Step 4', text: 'Concludes: "Since −11 is negative, it is NOT 0 or 11, so 9,185 is not divisible by 11!"', isBlunder: true }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (Absolute Difference Rule)</strong> In the Rule of 11, we take the <strong>difference</strong> |17 − 6| = 11, or note that −11 is a multiple of 11 (−1 × 11)! If the difference between odd-place and even-place sums is 0 or ANY multiple of 11 (including 11, 22, 33...), the number IS divisible by 11. Here 9,185 ÷ 11 = 835 exactly!'
+  }
+];
+
+const MISTAKES_TOPIC_3 = [
+  {
+    id: 'mistake_t3_subtraction_reversal',
+    title: '1. Tina\'s Subtraction Reversal',
+    topic: 'Order Clue Words',
+    student: 'Student: Tina (Class 5-A)',
+    question: 'Write an algebraic expression for: "Subtract 7 from 4 times a number x".',
+    steps: [
+      { label: 'Step 1', text: 'Translates "4 times a number x" ➔ 4x', isBlunder: false },
+      { label: 'Step 2', text: 'Translates "Subtract 7 from ..." ➔ Tina writes: 7 − 4x', isBlunder: true },
+      { label: 'Step 3', text: 'Checks with x = 3: 7 − 4(3) = 7 − 12 = −5', isBlunder: false }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (#1 CBSE Exam Trap)</strong> In English, "Subtract A from B" means you start with B and take A away: <strong>B − A</strong>! Tina wrote 7 − 4x, which means "Subtract 4x from 7". The correct expression is <strong>4x − 7</strong>.'
+  },
+  {
+    id: 'mistake_t3_missing_brackets',
+    title: '2. Vikram\'s Missing Brackets',
+    topic: 'Parentheses Grouping',
+    student: 'Student: Vikram (Class 5-C)',
+    question: 'Write an expression for: "Divide 45 by the sum of 2 and 3".',
+    steps: [
+      { label: 'Step 1', text: 'Translates "the sum of 2 and 3" as 2 + 3', isBlunder: false },
+      { label: 'Step 2', text: 'Translates "Divide 45 by ..." as: 45 ÷ 2 + 3', isBlunder: true },
+      { label: 'Step 3', text: 'Evaluates without brackets: 22.5 + 3 = 25.5', isBlunder: false }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (BODMAS Parentheses Rule)</strong> Without parentheses, division happens before addition! 45 ÷ 2 + 3 evaluates as (45 ÷ 2) + 3 = 22.5 + 3 = 25.5. The entire sum (2 + 3) was meant to be the divisor. Vikram needed brackets: <strong>45 ÷ (2 + 3)</strong> = 45 ÷ 5 = <strong>9</strong>!'
+  },
+  {
+    id: 'mistake_t3_bodmas_blindness',
+    title: '3. Arjun\'s BODMAS Blindness',
+    topic: 'Order of Operations',
+    student: 'Student: Arjun (Class 5-B)',
+    question: 'Evaluate the expression: 20 + 30 ÷ 5 × 2.',
+    steps: [
+      { label: 'Step 1', text: 'Calculates from left to right: 20 + 30 = 50', isBlunder: true },
+      { label: 'Step 2', text: 'Divides 50 by 5 = 10', isBlunder: false },
+      { label: 'Step 3', text: 'Multiplies 10 by 2 = 20', isBlunder: false }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (BODMAS Order of Operations)</strong> Division and Multiplication MUST be done BEFORE Addition! Arjun added 20 + 30 first. The correct order is: First Division: 30 ÷ 5 = 6. Then Multiplication: 6 × 2 = 12. Finally Addition: 20 + 12 = <strong>32</strong> (not 20)!'
+  },
+  {
+    id: 'mistake_t3_distributive_slip',
+    title: '4. Meera\'s Distributive Slip',
+    topic: 'Multiplying a Group',
+    student: 'Student: Meera (Class 5-A)',
+    question: 'Expand and simplify: 5 × (x + 4).',
+    steps: [
+      { label: 'Step 1', text: 'Multiplies 5 by the variable x ➔ 5x', isBlunder: false },
+      { label: 'Step 2', text: 'Copies the rest of the bracket: writes 5x + 4', isBlunder: true },
+      { label: 'Step 3', text: 'Checks with x = 2: 5(2) + 4 = 14 (whereas 5 × (2 + 4) = 30)', isBlunder: false }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (Distributive Law)</strong> The factor outside the bracket multiplies <em>EVERY term inside the bracket</em>! Meera multiplied 5 by x, but forgot to multiply 5 by 4! Correct expansion is 5 × x + 5 × 4 = <strong>5x + 20</strong>.'
+  }
+];
+
+const MISTAKES_TOPIC_4 = [
+  {
+    id: 'mistake_t4_adding_vs_doubling',
+    title: '1. Aditya\'s Adding vs Doubling Slip',
+    topic: 'Geometric Patterns',
+    student: 'Student: Aditya (Class 5-C)',
+    question: 'Find the next two terms of the sequence: 2, 4, 8, 16, ___, ___.',
+    steps: [
+      { label: 'Step 1', text: 'Looks at first step from 2 to 4: observes 2 + 2 = 4', isBlunder: false },
+      { label: 'Step 2', text: 'Assumes the rule is "Add 2 each time"', isBlunder: true },
+      { label: 'Step 3', text: 'Predicts next term: 16 + 2 = 18', isBlunder: false }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (Single-Step Fallacy)</strong> Never deduce a pattern rule from only the first two terms! Check the next terms: 4 ➔ 8 is +4 (or × 2), and 8 ➔ 16 is +8 (or × 2). The constant rule is <strong>Multiply by 2 (Doubling)</strong>, NOT adding 2! The next terms are 16 × 2 = <strong>32</strong> and 32 × 2 = <strong>64</strong>.'
+  },
+  {
+    id: 'mistake_t4_triangular_halving',
+    title: '2. Pooja\'s Triangular Halving Trap',
+    topic: 'Triangular Numbers',
+    student: 'Student: Pooja (Class 5-A)',
+    question: 'Find the 5th triangular number (T₅).',
+    steps: [
+      { label: 'Step 1', text: 'Recalls triangular dots formula involves n and (n + 1)', isBlunder: false },
+      { label: 'Step 2', text: 'Multiplies 5 by (5 + 1): 5 × 6 = 30', isBlunder: false },
+      { label: 'Step 3', text: 'Concludes: "The 5th triangular number is 30 dots!"', isBlunder: true }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (Forgot to Divide by 2)</strong> A triangular number represents HALF of a rectangle of dots ($n \\times (n+1)$)! Pooja calculated the full rectangle (5 × 6 = 30) but forgot to divide by 2! The 5th triangular number is 1 + 2 + 3 + 4 + 5 = (5 × 6) / 2 = <strong>15</strong> dots.'
+  },
+  {
+    id: 'mistake_t4_pyramid_sum_fallacy',
+    title: '3. Sameer\'s Pyramid Base-Sum Fallacy',
+    topic: 'Number Towers',
+    student: 'Student: Sameer (Class 5-B)',
+    question: 'In a 3-tier number tower with bottom row [10, 20, 30], what is the top block number?',
+    steps: [
+      { label: 'Step 1', text: 'Observes bottom row: 10, 20, 30', isBlunder: false },
+      { label: 'Step 2', text: 'Claims: "The top block of a tower is simply the sum of all base blocks: 10 + 20 + 30 = 60!"', isBlunder: true }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (The Overlapping Middle Block)</strong> In a number tower, blocks add in adjacent pairs! Row 2 has two blocks: (10 + 20) = 30 and (20 + 30) = 50. The top block is 30 + 50 = <strong>80</strong>! Notice the middle block (20) gets counted TWICE because it supports both blocks above it: 10 + 2(20) + 30 = 80 ≠ 60!'
+  },
+  {
+    id: 'mistake_t4_premature_palindrome',
+    title: '4. Diya\'s Premature Palindrome Stop',
+    topic: 'Palindromic Numbers',
+    student: 'Student: Diya (Class 5-A)',
+    question: 'Turn the number 48 into a special palindromic number using the reverse-and-add method.',
+    steps: [
+      { label: 'Step 1', text: 'Takes 48, reverses digits to get 84', isBlunder: false },
+      { label: 'Step 2', text: 'Adds them together: 48 + 84 = 132', isBlunder: false },
+      { label: 'Step 3', text: 'Stops and writes: "The special palindromic number is 132!"', isBlunder: true }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (Premature Stop)</strong> 132 is NOT a palindrome! (Reading 132 backwards gives 231, which does not match 132). If the first sum is not a palindrome, the NCERT algorithm requires repeating the process: Reverse 132 to get 231, and add: 132 + 231 = <strong>363</strong> (which reads the same forwards and backwards!).'
+  }
+];
+
+const MISTAKES_TOPIC_5 = [
+  {
+    id: 'mistake_t5_ray_reversal',
+    title: '1. Varun\'s Ray Reversal Fallacy',
+    topic: 'Points, Lines & Rays',
+    student: 'Student: Varun (Class 5-B)',
+    question: 'Does Ray AB (→AB) mean the exact same geometric figure as Ray BA (→BA)?',
+    steps: [
+      { label: 'Step 1', text: 'Notes that Line Segment AB is identical to Line Segment BA', isBlunder: false },
+      { label: 'Step 2', text: 'Notes that Line AB (↔) is identical to Line BA (↔)', isBlunder: false },
+      { label: 'Step 3', text: 'Concludes: "Therefore, Ray AB (→) must also be the exact same ray as Ray BA (→)!"', isBlunder: true }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (Ray Direction & Fixed Initial Endpoint)</strong> A ray has a fixed <strong>initial starting endpoint</strong> and extends infinitely in ONE direction! In Ray AB (→), the initial point is A and it shoots through B. In Ray BA (→), the initial point is B and it shoots through A. They point in opposite directions and start at different points, so they are <strong>NOT the same ray</strong>!'
+  },
+  {
+    id: 'mistake_t5_two_right_angles',
+    title: '2. Siddharth\'s Two Right Angles Trap',
+    topic: 'Triangle Angle Sum',
+    student: 'Student: Siddharth (Class 5-C)',
+    question: 'Can a triangle have two right angles (90°)? Explain why or why not.',
+    steps: [
+      { label: 'Step 1', text: 'Recalls that the sum of all three interior angles in any triangle is 180°', isBlunder: false },
+      { label: 'Step 2', text: 'Claims: "Yes! A triangle can have angles 90°, 90°, and 0° because 90 + 90 + 0 = 180°!"', isBlunder: true }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (Geometric Angle Definition)</strong> A triangle MUST have three non-zero angles formed by three intersecting lines! An angle of 0° means the two arms lie on top of each other (no opening), which is not an angle of a triangle. Furthermore, two 90° angles to the same base create <strong>parallel lines</strong> that never meet to form a third vertex! A triangle can have at most <strong>ONE right angle</strong>.'
+  },
+  {
+    id: 'mistake_t5_compass_radius_trap',
+    title: '3. Nisha\'s Compass Radius Trap',
+    topic: 'Circle Construction',
+    student: 'Student: Nisha (Class 5-A)',
+    question: 'Using a compass and ruler, draw a circle of diameter 12 cm.',
+    steps: [
+      { label: 'Step 1', text: 'Takes a ruler and opens compass legs to a width of 12 cm', isBlunder: true },
+      { label: 'Step 2', text: 'Places needle on paper and rotates to draw the circle', isBlunder: false },
+      { label: 'Step 3', text: 'Measures across the center: distance is 24 cm', isBlunder: false }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (Compass Width = Radius, Not Diameter!)</strong> A compass draws from the center to the edge, which is the <strong>RADIUS (r)</strong>! When you open a compass to 12 cm, you draw a circle with radius 12 cm and diameter 2 × 12 = 24 cm! To draw a circle with diameter 12 cm, Nisha must set her compass to the radius: <strong>r = d ÷ 2 = 12 ÷ 2 = 6 cm</strong>!'
+  },
+  {
+    id: 'mistake_t5_trapezium_diagonals',
+    title: '4. Aryan\'s Diagonal Confusion',
+    topic: 'Quadrilateral Properties',
+    student: 'Student: Aryan (Class 5-B)',
+    question: 'Which quadrilaterals have diagonals that bisect each other at right angles (90°)?',
+    steps: [
+      { label: 'Step 1', text: 'Identifies that a Square has diagonals that bisect at 90°', isBlunder: false },
+      { label: 'Step 2', text: 'Identifies that a Rhombus has diagonals that bisect at 90°', isBlunder: false },
+      { label: 'Step 3', text: 'Adds: "And a Trapezium also has diagonals that bisect at 90° because it has parallel sides!"', isBlunder: true }
+    ],
+    diagnosis: '🛑 <strong>Mistake Caught! (Trapezium Diagonals Do NOT Bisect at 90°)</strong> A trapezium only has ONE pair of parallel sides. Its diagonals neither bisect each other nor meet at 90°! Only quadrilaterals with <strong>all 4 sides equal</strong> (the <strong>Rhombus</strong> and the <strong>Square</strong>), as well as a <strong>Kite</strong>, have perpendicular diagonals. A trapezium\'s diagonals meet at non-right angles.'
+  }
+];
+
+function renderSpotMistakesGeneric(container, mistakeCases) {
   let activeCaseIdx = 0;
 
   function renderView() {
-    const c = trapCases[activeCaseIdx];
+    const c = mistakeCases[activeCaseIdx];
     container.innerHTML = `
       <div class="trap-container">
         <div class="think-callout-math">
@@ -4428,7 +4683,7 @@ function renderSpotTheTrapModule(container) {
 
         <!-- Case Navigation Tabs -->
         <div class="trap-nav-pills">
-          ${trapCases.map((tc, idx) => `
+          ${mistakeCases.map((tc, idx) => `
             <button class="trap-nav-pill ${idx === activeCaseIdx ? 'active' : ''}" data-idx="${idx}">
               ${tc.title}
             </button>
@@ -4515,6 +4770,29 @@ function renderSpotTheTrapModule(container) {
 
   renderView();
 }
+
+function renderSpotMistakesTopic1(container) {
+  renderSpotMistakesGeneric(container, MISTAKES_TOPIC_1);
+}
+
+function renderSpotMistakesTopic2(container) {
+  renderSpotMistakesGeneric(container, MISTAKES_TOPIC_2);
+}
+
+function renderSpotMistakesTopic3(container) {
+  renderSpotMistakesGeneric(container, MISTAKES_TOPIC_3);
+}
+
+function renderSpotMistakesTopic4(container) {
+  renderSpotMistakesGeneric(container, MISTAKES_TOPIC_4);
+}
+
+function renderSpotMistakesTopic5(container) {
+  renderSpotMistakesGeneric(container, MISTAKES_TOPIC_5);
+}
+
+// Backward compatibility alias
+const renderSpotTheTrapModule = renderSpotMistakesTopic1;
 
 /* ==========================================================================
    TOPIC 2 LEARN MODULES RENDERERS
@@ -8630,7 +8908,7 @@ function loadActiveState() {
         state.activeMode = parsed.activeMode;
       }
       if (parsed.activeLearnModule) {
-        state.activeLearnModule = parsed.activeLearnModule;
+        state.activeLearnModule = (parsed.activeLearnModule === 'spot_the_trap') ? 'spot_the_mistakes' : parsed.activeLearnModule;
       }
       if (parsed.practiceFilter) {
         state.practiceFilter = parsed.practiceFilter;
