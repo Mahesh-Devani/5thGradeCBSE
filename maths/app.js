@@ -6523,6 +6523,33 @@ function renderClockAnglesModule(container) {
     const hourX = ccx + 50 * Math.cos(hourAngleRad);
     const hourY = ccy + 50 * Math.sin(hourAngleRad);
 
+    // Angle Arc between minute hand and hour hand
+    let clockArcSvg = '';
+    if (activeHour === 3) {
+      clockArcSvg = `
+        <path d="M ${ccx} ${ccy - 20} L ${ccx + 20} ${ccy - 20} L ${ccx + 20} ${ccy}" fill="none" stroke="#fcd34d" stroke-width="2" />
+        <text x="${ccx + 26}" y="${ccy - 24}" fill="#fcd34d" font-size="10" font-weight="bold">90° ∟</text>
+      `;
+    } else if (activeHour === 9) {
+      clockArcSvg = `
+        <path d="M ${ccx} ${ccy - 20} L ${ccx - 20} ${ccy - 20} L ${ccx - 20} ${ccy}" fill="none" stroke="#fcd34d" stroke-width="2" />
+        <text x="${ccx - 46}" y="${ccy - 24}" fill="#fcd34d" font-size="10" font-weight="bold">90° ∟</text>
+      `;
+    } else if (activeHour === 6) {
+      clockArcSvg = `
+        <path d="M ${ccx} ${ccy - 28} A 28 28 0 0 1 ${ccx} ${ccy + 28}" fill="none" stroke="#38bdf8" stroke-width="2.5" />
+        <text x="${ccx + 36}" y="${ccy + 5}" fill="#38bdf8" font-size="10" font-weight="bold">180°</text>
+      `;
+    } else if (activeHour !== 12) {
+      const hRad = ((activeHour * 30 - 90) * Math.PI) / 180;
+      const endX = Math.round(ccx + 28 * Math.cos(hRad));
+      const endY = Math.round(ccy + 28 * Math.sin(hRad));
+      const sweep = activeHour < 6 ? 1 : 0;
+      clockArcSvg = `
+        <path d="M ${ccx} ${ccy - 28} A 28 28 0 0 ${sweep} ${endX} ${endY}" fill="none" stroke="#38bdf8" stroke-width="2" />
+      `;
+    }
+
     container.innerHTML = `
       <div class="learn-container">
         <!-- Clock Hands Hero Card -->
@@ -6560,6 +6587,8 @@ function renderClockAnglesModule(container) {
                     </text>
                   `;
                 }).join('')}
+
+                ${clockArcSvg}
 
                 <!-- Minute Hand (points at 12, Rose color) -->
                 <line x1="${ccx}" y1="${ccy}" x2="${minX}" y2="${minY}" stroke="#f43f5e" stroke-width="3.5" stroke-linecap="round" />
@@ -6701,6 +6730,105 @@ function renderTrianglesPolygonsModule(container) {
       });
     }
 
+    // Calculate dynamic, mathematically exact triangle coordinates from preset angles
+    function computeTriangleGeometry(anglesArr) {
+      let a1, a2, a3;
+      const maxA = Math.max(...anglesArr);
+      const minA = Math.min(...anglesArr);
+
+      if (maxA >= 90) {
+        // Place obtuse or right angle at vertex A for prominent, authentic visualization
+        a1 = maxA;
+        a2 = minA;
+        a3 = 180 - a1 - a2;
+      } else if (anglesArr.every(a => a === 60)) {
+        a1 = 60; a2 = 60; a3 = 60;
+      } else {
+        // Acute: largest acute at apex C, base angles at A and B
+        a3 = maxA;
+        const rest = anglesArr.slice();
+        rest.splice(rest.indexOf(maxA), 1);
+        a1 = rest[0];
+        a2 = rest[1];
+      }
+
+      const alpha = (a1 * Math.PI) / 180;
+      const beta = (a2 * Math.PI) / 180;
+      const gamma = (a3 * Math.PI) / 180;
+
+      // Law of Sines: c / sin(gamma) = b / sin(beta) => b = c * sin(beta) / sin(gamma)
+      const c = 100;
+      const b = (c * Math.sin(beta)) / Math.sin(gamma);
+
+      const rawA = { x: 0, y: 0 };
+      const rawB = { x: c, y: 0 };
+      const rawC = { x: b * Math.cos(alpha), y: -b * Math.sin(alpha) };
+
+      const pts = [rawA, rawB, rawC];
+      const minX = Math.min(...pts.map(p => p.x));
+      const maxX = Math.max(...pts.map(p => p.x));
+      const minY = Math.min(...pts.map(p => p.y));
+      const maxY = Math.max(...pts.map(p => p.y));
+
+      const w = maxX - minX;
+      const h = maxY - minY;
+      const W = 240, H = 150;
+      const padX = 36, padY = 28;
+      const scale = Math.min((W - 2 * padX) / w, (H - 2 * padY) / h);
+      const offX = (W - w * scale) / 2 - minX * scale;
+      const offY = (H - h * scale) / 2 - minY * scale;
+
+      const A = { x: Math.round(rawA.x * scale + offX), y: Math.round(rawA.y * scale + offY), deg: a1 };
+      const B = { x: Math.round(rawB.x * scale + offX), y: Math.round(rawB.y * scale + offY), deg: a2 };
+      const C = { x: Math.round(rawC.x * scale + offX), y: Math.round(rawC.y * scale + offY), deg: a3 };
+
+      return { A, B, C };
+    }
+
+    const tGeom = computeTriangleGeometry(preset.angles);
+
+    let arcSvgA = '';
+    if (tGeom.A.deg === 90) {
+      arcSvgA = `
+        <path d="M ${tGeom.A.x + 16} ${tGeom.A.y} L ${tGeom.A.x + 16} ${tGeom.A.y - 16} L ${tGeom.A.x} ${tGeom.A.y - 16}" fill="none" stroke="#fcd34d" stroke-width="2" />
+        <text x="${tGeom.A.x + 20}" y="${tGeom.A.y - 18}" fill="#fcd34d" font-size="11" font-weight="bold">90° ∟</text>
+      `;
+    } else if (tGeom.A.deg > 90) {
+      const radA = (tGeom.A.deg * Math.PI) / 180;
+      const arcEndX = Math.round(tGeom.A.x + 26 * Math.cos(-radA));
+      const arcEndY = Math.round(tGeom.A.y + 26 * Math.sin(-radA));
+      const bisectRad = (tGeom.A.deg * Math.PI) / 360;
+      const lblX = Math.round(tGeom.A.x + 42 * Math.cos(-bisectRad));
+      const lblY = Math.round(tGeom.A.y + 42 * Math.sin(-bisectRad));
+      arcSvgA = `
+        <path d="M ${tGeom.A.x + 26} ${tGeom.A.y} A 26 26 0 0 0 ${arcEndX} ${arcEndY}" fill="none" stroke="#e879f9" stroke-width="2.5" />
+        <text x="${lblX}" y="${lblY}" fill="#f0abfc" font-size="12" font-weight="bold">${tGeom.A.deg}°</text>
+      `;
+    } else {
+      const radA = (tGeom.A.deg * Math.PI) / 180;
+      const arcEndX = Math.round(tGeom.A.x + 22 * Math.cos(-radA));
+      const arcEndY = Math.round(tGeom.A.y + 22 * Math.sin(-radA));
+      arcSvgA = `
+        <path d="M ${tGeom.A.x + 22} ${tGeom.A.y} A 22 22 0 0 0 ${arcEndX} ${arcEndY}" fill="none" stroke="#6ee7b7" stroke-width="1.8" />
+        <text x="${tGeom.A.x + 26}" y="${tGeom.A.y - 8}" fill="#6ee7b7" font-size="10" font-weight="bold">${tGeom.A.deg}°</text>
+      `;
+    }
+
+    const radB = (tGeom.B.deg * Math.PI) / 180;
+    const arcBx = Math.round(tGeom.B.x - 22 * Math.cos(radB));
+    const arcBy = Math.round(tGeom.B.y - 22 * Math.sin(radB));
+    const arcSvgB = `
+      <path d="M ${tGeom.B.x - 22} ${tGeom.B.y} A 22 22 0 0 1 ${arcBx} ${arcBy}" fill="none" stroke="#94a3b8" stroke-width="1.8" />
+      <text x="${tGeom.B.x - 36}" y="${tGeom.B.y - 8}" fill="#94a3b8" font-size="10">${tGeom.B.deg}°</text>
+    `;
+
+    const arcSvgC = `
+      <text x="${tGeom.C.x + (tGeom.C.x < 120 ? 14 : -14)}" y="${tGeom.C.y + 22}" fill="#94a3b8" font-size="10" text-anchor="middle">${tGeom.C.deg}°</text>
+    `;
+
+    const strokeColor = preset.badge === 'obtuse' ? '#c084fc' : preset.badge === 'right' ? '#f59e0b' : '#34d399';
+    const fillColor = preset.badge === 'obtuse' ? 'rgba(168, 85, 247, 0.15)' : preset.badge === 'right' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(16, 185, 129, 0.15)';
+
     container.innerHTML = `
       <div class="learn-container">
         <!-- Part A: Triangle Classifier Studio -->
@@ -6734,39 +6862,17 @@ function renderTrianglesPolygonsModule(container) {
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; align-items: center; margin: 1rem 0;">
             <div class="geom-canvas-box" style="flex-direction: column; padding: 1.25rem;">
               <svg width="240" height="150" viewBox="0 0 240 150">
-                ${preset.badge === 'right' ? `
-                  <!-- Right-angled triangle -->
-                  <polygon points="40,120 200,120 40,30" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="3" />
-                  <!-- Right angle corner marker -->
-                  <rect x="40" y="100" width="20" height="20" fill="none" stroke="#fcd34d" stroke-width="2" />
-                  <text x="25" y="125" fill="#ffffff" font-size="12" font-weight="bold">A</text>
-                  <text x="205" y="125" fill="#ffffff" font-size="12" font-weight="bold">B</text>
-                  <text x="25" y="25" fill="#ffffff" font-size="12" font-weight="bold">C</text>
-                  <text x="65" y="112" fill="#fcd34d" font-size="11" font-weight="bold">${preset.angles[2]}° ∟</text>
-                  <text x="160" y="112" fill="#94a3b8" font-size="10">${preset.angles[0]}°</text>
-                  <text x="50" y="55" fill="#94a3b8" font-size="10">${preset.angles[1]}°</text>
-                ` : (preset.badge === 'obtuse' ? `
-                  <!-- Obtuse-angled triangle -->
-                  <polygon points="30,120 210,120 100,45" fill="rgba(168, 85, 247, 0.15)" stroke="#c084fc" stroke-width="3" />
-                  <text x="15" y="125" fill="#ffffff" font-size="12" font-weight="bold">A</text>
-                  <text x="215" y="125" fill="#ffffff" font-size="12" font-weight="bold">B</text>
-                  <text x="100" y="35" fill="#ffffff" font-size="12" font-weight="bold">C</text>
-                  <text x="55" y="115" fill="#d8b4fe" font-size="11" font-weight="bold">${preset.angles[2]}°</text>
-                  <text x="180" y="115" fill="#94a3b8" font-size="10">${preset.angles[0]}°</text>
-                  <text x="105" y="65" fill="#94a3b8" font-size="10">${preset.angles[1]}°</text>
-                ` : `
-                  <!-- Acute-angled triangle -->
-                  <polygon points="40,120 200,120 120,30" fill="rgba(16, 185, 129, 0.15)" stroke="#34d399" stroke-width="3" />
-                  <text x="25" y="125" fill="#ffffff" font-size="12" font-weight="bold">A</text>
-                  <text x="205" y="125" fill="#ffffff" font-size="12" font-weight="bold">B</text>
-                  <text x="120" y="22" fill="#ffffff" font-size="12" font-weight="bold">C</text>
-                  <text x="55" y="115" fill="#6ee7b7" font-size="11">${preset.angles[0]}°</text>
-                  <text x="175" y="115" fill="#6ee7b7" font-size="11">${preset.angles[1]}°</text>
-                  <text x="115" y="55" fill="#6ee7b7" font-size="11">${preset.angles[2]}°</text>
-                `)}
+                <!-- Dynamically constructed, mathematically exact triangle -->
+                <polygon points="${tGeom.A.x},${tGeom.A.y} ${tGeom.B.x},${tGeom.B.y} ${tGeom.C.x},${tGeom.C.y}" fill="${fillColor}" stroke="${strokeColor}" stroke-width="3" stroke-linejoin="round" />
+                ${arcSvgA}
+                ${arcSvgB}
+                ${arcSvgC}
+                <text x="${tGeom.A.x - 14}" y="${tGeom.A.y + 5}" fill="#ffffff" font-size="12" font-weight="bold">A</text>
+                <text x="${tGeom.B.x + 10}" y="${tGeom.B.y + 5}" fill="#ffffff" font-size="12" font-weight="bold">B</text>
+                <text x="${tGeom.C.x}" y="${tGeom.C.y - 8}" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">C</text>
               </svg>
               <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center;">
-                Angle Sum: ${preset.angles[0]}° + ${preset.angles[1]}° + ${preset.angles[2]}° = <strong>180°</strong>
+                Angle Sum: ${tGeom.A.deg}° + ${tGeom.B.deg}° + ${tGeom.C.deg}° = <strong>180°</strong>
               </div>
             </div>
 
@@ -6968,18 +7074,18 @@ function renderQuadrilateralsCirclesModule(container) {
               </div>
               <div class="geom-canvas-box" style="margin: 0.5rem 0;">
                 <svg width="200" height="130" viewBox="0 0 200 130">
-                  <!-- Trapezium -->
-                  <polygon points="60,25 140,25 180,105 20,105" fill="rgba(59, 130, 246, 0.15)" stroke="#60a5fa" stroke-width="2.5" />
+                  <!-- Scalene Trapezium with visibly unequal non-parallel legs -->
+                  <polygon points="50,25 135,25 185,105 20,105" fill="rgba(59, 130, 246, 0.15)" stroke="#60a5fa" stroke-width="2.5" />
                   <!-- Parallel marks on top and bottom -->
-                  <line x1="95" y1="20" x2="105" y2="25" stroke="#fcd34d" stroke-width="2" />
-                  <line x1="95" y1="30" x2="105" y2="25" stroke="#fcd34d" stroke-width="2" />
-                  <line x1="95" y1="100" x2="105" y2="105" stroke="#fcd34d" stroke-width="2" />
-                  <line x1="95" y1="110" x2="105" y2="105" stroke="#fcd34d" stroke-width="2" />
-                  <text x="50" y="20" fill="#ffffff" font-size="11" font-weight="bold">A</text>
-                  <text x="145" y="20" fill="#ffffff" font-size="11" font-weight="bold">B</text>
-                  <text x="185" y="110" fill="#ffffff" font-size="11" font-weight="bold">C</text>
+                  <line x1="88" y1="20" x2="98" y2="25" stroke="#fcd34d" stroke-width="2" />
+                  <line x1="88" y1="30" x2="98" y2="25" stroke="#fcd34d" stroke-width="2" />
+                  <line x1="98" y1="100" x2="108" y2="105" stroke="#fcd34d" stroke-width="2" />
+                  <line x1="98" y1="110" x2="108" y2="105" stroke="#fcd34d" stroke-width="2" />
+                  <text x="40" y="20" fill="#ffffff" font-size="11" font-weight="bold">A</text>
+                  <text x="140" y="20" fill="#ffffff" font-size="11" font-weight="bold">B</text>
+                  <text x="190" y="110" fill="#ffffff" font-size="11" font-weight="bold">C</text>
                   <text x="8" y="110" fill="#ffffff" font-size="11" font-weight="bold">D</text>
-                  <text x="75" y="65" fill="#fcd34d" font-size="10">AB ∥ DC only</text>
+                  <text x="65" y="65" fill="#fcd34d" font-size="10">AB ∥ DC only (AD ≠ BC)</text>
                 </svg>
               </div>
               <div style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.45;">
@@ -7049,11 +7155,12 @@ function renderQuadrilateralsCirclesModule(container) {
               </div>
               <div class="geom-canvas-box" style="margin-bottom: 0.75rem;">
                 <svg width="220" height="130" viewBox="0 0 220 130">
-                  <polygon points="60,30 170,20 150,110 30,100" fill="rgba(16, 185, 129, 0.12)" stroke="#34d399" stroke-width="2.5" />
-                  <text x="65" y="45" fill="#fcd34d" font-size="11" font-weight="bold">110°</text>
-                  <text x="145" y="40" fill="#f43f5e" font-size="14" font-weight="extrabold">?</text>
-                  <text x="125" y="100" fill="#fcd34d" font-size="11" font-weight="bold">95°</text>
-                  <text x="45" y="92" fill="#fcd34d" font-size="11" font-weight="bold">85°</text>
+                  <!-- Exact angles: A=85°, B=95°, C=70° (?), D=110° -->
+                  <polygon points="41,46 164,15 155,108 35,108" fill="rgba(16, 185, 129, 0.12)" stroke="#34d399" stroke-width="2.5" />
+                  <text x="36" y="65" fill="#fcd34d" font-size="11" font-weight="bold">D: 110°</text>
+                  <text x="145" y="32" fill="#f43f5e" font-size="13" font-weight="extrabold">C: ?</text>
+                  <text x="115" y="100" fill="#fcd34d" font-size="11" font-weight="bold">B: 95°</text>
+                  <text x="45" y="100" fill="#fcd34d" font-size="11" font-weight="bold">A: 85°</text>
                 </svg>
               </div>
               <div style="background: rgba(0,0,0,0.3); padding: 0.85rem; border-radius: 8px; font-size: 0.9rem; line-height: 1.5;">
@@ -7072,11 +7179,12 @@ function renderQuadrilateralsCirclesModule(container) {
               </div>
               <div class="geom-canvas-box" style="margin-bottom: 0.75rem;">
                 <svg width="220" height="130" viewBox="0 0 220 130">
-                  <polygon points="60,25 180,25 140,105 20,105" fill="rgba(56, 189, 248, 0.12)" stroke="#38bdf8" stroke-width="2.5" />
-                  <text x="12" y="100" fill="#fcd34d" font-size="11" font-weight="bold">A: 80°</text>
-                  <text x="145" y="100" fill="#ffffff" font-size="11" font-weight="bold">B: 100°</text>
-                  <text x="185" y="30" fill="#fcd34d" font-size="11" font-weight="bold">C: 80°</text>
-                  <text x="50" y="20" fill="#ffffff" font-size="11" font-weight="bold">D: 100°</text>
+                  <!-- Exact angles: A=80°, B=100°, C=80°, D=100° -->
+                  <polygon points="39,26 164,26 150,105 25,105" fill="rgba(56, 189, 248, 0.12)" stroke="#38bdf8" stroke-width="2.5" />
+                  <text x="14" y="100" fill="#fcd34d" font-size="11" font-weight="bold">A: 80°</text>
+                  <text x="155" y="100" fill="#ffffff" font-size="11" font-weight="bold">B: 100°</text>
+                  <text x="168" y="32" fill="#fcd34d" font-size="11" font-weight="bold">C: 80°</text>
+                  <text x="24" y="24" fill="#ffffff" font-size="11" font-weight="bold">D: 100°</text>
                 </svg>
               </div>
               <div style="background: rgba(0,0,0,0.3); padding: 0.85rem; border-radius: 8px; font-size: 0.9rem; line-height: 1.5;">
