@@ -12,7 +12,7 @@ An interactive, discovery-based Mathematics platform engineered for **Class 5 CB
 | **Topic 2** | **Divisibility Rules (2 to 12)** | ✅ **Live & Ready** | • 📋 **Cheat Sheet**: Master rules for 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 & 12<br>• 🔍 **Live Inspector**: Instant interactive rule breakdown for any user-inputted number<br>• 🧩 **Missing Digit Puzzles**: Find unknown digits (*) to satisfy divisibility conditions<br>• 🦘 **Rule of 11 Hopscotch**: Visual alternating sum & difference calculator for 11 |
 | **Topic 3** | **Expressions & Statements** | ✅ **Live & Ready** | • 📖 **Clue Words Dictionary**: Operation triggers (+, −, ×, ÷, brackets) & "#1 CBSE Exam Trap" reversal card<br>• 🔄 **Dual-Way Live Translator**: Interactive statements ➔ expressions and expressions ➔ statements builder<br>• 🧪 **Parentheses Lab**: Dynamic variable slider comparing $3(x + 4)$ vs $3x + 4$<br>• 🌍 **Real-World Modeler**: Age comparisons, shopping bills, geometry perimeters, and number riddles |
 | **Topic 4** | **Number Patterns** | ✅ **Live & Ready** | • 🕵️ **Pattern Detective**: Constant step, decreasing patterns, tripling rules, and Fibonacci sequence<br>• 🔺 **Geometric Dot Numbers**: Triangular numbers ($T_n$) and square numbers ($n^2$), proving $T_{n-1} + T_n = n^2$<br>• 🏰 **Number Towers (Pyramids)**: Additive block-sum pyramids with custom base calculator<br>• ✨ **Magic Shapes & Palindromes**: 3×3 magic square (constant sum 15) and step-by-step reverse-and-add palindrome transformer |
-| **Topic 5** | **Geometry, Lines & Angles** | ✅ **Live & Ready** | • 📍 **Geometric Foundations**: Point, Line ($\overleftrightarrow{AB}$), Segment ($\overline{AB}$), Ray ($\vec{AB}$), and Collinear points<br>• 🛤️ **Line Relationships**: Intersecting, Parallel ($\parallel$), Perpendicular ($\perp$, 90° ∟), and Concurrent lines<br>• 🧭 **Virtual Protractor Studio**: Dynamic angle rotator (0° to 360°) with real-time classification for all 7 angle types<br>• ⏰ **Clock Angle Detective**: Analog SVG clock with hour slider and the 30° per hour formula |
+| **Topic 5** | **Geometry, Shapes & Angles** | ✅ **Live & Ready** | • 📍 **Geometric Foundations**: Point, Line ($\overleftrightarrow{AB}$), Segment ($\overline{AB}$), Ray ($\vec{AB}$), and Collinear points<br>• 🛤️ **Line Relationships**: Intersecting, Parallel ($\parallel$), Perpendicular ($\perp$, 90° ∟), and Concurrent lines<br>• 🧭 **Virtual Protractor Studio**: Dynamic angle rotator (0° to 360°) with real-time classification for all 7 angle types<br>• ⏰ **Clock Angle Detective**: Analog SVG clock with hour slider and the 30° per hour formula<br>• 🔺 **Triangles & Polygons**: Polygon triangulation formula $(n - 2) \times 180^\circ$, angle sum for nonagon (1260°), triangle classification by angles (Acute, Right, Obtuse)<br>• ⬠ **Quadrilaterals & Circles**: Rhombus vs Trapezium properties, quadrilateral angle sum (360°), parallelogram opposite/adjacent angles, circle anatomy ($r = d \div 2$), and ruler/compass/protractor construction guides |
 | **Topic 6** | **Fractions & Decimals** | 🟡 *Next Phase* | Visual pizza/bar models, equivalent fractions, decimals on number lines & word problems |
 
 ---
@@ -143,6 +143,77 @@ $$\text{First Number } (a) \times \text{Second Number } (b) = \text{HCF} \times 
 | **III.12** | 24 red & 36 blue pencils into identical sets | **12 sets** ($\text{HCF}(24, 36)$) |
 | **III.13** | Traffic lights (20s, 30s, 45s) together again | **180 seconds** (3 minutes, $\text{LCM}$) |
 | **III.14** | Pencils in 4s, erasers in 6s for complete groups | **12** ($\text{LCM}(4, 6)$) |
+
+---
+
+## 📐 Pedagogical Deep Dive: Topic 5 (Geometry, Shapes & Angles)
+
+### 1. 🍕 The Polygons Triangulation Secret: $(n - 2) \times 180^\circ$
+Why does a polygon with $n$ sides have an interior angle sum of $(n - 2) \times 180^\circ$?
+- **The Visual Proof**: Pick any single vertex. Draw all possible non-crossing diagonals to other vertices.
+- For a **Triangle ($n=3$)**: Already 1 triangle $\rightarrow 1 \times 180^\circ = 180^\circ$.
+- For a **Quadrilateral ($n=4$)**: 1 diagonal splits it into 2 triangles $\rightarrow 2 \times 180^\circ = 360^\circ$.
+- For a **Pentagon ($n=5$)**: 2 diagonals split it into 3 triangles $\rightarrow 3 \times 180^\circ = 540^\circ$.
+- For a **Nonagon ($n=9$)**: Formed by $9 - 2 = 7$ triangles $\rightarrow 7 \times 180^\circ = 1260^\circ$.
+Every added side adds exactly one more internal triangle ($+180^\circ$).
+
+---
+
+### 2. 🔺 Triangle Classification: By Angles & By Sides
+- **By Angles**:
+  - **Acute-angled**: ALL three angles are strictly acute ($< 90^\circ$). Example: $55^\circ, 45^\circ, 80^\circ$.
+  - **Right-angled**: Exactly ONE angle is $90^\circ$. Example: $25^\circ, 65^\circ, 90^\circ$.
+  - **Obtuse-angled**: Exactly ONE angle is obtuse ($> 90^\circ$). Examples: $20^\circ, 60^\circ, 100^\circ$ and $37^\circ, 23^\circ, 120^\circ$.
+  - *Golden Rule*: A triangle can never have more than one right or obtuse angle because the total sum cannot exceed $180^\circ$!
+- **By Sides**:
+  - **Equilateral**: 3 equal sides, 3 equal angles ($60^\circ$ each).
+  - **Isosceles**: 2 equal sides, 2 equal base angles.
+  - **Scalene**: All 3 sides different, all 3 angles different.
+
+---
+
+### 3. ⬠ Rhombus vs. Trapezium: The Key Distinctions
+Class 5 students frequently confuse special quadrilaterals:
+| Criterion | Rhombus | Trapezium (Trapezoid) |
+|---|---|---|
+| **Equal Sides** | All 4 sides are strictly equal in length | Only 2 non-parallel legs may be equal (Isosceles) or all different |
+| **Parallel Pairs** | **2 pairs** of opposite parallel sides ($AB \parallel CD$, $BC \parallel DA$) | Exactly **1 pair** of parallel sides (bases) |
+| **Diagonals** | Diagonals bisect each other at **right angles ($90^\circ$)** | Diagonals do **not** bisect each other perpendicularly in general |
+| **Opposite Angles** | Opposite angles are equal ($\angle A = \angle C$, $\angle B = \angle D$) | Opposite angles are generally unequal |
+
+---
+
+### 4. 🧮 Missing Angles: Quadrilateral (360°) & Parallelogram Properties
+- **Quadrilateral Angle Sum**: Every 4-sided polygon has an angle sum of $360^\circ$.
+  - Example: Given angles $85^\circ, 110^\circ, 95^\circ$, the fourth angle is $360^\circ - (85^\circ + 110^\circ + 95^\circ) = 360^\circ - 290^\circ = 70^\circ$.
+- **Parallelogram Angle Rules**:
+  1. **Opposite angles are equal**: $\angle C = \angle A$, $\angle D = \angle B$.
+  2. **Consecutive/Adjacent angles are supplementary**: $\angle A + \angle B = 180^\circ$, so $\angle B = 180^\circ - \angle A$.
+  - Example: In parallelogram $ABCD$, if $\angle A = 80^\circ$:
+    - $\angle C = \angle A = 80^\circ$
+    - $\angle B = 180^\circ - 80^\circ = 100^\circ$
+    - $\angle D = \angle B = 100^\circ$
+
+---
+
+## 🏫 Term I Revision Worksheet Solutions (`maths_geometry_ws1.pdf`)
+*Freedom International School — Revision Worksheet (Term I) Mathematics Class V*
+
+| Q# | Topic Area | Question Summary | Verified Solution & Pedagogical Reasoning |
+|---|---|---|---|
+| **Q1** | Divisibility | Check divisibility of $37,42,582$ by 15 | **Not divisible**. Rule of 15 requires divisibility by co-prime factors 3 and 5. The last digit is 2 ($\neq 0$ or $5$), so it fails divisibility by 5. Hence, it cannot be divisible by 15. |
+| **Q2** | Polygons | Interior angle sum of a nonagon ($n = 9$) | **$1260^\circ$**. Triangulation formula: $(n - 2) \times 180^\circ = (9 - 2) \times 180^\circ = 7 \times 180^\circ = 1260^\circ$. |
+| **Q3** | Divisibility | Numbers divisible simultaneously by 4, 6, 10 among 12480, 98760, 75310 | **12,480 and 98,760**. $\text{LCM}(4, 6, 10) = 60$. 12480 and 98760 both end in 0 (div by 10), have last two digits divisible by 4 (80, 60), and digit sums (15, 30) divisible by 3 $\implies$ divisible by 6. 75310 has last two digits 10 not divisible by 4. |
+| **Q4** | Triangles | Classify triangles by angles: (a) 20°, 60°, 100° (b) 37°, 23°, 120° (c) 55°, 45°, 80° (d) 25°, 65°, 90° | **(a) Obtuse-angled** ($100^\circ > 90^\circ$)<br>**(b) Obtuse-angled** ($120^\circ > 90^\circ$)<br>**(c) Acute-angled** (all angles $< 90^\circ$)<br>**(d) Right-angled** (one angle $= 90^\circ$) |
+| **Q5** | Sequences | First 10: (a) Square numbers (b) Triangular numbers | **(a) Square**: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 ($n \times n$)<br>**(b) Triangular**: 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ($T_n = \frac{n(n+1)}{2}$) |
+| **Q6** | HCF Property | If one number is a multiple of another, what is their HCF? | **The smaller number**. If $b = k \cdot a$, all factors of $a$ divide $b$, so the greatest common divisor is $a$ itself. Example: for 8 and 32, $\text{HCF} = 8$. |
+| **Q7** | Geometry | Shape obtained by joining 3 collinear points | **A straight line segment**. Non-collinear points form a triangle. |
+| **Q8** | Quadrilaterals | Three differences between Rhombus and Trapezium | 1. **Sides**: Rhombus has all 4 sides equal; Trapezium has unequal sides (or only legs equal).<br>2. **Parallel Pairs**: Rhombus has 2 pairs ($AB \parallel CD$, $BC \parallel DA$); Trapezium has exactly 1 pair.<br>3. **Diagonals**: Rhombus diagonals bisect at right angles ($90^\circ$); Trapezium diagonals do not. |
+| **Q9** | BODMAS | Evaluate: (a) $28 + 45 \div 9 \times 2 - 10$ (b) $(48 - 35) \times 2 + 30 \div 15$ | **(a) 28**: $45 \div 9 = 5 \rightarrow 5 \times 2 = 10 \rightarrow 28 + 10 = 38 \rightarrow 38 - 10 = 28$.<br>**(b) 28**: $48 - 35 = 13 \rightarrow 13 \times 2 = 26 \rightarrow 30 \div 15 = 2 \rightarrow 26 + 2 = 28$. |
+| **Q10** | Constructions | (a) Rectangle $8 \times 5$ cm (b) Circle $d = 10$ cm (c) Square side 6 cm (d) Angle 135° | **(a)** Opposite sides 8 cm & 5 cm with $90^\circ$ corners.<br>**(b)** Radius $r = 10 \div 2 = 5$ cm compass setting.<br>**(c)** 4 equal sides of 6 cm with $90^\circ$ corners.<br>**(d)** Protractor set to $135^\circ$ (obtuse angle). |
+| **Q11** | Angles | (a) Quad angles 85°, 110°, 95°, find 4th (b) Parallelogram ABCD with $\angle A = 80^\circ$, find $\angle B, \angle C, \angle D$ | **(a) $70^\circ$**: $360^\circ - (85^\circ + 110^\circ + 95^\circ) = 360^\circ - 290^\circ = 70^\circ$.<br>**(b) $\angle B = 100^\circ, \angle C = 80^\circ, \angle D = 100^\circ$**: Opposite angles equal ($\angle C = \angle A = 80^\circ$), adjacent supplementary ($\angle B = 180^\circ - 80^\circ = 100^\circ$, $\angle D = 100^\circ$). |
+| **Q12** | Expressions | Write in words: (a) $(2 \times 5) - 6$ (b) $(90 - 30) \div (30 - 20)$ | **(a)** "Subtract 6 from the product of 2 and 5" (or "6 less than the product of 2 and 5").<br>**(b)** "Divide the difference of 90 and 30 by the difference of 30 and 20". |
+| **Q13** | Word to Expr | Write expression for: (a) 45 divided by sum of 2 and 3 (b) Sum of 56 and 4 multiplied by difference of 11 and 10 | **(a) $45 \div (2 + 3)$** (Brackets mandatory!)<br>**(b) $(56 + 4) \times (11 - 10)$** |
 
 ---
 

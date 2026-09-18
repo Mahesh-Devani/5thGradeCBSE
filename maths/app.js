@@ -1330,6 +1330,26 @@ const CLOCK_ANGLES_PRESETS = [
   { time: '9:00', hour: 9, min: 0, deg: 90, type: 'Right Angle ∟', reason: 'Shortest angle between 9 and 12 is 3 hour gaps = 90° (Quarter Turn!).' }
 ];
 
+const POLYGON_DATA = [
+  { sides: 3, name: 'Triangle', triangles: 1, sum: 180, example: 'Equilateral / Scalene triangle' },
+  { sides: 4, name: 'Quadrilateral', triangles: 2, sum: 360, example: 'Square, Rectangle, Rhombus, Trapezium' },
+  { sides: 5, name: 'Pentagon', triangles: 3, sum: 540, example: 'US Pentagon building, school sign' },
+  { sides: 6, name: 'Hexagon', triangles: 4, sum: 720, example: 'Bee honeycomb cells, hex nut' },
+  { sides: 7, name: 'Heptagon', triangles: 5, sum: 900, example: '7-sided polygon, British 50p coin' },
+  { sides: 8, name: 'Octagon', triangles: 6, sum: 1080, example: 'Red stop sign on roads' },
+  { sides: 9, name: 'Nonagon', triangles: 7, sum: 1260, example: '9-sided polygon (Worksheet Q2: (9 - 2) × 180° = 1260°)' },
+  { sides: 10, name: 'Decagon', triangles: 8, sum: 1440, example: '10-sided polygon, star polygon core' }
+];
+
+const TRIANGLE_PRESETS = [
+  { id: 'ws_1', angles: [20, 60, 100], type: 'Obtuse-angled Triangle', reason: 'One angle (100°) is greater than 90°. (Worksheet Q4a)', badge: 'obtuse' },
+  { id: 'ws_2', angles: [37, 23, 120], type: 'Obtuse-angled Triangle', reason: 'One angle (120°) is greater than 90°. (Worksheet Q4b)', badge: 'obtuse' },
+  { id: 'ws_3', angles: [55, 45, 80], type: 'Acute-angled Triangle', reason: 'All three angles (55°, 45°, 80°) are less than 90°. (Worksheet Q4c)', badge: 'acute' },
+  { id: 'ws_4', angles: [25, 65, 90], type: 'Right-angled Triangle', reason: 'Exactly one angle is 90° (square corner ∟). (Worksheet Q4d)', badge: 'right' },
+  { id: 'equi', angles: [60, 60, 60], type: 'Equilateral & Acute Triangle', reason: 'All 3 angles are 60° (all equal) and < 90°. All 3 sides are equal.', badge: 'acute' },
+  { id: 'iso_rt', angles: [45, 45, 90], type: 'Right Isosceles Triangle', reason: 'One angle is 90° and two angles are 45° with two equal sides.', badge: 'right' }
+];
+
 /* ==========================================================================
    6. LEARN MODULES DATA
    ========================================================================== */
@@ -1530,6 +1550,22 @@ const LEARN_MODULES_TOPIC_5 = {
     tag: 'Measurement & Types',
     lead: 'An angle is formed when two rays meet at a common vertex. Use the <strong>Interactive Virtual Protractor</strong> to rotate arms from 0° to 360° and master all 7 CBSE Class 5 angle types: <strong>Zero, Acute, Right, Obtuse, Straight, Reflex, and Complete</strong>!',
     renderContent: renderAnglesProtractorModule
+  },
+  triangles_polygons: {
+    id: 'triangles_polygons',
+    pillTitle: '🔺 Triangles & Polygon Sums',
+    title: 'Triangles Classification & The Polygon Interior Angle Sum Theorem',
+    tag: 'Shapes & Interior Angles',
+    lead: 'Classify triangles by <strong>angles (Acute, Right, Obtuse)</strong> and <strong>sides (Equilateral, Isosceles, Scalene)</strong>. Discover the powerful theorem to find the <strong>sum of interior angles of ANY polygon: $(n - 2) \times 180^\circ$</strong>!',
+    renderContent: renderTrianglesPolygonsModule
+  },
+  quadrilaterals_circles: {
+    id: 'quadrilaterals_circles',
+    pillTitle: '⬠ Quadrilaterals & Circles',
+    title: 'Quadrilateral Properties, Rhombus vs Trapezium & Circle Anatomy',
+    tag: '2D Figures & Constructions',
+    lead: 'Explore the Quadrilateral Family! Master the <strong>differences between a Rhombus and a Trapezium</strong>, solve <strong>missing angles in quadrilaterals ($360^\circ$ sum)</strong>, and learn how to construct <strong>circles ($r = d/2$) and shapes</strong>.',
+    renderContent: renderQuadrilateralsCirclesModule
   },
   clock_angles: {
     id: 'clock_angles',
@@ -1851,6 +1887,21 @@ const PRACTICE_POOL_TOPIC_1 = [
     correct: 0,
     explanation: 'Meeting points require a COMMON multiple! 12 is a multiple of 6 (6 × 2 = 12), but 12 is NOT a multiple of 9 (9, 18, 27...). The first time they meet is at LCM(6, 9) = 18 minutes (12:18 PM).',
     source: 'Deductive Thinking Master'
+  },
+  {
+    id: 'hcf_mult_prop',
+    skill: 'school_worksheet',
+    type: 'mcq',
+    question: 'What is the HCF of two numbers when the larger number is a multiple of the smaller number?',
+    options: [
+      'The smaller number',
+      'The larger number',
+      '1',
+      'Their product'
+    ],
+    correct: 0,
+    explanation: 'When the larger number is a multiple of the smaller number, the smaller number divides the larger number completely with zero remainder. Hence, the smaller number is itself the Highest Common Factor (e.g. HCF of 6 and 18 is 6)!',
+    source: 'Freedom International School Worksheet (Q 6)'
   }
 ];
 
@@ -2125,6 +2176,36 @@ const PRACTICE_POOL_TOPIC_2 = [
     correct: 0,
     explanation: 'To distribute equally among 9 schools with 0 left over, 2,520 must be divisible by 9. Sum of digits = 2 + 5 + 2 + 0 = 9. Since 9 ÷ 9 = 1 (remainder 0), 2,520 ÷ 9 = 280 books per school with exactly 0 left over!',
     source: 'CBSE Word Problem Application'
+  },
+  {
+    id: 'div_ws1',
+    skill: 'rule_6_12',
+    type: 'mcq',
+    question: 'Check whether 236,892 is divisible by 15 using divisibility rules:',
+    options: [
+      'No, because its last digit is 2 (not 0 or 5), so it is not divisible by 5, meaning it cannot divide by 15 (3 × 5).',
+      'Yes, because 2 + 3 + 6 + 8 + 9 + 2 = 30, and 30 is divisible by 15.',
+      'Yes, because 236,892 is an even number ending in 2.',
+      'No, because 236,892 is not divisible by 3.'
+    ],
+    correct: 0,
+    explanation: 'Co-Prime Factor Law for 15 (15 = 3 × 5, HCF=1): A number must be divisible by BOTH 3 and 5 to be divisible by 15! While sum of digits is 30 (divisible by 3), the last digit is 2, so it fails divisibility by 5. Therefore, 236,892 is NOT divisible by 15!',
+    source: 'Freedom International School Worksheet (Q 1)'
+  },
+  {
+    id: 'div_ws3',
+    skill: 'rule_4_8',
+    type: 'mcq',
+    question: 'Which of the following numbers are divisible by 4, 6 and 10 simultaneously: 12480, 98760, 24640, 13570?',
+    options: [
+      '12480 and 98760 only',
+      'All four numbers',
+      '24640 and 13570 only',
+      '98760 only'
+    ],
+    correct: 0,
+    explanation: '• Divisible by 10: Must end in 0 (all 4 do).\\n• Divisible by 4: Last 2 digits must divide by 4 (80: yes, 60: yes, 40: yes, 70: NO ➔ eliminates 13570).\\n• Divisible by 6: Must be even AND divisible by 3 (digit sum):\\n  - 12480: 1+2+4+8+0 = 15 (÷3 = 5, YES!)\\n  - 98760: 9+8+7+6+0 = 30 (÷3 = 10, YES!)\\n  - 24640: 2+4+6+4+0 = 16 (Not div by 3, NO).\\nTherefore, only 12480 and 98760 are divisible by 4, 6, and 10!',
+    source: 'Freedom International School Worksheet (Q 3)'
   }
 ];
 
@@ -2370,6 +2451,81 @@ const PRACTICE_POOL_TOPIC_3 = [
     correct: 0,
     explanation: 'Initial money = ₹100.\\nMoney spent on m chocolates at ₹8 each = 8m.\\nMoney left = Total − Spent = 100 − 8m.',
     source: 'CBSE Word Problem Application'
+  },
+  {
+    id: 'expr_q21',
+    skill: 'bracket_traps',
+    type: 'mcq',
+    question: 'Simplify using BODMAS: 28 + 45 ÷ 9 × 2 − 10',
+    options: ['28', '36', '18', '24'],
+    correct: 0,
+    explanation: 'Step 1 (Division): 45 ÷ 9 = 5 ➔ 28 + 5 × 2 − 10\\nStep 2 (Multiplication): 5 × 2 = 10 ➔ 28 + 10 − 10\\nStep 3 (Addition & Subtraction): 28 + 10 = 38, and 38 − 10 = 28!',
+    source: 'Freedom International School Worksheet (Q 9a)'
+  },
+  {
+    id: 'expr_q22',
+    skill: 'bracket_traps',
+    type: 'mcq',
+    question: 'Simplify using BODMAS: (48 − 35) × 2 + 30 ÷ 15',
+    options: ['28', '26', '30', '15'],
+    correct: 0,
+    explanation: 'Step 1 (Brackets first): 48 − 35 = 13 ➔ 13 × 2 + 30 ÷ 15\\nStep 2 (Multiply & Divide): 13 × 2 = 26, and 30 ÷ 15 = 2\\nStep 3 (Addition): 26 + 2 = 28!',
+    source: 'Freedom International School Worksheet (Q 9b)'
+  },
+  {
+    id: 'expr_q23',
+    skill: 'expr_to_statement',
+    type: 'mcq',
+    question: 'Write the numerical expression in words: (2 × 5) − 6',
+    options: [
+      '6 subtracted from the product of 2 and 5',
+      'The product of 2 and 5 subtracted from 6',
+      '2 multiplied by 5 minus 6 times 2',
+      'Difference of 6 and 10'
+    ],
+    correct: 0,
+    explanation: 'The brackets group (2 × 5) which is "the product of 2 and 5". Subtracting 6 means "6 subtracted from the product of 2 and 5".',
+    source: 'Freedom International School Worksheet (Q 12a)'
+  },
+  {
+    id: 'expr_q24',
+    skill: 'expr_to_statement',
+    type: 'mcq',
+    question: 'Write the numerical expression in words: (90 − 30) ÷ (30 − 20)',
+    options: [
+      'The quotient of the difference of 90 and 30, and the difference of 30 and 20',
+      'The product of 60 and 10',
+      '90 minus 30 divided by 30 minus 20 without brackets',
+      'The sum of 90 and 30 divided by 10'
+    ],
+    correct: 0,
+    explanation: '(90 − 30) is the difference of 90 and 30 (= 60). (30 − 20) is the difference of 30 and 20 (= 10). The division symbol represents their quotient: 60 ÷ 10 = 6.',
+    source: 'Freedom International School Worksheet (Q 12b)'
+  },
+  {
+    id: 'expr_q25',
+    skill: 'statement_to_expr',
+    type: 'mcq',
+    question: 'Write the numerical expression for: "The quotient of 45 and the sum of 2 and 3"',
+    options: ['45 ÷ (2 + 3)', '(45 ÷ 2) + 3', '45 × (2 + 3)', '(2 + 3) ÷ 45'],
+    correct: 0,
+    explanation: '"The sum of 2 and 3" is grouped as (2 + 3). The quotient of 45 and this sum means 45 divided by (2 + 3): 45 ÷ (2 + 3) = 45 ÷ 5 = 9.',
+    source: 'Freedom International School Worksheet (Q 13a)'
+  },
+  {
+    id: 'expr_q26',
+    skill: 'statement_to_expr',
+    type: 'mcq',
+    question: 'Write the numerical expression for: "The product of the sum of 56 and 4 and the difference of 11 and 10"',
+    options: [
+      '(56 + 4) × (11 − 10)',
+      '(56 + 4) + (11 − 10)',
+      '56 + 4 × 11 − 10',
+      '(56 − 4) × (11 + 10)'
+    ],
+    correct: 0,
+    explanation: '"Sum of 56 and 4" is (56 + 4) = 60. "Difference of 11 and 10" is (11 − 10) = 1. Their product is (56 + 4) × (11 − 10) = 60 × 1 = 60.',
+    source: 'Freedom International School Worksheet (Q 13b)'
   }
 ];
 
@@ -2476,6 +2632,21 @@ const PRACTICE_POOL_TOPIC_4 = [
     correct: 0,
     explanation: '36 is a square number (6 × 6 = 36) AND a triangular number (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 = 36)!',
     source: 'CBSE Math Olympiad'
+  },
+  {
+    id: 'pat_q_ws5',
+    skill: 'geom_numbers',
+    type: 'mcq',
+    question: 'Which sequence lists the first 10 triangular numbers correctly in order?',
+    options: [
+      '1, 3, 6, 10, 15, 21, 28, 36, 45, 55',
+      '1, 4, 9, 16, 25, 36, 49, 64, 81, 100',
+      '1, 2, 4, 8, 16, 32, 64, 128, 256, 512',
+      '3, 6, 9, 12, 15, 18, 21, 24, 27, 30'
+    ],
+    correct: 0,
+    explanation: 'Triangular numbers are generated by progressively adding natural numbers: 1, 1+2=3, 3+3=6, 6+4=10, 10+5=15, 15+6=21, 21+7=28, 28+8=36, 36+9=45, 45+10=55. (Note: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 are the first 10 square numbers).',
+    source: 'Freedom International School Worksheet (Q 5)'
   },
 
   // Category 3: Number Towers (Pyramids)
@@ -3081,6 +3252,182 @@ const PRACTICE_POOL_TOPIC_5 = [
     correct: 2,
     explanation: '5 hour gaps × 30° = 150°. Since 150° is between 90° and 180°, it is an Obtuse Angle.',
     source: 'CBSE Class 5 Clock Geometry'
+  },
+
+  // Category 5: triangles_polygons (Worksheet Q2, Q4)
+  {
+    id: 'geom_21',
+    skill: 'triangles_polygons',
+    type: 'mcq',
+    question: 'What is the sum of all the interior angles of a nonagon (a 9-sided polygon)?',
+    options: ['900°', '1080°', '1260°', '1440°'],
+    correct: 2,
+    explanation: 'The formula for the sum of interior angles of any n-sided polygon is (n − 2) × 180°. For a nonagon (n = 9): (9 − 2) × 180° = 7 × 180° = 1260°!',
+    source: 'Freedom International School Worksheet (Q 2)'
+  },
+  {
+    id: 'geom_22',
+    skill: 'triangles_polygons',
+    type: 'mcq',
+    question: 'A triangle has interior angles measuring 20°, 60°, and 100°. What type of triangle is it according to its angles?',
+    options: ['Acute-angled triangle', 'Right-angled triangle', 'Obtuse-angled triangle', 'Equilateral triangle'],
+    correct: 2,
+    explanation: 'Because one of the angles measures 100° (which is strictly greater than 90°), this is an Obtuse-angled triangle. (Notice: 20° + 60° + 100° = 180°).',
+    source: 'Freedom International School Worksheet (Q 4a)'
+  },
+  {
+    id: 'geom_23',
+    skill: 'triangles_polygons',
+    type: 'mcq',
+    question: 'A triangle has angles measuring 37°, 23°, and 120°. Write the type of triangle according to its angles:',
+    options: ['Acute-angled triangle', 'Right-angled triangle', 'Obtuse-angled triangle', 'Straight triangle'],
+    correct: 2,
+    explanation: 'Since 120° is greater than 90°, it contains an obtuse angle, making it an Obtuse-angled triangle. (37° + 23° + 120° = 180°).',
+    source: 'Freedom International School Worksheet (Q 4b)'
+  },
+  {
+    id: 'geom_24',
+    skill: 'triangles_polygons',
+    type: 'mcq',
+    question: 'Classify the type of triangle having angles: 55°, 45°, and 80°:',
+    options: ['Acute-angled triangle', 'Right-angled triangle', 'Obtuse-angled triangle', 'Scalene angle'],
+    correct: 0,
+    explanation: 'Every single angle (55°, 45°, and 80°) is strictly less than 90°. A triangle in which all three angles are acute (< 90°) is an Acute-angled triangle!',
+    source: 'Freedom International School Worksheet (Q 4c)'
+  },
+  {
+    id: 'geom_25',
+    skill: 'triangles_polygons',
+    type: 'mcq',
+    question: 'Write the type of triangle according to its angles: 25°, 65°, 90°:',
+    options: ['Acute-angled triangle', 'Right-angled triangle', 'Obtuse-angled triangle', 'Isosceles triangle'],
+    correct: 1,
+    explanation: 'One of the angles is exactly 90° (a right angle, forming a square corner ∟). Therefore, it is a Right-angled triangle!',
+    source: 'Freedom International School Worksheet (Q 4d)'
+  },
+  {
+    id: 'geom_26',
+    skill: 'triangles_polygons',
+    type: 'mcq',
+    question: 'Which formula gives the sum of all interior angles of a polygon with n sides?',
+    options: ['(n − 2) × 180°', '(n + 2) × 180°', 'n × 180°', '(n − 1) × 360°'],
+    correct: 0,
+    explanation: 'Connecting one vertex to all non-adjacent vertices divides any n-sided polygon into (n − 2) non-overlapping triangles. Since each triangle has 180°, the total sum is (n − 2) × 180°!',
+    source: 'CBSE Class 5 Polygon Theorem'
+  },
+  {
+    id: 'geom_27',
+    skill: 'triangles_polygons',
+    type: 'mcq',
+    question: 'What is the sum of all interior angles of an octagon (8 sides)?',
+    options: ['720°', '900°', '1080°', '1260°'],
+    correct: 2,
+    explanation: 'For an octagon (n = 8): Sum = (8 − 2) × 180° = 6 × 180° = 1080°.',
+    source: 'CBSE Class 5 Polygons'
+  },
+
+  // Category: foundations (Worksheet Q7)
+  {
+    id: 'geom_28',
+    skill: 'foundations',
+    type: 'mcq',
+    question: 'When we join three collinear points, we get a ______.',
+    options: ['Triangle', 'Straight line / Line segment', 'Circle', 'Right angle'],
+    correct: 1,
+    explanation: 'Collinear points lie on the exact same straight line! Joining them produces a straight line (or line segment). (Note: joining three non-collinear points forms a triangle!).',
+    source: 'Freedom International School Worksheet (Q 7)'
+  },
+
+  // Category 6: quadrilaterals_circles (Worksheet Q8, Q10, Q11)
+  {
+    id: 'geom_29',
+    skill: 'quadrilaterals_circles',
+    type: 'mcq',
+    question: 'Which of the following is a key difference between a rhombus and a trapezium?',
+    options: [
+      'A rhombus has 2 pairs of parallel sides and all 4 sides equal; a trapezium has only 1 pair of parallel sides.',
+      'A trapezium has all 4 sides equal; a rhombus does not.',
+      'A rhombus has 5 vertices; a trapezium has 4.',
+      'Both shapes have diagonals of equal length.'
+    ],
+    correct: 0,
+    explanation: 'A rhombus has all 4 sides of equal length and both pairs of opposite sides are parallel. A trapezium has only ONE pair of opposite sides parallel, and its sides are generally unequal!',
+    source: 'Freedom International School Worksheet (Q 8)'
+  },
+  {
+    id: 'geom_30',
+    skill: 'quadrilaterals_circles',
+    type: 'mcq',
+    question: 'At what angle do the diagonals of a rhombus intersect each other?',
+    options: ['45°', '60°', '90° (Right angle ⊥)', '180°'],
+    correct: 2,
+    explanation: 'The diagonals of a rhombus always bisect each other perpendicularly at an exact right angle (90° ⊥)! In contrast, the diagonals of a trapezium do not.',
+    source: 'Freedom International School Worksheet (Q 8)'
+  },
+  {
+    id: 'geom_31',
+    skill: 'quadrilaterals_circles',
+    type: 'mcq',
+    question: 'In a quadrilateral, three interior angles measure 85°, 110°, and 95°. Find the missing fourth angle:',
+    options: ['65°', '70°', '75°', '80°'],
+    correct: 1,
+    explanation: 'The sum of all four angles in any quadrilateral is always 360°. Sum of given angles = 85° + 110° + 95° = 290°. Therefore, the missing angle = 360° − 290° = 70°!',
+    source: 'Freedom International School Worksheet (Q 11a)'
+  },
+  {
+    id: 'geom_32',
+    skill: 'quadrilaterals_circles',
+    type: 'mcq',
+    question: 'In a parallelogram ABCD, angle A = 80°. What are the measures of angles B, C, and D?',
+    options: [
+      '∠B = 100°, ∠C = 80°, ∠D = 100°',
+      '∠B = 80°, ∠C = 100°, ∠D = 80°',
+      '∠B = 90°, ∠C = 90°, ∠D = 90°',
+      '∠B = 100°, ∠C = 100°, ∠D = 80°'
+    ],
+    correct: 0,
+    explanation: 'In a parallelogram: 1) Opposite angles are equal $\\implies$ ∠C = ∠A = 80°. 2) Adjacent angles are supplementary (sum to 180°) $\\implies$ ∠B = 180° − 80° = 100° and ∠D = 180° − 80° = 100°. (Total: 80° + 100° + 80° + 100° = 360°).',
+    source: 'Freedom International School Worksheet (Q 11b)'
+  },
+  {
+    id: 'geom_33',
+    skill: 'quadrilaterals_circles',
+    type: 'mcq',
+    question: 'To construct a circle with a diameter of 10 cm, to what radius should you set your compass?',
+    options: ['20 cm', '10 cm', '5 cm', '2.5 cm'],
+    correct: 2,
+    explanation: 'Radius is always half of diameter (Radius = Diameter ÷ 2). For a 10 cm diameter circle, set the compass radius to 10 ÷ 2 = 5 cm!',
+    source: 'Freedom International School Worksheet (Q 10b)'
+  },
+  {
+    id: 'geom_34',
+    skill: 'quadrilaterals_circles',
+    type: 'mcq',
+    question: 'What is the longest chord that can be drawn inside a circle?',
+    options: ['The radius', 'The diameter', 'The circumference', 'The arc'],
+    correct: 1,
+    explanation: 'A chord joins any two points on a circle. The chord passing through the center of the circle is the Diameter, and it is the longest chord possible in that circle!',
+    source: 'CBSE Class 5 Circle Geometry'
+  },
+  {
+    id: 'geom_35',
+    skill: 'clock_geometry',
+    type: 'mcq',
+    question: 'When constructing an angle of 135° with a protractor, what type of angle is drawn?',
+    options: ['Acute angle', 'Right angle', 'Obtuse angle', 'Straight angle'],
+    correct: 2,
+    explanation: 'An angle measuring between 90° and 180° is an Obtuse Angle. Since 135° is greater than 90° and less than 180°, it is an obtuse angle.',
+    source: 'Freedom International School Worksheet (Q 10d)'
+  },
+  {
+    id: 'geom_36',
+    skill: 'quadrilaterals_circles',
+    type: 'mcq',
+    question: 'A quadrilateral is constructed with length 8 cm and breadth 5 cm, with four 90° right angles. What is this quadrilateral called?',
+    options: ['Square', 'Rectangle', 'Rhombus', 'Trapezium'],
+    correct: 1,
+    explanation: 'A quadrilateral with opposite sides equal (length 8 cm, breadth 5 cm) and all four interior angles equal to 90° is a Rectangle!',
+    source: 'Freedom International School Worksheet (Q 10a)'
   }
 ];
 
@@ -3261,8 +3608,8 @@ const TOPICS_CONFIG = {
   },
   geometry_angles: {
     id: 'geometry_angles',
-    title: 'Geometry, Lines & Angles',
-    subtitle: 'CBSE Class 5 — Points, Lines, Rays, Relationships, Notations & Angles',
+    title: 'Geometry, Shapes & Angles',
+    subtitle: 'CBSE Class 5 — Points, Lines, Angles, Triangles, Quadrilaterals, Polygons & Circles',
     starsKey: 'cbse_maths_geometry_stars',
     sidebarStarId: 'stars-geometry',
     defaultLearnModule: 'geom_foundations',
@@ -3273,7 +3620,9 @@ const TOPICS_CONFIG = {
       { id: 'foundations', label: '📍 Points, Lines & Rays' },
       { id: 'line_relationships', label: '🛤️ Parallel & Perpendicular' },
       { id: 'angle_types', label: '📐 Angle Types & Symbols' },
-      { id: 'clock_geometry', label: '⏰ Clock Hands & Real-Life' }
+      { id: 'triangles_polygons', label: '🔺 Triangles & Polygon Sums' },
+      { id: 'quadrilaterals_circles', label: '⬠ Quadrilaterals & Circles' },
+      { id: 'clock_geometry', label: '⏰ Clock Hands & Constructions' }
     ],
     challengePool: CHALLENGE_QUESTIONS_TOPIC_5,
     worksheetRenderer: renderWorksheetViewTopic5
@@ -6323,6 +6672,572 @@ function renderClockAnglesModule(container) {
   render();
 }
 
+/* Topic 5 - Module 5: Triangles Classification & Polygon Interior Angle Sum Theorem */
+function renderTrianglesPolygonsModule(container) {
+  let activePresetId = 'ws_1'; // 'ws_1' | 'ws_2' | 'ws_3' | 'ws_4' | 'equi' | 'iso_rt'
+  let activePolySides = 9; // Nonagon by default! (Worksheet Q2)
+
+  function render() {
+    const preset = TRIANGLE_PRESETS.find(p => p.id === activePresetId) || TRIANGLE_PRESETS[0];
+    const poly = POLYGON_DATA.find(p => p.sides === activePolySides) || POLYGON_DATA[6]; // Nonagon
+
+    // Calculate dynamic polygon points for SVG triangulation
+    const pcx = 110, pcy = 110, pr = 80;
+    const polyPts = [];
+    for (let i = 0; i < activePolySides; i++) {
+      const a = (2 * Math.PI * i / activePolySides) - Math.PI / 2;
+      polyPts.push([Math.round(pcx + pr * Math.cos(a)), Math.round(pcy + pr * Math.sin(a))]);
+    }
+    const polyPointsStr = polyPts.map(pt => pt.join(',')).join(' ');
+
+    // Diagonals from Vertex 0 to create (n - 2) triangles
+    const diagonals = [];
+    for (let i = 2; i < activePolySides - 1; i++) {
+      diagonals.push({
+        x1: polyPts[0][0],
+        y1: polyPts[0][1],
+        x2: polyPts[i][0],
+        y2: polyPts[i][1]
+      });
+    }
+
+    container.innerHTML = `
+      <div class="learn-container">
+        <!-- Part A: Triangle Classifier Studio -->
+        <div class="learn-card">
+          <div class="learn-card-header">
+            <div>
+              <h3>🔺 Triangle Classifier: Types by Angles & Sides</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                Every triangle's 3 interior angles must add up to exactly 180°!
+              </p>
+            </div>
+            <div class="angle-badge ${preset.badge}" style="font-size: 0.95rem; padding: 0.35rem 0.85rem;">
+              ${preset.type}
+            </div>
+          </div>
+
+          <div style="margin: 0.75rem 0;">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">
+              Worksheet Presets (Term I Q4):
+            </span>
+            <div class="triangle-preset-chips">
+              ${TRIANGLE_PRESETS.map(p => `
+                <button class="preset-chip ${p.id === activePresetId ? 'active' : ''}" data-tri-id="${p.id}">
+                  [${p.angles.join('°, ')}°] ➔ ${p.type.split(' ')[0]}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Triangle Showcase & Step Reasoning -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; align-items: center; margin: 1rem 0;">
+            <div class="geom-canvas-box" style="flex-direction: column; padding: 1.25rem;">
+              <svg width="240" height="150" viewBox="0 0 240 150">
+                ${preset.badge === 'right' ? `
+                  <!-- Right-angled triangle -->
+                  <polygon points="40,120 200,120 40,30" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="3" />
+                  <!-- Right angle corner marker -->
+                  <rect x="40" y="100" width="20" height="20" fill="none" stroke="#fcd34d" stroke-width="2" />
+                  <text x="25" y="125" fill="#ffffff" font-size="12" font-weight="bold">A</text>
+                  <text x="205" y="125" fill="#ffffff" font-size="12" font-weight="bold">B</text>
+                  <text x="25" y="25" fill="#ffffff" font-size="12" font-weight="bold">C</text>
+                  <text x="65" y="112" fill="#fcd34d" font-size="11" font-weight="bold">${preset.angles[2]}° ∟</text>
+                  <text x="160" y="112" fill="#94a3b8" font-size="10">${preset.angles[0]}°</text>
+                  <text x="50" y="55" fill="#94a3b8" font-size="10">${preset.angles[1]}°</text>
+                ` : (preset.badge === 'obtuse' ? `
+                  <!-- Obtuse-angled triangle -->
+                  <polygon points="30,120 210,120 100,45" fill="rgba(168, 85, 247, 0.15)" stroke="#c084fc" stroke-width="3" />
+                  <text x="15" y="125" fill="#ffffff" font-size="12" font-weight="bold">A</text>
+                  <text x="215" y="125" fill="#ffffff" font-size="12" font-weight="bold">B</text>
+                  <text x="100" y="35" fill="#ffffff" font-size="12" font-weight="bold">C</text>
+                  <text x="55" y="115" fill="#d8b4fe" font-size="11" font-weight="bold">${preset.angles[2]}°</text>
+                  <text x="180" y="115" fill="#94a3b8" font-size="10">${preset.angles[0]}°</text>
+                  <text x="105" y="65" fill="#94a3b8" font-size="10">${preset.angles[1]}°</text>
+                ` : `
+                  <!-- Acute-angled triangle -->
+                  <polygon points="40,120 200,120 120,30" fill="rgba(16, 185, 129, 0.15)" stroke="#34d399" stroke-width="3" />
+                  <text x="25" y="125" fill="#ffffff" font-size="12" font-weight="bold">A</text>
+                  <text x="205" y="125" fill="#ffffff" font-size="12" font-weight="bold">B</text>
+                  <text x="120" y="22" fill="#ffffff" font-size="12" font-weight="bold">C</text>
+                  <text x="55" y="115" fill="#6ee7b7" font-size="11">${preset.angles[0]}°</text>
+                  <text x="175" y="115" fill="#6ee7b7" font-size="11">${preset.angles[1]}°</text>
+                  <text x="115" y="55" fill="#6ee7b7" font-size="11">${preset.angles[2]}°</text>
+                `)}
+              </svg>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center;">
+                Angle Sum: ${preset.angles[0]}° + ${preset.angles[1]}° + ${preset.angles[2]}° = <strong>180°</strong>
+              </div>
+            </div>
+
+            <!-- Mathematical Reasoning Card -->
+            <div style="background: rgba(0,0,0,0.3); border-radius: var(--radius-md); padding: 1.2rem; border-left: 4px solid var(--accent-indigo);">
+              <h4 style="color: var(--accent-amber-light); margin-bottom: 0.5rem;">Diagnostic Classification:</h4>
+              <p style="font-size: 0.95rem; color: #f8fafc; line-height: 1.5;">
+                ${preset.reason}
+              </p>
+              <div style="margin-top: 0.75rem; font-size: 0.85rem; color: #94a3b8; line-height: 1.45;">
+                • <strong>Acute:</strong> All 3 angles &lt; 90°
+                <br>• <strong>Right:</strong> Exactly one 90° angle (∟)
+                <br>• <strong>Obtuse:</strong> Exactly one angle &gt; 90°
+                <br>• <strong>Rule:</strong> Can a triangle have two right angles or two obtuse angles? <strong>NEVER!</strong> (Sum would exceed 180°).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Part B: Polygons & The Interior Angle Sum Theorem -->
+        <div class="learn-card" style="margin-top: 1.5rem;">
+          <div class="learn-card-header">
+            <div>
+              <h3>⬡ The Polygon Interior Angle Sum Theorem</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                Worksheet Q2: Interior angle sum of a polygon with n sides is <strong>(n − 2) × 180°</strong>
+              </p>
+            </div>
+            <div class="badge badge-active" style="font-size: 0.85rem;">
+              Formula: (n − 2) × 180°
+            </div>
+          </div>
+
+          <!-- Polygon Selector Pills -->
+          <div class="poly-selector-grid">
+            ${POLYGON_DATA.map(p => `
+              <button class="poly-pill ${p.sides === activePolySides ? 'active' : ''}" data-poly-sides="${p.sides}">
+                ${p.name} (${p.sides} sides) ${p.sides === 9 ? '⭐ Q2' : ''}
+              </button>
+            `).join('')}
+          </div>
+
+          <!-- Dynamic Polygon Triangulation Studio -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; align-items: center; margin: 1rem 0;">
+            <div class="geom-canvas-box" style="flex-direction: column; padding: 1rem;">
+              <svg width="220" height="220" viewBox="0 0 220 220">
+                <!-- Polygon shape -->
+                <polygon points="${polyPointsStr}" fill="rgba(99, 102, 241, 0.12)" stroke="#818cf8" stroke-width="3" />
+                
+                <!-- Triangulation diagonals from vertex 0 -->
+                ${diagonals.map(d => `
+                  <line x1="${d.x1}" y1="${d.y1}" x2="${d.x2}" y2="${d.y2}" stroke="#f59e0b" stroke-width="1.8" stroke-dasharray="4,4" />
+                `).join('')}
+
+                <!-- Vertices dots -->
+                ${polyPts.map((pt, idx) => `
+                  <circle cx="${pt[0]}" cy="${pt[1]}" r="4.5" fill="${idx === 0 ? '#ef4444' : '#38bdf8'}" />
+                  <text x="${pt[0]}" y="${pt[1] < 110 ? pt[1] - 8 : pt[1] + 16}" fill="#ffffff" font-size="10" font-weight="bold" text-anchor="middle">
+                    ${idx === 0 ? 'V1' : `V${idx + 1}`}
+                  </text>
+                `).join('')}
+              </svg>
+              <div style="font-size: 0.8rem; color: #f59e0b; margin-top: 0.4rem; text-align: center;">
+                Dashed lines: ${poly.triangles} non-overlapping triangles connecting from V1!
+              </div>
+            </div>
+
+            <!-- Calculation Card -->
+            <div class="poly-calc-card">
+              <div style="font-size: 0.78rem; color: var(--accent-amber-light); text-transform: uppercase; font-weight: 700;">
+                Calculation for ${poly.name} (${poly.sides} sides):
+              </div>
+              <div style="font-size: 1.6rem; font-weight: 800; color: #ffffff; margin: 0.35rem 0;">
+                Sum = (${poly.sides} − 2) × 180° = ${poly.sum}°
+              </div>
+              <div style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; margin-top: 0.5rem;">
+                • Number of sides (n): <strong>${poly.sides}</strong>
+                <br>• Triangles formed from one vertex (n − 2): <strong>${poly.triangles} triangles</strong>
+                <br>• Angle sum per triangle: <strong>180°</strong>
+                <br>• Total sum: <strong>${poly.triangles} × 180° = <span style="color: var(--accent-emerald-light); font-size: 1.1rem; font-weight: 800;">${poly.sum}°</span></strong>
+              </div>
+              ${poly.sides === 9 ? `
+                <div style="margin-top: 0.85rem; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 8px; padding: 0.65rem; font-size: 0.85rem; color: #fef08a;">
+                  🎯 <strong>Direct Worksheet Solution (Q2):</strong><br>
+                  "Find the sum of all the interior angles of a nonagon."<br>
+                  A nonagon has 9 sides $\\implies$ Sum = (9 − 2) × 180° = 7 × 180° = <strong>1260°</strong>!
+                </div>
+              ` : ''}
+            </div>
+          </div>
+
+          <!-- Master Polygons Table -->
+          <div class="diff-table-wrap">
+            <table class="diff-table">
+              <thead>
+                <tr>
+                  <th>Polygon Name</th>
+                  <th>Number of Sides (n)</th>
+                  <th>Triangles (n − 2)</th>
+                  <th>Interior Angle Sum</th>
+                  <th>Real-World Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${POLYGON_DATA.map(p => `
+                  <tr style="${p.sides === activePolySides ? 'background: rgba(99, 102, 241, 0.18); font-weight: bold;' : ''}">
+                    <td style="color: #ffffff;">${p.name} ${p.sides === 9 ? '⭐ (Worksheet Q2)' : ''}</td>
+                    <td>${p.sides}</td>
+                    <td>${p.triangles}</td>
+                    <td style="color: var(--accent-emerald-light); font-weight: 700;">${p.sum}°</td>
+                    <td style="color: var(--text-muted); font-size: 0.82rem;">${p.example}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Attach click listeners for triangle presets
+    container.querySelectorAll('.preset-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playClickSound();
+        activePresetId = btn.getAttribute('data-tri-id');
+        render();
+      });
+    });
+
+    // Attach click listeners for polygon sides
+    container.querySelectorAll('.poly-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playClickSound();
+        activePolySides = parseInt(btn.getAttribute('data-poly-sides'));
+        render();
+      });
+    });
+  }
+
+  render();
+}
+
+/* Topic 5 - Module 6: Quadrilaterals, Rhombus vs Trapezium & Circles */
+function renderQuadrilateralsCirclesModule(container) {
+  let activeQuadTab = 'rhombus_trapezium'; // 'rhombus_trapezium' | 'missing_angles' | 'circles_constructions'
+
+  function render() {
+    let tabContent = '';
+
+    if (activeQuadTab === 'rhombus_trapezium') {
+      tabContent = `
+        <!-- TAB 1: Rhombus vs Trapezium -->
+        <div class="learn-card">
+          <div class="learn-card-header">
+            <div>
+              <h3>⚖️ Rhombus vs. Trapezium: Key Differences</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                Freedom International School Worksheet Q8: Master the essential differences
+              </p>
+            </div>
+          </div>
+
+          <!-- Visual Comparison Cards -->
+          <div class="quad-grid">
+            <!-- Rhombus Card -->
+            <div class="quad-item-card highlight">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h4 style="color: var(--accent-amber-light);">🔶 Rhombus (Equilateral Parallelogram)</h4>
+                <span class="badge badge-active">All 4 Sides Equal</span>
+              </div>
+              <div class="geom-canvas-box" style="margin: 0.5rem 0;">
+                <svg width="200" height="130" viewBox="0 0 200 130">
+                  <!-- Rhombus: diamond -->
+                  <polygon points="100,15 170,65 100,115 30,65" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="2.5" />
+                  <!-- Diagonals meeting at 90 deg -->
+                  <line x1="100" y1="15" x2="100" y2="115" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="3,3" />
+                  <line x1="30" y1="65" x2="170" y2="65" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="3,3" />
+                  <rect x="100" y="65" width="10" height="10" fill="none" stroke="#fcd34d" stroke-width="1.5" />
+                  <text x="95" y="10" fill="#ffffff" font-size="11" font-weight="bold">A</text>
+                  <text x="175" y="68" fill="#ffffff" font-size="11" font-weight="bold">B</text>
+                  <text x="95" y="126" fill="#ffffff" font-size="11" font-weight="bold">C</text>
+                  <text x="18" y="68" fill="#ffffff" font-size="11" font-weight="bold">D</text>
+                  <text x="105" y="60" fill="#38bdf8" font-size="9">90° ∟</text>
+                </svg>
+              </div>
+              <div style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.45;">
+                • <strong>Sides:</strong> All 4 sides equal (AB = BC = CD = DA).
+                <br>• <strong>Parallel pairs:</strong> <strong>Both pairs</strong> of opposite sides are parallel (AB ∥ CD and AD ∥ BC).
+                <br>• <strong>Diagonals:</strong> Bisect each other at <strong>right angles (90° ⊥)</strong>!
+                <br>• <strong>Opposite angles:</strong> Equal (∠A = ∠C, ∠B = ∠D).
+              </div>
+            </div>
+
+            <!-- Trapezium Card -->
+            <div class="quad-item-card">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h4 style="color: #60a5fa;">⏢ Trapezium</h4>
+                <span class="badge" style="background: rgba(59, 130, 246, 0.2); color: #93c5fd;">Only 1 Pair Parallel</span>
+              </div>
+              <div class="geom-canvas-box" style="margin: 0.5rem 0;">
+                <svg width="200" height="130" viewBox="0 0 200 130">
+                  <!-- Trapezium -->
+                  <polygon points="60,25 140,25 180,105 20,105" fill="rgba(59, 130, 246, 0.15)" stroke="#60a5fa" stroke-width="2.5" />
+                  <!-- Parallel marks on top and bottom -->
+                  <line x1="95" y1="20" x2="105" y2="25" stroke="#fcd34d" stroke-width="2" />
+                  <line x1="95" y1="30" x2="105" y2="25" stroke="#fcd34d" stroke-width="2" />
+                  <line x1="95" y1="100" x2="105" y2="105" stroke="#fcd34d" stroke-width="2" />
+                  <line x1="95" y1="110" x2="105" y2="105" stroke="#fcd34d" stroke-width="2" />
+                  <text x="50" y="20" fill="#ffffff" font-size="11" font-weight="bold">A</text>
+                  <text x="145" y="20" fill="#ffffff" font-size="11" font-weight="bold">B</text>
+                  <text x="185" y="110" fill="#ffffff" font-size="11" font-weight="bold">C</text>
+                  <text x="8" y="110" fill="#ffffff" font-size="11" font-weight="bold">D</text>
+                  <text x="75" y="65" fill="#fcd34d" font-size="10">AB ∥ DC only</text>
+                </svg>
+              </div>
+              <div style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.45;">
+                • <strong>Sides:</strong> Sides are generally <strong>unequal</strong> in length.
+                <br>• <strong>Parallel pairs:</strong> <strong>Only ONE pair</strong> of opposite sides is parallel (AB ∥ DC). The other pair (AD, BC) is non-parallel.
+                <br>• <strong>Diagonals:</strong> Do <strong>NOT</strong> bisect each other at right angles.
+                <br>• <strong>Opposite angles:</strong> Generally not equal.
+              </div>
+            </div>
+          </div>
+
+          <!-- Master Difference Table (Worksheet Q8 Direct Answer) -->
+          <div class="diff-table-wrap">
+            <table class="diff-table">
+              <thead>
+                <tr>
+                  <th>Comparison Property</th>
+                  <th style="color: var(--accent-amber-light);">🔶 Rhombus</th>
+                  <th style="color: #93c5fd;">⏢ Trapezium</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. Parallel Sides</strong></td>
+                  <td style="color: var(--accent-emerald-light);"><strong>Two pairs</strong> of parallel sides (AB ∥ CD and AD ∥ BC)</td>
+                  <td style="color: #f87171;"><strong>Only one pair</strong> of parallel sides (AB ∥ CD)</td>
+                </tr>
+                <tr>
+                  <td><strong>2. Side Lengths</strong></td>
+                  <td style="color: var(--accent-emerald-light);"><strong>All 4 sides are equal</strong> in length</td>
+                  <td style="color: #cbd5e1;">Sides are generally <strong>unequal</strong> in length</td>
+                </tr>
+                <tr>
+                  <td><strong>3. Diagonals Intersection</strong></td>
+                  <td style="color: var(--accent-emerald-light);">Diagonals <strong>bisect each other at 90° (perpendicular)</strong></td>
+                  <td style="color: #cbd5e1;">Diagonals do <strong>not</strong> bisect at 90°</td>
+                </tr>
+                <tr>
+                  <td><strong>4. Opposite Angles</strong></td>
+                  <td style="color: var(--accent-emerald-light);">Opposite angles are <strong>equal</strong> (∠A = ∠C, ∠B = ∠D)</td>
+                  <td style="color: #cbd5e1;">Opposite angles are generally <strong>not equal</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    } else if (activeQuadTab === 'missing_angles') {
+      tabContent = `
+        <!-- TAB 2: Missing Angle Solver -->
+        <div class="learn-card">
+          <div class="learn-card-header">
+            <div>
+              <h3>📐 Missing Angles in Quadrilaterals & Parallelograms</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                Theorem: The sum of all four interior angles of a quadrilateral is <strong>always 360°</strong>
+              </p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1rem 0;">
+            <!-- Example 1: General Quadrilateral (Worksheet Q11a) -->
+            <div class="poly-calc-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <h4 style="color: var(--accent-amber-light);">Worksheet Q11(a): Find '?'</h4>
+                <span class="badge badge-active">360° Rule</span>
+              </div>
+              <div class="geom-canvas-box" style="margin-bottom: 0.75rem;">
+                <svg width="220" height="130" viewBox="0 0 220 130">
+                  <polygon points="60,30 170,20 150,110 30,100" fill="rgba(16, 185, 129, 0.12)" stroke="#34d399" stroke-width="2.5" />
+                  <text x="65" y="45" fill="#fcd34d" font-size="11" font-weight="bold">110°</text>
+                  <text x="145" y="40" fill="#f43f5e" font-size="14" font-weight="extrabold">?</text>
+                  <text x="125" y="100" fill="#fcd34d" font-size="11" font-weight="bold">95°</text>
+                  <text x="45" y="92" fill="#fcd34d" font-size="11" font-weight="bold">85°</text>
+                </svg>
+              </div>
+              <div style="background: rgba(0,0,0,0.3); padding: 0.85rem; border-radius: 8px; font-size: 0.9rem; line-height: 1.5;">
+                <strong>Step 1:</strong> Sum of known angles:
+                <br><code>85° + 110° + 95° = 290°</code>
+                <br><strong>Step 2:</strong> Subtract from 360°:
+                <br><code>? = 360° − 290° = <span style="color: var(--accent-emerald-light); font-weight: 800; font-size: 1.1rem;">70°</span></code>
+              </div>
+            </div>
+
+            <!-- Example 2: Parallelogram ABCD (Worksheet Q11b) -->
+            <div class="poly-calc-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <h4 style="color: #38bdf8;">Worksheet Q11(b): Parallelogram Angles</h4>
+                <span class="badge" style="background: rgba(56, 189, 248, 0.2); color: #7dd3fc;">Opposite Equal</span>
+              </div>
+              <div class="geom-canvas-box" style="margin-bottom: 0.75rem;">
+                <svg width="220" height="130" viewBox="0 0 220 130">
+                  <polygon points="60,25 180,25 140,105 20,105" fill="rgba(56, 189, 248, 0.12)" stroke="#38bdf8" stroke-width="2.5" />
+                  <text x="12" y="100" fill="#fcd34d" font-size="11" font-weight="bold">A: 80°</text>
+                  <text x="145" y="100" fill="#ffffff" font-size="11" font-weight="bold">B: 100°</text>
+                  <text x="185" y="30" fill="#fcd34d" font-size="11" font-weight="bold">C: 80°</text>
+                  <text x="50" y="20" fill="#ffffff" font-size="11" font-weight="bold">D: 100°</text>
+                </svg>
+              </div>
+              <div style="background: rgba(0,0,0,0.3); padding: 0.85rem; border-radius: 8px; font-size: 0.9rem; line-height: 1.5;">
+                <strong>Given:</strong> ∠A = 80°.
+                <br>• <strong>Opposite angles equal:</strong> ∠C = ∠A = <span style="color: #fcd34d; font-weight: 700;">80°</span>
+                <br>• <strong>Adjacent angles supplementary (180°):</strong>
+                <br>∠B = 180° − 80° = <span style="color: var(--accent-emerald-light); font-weight: 700;">100°</span>
+                <br>∠D = 180° − 80° = <span style="color: var(--accent-emerald-light); font-weight: 700;">100°</span>
+                <br>• <strong>Check Sum:</strong> 80° + 100° + 80° + 100° = <strong>360°</strong> ✓
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      tabContent = `
+        <!-- TAB 3: Circles & Constructions -->
+        <div class="learn-card">
+          <div class="learn-card-header">
+            <div>
+              <h3>⭕ Circles Anatomy & Geometric Constructions</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+                Master Radius vs Diameter and step-by-step constructions (Worksheet Q10)
+              </p>
+            </div>
+          </div>
+
+          <!-- Circle Anatomy Banner -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin: 1rem 0;">
+            <div class="geom-canvas-box">
+              <svg width="200" height="150" viewBox="0 0 200 150">
+                <!-- Circle -->
+                <circle cx="100" cy="75" r="60" fill="rgba(244, 63, 94, 0.1)" stroke="#f43f5e" stroke-width="2.5" />
+                <!-- Center O -->
+                <circle cx="100" cy="75" r="4" fill="#ffffff" />
+                <text x="92" y="70" fill="#ffffff" font-size="11" font-weight="bold">O</text>
+                <!-- Diameter AB -->
+                <line x1="40" y1="75" x2="160" y2="75" stroke="#38bdf8" stroke-width="2" />
+                <text x="25" y="79" fill="#38bdf8" font-size="10" font-weight="bold">A</text>
+                <text x="165" y="79" fill="#38bdf8" font-size="10" font-weight="bold">B</text>
+                <!-- Radius OC -->
+                <line x1="100" y1="75" x2="142" y2="33" stroke="#fcd34d" stroke-width="2" />
+                <text x="146" y="30" fill="#fcd34d" font-size="10" font-weight="bold">C</text>
+                <!-- Chord DE -->
+                <line x1="55" y1="117" x2="145" y2="117" stroke="#a78bfa" stroke-width="1.8" stroke-dasharray="3,3" />
+                <text x="85" y="130" fill="#a78bfa" font-size="9">Chord DE</text>
+              </svg>
+            </div>
+
+            <div style="background: rgba(0,0,0,0.3); border-radius: var(--radius-md); padding: 1rem; font-size: 0.9rem; line-height: 1.5;">
+              <div style="color: var(--accent-amber-light); font-weight: 700; margin-bottom: 0.35rem;">Core Circle Formulas:</div>
+              • <strong>Radius (r):</strong> Distance from center O to boundary.
+              <br>• <strong>Diameter (d):</strong> Longest chord passing through center = <strong>2 × r</strong>
+              <br>• <strong>The Golden Rule:</strong> <code>Radius = Diameter ÷ 2</code>
+              <br>• <strong>Chord:</strong> Any line segment joining two points on the circle.
+              <br>• <strong>Circumference:</strong> The perimeter / outer boundary of the circle.
+            </div>
+          </div>
+
+          <!-- Step-by-Step Construction Guides (Worksheet Q10) -->
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">CBSE Exam Constructions Step-by-Step:</h4>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+            <!-- Circle Construction (Q10b) -->
+            <div class="quad-item-card">
+              <div style="font-weight: 700; color: #f43f5e;">1. Circle with Diameter 10 cm (Q10b)</div>
+              <div class="construction-step-item">
+                <div class="step-circle-num">1</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">Calculate radius: <strong>r = 10 cm ÷ 2 = 5 cm</strong>.</div>
+              </div>
+              <div class="construction-step-item">
+                <div class="step-circle-num">2</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">Open your compass to exactly <strong>5 cm</strong> against a ruler.</div>
+              </div>
+              <div class="construction-step-item">
+                <div class="step-circle-num">3</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">Mark center point O on paper with a sharp pencil.</div>
+              </div>
+              <div class="construction-step-item">
+                <div class="step-circle-num">4</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">Place needle on O and rotate 360° to draw the circle.</div>
+              </div>
+            </div>
+
+            <!-- Rectangle Construction (Q10a) -->
+            <div class="quad-item-card">
+              <div style="font-weight: 700; color: #34d399;">2. Quadrilateral 8 cm × 5 cm (Rectangle Q10a)</div>
+              <div class="construction-step-item">
+                <div class="step-circle-num">1</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">Draw base segment <strong>AB = 8 cm</strong> with a ruler.</div>
+              </div>
+              <div class="construction-step-item">
+                <div class="step-circle-num">2</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">At A and B, construct <strong>90° right angles (perpendiculars)</strong> using protractor.</div>
+              </div>
+              <div class="construction-step-item">
+                <div class="step-circle-num">3</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">Measure <strong>5 cm</strong> along each perpendicular to mark D and C.</div>
+              </div>
+              <div class="construction-step-item">
+                <div class="step-circle-num">4</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">Join CD = 8 cm to complete rectangle ABCD.</div>
+              </div>
+            </div>
+
+            <!-- Angle 135° Construction (Q10d) -->
+            <div class="quad-item-card">
+              <div style="font-weight: 700; color: #a78bfa;">3. Construct Angle of 135° (Q10d)</div>
+              <div class="construction-step-item">
+                <div class="step-circle-num">1</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">Draw initial ray <strong>OA (→)</strong> with a ruler.</div>
+              </div>
+              <div class="construction-step-item">
+                <div class="step-circle-num">2</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">Place protractor center at vertex O and baseline over ray OA.</div>
+              </div>
+              <div class="construction-step-item">
+                <div class="step-circle-num">3</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">Follow scale from 0° past 90° to mark <strong>135°</strong>.</div>
+              </div>
+              <div class="construction-step-item">
+                <div class="step-circle-num">4</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">Join O to mark as ray OB. ∠AOB = 135° (<strong>Obtuse Angle</strong>).</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    container.innerHTML = `
+      <div class="learn-container">
+        <!-- Subnav for Module 6 -->
+        <div class="learn-subnav" style="margin-bottom: 1.25rem;">
+          <button class="learn-pill ${activeQuadTab === 'rhombus_trapezium' ? 'active' : ''}" data-qtab="rhombus_trapezium">
+            ⚖️ Rhombus vs Trapezium (Q8)
+          </button>
+          <button class="learn-pill ${activeQuadTab === 'missing_angles' ? 'active' : ''}" data-qtab="missing_angles">
+            📐 Missing Angle Solver (Q11)
+          </button>
+          <button class="learn-pill ${activeQuadTab === 'circles_constructions' ? 'active' : ''}" data-qtab="circles_constructions">
+            ⭕ Circles & Constructions (Q10)
+          </button>
+        </div>
+
+        ${tabContent}
+      </div>
+    `;
+
+    // Attach listeners for tab switching
+    container.querySelectorAll('[data-qtab]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playClickSound();
+        activeQuadTab = btn.getAttribute('data-qtab');
+        render();
+      });
+    });
+  }
+
+  render();
+}
+
 /* --------------------------------------------------------------------------
    PRACTICE MODE RENDERER
    -------------------------------------------------------------------------- */
@@ -6960,9 +7875,9 @@ function renderWorksheetViewTopic5(container) {
       <div class="learn-card">
         <div class="learn-card-header">
           <div>
-            <h3>📄 CBSE Class 5 Practice Sheet: Geometry, Lines & Angles</h3>
+            <h3>📄 Freedom International School — Revision Worksheet (Term I)</h3>
             <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
-              Class V Mathematics — Points, Lines, Rays, Relationships (∥, ⊥), Angle Types & Clock Hands
+              Class V Mathematics — Geometry, Triangles, Quadrilaterals, Polygons, BODMAS Expressions & Divisibility Rules
             </p>
           </div>
           <button class="btn btn-primary" id="btn-print-action-t5">
@@ -6971,39 +7886,60 @@ function renderWorksheetViewTopic5(container) {
         </div>
 
         <div class="worksheet-preview">
-          <h4 style="color: var(--accent-amber-light); margin-bottom: 0.75rem;">I. Basic Concepts & Notations (Fill in the Blanks):</h4>
-          <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
-            <li>A _____________________ has 2 fixed endpoints and can be measured with a ruler.</li>
-            <li>A ray has exactly _____________________ starting endpoint called its origin.</li>
-            <li>A line extends endlessly in _____________________ directions and has _____________________ endpoints.</li>
-            <li>Three or more points that lie on the exact same straight line are called _____________________ points.</li>
-            <li>In the angle denoted as ∠ABC, point _____________________ is the vertex.</li>
+          <h4 style="color: var(--accent-amber-light); margin-bottom: 0.75rem;">I. Numbers, Divisibility Rules & Factors:</h4>
+          <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><strong>Divisibility by 15:</strong> Check the divisibility of <code>37,42,582</code> by 15. Give clear reasons without doing long division.</li>
+            <li><strong>Simultaneous Divisibility:</strong> Check which among the following numbers are divisible by 4, 6, and 10 simultaneously:
+              <br>a) 12,480 &nbsp;&nbsp;&nbsp;&nbsp; b) 98,760 &nbsp;&nbsp;&nbsp;&nbsp; c) 75,310
+            </li>
+            <li><strong>HCF Property:</strong> If one number is a multiple of another number (e.g., 7 and 35), what will be their HCF? Explain with an example.</li>
+            <li><strong>Square & Triangular Sequences:</strong> List the first 10:
+              <br>a) Square numbers: ____________________________________________________________________
+              <br>b) Triangular numbers: ________________________________________________________________
+            </li>
           </ol>
 
-          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">II. Line Relationships (Identify the Relationship):</h4>
-          <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
-            <li>Railway track rails never meet. They are _____________________ lines (Symbol: _________).</li>
-            <li>Adjacent sides of a rectangular sheet of paper form an angle of 90°. They are _____________________ lines (Symbol: _________).</li>
-            <li>Lines that cross each other at a single common point are called _____________________ lines.</li>
-            <li>The spokes of a bicycle wheel meeting at the central axle are _____________________ lines.</li>
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">II. Polygons, Triangles & Lines:</h4>
+          <ol start="5" style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><strong>Collinear Points:</strong> What geometric figure or shape do you get by joining 3 collinear points? What if they are non-collinear?</li>
+            <li><strong>Nonagon Interior Angle Sum:</strong> Find the sum of interior angles of a nonagon (a polygon with 9 sides). Show the triangulation formula $(n - 2) \times 180^\circ$.</li>
+            <li><strong>Triangle Classification by Angles:</strong> Classify the following triangles as Acute-angled, Right-angled, or Obtuse-angled:
+              <br>a) 20°, 60°, 100° &nbsp; &rarr; _____________________________
+              <br>b) 37°, 23°, 120° &nbsp; &rarr; _____________________________
+              <br>c) 55°, 45°, 80° &nbsp;&nbsp;&nbsp; &rarr; _____________________________
+              <br>d) 25°, 65°, 90° &nbsp;&nbsp;&nbsp; &rarr; _____________________________
+            </li>
           </ol>
 
-          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">III. Classify the Following Angles:</h4>
-          <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
-            <li>45° : _________________________________</li>
-            <li>90° : _________________________________</li>
-            <li>120° : _________________________________</li>
-            <li>180° : _________________________________</li>
-            <li>260° : _________________________________</li>
-            <li>89° : _________________________________</li>
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">III. Quadrilaterals & Unknown Angles:</h4>
+          <ol start="8" style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><strong>Rhombus vs. Trapezium:</strong> State three main geometric differences between a Rhombus and a Trapezium (consider side lengths, parallel pairs, and diagonals).</li>
+            <li><strong>Missing Quadrilateral Angle:</strong> Three angles of a quadrilateral are 85°, 110°, and 95°. Find the measure of the fourth angle (Sum = 360°).</li>
+            <li><strong>Parallelogram Opposite Angles:</strong> In a parallelogram ABCD, if &ang;A = 80°, find the measures of &ang;B, &ang;C, and &ang;D using opposite and adjacent angle properties.</li>
           </ol>
 
-          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">IV. Clock Hands & Real-Life Angle Problems:</h4>
-          <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
-            <li>What angle do the hands of a clock make at 3:00? Calculate the degrees and classify it.</li>
-            <li>What angle do the hands of a clock make at 6:00?</li>
-            <li>At 2:00, how many degrees is the angle between the hour and minute hands?</li>
-            <li>Explain why Ray AB is not the same as Ray BA.</li>
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">IV. Numerical Expressions (BODMAS):</h4>
+          <ol start="11" style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><strong>Evaluate step by step:</strong>
+              <br>a) 28 + 45 &divide; 9 &times; 2 - 10
+              <br>b) (48 - 35) &times; 2 + 30 &divide; 15
+            </li>
+            <li><strong>Expressions in Words:</strong> Write the following numerical expressions in words:
+              <br>a) (2 &times; 5) - 6
+              <br>b) (90 - 30) &divide; (30 - 20)
+            </li>
+            <li><strong>Word Problems to Expressions:</strong> Write the mathematical expression for:
+              <br>a) 45 is divided by the sum of 2 and 3.
+              <br>b) The sum of 56 and 4 is multiplied by the difference of 11 and 10.
+            </li>
+          </ol>
+
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">V. Practical Geometric Constructions:</h4>
+          <ol start="14" style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><strong>Rectangle:</strong> Construct a rectangle of length 8 cm and breadth 5 cm using ruler and pencil.</li>
+            <li><strong>Circle:</strong> Draw a circle of diameter 10 cm using a compass (Hint: First calculate the radius r = d &divide; 2).</li>
+            <li><strong>Square:</strong> Construct a square with each side measuring 6 cm.</li>
+            <li><strong>Angle:</strong> Draw an angle of 135° using a protractor and classify it.</li>
           </ol>
         </div>
       </div>
@@ -7339,73 +8275,140 @@ function printWorksheetTopic5() {
 
   printContainer.innerHTML = `
     <div class="worksheet-header">
-      <h2>CENTRAL BOARD OF SECONDARY EDUCATION (CBSE)</h2>
-      <h3>MATHEMATICS — CLASS V</h3>
-      <p><strong>Topic: Geometry, Lines, Relationships & Angle Measurements</strong></p>
+      <h2>FREEDOM INTERNATIONAL SCHOOL</h2>
+      <h3>REVISION WORKSHEET (TERM I) — MATHEMATICS CLASS V</h3>
+      <p><strong>Geometry, Triangles, Quadrilaterals, Polygons, BODMAS & Divisibility Rules</strong></p>
       <div style="display: flex; justify-content: space-between; margin-top: 10px;">
         <span>Name: __________________________</span>
         <span>Roll No: ______</span>
+        <span>Section: _____</span>
         <span>Date: ____________</span>
       </div>
     </div>
 
     <div class="worksheet-q">
-      <h4>I. Basic Concepts & Notations (Fill in the blanks):</h4>
-      <ol>
-        <li>A geometric figure with two fixed endpoints and a definite length is a ____________________________.</li>
-        <li>A ray has ________ endpoint(s) and extends infinitely in ________ direction(s).</li>
-        <li>Write the mathematical notation for:
-          <br>a) Line Segment AB: _______________ &nbsp;&nbsp;&nbsp;&nbsp; b) Ray AB: _______________ &nbsp;&nbsp;&nbsp;&nbsp; c) Line AB: _______________
-        </li>
-        <li>Three or more points lying on the exact same straight line are called ____________________________.</li>
-        <li>In angle ∠PQR, the vertex is point _______________ and the arms are rays _______________ and _______________.</li>
-      </ol>
-    </div>
-
-    <div class="worksheet-q" style="margin-top: 15px;">
-      <h4>II. Line Relationships (Identify & Write Symbols):</h4>
+      <h4>I. Divisibility Rules & Factors</h4>
       <ol>
         <li>
-          Lines that never meet and keep a constant perpendicular distance are _____________________ (Symbol: _________).
+          <strong>Check the divisibility of 37,42,582 by 15:</strong>
+          <br>Explain the co-prime factor test ($3 &times; 5 = 15$) and write your conclusion:
+          <div class="workspace-box" style="height: 55px;"></div>
         </li>
         <li>
-          Two lines that meet at an exact 90° right angle are _____________________ (Symbol: _________).
+          <strong>Check which among the following numbers are divisible by 4, 6, and 10 simultaneously:</strong>
+          <br>(a) 12,480 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (b) 98,760 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (c) 75,310
+          <div class="workspace-box" style="height: 70px;"></div>
         </li>
         <li>
-          Give two real-life examples of parallel lines: __________________________________________________
+          <strong>If one number is a multiple of another number, what will be their HCF?</strong>
+          <br>Explain the rule and verify with an example (e.g. 8 and 32):
+          <div class="workspace-box" style="height: 50px;"></div>
         </li>
         <li>
-          Give two real-life examples of perpendicular lines: __________________________________________________
+          <strong>List the first 10 terms of each sequence:</strong>
+          <br>a) Square numbers: __________________________________________________________________________
+          <br>b) Triangular numbers: ______________________________________________________________________
         </li>
       </ol>
     </div>
 
     <div class="worksheet-q" style="margin-top: 15px;">
-      <h4>III. Angle Classifications (Acute, Right, Obtuse, Straight, Reflex):</h4>
-      <ol>
-        <li>35° &nbsp;&nbsp;&nbsp;&nbsp; : _________________________________</li>
-        <li>90° &nbsp;&nbsp;&nbsp;&nbsp; : _________________________________</li>
-        <li>140° &nbsp;&nbsp; : _________________________________</li>
-        <li>180° &nbsp;&nbsp; : _________________________________</li>
-        <li>235° &nbsp;&nbsp; : _________________________________</li>
-        <li>89° &nbsp;&nbsp;&nbsp;&nbsp; : _________________________________</li>
-      </ol>
-    </div>
-
-    <div class="worksheet-q" style="margin-top: 15px;">
-      <h4>IV. Solve with Working / Explanations:</h4>
-      <ol>
+      <h4>II. Polygons, Triangles & Lines</h4>
+      <ol start="5">
         <li>
-          Calculate the angle formed by the hands of a clock at 4:00. Show formula and step-by-step working:
+          <strong>Collinear Points:</strong>
+          <br>What geometric figure or shape do you get by joining 3 collinear points? What if they are non-collinear?
+          <div class="workspace-box" style="height: 45px;"></div>
+        </li>
+        <li>
+          <strong>Find the sum of interior angles of a nonagon (9-sided polygon):</strong>
+          <br>Show the formula, number of triangles formed from one vertex, and step-by-step multiplication:
           <div class="workspace-box" style="height: 60px;"></div>
         </li>
         <li>
-          Explain clearly why Ray AB is NOT the same ray as Ray BA:
-          <div class="workspace-box" style="height: 60px;"></div>
+          <strong>Classify each triangle based on its angle measures (Acute-angled, Right-angled, or Obtuse-angled):</strong>
+          <br>a) 20°, 60°, 100° &nbsp; &rarr; __________________________________________________
+          <br>b) 37°, 23°, 120° &nbsp; &rarr; __________________________________________________
+          <br>c) 55°, 45°, 80° &nbsp;&nbsp;&nbsp; &rarr; __________________________________________________
+          <br>d) 25°, 65°, 90° &nbsp;&nbsp;&nbsp; &rarr; __________________________________________________
+        </li>
+      </ol>
+    </div>
+
+    <div class="worksheet-q" style="margin-top: 15px;">
+      <h4>III. Quadrilaterals & Angle Reasoning</h4>
+      <ol start="8">
+        <li>
+          <strong>State three main differences between a Rhombus and a Trapezium:</strong>
+          <table style="width: 100%; margin-top: 6px; border-collapse: collapse; font-size: 0.9rem;" border="1">
+            <thead>
+              <tr style="background: #f0f0f0;">
+                <th style="padding: 4px; width: 25%;">Property</th>
+                <th style="padding: 4px; width: 37%;">Rhombus</th>
+                <th style="padding: 4px; width: 38%;">Trapezium</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding: 6px;">Side Lengths</td><td></td><td></td></tr>
+              <tr><td style="padding: 6px;">Parallel Pairs</td><td></td><td></td></tr>
+              <tr><td style="padding: 6px;">Diagonals</td><td></td><td></td></tr>
+            </tbody>
+          </table>
         </li>
         <li>
-          Draw a rough sketch of two perpendicular lines AB and CD meeting at point O, and mark the 90° square symbol:
-          <div class="workspace-box" style="height: 75px;"></div>
+          <strong>Missing Angle in Quadrilateral:</strong>
+          <br>Three angles of a quadrilateral are 85°, 110°, and 95°. Find the measure of the fourth angle:
+          <div class="workspace-box" style="height: 55px;"></div>
+        </li>
+        <li>
+          <strong>Parallelogram ABCD:</strong>
+          <br>If &ang;A = 80°, find the measures of &ang;B, &ang;C, and &ang;D with geometric justification:
+          <div class="workspace-box" style="height: 55px;"></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="worksheet-q" style="margin-top: 15px;">
+      <h4>IV. Numerical Expressions (BODMAS / Order of Operations)</h4>
+      <ol start="11">
+        <li>
+          <strong>Evaluate step-by-step using BODMAS:</strong>
+          <br>a) 28 + 45 &divide; 9 &times; 2 - 10
+          <div class="workspace-box" style="height: 50px;"></div>
+          b) (48 - 35) &times; 2 + 30 &divide; 15
+          <div class="workspace-box" style="height: 50px;"></div>
+        </li>
+        <li>
+          <strong>Write the numerical expressions in words:</strong>
+          <br>a) (2 &times; 5) - 6 : _______________________________________________________________________
+          <br>b) (90 - 30) &divide; (30 - 20) : ___________________________________________________________
+        </li>
+        <li>
+          <strong>Write the mathematical expressions for:</strong>
+          <br>a) 45 is divided by the sum of 2 and 3 : ___________________________________________________
+          <br>b) The sum of 56 and 4 is multiplied by the difference of 11 and 10 : _____________________
+        </li>
+      </ol>
+    </div>
+
+    <div class="worksheet-q" style="margin-top: 15px;">
+      <h4>V. Practical Geometric Constructions (Using Ruler, Pencil & Compass)</h4>
+      <ol start="14">
+        <li>
+          <strong>Construct a rectangle of length 8 cm and breadth 5 cm:</strong>
+          <div class="workspace-box" style="height: 100px;"></div>
+        </li>
+        <li>
+          <strong>Draw a circle of diameter 10 cm using compass (Radius = _____ cm):</strong>
+          <div class="workspace-box" style="height: 100px;"></div>
+        </li>
+        <li>
+          <strong>Construct a square of side 6 cm:</strong>
+          <div class="workspace-box" style="height: 100px;"></div>
+        </li>
+        <li>
+          <strong>Draw an angle of 135° using protractor and ruler. Mark the vertex and classify:</strong>
+          <div class="workspace-box" style="height: 100px;"></div>
         </li>
       </ol>
     </div>
