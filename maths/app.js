@@ -1371,14 +1371,6 @@ const LEARN_MODULES_TOPIC_1 = {
     lead: 'Great mathematicians never blindly start dividing. They use common-sense boundaries to test if an answer is even mathematically possible in 5 seconds!',
     renderContent: renderMentalEstimatorModule
   },
-  spot_the_mistakes: {
-    id: 'spot_the_mistakes',
-    pillTitle: '🕵️ Spot the Mistakes',
-    title: 'Be the Teacher: Spot the Mistakes!',
-    tag: 'Diagnostic Thinking',
-    lead: 'Diagnosing mistakes is the fastest way to master mathematics. Step into the shoes of the teacher, examine student test sheets, and spot the exact blunder!',
-    renderContent: renderSpotMistakesTopic1
-  },
   short_division: {
     id: 'short_division',
     pillTitle: '🪜 Short Division Ladder',
@@ -1410,10 +1402,16 @@ const LEARN_MODULES_TOPIC_1 = {
     tag: 'Number Theory',
     lead: 'Co-primes do NOT need to be prime numbers themselves! Two numbers are co-prime if their <strong>only common factor is 1</strong> (e.g. 8 and 9). Twin primes are two prime numbers that differ by exactly 2 (e.g. 3 & 5, 11 & 13).',
     renderContent: renderCoprimesModule
+  },
+  spot_the_mistakes: {
+    id: 'spot_the_mistakes',
+    pillTitle: '🕵️ Spot the Mistakes',
+    title: 'Be the Teacher: Spot the Mistakes!',
+    tag: 'Diagnostic Thinking',
+    lead: 'Diagnosing mistakes is the fastest way to master mathematics. Step into the shoes of the teacher, examine student test sheets, and spot the exact blunder!',
+    renderContent: renderSpotMistakesTopic1
   }
 };
-// Backward compatibility alias
-LEARN_MODULES_TOPIC_1.spot_the_trap = LEARN_MODULES_TOPIC_1.spot_the_mistakes;
 
 const LEARN_MODULES_TOPIC_2 = {
   all_rules_table: {
@@ -3722,6 +3720,9 @@ function renderViewport() {
 function renderLearnView(container) {
   const currentConfig = TOPICS_CONFIG[state.currentTopic] || TOPICS_CONFIG.factors_multiples_hcf_lcm;
   const modules = currentConfig.learnModules;
+  if (state.activeLearnModule === 'spot_the_trap') {
+    state.activeLearnModule = 'spot_the_mistakes';
+  }
   const mod = modules[state.activeLearnModule] || Object.values(modules)[0];
   if (!modules[state.activeLearnModule]) {
     state.activeLearnModule = mod.id;
