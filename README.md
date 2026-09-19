@@ -119,14 +119,20 @@ xdg-open index.html
 │   ├── README.md                   # Dedicated Hindi guide (Formulas, clues, traps & rules)
 │   └── AGENTS.md                   # Tri-module architecture, DOM contract & extension recipes
 │
-└── maths/                          # Mini-App 4: Mathematics Master (Multiples, Factors, HCF & LCM)
-    ├── index.html                  # App shell, responsive off-canvas drawer, top bar, modals
-    ├── styles.css                  # Math Amber theme, division ladders, print sheets
-    ├── app.js                      # Math engines, short/long division solvers, practice pool
-    ├── README.md                   # Pedagogical concepts, division difference, worksheet answers
-    ├── AGENTS.md                   # Math engine schemas, DOM contracts, extension recipes
-    └── Multiples_and_Factors_...pdf # Freedom International School reference worksheet
+├── maths/                          # Mini-App 4: Mathematics Master (Multiples, Factors, HCF & LCM)
+│   ├── index.html                  # App shell, responsive off-canvas drawer, top bar, modals
+│   ├── styles.css                  # Math Amber theme, division ladders, print sheets
+│   ├── app.js                      # Math engines, short/long division solvers, practice pool
+│   ├── README.md                   # Pedagogical concepts, division difference, worksheet answers
+│   └── AGENTS.md                   # Math engine schemas, DOM contracts, extension recipes
+│
+└── sst_chapters/                   # Mini-App 5: Social Science Chapters Practice
+    ├── index.html                  # App shell, chapter accordion, interactive views
+    ├── styles.css                  # Terracotta theme, flashcards, long-answer studio
+    ├── app.js                      # Chapter curriculum data, interactive quiz engine
+    └── README.md                   # Chapter notes, 4 thinking pillars, exam traps
 ```
+> **Note on Reference Worksheets:** Raw worksheet PDFs are not committed to this repository. All question banks, diagrams, and syllabus materials are transcribed directly into structured code and data objects.
 
 ---
 

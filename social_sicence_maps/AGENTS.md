@@ -7,7 +7,7 @@
 ## 📌 Project Overview
 - **Project Name:** SST Map Master — Class 5 CBSE Practice
 - **Primary Users:** Class 5 CBSE students (e.g. studying for school Social Studies / SST exams) and parents/teachers.
-- **Curriculum Source:** Based directly on the school worksheet PDF [`I_TERM_SST_MAP_1789047876.pdf`](extracted_pages/).
+- **Curriculum Source:** Based directly on the Class 5 Term 1 Social Studies map exam syllabus (CBSE / NCERT).
 - **Core Files:**
   - [`index.html`](index.html): Semantic HTML5 structure.
   - [`styles.css`](styles.css): Curated modern CSS design system (dark/light themes, animations, print styling).
@@ -28,7 +28,7 @@
 
 ## ⚠️ Critical Rule 2: World Physical Map Styling
 > **LESSON LEARNED:**
-> In school Social Studies worksheets (e.g., Pages 1 and 3 in `I_TERM_SST_MAP_1789047876.pdf`):
+> In school Social Studies worksheets (e.g., Pages 1 and 3 in the Term 1 map syllabus):
 > - The world map is a **Physical Outline Map of Continents**, NOT a cluttered political map with hundreds of national boundary lines.
 > - Continent landmasses are rendered cleanly (`world-land`), and India is delineated with its official Survey of India boundary.
 > - The Equator ($0^\circ$) is drawn as a horizontal dashed line.

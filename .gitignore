@@ -13,3 +13,9 @@ Desktop.ini
 # Python
 __pycache__/
 *.pyc
+
+# Reference PDFs / Worksheets (Do NOT commit raw PDFs to repo)
+*.pdf
+
+# Knowledge graph artifacts
+graphify-out/

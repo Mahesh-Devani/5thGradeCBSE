@@ -16,7 +16,7 @@ Rather than passive memorization or tedious copy-writing, this app empowers stud
 
 ## 📚 Curriculum Coverage (Term 1)
 
-The platform launches with full coverage of the 4 Term 1 chapters from the school revision worksheet (`REV_WS_T1_G5__1788952775.pdf`):
+The platform launches with full coverage of the 4 Term 1 chapters from the school revision worksheet curriculum:
 
 | Chapter | Topic Title | Focus Areas |
 |---|---|---|

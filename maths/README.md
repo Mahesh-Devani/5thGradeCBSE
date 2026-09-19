@@ -216,8 +216,8 @@ Class 5 students frequently confuse special quadrilaterals:
 
 ---
 
-## 🏫 Term I Revision Worksheet Solutions (`maths_geometry_ws1.pdf`)
-*Freedom International School — Revision Worksheet (Term I) Mathematics Class V*
+## 🏫 Term I Revision Worksheet Solutions (Mathematics & Geometry)
+*Revision Worksheet (Term I) Mathematics Class V*
 
 | Q# | Topic Area | Question Summary | Verified Solution & Pedagogical Reasoning |
 |---|---|---|---|

@@ -33,6 +33,11 @@ Welcome, AI Agent! This guide defines the rules, technical constraints, pedagogi
      3. **Diagnostic "Spot the Exam Trap / Be the Teacher"**: Students diagnose subtle flaws in sample test sheets, building immunity against classic CBSE exam blunders.
      4. **Common-Sense Estimation & "No-Pen" Reasoning**: Teach mathematical boundary rules (Upper Bound: $\text{HCF} \le \min$; Lower Bound: $\text{LCM} \ge \max$; Consecutive integers are always co-prime $\implies \text{HCF} = 1$) so students eliminate impossible answers in seconds without tedious scratchpad calculations.
 
+6. **No PDF Worksheets or Binary Document Uploads to Git Repository (MANDATORY)**:
+   - **DO NOT** commit or upload reference worksheet PDFs, school question paper scans, or heavy binary document files to the git repository.
+   - All worksheet questions, tests, answer keys, diagrams, and curriculum reference materials must be transcribed directly into clean, structured JavaScript/JSON data objects in the respective subject code files.
+   - Keep `*.pdf` strictly ignored in `.gitignore`.
+
 ---
 
 ## 2. Front-End Standards & Patterns

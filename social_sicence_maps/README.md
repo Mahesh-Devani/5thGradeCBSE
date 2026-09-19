@@ -6,7 +6,7 @@ A rich, interactive, gamified web application designed specifically for Class 5 
 
 ## 📚 Curriculum Source & Syllabus Maps
 
-All content is directly based on the Class 5 CBSE Social Studies curriculum from [`I_TERM_SST_MAP_1789047876.pdf`](file:///c:/Users/mdevani/images_pdf/tools/social_sicence_maps/I_TERM_SST_MAP_1789047876.pdf):
+All content is directly based on the Class 5 CBSE Social Studies Term 1 map curriculum:
 
 | Map Topic | Type | Key Syllabus Elements |
 |---|---|---|
@@ -84,8 +84,7 @@ social_sicence_maps/
 ├── app.js                     # Main JavaScript logic & vector SVG map data
 ├── AGENTS.md                  # AI Agent memory & developer contract guidelines
 ├── README.md                  # Human-friendly documentation & usage guide
-├── I_TERM_SST_MAP_1789047876.pdf # Original school worksheet scan
-├── extracted_pages/           # Extracted page PNG images from the syllabus PDF
+├── extracted_pages/           # Extracted page PNG images from syllabus reference sheets
 └── scripts/                   # Rebuild & data bundling pipeline
     ├── build_app.py           # Regenerates app.js from source paths
     ├── world_land_path.txt    # Clean world continental outline SVG path

@@ -16,7 +16,7 @@ Welcome, AI Agent! This document defines the operational rules, DOM contracts, m
    - Provide concept-first "No-Pen" practice questions that reward logical deduction over tedious scratchpad calculation.
 3. **Verified Mathematical Accuracy**:
    - All HCF, LCM, divisibility rules, and product relations must be mathematically validated before rendering.
-   - School worksheet questions from `Multiples_and_Factors_1788791719.pdf` must strictly match syllabus expectations.
+   - School revision worksheet questions (e.g. Multiples and Factors, Geometry) must strictly match Class 5 syllabus expectations, transcribed cleanly into code without committing raw PDF files.
 
 ---
 
