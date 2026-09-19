@@ -8339,33 +8339,74 @@ function renderWorksheetViewTopic5(container) {
 }
 
 /* --------------------------------------------------------------------------
-   PRINT ENGINES
+   PRINT ENGINES & WORKSHEET PREPARATION
    -------------------------------------------------------------------------- */
 
-function printWorksheet() {
-  if (state.currentTopic === 'divisibility_rules') {
-    printWorksheetTopic2();
-  } else if (state.currentTopic === 'expressions_statements') {
-    printWorksheetTopic3();
-  } else if (state.currentTopic === 'number_patterns') {
-    printWorksheetTopic4();
-  } else if (state.currentTopic === 'geometry_angles') {
-    printWorksheetTopic5();
+function preparePrintContent(topic) {
+  const current = topic || state.currentTopic;
+  const printContainer = document.getElementById('print-container');
+  if (!printContainer) return;
+
+  if (current === 'divisibility_rules') {
+    populatePrintTopic2(printContainer);
+  } else if (current === 'expressions_statements') {
+    populatePrintTopic3(printContainer);
+  } else if (current === 'number_patterns') {
+    populatePrintTopic4(printContainer);
+  } else if (current === 'geometry_angles') {
+    populatePrintTopic5(printContainer);
   } else {
-    printWorksheetTopic1();
+    populatePrintTopic1(printContainer);
   }
+}
+
+function printWorksheet() {
+  preparePrintContent(state.currentTopic);
+  window.print();
 }
 
 function printWorksheetTopic1() {
   const printContainer = document.getElementById('print-container');
-  if (!printContainer) return;
+  if (printContainer) populatePrintTopic1(printContainer);
+  window.print();
+}
 
+function printWorksheetTopic2() {
+  const printContainer = document.getElementById('print-container');
+  if (printContainer) populatePrintTopic2(printContainer);
+  window.print();
+}
+
+function printWorksheetTopic3() {
+  const printContainer = document.getElementById('print-container');
+  if (printContainer) populatePrintTopic3(printContainer);
+  window.print();
+}
+
+function printWorksheetTopic4() {
+  const printContainer = document.getElementById('print-container');
+  if (printContainer) populatePrintTopic4(printContainer);
+  window.print();
+}
+
+function printWorksheetTopic5() {
+  const printContainer = document.getElementById('print-container');
+  if (printContainer) populatePrintTopic5(printContainer);
+  window.print();
+}
+
+// Automatic synchronization for browser-initiated Ctrl+P or System Print
+window.addEventListener('beforeprint', () => {
+  preparePrintContent(state.currentTopic);
+});
+
+function populatePrintTopic1(printContainer) {
   printContainer.innerHTML = `
     <div class="worksheet-header">
-      <h2>FREEDOM INTERNATIONAL SCHOOL</h2>
-      <h3>MATHEMATICS — CLASS V (2026-27)</h3>
-      <p><strong>Topic: Multiples and Factors (HCF & LCM Practice Sheet)</strong></p>
-      <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <h2>CENTRAL BOARD OF SECONDARY EDUCATION (CBSE)</h2>
+      <h3>MATHEMATICS — CLASS V</h3>
+      <p><strong>Topic: Multiples, Factors, HCF & LCM Practice Sheet</strong></p>
+      <div class="worksheet-student-info">
         <span>Name: __________________________</span>
         <span>Roll No: ______</span>
         <span>Date: ____________</span>
@@ -8399,37 +8440,32 @@ function printWorksheetTopic1() {
       <ol>
         <li>
           Find the HCF of 144, 216 and 288 by short division method:
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 65px;"></div>
         </li>
         <li>
           Find the HCF of 96, 144 and 192 by long division method:
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 65px;"></div>
         </li>
         <li>
           Find the LCM of 60, 72 and 90 by short division method:
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 65px;"></div>
         </li>
         <li>
           Three traffic lights change at intervals of 20s, 30s, and 45s. After how many seconds will they change together again?
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 65px;"></div>
         </li>
       </ol>
     </div>
   `;
-
-  window.print();
 }
 
-function printWorksheetTopic2() {
-  const printContainer = document.getElementById('print-container');
-  if (!printContainer) return;
-
+function populatePrintTopic2(printContainer) {
   printContainer.innerHTML = `
     <div class="worksheet-header">
-      <h2>CLASS 5 CBSE MATHEMATICS MASTER</h2>
-      <h3>HOMEWORK PRACTICE WORKSHEET (2026-27)</h3>
+      <h2>CENTRAL BOARD OF SECONDARY EDUCATION (CBSE)</h2>
+      <h3>MATHEMATICS — CLASS V</h3>
       <p><strong>Topic: Divisibility Rules (2 to 12) & Missing Digit Puzzles</strong></p>
-      <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <div class="worksheet-student-info">
         <span>Name: __________________________</span>
         <span>Roll No: ______</span>
         <span>Date: ____________</span>
@@ -8438,7 +8474,7 @@ function printWorksheetTopic2() {
 
     <div class="worksheet-q">
       <h4>I. Divisibility Check Matrix (Put ✓ or ✗):</h4>
-      <table style="width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 11pt;" border="1">
+      <table style="width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 10pt;" border="1">
         <thead>
           <tr style="background: #eee;">
             <th style="padding: 4px;">Number</th>
@@ -8460,19 +8496,19 @@ function printWorksheetTopic2() {
       <ol>
         <li>
           Find the smallest missing digit to make <strong>62 * 178</strong> divisible by 9:
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 60px;"></div>
         </li>
         <li>
           Find the smallest missing digit to make <strong>71 * 2</strong> divisible by 6:
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 60px;"></div>
         </li>
         <li>
           Find the single digit to replace * in <strong>5 * 84</strong> so that it is divisible by 11:
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 60px;"></div>
         </li>
         <li>
           Find the smallest digit to replace * in <strong>43 * 6</strong> so that it is divisible by 4:
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 60px;"></div>
         </li>
       </ol>
     </div>
@@ -8482,29 +8518,24 @@ function printWorksheetTopic2() {
       <ol>
         <li>
           Explain why testing divisibility by 12 using 2 and 6 fails, while testing with 3 and 4 works. Give an example.
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 60px;"></div>
         </li>
         <li>
           A bakery baked 1,428 cookies. Can they be packed into boxes of 6 without any left over? Prove using rules of 2 and 3.
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 60px;"></div>
         </li>
       </ol>
     </div>
   `;
-
-  window.print();
 }
 
-function printWorksheetTopic3() {
-  const printContainer = document.getElementById('print-container');
-  if (!printContainer) return;
-
+function populatePrintTopic3(printContainer) {
   printContainer.innerHTML = `
     <div class="worksheet-header">
       <h2>CENTRAL BOARD OF SECONDARY EDUCATION (CBSE)</h2>
       <h3>MATHEMATICS — CLASS V</h3>
       <p><strong>Topic: Converting Mathematical Expressions into Statements & Vice-Versa</strong></p>
-      <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <div class="worksheet-student-info">
         <span>Name: __________________________</span>
         <span>Roll No: ______</span>
         <span>Date: ____________</span>
@@ -8539,11 +8570,11 @@ function printWorksheetTopic3() {
       <ol>
         <li>
           A student claims that "7 subtracted from twice y" is 7 − 2y. Explain why this is wrong and write the correct expression:
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 60px;"></div>
         </li>
         <li>
           Evaluate both 3(x + 2) and 3x + 2 when x = 5. Do they have the same value? Explain why brackets make a difference:
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 60px;"></div>
         </li>
       </ol>
     </div>
@@ -8553,29 +8584,24 @@ function printWorksheetTopic3() {
       <ol>
         <li>
           Rohan is 4 years older than twice Priya’s age s. If Priya is 8 years old, find Rohan’s age:
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 60px;"></div>
         </li>
         <li>
           A boy had ₹100. He bought m chocolates at ₹12 each. Write the expression for remaining money, and find the change if m = 6:
-          <div class="workspace-box"></div>
+          <div class="workspace-box" style="height: 60px;"></div>
         </li>
       </ol>
     </div>
   `;
-
-  window.print();
 }
 
-function printWorksheetTopic4() {
-  const printContainer = document.getElementById('print-container');
-  if (!printContainer) return;
-
+function populatePrintTopic4(printContainer) {
   printContainer.innerHTML = `
     <div class="worksheet-header">
       <h2>CENTRAL BOARD OF SECONDARY EDUCATION (CBSE)</h2>
       <h3>MATHEMATICS — CLASS V</h3>
       <p><strong>Topic: Number Patterns, Triangular & Square Numbers, Towers & Magic Shapes</strong></p>
-      <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <div class="worksheet-student-info">
         <span>Name: __________________________</span>
         <span>Roll No: ______</span>
         <span>Date: ____________</span>
@@ -8585,12 +8611,12 @@ function printWorksheetTopic4() {
     <div class="worksheet-q">
       <h4>I. Pattern Detective — Find the Rule & Fill the Missing Terms:</h4>
       <ol>
-        <li>3, 7, 11, 15, _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; Rule: _________________________________________</li>
-        <li>2, 6, 18, 54, _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; Rule: _________________________________________</li>
-        <li>100, 93, 86, 79, _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; Rule: _________________________________________</li>
-        <li>1, 4, 9, 16, 25, _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; Rule: _________________________________________</li>
-        <li>1, 3, 6, 10, 15, _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; Rule: _________________________________________</li>
-        <li>2, 6, 12, 20, 30, _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; Rule: _________________________________________</li>
+        <li>3, 7, 11, 15, ______, ______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
+        <li>2, 6, 18, 54, ______, ______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
+        <li>100, 93, 86, 79, ______, ______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
+        <li>1, 4, 9, 16, 25, ______, ______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
+        <li>1, 3, 6, 10, 15, ______, ______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
+        <li>2, 6, 12, 20, 30, ______, ______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
       </ol>
     </div>
 
@@ -8620,15 +8646,15 @@ function printWorksheetTopic4() {
       <ol>
         <li>
           Given the base row [10, 20, 30], calculate Tier 2 and the top peak number:
-          <div class="workspace-box" style="height: 60px;"></div>
+          <div class="workspace-box" style="height: 55px;"></div>
         </li>
         <li>
           In a 3-tier tower with base [a, b, c], why does the top block equal a + 2b + c? Explain:
-          <div class="workspace-box" style="height: 60px;"></div>
+          <div class="workspace-box" style="height: 55px;"></div>
         </li>
         <li>
           Complete this 4-tier number tower step by step with base row [2, 3, 4, 5]:
-          <div class="workspace-box" style="height: 75px;"></div>
+          <div class="workspace-box" style="height: 65px;"></div>
         </li>
       </ol>
     </div>
@@ -8639,33 +8665,28 @@ function printWorksheetTopic4() {
         <li>
           Complete the 3×3 Magic Square using digits 1 to 9 (Magic Sum = 15):
           <br>Center number is 5. Corner numbers are even (2, 4, 6, 8). Edge numbers are odd (1, 3, 7, 9).
-          <div class="workspace-box" style="height: 70px;"></div>
+          <div class="workspace-box" style="height: 60px;"></div>
         </li>
         <li>
           Turn the number 57 into a palindrome using Reverse-and-Add steps:
-          <div class="workspace-box" style="height: 60px;"></div>
+          <div class="workspace-box" style="height: 50px;"></div>
         </li>
         <li>
           Turn the number 69 into a palindrome using Reverse-and-Add steps:
-          <div class="workspace-box" style="height: 60px;"></div>
+          <div class="workspace-box" style="height: 50px;"></div>
         </li>
       </ol>
     </div>
   `;
-
-  window.print();
 }
 
-function printWorksheetTopic5() {
-  const printContainer = document.getElementById('print-container');
-  if (!printContainer) return;
-
+function populatePrintTopic5(printContainer) {
   printContainer.innerHTML = `
     <div class="worksheet-header">
-      <h2>FREEDOM INTERNATIONAL SCHOOL</h2>
-      <h3>REVISION WORKSHEET (TERM I) — MATHEMATICS CLASS V</h3>
-      <p><strong>Geometry, Triangles, Quadrilaterals, Polygons, BODMAS & Divisibility Rules</strong></p>
-      <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <h2>CENTRAL BOARD OF SECONDARY EDUCATION (CBSE)</h2>
+      <h3>MATHEMATICS — CLASS V</h3>
+      <p><strong>Topic: Geometry, Shapes, Angles, Polygons, Triangles & Quadrilaterals</strong></p>
+      <div class="worksheet-student-info">
         <span>Name: __________________________</span>
         <span>Roll No: ______</span>
         <span>Section: _____</span>
@@ -8674,17 +8695,17 @@ function printWorksheetTopic5() {
     </div>
 
     <div class="worksheet-q">
-      <h4>I. Divisibility Rules & Factors</h4>
+      <h4>I. Divisibility Rules & Factors:</h4>
       <ol>
         <li>
           <strong>Check the divisibility of 37,42,582 by 15:</strong>
-          <br>Explain the co-prime factor test ($3 &times; 5 = 15$) and write your conclusion:
-          <div class="workspace-box" style="height: 55px;"></div>
+          <br>Explain the co-prime factor test (3 &times; 5 = 15) and write your conclusion:
+          <div class="workspace-box" style="height: 50px;"></div>
         </li>
         <li>
           <strong>Check which among the following numbers are divisible by 4, 6, and 10 simultaneously:</strong>
-          <br>(a) 12,480 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (b) 98,760 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (c) 75,310
-          <div class="workspace-box" style="height: 70px;"></div>
+          <br>(a) 12,480 &nbsp;&nbsp;&nbsp;&nbsp; (b) 98,760 &nbsp;&nbsp;&nbsp;&nbsp; (c) 75,310
+          <div class="workspace-box" style="height: 55px;"></div>
         </li>
         <li>
           <strong>If one number is a multiple of another number, what will be their HCF?</strong>
@@ -8700,7 +8721,7 @@ function printWorksheetTopic5() {
     </div>
 
     <div class="worksheet-q" style="margin-top: 15px;">
-      <h4>II. Polygons, Triangles & Lines</h4>
+      <h4>II. Polygons, Triangles & Lines:</h4>
       <ol start="5">
         <li>
           <strong>Collinear Points:</strong>
@@ -8710,7 +8731,7 @@ function printWorksheetTopic5() {
         <li>
           <strong>Find the sum of interior angles of a nonagon (9-sided polygon):</strong>
           <br>Show the formula, number of triangles formed from one vertex, and step-by-step multiplication:
-          <div class="workspace-box" style="height: 60px;"></div>
+          <div class="workspace-box" style="height: 55px;"></div>
         </li>
         <li>
           <strong>Classify each triangle based on its angle measures (Acute-angled, Right-angled, or Obtuse-angled):</strong>
@@ -8723,11 +8744,11 @@ function printWorksheetTopic5() {
     </div>
 
     <div class="worksheet-q" style="margin-top: 15px;">
-      <h4>III. Quadrilaterals & Angle Reasoning</h4>
+      <h4>III. Quadrilaterals & Angle Reasoning:</h4>
       <ol start="8">
         <li>
           <strong>State three main differences between a Rhombus and a Trapezium:</strong>
-          <table style="width: 100%; margin-top: 6px; border-collapse: collapse; font-size: 0.9rem;" border="1">
+          <table style="width: 100%; margin-top: 6px; border-collapse: collapse; font-size: 9pt;" border="1">
             <thead>
               <tr style="background: #f0f0f0;">
                 <th style="padding: 4px; width: 25%;">Property</th>
@@ -8736,34 +8757,34 @@ function printWorksheetTopic5() {
               </tr>
             </thead>
             <tbody>
-              <tr><td style="padding: 6px;">Side Lengths</td><td></td><td></td></tr>
-              <tr><td style="padding: 6px;">Parallel Pairs</td><td></td><td></td></tr>
-              <tr><td style="padding: 6px;">Diagonals</td><td></td><td></td></tr>
+              <tr><td style="padding: 5px;">Side Lengths</td><td></td><td></td></tr>
+              <tr><td style="padding: 5px;">Parallel Pairs</td><td></td><td></td></tr>
+              <tr><td style="padding: 5px;">Diagonals</td><td></td><td></td></tr>
             </tbody>
           </table>
         </li>
         <li>
           <strong>Missing Angle in Quadrilateral:</strong>
           <br>Three angles of a quadrilateral are 85°, 110°, and 95°. Find the measure of the fourth angle:
-          <div class="workspace-box" style="height: 55px;"></div>
+          <div class="workspace-box" style="height: 50px;"></div>
         </li>
         <li>
           <strong>Parallelogram ABCD:</strong>
           <br>If &ang;A = 80°, find the measures of &ang;B, &ang;C, and &ang;D with geometric justification:
-          <div class="workspace-box" style="height: 55px;"></div>
+          <div class="workspace-box" style="height: 50px;"></div>
         </li>
       </ol>
     </div>
 
     <div class="worksheet-q" style="margin-top: 15px;">
-      <h4>IV. Numerical Expressions (BODMAS / Order of Operations)</h4>
+      <h4>IV. Numerical Expressions (BODMAS / Order of Operations):</h4>
       <ol start="11">
         <li>
           <strong>Evaluate step-by-step using BODMAS:</strong>
           <br>a) 28 + 45 &divide; 9 &times; 2 - 10
-          <div class="workspace-box" style="height: 50px;"></div>
+          <div class="workspace-box" style="height: 45px;"></div>
           b) (48 - 35) &times; 2 + 30 &divide; 15
-          <div class="workspace-box" style="height: 50px;"></div>
+          <div class="workspace-box" style="height: 45px;"></div>
         </li>
         <li>
           <strong>Write the numerical expressions in words:</strong>
@@ -8779,29 +8800,27 @@ function printWorksheetTopic5() {
     </div>
 
     <div class="worksheet-q" style="margin-top: 15px;">
-      <h4>V. Practical Geometric Constructions (Using Ruler, Pencil & Compass)</h4>
+      <h4>V. Practical Geometric Constructions (Using Ruler, Pencil & Compass):</h4>
       <ol start="14">
         <li>
           <strong>Construct a rectangle of length 8 cm and breadth 5 cm:</strong>
-          <div class="workspace-box" style="height: 100px;"></div>
+          <div class="workspace-box" style="height: 80px;"></div>
         </li>
         <li>
           <strong>Draw a circle of diameter 10 cm using compass (Radius = _____ cm):</strong>
-          <div class="workspace-box" style="height: 100px;"></div>
+          <div class="workspace-box" style="height: 80px;"></div>
         </li>
         <li>
           <strong>Construct a square of side 6 cm:</strong>
-          <div class="workspace-box" style="height: 100px;"></div>
+          <div class="workspace-box" style="height: 80px;"></div>
         </li>
         <li>
           <strong>Draw an angle of 135° using protractor and ruler. Mark the vertex and classify:</strong>
-          <div class="workspace-box" style="height: 100px;"></div>
+          <div class="workspace-box" style="height: 80px;"></div>
         </li>
       </ol>
     </div>
   `;
-
-  window.print();
 }
 
 /* ==========================================================================
