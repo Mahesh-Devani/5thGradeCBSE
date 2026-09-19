@@ -4419,7 +4419,7 @@ const MISTAKES_TOPIC_1 = [
       { label: 'Step 1', text: 'Splits 72 into 4 × 18 ➔ Divides 18 into 2 × 9', isBlunder: false },
       { label: 'Step 2', text: 'Splits 9 into 3 × 3', isBlunder: false },
       { label: 'Step 3', text: 'Writes the prime factorization as: 4 × 2 × 3 × 3', isBlunder: true },
-      { label: 'Step 4', text: 'Concludes 72 = 4 × 2 × 3²', isBlunder: false }
+      { label: 'Step 4', text: 'Concludes 72 = 4 × 2 × 3²', isBlunder: false, downstreamHint: 'You are right that 4 × 2 × 3² is NOT a prime factorization because 4 is composite! But Step 4 is just rewriting Step 3 in exponent form. The actual blunder was committed when Priya left 4 un-split in <strong>Step 3</strong>! Tap Step 3 to catch where it started.' }
     ],
     diagnosis: '🛑 <strong>Mistake Caught! (Composite Factor Trap)</strong> 4 is a <em>composite number</em> (2 × 2), NOT a prime number! In prime factorization, every factor must strictly be a prime number (2, 3, 5, 7, etc.). Priya left 4 un-split! The correct prime factorization is <strong>2 × 2 × 2 × 3 × 3 = 2³ × 3²</strong>.'
   },
@@ -4474,7 +4474,7 @@ const MISTAKES_TOPIC_2 = [
     steps: [
       { label: 'Step 1', text: 'Looks at the last digit of 5,826: ones digit is 6', isBlunder: false },
       { label: 'Step 2', text: 'Claims: "Since 6 is even and divisible by 2, 5,826 is divisible by 4!"', isBlunder: true },
-      { label: 'Step 3', text: 'Concludes: 5,826 is divisible by 4', isBlunder: false }
+      { label: 'Step 3', text: 'Concludes: 5,826 is divisible by 4', isBlunder: false, downstreamHint: 'You are completely right: 5,826 is definitely NOT divisible by 4 (5,826 ÷ 4 = 1,456 R 2)! But Step 3 is just Kavya\'s conclusion based on the flawed single-digit rule she assumed in <strong>Step 2</strong>. Tap Step 2 to pinpoint where she broke the divisibility rule!' }
     ],
     diagnosis: '🛑 <strong>Mistake Caught! (Two-Digit Rule for 4)</strong> The rule of 4 requires checking the <strong>last TWO digits</strong>, NOT just the last digit! (Because 100 is divisible by 4, only the last two digits matter). The last two digits of 5,826 are <strong>26</strong>. 26 ÷ 4 = 6 remainder 2. Since 26 is not divisible by 4, <strong>5,826 is NOT divisible by 4</strong>!'
   },
@@ -4517,7 +4517,7 @@ const MISTAKES_TOPIC_3 = [
     steps: [
       { label: 'Step 1', text: 'Translates "4 times a number x" ➔ 4x', isBlunder: false },
       { label: 'Step 2', text: 'Translates "Subtract 7 from ..." ➔ Tina writes: 7 − 4x', isBlunder: true },
-      { label: 'Step 3', text: 'Checks with x = 3: 7 − 4(3) = 7 − 12 = −5', isBlunder: false }
+      { label: 'Step 3', text: 'Checks with x = 3: 7 − 4(3) = 7 − 12 = −5', isBlunder: false, downstreamHint: 'You caught that −5 is the wrong answer for the problem (for x = 3, 4(3) − 7 = 5, not −5)! But Tina evaluated 7 − 12 = −5 correctly according to what she wrote. The blunder occurred before this, when she wrote the subtraction backwards in <strong>Step 2</strong>! Tap Step 2.' }
     ],
     diagnosis: '🛑 <strong>Mistake Caught! (#1 CBSE Exam Trap)</strong> In English, "Subtract A from B" means you start with B and take A away: <strong>B − A</strong>! Tina wrote 7 − 4x, which means "Subtract 4x from 7". The correct expression is <strong>4x − 7</strong>.'
   },
@@ -4530,7 +4530,7 @@ const MISTAKES_TOPIC_3 = [
     steps: [
       { label: 'Step 1', text: 'Translates "the sum of 2 and 3" as 2 + 3', isBlunder: false },
       { label: 'Step 2', text: 'Translates "Divide 45 by ..." as: 45 ÷ 2 + 3', isBlunder: true },
-      { label: 'Step 3', text: 'Evaluates without brackets: 22.5 + 3 = 25.5', isBlunder: false }
+      { label: 'Step 3', text: 'Evaluates without brackets: 22.5 + 3 = 25.5', isBlunder: false, downstreamHint: '25.5 is definitely the wrong answer for dividing 45 by the sum of 2 and 3 (the correct answer is 45 ÷ (2 + 3) = 9)! But Vikram evaluated 45 ÷ 2 + 3 strictly according to what he wrote in <strong>Step 2</strong> without brackets. Tap Step 2 to pinpoint the blunder!' }
     ],
     diagnosis: '🛑 <strong>Mistake Caught! (BODMAS Parentheses Rule)</strong> Without parentheses, division happens before addition! 45 ÷ 2 + 3 evaluates as (45 ÷ 2) + 3 = 22.5 + 3 = 25.5. The entire sum (2 + 3) was meant to be the divisor. Vikram needed brackets: <strong>45 ÷ (2 + 3)</strong> = 45 ÷ 5 = <strong>9</strong>!'
   },
@@ -4542,8 +4542,8 @@ const MISTAKES_TOPIC_3 = [
     question: 'Evaluate the expression: 20 + 30 ÷ 5 × 2.',
     steps: [
       { label: 'Step 1', text: 'Calculates from left to right: 20 + 30 = 50', isBlunder: true },
-      { label: 'Step 2', text: 'Divides 50 by 5 = 10', isBlunder: false },
-      { label: 'Step 3', text: 'Multiplies 10 by 2 = 20', isBlunder: false }
+      { label: 'Step 2', text: 'Divides 50 by 5 = 10', isBlunder: false, downstreamHint: '50 ÷ 5 = 10 is correct arithmetic, but 10 is on the wrong track! The blunder happened right at the start in <strong>Step 1</strong> when Arjun added before dividing. Tap Step 1!' },
+      { label: 'Step 3', text: 'Multiplies 10 by 2 = 20', isBlunder: false, downstreamHint: '20 is indeed the wrong final answer (the true answer using BODMAS is 32)! But Arjun multiplied 10 × 2 = 20 correctly; he was just carrying forward the order violation from <strong>Step 1</strong>. Tap Step 1 to catch where he broke BODMAS!' }
     ],
     diagnosis: '🛑 <strong>Mistake Caught! (BODMAS Order of Operations)</strong> Division and Multiplication MUST be done BEFORE Addition! Arjun added 20 + 30 first. The correct order is: First Division: 30 ÷ 5 = 6. Then Multiplication: 6 × 2 = 12. Finally Addition: 20 + 12 = <strong>32</strong> (not 20)!'
   },
@@ -4556,7 +4556,7 @@ const MISTAKES_TOPIC_3 = [
     steps: [
       { label: 'Step 1', text: 'Multiplies 5 by the variable x ➔ 5x', isBlunder: false },
       { label: 'Step 2', text: 'Copies the rest of the bracket: writes 5x + 4', isBlunder: true },
-      { label: 'Step 3', text: 'Checks with x = 2: 5(2) + 4 = 14 (whereas 5 × (2 + 4) = 30)', isBlunder: false }
+      { label: 'Step 3', text: 'Checks with x = 2: 5(2) + 4 = 14 (whereas 5 × (2 + 4) = 30)', isBlunder: false, downstreamHint: 'Step 3 actually caught the contradiction: 14 ≠ 30 proves something is wrong! But checking with a number is good practice — the blunder itself occurred in <strong>Step 2</strong> where Meera forgot to multiply 5 by 4. Tap Step 2!' }
     ],
     diagnosis: '🛑 <strong>Mistake Caught! (Distributive Law)</strong> The factor outside the bracket multiplies <em>EVERY term inside the bracket</em>! Meera multiplied 5 by x, but forgot to multiply 5 by 4! Correct expansion is 5 × x + 5 × 4 = <strong>5x + 20</strong>.'
   }
@@ -4572,7 +4572,7 @@ const MISTAKES_TOPIC_4 = [
     steps: [
       { label: 'Step 1', text: 'Looks at first step from 2 to 4: observes 2 + 2 = 4', isBlunder: false },
       { label: 'Step 2', text: 'Assumes the rule is "Add 2 each time"', isBlunder: true },
-      { label: 'Step 3', text: 'Predicts next term: 16 + 2 = 18', isBlunder: false }
+      { label: 'Step 3', text: 'Predicts next term: 16 + 2 = 18', isBlunder: false, downstreamHint: '18 is indeed the wrong number for this sequence (the real next term is 32)! But notice that Aditya added 2 correctly (16 + 2 = 18). His arithmetic here wasn\'t the blunder — he is just following the false rule he assumed in <strong>Step 2</strong> ("Add 2 each time")! Tap Step 2 to catch the root blunder.' }
     ],
     diagnosis: '🛑 <strong>Mistake Caught! (Single-Step Fallacy)</strong> Never deduce a pattern rule from only the first two terms! Check the next terms: 4 ➔ 8 is +4 (or × 2), and 8 ➔ 16 is +8 (or × 2). The constant rule is <strong>Multiply by 2 (Doubling)</strong>, NOT adding 2! The next terms are 16 × 2 = <strong>32</strong> and 32 × 2 = <strong>64</strong>.'
   },
@@ -4650,8 +4650,8 @@ const MISTAKES_TOPIC_5 = [
     question: 'Using a compass and ruler, draw a circle of diameter 12 cm.',
     steps: [
       { label: 'Step 1', text: 'Takes a ruler and opens compass legs to a width of 12 cm', isBlunder: true },
-      { label: 'Step 2', text: 'Places needle on paper and rotates to draw the circle', isBlunder: false },
-      { label: 'Step 3', text: 'Measures across the center: distance is 24 cm', isBlunder: false }
+      { label: 'Step 2', text: 'Places needle on paper and rotates to draw the circle', isBlunder: false, downstreamHint: 'Rotating the compass to draw a circle is standard procedure! The mistake was already locked in before she touched the paper, when she set the compass width in <strong>Step 1</strong>. Tap Step 1!' },
+      { label: 'Step 3', text: 'Measures across the center: distance is 24 cm', isBlunder: false, downstreamHint: 'A diameter of 24 cm is indeed the wrong size (the problem asked for 12 cm)! But measuring the diameter was an accurate check. The blunder was made right at the start in <strong>Step 1</strong> when she confused radius with diameter. Tap Step 1!' }
     ],
     diagnosis: '🛑 <strong>Mistake Caught! (Compass Width = Radius, Not Diameter!)</strong> A compass draws from the center to the edge, which is the <strong>RADIUS (r)</strong>! When you open a compass to 12 cm, you draw a circle with radius 12 cm and diameter 2 × 12 = 24 cm! To draw a circle with diameter 12 cm, Nisha must set her compass to the radius: <strong>r = d ÷ 2 = 12 ÷ 2 = 6 cm</strong>!'
   },
@@ -4675,11 +4675,13 @@ function renderSpotMistakesGeneric(container, mistakeCases) {
 
   function renderView() {
     const c = mistakeCases[activeCaseIdx];
+    const blunderIdx = c.steps.findIndex(s => s.isBlunder);
+
     container.innerHTML = `
       <div class="trap-container">
         <div class="think-callout-math">
           <div class="callout-header">💡 Think About It — The Teacher's Lens</div>
-          <p>When you learn to spot why an answer is wrong, you become immune to making the same mistake yourself! Look at each step below and ask: <em>"Did the student break a fundamental math rule?"</em></p>
+          <p>When you learn to spot why an answer is wrong, you become immune to making the same mistake yourself! Look at each step below and ask: <em>"Where did the student commit the root blunder?"</em></p>
         </div>
 
         <!-- Case Navigation Tabs -->
@@ -4736,13 +4738,13 @@ function renderSpotMistakesGeneric(container, mistakeCases) {
 
     stepItems.forEach(item => {
       item.addEventListener('click', (e) => {
-        playClickSound();
         const sIdx = parseInt(e.currentTarget.dataset.step, 10);
         const step = c.steps[sIdx];
 
-        stepItems.forEach(si => si.classList.remove('selected-blunder', 'selected-correct'));
+        stepItems.forEach(si => si.classList.remove('selected-blunder', 'selected-correct', 'selected-downstream'));
 
         if (step.isBlunder) {
+          // STATE 1: Root Blunder Caught!
           playCorrectSound();
           item.classList.add('selected-blunder');
           verdictArea.innerHTML = `
@@ -4753,15 +4755,31 @@ function renderSpotMistakesGeneric(container, mistakeCases) {
               <p style="margin: 0; font-size: 0.95rem; line-height: 1.55;">${c.diagnosis}</p>
             </div>
           `;
+        } else if (blunderIdx !== -1 && sIdx > blunderIdx) {
+          // STATE 2: Downstream Consequence (Mistake was committed earlier)
+          playTone(330, 'triangle', 0.1, 0.16);
+          item.classList.add('selected-downstream');
+          const blunderLabel = c.steps[blunderIdx].label;
+          const downstreamText = step.downstreamHint || `You noticed that this step produces an incorrect outcome or wrong answer for the problem! However, the student is simply following through on the misconception or bad rule chosen back in <strong>${blunderLabel}</strong>. Did the student make an arithmetic mistake here, or was the blunder committed earlier? Tap the step where the mistake actually started!`;
+          verdictArea.innerHTML = `
+            <div class="trap-verdict-card downstream">
+              <div style="font-weight: 700; font-size: 1.02rem; margin-bottom: 0.35rem; color: #f59e0b;">
+                ⚠️ Good eye! You spotted the wrong result, but the blunder happened earlier!
+              </div>
+              <p style="margin: 0; font-size: 0.92rem; line-height: 1.5;">${downstreamText}</p>
+            </div>
+          `;
         } else {
+          // STATE 3: Valid Prior Premise
           playTone(261.63, 'sine', 0.08, 0.12);
           item.classList.add('selected-correct');
+          const validText = step.validHint || `This step is mathematically sound, factually accurate, and error-free! The student observed or calculated this part properly. Look further down the steps to catch where they made a blunder.`;
           verdictArea.innerHTML = `
-            <div class="trap-verdict-card retry">
-              <div style="font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: #fb7185;">
-                🔍 ${step.label} is actually correct!
+            <div class="trap-verdict-card premise">
+              <div style="font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: #38bdf8;">
+                🔍 ${step.label} is completely valid!
               </div>
-              <p style="margin: 0; font-size: 0.9rem;">The arithmetic in this step is valid. Look closer at the other steps to find where the student broke a core rule!</p>
+              <p style="margin: 0; font-size: 0.9rem; line-height: 1.5;">${validText}</p>
             </div>
           `;
         }

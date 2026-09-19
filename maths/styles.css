@@ -3519,13 +3519,19 @@ select.calc-input option {
   transform: translateX(4px);
 }
 .trap-step-item.selected-blunder {
-  border-color: #f43f5e;
-  background: rgba(244, 63, 94, 0.15);
-  box-shadow: 0 0 10px rgba(244, 63, 94, 0.25);
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.18);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.35);
+}
+.trap-step-item.selected-downstream {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.16);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
 }
 .trap-step-item.selected-correct {
-  border-color: #10b981;
-  background: rgba(16, 185, 129, 0.15);
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.14);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.22);
 }
 .trap-step-label {
   font-weight: 700;
@@ -3553,14 +3559,20 @@ select.calc-input option {
   line-height: 1.6;
 }
 .trap-verdict-card.success {
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.4);
   color: #d1fae5;
 }
-.trap-verdict-card.retry {
-  background: rgba(244, 63, 94, 0.1);
-  border: 1px solid rgba(244, 63, 94, 0.35);
-  color: #ffe4e6;
+.trap-verdict-card.downstream {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fef3c7;
+}
+.trap-verdict-card.retry,
+.trap-verdict-card.premise {
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #e0f2fe;
 }
 
 /* No-Pen Practice Badge */
