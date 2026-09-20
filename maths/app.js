@@ -1015,10 +1015,10 @@ const PATTERN_PRESETS = [
   {
     id: 'pat_6',
     title: '3-Number Set (Triplets): 1,2,3; 2,3,6; 3,4,12...',
-    terms: ['(1,2,3)', '(2,3,6)', '(3,4,12)', '?', '(5,6,48)'],
+    terms: ['(1, 2, 3)', '(2, 3, 6)', '(3, 4, 12)', '?', '(5, 6, 48)'],
     missingIndex: 3,
-    correctAnswer: '(4,5,24)',
-    options: ['(4,5,20)', '(4,5,24)', '(4,5,18)', '(4,6,24)'],
+    correctAnswer: '(4, 5, 24)',
+    options: ['(4, 5, 20)', '(4, 5, 24)', '(4, 5, 18)', '(4, 6, 24)'],
     diffs: ['Set 1', 'Set 2', 'Set 3', 'Set 4', 'Set 5'],
     rule: 'Rule: 1st number = n, 2nd number = n+1, 3rd number doubles (3 → 6 → 12 → 24 → 48).',
     explanation: 'First number increases by 1 (1, 2, 3, 4, 5). Second number increases by 1 (2, 3, 4, 5, 6). The third number doubles each step (3 × 2 = 6; 6 × 2 = 12; 12 × 2 = 24; 24 × 2 = 48). Hence the next set is (4, 5, 24)!'
@@ -1026,10 +1026,10 @@ const PATTERN_PRESETS = [
   {
     id: 'pat_7',
     title: 'Product Triplets: (1,2,2), (2,3,6), (3,4,12)...',
-    terms: ['(1,2,2)', '(2,3,6)', '(3,4,12)', '?', '(5,6,30)'],
+    terms: ['(1, 2, 2)', '(2, 3, 6)', '(3, 4, 12)', '?', '(5, 6, 30)'],
     missingIndex: 3,
-    correctAnswer: '(4,5,20)',
-    options: ['(4,5,20)', '(4,5,24)', '(4,5,16)', '(5,6,25)'],
+    correctAnswer: '(4, 5, 20)',
+    options: ['(4, 5, 20)', '(4, 5, 24)', '(4, 5, 16)', '(5, 6, 25)'],
     diffs: ['1×2=2', '2×3=6', '3×4=12', '4×5=20', '5×6=30'],
     rule: 'Rule: 3rd number is the product of the first two numbers [a, b, a × b].',
     explanation: '1 × 2 = 2; 2 × 3 = 6; 3 × 4 = 12; 4 × 5 = 20; 5 × 6 = 30. Each set has the product as its third member!'
@@ -6235,11 +6235,13 @@ function renderPatternDetectiveModule(container) {
           ${p.terms.map((term, idx) => {
             const isMissing = idx === p.missingIndex;
             const diff = idx < p.diffs.length ? p.diffs[idx] : null;
+            const displayText = isMissing ? (solved ? p.correctAnswer : '?') : term;
+            const isLong = String(displayText).length > 4;
 
             return `
               <div class="seq-item-wrap">
-                <div class="seq-tile ${isMissing ? (solved ? 'seq-known' : 'seq-mystery') : 'seq-known'}" style="${isMissing && solved ? 'border-color: var(--accent-emerald); color: var(--accent-emerald-light);' : ''}">
-                  ${isMissing ? (solved ? p.correctAnswer : '?') : term}
+                <div class="seq-tile ${isMissing ? (solved ? 'seq-known' : 'seq-mystery') : 'seq-known'} ${isLong ? 'seq-tile-wide' : ''}" style="${isMissing && solved ? 'border-color: var(--accent-emerald); color: var(--accent-emerald-light);' : ''} ${isLong ? 'min-width: 96px; padding: 0 1.1rem; font-size: 1.15rem;' : ''}">
+                  ${displayText}
                 </div>
                 ${diff ? `<span class="seq-diff-badge">${diff}</span>` : ''}
               </div>
@@ -6252,16 +6254,17 @@ function renderPatternDetectiveModule(container) {
           <span style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600;">
             ${solved ? '🎉 Excellent Deduction!' : 'What number replaces the mystery (?) tile?'}
           </span>
-          <div style="display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-top: 0.6rem;">
+          <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 0.6rem;">
             ${p.options.map(opt => {
               const isCorrect = opt === p.correctAnswer;
               const isChosen = chosenAnswer === opt;
               let btnClass = 'candidate-tile-btn';
               if (solved && isCorrect) btnClass += ' active-match';
               if (!solved && isChosen && !isCorrect) btnClass += ' wrong-match';
+              const isLongOpt = String(opt).length > 4;
 
               return `
-                <button class="${btnClass}" data-opt="${opt}" style="min-width: 60px; height: 48px; font-size: 1.25rem;">
+                <button class="${btnClass}" data-opt="${opt}" style="${isLongOpt ? 'min-width: 90px; padding: 0.4rem 1.1rem; font-size: 1.1rem;' : 'min-width: 56px; height: 48px; font-size: 1.25rem;'}">
                   ${opt}
                 </button>
               `;

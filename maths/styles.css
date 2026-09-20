@@ -1644,8 +1644,10 @@ select.calc-input option {
   justify-content: center;
 }
 .candidate-tile-btn {
-  width: 40px;
-  height: 40px;
+  min-width: 44px;
+  width: auto;
+  padding: 0.35rem 0.85rem;
+  height: 44px;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border-glass);
@@ -1656,6 +1658,7 @@ select.calc-input option {
   cursor: pointer;
   transition: all 0.15s ease;
   touch-action: manipulation;
+  white-space: nowrap;
 }
 .candidate-tile-btn:hover {
   background: rgba(255, 255, 255, 0.15);
@@ -2462,7 +2465,7 @@ select.calc-input option {
 .pattern-seq-strip {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.85rem;
   flex-wrap: wrap;
   justify-content: center;
   padding: 1.5rem 0.5rem;
@@ -2476,19 +2479,29 @@ select.calc-input option {
 }
 
 .seq-tile {
-  width: 56px;
+  min-width: 56px;
+  width: auto;
+  padding: 0 0.85rem;
   height: 56px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
   border: 2px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-md);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: 'Outfit', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
+
+.seq-tile.seq-tile-wide {
+  min-width: 96px;
+  padding: 0 1.1rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
 }
 
 .seq-tile.seq-known {
@@ -3225,9 +3238,17 @@ select.calc-input option {
     gap: 1rem;
   }
   .seq-tile {
-    width: 46px;
+    min-width: 46px;
+    width: auto;
+    padding: 0 0.65rem;
     height: 46px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    white-space: nowrap;
+  }
+  .seq-tile.seq-tile-wide {
+    min-width: 78px;
+    padding: 0 0.75rem;
+    font-size: 0.95rem;
   }
   .tower-block {
     min-width: 52px;
