@@ -1033,6 +1033,17 @@ const PATTERN_PRESETS = [
     diffs: ['1×2=2', '2×3=6', '3×4=12', '4×5=20', '5×6=30'],
     rule: 'Rule: 3rd number is the product of the first two numbers [a, b, a × b].',
     explanation: '1 × 2 = 2; 2 × 3 = 6; 3 × 4 = 12; 4 × 5 = 20; 5 × 6 = 30. Each set has the product as its third member!'
+  },
+  {
+    id: 'pat_8',
+    title: '3-Number Set (1st × 3): 1,2,3; 2,3,6; 3,4,9...',
+    terms: ['(1, 2, 3)', '(2, 3, 6)', '(3, 4, 9)', '?', '(5, 6, 15)'],
+    missingIndex: 3,
+    correctAnswer: '(4, 5, 12)',
+    options: ['(4, 5, 12)', '(4, 5, 16)', '(4, 5, 10)', '(4, 6, 12)'],
+    diffs: ['1×3=3', '2×3=6', '3×3=9', '4×3=12', '5×3=15'],
+    rule: 'Rule: 1st number = n, 2nd number = n+1, 3rd number is 1st number multiplied by 3 (1×3, 2×3, 3×3, 4×3, 5×3).',
+    explanation: '1st number increases by 1 (1, 2, 3, 4, 5). 2nd number increases by 1 (2, 3, 4, 5, 6). The 3rd number in each set is the 1st number multiplied by 3: 1 × 3 = 3; 2 × 3 = 6; 3 × 3 = 9; 4 × 3 = 12; 5 × 3 = 15. Hence the missing set is (4, 5, 12)!'
   }
 ];
 
@@ -2644,6 +2655,21 @@ const PRACTICE_POOL_TOPIC_4 = [
     source: 'CBSE Class 5 Number Set Puzzle'
   },
   {
+    id: 'pat_q_triplet_3',
+    skill: 'arithmetic_patterns',
+    type: 'mcq',
+    question: 'Find the next two sets in the pattern: 1, 2, 3; 2, 3, 6; 3, 4, 9; _____; _____',
+    options: [
+      '4, 5, 12 and 5, 6, 15',
+      '4, 5, 16 and 5, 6, 20',
+      '4, 5, 10 and 5, 6, 12',
+      '4, 5, 15 and 5, 6, 18'
+    ],
+    correct: 0,
+    explanation: 'Deconstruct the 3 numbers in each set: 1st number increases by 1 (1, 2, 3, 4, 5); 2nd number increases by 1 (2, 3, 4, 5, 6); 3rd number is the 1st number multiplied by 3 (1 × 3 = 3, 2 × 3 = 6, 3 × 3 = 9, 4 × 3 = 12, 5 × 3 = 15). Therefore, the next sets are 4, 5, 12 and 5, 6, 15!',
+    source: 'CBSE Class 5 Triplet Set Pattern (1st × 3)'
+  },
+  {
     id: 'pat_q1',
     skill: 'arithmetic_patterns',
     type: 'mcq',
@@ -3149,6 +3175,12 @@ const CHALLENGE_QUESTIONS_TOPIC_4 = [
     options: ['75', '74', '76', '84'],
     correct: 0,
     explanation: 'Tens is 7, ones is 5. 7 + 5 = 12. Number is 75!'
+  },
+  {
+    question: 'Next set in pattern 1, 2, 3; 2, 3, 6; 3, 4, 9; _____?',
+    options: ['(4, 5, 12)', '(4, 5, 16)', '(4, 5, 10)', '(4, 6, 12)'],
+    correct: 0,
+    explanation: '1st is 4, 2nd is 5, 3rd is 1st × 3 = 4 × 3 = 12: (4, 5, 12).'
   }
 ];
 
@@ -3749,6 +3781,16 @@ const PRACTICE_POOL_REVISION = [
     correct: 0,
     explanation: '1st number: 1, 2, 3, 4, 5 (+1); 2nd number: 2, 3, 4, 5, 6 (+1); 3rd number: 3, 6, 12, 24, 48 (doubling ×2). Next sets are 4, 5, 24 and 5, 6, 48!',
     source: 'CBSE 3-Number Set Triplet Pattern'
+  },
+  {
+    id: 'rev_q10_b',
+    skill: 'patterns',
+    type: 'mcq',
+    question: 'Find the next two sets in the pattern: 1, 2, 3; 2, 3, 6; 3, 4, 9; _____; _____',
+    options: ['4, 5, 12 and 5, 6, 15', '4, 5, 16 and 5, 6, 20', '4, 5, 10 and 5, 6, 12', '4, 5, 15 and 5, 6, 18'],
+    correct: 0,
+    explanation: '1st number: 1, 2, 3, 4, 5 (+1); 2nd number: 2, 3, 4, 5, 6 (+1); 3rd number is 1st number multiplied by 3 (1×3=3, 2×3=6, 3×3=9, 4×3=12, 5×3=15). Next sets are 4, 5, 12 and 5, 6, 15!',
+    source: 'CBSE 3-Number Set Triplet Pattern (1st × 3)'
   },
   {
     id: 'rev_q11',
@@ -6322,6 +6364,21 @@ function renderPatternDetectiveModule(container) {
                 <li>2 &times; 3 = <strong>6</strong></li>
                 <li>3 &times; 4 = <strong>12</strong></li>
                 <li>4 &times; 5 = <strong>20</strong>, and 5 &times; 6 = <strong>30</strong>!</li>
+              </ul>
+            </div>
+
+            <!-- Rule C: 3rd Number is 1st Number × 3 -->
+            <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 1rem;">
+              <div style="font-weight: 700; color: #60a5fa; font-size: 0.95rem; margin-bottom: 0.5rem;">
+                Rule 3: 3rd Number = 1st Number &times; 3 [n, n+1, 3n]
+              </div>
+              <div style="font-family: monospace; background: rgba(0,0,0,0.3); padding: 0.5rem; border-radius: 6px; font-size: 0.9rem; color: #93c5fd; margin-bottom: 0.6rem;">
+                1, 2, <strong>3</strong> ; 2, 3, <strong>6</strong> ; 3, 4, <strong>9</strong> ; <u>4, 5, <strong>12</strong></u> ; <u>5, 6, <strong>15</strong></u>
+              </div>
+              <ul style="font-size: 0.82rem; color: #94a3b8; margin: 0; padding-left: 1.2rem; line-height: 1.45;">
+                <li><strong>1st number:</strong> Increases by +1 (1 &rarr; 2 &rarr; 3 &rarr; <strong>4</strong> &rarr; <strong>5</strong>)</li>
+                <li><strong>2nd number:</strong> Increases by +1 (2 &rarr; 3 &rarr; 4 &rarr; <strong>5</strong> &rarr; <strong>6</strong>)</li>
+                <li><strong>3rd number:</strong> 1st number multiplied by 3: 1 &times; 3 = <strong>3</strong>, 2 &times; 3 = <strong>6</strong>, 3 &times; 3 = <strong>9</strong>, 4 &times; 3 = <strong>12</strong>, 5 &times; 3 = <strong>15</strong>!</li>
               </ul>
             </div>
           </div>
@@ -9262,6 +9319,7 @@ function renderWorksheetViewTopic4(container) {
             <li><code>2, 6, 12, 20, 30, ____, ____</code> &nbsp; (Rule: _____________________)</li>
             <li><code>1, 2, 3; 2, 3, 6; 3, 4, 12; _______, _______</code> &nbsp; (Rule: _____________________)</li>
             <li><code>(1, 2, 2), (2, 3, 6), (3, 4, 12), _______, (5, 6, 30)</code> &nbsp; (Rule: _____________________)</li>
+            <li><code>1, 2, 3; 2, 3, 6; 3, 4, 9; _______, _______</code> &nbsp; (Rule: _____________________)</li>
           </ol>
 
           <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">II. Geometric Dot Numbers (Triangular & Square Numbers):</h4>
@@ -9869,6 +9927,7 @@ function populatePrintTopic4(printContainer) {
         <li>2, 6, 12, 20, 30, ______, ______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
         <li>1, 2, 3; 2, 3, 6; 3, 4, 12; _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
         <li>(1, 2, 2), (2, 3, 6), (3, 4, 12), _______, (5, 6, 30) &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
+        <li>1, 2, 3; 2, 3, 6; 3, 4, 9; _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
       </ol>
     </div>
 
