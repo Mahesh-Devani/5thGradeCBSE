@@ -3741,4 +3741,141 @@ select.calc-input option {
   flex-shrink: 0;
 }
 
+/* ==========================================================================
+   WORKSHEET BUILDER & REVISION MODULE STYLES
+   ========================================================================== */
+.worksheet-builder-controls {
+  background: var(--bg-card, #1e293b);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.builder-presets {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.builder-preset-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+
+.builder-preset-btn:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #c7d2fe;
+  transform: translateY(-1px);
+}
+
+.builder-preset-btn.active {
+  background: var(--accent-indigo, #6366f1);
+  border-color: var(--accent-indigo, #6366f1);
+  color: #ffffff;
+}
+
+.topic-check-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.topic-check-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md, 12px);
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.topic-check-card:hover {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.topic-check-card.checked {
+  border-color: var(--accent-amber, #f59e0b);
+  background: rgba(245, 158, 11, 0.1);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.15);
+}
+
+.topic-check-card input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent-amber, #f59e0b);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.topic-check-card-info {
+  flex: 1;
+}
+
+.topic-check-card-title {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--text-main, #f8fafc);
+  margin-bottom: 0.2rem;
+}
+
+.topic-check-card-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted, #94a3b8);
+}
+
+.builder-summary-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md, 12px);
+  padding: 0.85rem 1.25rem;
+}
+
+.builder-metrics {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.builder-metric-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.builder-metric-val {
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--accent-amber-light, #fbbf24);
+}
+
+.builder-metric-lbl {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted, #94a3b8);
+}
+
 

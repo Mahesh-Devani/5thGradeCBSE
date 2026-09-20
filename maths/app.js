@@ -1011,6 +1011,28 @@ const PATTERN_PRESETS = [
     diffs: ['1+1', '1+2', '2+3', '3+5', '5+8', '8+13'],
     rule: 'Rule: Each number is the sum of the two numbers immediately before it.',
     explanation: '5 + 8 = 13, and 8 + 13 = 21!'
+  },
+  {
+    id: 'pat_6',
+    title: '3-Number Set (Triplets): 1,2,3; 2,3,6; 3,4,12...',
+    terms: ['(1,2,3)', '(2,3,6)', '(3,4,12)', '?', '(5,6,48)'],
+    missingIndex: 3,
+    correctAnswer: '(4,5,24)',
+    options: ['(4,5,20)', '(4,5,24)', '(4,5,18)', '(4,6,24)'],
+    diffs: ['Set 1', 'Set 2', 'Set 3', 'Set 4', 'Set 5'],
+    rule: 'Rule: 1st number = n, 2nd number = n+1, 3rd number doubles (3 → 6 → 12 → 24 → 48).',
+    explanation: 'First number increases by 1 (1, 2, 3, 4, 5). Second number increases by 1 (2, 3, 4, 5, 6). The third number doubles each step (3 × 2 = 6; 6 × 2 = 12; 12 × 2 = 24; 24 × 2 = 48). Hence the next set is (4, 5, 24)!'
+  },
+  {
+    id: 'pat_7',
+    title: 'Product Triplets: (1,2,2), (2,3,6), (3,4,12)...',
+    terms: ['(1,2,2)', '(2,3,6)', '(3,4,12)', '?', '(5,6,30)'],
+    missingIndex: 3,
+    correctAnswer: '(4,5,20)',
+    options: ['(4,5,20)', '(4,5,24)', '(4,5,16)', '(5,6,25)'],
+    diffs: ['1×2=2', '2×3=6', '3×4=12', '4×5=20', '5×6=30'],
+    rule: 'Rule: 3rd number is the product of the first two numbers [a, b, a × b].',
+    explanation: '1 × 2 = 2; 2 × 3 = 6; 3 × 4 = 12; 4 × 5 = 20; 5 × 6 = 30. Each set has the product as its third member!'
   }
 ];
 
@@ -1609,6 +1631,34 @@ const LEARN_MODULES_TOPIC_5 = {
   }
 };
 
+
+const LEARN_MODULES_REVISION = {
+  blueprint_overview: {
+    id: 'blueprint_overview',
+    pillTitle: '📊 Exam Blueprint',
+    title: 'CBSE Term 1 Exam Blueprint & Chapter Weightage',
+    tag: 'Official CBSE Structure',
+    lead: 'Review the CBSE Class 5 Term-End examination structure, chapter-wise marks distribution, and recommended time strategy.',
+    renderContent: renderBlueprintOverviewModule
+  },
+  formula_cheatsheet: {
+    id: 'formula_cheatsheet',
+    pillTitle: '⚡ Grand Formula Sheet',
+    title: 'The Grand Mental Formula & Rules Reference',
+    tag: 'Quick Revision',
+    lead: 'All key mathematical properties, formulas, divisibility tests, and geometric rules across all 5 syllabus chapters in one place.',
+    renderContent: renderFormulaCheatsheetModule
+  },
+  top_exam_traps: {
+    id: 'top_exam_traps',
+    pillTitle: '🚨 Top 10 Exam Traps',
+    title: 'Top 10 CBSE Exam Traps & Mistakes to Avoid',
+    tag: 'Exam Immunity',
+    lead: 'Diagnostic immunity against the most frequent blunders made by Class 5 students in arithmetic, brackets, patterns, and geometry.',
+    renderContent: renderTopExamTrapsModule
+  }
+};
+
 const LEARN_MODULES = LEARN_MODULES_TOPIC_1;
 
 /* ==========================================================================
@@ -1616,7 +1666,7 @@ const LEARN_MODULES = LEARN_MODULES_TOPIC_1;
    ========================================================================== */
 
 const PRACTICE_POOL_TOPIC_1 = [
-  // Freedom International School Worksheet — Section I: Fill in the Blanks
+  // CBSE Class 5 Curriculum Worksheet — Section I: Fill in the Blanks
   {
     id: 'fib_1',
     skill: 'school_worksheet',
@@ -1678,7 +1728,7 @@ const PRACTICE_POOL_TOPIC_1 = [
     source: 'Worksheet 2026-27 (Q I.6)'
   },
 
-  // Freedom International School Worksheet — Section II: True or False
+  // CBSE Class 5 Curriculum Worksheet — Section II: True or False
   {
     id: 'tf_1',
     skill: 'school_worksheet',
@@ -1720,7 +1770,7 @@ const PRACTICE_POOL_TOPIC_1 = [
     source: 'Worksheet 2026-27 (Q II.4)'
   },
 
-  // Freedom International School Worksheet — Section III: Calculations & Problems
+  // CBSE Class 5 Curriculum Worksheet — Section III: Calculations & Problems
   {
     id: 'calc_1',
     skill: 'division_methods',
@@ -1933,7 +1983,7 @@ const PRACTICE_POOL_TOPIC_1 = [
     ],
     correct: 0,
     explanation: 'When the larger number is a multiple of the smaller number, the smaller number divides the larger number completely with zero remainder. Hence, the smaller number is itself the Highest Common Factor (e.g. HCF of 6 and 18 is 6)!',
-    source: 'Freedom International School Worksheet (Q 6)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 6)'
   }
 ];
 
@@ -2222,7 +2272,7 @@ const PRACTICE_POOL_TOPIC_2 = [
     ],
     correct: 0,
     explanation: 'Co-Prime Factor Law for 15 (15 = 3 × 5, HCF=1): A number must be divisible by BOTH 3 and 5 to be divisible by 15! While sum of digits is 30 (divisible by 3), the last digit is 2, so it fails divisibility by 5. Therefore, 236,892 is NOT divisible by 15!',
-    source: 'Freedom International School Worksheet (Q 1)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 1)'
   },
   {
     id: 'div_ws3',
@@ -2237,7 +2287,7 @@ const PRACTICE_POOL_TOPIC_2 = [
     ],
     correct: 0,
     explanation: '• Divisible by 10: Must end in 0 (all 4 do).\\n• Divisible by 4: Last 2 digits must divide by 4 (80: yes, 60: yes, 40: yes, 70: NO ➔ eliminates 13570).\\n• Divisible by 6: Must be even AND divisible by 3 (digit sum):\\n  - 12480: 1+2+4+8+0 = 15 (÷3 = 5, YES!)\\n  - 98760: 9+8+7+6+0 = 30 (÷3 = 10, YES!)\\n  - 24640: 2+4+6+4+0 = 16 (Not div by 3, NO).\\nTherefore, only 12480 and 98760 are divisible by 4, 6, and 10!',
-    source: 'Freedom International School Worksheet (Q 3)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 3)'
   }
 ];
 
@@ -2492,7 +2542,7 @@ const PRACTICE_POOL_TOPIC_3 = [
     options: ['28', '36', '18', '24'],
     correct: 0,
     explanation: 'Step 1 (Division): 45 ÷ 9 = 5 ➔ 28 + 5 × 2 − 10\\nStep 2 (Multiplication): 5 × 2 = 10 ➔ 28 + 10 − 10\\nStep 3 (Addition & Subtraction): 28 + 10 = 38, and 38 − 10 = 28!',
-    source: 'Freedom International School Worksheet (Q 9a)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 9a)'
   },
   {
     id: 'expr_q22',
@@ -2502,7 +2552,7 @@ const PRACTICE_POOL_TOPIC_3 = [
     options: ['28', '26', '30', '15'],
     correct: 0,
     explanation: 'Step 1 (Brackets first): 48 − 35 = 13 ➔ 13 × 2 + 30 ÷ 15\\nStep 2 (Multiply & Divide): 13 × 2 = 26, and 30 ÷ 15 = 2\\nStep 3 (Addition): 26 + 2 = 28!',
-    source: 'Freedom International School Worksheet (Q 9b)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 9b)'
   },
   {
     id: 'expr_q23',
@@ -2517,7 +2567,7 @@ const PRACTICE_POOL_TOPIC_3 = [
     ],
     correct: 0,
     explanation: 'The brackets group (2 × 5) which is "the product of 2 and 5". Subtracting 6 means "6 subtracted from the product of 2 and 5".',
-    source: 'Freedom International School Worksheet (Q 12a)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 12a)'
   },
   {
     id: 'expr_q24',
@@ -2532,7 +2582,7 @@ const PRACTICE_POOL_TOPIC_3 = [
     ],
     correct: 0,
     explanation: '(90 − 30) is the difference of 90 and 30 (= 60). (30 − 20) is the difference of 30 and 20 (= 10). The division symbol represents their quotient: 60 ÷ 10 = 6.',
-    source: 'Freedom International School Worksheet (Q 12b)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 12b)'
   },
   {
     id: 'expr_q25',
@@ -2542,7 +2592,7 @@ const PRACTICE_POOL_TOPIC_3 = [
     options: ['45 ÷ (2 + 3)', '(45 ÷ 2) + 3', '45 × (2 + 3)', '(2 + 3) ÷ 45'],
     correct: 0,
     explanation: '"The sum of 2 and 3" is grouped as (2 + 3). The quotient of 45 and this sum means 45 divided by (2 + 3): 45 ÷ (2 + 3) = 45 ÷ 5 = 9.',
-    source: 'Freedom International School Worksheet (Q 13a)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 13a)'
   },
   {
     id: 'expr_q26',
@@ -2557,12 +2607,42 @@ const PRACTICE_POOL_TOPIC_3 = [
     ],
     correct: 0,
     explanation: '"Sum of 56 and 4" is (56 + 4) = 60. "Difference of 11 and 10" is (11 − 10) = 1. Their product is (56 + 4) × (11 − 10) = 60 × 1 = 60.',
-    source: 'Freedom International School Worksheet (Q 13b)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 13b)'
   }
 ];
 
 const PRACTICE_POOL_TOPIC_4 = [
   // Category 1: Arithmetic & Step Patterns
+  {
+    id: 'pat_q_triplet_1',
+    skill: 'arithmetic_patterns',
+    type: 'mcq',
+    question: 'Find the next two sets in the pattern: 1, 2, 3; 2, 3, 6; 3, 4, 12; _____; _____',
+    options: [
+      '4, 5, 24 and 5, 6, 48',
+      '4, 5, 20 and 5, 6, 30',
+      '4, 5, 18 and 5, 6, 24',
+      '4, 5, 15 and 5, 6, 20'
+    ],
+    correct: 0,
+    explanation: 'Deconstruct the 3 numbers in each set: 1st number increases by 1 (1, 2, 3, 4, 5); 2nd number increases by 1 (2, 3, 4, 5, 6); 3rd number doubles (3 → 6 → 12 → 24 → 48). Therefore, the next sets are 4, 5, 24 and 5, 6, 48!',
+    source: 'CBSE Class 5 Triplet Set Pattern'
+  },
+  {
+    id: 'pat_q_triplet_2',
+    skill: 'arithmetic_patterns',
+    type: 'mcq',
+    question: 'In the product-triplet pattern (1, 2, 2), (2, 3, 6), (3, 4, 12), _____, (5, 6, 30), what is the missing set?',
+    options: [
+      '(4, 5, 20)',
+      '(4, 5, 24)',
+      '(4, 5, 18)',
+      '(4, 6, 24)'
+    ],
+    correct: 0,
+    explanation: 'In each triplet [a, b, c], the 3rd number is the product of the first two: 1 × 2 = 2; 2 × 3 = 6; 3 × 4 = 12; 4 × 5 = 20; 5 × 6 = 30. The missing set is (4, 5, 20).',
+    source: 'CBSE Class 5 Number Set Puzzle'
+  },
   {
     id: 'pat_q1',
     skill: 'arithmetic_patterns',
@@ -2678,7 +2758,7 @@ const PRACTICE_POOL_TOPIC_4 = [
     ],
     correct: 0,
     explanation: 'Triangular numbers are generated by progressively adding natural numbers: 1, 1+2=3, 3+3=6, 6+4=10, 10+5=15, 15+6=21, 21+7=28, 28+8=36, 36+9=45, 45+10=55. (Note: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 are the first 10 square numbers).',
-    source: 'Freedom International School Worksheet (Q 5)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 5)'
   },
 
   // Category 3: Number Towers (Pyramids)
@@ -3295,7 +3375,7 @@ const PRACTICE_POOL_TOPIC_5 = [
     options: ['900°', '1080°', '1260°', '1440°'],
     correct: 2,
     explanation: 'The formula for the sum of interior angles of any n-sided polygon is (n − 2) × 180°. For a nonagon (n = 9): (9 − 2) × 180° = 7 × 180° = 1260°!',
-    source: 'Freedom International School Worksheet (Q 2)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 2)'
   },
   {
     id: 'geom_22',
@@ -3305,7 +3385,7 @@ const PRACTICE_POOL_TOPIC_5 = [
     options: ['Acute-angled triangle', 'Right-angled triangle', 'Obtuse-angled triangle', 'Equilateral triangle'],
     correct: 2,
     explanation: 'Because one of the angles measures 100° (which is strictly greater than 90°), this is an Obtuse-angled triangle. (Notice: 20° + 60° + 100° = 180°).',
-    source: 'Freedom International School Worksheet (Q 4a)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 4a)'
   },
   {
     id: 'geom_23',
@@ -3315,7 +3395,7 @@ const PRACTICE_POOL_TOPIC_5 = [
     options: ['Acute-angled triangle', 'Right-angled triangle', 'Obtuse-angled triangle', 'Straight triangle'],
     correct: 2,
     explanation: 'Since 120° is greater than 90°, it contains an obtuse angle, making it an Obtuse-angled triangle. (37° + 23° + 120° = 180°).',
-    source: 'Freedom International School Worksheet (Q 4b)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 4b)'
   },
   {
     id: 'geom_24',
@@ -3325,7 +3405,7 @@ const PRACTICE_POOL_TOPIC_5 = [
     options: ['Acute-angled triangle', 'Right-angled triangle', 'Obtuse-angled triangle', 'Scalene angle'],
     correct: 0,
     explanation: 'Every single angle (55°, 45°, and 80°) is strictly less than 90°. A triangle in which all three angles are acute (< 90°) is an Acute-angled triangle!',
-    source: 'Freedom International School Worksheet (Q 4c)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 4c)'
   },
   {
     id: 'geom_25',
@@ -3335,7 +3415,7 @@ const PRACTICE_POOL_TOPIC_5 = [
     options: ['Acute-angled triangle', 'Right-angled triangle', 'Obtuse-angled triangle', 'Isosceles triangle'],
     correct: 1,
     explanation: 'One of the angles is exactly 90° (a right angle, forming a square corner ∟). Therefore, it is a Right-angled triangle!',
-    source: 'Freedom International School Worksheet (Q 4d)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 4d)'
   },
   {
     id: 'geom_26',
@@ -3367,7 +3447,7 @@ const PRACTICE_POOL_TOPIC_5 = [
     options: ['Triangle', 'Straight line / Line segment', 'Circle', 'Right angle'],
     correct: 1,
     explanation: 'Collinear points lie on the exact same straight line! Joining them produces a straight line (or line segment). (Note: joining three non-collinear points forms a triangle!).',
-    source: 'Freedom International School Worksheet (Q 7)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 7)'
   },
 
   // Category 6: quadrilaterals_circles (Worksheet Q8, Q10, Q11)
@@ -3384,7 +3464,7 @@ const PRACTICE_POOL_TOPIC_5 = [
     ],
     correct: 0,
     explanation: 'A rhombus has all 4 sides of equal length and both pairs of opposite sides are parallel. A trapezium has only ONE pair of opposite sides parallel, and its sides are generally unequal!',
-    source: 'Freedom International School Worksheet (Q 8)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 8)'
   },
   {
     id: 'geom_30',
@@ -3394,7 +3474,7 @@ const PRACTICE_POOL_TOPIC_5 = [
     options: ['45°', '60°', '90° (Right angle ⊥)', '180°'],
     correct: 2,
     explanation: 'The diagonals of a rhombus always bisect each other perpendicularly at an exact right angle (90° ⊥)! In contrast, the diagonals of a trapezium do not.',
-    source: 'Freedom International School Worksheet (Q 8)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 8)'
   },
   {
     id: 'geom_31',
@@ -3404,7 +3484,7 @@ const PRACTICE_POOL_TOPIC_5 = [
     options: ['65°', '70°', '75°', '80°'],
     correct: 1,
     explanation: 'The sum of all four angles in any quadrilateral is always 360°. Sum of given angles = 85° + 110° + 95° = 290°. Therefore, the missing angle = 360° − 290° = 70°!',
-    source: 'Freedom International School Worksheet (Q 11a)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 11a)'
   },
   {
     id: 'geom_32',
@@ -3419,7 +3499,7 @@ const PRACTICE_POOL_TOPIC_5 = [
     ],
     correct: 0,
     explanation: 'In a parallelogram: 1) Opposite angles are equal $\\implies$ ∠C = ∠A = 80°. 2) Adjacent angles are supplementary (sum to 180°) $\\implies$ ∠B = 180° − 80° = 100° and ∠D = 180° − 80° = 100°. (Total: 80° + 100° + 80° + 100° = 360°).',
-    source: 'Freedom International School Worksheet (Q 11b)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 11b)'
   },
   {
     id: 'geom_33',
@@ -3429,7 +3509,7 @@ const PRACTICE_POOL_TOPIC_5 = [
     options: ['20 cm', '10 cm', '5 cm', '2.5 cm'],
     correct: 2,
     explanation: 'Radius is always half of diameter (Radius = Diameter ÷ 2). For a 10 cm diameter circle, set the compass radius to 10 ÷ 2 = 5 cm!',
-    source: 'Freedom International School Worksheet (Q 10b)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 10b)'
   },
   {
     id: 'geom_34',
@@ -3449,7 +3529,7 @@ const PRACTICE_POOL_TOPIC_5 = [
     options: ['Acute angle', 'Right angle', 'Obtuse angle', 'Straight angle'],
     correct: 2,
     explanation: 'An angle measuring between 90° and 180° is an Obtuse Angle. Since 135° is greater than 90° and less than 180°, it is an obtuse angle.',
-    source: 'Freedom International School Worksheet (Q 10d)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 10d)'
   },
   {
     id: 'geom_36',
@@ -3459,7 +3539,7 @@ const PRACTICE_POOL_TOPIC_5 = [
     options: ['Square', 'Rectangle', 'Rhombus', 'Trapezium'],
     correct: 1,
     explanation: 'A quadrilateral with opposite sides equal (length 8 cm, breadth 5 cm) and all four interior angles equal to 90° is a Rectangle!',
-    source: 'Freedom International School Worksheet (Q 10a)'
+    source: 'CBSE Class 5 Curriculum Worksheet (Q 10a)'
   }
 ];
 
@@ -3560,6 +3640,252 @@ const CHALLENGE_QUESTIONS_TOPIC_5 = [
    8. CURRICULUM TOPICS CONFIGURATION & REGISTRY
    ========================================================================== */
 
+
+/* ==========================================================================
+   PRACTICE & CHALLENGE POOLS FOR TERM REVISION (MIXED TOPICS)
+   ========================================================================== */
+
+const PRACTICE_POOL_REVISION = [
+  // Chapter 1: Factors & Multiples
+  {
+    id: 'rev_q1',
+    skill: 'factors_hcf_lcm',
+    type: 'mcq',
+    question: 'Two neon signs blink every 12 seconds and 18 seconds respectively. If they blink together right now, after how many seconds will they next blink together?',
+    options: ['36 seconds', '72 seconds', '24 seconds', '6 seconds'],
+    correct: 0,
+    explanation: 'Synchronizing repeating cycles requires the LCM! LCM(12, 18): 12 = 2² × 3, 18 = 2 × 3² → LCM = 2² × 3² = 36 seconds.',
+    source: 'CBSE Term Exam Revision (LCM Application)'
+  },
+  {
+    id: 'rev_q2',
+    skill: 'factors_hcf_lcm',
+    type: 'mcq',
+    question: 'The product of two numbers is 180 and their HCF is 6. What is their LCM?',
+    options: ['30', '36', '24', '60'],
+    correct: 0,
+    explanation: 'Use the fundamental relationship: Product = HCF × LCM. Therefore, LCM = Product ÷ HCF = 180 ÷ 6 = 30.',
+    source: 'CBSE Product Relation Formula'
+  },
+  {
+    id: 'rev_q3',
+    skill: 'factors_hcf_lcm',
+    type: 'mcq',
+    question: 'Which of the following number pairs is ALWAYS co-prime (HCF = 1)?',
+    options: ['Any two consecutive natural numbers (e.g. 14 and 15)', 'Any two even numbers', 'Any two composite numbers', 'A prime number and its multiple'],
+    correct: 0,
+    explanation: 'Consecutive numbers (n and n+1) have a difference of 1. Any common factor must divide their difference (1), so their HCF is always 1!',
+    source: 'CBSE Mathematical Property'
+  },
+  // Chapter 2: Divisibility Rules
+  {
+    id: 'rev_q4',
+    skill: 'divisibility',
+    type: 'mcq',
+    question: 'Check the divisibility of 37,42,582 by 15. Is it divisible?',
+    options: ['No, because its last digit is 2, so it is not divisible by 5', 'Yes, because the sum of digits is divisible by 15', 'Yes, because it is divisible by 3', 'No, because it is not divisible by 3'],
+    correct: 0,
+    explanation: 'To be divisible by composite 15 (3 × 5), a number must be divisible by BOTH 3 and 5. Since 37,42,582 ends in 2, it fails divisibility by 5. Thus, it cannot be divisible by 15!',
+    source: 'CBSE Term Paper (Divisibility Test)'
+  },
+  {
+    id: 'rev_q5',
+    skill: 'divisibility',
+    type: 'mcq',
+    question: 'Which number is divisible by 4, 6, and 10 simultaneously?',
+    options: ['12,480', '98,765', '75,310', '12,450'],
+    correct: 0,
+    explanation: '12,480: ends in 0 (divisible by 10); last two digits 80 are divisible by 4; sum of digits 1+2+4+8+0=15 (divisible by 3) and even (divisible by 2) → divisible by 6! All three tests pass.',
+    source: 'CBSE Multi-Rule Divisibility'
+  },
+  {
+    id: 'rev_q6',
+    skill: 'divisibility',
+    type: 'mcq',
+    question: 'In 5*36, find the smallest non-zero digit * so the number is divisible by 9.',
+    options: ['4', '5', '3', '6'],
+    correct: 0,
+    explanation: 'Sum of known digits = 5 + 3 + 6 = 14. The next multiple of 9 is 18. So * = 18 − 14 = 4. Check: 5436 → 5+4+3+6 = 18 (divisible by 9).',
+    source: 'CBSE Missing Digit Puzzle'
+  },
+  // Chapter 3: Expressions & Statements
+  {
+    id: 'rev_q7',
+    skill: 'expressions',
+    type: 'mcq',
+    question: 'Evaluate step by step using BODMAS: 28 + 45 ÷ 9 × 2 − 10',
+    options: ['28', '24', '36', '18'],
+    correct: 0,
+    explanation: 'Step 1 (Division): 45 ÷ 9 = 5 → 28 + 5 × 2 − 10; Step 2 (Multiplication): 5 × 2 = 10 → 28 + 10 − 10; Step 3 (Addition & Subtraction): 28 + 10 − 10 = 28!',
+    source: 'CBSE BODMAS Order of Operations'
+  },
+  {
+    id: 'rev_q8',
+    skill: 'expressions',
+    type: 'mcq',
+    question: 'Write the mathematical expression: "The sum of 56 and 4 is multiplied by the difference of 11 and 10"',
+    options: ['(56 + 4) × (11 − 10)', '56 + 4 × 11 − 10', '(56 + 4) + (11 − 10)', '56 × (11 − 10) + 4'],
+    correct: 0,
+    explanation: '"Sum of 56 and 4" requires parentheses (56 + 4). "Difference of 11 and 10" requires (11 − 10). Their product is (56 + 4) × (11 − 10) = 60 × 1 = 60.',
+    source: 'CBSE Word Problem to Expression'
+  },
+  {
+    id: 'rev_q9',
+    skill: 'expressions',
+    type: 'mcq',
+    question: 'Where must parentheses be placed in 4 + 6 × 3 − 2 to equal 28?',
+    options: ['(4 + 6) × 3 − 2 = 28', '4 + 6 × (3 − 2) = 28', '4 + (6 × 3) − 2 = 28', 'No brackets needed'],
+    correct: 0,
+    explanation: 'Check (4 + 6) × 3 − 2 = 10 × 3 − 2 = 30 − 2 = 28! Without brackets, 4 + 6 × 3 − 2 = 4 + 18 − 2 = 20.',
+    source: 'CBSE Parentheses Placement Trap'
+  },
+  // Chapter 4: Number Patterns
+  {
+    id: 'rev_q10',
+    skill: 'patterns',
+    type: 'mcq',
+    question: 'Find the next two sets in the pattern: 1, 2, 3; 2, 3, 6; 3, 4, 12; _____; _____',
+    options: ['4, 5, 24 and 5, 6, 48', '4, 5, 20 and 5, 6, 30', '4, 5, 18 and 5, 6, 24', '4, 5, 16 and 5, 6, 20'],
+    correct: 0,
+    explanation: '1st number: 1, 2, 3, 4, 5 (+1); 2nd number: 2, 3, 4, 5, 6 (+1); 3rd number: 3, 6, 12, 24, 48 (doubling ×2). Next sets are 4, 5, 24 and 5, 6, 48!',
+    source: 'CBSE 3-Number Set Triplet Pattern'
+  },
+  {
+    id: 'rev_q11',
+    skill: 'patterns',
+    type: 'mcq',
+    question: 'What is the sum of the 4th triangular number (10) and the 5th triangular number (15)?',
+    options: ['25 (5² square number)', '24', '30', '20'],
+    correct: 0,
+    explanation: 'A fundamental geometric number theorem: The sum of two consecutive triangular numbers always equals a square number! 10 + 15 = 25 = 5².',
+    source: 'NCERT Triangular Number Theorem'
+  },
+  {
+    id: 'rev_q12',
+    skill: 'patterns',
+    type: 'mcq',
+    question: 'In a 3-tier number tower with base row [4, 7, 3], what is the top peak block?',
+    options: ['21', '14', '18', '24'],
+    correct: 0,
+    explanation: 'Tier 2: (4 + 7 = 11) and (7 + 3 = 10). Top Tier: 11 + 10 = 21! Notice the middle block 7 is counted twice: 4 + (2 × 7) + 3 = 21.',
+    source: 'CBSE Number Tower Rule'
+  },
+  // Chapter 5: Geometry, Angles & Shapes
+  {
+    id: 'rev_q13',
+    skill: 'geometry',
+    type: 'mcq',
+    question: 'What geometric shape or figure do you get by connecting 3 collinear points? What if they are non-collinear?',
+    options: ['Collinear points form a straight line segment; non-collinear form a triangle', 'Both form triangles', 'Collinear points form an angle; non-collinear form a line', 'Collinear points form a circle'],
+    correct: 0,
+    explanation: 'By definition, collinear points lie on one single straight line. Connecting them produces a line segment. Three non-collinear points form a 3-sided polygon (a triangle)!',
+    source: 'CBSE Class 5 Geometric Foundations'
+  },
+  {
+    id: 'rev_q14',
+    skill: 'geometry',
+    type: 'mcq',
+    question: 'What is the interior angle sum of a nonagon (a 9-sided polygon)?',
+    options: ['1260°', '1080°', '1440°', '900°'],
+    correct: 0,
+    explanation: 'Use the polygon triangulation formula: Sum = (n − 2) × 180°. For nonagon (n = 9): (9 − 2) × 180° = 7 × 180° = 1260°.',
+    source: 'CBSE Polygon Triangulation Formula'
+  },
+  {
+    id: 'rev_q15',
+    skill: 'geometry',
+    type: 'mcq',
+    question: 'At 8:00 o\'clock, what is the smaller angle between the hour hand and minute hand of a clock?',
+    options: ['120°', '240°', '90°', '150°'],
+    correct: 0,
+    explanation: 'Count the hour spaces between 8 and 12: exactly 4 hours. Each 1-hour jump is 30° (360° ÷ 12 = 30°). Therefore, 4 × 30° = 120° (an obtuse angle).',
+    source: 'CBSE Clock Hand Detective'
+  },
+  {
+    id: 'rev_q16',
+    skill: 'geometry',
+    type: 'mcq',
+    question: 'If the diameter of a circular swimming pool is 18 meters, what is its radius?',
+    options: ['9 meters', '36 meters', '12 meters', '6 meters'],
+    correct: 0,
+    explanation: 'The radius is always half the diameter: r = d ÷ 2 = 18 ÷ 2 = 9 meters.',
+    source: 'CBSE Circle Anatomy Formula'
+  },
+  {
+    id: 'rev_q17',
+    skill: 'geometry',
+    type: 'mcq',
+    question: 'In parallelogram ABCD, if ∠A = 75°, what is the measure of adjacent angle ∠B?',
+    options: ['105°', '75°', '15°', '90°'],
+    correct: 0,
+    explanation: 'Adjacent angles in any parallelogram are supplementary (add up to 180°). Therefore, ∠B = 180° − 75° = 105°. Opposite angles are equal (∠C = 75°, ∠D = 105°).',
+    source: 'CBSE Parallelogram Angle Rules'
+  }
+];
+
+const CHALLENGE_QUESTIONS_REVISION = [
+  {
+    question: 'What is the HCF of any two consecutive natural numbers (e.g. 23 and 24)?',
+    options: ['1', '0', '2', 'Their product'],
+    correct: 0,
+    explanation: 'Consecutive numbers are always co-prime, so their HCF is 1.'
+  },
+  {
+    question: 'Check divisibility of 9,84,320 by 10 and 4. Does it pass both?',
+    options: ['Yes, both pass', 'Only 10 passes', 'Only 4 passes', 'Neither passes'],
+    correct: 0,
+    explanation: 'Ends in 0 (passes 10) and last two digits 20 are divisible by 4 (passes 4).'
+  },
+  {
+    question: 'Evaluate mentally: 15 − 3 × 4 + 2',
+    options: ['5', '50', '9', '14'],
+    correct: 0,
+    explanation: 'Multiplication first: 3 × 4 = 12. Then: 15 − 12 + 2 = 3 + 2 = 5.'
+  },
+  {
+    question: 'In the set pattern 1, 2, 3; 2, 3, 6; 3, 4, 12; what is the 4th set?',
+    options: ['4, 5, 24', '4, 5, 20', '4, 5, 18', '4, 5, 16'],
+    correct: 0,
+    explanation: '1st: 4; 2nd: 5; 3rd doubles: 12 × 2 = 24 → 4, 5, 24.'
+  },
+  {
+    question: 'What is the angle between clock hands at 3:00 o\'clock?',
+    options: ['90° (Right angle)', '60°', '120°', '45°'],
+    correct: 0,
+    explanation: '3 hours × 30° = 90°.'
+  },
+  {
+    question: 'What is the sum of interior angles of a triangle?',
+    options: ['180°', '360°', '90°', '270°'],
+    correct: 0,
+    explanation: 'Angle sum of all triangles is always 180°.'
+  },
+  {
+    question: 'If diameter = 24 cm, radius = ?',
+    options: ['12 cm', '48 cm', '6 cm', '18 cm'],
+    correct: 0,
+    explanation: 'r = d ÷ 2 = 24 ÷ 2 = 12 cm.'
+  },
+  {
+    question: 'Is 45,612 divisible by 3?',
+    options: ['Yes (sum = 18)', 'No (sum = 17)', 'No (sum = 19)', 'Yes (sum = 15)'],
+    correct: 0,
+    explanation: '4 + 5 + 6 + 1 + 2 = 18, which is divisible by 3.'
+  },
+  {
+    question: 'Which shape has only ONE pair of parallel sides?',
+    options: ['Trapezium', 'Parallelogram', 'Rhombus', 'Rectangle'],
+    correct: 0,
+    explanation: 'A trapezium has exactly one pair of parallel sides.'
+  },
+  {
+    question: 'The 3rd triangular number is 6 and the 4th is 10. Their sum is:',
+    options: ['16 (4²)', '15', '20', '14'],
+    correct: 0,
+    explanation: '6 + 10 = 16 = 4².'
+  }
+];
+
 const TOPICS_CONFIG = {
   factors_multiples_hcf_lcm: {
     id: 'factors_multiples_hcf_lcm',
@@ -3658,6 +3984,26 @@ const TOPICS_CONFIG = {
     ],
     challengePool: CHALLENGE_QUESTIONS_TOPIC_5,
     worksheetRenderer: renderWorksheetViewTopic5
+  },
+  term_revision: {
+    id: 'term_revision',
+    title: 'Term Revision & Worksheet Builder',
+    subtitle: 'CBSE Class 5 — Cumulative Exam Revision & Custom Worksheet Builder',
+    starsKey: 'cbse_maths_revision_stars',
+    sidebarStarId: 'stars-revision',
+    defaultLearnModule: 'blueprint_overview',
+    learnModules: LEARN_MODULES_REVISION,
+    practicePool: PRACTICE_POOL_REVISION,
+    practiceCategories: [
+      { id: 'all', label: '🌟 All Questions' },
+      { id: 'factors_hcf_lcm', label: '⭐ Factors & Multiples' },
+      { id: 'divisibility', label: '⚡ Divisibility' },
+      { id: 'expressions', label: '💬 BODMAS & Expressions' },
+      { id: 'patterns', label: '🧩 Patterns' },
+      { id: 'geometry', label: '📐 Geometry' }
+    ],
+    challengePool: CHALLENGE_QUESTIONS_REVISION,
+    worksheetRenderer: renderWorksheetViewRevision
   }
 };
 
@@ -3683,6 +4029,14 @@ const state = {
   challengeIndex: 0,
   challengeCorrect: 0,
 
+  // Term Revision Worksheet Cherry-Picker Selection (array of topic ids)
+  revisionSelectedTopics: [
+    'factors_multiples_hcf_lcm',
+    'divisibility_rules',
+    'expressions_statements',
+    'number_patterns',
+    'geometry_angles'
+  ],
   // Stars earned
   stars: 0
 };
@@ -5924,6 +6278,51 @@ function renderPatternDetectiveModule(container) {
             ${p.explanation}
           </p>
         </div>
+        <!-- Special Section: 3-Number Set (Triplets) Masterclass -->
+        <div style="margin-top: 1.5rem; background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.25); border-radius: var(--radius-md, 12px); padding: 1.25rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <div style="font-weight: 700; color: #a5b4fc; font-size: 1.05rem;">
+              🧩 3-Number Set Patterns (Triplets) Detective
+            </div>
+            <span class="badge badge-active" style="background: rgba(99, 102, 241, 0.2); color: #c7d2fe; border: 1px solid rgba(99, 102, 241, 0.4);">Exam Favorite</span>
+          </div>
+          <p style="font-size: 0.88rem; color: #e2e8f0; margin-bottom: 1rem; line-height: 1.5;">
+            When you see a pattern grouped into sets of 3 numbers like <code>1, 2, 3; 2, 3, 6; 3, 4, 12; ____; ____</code>, <strong>break it down into 3 separate parallel tracks</strong>:
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+            <!-- Rule A: Doubling 3rd Number -->
+            <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 1rem;">
+              <div style="font-weight: 700; color: var(--accent-amber-light); font-size: 0.95rem; margin-bottom: 0.5rem;">
+                Rule 1: Doubling 3rd Number (Geometric)
+              </div>
+              <div style="font-family: monospace; background: rgba(0,0,0,0.3); padding: 0.5rem; border-radius: 6px; font-size: 0.9rem; color: #fef08a; margin-bottom: 0.6rem;">
+                1, 2, <strong>3</strong> ; 2, 3, <strong>6</strong> ; 3, 4, <strong>12</strong> ; <u>4, 5, <strong>24</strong></u> ; <u>5, 6, <strong>48</strong></u>
+              </div>
+              <ul style="font-size: 0.82rem; color: #94a3b8; margin: 0; padding-left: 1.2rem; line-height: 1.45;">
+                <li><strong>1st number:</strong> Increases by +1 (1 &rarr; 2 &rarr; 3 &rarr; <strong>4</strong> &rarr; <strong>5</strong>)</li>
+                <li><strong>2nd number:</strong> Increases by +1 (2 &rarr; 3 &rarr; 4 &rarr; <strong>5</strong> &rarr; <strong>6</strong>)</li>
+                <li><strong>3rd number:</strong> Doubles (&times;2) each step: 3 &rarr; 6 &rarr; 12 &rarr; <strong>24</strong> &rarr; <strong>48</strong>!</li>
+              </ul>
+            </div>
+
+            <!-- Rule B: Product of First Two -->
+            <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 1rem;">
+              <div style="font-weight: 700; color: var(--accent-emerald-light); font-size: 0.95rem; margin-bottom: 0.5rem;">
+                Rule 2: Product of First Two [a, b, a &times; b]
+              </div>
+              <div style="font-family: monospace; background: rgba(0,0,0,0.3); padding: 0.5rem; border-radius: 6px; font-size: 0.9rem; color: #86efac; margin-bottom: 0.6rem;">
+                1, 2, <strong>2</strong> ; 2, 3, <strong>6</strong> ; 3, 4, <strong>12</strong> ; <u>4, 5, <strong>20</strong></u> ; <u>5, 6, <strong>30</strong></u>
+              </div>
+              <ul style="font-size: 0.82rem; color: #94a3b8; margin: 0; padding-left: 1.2rem; line-height: 1.45;">
+                <li>1 &times; 2 = <strong>2</strong></li>
+                <li>2 &times; 3 = <strong>6</strong></li>
+                <li>3 &times; 4 = <strong>12</strong></li>
+                <li>4 &times; 5 = <strong>20</strong>, and 5 &times; 6 = <strong>30</strong>!</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     `;
 
@@ -5939,9 +6338,10 @@ function renderPatternDetectiveModule(container) {
 
     container.querySelectorAll('.candidate-tile-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const val = parseInt(btn.getAttribute('data-opt'));
+        const raw = btn.getAttribute('data-opt');
+        const val = isNaN(Number(raw)) ? raw : Number(raw);
         chosenAnswer = val;
-        if (val === p.correctAnswer) {
+        if (val === p.correctAnswer || String(val) === String(p.correctAnswer)) {
           playCorrectSound();
           launchConfetti();
           solved = true;
@@ -7327,7 +7727,7 @@ function renderQuadrilateralsCirclesModule(container) {
             <div>
               <h3>⚖️ Rhombus vs. Trapezium: Key Differences</h3>
               <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
-                Freedom International School Worksheet Q8: Master the essential differences
+                CBSE Class 5 Curriculum Worksheet Q8: Master the essential differences
               </p>
             </div>
           </div>
@@ -8018,6 +8418,622 @@ function renderWorksheetView(container) {
   }
 }
 
+
+/* ==========================================================================
+   TERM REVISION LEARN MODULE RENDERERS
+   ========================================================================== */
+
+function renderBlueprintOverviewModule(container) {
+  container.innerHTML = `
+    <div class="think-callout-math">
+      <div class="callout-header">💡 CBSE Examination Strategy — How to Score Full Marks</div>
+      <p>A CBSE Class 5 Mathematics examination tests <strong>conceptual reasoning, calculation accuracy, and neat geometric constructions</strong>. Don't rush into lengthy scratchpad calculations — first identify boundary rules, divisibility shortcuts, and formula relationships to eliminate impossible answers!</p>
+    </div>
+
+    <!-- Chapter Weightage Breakdown Table -->
+    <div style="margin: 1.25rem 0;">
+      <h4 style="color: var(--accent-amber-light); margin-bottom: 0.75rem;">📋 CBSE Class 5 Term 1 Curriculum Blueprint (Total: 50 Marks)</h4>
+      <div class="diff-table-wrap">
+        <table class="diff-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Chapter</th>
+              <th style="width: 35%;">Key Competencies & Question Types</th>
+              <th style="width: 20%;">Recommended Marks</th>
+              <th style="width: 20%;">Estimated Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Multiples, Factors, HCF & LCM</strong></td>
+              <td>HCF (The Equal Cutter) vs LCM (Cycle Synchronizer) word problems, prime factorization, co-prime tests, product formula (a × b = HCF × LCM)</td>
+              <td><span class="badge badge-active" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">12 Marks</span></td>
+              <td>25 mins</td>
+            </tr>
+            <tr>
+              <td><strong>2. Divisibility Rules (2 to 12)</strong></td>
+              <td>Mental divisibility tests for composite numbers (6, 12, 15), missing-digit puzzles (*), alternating sum rule for 11</td>
+              <td><span class="badge badge-active" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">8 Marks</span></td>
+              <td>15 mins</td>
+            </tr>
+            <tr>
+              <td><strong>3. Expressions & Statements (BODMAS)</strong></td>
+              <td>Translating verbal statements to algebraic expressions, bracket priority traps, multi-step BODMAS operations</td>
+              <td><span class="badge badge-active" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">10 Marks</span></td>
+              <td>20 mins</td>
+            </tr>
+            <tr>
+              <td><strong>4. Number Patterns & Towers</strong></td>
+              <td>Growing differences, triangular numbers formula T = n(n+1)/2, square numbers, 3-number set triplets, number pyramids</td>
+              <td><span class="badge badge-active" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">8 Marks</span></td>
+              <td>15 mins</td>
+            </tr>
+            <tr>
+              <td><strong>5. Geometry, Shapes & Angles</strong></td>
+              <td>Clock angles (30°/hour), polygon interior sum (n−2)×180°, triangle classification, circle radius (r = d/2), compass & ruler constructions</td>
+              <td><span class="badge badge-active" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">12 Marks</span></td>
+              <td>25 mins</td>
+            </tr>
+            <tr style="background: rgba(99, 102, 241, 0.15); font-weight: 700;">
+              <td><strong>TOTAL ASSESSMENT</strong></td>
+              <td><strong>Comprehensive Multi-Topic Evaluation</strong></td>
+              <td><strong style="color: #86efac;">50 Marks</strong></td>
+              <td><strong style="color: #86efac;">100 Mins (+20 min buffer)</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Exam Time Allocation Phasing -->
+    <div style="margin-top: 1.5rem;">
+      <h4 style="color: var(--accent-amber-light); margin-bottom: 0.75rem;">⏱️ 4-Phase Exam Time Allocation Strategy</h4>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.85rem;">
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 1rem;">
+          <div style="font-weight: 700; color: #86efac; margin-bottom: 0.35rem;">Phase 1 (0 – 25 mins)</div>
+          <div style="font-size: 0.85rem; color: #e2e8f0; font-weight: 600;">Direct Objective & 1-Mark Questions</div>
+          <p style="font-size: 0.78rem; color: #94a3b8; margin: 0.35rem 0 0 0;">Solve all divisibility checks, definitions, missing-digit puzzles, and pattern series while your mind is freshest.</p>
+        </div>
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 1rem;">
+          <div style="font-weight: 700; color: #38bdf8; margin-bottom: 0.35rem;">Phase 2 (25 – 60 mins)</div>
+          <div style="font-size: 0.85rem; color: #e2e8f0; font-weight: 600;">BODMAS & Word Problems</div>
+          <p style="font-size: 0.78rem; color: #94a3b8; margin: 0.35rem 0 0 0;">Carefully write step-by-step BODMAS evaluations and HCF/LCM word problems with units (meters, seconds, tiles).</p>
+        </div>
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 1rem;">
+          <div style="font-weight: 700; color: #fbbf24; margin-bottom: 0.35rem;">Phase 3 (60 – 90 mins)</div>
+          <div style="font-size: 0.85rem; color: #e2e8f0; font-weight: 600;">Geometric Constructions & Proofs</div>
+          <p style="font-size: 0.78rem; color: #94a3b8; margin: 0.35rem 0 0 0;">Draw line segments, angles with protractors, and compass circles with sharp pencils. Label center O and radius r.</p>
+        </div>
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 1rem;">
+          <div style="font-weight: 700; color: #c084fc; margin-bottom: 0.35rem;">Phase 4 (90 – 120 mins)</div>
+          <div style="font-size: 0.85rem; color: #e2e8f0; font-weight: 600;">Diagnostic Revision & Verification</div>
+          <p style="font-size: 0.78rem; color: #94a3b8; margin: 0.35rem 0 0 0;">Check every question: Did you write units? Did you check HCF ≤ min and LCM ≥ max? Did you verify triangle sum = 180°?</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderFormulaCheatsheetModule(container) {
+  container.innerHTML = `
+    <div class="think-callout-math">
+      <div class="callout-header">💡 Grand Mental Formula Reference — Memorize Concepts, Not Rote Words</div>
+      <p>Here is your complete Class 5 mathematical toolbox. Every formula is anchored to a visual or mental metaphor to guarantee you never blank out during an exam!</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.25rem;">
+      <!-- Chapter 1 Box -->
+      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 1.2rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+          <span style="font-size: 1.3rem;">⭐</span>
+          <h4 style="color: var(--accent-amber-light); margin: 0;">1. Factors & Multiples Formulas</h4>
+        </div>
+        <ul style="font-size: 0.85rem; color: #e2e8f0; padding-left: 1.2rem; line-height: 1.55; margin: 0;">
+          <li><strong>Product Formula:</strong> <code>First Number × Second Number = HCF × LCM</code></li>
+          <li><strong>HCF Boundary:</strong> <code>HCF(a, b) ≤ Smaller Number</code> (Chopping down)</li>
+          <li><strong>LCM Boundary:</strong> <code>LCM(a, b) ≥ Larger Number</code> (Growing up)</li>
+          <li><strong>Multiple Rule:</strong> If b is a multiple of a (e.g. 7 & 35): <code>HCF = a (7)</code>, <code>LCM = b (35)</code></li>
+          <li><strong>Co-prime Rule:</strong> Two numbers are co-prime if their only common factor is 1 (<code>HCF = 1</code>).</li>
+          <li><strong>Consecutive Rule:</strong> Any two consecutive integers (n, n+1) are ALWAYS co-prime!</li>
+        </ul>
+      </div>
+
+      <!-- Chapter 2 Box -->
+      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 1.2rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+          <span style="font-size: 1.3rem;">⚡</span>
+          <h4 style="color: #38bdf8; margin: 0;">2. Divisibility Master Tests</h4>
+        </div>
+        <ul style="font-size: 0.85rem; color: #e2e8f0; padding-left: 1.2rem; line-height: 1.55; margin: 0;">
+          <li><strong>Rule 3 & 9:</strong> Sum of digits is a multiple of 3 or 9.</li>
+          <li><strong>Rule 4:</strong> Last 2 digits form a multiple of 4 (e.g., ...16, ...48, ...00).</li>
+          <li><strong>Rule 8:</strong> Last 3 digits form a multiple of 8 (e.g., ...128, ...000).</li>
+          <li><strong>Rule 6 (Composite):</strong> Must be EVEN (divisible by 2) AND sum of digits divisible by 3.</li>
+          <li><strong>Rule 11 (Alternating):</strong> <code>|Sum(odd positions) − Sum(even positions)| = 0 or multiple of 11</code>.</li>
+          <li><strong>Rule 12 (Composite):</strong> Must pass BOTH Rule 3 and Rule 4 simultaneously.</li>
+          <li><strong>Rule 15 (Composite):</strong> Must end in 0 or 5 (passes 5) AND digit sum passes 3.</li>
+        </ul>
+      </div>
+
+      <!-- Chapter 3 Box -->
+      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 12px; padding: 1.2rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+          <span style="font-size: 1.3rem;">💬</span>
+          <h4 style="color: #c084fc; margin: 0;">3. Expressions & BODMAS Order</h4>
+        </div>
+        <ul style="font-size: 0.85rem; color: #e2e8f0; padding-left: 1.2rem; line-height: 1.55; margin: 0;">
+          <li><strong>B — Brackets:</strong> Evaluate inside (parentheses) first!</li>
+          <li><strong>O — Of:</strong> "Of" means multiplication (e.g. 1/2 of 50 = 25).</li>
+          <li><strong>DM — Division & Multiplication:</strong> Work left to right with equal precedence.</li>
+          <li><strong>AS — Addition & Subtraction:</strong> Work left to right with equal precedence.</li>
+          <li><strong>Subtraction Reversal Trap:</strong> "Subtract a from b" means <code>b − a</code> (NEVER a − b)!</li>
+          <li><strong>"Product of sum":</strong> Requires brackets: <code>(x + y) × (p − q)</code>.</li>
+        </ul>
+      </div>
+
+      <!-- Chapter 4 Box -->
+      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 1.2rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+          <span style="font-size: 1.3rem;">🧩</span>
+          <h4 style="color: #86efac; margin: 0;">4. Pattern & Tower Rules</h4>
+        </div>
+        <ul style="font-size: 0.85rem; color: #e2e8f0; padding-left: 1.2rem; line-height: 1.55; margin: 0;">
+          <li><strong>Triangular Numbers:</strong> <code>1, 3, 6, 10, 15, 21, 28, 36...</code> Formula: <code>T = n(n + 1) ÷ 2</code></li>
+          <li><strong>Square Numbers:</strong> <code>1, 4, 9, 16, 25, 36, 49, 64...</code> Formula: <code>S = n²</code></li>
+          <li><strong>Geometric Theorem:</strong> <code>T_{n-1} + T_n = n²</code> (Sum of consecutive triangulars makes square!)</li>
+          <li><strong>Odd Numbers Sum:</strong> Sum of first n odd numbers = <code>n²</code> (1+3+5+7 = 4² = 16).</li>
+          <li><strong>Number Towers:</strong> Block above = sum of 2 blocks below. In base [a, b, c], top = <code>a + 2b + c</code>.</li>
+          <li><strong>3-Number Sets (Triplets):</strong> Watch for doubling 3rd term (3→6→12→24) or product rule (a, b, a×b).</li>
+        </ul>
+      </div>
+
+      <!-- Chapter 5 Box -->
+      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 1.2rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+          <span style="font-size: 1.3rem;">📐</span>
+          <h4 style="color: #f87171; margin: 0;">5. Geometry & Spatial Formulas</h4>
+        </div>
+        <ul style="font-size: 0.85rem; color: #e2e8f0; padding-left: 1.2rem; line-height: 1.55; margin: 0;">
+          <li><strong>Clock Hands Formula:</strong> <code>Each 1-hour step = 30°</code> (360° ÷ 12 = 30°). At 3:00 = 90°, at 6:00 = 180°.</li>
+          <li><strong>Triangle Angle Sum:</strong> Sum of all 3 angles = <code>180°</code>. Can have at most 1 right/obtuse angle!</li>
+          <li><strong>Polygon Triangulation:</strong> Interior Angle Sum = <code>(n − 2) × 180°</code> (Quadrilateral=360°, Nonagon=1260°).</li>
+          <li><strong>Circle Anatomy:</strong> <code>d = 2r</code>, <code>r = d ÷ 2</code>. Longest chord is the diameter.</li>
+          <li><strong>Quadrilateral Angle Sum:</strong> Sum of 4 angles = <code>360°</code>.</li>
+          <li><strong>Parallelogram Rules:</strong> Opposite angles are equal; adjacent angles are supplementary (add to 180°).</li>
+        </ul>
+      </div>
+    </div>
+  `;
+}
+
+function renderTopExamTrapsModule(container) {
+  container.innerHTML = `
+    <div class="think-callout-math">
+      <div class="callout-header">🚨 Spot the Exam Trap — Develop Immunity Against Mistakes</div>
+      <p>Teachers across India report that over 80% of lost marks in Class 5 exams come from the same recurring traps! Study these 6 classic traps to safeguard your score.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.25rem;">
+      <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 12px; padding: 1rem 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+          <strong style="color: #fca5a5; font-size: 1rem;">🚨 Trap 1: "Subtracted From" Order Inversion</strong>
+          <span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5;">Algebra Trap</span>
+        </div>
+        <div style="font-size: 0.85rem; color: #f8fafc; margin-bottom: 0.35rem;">
+          <strong>Question:</strong> "Subtract 9 from twice a number y."
+        </div>
+        <div style="font-size: 0.82rem; color: #f87171;">❌ <strong>Student Blunder:</strong> Writing <code>9 − 2y</code> (reading words left-to-right mechanically).</div>
+        <div style="font-size: 0.82rem; color: #86efac; margin-top: 0.2rem;">✅ <strong>Golden Rule:</strong> The word <em>from</em> means start with the second quantity! Correct: <code>2y − 9</code>.</div>
+      </div>
+
+      <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 12px; padding: 1rem 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+          <strong style="color: #fde68a; font-size: 1rem;">🚨 Trap 2: HCF vs LCM Word Problem Confusion</strong>
+          <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #fde68a;">Arithmetic Trap</span>
+        </div>
+        <div style="font-size: 0.85rem; color: #f8fafc; margin-bottom: 0.35rem;">
+          <strong>Question:</strong> "Two bells toll every 12 minutes and 18 minutes. When do they toll together next?"
+        </div>
+        <div style="font-size: 0.82rem; color: #f87171;">❌ <strong>Student Blunder:</strong> Finding HCF(12, 18) = 6 minutes (thinking they toll together in less time!).</div>
+        <div style="font-size: 0.82rem; color: #86efac; margin-top: 0.2rem;">✅ <strong>Golden Rule:</strong> Repeating cycles meet in the future at a larger multiple! Use LCM(12, 18) = 36 minutes.</div>
+      </div>
+
+      <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px; padding: 1rem 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+          <strong style="color: #bae6fd; font-size: 1rem;">🚨 Trap 3: Rule of 6 Partial Verification</strong>
+          <span class="badge" style="background: rgba(56, 189, 248, 0.2); color: #bae6fd;">Divisibility Trap</span>
+        </div>
+        <div style="font-size: 0.85rem; color: #f8fafc; margin-bottom: 0.35rem;">
+          <strong>Question:</strong> "Is 45,615 divisible by 6?"
+        </div>
+        <div style="font-size: 0.82rem; color: #f87171;">❌ <strong>Student Blunder:</strong> Sum of digits is 4+5+6+1+5=21 (divisible by 3) so student writes "Yes"!</div>
+        <div style="font-size: 0.82rem; color: #86efac; margin-top: 0.2rem;">✅ <strong>Golden Rule:</strong> 6 is a composite number (2 × 3). A number MUST be EVEN to be divisible by 6. Since 45,615 is odd, it fails immediately!</div>
+      </div>
+
+      <div style="background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.25); border-radius: 12px; padding: 1rem 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+          <strong style="color: #e9d5ff; font-size: 1rem;">🚨 Trap 4: Compass Diameter Radius Confusion</strong>
+          <span class="badge" style="background: rgba(168, 85, 247, 0.2); color: #e9d5ff;">Geometry Trap</span>
+        </div>
+        <div style="font-size: 0.85rem; color: #f8fafc; margin-bottom: 0.35rem;">
+          <strong>Question:</strong> "Draw a circle of diameter 10 cm using a compass."
+        </div>
+        <div style="font-size: 0.82rem; color: #f87171;">❌ <strong>Student Blunder:</strong> Opening compass legs to 10 cm, resulting in an enormous 20 cm circle!</div>
+        <div style="font-size: 0.82rem; color: #86efac; margin-top: 0.2rem;">✅ <strong>Golden Rule:</strong> A compass ALWAYS measures the RADIUS, never diameter. First calculate <code>r = d ÷ 2 = 10 ÷ 2 = 5 cm</code>!</div>
+      </div>
+
+      <div style="background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.25); border-radius: 12px; padding: 1rem 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+          <strong style="color: #bbf7d0; font-size: 1rem;">🚨 Trap 5: Two Right Angles in a Triangle Fallacy</strong>
+          <span class="badge" style="background: rgba(34, 197, 94, 0.2); color: #bbf7d0;">Geometry Trap</span>
+        </div>
+        <div style="font-size: 0.85rem; color: #f8fafc; margin-bottom: 0.35rem;">
+          <strong>Question:</strong> "Can a triangle have two right angles or two obtuse angles?"
+        </div>
+        <div style="font-size: 0.82rem; color: #f87171;">❌ <strong>Student Blunder:</strong> Writing "Yes, if it is a large triangle."</div>
+        <div style="font-size: 0.82rem; color: #86efac; margin-top: 0.2rem;">✅ <strong>Golden Rule:</strong> Triangle angle sum is strictly 180°. Two 90° angles already equal 180°, leaving 0° for the third angle! The two lines would be parallel and never close into a triangle.</div>
+      </div>
+    </div>
+  `;
+}
+
+
+/* ==========================================================================
+   CUSTOM WORKSHEET BUILDER & REVISION VIEW (TOPIC: term_revision)
+   ========================================================================== */
+
+const REVISION_TOPICS_METADATA = [
+  {
+    id: 'factors_multiples_hcf_lcm',
+    icon: '⭐',
+    title: '1. Multiples, Factors, HCF & LCM',
+    desc: 'HCF division, LCM word problems, product relation, co-prime verification',
+    questionsCount: 4,
+    marks: 10,
+    badge: '10 Marks'
+  },
+  {
+    id: 'divisibility_rules',
+    icon: '⚡',
+    title: '2. Divisibility Rules (2 to 12)',
+    desc: 'Divisibility by 15, simultaneous rules (4, 6, 10), missing digits (*), rule 11',
+    questionsCount: 4,
+    marks: 10,
+    badge: '10 Marks'
+  },
+  {
+    id: 'expressions_statements',
+    icon: '💬',
+    title: '3. Expressions & Statements (BODMAS)',
+    desc: 'BODMAS step-by-step evaluations, verbal statement translation, bracket traps',
+    questionsCount: 4,
+    marks: 10,
+    badge: '10 Marks'
+  },
+  {
+    id: 'number_patterns',
+    icon: '🧩',
+    title: '4. Number Patterns & Towers',
+    desc: '3-number set triplets, triangular/square dot numbers, pyramids, magic squares',
+    questionsCount: 3,
+    marks: 10,
+    badge: '10 Marks'
+  },
+  {
+    id: 'geometry_angles',
+    icon: '📐',
+    title: '5. Geometry, Shapes, Angles & Circles',
+    desc: 'Collinear points, clock angles (30°/hr), polygon triangulation, compass circle',
+    questionsCount: 4,
+    marks: 10,
+    badge: '10 Marks'
+  }
+];
+
+function renderWorksheetViewRevision(container) {
+  function getSelectedTopics() {
+    return state.revisionSelectedTopics || [];
+  }
+
+  function calculateMetrics() {
+    const selected = getSelectedTopics();
+    const count = selected.length;
+    const questions = selected.reduce((acc, tid) => {
+      const meta = REVISION_TOPICS_METADATA.find(t => t.id === tid);
+      return acc + (meta ? meta.questionsCount : 0);
+    }, 0);
+    const marks = count * 10;
+    const mins = count * 18;
+    return { count, questions, marks, mins };
+  }
+
+  function updatePreviewHTML() {
+    const previewContainer = container.querySelector('#worksheet-preview-container');
+    if (!previewContainer) return;
+
+    const selected = getSelectedTopics();
+    if (selected.length === 0) {
+      previewContainer.innerHTML = `
+        <div style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted);">
+          <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">📋</span>
+          <h4 style="color: #e2e8f0; margin-bottom: 0.25rem;">No Topics Selected</h4>
+          <p style="font-size: 0.88rem;">Select at least one curriculum chapter above to generate your customized worksheet.</p>
+        </div>
+      `;
+      return;
+    }
+
+    let html = '';
+    let sectionNum = 1;
+    const romanNumerals = ['I', 'II', 'III', 'IV', 'V'];
+
+    selected.forEach((tid) => {
+      const roman = romanNumerals[sectionNum - 1] || sectionNum;
+      sectionNum++;
+
+      if (tid === 'factors_multiples_hcf_lcm') {
+        html += `
+          <div style="margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.1);">
+            <h4 style="color: var(--accent-amber-light); margin-bottom: 0.75rem;">${roman}. Multiples, Factors, HCF & LCM (10 Marks):</h4>
+            <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+              <li><strong>HCF by Division:</strong> Find the HCF of 48 and 72 using the continuous division method.</li>
+              <li><strong>LCM Cycle Synchronizer:</strong> Three bells toll together at intervals of 9, 12, and 15 minutes. After how many minutes will they toll together again?</li>
+              <li><strong>Product Relationship:</strong> The product of two numbers is 840 and their HCF is 4. Find their LCM. Verify using: <code>a × b = HCF × LCM</code>.</li>
+              <li><strong>Co-prime Verification:</strong> Show whether 14 and 15 are co-prime numbers. Give mathematical proof.</li>
+            </ol>
+          </div>
+        `;
+      } else if (tid === 'divisibility_rules') {
+        html += `
+          <div style="margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.1);">
+            <h4 style="color: var(--accent-amber-light); margin-bottom: 0.75rem;">${roman}. Divisibility Rules & Mental Shortcuts (10 Marks):</h4>
+            <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+              <li><strong>Divisibility by 15:</strong> Check the divisibility of <code>37,42,582</code> by 15 without doing long division. Give clear reasons.</li>
+              <li><strong>Simultaneous Multi-Rule Check:</strong> Check which among the following numbers are divisible by 4, 6, and 10 simultaneously:
+                <br>a) 12,480 &nbsp;&nbsp;&nbsp;&nbsp; b) 98,760 &nbsp;&nbsp;&nbsp;&nbsp; c) 75,310
+              </li>
+              <li><strong>Missing Digit for 9:</strong> In the number <code>4*78</code>, find the smallest digit in place of * so that the number is divisible by 9.</li>
+              <li><strong>Rule 11 Alternating Test:</strong> Test whether <code>9,28,477</code> is divisible by 11 using the difference of alternating digit sums.</li>
+            </ol>
+          </div>
+        `;
+      } else if (tid === 'expressions_statements') {
+        html += `
+          <div style="margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.1);">
+            <h4 style="color: var(--accent-amber-light); margin-bottom: 0.75rem;">${roman}. Expressions, Statements & BODMAS (10 Marks):</h4>
+            <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+              <li><strong>BODMAS Step-by-Step Evaluation:</strong>
+                <br>a) <code>28 + 45 ÷ 9 × 2 − 10</code>
+                <br>b) <code>(48 − 35) × 2 + 30 ÷ 15</code>
+              </li>
+              <li><strong>Verbal Statements to Expressions:</strong>
+                <br>a) 45 is divided by the sum of 2 and 3.
+                <br>b) The sum of 56 and 4 is multiplied by the difference of 11 and 10.
+              </li>
+              <li><strong>Write in Words:</strong> Write the verbal statement for <code>(2 × 5) − 6</code> and <code>(90 − 30) ÷ (30 − 20)</code>.</li>
+              <li><strong>Insert Parentheses:</strong> Place parentheses in <code>4 + 6 × 3 − 2</code> so that the answer equals 28.</li>
+            </ol>
+          </div>
+        `;
+      } else if (tid === 'number_patterns') {
+        html += `
+          <div style="margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.1);">
+            <h4 style="color: var(--accent-amber-light); margin-bottom: 0.75rem;">${roman}. Number Patterns, Triplets & Towers (10 Marks):</h4>
+            <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+              <li><strong>Pattern Sequences & 3-Number Sets:</strong>
+                <br>a) <code>3, 7, 11, 15, ____, ____</code> &nbsp; (Rule: ____________)
+                <br>b) <code>1, 2, 3; 2, 3, 6; 3, 4, 12; _______, _______</code> &nbsp; (Rule: ____________)
+                <br>c) <code>(1, 2, 2), (2, 3, 6), (3, 4, 12), _______, (5, 6, 30)</code> &nbsp; (Rule: ____________)
+              </li>
+              <li><strong>Triangular & Square Numbers:</strong>
+                <br>a) Write the first 6 triangular numbers.
+                <br>b) Show that the sum of the 3rd triangular number (6) and 4th triangular number (10) equals a square number. Which square?
+              </li>
+              <li><strong>Number Tower Pyramid:</strong> Complete a 4-tier number pyramid with base row <code>[2, 3, 4, 5]</code> where each block is the sum of the two blocks directly beneath it.</li>
+            </ol>
+          </div>
+        `;
+      } else if (tid === 'geometry_angles') {
+        html += `
+          <div style="margin-bottom: 1.5rem;">
+            <h4 style="color: var(--accent-amber-light); margin-bottom: 0.75rem;">${roman}. Geometry, Shapes, Angles & Constructions (10 Marks):</h4>
+            <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+              <li><strong>Collinear Points & Lines:</strong> What figure is formed by connecting 3 collinear points? What if they are non-collinear?</li>
+              <li><strong>Clock Angle Detective:</strong> Find the smaller angle between hour and minute hands at:
+                <br>a) 3:00 o'clock &nbsp;&nbsp;&nbsp;&nbsp; b) 8:00 o'clock &nbsp;&nbsp;&nbsp;&nbsp; c) 1:00 o'clock &nbsp;&nbsp;&nbsp;&nbsp; (Formula: 30° per hour)
+              </li>
+              <li><strong>Polygon Triangulation:</strong> Using the formula <code>(n − 2) × 180°</code>, find the interior angle sum of an octagon (8-sided polygon) and a nonagon (9-sided polygon).</li>
+              <li><strong>Practical Construction:</strong> Draw a circle of radius 4.5 cm (diameter = 9 cm) using a compass and ruler. Mark center O, radius OA, and diameter BOC.</li>
+            </ol>
+          </div>
+        `;
+      }
+    });
+
+    previewContainer.innerHTML = html;
+  }
+
+  function updateMetricsUI() {
+    const { count, questions, marks, mins } = calculateMetrics();
+    const countEl = container.querySelector('#builder-selected-count');
+    const qEl = container.querySelector('#builder-total-questions');
+    const marksEl = container.querySelector('#builder-total-marks');
+    const timeEl = container.querySelector('#builder-est-time');
+
+    if (countEl) countEl.textContent = `${count} of ${REVISION_TOPICS_METADATA.length}`;
+    if (qEl) qEl.textContent = `${questions} Questions`;
+    if (marksEl) marksEl.textContent = `${marks} Marks`;
+    if (timeEl) timeEl.textContent = `${mins} Mins`;
+
+    // Update card styles
+    const selected = getSelectedTopics();
+    container.querySelectorAll('.topic-check-card').forEach(card => {
+      const tid = card.getAttribute('data-topic-id');
+      const isChecked = selected.includes(tid);
+      card.classList.toggle('checked', isChecked);
+      const chk = card.querySelector('input[type="checkbox"]');
+      if (chk) chk.checked = isChecked;
+    });
+
+    updatePreviewHTML();
+  }
+
+  container.innerHTML = `
+    <div class="learn-container">
+      <!-- Builder Controls Card -->
+      <div class="worksheet-builder-controls">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;">
+          <div>
+            <h3 style="margin: 0; font-size: 1.25rem; color: var(--text-main);">📋 Custom Worksheet & Exam Builder</h3>
+            <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: var(--text-muted);">
+              Cherry-pick chapters below to compile a customized revision worksheet or comprehensive term exam.
+            </p>
+          </div>
+          <button class="btn btn-primary" id="btn-print-custom-revision" style="display: flex; align-items: center; gap: 0.4rem; padding: 0.6rem 1.25rem;">
+            <span>🖨️</span> Print Custom Worksheet
+          </button>
+        </div>
+
+        <!-- Presets Row -->
+        <div class="builder-presets">
+          <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-right: 0.25rem;">Presets:</span>
+          <button class="builder-preset-btn" data-preset="all">🌟 Full Term Exam (All 5)</button>
+          <button class="builder-preset-btn" data-preset="arithmetic">🔢 Pure Arithmetic (Ch 1 & 2)</button>
+          <button class="builder-preset-btn" data-preset="geometry">📐 Geometry & Patterns (Ch 4 & 5)</button>
+          <button class="builder-preset-btn" data-preset="bodmas">⚡ BODMAS & Operations (Ch 1 & 3)</button>
+          <button class="builder-preset-btn" data-preset="toggle">🔄 Toggle All</button>
+        </div>
+
+        <!-- Cherry-Pick Grid -->
+        <div class="topic-check-grid">
+          ${REVISION_TOPICS_METADATA.map(t => `
+            <div class="topic-check-card ${getSelectedTopics().includes(t.id) ? 'checked' : ''}" data-topic-id="${t.id}">
+              <input type="checkbox" ${getSelectedTopics().includes(t.id) ? 'checked' : ''} aria-label="${t.title}">
+              <div class="topic-check-card-info">
+                <div class="topic-check-card-title">${t.icon} ${t.title}</div>
+                <div class="topic-check-card-meta">${t.desc}</div>
+              </div>
+              <span class="badge" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); font-size: 0.75rem;">
+                ${t.badge}
+              </span>
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- Summary Metrics Banner -->
+        <div class="builder-summary-banner">
+          <div class="builder-metrics">
+            <div class="builder-metric-item">
+              <span class="builder-metric-val" id="builder-selected-count">0 of 5</span>
+              <span class="builder-metric-lbl">Chapters Chosen</span>
+            </div>
+            <div class="builder-metric-item">
+              <span class="builder-metric-val" id="builder-total-questions">0 Questions</span>
+              <span class="builder-metric-lbl">Total Tasks</span>
+            </div>
+            <div class="builder-metric-item">
+              <span class="builder-metric-val" id="builder-total-marks">0 Marks</span>
+              <span class="builder-metric-lbl">Total Weight</span>
+            </div>
+            <div class="builder-metric-item">
+              <span class="builder-metric-val" id="builder-est-time">0 Mins</span>
+              <span class="builder-metric-lbl">Recommended Duration</span>
+            </div>
+          </div>
+          <button class="btn btn-secondary" id="btn-reset-builder" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">
+            🔄 Reset All
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Dynamic Worksheet Preview Card -->
+      <div class="learn-card">
+        <div class="learn-card-header">
+          <div>
+            <h3>📄 Live Custom Worksheet Preview</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+              Class V Mathematics — Preview of compiled question sections ready for print
+            </p>
+          </div>
+        </div>
+
+        <div class="worksheet-preview" id="worksheet-preview-container">
+          <!-- Dynamic Content Injected Here -->
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Attach card click handlers
+  container.querySelectorAll('.topic-check-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      const tid = card.getAttribute('data-topic-id');
+      const isInput = e.target.tagName.toLowerCase() === 'input';
+      let selected = [...getSelectedTopics()];
+
+      if (selected.includes(tid)) {
+        selected = selected.filter(id => id !== tid);
+      } else {
+        selected.push(tid);
+      }
+
+      state.revisionSelectedTopics = selected;
+      saveActiveState();
+      playClickSound();
+      updateMetricsUI();
+    });
+  });
+
+  // Attach preset handlers
+  container.querySelectorAll('.builder-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const preset = btn.getAttribute('data-preset');
+      playClickSound();
+
+      if (preset === 'all') {
+        state.revisionSelectedTopics = REVISION_TOPICS_METADATA.map(t => t.id);
+      } else if (preset === 'arithmetic') {
+        state.revisionSelectedTopics = ['factors_multiples_hcf_lcm', 'divisibility_rules'];
+      } else if (preset === 'geometry') {
+        state.revisionSelectedTopics = ['number_patterns', 'geometry_angles'];
+      } else if (preset === 'bodmas') {
+        state.revisionSelectedTopics = ['factors_multiples_hcf_lcm', 'expressions_statements'];
+      } else if (preset === 'toggle') {
+        if (state.revisionSelectedTopics.length === REVISION_TOPICS_METADATA.length) {
+          state.revisionSelectedTopics = [];
+        } else {
+          state.revisionSelectedTopics = REVISION_TOPICS_METADATA.map(t => t.id);
+        }
+      }
+
+      saveActiveState();
+      updateMetricsUI();
+    });
+  });
+
+  // Attach reset button
+  const btnReset = container.querySelector('#btn-reset-builder');
+  if (btnReset) {
+    btnReset.addEventListener('click', () => {
+      playClickSound();
+      state.revisionSelectedTopics = REVISION_TOPICS_METADATA.map(t => t.id);
+      saveActiveState();
+      updateMetricsUI();
+    });
+  }
+
+  // Attach print button
+  const btnPrint = container.querySelector('#btn-print-custom-revision');
+  if (btnPrint) {
+    btnPrint.addEventListener('click', () => {
+      printWorksheetRevision();
+    });
+  }
+
+  // Initial calculation & render
+  updateMetricsUI();
+}
+
 function renderWorksheetViewTopic1(container) {
   container.innerHTML = `
     <div class="learn-container">
@@ -8026,7 +9042,7 @@ function renderWorksheetViewTopic1(container) {
           <div>
             <h3>📄 School Worksheet 2026-27 Practice Sheet</h3>
             <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
-              Freedom International School — Topic: Multiples and Factors (Class V)
+              CBSE Class 5 Curriculum — Topic: Multiples and Factors (Class V)
             </p>
           </div>
           <button class="btn btn-primary" id="btn-print-action">
@@ -8241,6 +9257,8 @@ function renderWorksheetViewTopic4(container) {
             <li><code>1, 4, 9, 16, 25, ____, ____</code> &nbsp; (Rule: _____________________)</li>
             <li><code>1, 3, 6, 10, 15, ____, ____</code> &nbsp; (Rule: _____________________)</li>
             <li><code>2, 6, 12, 20, 30, ____, ____</code> &nbsp; (Rule: _____________________)</li>
+            <li><code>1, 2, 3; 2, 3, 6; 3, 4, 12; _______, _______</code> &nbsp; (Rule: _____________________)</li>
+            <li><code>(1, 2, 2), (2, 3, 6), (3, 4, 12), _______, (5, 6, 30)</code> &nbsp; (Rule: _____________________)</li>
           </ol>
 
           <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">II. Geometric Dot Numbers (Triangular & Square Numbers):</h4>
@@ -8280,9 +9298,9 @@ function renderWorksheetViewTopic5(container) {
       <div class="learn-card">
         <div class="learn-card-header">
           <div>
-            <h3>📄 Freedom International School — Revision Worksheet (Term I)</h3>
+            <h3>📄 CBSE Class 5 Practice Sheet: Geometry, Shapes, Angles & Constructions</h3>
             <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
-              Class V Mathematics — Geometry, Triangles, Quadrilaterals, Polygons, BODMAS Expressions & Divisibility Rules
+              Class V Mathematics — Points, Lines, Rays, Clock Angles, Triangles, Polygons, Quadrilaterals, Circles & Constructions
             </p>
           </div>
           <button class="btn btn-primary" id="btn-print-action-t5">
@@ -8291,60 +9309,75 @@ function renderWorksheetViewTopic5(container) {
         </div>
 
         <div class="worksheet-preview">
-          <h4 style="color: var(--accent-amber-light); margin-bottom: 0.75rem;">I. Numbers, Divisibility Rules & Factors:</h4>
+          <h4 style="color: var(--accent-amber-light); margin-bottom: 0.75rem;">I. Points, Lines, Line Segments, Rays & Relationships:</h4>
           <ol style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
-            <li><strong>Divisibility by 15:</strong> Check the divisibility of <code>37,42,582</code> by 15. Give clear reasons without doing long division.</li>
-            <li><strong>Simultaneous Divisibility:</strong> Check which among the following numbers are divisible by 4, 6, and 10 simultaneously:
-              <br>a) 12,480 &nbsp;&nbsp;&nbsp;&nbsp; b) 98,760 &nbsp;&nbsp;&nbsp;&nbsp; c) 75,310
+            <li><strong>Definitions & Symbols:</strong> Write the mathematical symbol and number of endpoints for:
+              <br>a) Line AB: Symbol: <code>⟷AB</code> (Endpoints: _____)
+              <br>b) Line Segment CD: Symbol: <code>—CD</code> (Endpoints: _____)
+              <br>c) Ray PQ: Symbol: <code>→PQ</code> (Endpoints: _____)
             </li>
-            <li><strong>HCF Property:</strong> If one number is a multiple of another number (e.g., 7 and 35), what will be their HCF? Explain with an example.</li>
-            <li><strong>Square & Triangular Sequences:</strong> List the first 10:
-              <br>a) Square numbers: ____________________________________________________________________
-              <br>b) Triangular numbers: ________________________________________________________________
-            </li>
-          </ol>
-
-          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">II. Polygons, Triangles & Lines:</h4>
-          <ol start="5" style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
-            <li><strong>Collinear Points:</strong> What geometric figure or shape do you get by joining 3 collinear points? What if they are non-collinear?</li>
-            <li><strong>Nonagon Interior Angle Sum:</strong> Find the sum of interior angles of a nonagon (a polygon with 9 sides). Show the triangulation formula $(n - 2) \times 180^\circ$.</li>
-            <li><strong>Triangle Classification by Angles:</strong> Classify the following triangles as Acute-angled, Right-angled, or Obtuse-angled:
-              <br>a) 20°, 60°, 100° &nbsp; &rarr; _____________________________
-              <br>b) 37°, 23°, 120° &nbsp; &rarr; _____________________________
-              <br>c) 55°, 45°, 80° &nbsp;&nbsp;&nbsp; &rarr; _____________________________
-              <br>d) 25°, 65°, 90° &nbsp;&nbsp;&nbsp; &rarr; _____________________________
+            <li><strong>Collinear Points:</strong> What geometric shape do you get by connecting 3 collinear points? What if the 3 points are non-collinear?</li>
+            <li><strong>Intersections & Parallel Lines:</strong>
+              <br>a) What are parallel lines? Give two real-world examples.
+              <br>b) What is the exact angle formed between two perpendicular lines? Write the symbol used.
+              <br>c) How many straight lines can pass through a single point? How many through two distinct points?
             </li>
           </ol>
 
-          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">III. Quadrilaterals & Unknown Angles:</h4>
-          <ol start="8" style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
-            <li><strong>Rhombus vs. Trapezium:</strong> State three main geometric differences between a Rhombus and a Trapezium (consider side lengths, parallel pairs, and diagonals).</li>
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">II. Angles, Rotations & Clock Angle Detective:</h4>
+          <ol start="4" style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><strong>Angle Classification:</strong> Classify each angle as Acute, Right, Obtuse, Straight, Reflex, or Complete:
+              <br>a) 48° &rarr; _____________________________ &nbsp;&nbsp;&nbsp;&nbsp; b) 90° &rarr; _____________________________
+              <br>c) 135° &rarr; ____________________________ &nbsp;&nbsp;&nbsp;&nbsp; d) 180° &rarr; ____________________________
+              <br>e) 245° &rarr; ____________________________ &nbsp;&nbsp;&nbsp;&nbsp; f) 360° &rarr; ____________________________
+            </li>
+            <li><strong>Clock Angle Detective (30° per hour):</strong> Find the smaller angle between hour and minute hands at:
+              <br>a) 3:00 o'clock &rarr; _______° (Type: _____________________)
+              <br>b) 6:00 o'clock &rarr; _______° (Type: _____________________)
+              <br>c) 1:00 o'clock &rarr; _______° (Type: _____________________)
+              <br>d) 4:00 o'clock &rarr; _______° (Type: _____________________)
+            </li>
+            <li><strong>Rotations:</strong>
+              <br>a) Through how many degrees does the minute hand turn in 15 minutes? In 30 minutes?
+              <br>b) How many right angles make a straight angle? How many make a complete 360° turn?
+            </li>
+          </ol>
+
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">III. Triangles & Polygon Interior Angle Sums:</h4>
+          <ol start="7" style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><strong>Triangle Classification:</strong>
+              <br>a) Classify by sides: Equilateral (all sides equal), Isosceles (2 sides equal), Scalene (no sides equal).
+              <br>b) Classify by angles: A triangle with angles 30°, 60°, 90° &rarr; _____________________________
+              <br>c) Can a triangle have two right angles or two obtuse angles? Explain using the Angle Sum Property (Sum = 180°).
+            </li>
+            <li><strong>Missing Triangle Angle:</strong> In &Delta;ABC, if &ang;A = 70° and &ang;B = 55°, find the measure of &ang;C.</li>
+            <li><strong>Polygon Triangulation Formula $(n - 2) \times 180^\circ$:</strong>
+              <br>Calculate the interior angle sum for:
+              <br>a) Quadrilateral (4 sides): (4 − 2) &times; 180° = _______°
+              <br>b) Pentagon (5 sides): __________________________________ = _______°
+              <br>c) Hexagon (6 sides): ____________________________________ = _______°
+              <br>d) Nonagon (9 sides): ____________________________________ = _______°
+            </li>
+          </ol>
+
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">IV. Quadrilaterals & Circle Anatomy:</h4>
+          <ol start="10" style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><strong>Rhombus vs. Trapezium vs. Parallelogram:</strong> State two main differences between a Rhombus and a Trapezium (consider side lengths and parallel sides).</li>
             <li><strong>Missing Quadrilateral Angle:</strong> Three angles of a quadrilateral are 85°, 110°, and 95°. Find the measure of the fourth angle (Sum = 360°).</li>
-            <li><strong>Parallelogram Opposite Angles:</strong> In a parallelogram ABCD, if &ang;A = 80°, find the measures of &ang;B, &ang;C, and &ang;D using opposite and adjacent angle properties.</li>
-          </ol>
-
-          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">IV. Numerical Expressions (BODMAS):</h4>
-          <ol start="11" style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
-            <li><strong>Evaluate step by step:</strong>
-              <br>a) 28 + 45 &divide; 9 &times; 2 - 10
-              <br>b) (48 - 35) &times; 2 + 30 &divide; 15
-            </li>
-            <li><strong>Expressions in Words:</strong> Write the following numerical expressions in words:
-              <br>a) (2 &times; 5) - 6
-              <br>b) (90 - 30) &divide; (30 - 20)
-            </li>
-            <li><strong>Word Problems to Expressions:</strong> Write the mathematical expression for:
-              <br>a) 45 is divided by the sum of 2 and 3.
-              <br>b) The sum of 56 and 4 is multiplied by the difference of 11 and 10.
+            <li><strong>Parallelogram Opposite Angles:</strong> In parallelogram ABCD, if &ang;A = 80°, find &ang;B, &ang;C, and &ang;D with geometric reasons.</li>
+            <li><strong>Circle Anatomy & Formulas:</strong>
+              <br>a) If the diameter of a wheel is 14 cm, what is its radius? (r = d &divide; 2)
+              <br>b) If the radius of a circular plate is 6.5 cm, what is its diameter? (d = 2 &times; r)
+              <br>c) Define: Chord, Arc, and Circumference. What is the longest chord of a circle?
             </li>
           </ol>
 
-          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">V. Practical Geometric Constructions:</h4>
+          <h4 style="color: var(--accent-amber-light); margin: 1.25rem 0 0.75rem 0;">V. Practical Geometric Constructions (Ruler, Compass & Protractor):</h4>
           <ol start="14" style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
-            <li><strong>Rectangle:</strong> Construct a rectangle of length 8 cm and breadth 5 cm using ruler and pencil.</li>
-            <li><strong>Circle:</strong> Draw a circle of diameter 10 cm using a compass (Hint: First calculate the radius r = d &divide; 2).</li>
-            <li><strong>Square:</strong> Construct a square with each side measuring 6 cm.</li>
-            <li><strong>Angle:</strong> Draw an angle of 135° using a protractor and classify it.</li>
+            <li><strong>Line Segment:</strong> Draw a line segment <code>AB = 7.2 cm</code> using a ruler and sharp pencil. Mark the endpoints clearly.</li>
+            <li><strong>Angle Construction:</strong> Using a protractor and ruler, construct an angle of 120°. Label vertex B and rays BA and BC. Classify the angle.</li>
+            <li><strong>Compass Circle:</strong> Using a compass, draw a circle of radius 4 cm (diameter = 8 cm). Mark the center O, draw one radius OP, and one chord XY.</li>
+            <li><strong>Rectangle Construction:</strong> Draw a rectangle of length 6 cm and breadth 4 cm using a ruler and protractor/set-square.</li>
           </ol>
         </div>
       </div>
@@ -8373,6 +9406,8 @@ function preparePrintContent(topic) {
     populatePrintTopic4(printContainer);
   } else if (current === 'geometry_angles') {
     populatePrintTopic5(printContainer);
+  } else if (current === 'term_revision') {
+    populatePrintRevision(printContainer, state.revisionSelectedTopics);
   } else {
     populatePrintTopic1(printContainer);
   }
@@ -8417,6 +9452,200 @@ function printWorksheetTopic5() {
 window.addEventListener('beforeprint', () => {
   preparePrintContent(state.currentTopic);
 });
+
+
+function populatePrintRevision(printContainer, selectedTopics) {
+  const selected = (selectedTopics && selectedTopics.length > 0)
+    ? selectedTopics
+    : (state.revisionSelectedTopics && state.revisionSelectedTopics.length > 0)
+      ? state.revisionSelectedTopics
+      : ['factors_multiples_hcf_lcm', 'divisibility_rules', 'expressions_statements', 'number_patterns', 'geometry_angles'];
+
+  const totalMarks = selected.length * 10;
+  const totalTime = selected.length * 18;
+
+  let sectionsHTML = '';
+  let sectionNum = 1;
+  const romanNumerals = ['I', 'II', 'III', 'IV', 'V'];
+
+  selected.forEach(tid => {
+    const roman = romanNumerals[sectionNum - 1] || sectionNum;
+    sectionNum++;
+
+    if (tid === 'factors_multiples_hcf_lcm') {
+      sectionsHTML += `
+        <div class="worksheet-q" style="margin-top: 15px;">
+          <h4>${roman}. Multiples, Factors, HCF & LCM (10 Marks):</h4>
+          <ol>
+            <li>
+              <strong>HCF by Continuous Division:</strong>
+              <br>Find the HCF of 48 and 72 using the continuous division method:
+              <div class="workspace-box" style="height: 55px;"></div>
+            </li>
+            <li>
+              <strong>Repeating Cycles LCM:</strong>
+              <br>Three bells toll together at intervals of 9, 12, and 15 minutes. After how many minutes will they toll together again?
+              <div class="workspace-box" style="height: 50px;"></div>
+            </li>
+            <li>
+              <strong>Product Relationship Verification:</strong>
+              <br>The product of two numbers is 840 and their HCF is 4. Find their LCM using <code>Product = HCF × LCM</code>:
+              <div class="workspace-box" style="height: 50px;"></div>
+            </li>
+            <li>
+              <strong>Co-prime Verification:</strong>
+              <br>Explain why two consecutive numbers (e.g. 14 and 15) are ALWAYS co-prime (HCF = 1):
+              <div class="workspace-box" style="height: 45px;"></div>
+            </li>
+          </ol>
+        </div>
+      `;
+    } else if (tid === 'divisibility_rules') {
+      sectionsHTML += `
+        <div class="worksheet-q" style="margin-top: 15px;">
+          <h4>${roman}. Divisibility Rules & Mental Shortcuts (10 Marks):</h4>
+          <ol>
+            <li>
+              <strong>Check divisibility of 37,42,582 by 15:</strong>
+              <br>Explain the co-prime factor test (3 × 5 = 15) and write your conclusion:
+              <div class="workspace-box" style="height: 50px;"></div>
+            </li>
+            <li>
+              <strong>Simultaneous Divisibility:</strong>
+              <br>Check which among the following numbers are divisible by 4, 6, and 10 simultaneously:
+              <br>(a) 12,480 &nbsp;&nbsp;&nbsp;&nbsp; (b) 98,760 &nbsp;&nbsp;&nbsp;&nbsp; (c) 75,310
+              <div class="workspace-box" style="height: 50px;"></div>
+            </li>
+            <li>
+              <strong>Missing Digit Puzzle for 9:</strong>
+              <br>In the number 4*78, find the smallest digit in place of * so that the number is divisible by 9:
+              <div class="workspace-box" style="height: 45px;"></div>
+            </li>
+            <li>
+              <strong>Alternating Sum Test for 11:</strong>
+              <br>Test whether 9,28,477 is divisible by 11 using difference of alternating sums:
+              <div class="workspace-box" style="height: 50px;"></div>
+            </li>
+          </ol>
+        </div>
+      `;
+    } else if (tid === 'expressions_statements') {
+      sectionsHTML += `
+        <div class="worksheet-q" style="margin-top: 15px;">
+          <h4>${roman}. Mathematical Expressions & BODMAS (10 Marks):</h4>
+          <ol>
+            <li>
+              <strong>Evaluate step-by-step using BODMAS:</strong>
+              <br>a) 28 + 45 ÷ 9 × 2 − 10
+              <div class="workspace-box" style="height: 45px;"></div>
+              b) (48 − 35) × 2 + 30 ÷ 15
+              <div class="workspace-box" style="height: 45px;"></div>
+            </li>
+            <li>
+              <strong>Write the mathematical expressions:</strong>
+              <br>a) 45 is divided by the sum of 2 and 3: __________________________________________________
+              <br>b) The sum of 56 and 4 is multiplied by the difference of 11 and 10: ____________________
+            </li>
+            <li>
+              <strong>Write in words:</strong>
+              <br>a) (2 × 5) − 6: __________________________________________________________________________
+              <br>b) (90 − 30) ÷ (30 − 20): ______________________________________________________________
+            </li>
+            <li>
+              <strong>Insert Parentheses:</strong>
+              <br>Place brackets in 4 + 6 × 3 − 2 so that the expression equals 28:
+              <div class="workspace-box" style="height: 40px;"></div>
+            </li>
+          </ol>
+        </div>
+      `;
+    } else if (tid === 'number_patterns') {
+      sectionsHTML += `
+        <div class="worksheet-q" style="margin-top: 15px;">
+          <h4>${roman}. Number Patterns, Triplets & Towers (10 Marks):</h4>
+          <ol>
+            <li>
+              <strong>Series Completion & 3-Number Sets:</strong>
+              <br>a) 3, 7, 11, 15, ______, ______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)
+              <br>b) 1, 2, 3; 2, 3, 6; 3, 4, 12; _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)
+              <br>c) (1, 2, 2), (2, 3, 6), (3, 4, 12), _______, (5, 6, 30) &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)
+            </li>
+            <li>
+              <strong>Triangular & Square Numbers:</strong>
+              <br>a) Calculate the 8th triangular number using formula T = n × (n + 1) ÷ 2:
+              <div class="workspace-box" style="height: 45px;"></div>
+              b) Show that the sum of 3rd triangular (6) and 4th triangular (10) equals 16 (4²):
+              <div class="workspace-box" style="height: 40px;"></div>
+            </li>
+            <li>
+              <strong>Number Tower:</strong> Complete a 4-tier number pyramid with base row [2, 3, 4, 5]:
+              <div class="workspace-box" style="height: 65px;"></div>
+            </li>
+          </ol>
+        </div>
+      `;
+    } else if (tid === 'geometry_angles') {
+      sectionsHTML += `
+        <div class="worksheet-q" style="margin-top: 15px;">
+          <h4>${roman}. Geometry, Shapes, Angles & Constructions (10 Marks):</h4>
+          <ol>
+            <li>
+              <strong>Collinear Points:</strong> What figure do you get by joining 3 collinear points? What if they are non-collinear?
+              <div class="workspace-box" style="height: 45px;"></div>
+            </li>
+            <li>
+              <strong>Clock Hands Angle (30° per hour):</strong>
+              <br>Find the smaller angle formed at:
+              <br>a) 3:00 o'clock &rarr; _______° (Type: ________________________)
+              <br>b) 8:00 o'clock &rarr; _______° (Type: ________________________)
+            </li>
+            <li>
+              <strong>Polygon Triangulation (n − 2) × 180°:</strong>
+              <br>Calculate the interior angle sum of a nonagon (9-sided polygon):
+              <div class="workspace-box" style="height: 50px;"></div>
+            </li>
+            <li>
+              <strong>Practical Construction:</strong>
+              <br>Draw a circle of radius 4 cm (diameter 8 cm) using a compass and ruler. Mark center O and radius OA:
+              <div class="workspace-box" style="height: 80px;"></div>
+            </li>
+          </ol>
+        </div>
+      `;
+    }
+  });
+
+  printContainer.innerHTML = `
+    <div class="worksheet-header">
+      <h2>CENTRAL BOARD OF SECONDARY EDUCATION (CBSE)</h2>
+      <h3>MATHEMATICS CUMULATIVE REVISION ASSESSMENT — CLASS V</h3>
+      <p><strong>Custom-Compiled Cumulative Exam Practice Paper</strong></p>
+      <div class="worksheet-student-info">
+        <span>Name: __________________________</span>
+        <span>Roll No: ______</span>
+        <span>Section: _____</span>
+        <span>Date: ____________</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 9.5pt; margin-top: 6px; font-weight: 600; border-top: 1px solid #ccc; padding-top: 4px;">
+        <span>Time Allowed: ${totalTime} Minutes</span>
+        <span>Chapters Selected: ${selected.length}</span>
+        <span>Maximum Marks: ${totalMarks}</span>
+      </div>
+    </div>
+
+    <div style="font-size: 8.5pt; font-style: italic; margin-bottom: 12px; color: #444; border-bottom: 1px solid #ddd; padding-bottom: 4px;">
+      General Instructions: 1. All questions are compulsory. 2. Write clear calculations in the workspace boxes provided. 3. Draw diagrams neatly using pencil and geometric instruments.
+    </div>
+
+    ${sectionsHTML}
+  `;
+}
+
+function printWorksheetRevision() {
+  const printContainer = document.getElementById('print-container');
+  if (printContainer) populatePrintRevision(printContainer, state.revisionSelectedTopics);
+  window.print();
+}
 
 function populatePrintTopic1(printContainer) {
   printContainer.innerHTML = `
@@ -8635,6 +9864,8 @@ function populatePrintTopic4(printContainer) {
         <li>1, 4, 9, 16, 25, ______, ______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
         <li>1, 3, 6, 10, 15, ______, ______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
         <li>2, 6, 12, 20, 30, ______, ______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
+        <li>1, 2, 3; 2, 3, 6; 3, 4, 12; _______, _______ &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
+        <li>(1, 2, 2), (2, 3, 6), (3, 4, 12), _______, (5, 6, 30) &nbsp;&nbsp;&nbsp;&nbsp; (Rule: _____________________)</li>
       </ol>
     </div>
 
@@ -8703,7 +9934,7 @@ function populatePrintTopic5(printContainer) {
     <div class="worksheet-header">
       <h2>CENTRAL BOARD OF SECONDARY EDUCATION (CBSE)</h2>
       <h3>MATHEMATICS — CLASS V</h3>
-      <p><strong>Topic: Geometry, Shapes, Angles, Polygons, Triangles & Quadrilaterals</strong></p>
+      <p><strong>Topic: Geometry, Shapes, Angles, Triangles, Quadrilaterals & Circles</strong></p>
       <div class="worksheet-student-info">
         <span>Name: __________________________</span>
         <span>Roll No: ______</span>
@@ -8713,127 +9944,148 @@ function populatePrintTopic5(printContainer) {
     </div>
 
     <div class="worksheet-q">
-      <h4>I. Divisibility Rules & Factors:</h4>
+      <h4>I. Points, Lines, Line Segments, Rays & Line Relationships:</h4>
       <ol>
         <li>
-          <strong>Check the divisibility of 37,42,582 by 15:</strong>
-          <br>Explain the co-prime factor test (3 &times; 5 = 15) and write your conclusion:
-          <div class="workspace-box" style="height: 50px;"></div>
-        </li>
-        <li>
-          <strong>Check which among the following numbers are divisible by 4, 6, and 10 simultaneously:</strong>
-          <br>(a) 12,480 &nbsp;&nbsp;&nbsp;&nbsp; (b) 98,760 &nbsp;&nbsp;&nbsp;&nbsp; (c) 75,310
-          <div class="workspace-box" style="height: 55px;"></div>
-        </li>
-        <li>
-          <strong>If one number is a multiple of another number, what will be their HCF?</strong>
-          <br>Explain the rule and verify with an example (e.g. 8 and 32):
-          <div class="workspace-box" style="height: 50px;"></div>
-        </li>
-        <li>
-          <strong>List the first 10 terms of each sequence:</strong>
-          <br>a) Square numbers: __________________________________________________________________________
-          <br>b) Triangular numbers: ______________________________________________________________________
-        </li>
-      </ol>
-    </div>
-
-    <div class="worksheet-q" style="margin-top: 15px;">
-      <h4>II. Polygons, Triangles & Lines:</h4>
-      <ol start="5">
-        <li>
-          <strong>Collinear Points:</strong>
-          <br>What geometric figure or shape do you get by joining 3 collinear points? What if they are non-collinear?
-          <div class="workspace-box" style="height: 45px;"></div>
-        </li>
-        <li>
-          <strong>Find the sum of interior angles of a nonagon (9-sided polygon):</strong>
-          <br>Show the formula, number of triangles formed from one vertex, and step-by-step multiplication:
-          <div class="workspace-box" style="height: 55px;"></div>
-        </li>
-        <li>
-          <strong>Classify each triangle based on its angle measures (Acute-angled, Right-angled, or Obtuse-angled):</strong>
-          <br>a) 20°, 60°, 100° &nbsp; &rarr; __________________________________________________
-          <br>b) 37°, 23°, 120° &nbsp; &rarr; __________________________________________________
-          <br>c) 55°, 45°, 80° &nbsp;&nbsp;&nbsp; &rarr; __________________________________________________
-          <br>d) 25°, 65°, 90° &nbsp;&nbsp;&nbsp; &rarr; __________________________________________________
-        </li>
-      </ol>
-    </div>
-
-    <div class="worksheet-q" style="margin-top: 15px;">
-      <h4>III. Quadrilaterals & Angle Reasoning:</h4>
-      <ol start="8">
-        <li>
-          <strong>State three main differences between a Rhombus and a Trapezium:</strong>
-          <table style="width: 100%; margin-top: 6px; border-collapse: collapse; font-size: 9pt;" border="1">
+          <strong>Geometric Notations & Properties:</strong> Fill in the details:
+          <table style="width: 100%; margin-top: 6px; border-collapse: collapse; font-size: 9.5pt;" border="1">
             <thead>
               <tr style="background: #f0f0f0;">
-                <th style="padding: 4px; width: 25%;">Property</th>
-                <th style="padding: 4px; width: 37%;">Rhombus</th>
-                <th style="padding: 4px; width: 38%;">Trapezium</th>
+                <th style="padding: 4px; width: 25%;">Geometric Figure</th>
+                <th style="padding: 4px; width: 25%;">Mathematical Symbol</th>
+                <th style="padding: 4px; width: 25%;">Number of Endpoints</th>
+                <th style="padding: 4px; width: 25%;">Can Length be Measured?</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td style="padding: 5px;">Side Lengths</td><td></td><td></td></tr>
-              <tr><td style="padding: 5px;">Parallel Pairs</td><td></td><td></td></tr>
-              <tr><td style="padding: 5px;">Diagonals</td><td></td><td></td></tr>
+              <tr><td style="padding: 5px;">Line AB</td><td>⟷AB</td><td>0</td><td>No (Infinite)</td></tr>
+              <tr><td style="padding: 5px;">Line Segment CD</td><td>—CD</td><td>2</td><td>Yes (Definite)</td></tr>
+              <tr><td style="padding: 5px;">Ray PQ</td><td>→PQ</td><td>1</td><td>No (One direction)</td></tr>
             </tbody>
           </table>
         </li>
         <li>
-          <strong>Missing Angle in Quadrilateral:</strong>
-          <br>Three angles of a quadrilateral are 85°, 110°, and 95°. Find the measure of the fourth angle:
+          <strong>Collinear vs. Non-Collinear Points:</strong>
+          <br>What geometric figure or shape do you get by joining 3 collinear points? What if the 3 points are non-collinear?
+          <div class="workspace-box" style="height: 45px;"></div>
+        </li>
+        <li>
+          <strong>Parallel & Perpendicular Lines:</strong>
+          <br>a) Define parallel lines and write the symbol used (l ∥ m):
+          <div class="workspace-box" style="height: 40px;"></div>
+          b) What is the exact angle formed between two perpendicular lines (AB ⊥ CD)?
+          <div class="workspace-box" style="height: 40px;"></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="worksheet-q" style="margin-top: 15px;">
+      <h4>II. Angles, Rotations & Clock Angle Detective:</h4>
+      <ol start="4">
+        <li>
+          <strong>Classify each angle measure (Acute, Right, Obtuse, Straight, Reflex, or Complete):</strong>
+          <br>a) 48° &rarr; __________________________________________________
+          <br>b) 90° &rarr; __________________________________________________
+          <br>c) 135° &rarr; _________________________________________________
+          <br>d) 180° &rarr; _________________________________________________
+          <br>e) 245° &rarr; _________________________________________________
+          <br>f) 360° &rarr; _________________________________________________
+        </li>
+        <li>
+          <strong>Clock Angle Detective (Formula: 30° per hour step):</strong>
+          <br>Find the smaller angle formed between the hour and minute hands of a clock at:
+          <br>a) 3:00 o'clock &rarr; _______° (Type: ________________________)
+          <br>b) 6:00 o'clock &rarr; _______° (Type: ________________________)
+          <br>c) 1:00 o'clock &rarr; _______° (Type: ________________________)
+          <br>d) 4:00 o'clock &rarr; _______° (Type: ________________________)
+        </li>
+        <li>
+          <strong>Rotations Reasoning:</strong>
+          <br>a) Through how many degrees does the minute hand turn in 15 minutes? (Hint: 1/4 of full circle)
+          <div class="workspace-box" style="height: 35px;"></div>
+          b) How many right angles make a straight angle? How many right angles make a complete turn?
+          <div class="workspace-box" style="height: 35px;"></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="worksheet-q" style="margin-top: 15px;">
+      <h4>III. Triangles & Polygon Interior Angle Sums:</h4>
+      <ol start="7">
+        <li>
+          <strong>Classify each triangle based on sides and angles:</strong>
+          <br>a) A triangle with all 3 sides equal &rarr; ____________________________________
+          <br>b) A triangle with angle measures 30°, 60°, 90° &rarr; ________________________
+          <br>c) Can a triangle have two right angles? Explain using the Angle Sum Property (Sum = 180°):
+          <div class="workspace-box" style="height: 45px;"></div>
+        </li>
+        <li>
+          <strong>Missing Triangle Angle:</strong>
+          <br>In &Delta;ABC, if &ang;A = 70° and &ang;B = 55°, find the measure of &ang;C:
+          <div class="workspace-box" style="height: 45px;"></div>
+        </li>
+        <li>
+          <strong>Polygon Triangulation Formula (n − 2) &times; 180°:</strong>
+          <br>Calculate the interior angle sum of:
+          <br>a) Quadrilateral (4 sides): _____________________________________________ = _______°
+          <br>b) Pentagon (5 sides): __________________________________________________ = _______°
+          <br>c) Hexagon (6 sides): ___________________________________________________ = _______°
+          <br>d) Nonagon (9 sides): ___________________________________________________ = _______°
+        </li>
+      </ol>
+    </div>
+
+    <div class="worksheet-q" style="margin-top: 15px;">
+      <h4>IV. Quadrilaterals & Circle Anatomy:</h4>
+      <ol start="10">
+        <li>
+          <strong>State two key differences between a Rhombus and a Trapezium:</strong>
+          <table style="width: 100%; margin-top: 6px; border-collapse: collapse; font-size: 9pt;" border="1">
+            <thead>
+              <tr style="background: #f0f0f0;">
+                <th style="padding: 4px; width: 30%;">Property</th>
+                <th style="padding: 4px; width: 35%;">Rhombus</th>
+                <th style="padding: 4px; width: 35%;">Trapezium</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding: 5px;">Side Lengths</td><td>All 4 sides are equal</td><td>Sides need not be equal</td></tr>
+              <tr><td style="padding: 5px;">Parallel Pairs</td><td>Both pairs are parallel</td><td>Only ONE pair of parallel sides</td></tr>
+            </tbody>
+          </table>
+        </li>
+        <li>
+          <strong>Parallelogram Opposite Angles:</strong>
+          <br>In parallelogram ABCD, &ang;A = 80°. Find &ang;B, &ang;C, and &ang;D (Opposite angles are equal, adjacent angles add up to 180°):
           <div class="workspace-box" style="height: 50px;"></div>
         </li>
         <li>
-          <strong>Parallelogram ABCD:</strong>
-          <br>If &ang;A = 80°, find the measures of &ang;B, &ang;C, and &ang;D with geometric justification:
+          <strong>Circle Formulas & Definitions (d = 2r, r = d &divide; 2):</strong>
+          <br>a) If diameter of a coin is 16 cm, calculate its radius: ____________________
+          <br>b) If radius of a circular clock is 7.5 cm, calculate its diameter: ____________
+          <br>c) Define: Chord, Arc, and Circumference. What is the longest chord of a circle?
           <div class="workspace-box" style="height: 50px;"></div>
         </li>
       </ol>
     </div>
 
     <div class="worksheet-q" style="margin-top: 15px;">
-      <h4>IV. Numerical Expressions (BODMAS / Order of Operations):</h4>
-      <ol start="11">
+      <h4>V. Practical Geometric Constructions (Using Ruler, Compass & Protractor):</h4>
+      <ol start="13">
         <li>
-          <strong>Evaluate step-by-step using BODMAS:</strong>
-          <br>a) 28 + 45 &divide; 9 &times; 2 - 10
-          <div class="workspace-box" style="height: 45px;"></div>
-          b) (48 - 35) &times; 2 + 30 &divide; 15
-          <div class="workspace-box" style="height: 45px;"></div>
+          <strong>Draw a line segment AB of length 7.2 cm using a ruler and pencil:</strong>
+          <div class="workspace-box" style="height: 60px;"></div>
         </li>
         <li>
-          <strong>Write the numerical expressions in words:</strong>
-          <br>a) (2 &times; 5) - 6 : _______________________________________________________________________
-          <br>b) (90 - 30) &divide; (30 - 20) : ___________________________________________________________
+          <strong>Draw an angle of 120° using a protractor and label vertex B, rays BA and BC:</strong>
+          <div class="workspace-box" style="height: 75px;"></div>
         </li>
         <li>
-          <strong>Write the mathematical expressions for:</strong>
-          <br>a) 45 is divided by the sum of 2 and 3 : ___________________________________________________
-          <br>b) The sum of 56 and 4 is multiplied by the difference of 11 and 10 : _____________________
-        </li>
-      </ol>
-    </div>
-
-    <div class="worksheet-q" style="margin-top: 15px;">
-      <h4>V. Practical Geometric Constructions (Using Ruler, Pencil & Compass):</h4>
-      <ol start="14">
-        <li>
-          <strong>Construct a rectangle of length 8 cm and breadth 5 cm:</strong>
-          <div class="workspace-box" style="height: 80px;"></div>
+          <strong>Using a compass, draw a circle of radius 4 cm (diameter 8 cm). Mark center O, radius OP, and a chord CD:</strong>
+          <div class="workspace-box" style="height: 85px;"></div>
         </li>
         <li>
-          <strong>Draw a circle of diameter 10 cm using compass (Radius = _____ cm):</strong>
-          <div class="workspace-box" style="height: 80px;"></div>
-        </li>
-        <li>
-          <strong>Construct a square of side 6 cm:</strong>
-          <div class="workspace-box" style="height: 80px;"></div>
-        </li>
-        <li>
-          <strong>Draw an angle of 135° using protractor and ruler. Mark the vertex and classify:</strong>
+          <strong>Construct a rectangle of length 6 cm and breadth 4 cm:</strong>
           <div class="workspace-box" style="height: 80px;"></div>
         </li>
       </ol>
@@ -8942,6 +10194,9 @@ function loadActiveState() {
       if (parsed.currentTopic && TOPICS_CONFIG[parsed.currentTopic]) {
         state.currentTopic = parsed.currentTopic;
       }
+            if (Array.isArray(parsed.revisionSelectedTopics)) {
+        state.revisionSelectedTopics = parsed.revisionSelectedTopics;
+      }
       if (['learn', 'practice', 'challenge', 'worksheet'].includes(parsed.activeMode)) {
         state.activeMode = parsed.activeMode;
       }
@@ -8972,7 +10227,8 @@ function saveActiveState() {
       currentTopic: state.currentTopic,
       activeMode: state.activeMode,
       activeLearnModule: state.activeLearnModule,
-      practiceFilter: state.practiceFilter
+      practiceFilter: state.practiceFilter,
+      revisionSelectedTopics: state.revisionSelectedTopics
     };
     if (state.activeMode === 'practice') {
       toSave.practiceProgress = {

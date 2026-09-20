@@ -2666,7 +2666,7 @@ class SSTApp {
     paper.className = 'worksheet-paper';
     paper.innerHTML = `
       <div class="paper-header">
-        <h2>Freedom International School / CBSE Term 1 Assessment</h2>
+        <h2>CENTRAL BOARD OF SECONDARY EDUCATION (CBSE)</h2>
         <h3>Revision Worksheet: ${chap.number} — ${chap.title}</h3>
         <div class="paper-meta-row">
           <span>Student Name: ___________________________</span>
