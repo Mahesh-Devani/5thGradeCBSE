@@ -4240,6 +4240,8 @@ function renderDetectiveModule(container) {
           <option value="hcf2">"Find the largest capacity measuring container to empty 48L and 72L cans."</option>
           <option value="lcm2">"Find the smallest number that is exactly divisible by 8, 12, and 18."</option>
           <option value="hcf3">"Find the greatest number that divides 36, 60, and 84 without remainder."</option>
+          <option value="lcm3">"Two runners lap a track every 12 min and 18 min. When will they meet at the start line?"</option>
+          <option value="hcf4">"A room is 36m by 60m. What is the largest square tile that fits without cutting?"</option>
         </select>
         <button class="btn btn-primary" id="btn-diagnose">Diagnose Clue 🔍</button>
       </div>
@@ -4250,25 +4252,98 @@ function renderDetectiveModule(container) {
     </div>
   `;
 
-  container.querySelector('#btn-diagnose').addEventListener('click', () => {
-    playClickSound();
-    const val = container.querySelector('#clue-selector').value;
-    const resBox = container.querySelector('#clue-result');
+  const clueSelector = container.querySelector('#clue-selector');
+  const btnDiagnose = container.querySelector('#btn-diagnose');
+  const resBox = container.querySelector('#clue-result');
 
-    if (val.startsWith('hcf')) {
+  const CLUE_DIAGNOSES = {
+    hcf1: {
+      type: 'hcf',
+      clue: 'Keywords: "greatest number" & "identical gift boxes"',
+      explanation: 'You have fixed piles of items and need to chop or divide them into the largest possible equal groups with zero leftovers. Splitting down into equal portions always requires the Highest Common Factor!'
+    },
+    lcm1: {
+      type: 'lcm',
+      clue: 'Keywords: "seconds" & "toll together again"',
+      explanation: 'Each church bell tolls on its own recurring cycle (e.g., every 12s, 15s, 18s). You are looking forward in time for the earliest moment their cycles synchronize together. Repeating cycles meeting in the future always require the Lowest Common Multiple!'
+    },
+    hcf2: {
+      type: 'hcf',
+      clue: 'Keywords: "largest capacity measuring container" & "empty 48L and 72L cans"',
+      explanation: 'The measuring container must measure both 48L and 72L cans an exact whole number of times without any liquid left over. It must be an exact factor of both quantities. The largest such container is HCF(48, 72) = 24L!'
+    },
+    lcm2: {
+      type: 'lcm',
+      clue: 'Keywords: "smallest number that is exactly divisible by"',
+      explanation: 'The target number must be a multiple of 8, a multiple of 12, and a multiple of 18 simultaneously. The smallest number that satisfies all three conditions is the Lowest Common Multiple: LCM(8, 12, 18) = 72!'
+    },
+    hcf3: {
+      type: 'hcf',
+      clue: 'Keywords: "greatest number that divides without remainder"',
+      explanation: '"Divides" means you are looking for a common divisor (factor), not a multiple. "Greatest divisor" is the literal definition of Highest Common Factor: HCF(36, 60, 84) = 12!'
+    },
+    lcm3: {
+      type: 'lcm',
+      clue: 'Keywords: "lap every 12 min and 18 min" & "meet at the start line"',
+      explanation: 'Both runners start at the same time and repeat their laps at different speeds. The earliest time they coincide at the start line together is their Lowest Common Multiple: LCM(12, 18) = 36 minutes!'
+    },
+    hcf4: {
+      type: 'hcf',
+      clue: 'Keywords: "largest square tile" & "without cutting"',
+      explanation: 'The tile side must divide both the room length (36m) and breadth (60m) into whole tile units with zero fractions or cuts. The largest possible square tile is HCF(36, 60) = 12m!'
+    }
+  };
+
+  // When student changes the clue question, immediately clear the old diagnosis so they can think fresh
+  clueSelector.addEventListener('change', () => {
+    resBox.innerHTML = `
+      <div style="color: var(--text-muted); font-size: 0.95rem;">
+        💡 New clue selected! Click <strong>Diagnose Clue 🔍</strong> to reveal whether this question requires HCF or LCM.
+      </div>
+    `;
+  });
+
+  btnDiagnose.addEventListener('click', () => {
+    playClickSound();
+    const val = clueSelector.value;
+    const diag = CLUE_DIAGNOSES[val];
+
+    if (diag && diag.type === 'hcf') {
       resBox.innerHTML = `
         <div style="color: var(--accent-emerald-light); font-weight: bold; font-size: 1.1rem; margin-bottom: 0.35rem;">
           🎯 Verdict: Use HCF (Highest Common Factor)!
         </div>
-        <p>Notice keywords like <em>"greatest"</em>, <em>"identical sets"</em>, or <em>"largest capacity"</em>. You are cutting or dividing existing quantities into smaller identical portions, so you need the Highest Common Factor!</p>
+        <div style="font-weight: 600; color: #a7f3d0; margin-bottom: 0.35rem; font-size: 0.92rem;">
+          🔍 ${diag.clue}
+        </div>
+        <p style="margin: 0; color: #cbd5e1; font-size: 0.9rem; line-height: 1.5;">${diag.explanation}</p>
       `;
-    } else {
+    } else if (diag && diag.type === 'lcm') {
       resBox.innerHTML = `
         <div style="color: var(--accent-amber-light); font-weight: bold; font-size: 1.1rem; margin-bottom: 0.35rem;">
           🎯 Verdict: Use LCM (Lowest Common Multiple)!
         </div>
-        <p>Notice keywords like <em>"together again"</em>, <em>"smallest number divisible by"</em>, or <em>"repeating intervals"</em>. You are looking for a multiple where separate cycles meet, so you need the Lowest Common Multiple!</p>
+        <div style="font-weight: 600; color: #fde68a; margin-bottom: 0.35rem; font-size: 0.92rem;">
+          🔍 ${diag.clue}
+        </div>
+        <p style="margin: 0; color: #cbd5e1; font-size: 0.9rem; line-height: 1.5;">${diag.explanation}</p>
       `;
+    } else {
+      if (val.startsWith('hcf')) {
+        resBox.innerHTML = `
+          <div style="color: var(--accent-emerald-light); font-weight: bold; font-size: 1.1rem; margin-bottom: 0.35rem;">
+            🎯 Verdict: Use HCF (Highest Common Factor)!
+          </div>
+          <p>Notice keywords like <em>"greatest"</em>, <em>"identical sets"</em>, or <em>"largest capacity"</em>. You are cutting or dividing existing quantities into smaller identical portions, so you need the Highest Common Factor!</p>
+        `;
+      } else {
+        resBox.innerHTML = `
+          <div style="color: var(--accent-amber-light); font-weight: bold; font-size: 1.1rem; margin-bottom: 0.35rem;">
+            🎯 Verdict: Use LCM (Lowest Common Multiple)!
+          </div>
+          <p>Notice keywords like <em>"together again"</em>, <em>"smallest number divisible by"</em>, or <em>"repeating intervals"</em>. You are looking for a multiple where separate cycles meet, so you need the Lowest Common Multiple!</p>
+        `;
+      }
     }
   });
 }
@@ -4798,12 +4873,12 @@ const MISTAKES_TOPIC_1 = [
     student: 'Student: Rohan (Class 5-B)',
     question: 'Find the HCF of 24, 36, and 48 using short division.',
     steps: [
-      { label: 'Step 1', text: 'Divide 24, 36, 48 by 2 ➔ Leaves 12, 18, 24', isBlunder: false },
-      { label: 'Step 2', text: 'Divide 12, 18, 24 by 3 ➔ Leaves 4, 6, 8', isBlunder: false },
-      { label: 'Step 3', text: 'Divide 4, 6, 8 by 2 ➔ Leaves 2, 3, 4', isBlunder: false },
-      { label: 'Step 4', text: 'Divide 2 & 4 by 2 ➔ Leaves 1, 3, 2. Calculates HCF = 2 × 3 × 2 × 2 = 24', isBlunder: true }
+      { label: 'Step 1', text: 'Divide 24, 36, 48 by 2 ➔ Leaves 12, 18, 24', isBlunder: false, validHint: 'All three numbers (24, 36, 48) are even, so starting with the smallest prime 2 is completely correct.' },
+      { label: 'Step 2', text: 'Divide 12, 18, 24 by 2 ➔ Leaves 6, 9, 12', isBlunder: false, validHint: 'All three numbers (12, 18, 24) are still even! Continuing to divide by the smallest prime 2 until it no longer divides all numbers is the proper method.' },
+      { label: 'Step 3', text: 'Divide 6, 9, 12 by 3 ➔ Leaves 2, 3, 4', isBlunder: false, validHint: 'Since 9 is odd, 2 can no longer divide all three numbers simultaneously. Moving to the next prime 3 (which divides 6, 9, and 12) is completely sound.' },
+      { label: 'Step 4', text: 'Divide 2 & 4 by 2 ➔ Leaves 1, 3, 2 (bringing down 3). Calculates HCF = 2 × 2 × 3 × 2 = 24', isBlunder: true }
     ],
-    diagnosis: '🛑 <strong>Mistake Caught! (The Stopping Rule)</strong> In HCF short division, the prime divisor <em>must divide ALL numbers simultaneously</em>! At Step 3, the numbers were 2, 3, and 4. No prime number divides all three together. Rohan should have <strong>STOPPED at Step 3</strong>! Bringing numbers down is strictly for LCM, NEVER for HCF! The correct HCF is 2 × 3 × 2 = 12.'
+    diagnosis: '🛑 <strong>Mistake Caught! (The Stopping Rule)</strong> In HCF short division, the prime divisor <em>must divide ALL numbers simultaneously</em>! At Step 3, the remaining numbers are <strong>2, 3, and 4</strong>. There is no common prime that divides all three numbers together. Rohan should have <strong>STOPPED at Step 3</strong>! Bringing numbers down is strictly for LCM, NEVER for HCF! The correct HCF is <strong>2 × 2 × 3 = 12</strong>.'
   },
   {
     id: 'mistake_t1_composite_tree',
