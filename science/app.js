@@ -3433,6 +3433,34 @@ const REVISION_TABLES_DATA = {
         ['Rodent', 'Strong continuously-growing gnawing incisors', 'Rat, squirrel, beaver', 'Front teeth never stop growing; constant gnawing keeps them filed.']
       ],
       takeaway: 'Flat grinding molars → Herbivore | Dagger canines + shearing molars → Carnivore | Mixed teeth → Omnivore | Ever-growing incisors → Rodent'
+    },
+    {
+      title: '🐾 Animal Locomotion — Movement Organs Across Habitats',
+      icon: '🦅',
+      columns: ['Habitat / Animal Group', 'Locomotion Organ', 'Movement Type', 'Key Examples', 'Special Adaptation Clue'],
+      rows: [
+        ['Terrestrial Mammals', 'Hooves & strong muscular legs', 'Running, galloping, leaping', 'Horse, cow, deer, cheetah', 'Hard hooves absorb shock on rough ground; long stride.'],
+        ['Aerial Birds', 'Wings with flight feathers & hollow bones', 'Flying, soaring, gliding', 'Eagle, pigeon, sparrow, hawk', 'Pneumatic (hollow) bones reduce body weight for effortless flight.'],
+        ['Aquatic Birds', 'Webbed feet (skin between toes)', 'Paddling, steering in water', 'Duck, swan, pelican', 'Webbed toes push maximum water like boat oars.'],
+        ['Marine Animals', 'Flippers (paddle-shaped limbs)', 'Swimming, diving', 'Penguin, seal, sea turtle', 'Modified forelimbs act as underwater oars & steering rudders.'],
+        ['Aquatic Fish', 'Fins & flexible muscular tail', 'Swimming, balancing', 'Shark, rohu, salmon, goldfish', 'Caudal (tail) fin provides forward thrust; dorsal fins provide balance.'],
+        ['Amphibians (Frogs)', 'Webbed hind legs with muscular thighs', 'Hopping on land, paddling in water', 'Bullfrog, tree frog, toad', 'Powerful folded legs act as biological springs for jumping.'],
+        ['Limbless Reptiles (Snakes)', 'Broad ventral belly scales & body muscles', 'Slithering / undulating crawl', 'Cobra, python, viper', 'Belly scales grip ground irregularities as muscular curves push forward.'],
+        ['Insects', '6 jointed legs & wings', 'Walking, crawling, jumping, flying', 'Grasshopper, housefly, beetle', 'Grasshopper has enlarged hind legs for leaping; exoskeleton supports joints.']
+      ],
+      takeaway: 'Ducks → Webbed feet | Penguins/Seals → Flippers | Snakes → Ventral scales + muscles | Note: Nares are bird nostrils for breathing, NOT movement!'
+    },
+    {
+      title: '🧭 Survival Strategies — Migration, Hibernation, Aestivation & Camouflage',
+      icon: '❄️',
+      columns: ['Strategy', 'Scientific Definition', 'Seasonal Trigger', 'Famous Animal Examples', 'Key Exam Clue'],
+      rows: [
+        ['Migration', 'Long-distance seasonal journey to escape extreme cold and find food/breeding sites', 'Severe winter freeze / food shortage', 'Arctic Tern (pole to pole!), Siberian Crane, Monarch Butterfly, Salmon', 'Moving away to another region; returning in spring.'],
+        ['Hibernation ("Winter Sleep")', 'Prolonged deep dormant state with drastically slowed heart rate and reduced body temperature', 'Freezing winter cold & food scarcity', 'Polar bear, grizzly bear, hedgehog, bat, ground squirrel', 'Sleeping through the entire winter; lives off stored body fat.'],
+        ['Aestivation ("Summer Sleep")', 'State of dormancy to survive scorching heat and prolonged dryness / drought', 'Blistering summer heat & water scarcity', 'Desert snail, lungfish, crocodile, desert tortoise', 'Burrowing into mud or sealing shell to prevent water loss.'],
+        ['Camouflage (Colour Blending)', 'Ability to blend body colour, pattern, or texture with surroundings to become invisible', 'Threat from predators or hunting prey', 'Chameleon, stick insect, polar bear (white fur), tiger (stripes)', 'Concealment in habitat; avoids detection by predators and prey.']
+      ],
+      takeaway: 'Migration = Seasonal Travel | Hibernation = Winter Sleep (Bears) | Aestivation = Summer Sleep (Snails/Lungfish) | Camouflage = Blending In (Chameleon)'
     }
   ],
   'ch5_health': [
@@ -3465,6 +3493,33 @@ const REVISION_TABLES_DATA = {
         ['Water', 'Dissolves nutrients; regulates temperature; removes waste', 'Drinking water, fruits, soups', 'Dehydration, organ failure']
       ],
       takeaway: 'Carbs→Energy | Proteins→Growth & Repair | Fats→Stored Energy | Vitamins→Regulate | Minerals→Bones & Blood | Roughage→Digestion | Water→Everything!'
+    },
+    {
+      title: '🦠 Communicable vs Non-Communicable Diseases — Spot the Difference',
+      icon: '🛡️',
+      columns: ['Comparison Parameter', 'Communicable (Infectious)', 'Non-Communicable (Non-Infectious)', 'Rule of Thumb'],
+      rows: [
+        ['Definition', 'Can spread from an infected person to a healthy person', 'Cannot spread from person to person', 'Communicable = Catchy / contagious.'],
+        ['Causative Factor', 'Living microscopic pathogens (viruses, bacteria, protozoa, fungi)', 'Nutrient deficiencies, organ malfunction, lifestyle, or genetics', 'Pathogen vs Internal body cause.'],
+        ['Mode of Spread', 'Air droplets (cough/sneeze), contaminated food/water, insect vectors, touch', 'Never transmitted through air, water, touch, or vectors', 'Coughing near someone cannot transmit non-communicable diseases.'],
+        ['Prevention Strategy', 'Hygiene, sanitation, vector control, safe drinking water, vaccination, masks', 'Balanced diet, regular physical exercise, healthy lifestyle, food supplements', 'Sanitation & clean environment vs Proper nutrition.'],
+        ['Classic Examples', 'Influenza, common cold, cholera, malaria, typhoid, dengue, tuberculosis', 'Scurvy (Vit C), Rickets (Vit D), Anaemia (Iron), Goitre (Iodine), Diabetes', 'Deficiency diseases are ALWAYS non-communicable!']
+      ],
+      takeaway: 'Communicable = Germs & spread between people (Flu, Malaria, Typhoid) | Non-Communicable = Deficiencies/lifestyle & cannot spread (Scurvy, Rickets, Anaemia)'
+    },
+    {
+      title: '🦟 Disease Vectors & Modes of Transmission',
+      icon: '🔬',
+      columns: ['Transmission Route / Vector', 'Microbe Type', 'Disease Caused', 'How It Spreads', 'Prevention & Control Rule'],
+      rows: [
+        ['Female Anopheles Mosquito', 'Protozoan (Plasmodium)', 'Malaria', 'Injects parasite directly into bloodstream during blood meal', 'Clear stagnant water; use mosquito nets and repellents.'],
+        ['Female Aedes Mosquito', 'Virus (Dengue virus)', 'Dengue & Chikungunya', 'Bites during daytime; breeds in clean domestic stagnant water', 'Empty and scrub water coolers and plant saucers weekly.'],
+        ['Housefly', 'Bacteria & Parasites', 'Cholera, Typhoid, Diarrhoea', 'Carries germs on hairy legs from filth/faeces to uncovered food', 'Keep all food covered; wash hands thoroughly before eating.'],
+        ['Air Droplets (Cough / Sneeze)', 'Viruses & Bacteria', 'Common cold, Influenza, Tuberculosis', 'Sneezing releases thousands of infectious moisture droplets into air', 'Cover mouth and nose with a handkerchief when sneezing; wear masks.'],
+        ['Contaminated Water & Food', 'Bacteria & Viruses', 'Jaundice (Hepatitis A), Typhoid, Dysentery', 'Consuming untreated water or food prepared with dirty water', 'Drink boiled or filtered water; avoid exposed street food.'],
+        ['Direct Contact / Fungi', 'Fungi & Parasites', 'Ringworm, Scabies, Athlete\'s Foot', 'Skin-to-skin contact or sharing towels, combs, clothes of infected person', 'Maintain personal hygiene; never share combs or towels.']
+      ],
+      takeaway: 'Female Anopheles → Malaria (Protozoa) | Aedes → Dengue (Virus) | Housefly → Cholera/Typhoid (Bacteria) | Sneezing → Airborne droplets'
     }
   ],
   'ch7_air_water': [
@@ -3494,6 +3549,33 @@ const REVISION_TABLES_DATA = {
         ['5. Exosphere', '700 – 10,000 km', 'Extremely hot but sparse', 'Outermost layer; merges into outer space. Satellites orbit here.']
       ],
       takeaway: 'Troposphere→Weather | Stratosphere→Ozone (UV shield) | Mesosphere→Meteors burn | Thermosphere→Radio waves & ISS | Exosphere→Space boundary'
+    },
+    {
+      title: '🌬️ Composition of Atmospheric Air — Gases & Vital Functions',
+      icon: '🎈',
+      columns: ['Component', 'Percentage in Air', 'Key Property', 'Vital Role in Nature', 'Daily Life & Industrial Use'],
+      rows: [
+        ['Nitrogen (N₂)', '~78%', 'Colourless, odourless, does not burn or support burning', 'Dilutes oxygen so fires do not burn uncontrollably; builds plant proteins', 'Flushed into chips/snack packets to prevent rancidity; liquid nitrogen cooling.'],
+        ['Oxygen (O₂)', '~21%', 'Supports combustion; active life-sustaining gas', 'Essential for cellular respiration in plants and animals to release energy', 'Hospital oxygen cylinders for patients; scuba diving and high-altitude tanks.'],
+        ['Carbon Dioxide (CO₂)', '~0.04%', 'Heavier than air, non-flammable, extinguishes flames', 'Absorbed by green plants in sunlight for photosynthesis to make food', 'Used in fire extinguishers; fizz in carbonated soft drinks; solid dry ice cooling.'],
+        ['Noble / Inert Gases', '~0.93% (Argon, Neon, Helium)', 'Chemically unreactive, non-toxic, odorless', 'Trace atmospheric gases', 'Argon in incandescent light bulbs; Neon in glowing display signs; Helium in balloons.'],
+        ['Water Vapour', 'Variable (0.1% – 4%)', 'Invisible gaseous water; determines humidity', 'Drives the water cycle; forms clouds, dew, frost, and rain', 'Higher in coastal regions; lower in winter resulting in dry skin.'],
+        ['Dust Particles & Smoke', 'Variable', 'Microscopic suspended solid particles', 'Act as condensation nuclei around which water vapour condenses into raindrops', 'Excessive amounts cause smog, reduced visibility, and respiratory allergies.']
+      ],
+      takeaway: 'Nitrogen (78%) = Protein builder & flame damper | Oxygen (21%) = Breathing & burning | CO₂ (0.04%) = Photosynthesis & fire extinguishers'
+    },
+    {
+      title: '🎈 Scientific Properties of Air — Classroom Experiments & Daily Proofs',
+      icon: '⚖️',
+      columns: ['Property of Air', 'Classic Classroom Experiment', 'What You Observe', 'Scientific Deduction', 'Everyday Life Application'],
+      rows: [
+        ['Air Has Mass (Weight)', 'Two identical inflated balloons balanced on a ruler; prick one balloon', 'The side with the inflated balloon dips down immediately', 'Air trapped inside the balloon has weight, tipping the balance down', 'Inflated vehicle tyres weigh measurably more than deflated tyres.'],
+        ['Air Occupies Space', 'Push an inverted open glass tumbler straight down into a bucket of water', 'Water cannot enter the tumbler until you tilt it to let air bubbles out', 'Air trapped inside the tumbler occupies space and blocks water from entering', 'Parachutes trap air to slow descent; footballs expand when pumped.'],
+        ['Air Exerts Pressure in All Directions', 'Fill a glass with water, cover with thick cardboard, and turn upside down', 'Water does not spill; cardboard remains firmly pressed against the glass rim', 'Upward atmospheric pressure pushing on the cardboard exceeds downward weight of water', 'Drinking straws, medicine droppers, suction rubber wall hooks, injection syringes.'],
+        ['Air Supports Combustion', 'Place an inverted glass tumbler over a burning candle on a table', 'The candle flickers and extinguishes after 10–15 seconds', 'Oxygen in the trapped air is consumed; burning ceases once O₂ is depleted', 'Covering a fire with a heavy blanket cuts off oxygen to extinguish it.'],
+        ['Air Contains Water Vapour', 'Place ice cubes in a dry metal or glass tumbler on a humid day', 'Tiny water droplets appear on the OUTSIDE dry surface of the glass', 'Invisible water vapour in room air cools and condenses upon contacting cold glass', 'Morning dew on grass blades; fogging of car windows and spectacles in winter.']
+      ],
+      takeaway: 'Air has mass (dipping balloon balance) | Occupies space (inverted glass bubbles) | Exerts pressure (straw & suction cups) | Supports burning (candle under jar)'
     }
   ],
   'ch13_matter': [
@@ -3512,6 +3594,47 @@ const REVISION_TABLES_DATA = {
         ['Diffusion Speed', 'Extremely slow', 'Slow (ink in water)', 'Fast (perfume fills room quickly)']
       ],
       takeaway: 'Solid: Fixed shape + volume, tightly packed | Liquid: Fixed volume but flows, loosely packed | Gas: No fixed shape or volume, particles far apart'
+    },
+    {
+      title: '🔄 Changes of State — The Phase Transition Matrix',
+      icon: '🔥',
+      columns: ['Phase Transition', 'State Change', 'Thermal Energy Action', 'Molecular Behaviour', 'Everyday Examples', 'Exam Keyword Clue'],
+      rows: [
+        ['Melting (Fusion)', 'Solid → Liquid', 'Heat ABSORBED (Warming)', 'Particles gain kinetic energy, vibrate faster, and break out of fixed positions', 'Ice turning into water at 0°C; butter melting on a warm pan', 'Loses fixed shape, retains fixed volume.'],
+        ['Freezing (Solidification)', 'Liquid → Solid', 'Heat RELEASED (Cooling)', 'Particles slow down; intermolecular attraction locks them into fixed lattice', 'Water freezing into ice at 0°C; molten candle wax hardening', 'Becomes rigid with fixed shape and definite volume.'],
+        ['Evaporation & Boiling', 'Liquid → Gas', 'Heat ABSORBED (Warming)', 'Particles gain high speed, overcome liquid attraction, and escape into air', 'Wet clothes drying in sun; water boiling into steam at 100°C', 'Boiling occurs at 100°C throughout liquid; evaporation occurs at surface at any temp.'],
+        ['Condensation', 'Gas → Liquid', 'Heat RELEASED (Cooling)', 'Gas particles lose speed on cold surface, draw closer, and form liquid droplets', 'Water drops on teacup lid; dew on grass; mist on cold bathroom mirror', 'Water vapour turns back into liquid upon cooling.'],
+        ['Sublimation', 'Solid → Gas directly (NO liquid phase!)', 'Heat ABSORBED', 'Surface molecules gain enough energy to jump directly into gas phase', 'Naphthalene mothballs in cupboard; Camphor (kapoor); Dry ice (solid CO₂)', 'Vanishes over time without leaving any liquid puddle behind!'],
+        ['Deposition (Desublimation)', 'Gas → Solid directly (NO liquid phase!)', 'Heat RELEASED rapidly', 'Gas molecules cool extremely rapidly and bond directly into solid crystal lattice', 'Frost forming on freezing car windshield; industrial dry ice production from CO₂ gas', 'Direct vapour to solid crystal formation without liquid phase.']
+      ],
+      takeaway: 'Melting = Solid → Liquid | Boiling = Liquid → Gas | Condensation = Gas → Liquid | Sublimation = Solid → Gas directly (Naphthalene/Camphor)'
+    },
+    {
+      title: '🧪 Physical Changes vs Chemical Changes — Spot the Difference',
+      icon: '⚗️',
+      columns: ['Comparison Criteria', 'Physical Change', 'Chemical Change', 'Diagnostic Rule'],
+      rows: [
+        ['New Substance Formation', 'NO new substance is formed; only shape, size, appearance, or state changes', 'One or more ENTIRELY NEW substances with different properties are formed', '"Is a new chemical created?"'],
+        ['Reversibility', 'Usually REVERSIBLE (can return to original form easily)', 'Mostly IRREVERSIBLE (cannot be undone by simple physical methods)', '"Can you un-fry an omelette? No!"'],
+        ['Molecular Identity', 'Chemical composition stays identical (e.g. H₂O in ice, water, steam)', 'Chemical composition changes; molecular bonds break and new bonds form', 'Chemical bonds permanently altered.'],
+        ['Energy Change', 'Little or no heat/light energy is absorbed or released', 'Significant heat, light, sound, or gas bubbles are released or absorbed', 'Look for heat, flame, or fizzing.'],
+        ['Mass Change of Original', 'Mass of original substance remains strictly unchanged', 'Original substance transforms into products with different properties', 'Total mass conserved in closed system.'],
+        ['Everyday Examples', 'Melting ice, tearing paper, breaking glass, dissolving sugar in water, stretching rubber band', 'Frying an egg, burning wood/paper, rusting iron, curdling milk into paneer, baking a cake', 'Cooked, rusted, burned, or curdled ⟹ Chemical!']
+      ],
+      takeaway: 'Physical = Reversible, NO new substance (Melting, Tearing, Dissolving) | Chemical = Irreversible, NEW substance formed (Rusting, Burning, Curdling, Cooking)'
+    },
+    {
+      title: '🥣 Solutions, Solutes & Solvents — Dissolving Science',
+      icon: '🧂',
+      columns: ['Scientific Term', 'Exact Definition', 'Classroom Concept / Formula', 'Everyday Examples', 'Factors That Speed It Up'],
+      rows: [
+        ['Solute', 'The substance that dissolves in a liquid', 'Solute + Solvent = Solution', 'Sugar crystals, table salt, coffee powder, instant drink mix', 'Crushing into fine powder increases surface area → dissolves faster.'],
+        ['Solvent', 'The liquid in which the solute dissolves (usually larger quantity)', 'Water is the "Universal Solvent" because it dissolves more substances than any other liquid', 'Water, milk, alcohol', 'Heating the solvent increases molecular spacing → dissolves solute faster.'],
+        ['Solution', 'A uniform, homogeneous mixture formed when solute completely dissolves in solvent', 'Solute particles spread evenly and become completely invisible', 'Saltwater, sweet lemonade, clear tea', 'Stirring vigorously spreads solute particles throughout solvent.'],
+        ['Soluble vs Insoluble', 'Soluble dissolves completely; Insoluble does NOT dissolve and remains separate', 'Soluble: clear liquid; Insoluble: cloudy or settles at bottom', 'Soluble: Sugar, salt | Insoluble: Sand, chalk, sawdust, oil', 'Insoluble solids can be separated by filtration or sedimentation.'],
+        ['Miscible vs Immiscible', 'Miscible liquids mix completely; Immiscible liquids do NOT mix and form separate layers', 'Miscible: single uniform layer; Immiscible: 2 layers (lighter liquid floats)', 'Miscible: Milk + water, lemon juice + water | Immiscible: Cooking oil + water, petrol + water', 'Density difference causes oil to float on water.']
+      ],
+      takeaway: 'Solute (Sugar) + Solvent (Water) = Solution (Sweet Water) | Water = Universal Solvent | Dissolves faster with: Heat 🔥, Stirring 🥄, Smaller grain size 🧂'
     }
   ]
 };
