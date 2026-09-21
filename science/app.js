@@ -215,11 +215,11 @@ const CHAPTERS_DATA = [
         studentAnswer: 'Whales live in the ocean, so they are big fish and breathe dissolved oxygen through their gills underwater.',
         prompt: 'What is Rohan’s misconception about whales?',
         options: [
+          'Whales absorb dissolved oxygen through their skin while swimming, not through gills.',
           'Whales are mammals that breathe atmospheric air through lungs via a blowhole on top of their head.',
-          'Whales do not breathe oxygen at all; they absorb carbon dioxide.',
-          'Whales only breathe when they are babies, then develop gills as adults.'
+          'Whales swallow seawater and extract trapped oxygen inside stomach air pockets.'
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         teacherFeedback: 'Spot on! Whales and dolphins are warm-blooded mammals. They surface to inhale air through their blowhole directly into their lungs.'
       },
       {
@@ -230,8 +230,8 @@ const CHAPTERS_DATA = [
         prompt: 'Diagnose Priya’s biological error:',
         options: [
           'Snakes are truly limbless; they move using strong body muscles, a flexible spine, and gripping belly scales.',
-          'Snakes roll their bodies like a wheel across the ground.',
-          'Snakes blow air out of their tail to glide on rocks.'
+          'Snakes secrete a slippery slime layer beneath their belly that lets them slide frictionlessly.',
+          'Snakes pull themselves forward only by hooking their fangs and lower jaw onto rocks.'
         ],
         correctIndex: 0,
         teacherFeedback: 'Outstanding deduction! Snakes have broad transverse scales on their underside that grip uneven surfaces while muscular body waves push them forward.'
@@ -243,11 +243,11 @@ const CHAPTERS_DATA = [
         studentAnswer: 'Hooves is the odd one out because only cows have hooves and the others are for birds and sea animals.',
         prompt: 'Why is Arjun’s classification scientifically flawed?',
         options: [
-          'Nares is the odd one out: they are bird nostrils for breathing air, whereas flippers, sticky pads, and hooves are all locomotion organs!',
-          'Sticky pads are breathing organs in frogs.',
-          'Flippers are only used for eating fish.'
+          'Flippers is the odd one out because it is aquatic, while hooves, nares, and sticky pads are terrestrial.',
+          'Hooves is the odd one out because it is made of keratin while the others are made of bone.',
+          'Nares is the odd one out: they are bird nostrils for breathing air, whereas flippers, sticky pads, and hooves are all locomotion organs!'
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         teacherFeedback: 'Brilliant teacher diagnosis! Nares are nasal openings on a bird’s beak for respiration. Flippers, sticky pads, and hooves all perform locomotion.'
       },
       {
@@ -257,11 +257,11 @@ const CHAPTERS_DATA = [
         studentAnswer: 'This animal is a herbivore like a cow, because cows need sharp teeth to cut tall grass.',
         prompt: 'Where did Ananya slip up?',
         options: [
-          'Sharp canines are specialized for holding and tearing meat $\implies$ Carnivore! Herbivores have flat grinding molars.',
-          'Sharp teeth are only present in birds that eat seeds.',
-          'Cows have sharp canines to defend against lions.'
+          'Cows have sharp canines to strip tough bark from trees, so sharp teeth still indicate a herbivore.',
+          'Sharp canines and shearing molars are specialized for gripping and tearing meat $\implies$ Carnivore! Herbivores have flat grinding molars.',
+          'Sharp pointed teeth only indicate an omnivore, because carnivores swallow meat whole without chewing.'
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         teacherFeedback: 'Excellent! Herbivores have chisel incisors and flat, wide molars for grinding grass. Dagger canines are the unmistakable hallmark of a carnivore.'
       }
     ],
@@ -718,11 +718,11 @@ const CHAPTERS_DATA = [
         studentAnswer: 'Shama didn’t need any energy because she was resting and sleeping all day.',
         prompt: 'What physiological principle did Sameer overlook?',
         options: [
-          'Even when resting, the body requires continuous energy for the heart and lungs, which it obtains by breaking down stored liver glycogen and body fats.',
-          'Humans can survive on air alone for up to two weeks without consuming calories.',
-          'Drinking water provides all the calories the human body requires.'
+          'The human body completely shuts down internal energy consumption during sleep and fasting.',
+          'The stomach produces its own carbohydrates when empty to sustain daily physical activity.',
+          'Even when resting, the body requires continuous energy for vital organs (heart, lungs, brain), which it obtains by breaking down stored liver glycogen and body fats.'
         ],
-        correct: 0,
+        correctIndex: 2,
         teacherFeedback: 'Spot on! The basal metabolic rate keeps organs functioning. Shama’s body unlocked energy by hydrolyzing stored glycogen and adipose fat reserves.'
       },
       {
@@ -732,11 +732,11 @@ const CHAPTERS_DATA = [
         studentAnswer: 'Yes, milk has 100% of everything, so children never need to eat fruits, vegetables, or green salads if they drink milk.',
         prompt: 'Diagnose Kavya’s dangerous nutrition misconception:',
         options: [
-          'While milk is nutritious and provides calcium and protein, it lacks iron, vitamin C, and roughage needed for a balanced diet!',
-          'Milk contains zero calcium or proteins.',
-          'Milk is only suitable for baby cows, not humans.'
+          'While milk is nutritious and provides calcium and protein, it lacks iron, vitamin C, and dietary roughage (fiber) needed for a balanced diet!',
+          'Milk contains too much dietary fiber, which blocks the absorption of essential vitamins in the intestine.',
+          'Milk only provides water and fats, so it cannot support bone or muscle development.'
         ],
-        correct: 0,
+        correctIndex: 0,
         teacherFeedback: 'Brilliant catch! Milk is an excellent food for infants, but growing kids and adults require iron (for blood), vitamin C (for immunity), and dietary fiber (for digestion).'
       },
       {
@@ -746,11 +746,11 @@ const CHAPTERS_DATA = [
         studentAnswer: 'Take malaria tablets every day before going to school so mosquitoes will not breed in garden puddles.',
         prompt: 'Where did Sneha confuse preventive measures?',
         options: [
-          'Tablets treat disease in humans, but eliminating stagnant water and applying an oil film suffocates mosquito larvae, stopping vector breeding at the source!',
-          'Mosquitoes only breed in boiling hot tea.',
-          'Taking tablets makes your skin repel insects like a magnet.'
+          'Malaria tablets only kill mosquito larvae when washed into puddles through rainwater runoff.',
+          'Tablets treat disease in humans after infection, but eliminating stagnant water and applying an oil film suffocates mosquito larvae, stopping vector breeding at the source!',
+          'Malaria is airborne like influenza, so wearing face masks in the classroom is more effective than eliminating standing water.'
         ],
-        correct: 0,
+        correctIndex: 1,
         teacherFeedback: 'Exactly right! Breaking the vector breeding cycle by removing stagnant water is public health priority #1.'
       },
       {
@@ -760,11 +760,11 @@ const CHAPTERS_DATA = [
         studentAnswer: 'Carbohydrates build body muscles and heal wounds, while proteins are fast fuels burned for sprint energy.',
         prompt: 'Identify Vikram’s nutrient swap error:',
         options: [
-          'Vikram reversed them: Carbohydrates are primary energy fuels; Proteins are body-building blocks for growth and tissue repair!',
-          'Neither provides energy; only vitamins provide calories.',
-          'Proteins are thermal insulation jackets.'
+          'Carbohydrates and proteins both build muscle tissue equally, while only fats supply daily calories.',
+          'Vikram reversed them: Carbohydrates are primary energy fuels (glucose); Proteins are body-building blocks for growth and tissue repair!',
+          'Proteins only protect the body from germs like vitamins, while carbohydrates provide structural bone strength.'
         ],
-        correct: 0,
+        correctIndex: 1,
         teacherFeedback: 'Perfect teacher diagnosis! Carbohydrates supply quick fuel (glucose). Proteins supply amino acids to construct and repair muscle fibers.'
       }
     ],
@@ -1252,11 +1252,11 @@ const CHAPTERS_DATA = [
         studentAnswer: 'Yes! Filter paper has tiny microscopic holes, so if you pour salty water through it, the salt gets trapped on top as residue.',
         prompt: 'What physical error did Aditya commit?',
         options: [
+          'Filter paper can separate salt, but only if the saltwater is first cooled to freezing temperature.',
           'Salt is a soluble impurity dissolved at the molecular level; its molecules slip right through filter pores! It requires distillation or evaporation.',
-          'Filter paper dissolves in water.',
-          'Salt turns into sand when wet.'
+          'Filtration separates soluble substances, but evaporation is only used for insoluble sand and chalk.'
         ],
-        correct: 0,
+        correctIndex: 1,
         teacherFeedback: 'Outstanding! Filtration only separates insoluble suspended particles (like sand or clay). Dissolved salt ions are smaller than filter pores and require thermal phase change.'
       },
       {
@@ -1266,11 +1266,11 @@ const CHAPTERS_DATA = [
         studentAnswer: 'Yes, distilled water has zero impurities, so it is the healthiest possible water for our heart and bones to drink forever.',
         prompt: 'Why is Meera’s health assumption flawed?',
         options: [
-          'Distilled water lacks vital dietary minerals like calcium and magnesium that our bodies require for healthy bone structure and metabolic function!',
-          'Distilled water is toxic poison and destroys the stomach immediately.',
-          'Distilled water has too much sugar.'
+          'Distilled water lacks vital dietary minerals (calcium, magnesium) that our bodies require for healthy bone structure and metabolic function!',
+          'Distilled water contains excessive amounts of chlorine added during the boiling and condensing process.',
+          'Distilled water still contains bacterial spores because boiling water cannot kill microorganisms.'
         ],
-        correct: 0,
+        correctIndex: 0,
         teacherFeedback: 'Brilliant scientific reasoning! While pure for car batteries and chemistry experiments, natural drinking water must contain dissolved minerals for healthy human physiology.'
       },
       {
@@ -1280,11 +1280,11 @@ const CHAPTERS_DATA = [
         studentAnswer: 'Air has no weight because balloons float in the sky like clouds.',
         prompt: 'Diagnose Pooja’s misconception:',
         options: [
-          'Air has mass and weight. Tina’s balance experiment proves the arm with the inflated balloon tilts down when the other balloon is punctured and deflated!',
-          'Deflated balloons are always heavier than inflated ones.',
-          'Air only has weight during heavy storms.'
+          'Air only has weight when it is heated, because hot air molecules expand and become heavier.',
+          'The scale tilts only because the rubber skin shrinks when deflated, not because air has any measurable mass.',
+          'Air has mass and weight. Tina’s balance experiment proves the arm with the inflated balloon tilts down when the other balloon is punctured and deflated!'
         ],
-        correct: 0,
+        correctIndex: 2,
         teacherFeedback: 'Spot on! The compressed air inside the inflated balloon adds measurable mass, tipping the balance beam downward.'
       },
       {
@@ -1294,11 +1294,11 @@ const CHAPTERS_DATA = [
         studentAnswer: 'Clouds form in the Stratosphere because it is high up and cold.',
         prompt: 'Identify Rahul’s atmospheric layer mistake:',
         options: [
-          'Clouds, rain, and almost all weather phenomena occur exclusively in the Troposphere, the lowest atmospheric layer!',
-          'Clouds form in outer space in the Exosphere.',
-          'Clouds only form inside volcanoes.'
+          'Clouds form in the Mesosphere because its freezing temperatures below -90°C freeze moisture instantly.',
+          'Clouds, rain, and almost all weather phenomena occur exclusively in the Troposphere, the lowest atmospheric layer containing 75% of air and water vapor!',
+          'Clouds form in the Thermosphere where electrical radio waves condense moisture into raindrops.'
         ],
-        correct: 0,
+        correctIndex: 1,
         teacherFeedback: 'Perfect teacher deduction! The Troposphere holds 99% of atmospheric water vapor. The Stratosphere is dry and calm, with virtually no cloud formation.'
       }
     ],
@@ -1684,11 +1684,11 @@ const CHAPTERS_DATA = [
         prompt: 'What kinetic theory fact did Tina miss?',
         options: [
           'Molecules in hot vapors possess high temperature and high kinetic energy, enabling rapid molecular diffusion through air; cold molecules have low kinetic energy and diffuse slowly.',
-          'Hot coffee creates a mini tornado in the room.',
-          'Cold food molecules are too heavy to leave the plate.'
+          'Cold food aroma molecules react chemically with nitrogen in the air, neutralizing their scent before reaching human noses.',
+          'Room air currents only circulate towards warm objects, pulling hot scent molecules directly into people’s faces.'
         ],
-        correct: 0,
-        teacherFeedback: 'Spot on! Temperature is a measure of average kinetic energy. Higher temperature $\\implies$ higher velocity $\\implies$ faster rate of molecular diffusion.'
+        correctIndex: 0,
+        teacherFeedback: 'Spot on! Temperature is a measure of average kinetic energy. Higher temperature $\implies$ higher velocity $\implies$ faster rate of molecular diffusion.'
       },
       {
         id: 'trap_l13_rust',
@@ -1697,11 +1697,11 @@ const CHAPTERS_DATA = [
         studentAnswer: 'Yes, because air contains 21% oxygen and iron only needs oxygen gas to rust.',
         prompt: 'Diagnose Siddharth’s chemical error:',
         options: [
+          'Iron only rusts in the presence of carbon dioxide; atmospheric oxygen gas has no role in rusting.',
           'Rusting is an electrochemical oxidation reaction requiring BOTH oxygen gas AND water/moisture! Without moisture, iron cannot rust.',
-          'Iron rusts faster when completely dry.',
-          'Dry air turns iron into copper.'
+          'Rusting only requires liquid water, so the oxygen content of dry air is completely irrelevant.'
         ],
-        correct: 0,
+        correctIndex: 1,
         teacherFeedback: 'Brilliant teacher diagnosis! This is demonstrated by the Tale of Two Hooks: Charu’s iron hook in arid Rajasthan did not rust because the dry desert air lacked moisture.'
       },
       {
@@ -1711,11 +1711,11 @@ const CHAPTERS_DATA = [
         studentAnswer: 'The naphthalene balls melted into a clear liquid oil that soaked invisibly into the clothes.',
         prompt: 'Where did Varun misunderstand the state change?',
         options: [
-          'Naphthalene undergoes Sublimation — it transitions directly from a solid into a gas without passing through an intermediate liquid phase!',
-          'The mothballs dissolved in wool.',
-          'The mothballs turned into tiny diamonds.'
+          'The mothballs condensed into water vapor that dissolved into room humidity during temperature fluctuations.',
+          'The mothballs were eaten and chemically digested by microscopic clothes insects.',
+          'Naphthalene undergoes Sublimation — it transitions directly from a solid into a gas without passing through an intermediate liquid phase!'
         ],
-        correct: 0,
+        correctIndex: 2,
         teacherFeedback: 'Outstanding! Sublimation skips the liquid phase entirely, which is why clothes stay completely dry while absorbing the insect-repelling vapor.'
       },
       {
@@ -1726,10 +1726,10 @@ const CHAPTERS_DATA = [
         prompt: 'Why is Diya’s conclusion incorrect?',
         options: [
           'It is a physical change: Sugar molecules simply disperse into spaces between water molecules. No new substance is formed, the solution tastes sweet, and sugar crystals can be recovered by evaporating the water!',
-          'Sugar turns into salt in water.',
-          'Dissolving creates a new gas.'
+          'It is a chemical change because a new liquid compound with a different boiling point and density is created.',
+          'Dissolving is neither physical nor chemical, because the sugar molecules are permanently split into individual atoms.'
         ],
-        correct: 0,
+        correctIndex: 0,
         teacherFeedback: 'Perfect teacher deduction! Dissolution is a physical change. The molecular identity of sucrose ($C_{12}H_{22}O_{11}$) remains unchanged throughout.'
       }
     ],
@@ -2187,6 +2187,50 @@ function setChapterStars(chapterId, stars) {
   }
 }
 
+function evaluateAndAwardStars(chapterId) {
+  const ch = CHAPTERS_DATA.find(c => c.id === chapterId);
+  if (!ch) return 0;
+
+  let correctPracticeCount = 0;
+  ch.questions.forEach(q => {
+    if (state.answeredMap[q.id] && state.answeredMap[q.id].isCorrect) {
+      correctPracticeCount++;
+    }
+  });
+
+  let correctTrapsCount = 0;
+  if (ch.examTraps && ch.examTraps.length > 0) {
+    ch.examTraps.forEach(trap => {
+      const correctIdx = (typeof trap.correctIndex === 'number') ? trap.correctIndex : (typeof trap.correct === 'number' ? trap.correct : 0);
+      if (state.trapAnswers[trap.id] === correctIdx) {
+        correctTrapsCount++;
+      }
+    });
+  }
+
+  const totalQuestions = ch.questions.length;
+  // Progress-based stars rewarding:
+  // 1 Star: Solved at least 3 practice questions correctly (or 20%) OR diagnosed all traps in the chapter
+  // 2 Stars: Solved at least 50% of questions correctly
+  // 3 Stars: Solved at least 85% of questions correctly
+  let stars = 0;
+  if (correctPracticeCount >= Math.ceil(totalQuestions * 0.85)) {
+    stars = 3;
+  } else if (correctPracticeCount >= Math.ceil(totalQuestions * 0.50)) {
+    stars = 2;
+  } else if (correctPracticeCount >= Math.max(1, Math.min(3, Math.ceil(totalQuestions * 0.20))) || (ch.examTraps && ch.examTraps.length > 0 && correctTrapsCount >= ch.examTraps.length)) {
+    stars = 1;
+  }
+
+  const oldStars = getChapterStars(chapterId);
+  if (stars > oldStars) {
+    setChapterStars(chapterId, stars);
+    AudioController.fanfare();
+    ConfettiController.launch();
+  }
+  return stars;
+}
+
 function getActiveChapter() {
   return CHAPTERS_DATA.find(c => c.id === state.activeChapterId) || CHAPTERS_DATA[0];
 }
@@ -2229,9 +2273,20 @@ function initSidebar() {
       if (state.activeChapterId !== ch.id) {
         state.activeChapterId = ch.id;
         state.currentQuestionIndex = 0;
-        state.scoreCorrect = 0;
-        state.scoreWrong = 0;
-        state.answeredMap = {};
+        // Recalculate session scores from answeredMap for this chapter
+        const currentCh = CHAPTERS_DATA.find(c => c.id === ch.id);
+        let correctInCh = 0;
+        let wrongInCh = 0;
+        if (currentCh) {
+          currentCh.questions.forEach(q => {
+            if (state.answeredMap[q.id]) {
+              if (state.answeredMap[q.id].isCorrect) correctInCh++;
+              else wrongInCh++;
+            }
+          });
+        }
+        state.scoreCorrect = correctInCh;
+        state.scoreWrong = wrongInCh;
         saveActiveState();
         updateActiveSidebarButton();
         renderCurrentView();
@@ -2291,7 +2346,13 @@ function updateActiveSidebarButton() {
 function updateSidebarProgress() {
   let totalStars = 0;
   CHAPTERS_DATA.forEach(ch => {
-    totalStars += getChapterStars(ch.id);
+    const s = getChapterStars(ch.id);
+    totalStars += s;
+    const starEl = document.querySelector(`.chapter-btn[data-chapter-id="${ch.id}"] .chapter-stars`);
+    if (starEl) {
+      starEl.textContent = '⭐'.repeat(s) + '☆'.repeat(3 - s);
+      starEl.title = `${s} of 3 Stars`;
+    }
   });
   const maxStars = CHAPTERS_DATA.length * 3;
   const pct = Math.round((totalStars / maxStars) * 100);
@@ -2806,25 +2867,70 @@ function attachGadgetEvents(ch) {
 function renderTrapsView(container) {
   const ch = getActiveChapter();
 
+  // Calculate chapter traps progress
+  let diagnosedCount = 0;
+  let correctDiagnoses = 0;
+  ch.examTraps.forEach(trap => {
+    const saved = state.trapAnswers[trap.id];
+    if (typeof saved === 'number') {
+      diagnosedCount++;
+      const correctIdx = (typeof trap.correctIndex === 'number') ? trap.correctIndex : (typeof trap.correct === 'number' ? trap.correct : 0);
+      if (saved === correctIdx) correctDiagnoses++;
+    }
+  });
+
   let html = `
     <div class="view-header">
       <div class="view-header-title">
-        <h3>🕵️ Spot the Exam Trap: Be the Teacher!</h3>
-        <p>CBSE students often stumble on these deceptive exam traps. Diagnose the flaw in each student’s test slip!</p>
+        <h3>🔍 ${ch.number}: Spot the Exam Traps</h3>
+        <p>You are the Teacher! Diagnose simulated CBSE student mistakes and <strong>choose the 1 correct diagnosis option</strong> for each student paper.</p>
       </div>
     </div>
+
+    <!-- High-Visibility Mission Instruction Banner -->
+    <div class="traps-mission-banner">
+      <div class="mission-banner-icon">🎯</div>
+      <div class="mission-banner-body">
+        <div class="mission-banner-title">
+          <span>TEACHER MISSION: CHOOSE 1 CORRECT DIAGNOSIS</span>
+          <span class="mission-banner-type-badge">Multiple Choice • Pick 1</span>
+        </div>
+        <p class="mission-banner-desc">
+          Each card below shows a simulated student test paper with a classic misconception.
+          <strong>Choose the 1 correct option</strong> that accurately diagnoses why their answer is wrong. The other options are tempting distractor traps!
+        </p>
+      </div>
+      <div class="mission-banner-stats">
+        <div class="mission-stat-badge">
+          <span>Diagnosed:</span>
+          <strong>${diagnosedCount} / ${ch.examTraps.length}</strong>
+          ${diagnosedCount > 0 ? `<span class="stat-correct-count">(${correctDiagnoses} Correct)</span>` : ''}
+        </div>
+        ${diagnosedCount > 0 ? `
+          <button class="btn-reset-traps-all" id="btn-reset-all-traps" title="Clear your answers and retry diagnosing all traps in this chapter">
+            🔄 Reset Traps
+          </button>
+        ` : ''}
+      </div>
+    </div>
+
     <div class="traps-container">
   `;
 
   ch.examTraps.forEach((trap, i) => {
     const savedAnswer = state.trapAnswers[trap.id];
     const isAnswered = typeof savedAnswer === 'number';
+    const correctIdx = (typeof trap.correctIndex === 'number') ? trap.correctIndex : (typeof trap.correct === 'number' ? trap.correct : 0);
+    const isCorrect = isAnswered && (savedAnswer === correctIdx);
 
     html += `
-      <div class="trap-card" id="card-${trap.id}">
+      <div class="trap-card ${isAnswered ? (isCorrect ? 'trap-card-correct' : 'trap-card-wrong') : ''}" id="card-${trap.id}">
         <div class="trap-header">
           <span class="student-tag">⚠️ Simulated Student Paper: ${trap.student}</span>
-          <span class="trap-number">Trap ${i + 1} of ${ch.examTraps.length}</span>
+          <div class="trap-header-right">
+            ${isAnswered ? (isCorrect ? '<span class="trap-status-badge badge-success">✓ Diagnosed Correctly</span>' : '<span class="trap-status-badge badge-warning">⚠️ Reviewed</span>') : '<span class="trap-status-badge badge-pending">Needs Diagnosis</span>'}
+            <span class="trap-number">Trap ${i + 1} of ${ch.examTraps.length}</span>
+          </div>
         </div>
 
         <div class="student-answer-slip">
@@ -2834,29 +2940,72 @@ function renderTrapsView(container) {
           <div class="slip-response">"${trap.studentAnswer}"</div>
         </div>
 
-        <div class="trap-prompt">👨‍🏫 Teacher Diagnosis: ${trap.prompt}</div>
+        <div class="trap-prompt">
+          <span class="prompt-icon">🧑‍🏫</span>
+          <div>
+            <span class="prompt-title">Teacher Diagnostic Question:</span>
+            <span class="prompt-text">${trap.prompt}</span>
+          </div>
+        </div>
 
-        <div class="trap-options">
+        <div class="trap-choose-instruction">
+          <div class="instruction-main">
+            <span class="instruction-badge">👉 YOUR TASK</span>
+            <strong>Choose 1 Correct Diagnosis:</strong>
+          </div>
+          <span class="instruction-sub">Only ONE option below correctly identifies the error — tap the correct one:</span>
+        </div>
+
+        <div class="trap-options" role="radiogroup" aria-label="Diagnostic options for Trap ${i + 1}">
           ${trap.options.map((opt, optIndex) => {
+            const letters = ['Option A', 'Option B', 'Option C', 'Option D'];
             let cls = '';
+            let radioContent = '<span class="trap-radio-circle"></span>';
+            let pillBadge = '<span class="opt-hint-pill">Tap to choose</span>';
+
             if (isAnswered) {
-              if (optIndex === trap.correctIndex) cls = 'selected-correct';
-              else if (optIndex === savedAnswer) cls = 'selected-wrong';
+              if (optIndex === correctIdx) {
+                cls = 'selected-correct';
+                radioContent = '<span class="trap-radio-symbol correct">✓</span>';
+                pillBadge = optIndex === savedAnswer 
+                  ? '<span class="opt-status-tag tag-correct">✓ Your Choice: Correct Diagnosis!</span>'
+                  : '<span class="opt-status-tag tag-actual">✓ True Scientific Diagnosis</span>';
+              } else if (optIndex === savedAnswer) {
+                cls = 'selected-wrong';
+                radioContent = '<span class="trap-radio-symbol wrong">✗</span>';
+                pillBadge = '<span class="opt-status-tag tag-wrong">✗ Your Choice: Incorrect</span>';
+              } else {
+                cls = 'opt-distractor';
+                radioContent = '<span class="trap-radio-circle dim"></span>';
+                pillBadge = '<span class="opt-status-tag tag-distractor">Distractor Trap</span>';
+              }
             }
+
             return `
               <button class="trap-option-btn ${cls}" 
                 data-trap-id="${trap.id}" 
                 data-opt-index="${optIndex}"
-                ${isAnswered ? 'disabled' : ''}>
-                ${opt}
+                ${isAnswered ? 'disabled' : ''}
+                aria-label="${letters[optIndex]}: ${opt}">
+                <div class="trap-opt-left">
+                  <span class="trap-opt-letter">${letters[optIndex]}</span>
+                  ${radioContent}
+                </div>
+                <div class="trap-opt-content">
+                  <span class="trap-opt-text">${opt}</span>
+                  ${pillBadge}
+                </div>
               </button>
             `;
           }).join('')}
         </div>
 
         ${isAnswered ? `
-          <div class="trap-feedback">
-            <h5>${savedAnswer === trap.correctIndex ? '🎉 Excellent Teacher Diagnosis!' : '💡 Master Explanation:'}</h5>
+          <div class="trap-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}">
+            <div class="feedback-heading">
+              <span class="feedback-icon">${isCorrect ? '🎉' : '💡'}</span>
+              <h5>${isCorrect ? 'Excellent Teacher Diagnosis!' : 'Teacher Diagnosis & Master Explanation:'}</h5>
+            </div>
             <p>${trap.teacherFeedback}</p>
           </div>
         ` : ''}
@@ -2879,7 +3028,8 @@ function renderTrapsView(container) {
       state.trapAnswers[trapId] = optIndex;
       saveActiveState();
 
-      if (optIndex === trap.correctIndex) {
+      const correctIdx = (typeof trap.correctIndex === 'number') ? trap.correctIndex : (typeof trap.correct === 'number' ? trap.correct : 0);
+      if (optIndex === correctIdx) {
         AudioController.correct();
         triggerFlash('correct');
         ConfettiController.launch();
@@ -2888,9 +3038,24 @@ function renderTrapsView(container) {
         triggerFlash('wrong');
       }
 
+      // Re-evaluate chapter stars whenever a trap is answered
+      evaluateAndAwardStars(state.activeChapterId);
+
       renderTrapsView(container);
     });
   });
+
+  // Reset all traps for active chapter listener
+  const resetBtn = container.querySelector('#btn-reset-all-traps');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      ch.examTraps.forEach(t => {
+        delete state.trapAnswers[t.id];
+      });
+      saveActiveState();
+      renderTrapsView(container);
+    });
+  }
 }
 
 // ==========================================================================
@@ -2955,9 +3120,14 @@ function renderPracticeView(container) {
         <div class="practice-counter">
           Question <span>${state.currentQuestionIndex + 1}</span> of <span>${filtered.length}</span>
         </div>
-        <div class="practice-score-badge">
-          <span class="score-item score-correct">✅ ${state.scoreCorrect}</span>
-          <span class="score-item score-wrong">❌ ${state.scoreWrong}</span>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <div class="practice-score-badge">
+            <span class="score-item score-correct">✅ ${state.scoreCorrect}</span>
+            <span class="score-item score-wrong">❌ ${state.scoreWrong}</span>
+          </div>
+          <div class="practice-stars-display" title="Mastery Stars for ${ch.number}" style="font-size: 1.15rem; letter-spacing: 2px;">
+            ${'⭐'.repeat(getChapterStars(ch.id))}${'☆'.repeat(3 - getChapterStars(ch.id))}
+          </div>
         </div>
       </div>
 
@@ -3055,6 +3225,7 @@ function renderPracticeView(container) {
         state.scoreCorrect++;
         AudioController.correct();
         triggerFlash('correct');
+        evaluateAndAwardStars(state.activeChapterId);
       } else {
         state.scoreWrong++;
         AudioController.wrong();
@@ -3735,6 +3906,7 @@ function showResultsModal(correct, total) {
 
   // Update stars in persistent storage
   setChapterStars(state.activeChapterId, stars);
+  updateSidebarProgress();
 
   document.getElementById('result-emoji').textContent = emoji;
   document.getElementById('result-title').textContent = title;
