@@ -383,6 +383,44 @@ sst_chapters/
 
 ---
 
+### F. Science Master Mini-App (`/science/`)
+
+#### Directory Structure
+```
+science/
+├── index.html                      # App shell, responsive off-canvas drawer, top bar, dynamic viewport, modals
+├── styles.css                      # Modern dark theme (Cyan/Emerald/Amber/Purple), interactive gadgets, A4 print layout
+├── app.js                          # State engine, 4 chapters transcribed from school worksheets, Web Audio, Confetti
+├── README.md                       # Pedagogical guide, 4 thinking pillars, syllabus coverage
+└── AGENTS.md                       # AI agent instructions, data schemas, extension guidelines
+```
+
+#### State Machine & Storage Keys (`app.js`)
+- **Active State (`cbse5_science_active_state`)**:
+  ```javascript
+  {
+    activeChapterId: 'ch2_animals',    // 'ch2_animals' | 'ch5_health' | 'ch7_air_water' | 'ch13_matter'
+    activeMode: 'learn',              // 'learn' | 'traps' | 'practice' | 'challenge' | 'worksheet'
+    activePracticeFilter: 'all',      // 'all' | 'mcq' | 'whoami' | 'compare' | 'oddone' | 'scenario'
+    currentQuestionIndex: 0,
+    scoreCorrect: 0,
+    scoreWrong: 0,
+    answeredMap: { qId: { selectedIndex: 0, isCorrect: true } },
+    trapAnswers: { trapId: 0 },
+    worksheetSettings: { selectedWs: 'all', showAnswers: false }
+  }
+  ```
+- **Star Progress (`cbse5_science_stars_<chapterId>`)**: Tracks 0–3 stars earned per chapter.
+
+#### Key Features & Thinking Pillars
+1. **Interactive Concept Labs**: Dynamic Molecular Agitator (Solid, Liquid, Gas), Tina's Balloon Balance & Mass Simulator, Nutrient Role & Deficiency Inspector, and Animal Adaptation Blueprint.
+2. **Spot the Exam Trap (Be the Teacher)**: Diagnosing subtle 5th-grade misconceptions on simulated student test slips (Rohan, Priya, Sneha, Aditya, Siddharth, etc.).
+3. **School Worksheets Question Bank**: Transcribed from CBSE school revision answer keys across Worksheets I, II, III.
+4. **60-Second Sprint**: Gamified rapid recall sprint testing retention under gentle time pressure.
+5. **Printable Worksheet Studio**: Formatted for standard A4 printing with Student Test Mode and Teacher Answer Key Mode.
+
+---
+
 ## 5. Developer Recipes & Extension Guides
 
 ### Recipe 1: Adding a New English Grammar Topic

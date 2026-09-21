@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive Class 5 CBSE Science (EVS) Learning Studio. Master Animal Adaptation, Good Health & Nutrition, Air & Water, and States of Matter through school worksheets, diagnostic traps, and interactive labs.">
+  <title>Science Master — Class 5 CBSE | Interactive Learning & Worksheet Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
+</head>
+<body>
+
+  <!-- Confetti Celebration Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Screen Feedback Flash Indicator -->
+  <div class="feedback-flash" id="feedback-flash"></div>
+
+  <div class="app-container">
+
+    <!-- Mobile Drawer Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- ==================== SIDEBAR DRAWER ==================== -->
+    <aside class="sidebar no-print" id="sidebar">
+      <div class="sidebar-top-row">
+        <a href="../index.html" class="back-to-home" id="back-to-home">
+          ← Back to Learning Hub
+        </a>
+        <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close menu">✕</button>
+      </div>
+
+      <div class="sidebar-logo">
+        <div class="logo-icon">🔬</div>
+        <div>
+          <h1>Science Master</h1>
+          <p>Class 5 CBSE • EVS Curriculum</p>
+        </div>
+      </div>
+
+      <div class="sidebar-section-title">Syllabus Chapters</div>
+      <div class="sidebar-topics" id="sidebar-topics">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <div class="progress-section">
+        <div class="progress-title-row">
+          <h4>Overall Star Mastery</h4>
+          <span class="star-badge-total" id="star-badge-total">⭐ 0 / 12</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-label" id="progress-label">0% Syllabus Mastered</div>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="main-content">
+
+      <!-- Sticky Top Bar -->
+      <header class="top-bar no-print" id="top-bar">
+        <div class="top-bar-nav-row">
+          <button class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Open Chapters Menu">
+            <span class="hamburger-icon">☰</span>
+            <span class="menu-label">Chapters</span>
+          </button>
+          <a href="../index.html" class="home-quick-btn" title="Back to Learning Hub" aria-label="Back to Learning Hub">🏠</a>
+
+          <div class="top-bar-title-wrap">
+            <h2 id="top-bar-title">Science Master</h2>
+            <p id="top-bar-subtitle">CBSE Class 5 — Thinking Classroom & School Revision Worksheets</p>
+          </div>
+
+          <div class="top-bar-actions">
+            <button class="btn btn-icon" id="btn-print" title="Print School Worksheet" aria-label="Print Worksheet">🖨️</button>
+            <button class="btn btn-icon" id="btn-reset" title="Restart Practice Drill" aria-label="Restart Drill">🔄</button>
+          </div>
+        </div>
+
+        <!-- Mode Navigation Tabs -->
+        <nav class="mode-tabs" id="mode-tabs">
+          <button class="mode-tab" data-mode="learn" id="tab-learn">
+            <span class="mode-icon">📖</span> <span>Learn</span>
+          </button>
+          <button class="mode-tab" data-mode="traps" id="tab-traps">
+            <span class="mode-icon">🕵️</span> <span>Spot Traps</span>
+          </button>
+          <button class="mode-tab" data-mode="practice" id="tab-practice">
+            <span class="mode-icon">🧩</span> <span>Practice</span>
+          </button>
+          <button class="mode-tab" data-mode="revision" id="tab-revision">
+            <span class="mode-icon">📊</span> <span>Quick Revision</span>
+          </button>
+          <button class="mode-tab" data-mode="challenge" id="tab-challenge">
+            <span class="mode-icon">⚡</span> <span>60s Sprint</span>
+          </button>
+          <button class="mode-tab" data-mode="worksheet" id="tab-worksheet">
+            <span class="mode-icon">📄</span> <span>Worksheet</span>
+          </button>
+        </nav>
+      </header>
+
+      <!-- Main Dynamic Content Container -->
+      <div class="content-viewport" id="content-viewport">
+        <!-- Rendered dynamically by app.js based on active mode -->
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ==================== RESULTS MODAL ==================== -->
+  <div class="modal-overlay" id="results-modal">
+    <div class="modal-card">
+      <div class="result-emoji" id="result-emoji">🏆</div>
+      <h3 id="result-title">Outstanding Scientific Thinking!</h3>
+      <div class="stars-display" id="result-stars">⭐⭐⭐</div>
+      <p id="result-message">You completed the science revision session!</p>
+
+      <div class="result-stats">
+        <div class="result-stat-item">
+          <div class="stat-num text-success" id="result-correct">0</div>
+          <div class="stat-label">Correct</div>
+        </div>
+        <div class="result-stat-item">
+          <div class="stat-num" id="result-total">0</div>
+          <div class="stat-label">Total Questions</div>
+        </div>
+        <div class="result-stat-item">
+          <div class="stat-num text-amber" id="result-accuracy">100%</div>
+          <div class="stat-label">Accuracy</div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="btn-modal-retry">🔁 Try Again</button>
+        <button class="btn btn-secondary" id="btn-modal-review">📖 Explore Concepts</button>
+        <button class="btn btn-ghost" id="btn-modal-close">✕ Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

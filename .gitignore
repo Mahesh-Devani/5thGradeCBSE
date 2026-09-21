@@ -14,8 +14,10 @@ Desktop.ini
 __pycache__/
 *.pyc
 
-# Reference PDFs / Worksheets (Do NOT commit raw PDFs to repo)
+# Reference PDFs / Worksheets / Photos (Do NOT commit raw PDFs or camera photos to repo)
 *.pdf
+science/chapters/
+science/WS/
 
 # Knowledge graph artifacts
 graphify-out/
