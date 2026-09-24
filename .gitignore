@@ -21,3 +21,6 @@ science/WS/
 
 # Knowledge graph artifacts
 graphify-out/
+
+# Scratch & temporary extraction scripts
+scratch/

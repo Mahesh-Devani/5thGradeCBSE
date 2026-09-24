@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive Class 5 CBSE General Knowledge (GK) Learning & Quiz Studio. Master June, July, and August 2026 Global Awareness Program with memory sparks, decoders, picture rounds, and printable worksheets.">
+  <title>GK Master — Class 5 CBSE | Junior Detective & Global Explorer</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+</head>
+<body>
+
+  <!-- Confetti Celebration Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Screen Feedback Flash Indicator -->
+  <div class="feedback-flash" id="feedback-flash"></div>
+
+  <div class="app-container">
+
+    <!-- Mobile Drawer Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- ==================== SIDEBAR DRAWER ==================== -->
+    <aside class="sidebar no-print" id="sidebar">
+      <div class="sidebar-top-row">
+        <a href="../index.html" class="back-to-home" id="back-to-home">
+          ← Back to Learning Hub
+        </a>
+        <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close menu">✕</button>
+      </div>
+
+      <div class="sidebar-logo">
+        <div class="logo-icon">🌍</div>
+        <div>
+          <h1>GK Master</h1>
+          <p>Class 5 CBSE • June – Aug 2026</p>
+        </div>
+      </div>
+
+      <div class="sidebar-section-title">Select Month Edition</div>
+      <div class="month-selector-group" id="sidebar-month-selector">
+        <button class="month-btn active" data-month="june" id="month-btn-june">
+          <span class="month-btn-badge">🌊</span>
+          <div class="month-btn-info">
+            <span class="month-btn-title">June 2026</span>
+            <span class="month-btn-sub">Oceans, Artemis II & Baku</span>
+          </div>
+          <span class="month-star-badge" id="badge-stars-june">⭐ 0/3</span>
+        </button>
+
+        <button class="month-btn" data-month="jul" id="month-btn-jul">
+          <span class="month-btn-badge">🦄</span>
+          <div class="month-btn-info">
+            <span class="month-btn-title">July 2026</span>
+            <span class="month-btn-sub">CWG 2026, Swaraj Dweep & Toy Train</span>
+          </div>
+          <span class="month-star-badge" id="badge-stars-jul">⭐ 0/3</span>
+        </button>
+
+        <button class="month-btn" data-month="aug" id="month-btn-aug">
+          <span class="month-btn-badge">🦆</span>
+          <div class="month-btn-info">
+            <span class="month-btn-title">August 2026</span>
+            <span class="month-btn-sub">Donald Duck 90, Sagrada & Whale Fossils</span>
+          </div>
+          <span class="month-star-badge" id="badge-stars-aug">⭐ 0/3</span>
+        </button>
+      </div>
+
+      <div class="sidebar-section-title" id="topics-list-title">Topics in This Month</div>
+      <div class="sidebar-topics" id="sidebar-topics">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <div class="progress-section">
+        <div class="progress-title-row">
+          <h4>Overall Star Mastery</h4>
+          <span class="star-badge-total" id="star-badge-total">⭐ 0 / 9</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-label" id="progress-label">0% Term 1 GK Mastered</div>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="main-content">
+
+      <!-- Sticky Top Bar -->
+      <header class="top-bar no-print" id="top-bar">
+        <div class="top-bar-nav-row">
+          <button class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Open Topics Menu">
+            <span class="hamburger-icon">☰</span>
+            <span class="menu-label">Months & Topics</span>
+          </button>
+          <a href="../index.html" class="home-quick-btn" title="Back to Learning Hub" aria-label="Back to Learning Hub">🏠</a>
+
+          <div class="top-bar-title-wrap">
+            <h2 id="top-bar-title">June 2026: World Oceans & Moon Voyage</h2>
+            <p id="top-bar-subtitle">CBSE Class 5 — Global Awareness Program & Memory Detective</p>
+          </div>
+
+          <div class="top-bar-actions">
+            <button class="btn btn-icon" id="btn-sound-toggle" title="Toggle Sound Effects" aria-label="Toggle Sound">🔊</button>
+            <button class="btn btn-icon" id="btn-print" title="Print School Worksheet" aria-label="Print Worksheet">🖨️</button>
+            <button class="btn btn-icon" id="btn-reset" title="Restart In-Progress Session" aria-label="Restart Drill">🔄</button>
+          </div>
+        </div>
+
+        <!-- Mode Navigation Tabs -->
+        <nav class="mode-tabs" id="mode-tabs">
+          <button class="mode-tab active" data-mode="learn" id="tab-learn">
+            <span class="mode-icon">📖</span> <span>Stories & Sparks</span>
+          </button>
+          <button class="mode-tab" data-mode="arcade" id="tab-arcade">
+            <span class="mode-icon">🕵️</span> <span>Codebreakers</span>
+          </button>
+          <button class="mode-tab" data-mode="quiz" id="tab-quiz">
+            <span class="mode-icon">❓</span> <span>Monthly Quiz</span>
+          </button>
+          <button class="mode-tab" data-mode="picture" id="tab-picture">
+            <span class="mode-icon">🖼️</span> <span>Picture Rounds</span>
+          </button>
+          <button class="mode-tab" data-mode="sprint" id="tab-sprint">
+            <span class="mode-icon">⚡</span> <span>60s Sprint</span>
+          </button>
+          <button class="mode-tab" data-mode="worksheet" id="tab-worksheet">
+            <span class="mode-icon">📄</span> <span>Printable Tests</span>
+          </button>
+        </nav>
+      </header>
+
+      <!-- Main Dynamic Content Container -->
+      <div class="content-viewport" id="content-viewport">
+        <!-- Rendered dynamically by app.js based on active mode -->
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ==================== RESULTS MODAL ==================== -->
+  <div class="modal-overlay" id="results-modal">
+    <div class="modal-card">
+      <div class="result-emoji" id="result-emoji">🏆</div>
+      <h3 id="result-title">Outstanding Detective Thinking!</h3>
+      <div class="stars-display" id="result-stars">⭐⭐⭐</div>
+      <p id="result-message">You completed the GK challenge session!</p>
+
+      <div class="result-stats">
+        <div class="result-stat-item">
+          <div class="stat-num text-success" id="result-correct">0</div>
+          <div class="stat-label">Correct</div>
+        </div>
+        <div class="result-stat-item">
+          <div class="stat-num" id="result-total">0</div>
+          <div class="stat-label">Total Questions</div>
+        </div>
+        <div class="result-stat-item">
+          <div class="stat-num text-amber" id="result-accuracy">100%</div>
+          <div class="stat-label">Accuracy</div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="btn-modal-retry">🔁 Try Again</button>
+        <button class="btn btn-secondary" id="btn-modal-review">📖 Review Stories & Sparks</button>
+        <button class="btn btn-ghost" id="btn-modal-close">✕ Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

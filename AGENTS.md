@@ -124,6 +124,8 @@ Whenever creating or enhancing an interactive mini-app:
   - `/english_grammer/`
   - `/hindi_vyakaran/`
   - `/maths/`
+  - `/science/`
+  - `/general_knowledge/`
 - Navigation links between mini-apps and the landing hub:
   - From landing page to mini-app: `<a href="maths/index.html">`
   - From mini-app back to landing page: `<a href="../index.html">`
@@ -135,9 +137,9 @@ Whenever creating or enhancing an interactive mini-app:
 
 Before completing a turn or pushing commits:
 1. **Validate JavaScript Syntax**:
-   Run `node -c <path_to_js>` to catch syntax errors or misplaced brackets.
+   Run syntax verification to catch syntax errors or misplaced brackets.
 2. **Verify CSS Brace Balance**:
-   Run `node -e "const css=require('fs').readFileSync('<path_to_styles.css>','utf8');let o=0;for(let c of css){if(c==='{')o++;if(c==='}')o--;}console.log('Open braces:',o);"` (must be 0).
+   Run brace verification (must be 0).
 3. **Browser Subagent Check**:
    Use `browser_subagent` to open the page at mobile viewport (390x844), test clicks, and verify there is no horizontal scroll (`overflow-x: hidden`).
 4. **Inspect Console**:
@@ -150,7 +152,9 @@ Before completing a turn or pushing commits:
 ## 5. Architectural References
 
 - **System Architecture**: Read **[ARCHITECTURE.md](ARCHITECTURE.md)** for data schemas, state machines, and extension recipes.
+- **General Knowledge Master**: Read **[general_knowledge/README.md](general_knowledge/README.md)** and **[general_knowledge/AGENTS.md](general_knowledge/AGENTS.md)**.
 - **Mathematics Master**: Read **[maths/README.md](maths/README.md)** and **[maths/AGENTS.md](maths/AGENTS.md)**.
+- **Science Master**: Read **[science/README.md](science/README.md)** and **[science/AGENTS.md](science/AGENTS.md)**.
 - **English Grammar**: Read **[english_grammer/README.md](english_grammer/README.md)** and **[english_grammer/AGENTS.md](english_grammer/AGENTS.md)**.
 - **Social Science Maps**: Read **[social_sicence_maps/AGENTS.md](social_sicence_maps/AGENTS.md)**.
 - **Hindi Vyakaran**: Read **[hindi_vyakaran/README.md](hindi_vyakaran/README.md)** and **[hindi_vyakaran/AGENTS.md](hindi_vyakaran/AGENTS.md)**.
