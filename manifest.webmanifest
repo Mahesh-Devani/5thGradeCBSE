@@ -1,0 +1,86 @@
+{
+  "id": "cbse-5th-grade-learning-hub",
+  "name": "5th Grade CBSE — Interactive Learning Hub",
+  "short_name": "CBSE 5th",
+  "description": "Interactive learning app for 5th Grade CBSE students. Master Maths, Science, English Grammar, Hindi Vyakaran, SST Maps & Chapters, and General Knowledge with quizzes, labs, and worksheets.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#0a0e1a",
+  "theme_color": "#0a0e1a",
+  "categories": ["education", "kids", "books"],
+  "lang": "en-IN",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Mathematics",
+      "short_name": "Maths",
+      "description": "Multiples, Factors, HCF & LCM drills and worksheets",
+      "url": "./maths/index.html",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Science (EVS)",
+      "short_name": "Science",
+      "description": "Concept labs, spot the traps, and school worksheets",
+      "url": "./science/index.html",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "English Grammar",
+      "short_name": "English",
+      "description": "Articles, tenses, figures of speech, and detective challenges",
+      "url": "./english_grammer/index.html",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "हिंदी व्याकरण व रचना",
+      "short_name": "हिंदी",
+      "description": "संज्ञा व भेद, वाक्यांश के लिए एक शब्द, चित्र वर्णन",
+      "url": "./hindi_vyakaran/index.html",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "SST Chapters",
+      "short_name": "SST",
+      "description": "DRC, Saudi Arabia, 1857 Revolt, and Our Government",
+      "url": "./sst_chapters/index.html",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "General Knowledge",
+      "short_name": "GK",
+      "description": "Term 1 current affairs, memory sparks, and picture rounds",
+      "url": "./general_knowledge/index.html",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

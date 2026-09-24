@@ -109,7 +109,7 @@ body::after {
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 24px 60px;
+  padding: calc(40px + env(safe-area-inset-top, 0px)) 24px calc(60px + env(safe-area-inset-bottom, 0px));
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -120,6 +120,15 @@ body::after {
   text-align: center;
   padding: 60px 0 50px;
   animation: fadeInDown 0.8s ease-out;
+}
+
+.hero-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
 }
 
 .hero-badge {
@@ -133,8 +142,37 @@ body::after {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--text-secondary);
-  margin-bottom: 24px;
+  margin-bottom: 0;
   backdrop-filter: blur(10px);
+}
+
+.pwa-install-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(139, 92, 246, 0.25) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+  transition: all var(--transition-normal);
+  touch-action: manipulation;
+}
+
+.pwa-install-trigger:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.4) 0%, rgba(139, 92, 246, 0.4) 100%);
+  border-color: rgba(139, 92, 246, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.35);
+}
+
+.pwa-install-trigger:active {
+  transform: translateY(0);
 }
 
 .hero-badge .badge-dot {
@@ -559,5 +597,128 @@ body::after {
     width: 52px;
     height: 52px;
     font-size: 1.6rem;
+  }
+}
+
+/* --- PWA Update Toast & Mobile Safe Areas --- */
+.pwa-update-toast {
+  position: fixed;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 90%;
+  width: 520px;
+  padding: 14px 20px;
+  background: rgba(17, 24, 39, 0.95);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(59, 130, 246, 0.25);
+  backdrop-filter: blur(16px);
+  animation: slideToastUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.pwa-update-toast.pwa-toast-hidden {
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  pointer-events: none;
+}
+
+@keyframes slideToastUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 40px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.pwa-toast-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pwa-toast-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.pwa-toast-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.pwa-toast-text strong {
+  font-size: 0.92rem;
+  color: #f0f4ff;
+  font-weight: 600;
+}
+
+.pwa-toast-text small {
+  font-size: 0.78rem;
+  color: #94a3c8;
+}
+
+.pwa-toast-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.pwa-btn-update {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
+  transition: all var(--transition-fast);
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.pwa-btn-update:hover {
+  filter: brightness(1.15);
+  transform: scale(1.02);
+}
+
+.pwa-btn-dismiss {
+  background: transparent;
+  color: #94a3c8;
+  border: none;
+  font-size: 1rem;
+  padding: 6px 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  touch-action: manipulation;
+}
+
+.pwa-btn-dismiss:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 540px) {
+  .pwa-update-toast {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: calc(100% - 32px);
+    padding: 12px 14px;
+  }
+  .pwa-toast-actions {
+    justify-content: flex-end;
   }
 }
