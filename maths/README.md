@@ -14,7 +14,8 @@ An interactive, discovery-based Mathematics platform engineered for **Class 5 CB
 | **Topic 4** | **Number Patterns** | ✅ **Live & Ready** | • 🕵️ **Pattern Detective**: Constant step, decreasing patterns, tripling rules, Fibonacci sequence, and **3-number set triplets** ($n, n+1, \text{doubling / product / 1st} \times 3$)<br>• 🕵️ **Spot the Mistakes**: 4 diagnostic slips (adding vs doubling, triangular halving trap, pyramid base-sum fallacy, premature palindrome stop)<br>• 🔺 **Geometric Dot Numbers**: Triangular numbers ($T_n$) and square numbers ($n^2$), proving $T_{n-1} + T_n = n^2$<br>• 🏰 **Number Towers (Pyramids)**: Additive block-sum pyramids with custom base calculator<br>• ✨ **Magic Shapes & Palindromes**: 3×3 magic square (constant sum 15) and step-by-step reverse-and-add palindrome transformer |
 | **Topic 5** | **Geometry, Shapes & Angles** | ✅ **Live & Ready** | • 📍 **Geometric Foundations**: Point, Line ($\overleftrightarrow{AB}$), Segment ($\overline{AB}$), Ray ($\vec{AB}$), and Collinear points<br>• 🕵️ **Spot the Mistakes**: 4 diagnostic slips (ray reversal fallacy, two right angles in a triangle, compass radius vs diameter, trapezium diagonals)<br>• 🛤️ **Line Relationships**: Intersecting, Parallel ($\parallel$), Perpendicular ($\perp$, 90° ∟), and Concurrent lines<br>• 🧭 **Virtual Protractor Studio**: Dynamic angle rotator (0° to 360°) with real-time classification for all 7 angle types<br>• ⏰ **Clock Angle Detective**: Analog SVG clock with hour slider and the 30° per hour formula<br>• 🔺 **Triangles & Polygons**: Polygon triangulation formula $(n - 2) \times 180^\circ$, angle sum for nonagon (1260°), triangle classification by angles (Acute, Right, Obtuse)<br>• ⬠ **Quadrilaterals & Circles**: Rhombus vs Trapezium properties, quadrilateral angle sum (360°), parallelogram opposite/adjacent angles, circle anatomy ($r = d \div 2$), and ruler/compass/protractor construction guides<br>• 📄 **Pure Geometry Worksheet**: Dedicated 5-section pure geometry assessment |
 | **Exam Prep** | **Term Revision & Worksheet Builder** | ✅ **Live & Ready** | • 📋 **Custom Worksheet Builder**: Cherry-pick any combination of syllabus chapters with quick presets (Full Term, Pure Arithmetic, Geometry & Patterns, BODMAS)<br>• 👁️ **Live Dynamic Preview**: Instant on-screen test sheet preview with question and marks calculation<br>• 🖨️ **Customized A4 Print Layout**: Generates formatted printable test papers with workspace boxes for chosen topics<br>• 📊 **Exam Blueprint & Strategy**: Chapter-wise marks weightage, time phasing, and grand mental formula cheat sheet |
-| **Topic 6** | **Fractions & Decimals** | 🟡 *Next Phase* | Visual pizza/bar models, equivalent fractions, decimals on number lines & word problems |
+| **Topic 6** | **Tables (1 to 20) & Mental Speed** | ✅ **Live & Ready** | • 🔲 **20×20 Interactive Matrix**: Diagonal square numbers & commutative symmetry fold ($A \times B = B \times A$ cuts 400 facts to 190)<br>• 🔨 **Split-and-Add Hammer**: Distributive property ($17 \times 8 = 80 + 56 = 136$)<br>• ⚡ **Vedic Teen × Teen Lab**: Base-10 cross-addition ($13 \times 14 = (13+4)\times 10 + 12 = 182$)<br>• 🪜 **Mental Speed Tricks**: Doubling ladders (×4, ×8), 9s finger trick, 11s sum bridge, unit-digit sanity checks<br>• 🕵️ **Spot the Mistakes**: 4 diagnostic slips (carrying leak, commutative confusion, teen product omission, off-by-one tables)<br>• ⭐ **Anti-Rote Milestones**: Mandatory Learn Checkpoints required for Star 1<br>• 🎲 **Procedural Practice & 60s Challenge**: Infinitely generated dynamic problems avoiding static option memorization |
+| **Topic 7** | **Fractions & Decimals** | 🟡 *Next Phase* | Visual pizza/bar models, equivalent fractions, decimals on number lines & word problems |
 
 ---
 
@@ -235,6 +236,49 @@ Class 5 students frequently confuse special quadrilaterals:
 | **Q11** | Angles | (a) Quad angles 85°, 110°, 95°, find 4th (b) Parallelogram ABCD with $\angle A = 80^\circ$, find $\angle B, \angle C, \angle D$ | **(a) $70^\circ$**: $360^\circ - (85^\circ + 110^\circ + 95^\circ) = 360^\circ - 290^\circ = 70^\circ$.<br>**(b) $\angle B = 100^\circ, \angle C = 80^\circ, \angle D = 100^\circ$**: Opposite angles equal ($\angle C = \angle A = 80^\circ$), adjacent supplementary ($\angle B = 180^\circ - 80^\circ = 100^\circ$, $\angle D = 100^\circ$). |
 | **Q12** | Expressions | Write in words: (a) $(2 \times 5) - 6$ (b) $(90 - 30) \div (30 - 20)$ | **(a)** "Subtract 6 from the product of 2 and 5" (or "6 less than the product of 2 and 5").<br>**(b)** "Divide the difference of 90 and 30 by the difference of 30 and 20". |
 | **Q13** | Word to Expr | Write expression for: (a) 45 divided by sum of 2 and 3 (b) Sum of 56 and 4 multiplied by difference of 11 and 10 | **(a) $45 \div (2 + 3)$** (Brackets mandatory!)<br>**(b) $(56 + 4) \times (11 - 10)$** |
+
+---
+
+## ⚡ Pedagogical Deep Dive: Topic 6 (Tables 1 to 20 & Mental Speed Master)
+
+Memorizing 400 facts ($20 \times 20$) through rote chanting causes severe math anxiety and slow recall. Topic 6 replaces mechanical memorization with **cognitive chunking, distributive decomposition, and Vedic mental arithmetic**:
+
+### 1. 🔲 The 20×20 Commutative Symmetry Fold ($A \times B = B \times A$)
+- A $20 \times 20$ table looks intimidating (400 cells).
+- The **Commutative Law** proves that the table is mirrored across the main diagonal:
+  $$\text{Cells needing memorization} = \frac{20 \times 20 - 20}{2} + 20 = 210 \text{ facts}$$
+- If you eliminate the effortless tables ($\times 1, \times 10, \times 20$), students only need to actively master **91 unique facts**!
+- Clicking any cell in the Interactive Matrix instantly highlights its symmetric twin (e.g., $7 \times 14 = 98 \longleftrightarrow 14 \times 7 = 98$), demonstrating that knowing one instantly gives the other for free.
+
+### 2. 🔨 The Distributive "Split-and-Add Hammer"
+Every multiplication with teen numbers ($12$ to $19$) or large multipliers decomposes into friendly mental chunks:
+$$(10 + d) \times n = (10 \times n) + (d \times n)$$
+- **Example**: What is $17 \times 8$?
+  1. Split $17$ into $10 + 7$.
+  2. Compute $10 \times 8 = 80$.
+  3. Compute $7 \times 8 = 56$.
+  4. Add mentally: $80 + 56 = 136$!
+- Students practice this visually with colored split blocks before doing it without scratchpad.
+
+### 3. ⚡ The Vedic Base-10 Cross-Addition (Teen × Teen Mental Flash)
+For multiplying any two teen numbers ($11$ to $19$):
+$$(10 + a)(10 + b) = 100 + 10(a + b) + ab = 10(10 + a + b) + ab$$
+- **Rule in 3 Easy Steps**:
+  1. Take the first number and add the units digit of the second number: $\text{Base} = 13 + 4 = 17$.
+  2. Multiply by $10$: $17 \times 10 = 170$.
+  3. Multiply units digits and add: $3 \times 4 = 12 \implies 170 + 12 = 182$!
+- No column carries or long paper multiplication required—calculable in 3 seconds mentally!
+
+### 4. 🪜 Doubling Ladders & Sanity Rules
+- **Multiplying by 4**: Double the number, then double again ($16 \times 4 \rightarrow 16 \times 2 = 32 \rightarrow 32 \times 2 = 64$).
+- **Multiplying by 8**: Double 3 times ($13 \times 8 \rightarrow 26 \rightarrow 52 \rightarrow 104$).
+- **Multiplying by 9**: Multiply by 10 and subtract the number once ($14 \times 9 = 140 - 14 = 126$).
+- **Unit-Digit Sanity Filter**: The product's last digit MUST match $(a \pmod{10}) \times (b \pmod{10}) \pmod{10}$. If $17 \times 8$ ends in anything other than $6$ ($7 \times 8 = 56$), it is immediately wrong without calculating further!
+
+### 5. ⭐ Anti-Rote Milestone Rules & Procedural Question Generator
+1. **Preventing Practice-Jumping**: Star 1 is locked until the student solves the 4 interactive Learn Checkpoints (Grid symmetry, Split-and-Add, Vedic Cross-Addition, and Spotting Exam Traps).
+2. **Infinite Procedural Practice**: Questions are generated dynamically with random numbers on every attempt—preventing students from memorizing fixed options or precalculated positions.
+3. **Speed Challenge**: 60-second timer to build recall fluidity under timed conditions, awarding Star 3 when achieving $\ge 80\%$ accuracy.
 
 ---
 

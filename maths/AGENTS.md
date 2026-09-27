@@ -36,6 +36,7 @@ Do **NOT** rename, remove, or alter the IDs of these DOM elements. They are hard
 | `progress-fill` | `<div>` | Star progress bar fill (`style.width = pct + '%'`) |
 | `progress-label` | `<div>` | Progress text (e.g. `"3 / 3 stars earned"`) |
 | `stars-factors-multiples` | `<span>` | Star display inside topic card (⭐⭐⭐) |
+| `stars-tables-speed` | `<span>` | Star display inside Tables (1 to 20) topic card (⭐⭐⭐) |
 | `top-bar-title` | `<h2>` | Displays active topic title |
 | `top-bar-subtitle` | `<p>` | Displays active topic subtitle |
 | `btn-print` | `<button>` | Triggers printable school worksheet |
@@ -133,6 +134,37 @@ Do **NOT** rename, remove, or alter the IDs of these DOM elements. They are hard
    ```bash
    node -c app.js
    ```
+
+---
+
+## 5. Topic 6 Architecture: Tables (1 to 20) & Mental Speed Master
+
+Topic 6 (`tables_speed_master`) is designed to combat math anxiety, prevent rote memorization of static question options, and stop students from skipping lessons to farm stars:
+
+### A. Anti-Rote 3-Star Milestone Rules
+- ⭐ **Star 1**: Requires clearing all 4 interactive Learn Checkpoints:
+  1. `checkpoint_grid`: Symmetry Fold & Commutative Law ($A \times B = B \times A$).
+  2. `checkpoint_split`: Split-and-Add Hammer ($17 \times 8 = (10 \times 8) + (7 \times 8)$).
+  3. `checkpoint_vedic`: Vedic Base-10 Cross-Addition ($13 \times 14 = (13 + 4) \times 10 + (3 \times 4)$).
+  4. `checkpoint_traps`: 4 Diagnostic Exam Trap Slips.
+- ⭐⭐ **Star 2**: Requires solving $\ge 10$ practice questions in the infinite dynamic practice pool.
+- ⭐⭐⭐ **Star 3**: Requires achieving $\ge 80\%$ accuracy on the 60s Speed Challenge.
+
+### B. Procedural Dynamic Question Generator
+To prevent students from memorizing fixed options or precalculated numbers, all questions in Practice and Speed Challenge are generated on-the-fly:
+- `generateDynamicTableQuestion(skill)`:
+  - Generates random operands (e.g. $a \in [11, 19], b \in [6, 9]$ or teen $\times$ teen pairs).
+  - Dynamically calculates the correct product and realistic distractors ($\pm 10$, $\pm 2$, unit-digit slips, reversed digits).
+  - Shuffles options randomly via Fisher-Yates (`shuffleOptionsAndGetCorrect`).
+  - Synthesizes pedagogical, step-by-step explanations anchored to mental models (Split-and-Add, Vedic Base-10, Doubling Ladders).
+- `generateTablesPracticeQueue(count)` & `generateDynamicChallengePool(count)`:
+  - Generates balanced queues across all 5 mental skills (`split_add`, `vedic_teen`, `doubling`, `pattern_9_11`, `unit_digit_trap`).
+  - Provides a `🎲 Roll New Numbers` button in Practice mode allowing infinite fresh problem sets.
+
+### C. Dynamic Printable Worksheet
+- `renderWorksheetViewTables()` & `printWorksheetTables()`:
+  - Generates 25 procedurally randomized questions split across 5 sections (Foundations, Split & Add, Teen × Teen Vedic, Speed Drills, and Word Applications).
+  - Features an interactive **"👁️ Toggle Answer Key"** button and clean, ink-saving print layout.
 
 ---
 
