@@ -37,6 +37,8 @@ Do **NOT** rename, remove, or alter the IDs of these DOM elements. They are hard
 | `progress-label` | `<div>` | Progress text (e.g. `"3 / 3 stars earned"`) |
 | `stars-factors-multiples` | `<span>` | Star display inside topic card (⭐⭐⭐) |
 | `stars-tables-speed` | `<span>` | Star display inside Tables (1 to 20) topic card (⭐⭐⭐) |
+| `stars-fractions` | `<span>` | Star display inside Fractions Master topic card (⭐⭐⭐) |
+| `topic-item-fractions` | `<div>` | Topic 7 Fractions Master sidebar card |
 | `top-bar-title` | `<h2>` | Displays active topic title |
 | `top-bar-subtitle` | `<p>` | Displays active topic subtitle |
 | `btn-print` | `<button>` | Triggers printable school worksheet |

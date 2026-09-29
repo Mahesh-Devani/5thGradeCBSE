@@ -15,7 +15,8 @@ An interactive, discovery-based Mathematics platform engineered for **Class 5 CB
 | **Topic 5** | **Geometry, Shapes & Angles** | ✅ **Live & Ready** | • 📍 **Geometric Foundations**: Point, Line ($\overleftrightarrow{AB}$), Segment ($\overline{AB}$), Ray ($\vec{AB}$), and Collinear points<br>• 🕵️ **Spot the Mistakes**: 4 diagnostic slips (ray reversal fallacy, two right angles in a triangle, compass radius vs diameter, trapezium diagonals)<br>• 🛤️ **Line Relationships**: Intersecting, Parallel ($\parallel$), Perpendicular ($\perp$, 90° ∟), and Concurrent lines<br>• 🧭 **Virtual Protractor Studio**: Dynamic angle rotator (0° to 360°) with real-time classification for all 7 angle types<br>• ⏰ **Clock Angle Detective**: Analog SVG clock with hour slider and the 30° per hour formula<br>• 🔺 **Triangles & Polygons**: Polygon triangulation formula $(n - 2) \times 180^\circ$, angle sum for nonagon (1260°), triangle classification by angles (Acute, Right, Obtuse)<br>• ⬠ **Quadrilaterals & Circles**: Rhombus vs Trapezium properties, quadrilateral angle sum (360°), parallelogram opposite/adjacent angles, circle anatomy ($r = d \div 2$), and ruler/compass/protractor construction guides<br>• 📄 **Pure Geometry Worksheet**: Dedicated 5-section pure geometry assessment |
 | **Exam Prep** | **Term Revision & Worksheet Builder** | ✅ **Live & Ready** | • 📋 **Custom Worksheet Builder**: Cherry-pick any combination of syllabus chapters with quick presets (Full Term, Pure Arithmetic, Geometry & Patterns, BODMAS)<br>• 👁️ **Live Dynamic Preview**: Instant on-screen test sheet preview with question and marks calculation<br>• 🖨️ **Customized A4 Print Layout**: Generates formatted printable test papers with workspace boxes for chosen topics<br>• 📊 **Exam Blueprint & Strategy**: Chapter-wise marks weightage, time phasing, and grand mental formula cheat sheet |
 | **Topic 6** | **Tables (1 to 20) & Mental Speed** | ✅ **Live & Ready** | • 🔲 **20×20 Interactive Matrix**: Diagonal square numbers & commutative symmetry fold ($A \times B = B \times A$ cuts 400 facts to 190)<br>• 🔨 **Split-and-Add Hammer**: Distributive property ($17 \times 8 = 80 + 56 = 136$)<br>• ⚡ **Vedic Teen × Teen Lab**: Base-10 cross-addition ($13 \times 14 = (13+4)\times 10 + 12 = 182$)<br>• 🪜 **Mental Speed Tricks**: Doubling ladders (×4, ×8), 9s finger trick, 11s sum bridge, unit-digit sanity checks<br>• 🕵️ **Spot the Mistakes**: 4 diagnostic slips (carrying leak, commutative confusion, teen product omission, off-by-one tables)<br>• ⭐ **Anti-Rote Milestones**: Mandatory Learn Checkpoints required for Star 1<br>• 🎲 **Procedural Practice & 60s Challenge**: Infinitely generated dynamic problems avoiding static option memorization |
-| **Topic 7** | **Fractions & Decimals** | 🟡 *Next Phase* | Visual pizza/bar models, equivalent fractions, decimals on number lines & word problems |
+| **Topic 7** | **Fractions Master** | ✅ **Live & Ready** | • 🍕 **Equal Partitioning & Roy's Plate**: 24-block wall crawl, bottle midline benchmarks<br>• ⚖️ **Proper, Improper & Mixed**: Pizza pan visualizer, grocery bill story, live 2-way converter<br>• 🔍 **Equivalence & Lowest Terms**: Equivalence wall, HCF reduction, 3 "No-Pen" comparison shortcuts<br>• ➕ **Addition & Subtraction Lab**: Rahul's denominator trap, 4-step LCM Hammer, Ram's truth detective ($1/3 + 3/4 > 1$)<br>• ✖️ **"Of" & Multiplication**: Slicing a slice ($1/2 \times 1/4 = 1/8$), cross-cancellation superpower, Rahul's mixed trap<br>• ➗ **Reciprocals & Division**: Measurement model ("how many fit in?"), 4 reciprocal rules, Keep-Change-Flip, tailor word problems<br>• 🕵️ **Spot Exam Traps**: 5 diagnostic test slips<br>• 📄 **Printable Worksheet**: Sections A to E |
+| **Topic 8** | **Decimals & Percentages** | 🟡 *Next Phase* | Tenths/hundredths place value, decimal arithmetic, number line & percentage conversion |
 
 ---
 
@@ -279,6 +280,49 @@ $$(10 + a)(10 + b) = 100 + 10(a + b) + ab = 10(10 + a + b) + ab$$
 1. **Preventing Practice-Jumping**: Star 1 is locked until the student solves the 4 interactive Learn Checkpoints (Grid symmetry, Split-and-Add, Vedic Cross-Addition, and Spotting Exam Traps).
 2. **Infinite Procedural Practice**: Questions are generated dynamically with random numbers on every attempt—preventing students from memorizing fixed options or precalculated positions.
 3. **Speed Challenge**: 60-second timer to build recall fluidity under timed conditions, awarding Star 3 when achieving $\ge 80\%$ accuracy.
+
+---
+
+## 🎯 Pedagogical Deep Dive: Topic 7 (Fractions Master)
+
+### 1. 🍕 Visual Foundations: The Golden Law of Equal Partitioning
+- **The Broken Plate**: A fraction only exists if **all parts are strictly identical in area**. Roy's 4 jagged shards cannot be called $\frac{1}{4}$!
+- **Wall of 24 Blocks**: An ant walking 8 blocks out of 24 covers $\frac{8}{24} = \frac{1}{3}$ of the wall because 8 bricks fit 3 times into 24.
+- **Midline Rule**: Visual benchmark on water bottles: half-filled ($500$ mL / $1000$ mL = $\frac{1}{2}$) is the anchor. Above midline is $> \frac{1}{2}$, below is $< \frac{1}{2}$.
+
+### 2. ⚖️ Proper, Improper & Mixed Numbers
+- **The Grocery Story**: Why grocery bills write $2 \frac{3}{4}$ kg instead of $\frac{11}{4}$ kg. Mixed numbers make top-heavy fractions human-friendly!
+- **Pizza Pans Visualizer**: Live rendering of whole pans plus leftover slices ($11$ quarters = $2$ full pans of $4/4$ plus $3$ quarters of a pan = $2 \frac{3}{4}$).
+- **Two-Way Conversion**:
+  - Mixed $\to$ Improper: $\frac{\text{Whole} \times \text{Denom} + \text{Num}}{\text{Denom}}$.
+  - Improper $\to$ Mixed: Divide $N \div D \implies Q \frac{R}{D}$.
+
+### 3. 🔍 Equivalence & 3 "No-Pen" Comparison Shortcuts
+1. **Same Denominators (Like Fractions)**: Slice sizes are identical. Greater numerator wins ($\frac{7}{11} > \frac{4}{11}$).
+2. **Same Numerators**: Same number of slices, but smaller denominator means **larger slices**! ($\frac{3}{5} > \frac{3}{8}$).
+3. **Mixed Whole Priority**: Compare whole numbers first ($4 \frac{1}{7} > 3 \frac{6}{7}$ in 0.1 seconds!).
+4. **Butterfly Cross-Multiplication**: Compare $\frac{a}{b}$ vs $\frac{c}{d} \implies a \times d$ vs $b \times c$.
+
+### 4. ➕ Addition & Subtraction: Denominators NEVER Add!
+- **Rahul's Trap**: $\frac{2}{7} + \frac{3}{7} \ne \frac{5}{14}$! Denominator is the name of the slice size ("sevenths") and never adds together.
+- **4-Step Unlike Fraction LCM Hammer**: Find LCM $\to$ scale to like fractions $\to$ add/subtract numerators $\to$ reduce to simplest form.
+- **Ram's Truth Detective**: Is $\frac{1}{3} + \frac{3}{4} > 1$? Yes, because $\frac{3}{4}$ only needs $\frac{1}{4}$ to reach 1, and $\frac{1}{3} > \frac{1}{4}$!
+
+### 5. ✖️ "Of", Slicing a Slice & Cross-Cancellation
+- **"Of" Means Multiply**: $\frac{3}{4}$ of $36 = (36 \div 4) \times 3 = 27$.
+- **Slicing a Slice**: Paper folding model showing $\frac{1}{2} \times \frac{1}{4} = \frac{1}{8}$.
+- **Cross-Cancellation**: Cancel diagonals before multiplying to avoid big, messy calculations ($\frac{4}{9} \times \frac{3}{8} = \frac{1}{6}$).
+- **Rahul's Mixed Trap**: Never multiply whole $\times$ whole and frac $\times$ frac! Always convert to improper fractions first.
+
+### 6. ➗ Reciprocals & The Measurement Model
+- **"How Many Fit In?"**: $6 \div \frac{1}{2} = 12$ half-glasses. Dividing by a fraction $< 1$ makes the answer **larger**!
+- **4 Reciprocal Laws**: Fraction flips $\frac{n}{d} \to \frac{d}{n}$; whole $N \to \frac{1}{N}$; $1 \to 1$; **0 has NO reciprocal**!
+- **Keep, Change, Flip**: $\frac{a}{b} \div \frac{c}{d} = \frac{a}{b} \times \frac{d}{c}$.
+
+### 7. ⭐ 3-Star Mastery Track
+- **Star 1**: Clear all 6 interactive Learn Module Checkpoints.
+- **Star 2**: Solve at least 10 dynamically generated practice problems.
+- **Star 3**: Score $\ge 80\%$ on the 60-second Speed Challenge.
 
 ---
 

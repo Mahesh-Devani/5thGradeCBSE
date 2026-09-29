@@ -4587,11 +4587,474 @@ select.calc-input option {
 /* Printable Worksheet Styles for Tables */
 @media print {
   .tables-milestone-banner,
+  .fractions-milestone-banner,
   .grid-controls-bar,
   .learn-checkpoint-box,
   .btn-restart-practice {
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   TOPIC 7: FRACTIONS MASTER STYLES & INTERACTIVE VISUALIZERS
+   ========================================================================== */
+
+/* Stacked Fraction Math Typography */
+.frac-stack {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0 0.25rem;
+  font-size: 0.92em;
+  line-height: 1;
+}
+
+.frac-stack .frac-num {
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 2px;
+  font-weight: 800;
+  color: var(--accent-amber-light, #fde68a);
+}
+
+.frac-stack .frac-den {
+  padding-top: 2px;
+  font-weight: 800;
+  color: var(--accent-cyan-light, #a5f3fc);
+}
+
+.frac-mixed {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-weight: 800;
+  vertical-align: middle;
+}
+
+.frac-whole {
+  font-size: 1.3em;
+  font-weight: 900;
+  color: var(--accent-emerald, #34d399);
+}
+
+/* Fractions Milestone Banner */
+.fractions-milestone-banner {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(16, 185, 129, 0.08) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.fractions-milestones-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.frac-milestone-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.frac-milestone-pill.completed {
+  border-color: var(--accent-emerald, #10b981);
+  background: rgba(16, 185, 129, 0.15);
+  color: #a7f3d0;
+}
+
+/* Fraction Strips & Visual Partition Bars */
+.fraction-strip-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 1.25rem 0;
+}
+
+.fraction-strip {
+  display: flex;
+  width: 100%;
+  height: 44px;
+  border-radius: var(--radius-md, 12px);
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: rgba(10, 14, 26, 0.5);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.fraction-part {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-right: 1px dashed rgba(255, 255, 255, 0.2);
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.fraction-part:last-child {
+  border-right: none;
+}
+
+.fraction-part.shaded {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.7), rgba(217, 119, 6, 0.9));
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.fraction-part.shaded-alt {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.7), rgba(37, 99, 235, 0.9));
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.fraction-part.shaded-green {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.7), rgba(5, 150, 105, 0.9));
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Roy's Broken Plate vs Equal Cut Cards */
+.plate-comparison-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.plate-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.plate-card.invalid-plate {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.plate-card.valid-plate {
+  border-color: rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.plate-svg-wrap {
+  width: 140px;
+  height: 140px;
+  margin: 0.75rem auto;
+}
+
+/* Estimation Scale & Ant Track Visualizer */
+.estimation-track-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.ant-block-wall {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 6px;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.ant-block {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted, #94a3b8);
+}
+
+.ant-block.covered {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.75), rgba(217, 119, 6, 0.9));
+  color: #fff;
+}
+
+.ant-block.ant-head {
+  background: #f59e0b;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.8);
+  position: relative;
+}
+
+.ant-marker {
+  font-size: 1.2rem;
+  position: absolute;
+  top: -24px;
+  animation: antWiggle 1s ease-in-out infinite alternate;
+}
+
+@keyframes antWiggle {
+  from { transform: translateY(0); }
+  to { transform: translateY(-4px); }
+}
+
+/* Water Bottle Visualizer */
+.bottle-sim-wrap {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 1.25rem 0;
+  flex-wrap: wrap;
+}
+
+.bottle-glass {
+  width: 90px;
+  height: 180px;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px 12px 20px 20px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.bottle-water {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
+  transition: height 0.4s ease;
+  box-shadow: 0 -2px 8px rgba(56, 189, 248, 0.5);
+}
+
+.bottle-midline {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-top: 2px dashed #f43f5e;
+  z-index: 5;
+}
+
+.bottle-midlabel {
+  position: absolute;
+  top: calc(50% - 10px);
+  right: -70px;
+  font-size: 0.78rem;
+  color: #f43f5e;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Mixed Number Pizza Wholes Grid */
+.pizza-wholes-grid {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 1.25rem 0;
+}
+
+.pizza-pan {
+  width: 110px;
+  height: 110px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mixed Converter Lab */
+.mixed-converter-lab {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.converter-controls-row {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+.converter-math-result {
+  background: rgba(10, 14, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md, 12px);
+  padding: 1.2rem;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Bill 1 vs Bill 2 Card */
+.bill-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.bill-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.25rem;
+  position: relative;
+}
+
+.bill-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* Cross-Cancellation Lab */
+.cross-cancel-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.cancel-fraction-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+  margin: 1.25rem 0;
+}
+
+.cancel-term {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.cancelled-num {
+  text-decoration: line-through;
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.9em;
+}
+
+.reduced-num {
+  color: #34d399;
+  font-weight: 900;
+  font-size: 1.15em;
+}
+
+/* Division "How Many Fit In?" Visualizer */
+.fit-div-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.fit-groups-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+.fit-group-item {
+  width: 54px;
+  height: 54px;
+  border: 2px dashed #38bdf8;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #bae6fd;
+  background: rgba(56, 189, 248, 0.1);
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Diagnostic Exam Trap Cards for Fractions */
+.trap-slip-frac {
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.trap-slip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.trap-student-name {
+  font-weight: 800;
+  color: #fca5a5;
+  font-size: 1rem;
+}
+
+.trap-blunder-box {
+  background: rgba(10, 14, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.9rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 1.1rem;
+  margin: 0.6rem 0;
+}
+
+.trap-correction-box {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 0.92rem;
+  color: #a7f3d0;
+  margin-top: 0.6rem;
+  display: none;
+}
+
 
 
