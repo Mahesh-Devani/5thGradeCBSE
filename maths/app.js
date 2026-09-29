@@ -12019,7 +12019,7 @@ function renderEqualSliceDetectiveModule(container) {
         <div class="plate-comparison-grid">
           <div class="plate-card flaw">
             <div class="plate-badge invalid">🚨 INVALID FRACTION</div>
-            <svg class="plate-svg" viewBox="0 0 160 160">
+            <svg class="plate-svg" width="130" height="130" viewBox="0 0 160 160">
               <circle cx="80" cy="80" r="72" fill="#1e293b" stroke="#ef4444" stroke-width="3" />
               <path d="M 80 8 L 82 50 L 50 80 L 10 90" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="2,2"/>
               <path d="M 82 50 L 130 55 L 152 75" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="2,2"/>
@@ -12033,7 +12033,7 @@ function renderEqualSliceDetectiveModule(container) {
 
           <div class="plate-card valid">
             <div class="plate-badge valid">✅ VALID FRACTION (¼ each)</div>
-            <svg class="plate-svg" viewBox="0 0 160 160">
+            <svg class="plate-svg" width="130" height="130" viewBox="0 0 160 160">
               <circle cx="80" cy="80" r="72" fill="#1e293b" stroke="#10b981" stroke-width="3" />
               <path d="M 80 80 L 80 8 A 72 72 0 0 1 152 80 Z" fill="rgba(16, 185, 129, 0.35)" />
               <line x1="80" y1="8" x2="80" y2="152" stroke="#10b981" stroke-width="2.5" />
@@ -12310,7 +12310,7 @@ function renderProperImproperMixedModule(container) {
             return `
               <div class="pizza-pan-item ${slicesInThisPan === 4 ? 'full' : (slicesInThisPan > 0 ? 'partial' : 'empty')}">
                 <div class="pan-title">Pan #${panNum} (${slicesInThisPan}/4)</div>
-                <svg class="pizza-pan-svg" viewBox="0 0 100 100">
+                <svg class="pizza-pan-svg" width="76" height="76" viewBox="0 0 100 100">
                   <circle cx="50" cy="50" r="46" fill="#1e293b" stroke="#475569" stroke-width="2"/>
                   ${wedges.map(w => `
                     <path d="${w.d}" fill="${w.active ? '#f59e0b' : 'rgba(71, 85, 105, 0.2)'}" stroke="#0f172a" stroke-width="1.5" />
@@ -12826,7 +12826,7 @@ function renderMultiplicationOfMagicModule(container) {
         </p>
 
         <div style="display: flex; gap: 2rem; align-items: center; justify-content: center; flex-wrap: wrap;">
-          <svg viewBox="0 0 160 160" style="width: 160px; height: 160px; border-radius: 8px; border: 2px solid #475569;">
+          <svg width="120" height="120" viewBox="0 0 160 160" style="width: 120px; height: 120px; max-width: 120px; max-height: 120px; border-radius: 8px; border: 2px solid #475569; flex-shrink: 0;">
             <!-- 8 sub-rectangles (2 rows x 4 cols) -->
             ${Array.from({ length: 8 }, (_, i) => {
               const r = Math.floor(i / 4);

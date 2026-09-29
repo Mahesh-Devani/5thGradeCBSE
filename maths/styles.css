@@ -4728,161 +4728,318 @@ select.calc-input option {
 }
 
 /* Roy's Broken Plate vs Equal Cut Cards */
-.plate-comparison-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem;
+.plate-comparison-grid {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
   margin: 1.25rem 0;
 }
 
 .plate-card {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(15, 23, 42, 0.65);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg, 16px);
-  padding: 1.25rem;
+  padding: 1.25rem 1rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 270px;
+  max-width: 100%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
-.plate-card.invalid-plate {
+.plate-card.flaw {
   border-color: rgba(239, 68, 68, 0.4);
   background: rgba(239, 68, 68, 0.05);
 }
 
-.plate-card.valid-plate {
+.plate-card.valid {
   border-color: rgba(16, 185, 129, 0.4);
   background: rgba(16, 185, 129, 0.05);
 }
 
-.plate-svg-wrap {
-  width: 140px;
-  height: 140px;
-  margin: 0.75rem auto;
+.plate-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  margin-bottom: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
-/* Estimation Scale & Ant Track Visualizer */
-.estimation-track-card {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg, 16px);
-  padding: 1.25rem;
-  margin: 1.25rem 0;
+.plate-badge.invalid {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.4);
 }
 
-.ant-block-wall {
+.plate-badge.valid {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.plate-svg {
+  width: 130px;
+  height: 130px;
+  max-width: 130px;
+  max-height: 130px;
+  margin: 0.5rem auto 0.75rem auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Ant Wall Partition Visualizer */
+.ant-wall-grid {
   display: grid;
-  grid-template-columns: repeat(24, 1fr);
-  gap: 2px;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 6px;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 3px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 8px;
   border-radius: 8px;
   margin: 1rem 0;
+  max-width: 720px;
 }
 
-.ant-block {
+@media (min-width: 680px) {
+  .ant-wall-grid {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+.ant-brick {
   height: 32px;
   background: rgba(255, 255, 255, 0.08);
-  border-radius: 3px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 700;
   color: var(--text-muted, #94a3b8);
+  transition: all 0.2s ease;
+  user-select: none;
 }
 
-.ant-block.covered {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.75), rgba(217, 119, 6, 0.9));
+.ant-brick.walked {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.8), rgba(217, 119, 6, 0.95));
   color: #fff;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
 }
 
-.ant-block.ant-head {
-  background: #f59e0b;
-  box-shadow: 0 0 10px rgba(245, 158, 11, 0.8);
-  position: relative;
-}
-
-.ant-marker {
-  font-size: 1.2rem;
-  position: absolute;
-  top: -24px;
-  animation: antWiggle 1s ease-in-out infinite alternate;
-}
-
-@keyframes antWiggle {
-  from { transform: translateY(0); }
-  to { transform: translateY(-4px); }
+.ant-deduction-box {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-top: 0.75rem;
 }
 
 /* Water Bottle Visualizer */
 .bottle-sim-wrap {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 2rem;
   margin: 1.25rem 0;
   flex-wrap: wrap;
 }
 
-.bottle-glass {
+.bottle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 90px;
-  height: 180px;
-  border: 3px solid rgba(255, 255, 255, 0.4);
-  border-radius: 12px 12px 20px 20px;
-  position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
 }
 
-.bottle-water {
+.bottle-neck {
+  width: 30px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+
+.bottle-body {
+  width: 80px;
+  height: 160px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px 8px 16px 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.bottle-water-fill {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
-  transition: height 0.4s ease;
-  box-shadow: 0 -2px 8px rgba(56, 189, 248, 0.5);
+  transition: height 0.35s ease;
+  box-shadow: 0 -2px 8px rgba(56, 189, 248, 0.6);
 }
 
-.bottle-midline {
+.bottle-midline-dash {
   position: absolute;
   top: 50%;
   left: 0;
   right: 0;
   border-top: 2px dashed #f43f5e;
   z-index: 5;
+  pointer-events: none;
 }
 
-.bottle-midlabel {
+.bottle-midline-label {
   position: absolute;
-  top: calc(50% - 10px);
-  right: -70px;
-  font-size: 0.78rem;
-  color: #f43f5e;
+  right: -5px;
+  top: -16px;
+  font-size: 0.68rem;
   font-weight: 700;
+  color: #f43f5e;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 1px 4px;
+  border-radius: 3px;
   white-space: nowrap;
 }
 
-/* Mixed Number Pizza Wholes Grid */
-.pizza-wholes-grid {
+.bottle-controls {
+  flex: 1;
+  min-width: 260px;
+  max-width: 440px;
   display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Mixed Number Pizza Pans Visualizer */
+.pizza-pans-card {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.pizza-pans-grid {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   margin: 1.25rem 0;
 }
 
-.pizza-pan {
-  width: 110px;
-  height: 110px;
-  background: rgba(15, 23, 42, 0.7);
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  position: relative;
+.pizza-pan-item {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.85rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.pizza-pan-item.full {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.06);
+}
+
+.pizza-pan-svg {
+  width: 76px;
+  height: 76px;
+  max-width: 76px;
+  max-height: 76px;
+  margin: 0.35rem auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.pan-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.pan-label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #f59e0b;
+  margin-top: 0.25rem;
+}
+
+.converter-summary-box {
+  background: rgba(10, 14, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-top: 0.75rem;
+}
+
+/* Equivalence Strips Visualizer */
+.equiv-strips-wall {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1.25rem 0;
+  max-width: 680px;
+}
+
+.equiv-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.strip-label {
+  width: 55px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted, #94a3b8);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.strip-bar {
+  flex: 1;
+  display: flex;
+  height: 30px;
+  border-radius: 6px;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.strip-seg {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #fff;
+  border-right: 1px dashed rgba(255, 255, 255, 0.25);
+  transition: all 0.2s;
+  user-select: none;
 }
+
+.strip-seg:last-child {
+  border-right: none;
+}
+
+.strip-seg.whole { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+.strip-seg.half { background: linear-gradient(135deg, #0ea5e9, #0284c7); }
+.strip-seg.quarter { background: linear-gradient(135deg, #10b981, #059669); }
+.strip-seg.eighth { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.strip-seg.twelfth { background: linear-gradient(135deg, #ec4899, #db2777); }
 
 /* Mixed Converter Lab */
 .mixed-converter-lab {
@@ -5014,46 +5171,45 @@ select.calc-input option {
 }
 
 /* Diagnostic Exam Trap Cards for Fractions */
-.trap-slip-frac {
-  background: rgba(239, 68, 68, 0.06);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  border-radius: var(--radius-lg, 16px);
-  padding: 1.25rem;
-  margin: 1.25rem 0;
+.trap-slip-card {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 12px;
+  padding: 1.15rem;
+  transition: all 0.2s ease;
 }
 
-.trap-slip-header {
+.slip-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.trap-student-name {
-  font-weight: 800;
-  color: #fca5a5;
-  font-size: 1rem;
+.slip-body {
+  font-size: 0.9rem;
 }
 
-.trap-blunder-box {
-  background: rgba(10, 14, 26, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 0.9rem;
+.student-handwriting {
+  background: rgba(239, 68, 68, 0.1);
+  border-left: 3px solid #ef4444;
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
   font-family: var(--font-mono, monospace);
-  font-size: 1.1rem;
-  margin: 0.6rem 0;
+  font-size: 0.95rem;
+  color: #fca5a5;
+  margin: 0.5rem 0;
 }
 
-.trap-correction-box {
-  background: rgba(16, 185, 129, 0.1);
+.diagnosis-box {
+  background: rgba(10, 14, 26, 0.8);
   border: 1px solid rgba(16, 185, 129, 0.3);
   border-radius: 8px;
-  padding: 0.8rem;
-  font-size: 0.92rem;
-  color: #a7f3d0;
-  margin-top: 0.6rem;
-  display: none;
+  padding: 0.85rem 1rem;
+  margin-top: 0.75rem;
+  animation: fadeIn 0.3s ease;
 }
 
 
