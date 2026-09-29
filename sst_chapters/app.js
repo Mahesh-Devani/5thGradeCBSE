@@ -2513,6 +2513,10 @@ class SSTApp {
           sfx.wrong();
           this.flashFeedback('wrong');
         }
+        if (typeof btn.blur === 'function') btn.blur();
+        if (document.activeElement && typeof document.activeElement.blur === 'function') {
+          document.activeElement.blur();
+        }
         this.challengeIndex++;
         if (this.challengeIndex >= this.challengeQuestions.length) {
           this.endChallenge(container);

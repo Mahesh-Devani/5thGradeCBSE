@@ -8700,6 +8700,8 @@ function renderPracticeView(container) {
       if (answered) return;
       answered = true;
 
+      if (typeof btn.blur === 'function') btn.blur();
+
       const selectedIdx = parseInt(btn.getAttribute('data-opt-idx'));
       state.userAnswers[q.id] = selectedIdx;
 
@@ -8877,6 +8879,11 @@ function renderChallengeView(container) {
     return;
   }
 
+  // Ensure no residual focus from previous question causes accidental selection highlight
+  if (document.activeElement && typeof document.activeElement.blur === 'function') {
+    document.activeElement.blur();
+  }
+
   container.innerHTML = `
     <div class="challenge-container">
       <div class="challenge-header-card">
@@ -8910,7 +8917,7 @@ function renderChallengeView(container) {
 
         <div class="options-grid">
           ${q.options.map((opt, optIdx) => `
-            <button class="option-btn" data-opt-idx="${optIdx}" id="challenge-opt-${optIdx}">
+            <button class="option-btn" data-opt-idx="${optIdx}" id="challenge-opt-${state.challengeIndex}-${optIdx}">
               <span class="option-label">${String.fromCharCode(65 + optIdx)}</span>
               <span class="option-text">${opt}</span>
             </button>
@@ -8920,12 +8927,20 @@ function renderChallengeView(container) {
     </div>
   `;
 
+  // Explicitly ensure new buttons start completely unfocused and clean
+  container.querySelectorAll('.option-btn').forEach(b => {
+    b.blur();
+    b.classList.remove('correct', 'wrong');
+  });
+
   // Attach option clicks
   let answered = false;
   container.querySelectorAll('.option-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       if (answered) return;
       answered = true;
+
+      if (typeof btn.blur === 'function') btn.blur();
 
       const selectedIdx = parseInt(btn.getAttribute('data-opt-idx'));
       const isCorrect = selectedIdx === q.correct;
@@ -8942,13 +8957,16 @@ function renderChallengeView(container) {
         btn.classList.add('wrong');
         playWrongSound();
         flash.className = 'feedback-flash wrong';
-        const correctBtn = container.querySelector(`#challenge-opt-${q.correct}`);
+        const correctBtn = container.querySelector(`#challenge-opt-${state.challengeIndex}-${q.correct}`);
         if (correctBtn) correctBtn.classList.add('correct');
       }
 
       setTimeout(() => { flash.className = 'feedback-flash'; }, 250);
 
       setTimeout(() => {
+        if (document.activeElement && typeof document.activeElement.blur === 'function') {
+          document.activeElement.blur();
+        }
         state.challengeIndex++;
         if (state.challengeIndex < state.challengeQuestions.length) {
           renderViewport();

@@ -3410,6 +3410,11 @@ function renderSprintQuestion() {
       const scoreLabel = document.getElementById('sprint-score-label');
       if (scoreLabel) scoreLabel.textContent = state.sprint.score;
 
+      if (typeof btn.blur === 'function') btn.blur();
+      if (document.activeElement && typeof document.activeElement.blur === 'function') {
+        document.activeElement.blur();
+      }
+
       state.sprint.currentIndex++;
       renderSprintQuestion();
     });

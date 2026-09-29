@@ -1025,11 +1025,20 @@ select.calc-input option {
   gap: 0.75rem;
   touch-action: manipulation;
   min-height: 50px;
+  outline: none;
 }
-.option-btn:hover:not(:disabled) {
-  background: rgba(245, 158, 11, 0.08);
-  border-color: rgba(245, 158, 11, 0.3);
-  transform: translateX(4px);
+.option-btn:focus {
+  outline: none;
+}
+.option-btn:focus-visible {
+  outline: 2px solid var(--accent-amber);
+}
+@media (hover: hover) and (pointer: fine) {
+  .option-btn:hover:not(:disabled) {
+    background: rgba(245, 158, 11, 0.08);
+    border-color: rgba(245, 158, 11, 0.3);
+    transform: translateX(4px);
+  }
 }
 .option-btn.correct {
   background: rgba(16, 185, 129, 0.2) !important;

@@ -3677,6 +3677,9 @@ class HindiLearningApp {
         }
 
         setTimeout(() => {
+          if (document.activeElement && typeof document.activeElement.blur === 'function') {
+            document.activeElement.blur();
+          }
           cs.qIndex++;
           cs.answered = false;
           this.renderChallengeQuestion();
@@ -4403,6 +4406,9 @@ class HindiLearningApp {
         }
 
         setTimeout(() => {
+          if (document.activeElement && typeof document.activeElement.blur === 'function') {
+            document.activeElement.blur();
+          }
           cs.qIndex++;
           this.renderNextSangyaChallengeQuestion();
         }, 450);
