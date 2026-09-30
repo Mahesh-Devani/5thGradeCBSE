@@ -699,15 +699,18 @@ a {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.65rem;
+  padding: 0;
+  margin: 0;
 }
 
 .concept-points li {
   font-size: 0.88rem;
   color: var(--text-secondary);
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 1.35rem;
+  display: block;
 }
 
 .concept-points li strong {
@@ -718,7 +721,9 @@ a {
   content: '✦';
   color: var(--accent-emerald);
   font-size: 0.8rem;
-  margin-top: 0.15rem;
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
 }
 
 /* Think About It Box */

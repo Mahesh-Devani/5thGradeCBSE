@@ -258,7 +258,7 @@ const CHAPTERS_DATA = [
         prompt: 'Where did Ananya slip up?',
         options: [
           'Cows have sharp canines to strip tough bark from trees, so sharp teeth still indicate a herbivore.',
-          'Sharp canines and shearing molars are specialized for gripping and tearing meat $\implies$ Carnivore! Herbivores have flat grinding molars.',
+          'Sharp canines and shearing molars are specialized for gripping and tearing meat → Carnivore! Herbivores have flat grinding molars.',
           'Sharp pointed teeth only indicate an omnivore, because carnivores swallow meat whole without chewing.'
         ],
         correctIndex: 1,
@@ -299,8 +299,8 @@ const CHAPTERS_DATA = [
           'R is a carnivore'
         ],
         correct: 0,
-        explanation: 'Q is a producer (plant). R eats Q, so R is a herbivore. S eats R, so S is a carnivore. Since P feeds on plant (Q), herbivore (R), and carnivore (S), P consumes both plants and animals $\implies$ Omnivore!',
-        takeaway: 'Deductive reasoning: Producer (Q) → Herbivore (R) → Carnivore (S). P eats all three $\\implies$ Omnivore.'
+        explanation: 'Q is a producer (plant). R eats Q, so R is a herbivore. S eats R, so S is a carnivore. Since P feeds on plant (Q), herbivore (R), and carnivore (S), P consumes both plants and animals → Omnivore!',
+        takeaway: 'Deductive reasoning: Producer (Q) → Herbivore (R) → Carnivore (S). P eats all three → Omnivore.'
       },
       {
         id: 'l2_q3_jaw',
@@ -698,8 +698,8 @@ const CHAPTERS_DATA = [
       "title": "💪 Tendons, Ligaments & Antagonistic Muscle Pairs",
       "metaphor": "Muscles are biological pull-cords — they can ONLY PULL, they NEVER PUSH!",
       "points": [
-        "<strong>The 3 Ls Rule:</strong> <strong>L</strong>igaments connect <strong>L</strong>ike to <strong>L</strong>ike $\\implies$ <strong>Bone to Bone</strong> at joints!",
-        "<strong>The 3 Ts Rule:</strong> <strong>T</strong>endons connect <strong>T</strong>wo <strong>T</strong>ypes $\\implies$ <strong>Bone to Muscle</strong>!",
+        "<strong>The 3 Ls Rule:</strong> <strong>L</strong>igaments connect <strong>L</strong>ike to <strong>L</strong>ike → <strong>Bone to Bone</strong> at joints!",
+        "<strong>The 3 Ts Rule:</strong> <strong>T</strong>endons connect <strong>T</strong>wo <strong>T</strong>ypes → <strong>Bone to Muscle</strong>!",
         "<strong>Antagonistic Muscle Pairs:</strong> Because muscle fibers can only contract (shorten and pull), they must work in opposing pairs! To <strong>bend the elbow</strong>, the <strong>Biceps contracts</strong> (pulls forearm up) while the <strong>Triceps relaxes</strong>. To <strong>straighten the arm</strong>, the <strong>Triceps contracts</strong> (pulls forearm down) while the <strong>Biceps relaxes</strong>.",
         "<strong>3 Muscle Types:</strong> <strong>Striated/Skeletal</strong> (voluntary, striped, attached to bones for walking/writing), <strong>Smooth</strong> (involuntary, unstriped, in stomach/intestines/blood vessels), and <strong>Cardiac</strong> (involuntary, striated, in heart walls — works 24/7 without fatigue!)."
       ],
@@ -863,7 +863,7 @@ const CHAPTERS_DATA = [
       ],
       "correct": 2,
       "explanation": "In the skull, 21 bones are fused firmly with immovable interlocking sutures. Only the lower jaw (mandible) is movable, which allows chewing, speaking, and yawning.",
-      "takeaway": "Skull: 22 bones total (8 cranial + 14 facial) $\\implies$ ONLY lower jaw moves!"
+      "takeaway": "Skull: 22 bones total (8 cranial + 14 facial) → ONLY lower jaw moves!"
     },
     {
       "id": "l3_q6",
@@ -1204,7 +1204,7 @@ const CHAPTERS_DATA = [
       "points": [
         "<strong>What is a Reflex Action?</strong> An extremely rapid, automatic, involuntary response to a dangerous stimulus that <strong>DOES NOT wait for the brain to think</strong>!",
         "<strong>Controlled by Spinal Cord:</strong> The emergency decision is made directly by the <strong>Spinal Cord</strong> to save precious milliseconds and prevent severe tissue damage.",
-        "<strong>The 5-Step Reflex Pathway:</strong> Skin heat receptors → <strong>Sensory nerve</strong> → <strong>Spinal cord</strong> → <strong>Motor nerve</strong> → Arm bicep muscle contracts $\\implies$ Hand is yanked away in ~0.05 seconds!",
+        "<strong>The 5-Step Reflex Pathway:</strong> Skin heat receptors → <strong>Sensory nerve</strong> → <strong>Spinal cord</strong> → <strong>Motor nerve</strong> → Arm bicep muscle contracts → Hand is yanked away in ~0.05 seconds!",
         "<strong>Brain Learns Afterwards:</strong> The sensory signal travels up to the conscious cerebrum <em>after</em> the hand is already pulled back, which is why you consciously register the burning pain only AFTER your hand is safely away!"
       ],
       "thinkPrompt": "Why would waiting for the brain's cerebrum to process the thought 'Ouch, this stove is hot, I should lift my finger' lead to severe third-degree burns?"
@@ -2738,7 +2738,7 @@ const CHAPTERS_DATA = [
           'Room air currents only circulate towards warm objects, pulling hot scent molecules directly into people’s faces.'
         ],
         correctIndex: 0,
-        teacherFeedback: 'Spot on! Temperature is a measure of average kinetic energy. Higher temperature $\implies$ higher velocity $\implies$ faster rate of molecular diffusion.'
+        teacherFeedback: 'Spot on! Temperature is a measure of average kinetic energy. Higher temperature → higher velocity → faster rate of molecular diffusion.'
       },
       {
         id: 'trap_l13_rust',
@@ -2955,7 +2955,7 @@ const CHAPTERS_DATA = [
         ],
         correct: 0,
         explanation: 'Diffusion rate is proportional to temperature. At higher temperatures, gaseous molecules possess greater kinetic energy and spread rapidly through ambient air.',
-        takeaway: 'High temperature $\\implies$ High kinetic energy $\\implies$ Fast diffusion.'
+        takeaway: 'High temperature → High kinetic energy → Fast diffusion.'
       },
       {
         id: 'l13_q11',
@@ -3007,7 +3007,7 @@ const CHAPTERS_DATA = [
           'All three substances have identical compressibility.'
         ],
         correct: 0,
-        explanation: 'In cylinder P (Gas), intermolecular spaces are vast and intermolecular attraction is negligible. When downward force is applied via the piston, the particles are easily forced closer together $\\implies$ maximum compressibility (which allows CNG fuel and LPG cooking gas to be compressed into cylinders). In liquids (Q) and solids (R), particles are already in close contact and cannot be compressed significantly.',
+        explanation: 'In cylinder P (Gas), intermolecular spaces are vast and intermolecular attraction is negligible. When downward force is applied via the piston, the particles are easily forced closer together → maximum compressibility (which allows CNG fuel and LPG cooking gas to be compressed into cylinders). In liquids (Q) and solids (R), particles are already in close contact and cannot be compressed significantly.',
         takeaway: 'Maximum compressibility = Gas (P) due to large intermolecular spaces. Application: Compressed Natural Gas (CNG).'
       },
       {
@@ -4030,7 +4030,7 @@ function renderArmSVG(armState) {
 function getSkeletalExplanationHTML(joint, arm) {
   let jointText = '';
   if (joint === 'ball_socket') {
-    jointText = '<strong>BALL & SOCKET JOINT:</strong> Ball fits in cup-like socket $\\implies$ <strong>360° Rotary Movement</strong>. Found in <strong>Shoulder & Hip</strong>. Like a computer joystick!';
+    jointText = '<strong>BALL & SOCKET JOINT:</strong> Ball fits in cup-like socket → <strong>360° Rotary Movement</strong>. Found in <strong>Shoulder & Hip</strong>. Like a computer joystick!';
   } else if (joint === 'hinge') {
     jointText = '<strong>HINGE JOINT:</strong> Opens and closes in <strong>1 Direction Only (180°)</strong> like a door hinge. Found in <strong>Knees, Elbows, Fingers, and Toes</strong>.';
   } else if (joint === 'pivot') {
