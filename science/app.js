@@ -300,7 +300,7 @@ const CHAPTERS_DATA = [
         ],
         correct: 0,
         explanation: 'Q is a producer (plant). R eats Q, so R is a herbivore. S eats R, so S is a carnivore. Since P feeds on plant (Q), herbivore (R), and carnivore (S), P consumes both plants and animals $\implies$ Omnivore!',
-        takeaway: 'Deductive reasoning: Producer (Q) $\\to$ Herbivore (R) $\\to$ Carnivore (S). P eats all three $\\implies$ Omnivore.'
+        takeaway: 'Deductive reasoning: Producer (Q) → Herbivore (R) → Carnivore (S). P eats all three $\\implies$ Omnivore.'
       },
       {
         id: 'l2_q3_jaw',
@@ -646,7 +646,1057 @@ const CHAPTERS_DATA = [
   },
 
   // ------------------------------------------------------------------------
-  // CHAPTER 2: L-5 GOOD HEALTH
+  // CHAPTER 2: L-3 THE SKELETAL AND MUSCULAR SYSTEM
+  // ------------------------------------------------------------------------
+{
+  "id": "ch3_skeletal",
+  "number": "L-3",
+  "title": "The Skeletal and Muscular System",
+  "sub": "Framework of 206 Bones, 4 Movable Joints, Tendons vs Ligaments & Antagonistic Muscles",
+  "themeColor": "#f59e0b",
+  "icon": "🦴",
+  "summary": "Master the architectural framework of 206 bones, bone marrow blood cell factory, skull helmet, flexible vertebral column, ribcage shield, 4 movable joints, and antagonistic muscle pairs that only pull!",
+  "learnCards": [
+    {
+      "badge": "Architectural Framework",
+      "title": "🏗️ The Living Scaffolding & Blood Factory",
+      "metaphor": "The skeleton is not a dried-up museum relic — it is a living, blood-rich architectural marvel that holds our body upright!",
+      "points": [
+        "<strong>Living Framework:</strong> An adult human skeleton contains <strong>206 bones</strong>. A newborn baby has over <strong>300 bones</strong>, but as the baby grows, many small bones fuse together!",
+        "<strong>Vertebral Column (Spine):</strong> Made up of <strong>33 ring-like bones called vertebrae</strong>. It forms the main axis of our body, encloses and protects the delicate spinal cord, and allows bending and twisting.",
+        "<strong>Bone Marrow Factory:</strong> The hollow interior of long bones (like the femur) contains a soft, spongy tissue called <strong>bone marrow</strong>, which manufactures millions of new red and white blood cells every day!",
+        "<strong>Mineral Storage:</strong> Bones serve as the body’s primary storage bank for vital minerals like <strong>calcium and phosphorus</strong>."
+      ],
+      "thinkPrompt": "If an adult human had a single solid spine bone instead of 33 vertebrae, how would tying your shoelaces or sitting on a chair be affected?"
+    },
+    {
+      "badge": "Biological Armor",
+      "title": "🛡️ The Skull Helmet & The Ribcage Shield",
+      "metaphor": "Your most precious organs are shielded inside biological helmets and cages engineered by nature!",
+      "points": [
+        "<strong>The Skull (22 Bones):</strong> 8 flat interlocking cranial bones fuse tightly like a motorcycle helmet to safeguard the brain. The remaining 14 bones form the facial framework.",
+        "<strong>Only ONE Movable Skull Bone:</strong> Out of all 22 skull bones, <strong>only the lower jaw (mandible) is movable</strong>! This lets us chew, talk, and yawn. The upper jaw is fused immovable.",
+        "<strong>The Ribcage (12 Pairs / 25 Bones):</strong> Made of 12 pairs of bow-shaped ribs plus the central breastbone (<strong>sternum</strong>). It forms a protective cage around the heart and lungs.",
+        "<strong>Floating Ribs:</strong> The first 10 pairs attach to the sternum in front, but the <strong>last 2 pairs (11th and 12th)</strong> attach only to the backbone behind. They are called <strong>floating ribs</strong>, giving the diaphragm and lungs freedom to expand during deep breathing!"
+      ],
+      "thinkPrompt": "Try to talk or chew while keeping your lower jaw completely still. Why is it biologically impossible to move only your upper jaw?"
+    },
+    {
+      "badge": "Mechanical Bearings",
+      "title": "🔗 Movable Joints — Nature's Mechanical Bearings",
+      "metaphor": "Wherever two bones meet, joints determine the directions and freedom of movement like mechanical hinges and swivels!",
+      "points": [
+        "<strong>Ball and Socket Joint:</strong> The rounded ball-head of one bone fits inside the cup-like socket of another. Allows full <strong>360° rotary motion in all directions</strong> (like a joystick!). Present in <strong>shoulders</strong> (humerus in pectoral girdle) and <strong>hips</strong> (femur in pelvic girdle).",
+        "<strong>Hinge Joint:</strong> Works exactly like a <strong>door hinge</strong>, allowing movement back and forth in <strong>ONE direction only</strong>. Found in <strong>elbows, knees, fingers, and toes</strong>.",
+        "<strong>Pivot Joint:</strong> One bone rotates around a ring-like peg of another bone. Found between the <strong>skull and the first vertebra (spine)</strong>. Allows our head to turn sideways, nod up, and tilt down!",
+        "<strong>Gliding Joint (Planar Joint):</strong> Flat bone surfaces slide or glide smoothly past one another in multiple directions. Present in <strong>wrists, ankles</strong>, and between adjacent vertebrae in the backbone."
+      ],
+      "thinkPrompt": "Why did nature give us a hinge joint at the knee instead of a ball and socket joint? What would happen when you try to kick a football or run?"
+    },
+    {
+      "badge": "Force & Locomotion",
+      "title": "💪 Tendons, Ligaments & Antagonistic Muscle Pairs",
+      "metaphor": "Muscles are biological pull-cords — they can ONLY PULL, they NEVER PUSH!",
+      "points": [
+        "<strong>The 3 Ls Rule:</strong> <strong>L</strong>igaments connect <strong>L</strong>ike to <strong>L</strong>ike $\\implies$ <strong>Bone to Bone</strong> at joints!",
+        "<strong>The 3 Ts Rule:</strong> <strong>T</strong>endons connect <strong>T</strong>wo <strong>T</strong>ypes $\\implies$ <strong>Bone to Muscle</strong>!",
+        "<strong>Antagonistic Muscle Pairs:</strong> Because muscle fibers can only contract (shorten and pull), they must work in opposing pairs! To <strong>bend the elbow</strong>, the <strong>Biceps contracts</strong> (pulls forearm up) while the <strong>Triceps relaxes</strong>. To <strong>straighten the arm</strong>, the <strong>Triceps contracts</strong> (pulls forearm down) while the <strong>Biceps relaxes</strong>.",
+        "<strong>3 Muscle Types:</strong> <strong>Striated/Skeletal</strong> (voluntary, striped, attached to bones for walking/writing), <strong>Smooth</strong> (involuntary, unstriped, in stomach/intestines/blood vessels), and <strong>Cardiac</strong> (involuntary, striated, in heart walls — works 24/7 without fatigue!)."
+      ],
+      "thinkPrompt": "Can regular exercise convert body fat directly into muscle tissue? (Exam trap: Fat cells and muscle fibers are completely different biological tissues!)"
+    }
+  ],
+  "examTraps": [
+    {
+      "id": "trap_l3_jaw",
+      "student": "Rohan",
+      "question": "When we chew a slice of bread, how do our jaws move?",
+      "studentAnswer": "Both our upper jaw and lower jaw move up and down to crush the food between our teeth.",
+      "prompt": "What is Rohan’s anatomical misconception?",
+      "options": [
+        "Only the upper jaw moves up and down; the lower jaw remains stationary against the neck.",
+        "The upper jaw is fused immovable to the skull; ONLY the lower jaw (mandible) is movable during chewing and talking!",
+        "Both jaws are completely immovable; teeth move independently on elastic gums."
+      ],
+      "correctIndex": 1,
+      "teacherFeedback": "Brilliant deduction! The upper jaw is rigidly fused to the skull. Only the lower jaw is equipped with movable joints that allow chewing and speech."
+    },
+    {
+      "id": "trap_l3_tendon_ligament",
+      "student": "Priya",
+      "question": "Differentiate between a tendon and a ligament.",
+      "studentAnswer": "Tendons connect bone to bone at joints, while ligaments attach muscles to bones.",
+      "prompt": "How should Priya correct her definitions using the 3 Ls and 3 Ts rule?",
+      "options": [
+        "Ligament = Like to Like (Bone to Bone); Tendon = Two Types (Muscle to Bone). Priya completely swapped their definitions!",
+        "Both tendons and ligaments connect muscle to muscle; bones do not need connecting tissues.",
+        "Tendons are made of bone marrow, while ligaments are made of cardiac muscle fibers."
+      ],
+      "correctIndex": 0,
+      "teacherFeedback": "Outstanding! Remember the master mnemonic: Ligament joins Like to Like (Bone to Bone). Tendon joins Two Types (Muscle to Bone)."
+    },
+    {
+      "id": "trap_l3_muscle_push",
+      "student": "Aman",
+      "question": "How do muscles extend our forearm when pushing open a door?",
+      "studentAnswer": "The bicep muscle pushes the forearm bones forward like a piston.",
+      "prompt": "Why is Aman’s understanding of muscle mechanics physically impossible?",
+      "options": [
+        "Biceps pull the shoulder backward, which causes the arm to push forward by momentum.",
+        "Muscles can ONLY PULL by contracting; they can NEVER PUSH! To straighten the arm, the opposing tricep muscle contracts and pulls the forearm down.",
+        "Muscles only push when we run; when using our arms, muscles pull."
+      ],
+      "correctIndex": 1,
+      "teacherFeedback": "Spot on! Biological muscle fibers can only exert tensile force (pulling by shortening). They never push. Straightening the arm requires the triceps to pull!"
+    },
+    {
+      "id": "trap_l3_floating_ribs",
+      "student": "Sneha",
+      "question": "What are floating ribs in the human ribcage?",
+      "studentAnswer": "Floating ribs are broken ribs that detached from the spine and float freely in the stomach.",
+      "prompt": "Diagnose Sneha’s medical and anatomical error:",
+      "options": [
+        "Floating ribs are the top two ribs that float above the collarbone.",
+        "Floating ribs are normal, healthy ribs (pairs 11 & 12) attached to the backbone behind, but unattached to the sternum in front to allow lung expansion.",
+        "Floating ribs are extra bones found only in birds and flying animals."
+      ],
+      "correctIndex": 1,
+      "teacherFeedback": "Perfect teacher correction! Pairs 11 and 12 are permanently attached to the thoracic vertebrae behind, but end freely in front, allowing diaphragmatic movement."
+    },
+    {
+      "id": "trap_l3_fat_muscle",
+      "student": "Kunal",
+      "question": "Can regular gym workouts turn body fat directly into muscle?",
+      "studentAnswer": "Yes, when we do heavy exercise, fat turns directly into muscle tissue.",
+      "prompt": "Why is Kunal’s statement scientifically flawed?",
+      "options": [
+        "Fat turns into bone first, and then bone turns into muscle tissue.",
+        "Fat and muscle are two entirely different biological tissues; exercise burns fat for fuel and builds muscle fibers, but fat never morphs into muscle!",
+        "Fat turns into muscle only if you drink cold water immediately after running."
+      ],
+      "correctIndex": 1,
+      "teacherFeedback": "Excellent! Fat (adipose tissue) and muscle fibers are distinct cell lineages. You burn fat as metabolic fuel and synthesize new muscle proteins, but one cannot morph into the other."
+    }
+  ],
+  "questions": [
+    {
+      "id": "l3_q1",
+      "category": "mcq",
+      "source": "Textbook • Section A • Q1",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "How many bones are present in the adult human skeleton?",
+      "options": [
+        "300 bones",
+        "206 bones",
+        "106 bones",
+        "250 bones"
+      ],
+      "correct": 1,
+      "explanation": "An adult human skeleton has 206 bones. A newborn baby has over 300 bones, some of which fuse together as the baby matures.",
+      "takeaway": "Adult skeleton = 206 bones | Newborn baby = 300+ bones (fused during growth)."
+    },
+    {
+      "id": "l3_q2",
+      "category": "mcq",
+      "source": "Thinkbook • Sheet 1 • Q4",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "A newborn baby is born with more than 300 bones. Why does an adult have only 206 bones?",
+      "options": [
+        "The extra bones dissolve and are excreted from the body",
+        "As the baby grows, several small bones fuse and join together into larger bones",
+        "Excess bones turn into muscle tissues during toddler years",
+        "Bones break down to produce teeth in growing children"
+      ],
+      "correct": 1,
+      "explanation": "Many bones in an infant (such as in the skull and sacrum/pelvis) are in smaller segments that fuse together into single rigid bones during childhood development.",
+      "takeaway": "Bone count reduces from 300+ to 206 due to natural bone fusion."
+    },
+    {
+      "id": "l3_q3",
+      "category": "mcq",
+      "source": "Textbook • Section A • Q4",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "Long bones like the femur are filled inside with a soft, spongy tissue that produces new blood cells. What is this tissue called?",
+      "options": [
+        "Cartilage",
+        "Bone marrow",
+        "Ligament",
+        "Tendon"
+      ],
+      "correct": 1,
+      "explanation": "Bone marrow is the soft, flexible, spongy tissue located in the interior cavities of bones where new red blood cells, white blood cells, and platelets are manufactured.",
+      "takeaway": "Bone marrow = Blood cell factory inside hollow bones."
+    },
+    {
+      "id": "l3_q4",
+      "category": "mcq",
+      "source": "Textbook • Limbs • Q2",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "image": "images/l3_limbs_girdles.png",
+      "body": "Observe the bones of the human limb shown below.<br>Which bone is the <strong>longest and strongest bone</strong> in the human body, supporting the full weight of the upright body?",
+      "options": [
+        "Humerus (upper arm)",
+        "Femur (thigh bone)",
+        "Tibia (shin bone)",
+        "Ulna (forearm)"
+      ],
+      "correct": 1,
+      "explanation": "The femur (thigh bone) is the longest, heaviest, and strongest bone in the human skeleton. It connects the pelvic girdle (hip) to the knee joint.",
+      "takeaway": "Femur = Longest & strongest bone in human body (thigh)."
+    },
+    {
+      "id": "l3_q5",
+      "category": "mcq",
+      "source": "Textbook • Skull • Q1",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "The human skull is made up of 22 bones. Out of these 22 bones, how many bones are movable?",
+      "options": [
+        "All 22 bones are movable",
+        "8 cranial bones are movable",
+        "Only ONE bone is movable: the lower jaw (mandible)",
+        "None of the bones can move"
+      ],
+      "correct": 2,
+      "explanation": "In the skull, 21 bones are fused firmly with immovable interlocking sutures. Only the lower jaw (mandible) is movable, which allows chewing, speaking, and yawning.",
+      "takeaway": "Skull: 22 bones total (8 cranial + 14 facial) $\\implies$ ONLY lower jaw moves!"
+    },
+    {
+      "id": "l3_q6",
+      "category": "mcq",
+      "source": "Textbook • Backbone • Q2",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "The human backbone (vertebral column) protects the delicate spinal cord. It is composed of a flexible chain of how many small bones called vertebrae?",
+      "options": [
+        "12 vertebrae",
+        "24 vertebrae",
+        "33 vertebrae",
+        "46 vertebrae"
+      ],
+      "correct": 2,
+      "explanation": "The human vertebral column consists of 33 vertebrae stacked on top of each other, separated by cartilage discs that provide flexibility for bending and twisting.",
+      "takeaway": "Vertebral column = 33 vertebrae protecting the spinal cord."
+    },
+    {
+      "id": "l3_q7",
+      "category": "mcq",
+      "source": "Textbook • Ribcage • Q3",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "image": "images/l3_ribcage.png",
+      "body": "Observe the ribcage diagram below.<br>Why are the <strong>11th and 12th pairs of ribs</strong> called <strong>floating ribs</strong>?",
+      "options": [
+        "They float in water if removed from the body",
+        "They are attached only to the backbone behind and are NOT connected to the breastbone (sternum) in front",
+        "They are made of cartilage instead of real bone",
+        "They are attached to the collarbone instead of the spine"
+      ],
+      "correct": 1,
+      "explanation": "The human ribcage has 12 pairs of ribs. The first 10 pairs attach to the sternum in front, while the last two pairs (11 and 12) attach only to the thoracic spine, leaving their front ends free (floating).",
+      "takeaway": "Floating ribs = 2 pairs (11th & 12th) attached ONLY to backbone, free in front."
+    },
+    {
+      "id": "l3_q8",
+      "category": "mcq",
+      "source": "Textbook • Section A • Q2",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "body": "What is the biological term for a place in the skeletal system where two or more bones meet?",
+      "options": [
+        "A marrow",
+        "A tendon",
+        "A joint",
+        "A vertebrae"
+      ],
+      "correct": 2,
+      "explanation": "A joint (articulation) is the junction where two or more bones connect. Joints enable movement and provide mechanical support.",
+      "takeaway": "Joint = Place where two or more bones meet."
+    },
+    {
+      "id": "l3_q9",
+      "category": "mcq",
+      "source": "Textbook • Movable Joints • Q1",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "image": "images/l3_joints.png",
+      "body": "Which type of movable joint allows <strong>rotary motion in all directions (360°)</strong>, similar to a computer gaming joystick?",
+      "options": [
+        "Hinge joint",
+        "Gliding joint",
+        "Ball and socket joint",
+        "Pivot joint"
+      ],
+      "correct": 2,
+      "explanation": "The ball and socket joint (found in shoulders and hips) features a rounded bone head fitting into a cup cavity, permitting circular rotary movement in all planes.",
+      "takeaway": "Ball and socket = 360° rotary motion in all directions (Shoulder & Hip)."
+    },
+    {
+      "id": "l3_q10",
+      "category": "mcq",
+      "source": "Textbook • Movable Joints • Q2",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "body": "A door hinge allows a wooden door to open and close in only one direction. Which joints in the human body are <strong>hinge joints</strong>?",
+      "options": [
+        "Shoulder and hip joints",
+        "Knee, elbow, finger, and toe joints",
+        "Neck and skull joint",
+        "Wrist and ankle joints"
+      ],
+      "correct": 1,
+      "explanation": "Hinge joints allow movement in a single plane (bending and straightening only), just like door hinges. Examples include elbows, knees, fingers, and toes.",
+      "takeaway": "Hinge joint = One-direction planar motion (Elbow, Knee, Fingers, Toes)."
+    },
+    {
+      "id": "l3_q11",
+      "category": "mcq",
+      "source": "Textbook • Movable Joints • Q3",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "body": "The joint present between the skull and the first vertebra of the backbone that allows us to turn our head sideways and nod up and down is called a __________.",
+      "options": [
+        "Gliding joint",
+        "Hinge joint",
+        "Pivot joint",
+        "Ball and socket joint"
+      ],
+      "correct": 2,
+      "explanation": "The pivot joint (atlantoaxial joint) between the skull base and top vertebra permits rotation around a single central axis, letting you turn your head side-to-side and tilt up-and-down.",
+      "takeaway": "Pivot joint = Neck rotation between skull and spine."
+    },
+    {
+      "id": "l3_q12",
+      "category": "mcq",
+      "source": "Textbook • Movable Joints • Q4",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "body": "Which joints allow bones to slide smoothly over each other in multiple directions, such as when you wave your hand at the wrist or roll your ankle?",
+      "options": [
+        "Gliding joints",
+        "Hinge joints",
+        "Ball and socket joints",
+        "Immovable joints"
+      ],
+      "correct": 0,
+      "explanation": "Gliding joints (planar joints) have flat bone surfaces that slide past each other. They are found in the wrists (carpals), ankles (tarsals), and between vertebrae.",
+      "takeaway": "Gliding joint = Sliding planar motion (Wrists, Ankles, Vertebrae)."
+    },
+    {
+      "id": "l3_q13",
+      "category": "mcq",
+      "source": "Textbook • Section A • Q3",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "body": "Tough, elastic fibrous bands of tissue that hold <strong>bone to bone</strong> together at joints are called __________.",
+      "options": [
+        "Tendons",
+        "Ligaments",
+        "Cartilages",
+        "Vertebrae"
+      ],
+      "correct": 1,
+      "explanation": "Ligaments join bone to bone at joints (3 Ls: Ligaments for Like to Like). Tendons connect muscle to bone (3 Ts: Tendons for Two Types).",
+      "takeaway": "Ligaments = Bone to Bone (Like to Like) | Tendons = Muscle to Bone (Two Types)."
+    },
+    {
+      "id": "l3_q14",
+      "category": "mcq",
+      "source": "Thinkbook • Sheet 4 • Q5",
+      "wsNumber": 3,
+      "marks": "1 Mark",
+      "image": "images/l3_bow_analogy.png",
+      "body": "Observe the archer's bow shown below.<br>In the human body's movement system, which components function like the <strong>wooden bow</strong> and the <strong>flexible pulled string</strong>?",
+      "options": [
+        "Bow functions like Muscles; String functions like Bones",
+        "Bow functions like Bones (rigid frame); String functions like Muscles (pulling cord)",
+        "Bow functions like Bone Marrow; String functions like Blood Vessels",
+        "Bow functions like Tendons; String functions like Ligaments"
+      ],
+      "correct": 1,
+      "explanation": "The stiff wooden bow acts like rigid bones that provide skeletal structure, while the elastic pulled string acts like muscles that contract and pull to generate kinetic force!",
+      "takeaway": "Bow & Arrow analogy: Rigid wooden bow = Bones | Contracting pulling string = Muscles."
+    },
+    {
+      "id": "l3_q15",
+      "category": "mcq",
+      "source": "Thinkbook • Sheet 4 • Q6",
+      "wsNumber": 3,
+      "marks": "1 Mark",
+      "image": "images/l3_arm_muscles.png",
+      "body": "When you bend your elbow to lift an apple to your mouth, what happens to the bicep and tricep muscles of your arm?",
+      "options": [
+        "Biceps contracts (bulges and pulls); Triceps relaxes (lengthens)",
+        "Triceps contracts; Biceps relaxes",
+        "Both biceps and triceps contract simultaneously",
+        "Both biceps and triceps relax completely"
+      ],
+      "correct": 0,
+      "explanation": "When bending the arm, the front muscle (biceps) contracts and bulges, pulling the forearm bones upward. At the same time, the back muscle (triceps) relaxes and stretches.",
+      "takeaway": "Bending elbow: Biceps contracts (pulls UP), Triceps relaxes. Straightening: Triceps contracts, Biceps relaxes."
+    },
+    {
+      "id": "l3_q16",
+      "category": "mcq",
+      "source": "Textbook • Muscles • Q1",
+      "wsNumber": 3,
+      "marks": "1 Mark",
+      "body": "Why do skeletal muscles always work in <strong>antagonistic (opposing) pairs</strong> like the biceps and triceps?",
+      "options": [
+        "Because one muscle pushes while the other muscle pulls",
+        "Because muscles can ONLY PULL by contracting; they CANNOT PUSH!",
+        "Because one muscle produces blood while the other stores calcium",
+        "Because bones only respond when two electrical signals arrive together"
+      ],
+      "correct": 1,
+      "explanation": "Muscle fibers generate mechanical force solely by contracting (shortening and pulling). They have no mechanism to push bones outward. Therefore, an opposing partner muscle is needed to pull the bone back!",
+      "takeaway": "Fundamental rule: Muscles can ONLY PULL, never push! Opposing pairs are mandatory."
+    },
+    {
+      "id": "l3_q17",
+      "category": "mcq",
+      "source": "Textbook • Muscle Types • Q2",
+      "wsNumber": 3,
+      "marks": "1 Mark",
+      "body": "Which type of muscle is found ONLY in the walls of the heart, works 24 hours a day without stopping, and never gets fatigued?",
+      "options": [
+        "Striated voluntary muscle",
+        "Smooth involuntary muscle",
+        "Cardiac muscle",
+        "Skeletal muscle"
+      ],
+      "correct": 2,
+      "explanation": "Cardiac muscle is specialized heart muscle. It is involuntary (not under conscious control), rhythmic, and continuously pumps blood throughout our entire lifetime without fatigue.",
+      "takeaway": "Cardiac muscle = Heart wall, involuntary, tireless 24/7 pumper."
+    },
+    {
+      "id": "l3_q18",
+      "category": "whoami",
+      "source": "Textbook • Section B • Q1",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "body": "<strong>Who am I?</strong><br>I am the long flat bone located in the center of the chest (also called breastbone). The first 10 pairs of ribs are attached to me in front.",
+      "options": [
+        "Femur",
+        "Sternum",
+        "Humerus",
+        "Clavicle"
+      ],
+      "correct": 1,
+      "explanation": "The sternum (breastbone) is the dagger-shaped bone in the middle of the chest to which the true ribs and false ribs attach anteriorly.",
+      "takeaway": "Sternum = Breastbone anchoring the front of the ribcage."
+    },
+    {
+      "id": "l3_q19",
+      "category": "whoami",
+      "source": "Textbook • Section B • Q2",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "body": "<strong>Who am I?</strong><br>I am the single bone of your upper arm. My upper rounded ball fits into the shoulder girdle, and my lower end forms the elbow joint with the radius and ulna.",
+      "options": [
+        "Femur",
+        "Fibula",
+        "Humerus",
+        "Tibia"
+      ],
+      "correct": 2,
+      "explanation": "The humerus is the upper arm bone extending from the shoulder socket to the elbow.",
+      "takeaway": "Humerus = Upper arm bone (shoulder to elbow)."
+    },
+    {
+      "id": "l3_q20",
+      "category": "compare",
+      "source": "Textbook • Section D • Q3",
+      "wsNumber": 3,
+      "marks": "2 Marks",
+      "body": "Which statement correctly differentiates <strong>voluntary muscles</strong> from <strong>involuntary muscles</strong>?",
+      "options": [
+        "Voluntary muscles are under our conscious control (e.g. arm and leg muscles); involuntary muscles work automatically without our conscious effort (e.g. stomach and heart)",
+        "Voluntary muscles work when we sleep; involuntary muscles work only when we run",
+        "Voluntary muscles are found inside blood vessels; involuntary muscles are attached to the skeleton",
+        "Voluntary muscles can push bones; involuntary muscles can only pull"
+      ],
+      "correct": 0,
+      "explanation": "Voluntary (skeletal) muscles are governed by our conscious will via the cerebrum. Involuntary (smooth and cardiac) muscles operate autonomously via autonomic nerve centers without requiring conscious thought.",
+      "takeaway": "Voluntary = Conscious will (limbs) | Involuntary = Automatic 24/7 (stomach, lungs, heart)."
+    },
+    {
+      "id": "l3_q21",
+      "category": "oddone",
+      "source": "Textbook • Section E • Q2",
+      "wsNumber": 3,
+      "marks": "1 Mark",
+      "body": "<strong>Find the Odd One Out:</strong><br>Humerus, Radius, Femur, Ulna.",
+      "options": [
+        "Humerus — because it is attached to the collarbone",
+        "Femur — because it is a bone of the lower limb (leg), while the others belong to the upper limb (arm)!",
+        "Radius — because it has no bone marrow",
+        "Ulna — because it is made of cartilage"
+      ],
+      "correct": 1,
+      "explanation": "Humerus, Radius, and Ulna are the three long bones of the upper limb (arm). The Femur is the thigh bone of the lower limb (leg).",
+      "takeaway": "Odd one out: Femur (Leg / Lower limb) vs Humerus, Radius, Ulna (Arm / Upper limb)."
+    },
+    {
+      "id": "l3_q22",
+      "category": "scenario",
+      "source": "Thinkbook • Sheet 2 • Q1",
+      "wsNumber": 3,
+      "marks": "2 Marks",
+      "body": "Rahul slipped while playing football and suffered a bone fracture in one of his <strong>lower limbs</strong> (legs). Which of the following daily activities will be <strong>directly affected</strong> while he heals in a cast?",
+      "options": [
+        "Walking and jumping",
+        "Chewing food and swallowing",
+        "Thinking and memorizing spelling",
+        "Breathing and heartbeat"
+      ],
+      "correct": 0,
+      "explanation": "The lower limbs consist of the thighs, knees, legs, ankles, and feet (femur, patella, tibia, fibula). A fracture directly impairs walking, running, and jumping. Chewing uses facial muscles, breathing uses the diaphragm/ribcage, and thinking uses the cerebrum.",
+      "takeaway": "Lower limb = Locomotion (walking, jumping, standing). Non-limb functions remain unaffected."
+    }
+  ]
+},
+
+  // ------------------------------------------------------------------------
+  // CHAPTER 3: L-4 THE NERVOUS SYSTEM & SENSE ORGANS
+  // ------------------------------------------------------------------------
+{
+  "id": "ch4_nervous",
+  "number": "L-4",
+  "title": "The Nervous System & Sense Organs",
+  "sub": "Brain Regions, Spinal Cord Reflex Arc, Nerve Pathways & 5 Senses",
+  "themeColor": "#8b5cf6",
+  "icon": "🧠",
+  "summary": "Master the central command network: Cerebrum, Cerebellum, Medulla, contralateral brain control, lightning-fast spinal reflex arcs, sensory vs motor nerves, and the 5 precision sense organs.",
+  "learnCards": [
+    {
+      "badge": "Central Command",
+      "title": "💻 The Biological Supercomputer & Nerve Cables",
+      "metaphor": "Your nervous system is the ultimate biological supercomputer: Brain is the CPU, spinal cord is the main data highway, and nerves are the fiber-optic cables!",
+      "points": [
+        "<strong>3 Master Components:</strong> The human nervous system consists of the <strong>Brain</strong>, the <strong>Spinal Cord</strong>, and a vast interconnected network of <strong>Nerves</strong> spreading throughout the body.",
+        "<strong>The Neuron (Nerve Cell):</strong> Nerves are composed of billions of specialized microscopic cells called <strong>neurons</strong>. Spanish neuroscientist <em>Santiago Ramón y Cajal</em> proved that neurons communicate by transmitting electrochemical signals.",
+        "<strong>Spinal Cord Highway:</strong> A thick, tubular bundle of nerves emerging from the medulla that extends down through the protective vertebral column. It carries messages between the brain and the entire body.",
+        "<strong>Cerebrospinal Fluid (CSF):</strong> The brain floats in a protective liquid layer between the brain tissue and the hard skull that acts as a hydraulic shock absorber, cushioning against sudden jerks and bumps!"
+      ],
+      "thinkPrompt": "Why does a desktop computer need separate power, signal cables, and a central microprocessor, exactly like our nervous system has nerves, sensory inputs, and the brain?"
+    },
+    {
+      "badge": "The 3 Brain Departments",
+      "title": "🧠 Cerebrum, Cerebellum & Medulla",
+      "metaphor": "The brain has three specialized managers running your body's operations 24 hours a day!",
+      "points": [
+        "<strong>1. Cerebrum (Thinking & Senses):</strong> The top dome-shaped, largest part (~85% of brain weight). Its surface is folded into ridges and grooves resembling a walnut. It controls <strong>thinking, memory, logic, speech, emotions, learning</strong>, and interprets signals from all 5 sense organs!",
+        "<strong>2. Cerebellum (Balance & Muscle Coordination):</strong> Located at the lower back of the head beneath the cerebrum. Coordinates voluntary muscle movements to maintain <strong>balance, equilibrium, and upright posture</strong> (walking, cycling, dancing).",
+        "<strong>3. Medulla (Brain Stem — 24/7 Life Vitals):</strong> Connects the brain to the spinal cord. Governs <strong>involuntary vital reflexes</strong>: heartbeat, breathing, blood pressure, digestion, sneezing, and swallowing. <strong>It works continuously 24 hours a day, even while you are fast asleep!</strong>",
+        "<strong>Contralateral Control:</strong> The left hemisphere of the cerebrum controls the <strong>right side</strong> of the body; the right hemisphere controls the <strong>left side</strong>!"
+      ],
+      "thinkPrompt": "When you are in deep sleep at 2 AM, which part of your brain is tirelessly keeping your heart beating and lungs breathing?"
+    },
+    {
+      "badge": "Emergency Bypass",
+      "title": "⚡ The Lightning Reflex Arc (Spinal Bypass)",
+      "metaphor": "When a house catches fire, you don't wait for a letter from the president — the local emergency fire alarm rings instantly!",
+      "points": [
+        "<strong>What is a Reflex Action?</strong> An extremely rapid, automatic, involuntary response to a dangerous stimulus that <strong>DOES NOT wait for the brain to think</strong>!",
+        "<strong>Controlled by Spinal Cord:</strong> The emergency decision is made directly by the <strong>Spinal Cord</strong> to save precious milliseconds and prevent severe tissue damage.",
+        "<strong>The 5-Step Reflex Pathway:</strong> Skin heat receptors → <strong>Sensory nerve</strong> → <strong>Spinal cord</strong> → <strong>Motor nerve</strong> → Arm bicep muscle contracts $\\implies$ Hand is yanked away in ~0.05 seconds!",
+        "<strong>Brain Learns Afterwards:</strong> The sensory signal travels up to the conscious cerebrum <em>after</em> the hand is already pulled back, which is why you consciously register the burning pain only AFTER your hand is safely away!"
+      ],
+      "thinkPrompt": "Why would waiting for the brain's cerebrum to process the thought 'Ouch, this stove is hot, I should lift my finger' lead to severe third-degree burns?"
+    },
+    {
+      "badge": "Information Couriers",
+      "title": "📡 Sensory, Motor & Mixed Nerves",
+      "metaphor": "Nerves are one-way and two-way telephone lines transmitting biological telegrams across the body!",
+      "points": [
+        "<strong>Sensory Nerves (Inputs):</strong> Carry messages <strong>FROM the sense organs TO the brain and spinal cord</strong> ('I see red light', 'This ice is freezing', 'The bell is ringing').",
+        "<strong>Motor Nerves (Outputs):</strong> Carry orders <strong>FROM the brain and spinal cord TO muscles and glands</strong> ('Contract leg muscles', 'Secrete sweat', 'Blink eyelids').",
+        "<strong>Mixed Nerves (Two-Way):</strong> Contain both sensory and motor nerve fibers, transmitting signals in <strong>both directions</strong> between the central nervous system and body tissues.",
+        "<strong>No Isolated Nerves:</strong> A nerve can NEVER run directly from wrist to ankle on its own! All peripheral nerves must route through the spinal cord or brain central network."
+      ],
+      "thinkPrompt": "If an accident cuts only the sensory nerves to a person's hand while motor nerves remain intact, could they pick up an apple? Could they feel if it is cold?"
+    },
+    {
+      "badge": "Sensory Detectors",
+      "title": "👁️ The 5 Precision Sense Organs",
+      "metaphor": "Your 5 sense organs are high-definition environmental sensors streaming real-time data to your brain!",
+      "points": [
+        "<strong>Eye (Biological Camera):</strong> Light passes through the transparent <strong>cornea</strong> → enters through the <strong>pupil</strong> (regulated by colored <strong>iris</strong>) → focused by lens → inverted image forms on the <strong>retina</strong> → <strong>optic nerve</strong> transmits image signals to cerebrum.",
+        "<strong>Ear (Hearing & Balance!):</strong> Outer ear (<strong>pinna</strong>) collects sound waves → <strong>eardrum</strong> vibrates → 3 tiny middle ear bones amplify → fluid-filled snail <strong>cochlea</strong> turns vibrations into nerve signals → auditory nerve. <em>Inner ear semicircular canals maintain body balance!</em>",
+        "<strong>Nose:</strong> Nasal cavity lined with olfactory nerve receptors. Hair and mucus trap airborne dirt and bacteria.",
+        "<strong>Tongue:</strong> Taste buds detect sweet, salty, sour, and bitter. Nerves send taste signals to cerebrum. (Also essential for speech and swallowing!).",
+        "<strong>Skin (Largest Organ):</strong> Contains microscopic receptors sensitive to <strong>touch, pressure, heat, cold, and pain</strong>. Sweat glands regulate body temperature."
+      ],
+      "thinkPrompt": "Why does chocolate or hot soup taste completely bland and flavorless when your nose is severely blocked with a common cold?"
+    }
+  ],
+  "examTraps": [
+    {
+      "id": "trap_l4_reflex_brain",
+      "student": "Ravi",
+      "question": "Explain how your hand pulls away after touching a scorching hot electric iron.",
+      "studentAnswer": "The sensory nerves sent a message to my brain, my cerebrum thought about how hot it was, decided it was dangerous, and sent an order to pull my hand back.",
+      "prompt": "What critical biological error did Ravi make regarding reflex actions?",
+      "options": [
+        "The heart decides reflex actions, not the cerebrum.",
+        "Reflex actions bypass the brain completely! The spinal cord receives the sensory signal and immediately fires the motor command to save vital seconds.",
+        "The fingers pull back automatically without any nerves or spinal cord involvement."
+      ],
+      "correctIndex": 1,
+      "teacherFeedback": "Outstanding teacher diagnosis! If signals had to travel all the way to the cerebrum for conscious deliberation, the skin would be severely burned before you reacted. The spinal cord executes the emergency loop directly!"
+    },
+    {
+      "id": "trap_l4_contralateral",
+      "student": "Karan",
+      "question": "A patient suffered a head injury affecting the left side of his cerebrum. Which side of his body shows weakness or paralysis?",
+      "studentAnswer": "The left side of his brain was injured, so the left side of his body is paralysed.",
+      "prompt": "Where did Karan stumble regarding brain wiring?",
+      "options": [
+        "The cerebrum has no control over muscles; that is handled solely by the stomach.",
+        "Brain motor control is contralateral (criss-crossed): the left cerebrum controls the RIGHT side of the body, and the right cerebrum controls the LEFT side!",
+        "Both sides of the body are always paralysed equally regardless of injury location."
+      ],
+      "correctIndex": 1,
+      "teacherFeedback": "Perfect! Nerve pathways cross over in the brainstem. A left-hemisphere injury manifests as motor and sensory impairment on the right side of the body."
+    },
+    {
+      "id": "trap_l4_ear_balance",
+      "student": "Rohan",
+      "question": "What are the biological functions of the human ear?",
+      "studentAnswer": "The ears have only one function: to hear sounds. Our legs and spine alone maintain our body balance.",
+      "prompt": "What important secondary function of the ear did Rohan overlook?",
+      "options": [
+        "The ear is the primary organ for smelling pleasant aromas.",
+        "The inner ear contains fluid-filled semicircular canals that detect body posture and work with the cerebellum to maintain balance and equilibrium!",
+        "The outer ear pumps oxygen into the bloodstream."
+      ],
+      "correctIndex": 1,
+      "teacherFeedback": "Brilliant deduction! The inner ear houses the vestibular balance mechanism. When inner ear fluid gets agitated (like after spinning in circles), you feel dizzy even though your legs are perfectly healthy!"
+    },
+    {
+      "id": "trap_l4_sensory_motor_cut",
+      "student": "Sneha",
+      "question": "Suppose an accident severs only the sensory nerves to a player's hand, while motor nerves are undamaged. Can the player move their hand?",
+      "studentAnswer": "No, because without sensory nerves the hand is completely paralysed and cannot move at all.",
+      "prompt": "How should Sneha clarify the distinct functions of sensory vs motor nerves?",
+      "options": [
+        "Motor nerves carry brain commands to muscles, so the player CAN still move their fingers; however, because sensory nerves are cut, they CANNOT feel touch, temperature, or pain!",
+        "Sensory nerves move the bones, while motor nerves only carry pain.",
+        "The hand will only move when the player is asleep."
+      ],
+      "correctIndex": 0,
+      "teacherFeedback": "Spot on! Movement is governed by motor nerves. Feeling and sensation are carried by sensory nerves. With motor nerves intact, muscle motion remains functional, but sensation is lost."
+    },
+    {
+      "id": "trap_l4_brain_percentage",
+      "student": "Ananya",
+      "question": "Is it true that human beings use only 10% of their brain capacity?",
+      "studentAnswer": "Yes, scientists found that 90% of the human brain remains permanently asleep and dormant.",
+      "prompt": "Why is the '10% brain myth' scientifically false?",
+      "options": [
+        "We use only 5% of our brain, and animals use 50%.",
+        "Brain imaging proves that humans use virtually 100% of the brain; different regions coordinate continuously, even during sleep (medulla, cerebellum, sensory cortex)!",
+        "We use 10% during the daytime and the other 90% only while eating lunch."
+      ],
+      "correctIndex": 1,
+      "teacherFeedback": "Excellent! Every single area of the human brain has a designated function. The brain consumes 20% of the body's daily energy and remains active around the clock."
+    }
+  ],
+  "questions": [
+    {
+      "id": "l4_q1",
+      "category": "mcq",
+      "source": "Textbook • Section A • Q1",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "What are the three main organs that constitute the human nervous system?",
+      "options": [
+        "Heart, lungs, and blood vessels",
+        "Brain, spinal cord, and nerves",
+        "Bones, joints, and muscles",
+        "Stomach, liver, and intestines"
+      ],
+      "correct": 1,
+      "explanation": "The human nervous system is composed of the Brain (command center), Spinal Cord (main communication conduit), and a widespread network of Nerves (data cables).",
+      "takeaway": "Nervous System = Brain + Spinal Cord + Nerves."
+    },
+    {
+      "id": "l4_q2",
+      "category": "mcq",
+      "source": "Textbook • Section A • Q2",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "image": "images/l4_brain_parts.png",
+      "body": "Observe the diagram of the human brain below.<br>Which is the <strong>largest part of the brain</strong>, characterized by walnut-like convolutions, ridges, and grooves?",
+      "options": [
+        "Cerebellum",
+        "Medulla",
+        "Cerebrum",
+        "Spinal cord"
+      ],
+      "correct": 2,
+      "explanation": "The cerebrum is the upper, dome-shaped, and largest part of the brain (~85% of total brain mass). It controls thinking, intelligence, memory, speech, and sense organs.",
+      "takeaway": "Cerebrum = Largest brain part (walnut appearance, thinking & memory)."
+    },
+    {
+      "id": "l4_q3",
+      "category": "mcq",
+      "source": "Textbook • Section A • Q5",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "image": "images/l4_brain_parts.png",
+      "body": "Which part of the brain is located at the lower back of the head beneath the cerebrum and is responsible for <strong>coordinating voluntary muscle movements and maintaining body balance</strong>?",
+      "options": [
+        "Cerebrum",
+        "Cerebellum",
+        "Medulla",
+        "Spinal cord"
+      ],
+      "correct": 1,
+      "explanation": "The cerebellum coordinates muscle activities for balance, walking, running, and maintaining upright body posture. If damaged, body movements become clumsy and jerky.",
+      "takeaway": "Cerebellum = Balance, muscle coordination, and posture."
+    },
+    {
+      "id": "l4_q4",
+      "category": "mcq",
+      "source": "Textbook • Section B • Q3",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "image": "images/l4_brain_parts.png",
+      "body": "Which stem-like brain structure connects the brain to the spinal cord and controls vital <strong>involuntary activities like heartbeat, breathing, and blood circulation even during sleep</strong>?",
+      "options": [
+        "Cerebrum",
+        "Cerebellum",
+        "Medulla (Brain stem)",
+        "Optic nerve"
+      ],
+      "correct": 2,
+      "explanation": "The medulla oblongata (brain stem) regulates autonomic life-support functions 24/7 without conscious effort. It keeps you breathing and your heart beating while asleep.",
+      "takeaway": "Medulla = Autonomous 24/7 vitals: breathing, heartbeat, blood pressure."
+    },
+    {
+      "id": "l4_q5",
+      "category": "mcq",
+      "source": "Textbook • Brain Protection • Q1",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "What is the primary function of the cerebrospinal fluid present in the space between the brain tissue and the skull bone?",
+      "options": [
+        "It digests food nutrients for the brain",
+        "It acts as a shock absorber to protect the delicate brain from minor bumps and mechanical jerks",
+        "It manufactures red blood cells for the head",
+        "It produces tears to clean the eyes"
+      ],
+      "correct": 1,
+      "explanation": "Cerebrospinal fluid acts as a hydraulic cushion that buffers and protects the brain from physical impacts, mechanical shocks, and pressure changes.",
+      "takeaway": "Cerebrospinal fluid = Liquid shock absorber cushioning the brain inside the skull."
+    },
+    {
+      "id": "l4_q6",
+      "category": "mcq",
+      "source": "Textbook • Section B • Q1",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "image": "images/l4_reflex_arc.png",
+      "body": "Observe the reflex action pathway shown below.<br>Which part of the central nervous system controls these <strong>lightning-quick, automatic emergency actions without waiting for the brain</strong>?",
+      "options": [
+        "Cerebrum",
+        "Cerebellum",
+        "Spinal cord",
+        "Medulla"
+      ],
+      "correct": 2,
+      "explanation": "Reflex actions (like jerking your hand away from a hot pan or blinking at flying dust) are controlled directly by the spinal cord to protect tissues with maximum speed.",
+      "takeaway": "Reflex action = Controlled by Spinal Cord (bypasses brain for emergency speed)."
+    },
+    {
+      "id": "l4_q7",
+      "category": "mcq",
+      "source": "Thinkbook • Sheet 3 • Q1",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "image": "images/l4_reflex_arc.png",
+      "body": "What is the correct sequential pathway of nerve impulses during an emergency reflex action when touching a hot cup?",
+      "options": [
+        "Brain → Motor nerve → Skin receptor → Spinal cord",
+        "Skin receptor → Sensory nerve → Spinal cord → Motor nerve → Arm muscle contracts",
+        "Arm muscle → Motor nerve → Spinal cord → Sensory nerve",
+        "Skin receptor → Cerebrum → Cerebellum → Spinal cord"
+      ],
+      "correct": 1,
+      "explanation": "In a reflex arc: Receptors in skin detect heat → Sensory neuron carries electrical signal to Spinal Cord → Spinal cord fires immediate motor response → Motor neuron commands arm biceps to contract and yank hand away.",
+      "takeaway": "Reflex Arc Sequence: Receptor → Sensory Nerve → Spinal Cord → Motor Nerve → Muscle."
+    },
+    {
+      "id": "l4_q8",
+      "category": "mcq",
+      "source": "Textbook • Section B • Q2",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "body": "What are the specialized microscopic cells that form the structural and functional units of the nervous system called?",
+      "options": [
+        "Platelets",
+        "Neurons (nerve cells)",
+        "Vertebrae",
+        "Nephrons"
+      ],
+      "correct": 1,
+      "explanation": "Neurons (nerve cells) are the building blocks of the nervous system. They possess dendrites to receive signals, a cell body, and an elongated axon to transmit electrical impulses.",
+      "takeaway": "Neuron = Fundamental nerve cell transmitting electrical impulses."
+    },
+    {
+      "id": "l4_q9",
+      "category": "mcq",
+      "source": "Textbook • Section C • Q6",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "body": "A person suffered a stroke that damaged the <strong>left hemisphere of his cerebrum</strong>. Which side of his body is most likely to suffer weakness or paralysis?",
+      "options": [
+        "Left side of his body",
+        "Right side of his body",
+        "Both sides of his body equally",
+        "Neither side, because the brain does not control limbs"
+      ],
+      "correct": 1,
+      "explanation": "Due to contralateral innervation, motor nerve pathways cross over in the brainstem. The left side of the brain governs the right side of the body, and vice versa.",
+      "takeaway": "Contralateral brain rule: Left brain controls right body; Right brain controls left body."
+    },
+    {
+      "id": "l4_q10",
+      "category": "mcq",
+      "source": "Textbook • Nerve Types • Q1",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "body": "Which type of nerves carry sensory information (like seeing a red traffic signal or feeling an ice cube) <strong>from sense organs TO the brain and spinal cord</strong>?",
+      "options": [
+        "Motor nerves",
+        "Sensory nerves",
+        "Mixed nerves",
+        "Cranial bones"
+      ],
+      "correct": 1,
+      "explanation": "Sensory nerves transmit incoming sensory signals from receptors to the central nervous system. Motor nerves carry outgoing commands from the CNS to muscles and glands.",
+      "takeaway": "Sensory nerves = Sense organ → Brain/Spinal cord | Motor nerves = Brain/Spinal cord → Muscles."
+    },
+    {
+      "id": "l4_q11",
+      "category": "mcq",
+      "source": "Textbook • Section A • Q3",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "image": "images/l4_eye_structure.png",
+      "body": "Observe the eye anatomy below.<br>Which circular, colored part of the eye contains pigments that give a person their <strong>distinctive eye color</strong> (brown, black, blue, or green)?",
+      "options": [
+        "Cornea",
+        "Retina",
+        "Iris",
+        "Pupil"
+      ],
+      "correct": 2,
+      "explanation": "The iris is the colored muscular ring surrounding the pupil. It regulates the size of the pupil to control how much light enters the eye.",
+      "takeaway": "Iris = Colored muscular ring controlling light aperture (eye color)."
+    },
+    {
+      "id": "l4_q12",
+      "category": "mcq",
+      "source": "Textbook • Eye Structure • Q2",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "image": "images/l4_eye_structure.png",
+      "body": "In the human eye, light rays pass through the transparent cornea and lens to form an inverted image on which <strong>light-sensitive screen at the back of the eyeball</strong>?",
+      "options": [
+        "Retina",
+        "Iris",
+        "Pupil",
+        "Optic nerve"
+      ],
+      "correct": 0,
+      "explanation": "The retina is the inner, light-sensitive sensory lining at the rear of the eye containing photoreceptor rod and cone cells where visual images are focused.",
+      "takeaway": "Retina = Light-sensitive screen where visual images form."
+    },
+    {
+      "id": "l4_q13",
+      "category": "mcq",
+      "source": "Textbook • Eye Structure • Q3",
+      "wsNumber": 3,
+      "marks": "1 Mark",
+      "image": "images/l4_eye_structure.png",
+      "body": "Which specialized sensory nerve connects the retina of the eye to the visual cortex of the brain?",
+      "options": [
+        "Auditory nerve",
+        "Optic nerve",
+        "Olfactory nerve",
+        "Spinal nerve"
+      ],
+      "correct": 1,
+      "explanation": "The optic nerve carries electrical visual impulses from the retina directly to the cerebrum, which decodes the signals so you perceive an upright, colorful image.",
+      "takeaway": "Optic nerve = Cable carrying visual signals from retina to brain."
+    },
+    {
+      "id": "l4_q14",
+      "category": "mcq",
+      "source": "Textbook • Section A • Q4",
+      "wsNumber": 3,
+      "marks": "1 Mark",
+      "image": "images/l4_ear_structure.png",
+      "body": "Observe the ear diagram below.<br>Which part of the ear contains the delicate membrane called the <strong>eardrum (tympanic membrane)</strong> that vibrates when sound waves strike it?",
+      "options": [
+        "Outer ear",
+        "Middle ear",
+        "Inner ear",
+        "Auditory nerve"
+      ],
+      "correct": 1,
+      "explanation": "The eardrum separates the outer ear canal from the middle ear cavity, which houses the 3 tiny auditory ossicle bones (hammer, anvil, stirrup).",
+      "takeaway": "Middle ear = Contains eardrum and 3 tiny acoustic amplifier bones."
+    },
+    {
+      "id": "l4_q15",
+      "category": "mcq",
+      "source": "Textbook • Ear Structure • Q2",
+      "wsNumber": 3,
+      "marks": "1 Mark",
+      "image": "images/l4_ear_structure.png",
+      "body": "In the inner ear, which <strong>spiral, fluid-filled snail-shell structure</strong> transforms mechanical sound vibrations into electrical nerve signals?",
+      "options": [
+        "Pinna",
+        "Cochlea",
+        "Eardrum",
+        "Orbit"
+      ],
+      "correct": 1,
+      "explanation": "The cochlea is the snail-shaped cavity of the inner ear. Microscopic hair cells inside fluid chambers translate physical sound vibrations into electrical signals sent to the auditory nerve.",
+      "takeaway": "Cochlea = Snail-shaped inner ear organ converting sound vibrations to nerve signals."
+    },
+    {
+      "id": "l4_q16",
+      "category": "mcq",
+      "source": "Thinkbook • Sheet 4 • Q2",
+      "wsNumber": 3,
+      "marks": "1 Mark",
+      "body": "Besides sensing sound waves for hearing, what other crucial function is performed by the <strong>inner ear</strong>?",
+      "options": [
+        "Maintaining body balance and equilibrium",
+        "Digesting solid food particles",
+        "Filtering dust from inhaling air",
+        "Producing hormones for leg growth"
+      ],
+      "correct": 0,
+      "explanation": "The inner ear contains semicircular canals filled with sensory fluid that detect changes in head position and signal the cerebellum to maintain balance and posture.",
+      "takeaway": "Ears perform TWO functions: Hearing sound + Maintaining body balance!"
+    },
+    {
+      "id": "l4_q17",
+      "category": "mcq",
+      "source": "Textbook • Section A • Q2",
+      "wsNumber": 3,
+      "marks": "1 Mark",
+      "body": "Which is the <strong>largest organ of the human body</strong>, covering the entire exterior surface?",
+      "options": [
+        "The liver",
+        "The brain",
+        "The skin",
+        "The tongue"
+      ],
+      "correct": 2,
+      "explanation": "The skin is the largest organ of the human body. It protects internal organs, detects touch/temperature/pain, and regulates body temperature via sweating.",
+      "takeaway": "Skin = Largest organ of human body (protective shield & sensory receptor)."
+    },
+    {
+      "id": "l4_q18",
+      "category": "whoami",
+      "source": "Textbook • Section B • Q4",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "body": "<strong>Who am I?</strong><br>I am the circular, transparent dome at the front of the eye that receives incoming light and protects the inner eyeball.",
+      "options": [
+        "Retina",
+        "Cornea",
+        "Iris",
+        "Pupil"
+      ],
+      "correct": 1,
+      "explanation": "The cornea is the clear, transparent anterior window of the eyeball through which light first passes into the eye.",
+      "takeaway": "Cornea = Clear front dome of the eye receiving light."
+    },
+    {
+      "id": "l4_q19",
+      "category": "whoami",
+      "source": "Thinkbook • Sheet 4 • Q2",
+      "wsNumber": 2,
+      "marks": "1 Mark",
+      "body": "<strong>Who am I?</strong><br>I am the visible outer flap of the ear made of cartilage that acts like a sound-funnel to collect acoustic waves from the environment.",
+      "options": [
+        "Cochlea",
+        "Pinna",
+        "Eardrum",
+        "Stirrup"
+      ],
+      "correct": 1,
+      "explanation": "The pinna (auricle) is the external cartilage structure of the ear designed to collect sound vibrations and guide them into the ear canal.",
+      "takeaway": "Pinna = Outer ear flap that collects sound waves."
+    },
+    {
+      "id": "l4_q20",
+      "category": "compare",
+      "source": "Textbook • Section D • Q2",
+      "wsNumber": 3,
+      "marks": "2 Marks",
+      "body": "Which option accurately compares a <strong>reflex action</strong> with a <strong>voluntary action</strong>?",
+      "options": [
+        "Reflex action: quick, automatic, controlled by the spinal cord (e.g. blinking); Voluntary action: conscious, deliberate, controlled by the cerebrum (e.g. writing an essay)",
+        "Reflex action is controlled by the heart; Voluntary action is controlled by the liver",
+        "Reflex action works only when you are asleep; Voluntary action works only when running",
+        "Reflex actions take 5 minutes; Voluntary actions take 1 second"
+      ],
+      "correct": 0,
+      "explanation": "Reflex actions are involuntary rapid responses managed by the spinal cord without conscious thinking. Voluntary actions involve conscious analysis and decision-making by the brain's cerebrum.",
+      "takeaway": "Reflex = Spinal cord automatic protection | Voluntary = Cerebrum conscious decision."
+    },
+    {
+      "id": "l4_q21",
+      "category": "scenario",
+      "source": "Thinkbook • Sheet 2 • Q2",
+      "wsNumber": 3,
+      "marks": "2 Marks",
+      "body": "During Suman's day: at 6:50 AM she is in deep sleep breathing steadily; at 7:00 AM she walks downstairs balancing on each step; at 8:00 AM she solves a tough puzzle. Which parts of her brain are primarily active in these three events?",
+      "options": [
+        "6:50 AM: Medulla (breathing) | 7:00 AM: Cerebellum (balance) | 8:00 AM: Cerebrum (logic & thinking)",
+        "6:50 AM: Cerebrum | 7:00 AM: Medulla | 8:00 AM: Cerebellum",
+        "6:50 AM: Cerebellum | 7:00 AM: Cerebrum | 8:00 AM: Medulla",
+        "The brain is completely turned off during all three activities"
+      ],
+      "correct": 0,
+      "explanation": "The Medulla manages involuntary life-support (breathing while asleep); the Cerebellum coordinates muscles for balance while walking; the Cerebrum processes logical deductions when solving puzzles.",
+      "takeaway": "Suman's day: Sleeping breathing = Medulla | Walking balance = Cerebellum | Thinking puzzle = Cerebrum."
+    },
+    {
+      "id": "l4_q22",
+      "category": "scenario",
+      "source": "Thinkbook • Sheet 3 • Q3",
+      "wsNumber": 3,
+      "marks": "2 Marks",
+      "body": "In Thinkbook Sheet 3, a diagram depicts an isolated nerve running directly from the right wrist straight down to the right ankle, without any connection to the spine or brain. Could such a nerve exist in a living human body?",
+      "options": [
+        "Yes, because wrists and ankles need to communicate directly when running",
+        "No, because ALL peripheral nerves must connect to the Central Nervous System (brain or spinal cord) to send and receive commands!",
+        "Yes, but only in professional gymnasts and sprinters",
+        "No, because nerves only exist inside the skull"
+      ],
+      "correct": 1,
+      "explanation": "Nerves do not communicate in isolated loops between distant limbs. All peripheral nerve pathways route into the Central Nervous System (spinal cord or brain) to process data and dispatch coordinated muscle commands.",
+      "takeaway": "Biological law: All nerves must route through the Central Nervous System (Brain / Spine)."
+    }
+  ]
+},
+
+  // ------------------------------------------------------------------------
+  // CHAPTER 4: L-5 GOOD HEALTH
   // ------------------------------------------------------------------------
   {
     id: 'ch5_health',
@@ -687,12 +1737,12 @@ const CHAPTERS_DATA = [
         title: '⚠️ Deficiency Diseases',
         metaphor: 'Missing just one micronutrient is like missing a tiny screw in an aircraft engine — symptoms begin showing quickly!',
         points: [
-          '<strong>Vitamin A $\\to$ Night Blindness:</strong> Inability to see in dim light (Sources: carrots, papaya, green leafy vegetables).',
-          '<strong>Vitamin B1 $\\to$ Beriberi:</strong> Affects the heart and nervous system, causing muscle weakness (Sources: unpolished rice, cereals, milk).',
-          '<strong>Vitamin C $\\to$ Scurvy:</strong> Bleeding gums and loose teeth (Sources: amla, citrus fruits, tomatoes).',
-          '<strong>Vitamin D & Calcium $\\to$ Rickets:</strong> Soft bones leading to bowed legs and pigeon chest in children (Sources: sunlight, milk, eggs).',
-          '<strong>Iron $\\to$ Anaemia:</strong> Lack of red blood cell haemoglobin; person feels chronically tired and pale (Sources: dates, spinach, apples, jaggery).',
-          '<strong>Iodine $\\to$ Goitre:</strong> Swelling of the thyroid gland in the neck region (Source: iodised salt).'
+          '<strong>Vitamin A → Night Blindness:</strong> Inability to see in dim light (Sources: carrots, papaya, green leafy vegetables).',
+          '<strong>Vitamin B1 → Beriberi:</strong> Affects the heart and nervous system, causing muscle weakness (Sources: unpolished rice, cereals, milk).',
+          '<strong>Vitamin C → Scurvy:</strong> Bleeding gums and loose teeth (Sources: amla, citrus fruits, tomatoes).',
+          '<strong>Vitamin D & Calcium → Rickets:</strong> Soft bones leading to bowed legs and pigeon chest in children (Sources: sunlight, milk, eggs).',
+          '<strong>Iron → Anaemia:</strong> Lack of red blood cell haemoglobin; person feels chronically tired and pale (Sources: dates, spinach, apples, jaggery).',
+          '<strong>Iodine → Goitre:</strong> Swelling of the thyroid gland in the neck region (Source: iodised salt).'
         ],
         thinkPrompt: 'Why do doctors tell kids with bowed legs to play outside in morning sunlight and drink fresh milk?'
       },
@@ -802,7 +1852,7 @@ const CHAPTERS_DATA = [
         ],
         correct: 3,
         explanation: 'Vitamin D facilitates calcium absorption into bone matrices. Its deficiency leads to Rickets in children, characterized by soft, curved leg bones.',
-        takeaway: 'Bowed legs & pigeon chest $\\to$ Rickets (Vitamin D & Calcium deficiency).'
+        takeaway: 'Bowed legs & pigeon chest → Rickets (Vitamin D & Calcium deficiency).'
       },
       {
         id: 'l5_q3',
@@ -952,7 +2002,7 @@ const CHAPTERS_DATA = [
         ],
         correct: 0,
         explanation: 'The liver and adipose tissue act as metabolic buffers. During periods of fasting, stored glycogen is broken down first, followed by triglycerides from fat stores.',
-        takeaway: 'Body energy backup: Stored Glycogen $\\to$ Stored Fats.'
+        takeaway: 'Body energy backup: Stored Glycogen → Stored Fats.'
       },
       {
         id: 'l5_q12',
@@ -1039,7 +2089,7 @@ const CHAPTERS_DATA = [
         ],
         correct: 0,
         explanation: 'Uncollected rubbish and stagnant rainwater pools create ideal breeding grounds for disease vectors (female Anopheles mosquitoes for malaria, Aedes mosquitoes for dengue, and houseflies for cholera). The best defense is maintaining clean surroundings, covering water storage containers, and preventing water from stagnating.',
-        takeaway: 'Stagnant water + open trash = Mosquito breeding $\\to$ Communicable vector-borne outbreaks (Malaria & Dengue).'
+        takeaway: 'Stagnant water + open trash = Mosquito breeding → Communicable vector-borne outbreaks (Malaria & Dengue).'
       },
       {
         id: 'l5_q17',
@@ -1320,7 +2370,7 @@ const CHAPTERS_DATA = [
         ],
         correct: 1,
         explanation: 'The balance tipped toward the remaining inflated balloon because the air trapped inside possesses mass and exerts downward gravitational pull.',
-        takeaway: 'Inflated balloon tilts balance $\\to$ Air has mass and weight.'
+        takeaway: 'Inflated balloon tilts balance → Air has mass and weight.'
       },
       {
         id: 'l7_q2',
@@ -1391,7 +2441,7 @@ const CHAPTERS_DATA = [
         ],
         correct: 0,
         explanation: 'Water impurities are divided into two fundamental classes: (a) Insoluble impurities (sand, clay) which settle by gravity and can be removed by sedimentation, decantation (c), or filtration (d); and (b) Soluble impurities (dissolved minerals/salts) which require thermal methods like evaporation or distillation (e).',
-        takeaway: 'Impurities flowchart: a = Insoluble (sand/clay) $\\to$ filtration; b = Soluble (salt) $\\to$ distillation/evaporation.'
+        takeaway: 'Impurities flowchart: a = Insoluble (sand/clay) → filtration; b = Soluble (salt) → distillation/evaporation.'
       },
       {
         id: 'l7_q6',
@@ -1459,7 +2509,7 @@ const CHAPTERS_DATA = [
         ],
         correct: 0,
         explanation: 'An "empty" bottle is full of invisible air. Because air occupies volume, water cannot enter the rigid container until the air is displaced.',
-        takeaway: 'Bubbles escaping tilted bottle $\\to$ Air occupies space.'
+        takeaway: 'Bubbles escaping tilted bottle → Air occupies space.'
       },
       {
         id: 'l7_q10',
@@ -1494,7 +2544,7 @@ const CHAPTERS_DATA = [
         ],
         correct: 0,
         explanation: 'Distillation involves two continuous phase changes: (1) Boiling impure water into steam, leaving soluble impurities behind; (2) The steam passes into the Liebig condenser (O) where cold circulating water cools the vapor, condensing it back into pure liquid that drips into flask N. Without condenser O, hot vapor escapes into the room and cannot be collected!',
-        takeaway: 'Distillation setup: Boiling flask $\\to$ Condenser O (condensation) $\\to$ Flask N (pure distillate). Without O, vapor escapes!'
+        takeaway: 'Distillation setup: Boiling flask → Condenser O (condensation) → Flask N (pure distillate). Without O, vapor escapes!'
       },
       {
         id: 'l7_q12',
@@ -1512,7 +2562,7 @@ const CHAPTERS_DATA = [
         ],
         correct: 0,
         explanation: 'Fire requires oxygen ($O_2$) for chemical combustion. When inverted glass cuts off fresh air, the flame consumes the finite enclosed oxygen and goes out.',
-        takeaway: 'Inverted jar over candle $\\to$ Oxygen is required to support combustion.'
+        takeaway: 'Inverted jar over candle → Oxygen is required to support combustion.'
       },
       {
         id: 'l7_q13',
@@ -1653,10 +2703,10 @@ const CHAPTERS_DATA = [
         title: '🧊 Phase Transitions & Sublimation',
         metaphor: 'Heating and cooling change how molecules dance without altering what the substance is made of!',
         points: [
-          '<strong>Melting:</strong> Solid $\\to$ Liquid (Ice turns to water).',
-          '<strong>Freezing:</strong> Liquid $\\to$ Solid (Water turns to ice cubes).',
-          '<strong>Evaporation / Boiling:</strong> Liquid $\\to$ Gas (Water turns to steam).',
-          '<strong>Condensation:</strong> Gas $\\to$ Liquid (Steam forms tiny water droplets on cold pot lid).',
+          '<strong>Melting:</strong> Solid → Liquid (Ice turns to water).',
+          '<strong>Freezing:</strong> Liquid → Solid (Water turns to ice cubes).',
+          '<strong>Evaporation / Boiling:</strong> Liquid → Gas (Water turns to steam).',
+          '<strong>Condensation:</strong> Gas → Liquid (Steam forms tiny water droplets on cold pot lid).',
           '<strong>Sublimation:</strong> Solid changes <em>directly into gas</em> without melting into a liquid (e.g. Naphthalene mothballs, Dry Ice / solid $CO_2$, Camphor).',
           '<strong>Deposition:</strong> Gas changes directly into solid (e.g. Frost formation, dry ice manufacturing).'
         ],
@@ -1766,7 +2816,7 @@ const CHAPTERS_DATA = [
         ],
         correct: 2,
         explanation: 'Sublimation is the direct transition from the solid state into the gaseous state without passing through the liquid phase.',
-        takeaway: 'Solid $\\to$ Gas directly = Sublimation.'
+        takeaway: 'Solid → Gas directly = Sublimation.'
       },
       {
         id: 'l13_q3',
@@ -1802,7 +2852,7 @@ const CHAPTERS_DATA = [
         ],
         correct: 0,
         explanation: 'Hot liquid tea evaporates into hot water vapor. When this rising steam strikes the cooler surface of the ceramic saucer or glass lid, it loses heat energy. The gaseous molecules slow down, draw closer together, and condense into liquid water droplets.',
-        takeaway: 'Rising steam cooling against lid $\\to$ Liquid droplets = Condensation.'
+        takeaway: 'Rising steam cooling against lid → Liquid droplets = Condensation.'
       },
       {
         id: 'l13_q5',
@@ -1939,7 +2989,7 @@ const CHAPTERS_DATA = [
           'Iron only rusts when exposed to salt-free mountain air.'
         ],
         correct: 0,
-        explanation: 'Rusting is a chemical oxidation reaction ($4Fe + 3O_2 + 2xH_2O \\to 2Fe_2O_3 \\cdot xH_2O$). It strictly requires BOTH oxygen and water vapor. Coastal Kerala has a humid maritime climate with high moisture in the air, causing rapid rust. Desert Rajasthan has low humidity, so the lack of water vapor prevents rusting.',
+        explanation: 'Rusting is a chemical oxidation reaction ($4Fe + 3O_2 + 2xH_2O → 2Fe_2O_3 \\cdot xH_2O$). It strictly requires BOTH oxygen and water vapor. Coastal Kerala has a humid maritime climate with high moisture in the air, causing rapid rust. Desert Rajasthan has low humidity, so the lack of water vapor prevents rusting.',
         takeaway: 'Rusting formula: Iron + Oxygen + Moisture. High humidity (Kerala) = Rapid rust | Dry air (Rajasthan) = No rust.'
       },
       {
@@ -2088,7 +3138,13 @@ let state = {
     moleculeState: 'solid',
     balloonState: 'balanced',
     dietNutrient: 'protein',
-    animalSelected: 'eagle'
+    animalSelected: 'eagle',
+    // L-3 Skeletal Lab
+    jointType: 'ball_socket',
+    muscleArmState: 'flexed',
+    // L-4 Nervous Lab
+    brainPart: 'cerebrum',
+    reflexTriggered: false
   },
   // Printable Worksheet settings
   worksheetSettings: {
@@ -2240,6 +3296,17 @@ function getActiveChapter() {
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   loadActiveState();
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const qCh = params.get('ch');
+    const qMode = params.get('mode');
+    if (qCh && CHAPTERS_DATA.some(c => c.id === qCh)) {
+      state.activeChapterId = qCh;
+    }
+    if (qMode && ['learn', 'traps', 'practice', 'revision', 'challenge', 'worksheet'].includes(qMode)) {
+      state.activeMode = qMode;
+    }
+  } catch (e) {}
   initSidebar();
   initTopBar();
   initModeTabs();
@@ -2501,7 +3568,11 @@ function renderLearnView(container) {
 }
 
 function renderInteractiveGadget(ch) {
-  if (ch.id === 'ch13_matter') {
+  if (ch.id === 'ch3_skeletal') {
+    return renderSkeletalGadget();
+  } else if (ch.id === 'ch4_nervous') {
+    return renderNervousGadget();
+  } else if (ch.id === 'ch13_matter') {
     return `
       <div class="interactive-lab-container">
         <div class="lab-title-bar">
@@ -2795,8 +3866,448 @@ function getAnimalCard(animal) {
   `;
 }
 
+
+// --------------------------------------------------------------------------
+// L-3 SKELETAL & MUSCULAR SYSTEM INTERACTIVE GADGET
+// --------------------------------------------------------------------------
+function renderSkeletalGadget() {
+  const joint = state.labStates.jointType || 'ball_socket';
+  const arm = state.labStates.muscleArmState || 'flexed';
+
+  return `
+    <div class="interactive-lab-container skeletal-lab-theme">
+      <div class="lab-title-bar">
+        <h4>🦴 Interactive Joint Mechanics & Antagonistic Muscle Simulator</h4>
+        <div class="lab-controls">
+          <button class="lab-btn ${joint === 'ball_socket' ? 'active' : ''}" data-joint="ball_socket">🕹️ Ball & Socket</button>
+          <button class="lab-btn ${joint === 'hinge' ? 'active' : ''}" data-joint="hinge">🚪 Hinge Joint</button>
+          <button class="lab-btn ${joint === 'pivot' ? 'active' : ''}" data-joint="pivot">🔄 Pivot Joint</button>
+          <button class="lab-btn ${joint === 'gliding' ? 'active' : ''}" data-joint="gliding">🎚️ Gliding Joint</button>
+          <button class="lab-btn ${arm === 'flexed' ? 'active' : ''}" data-arm-toggle="true" style="margin-left: 0.5rem; border-color: var(--accent-amber);">${arm === 'flexed' ? '💪 Arm: BENT (Flexed)' : '🦾 Arm: STRAIGHT (Extended)'}</button>
+        </div>
+      </div>
+      <div class="lab-stage" id="skeletal-stage">
+        ${getSkeletalStageHTML(joint, arm)}
+      </div>
+      <div class="lab-explanation" id="skeletal-explanation">
+        ${getSkeletalExplanationHTML(joint, arm)}
+      </div>
+    </div>
+  `;
+}
+
+function getSkeletalStageHTML(joint, arm) {
+  // If user clicked arm toggle or joint
+  return `
+    <div class="skeletal-gadget-dual-wrap" style="display: flex; gap: 1.5rem; width: 100%; max-width: 820px; align-items: center; justify-content: space-around; flex-wrap: wrap;">
+      <!-- Joint Mechanics Visualization -->
+      <div class="joint-vis-card" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 1rem; width: 340px; text-align: center;">
+        <h5 style="color: var(--accent-amber); margin-bottom: 0.5rem; font-size: 1rem;">Mechanical Joint Model</h5>
+        <svg viewBox="0 0 300 180" width="100%" height="160" class="joint-mechanics-svg">
+          ${renderJointSVG(joint)}
+        </svg>
+      </div>
+
+      <!-- Antagonistic Muscle Arm Visualization -->
+      <div class="muscle-vis-card" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 1rem; width: 380px; text-align: center;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <h5 style="color: #fbbf24; font-size: 1rem;">Antagonistic Pair (Biceps / Triceps)</h5>
+          <button class="btn btn-sm btn-ghost" id="btn-toggle-arm" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border: 1px solid #f59e0b;">Toggle Move</button>
+        </div>
+        <svg viewBox="0 0 340 180" width="100%" height="160" class="muscle-arm-svg">
+          ${renderArmSVG(arm)}
+        </svg>
+      </div>
+    </div>
+  `;
+}
+
+function renderJointSVG(joint) {
+  if (joint === 'ball_socket') {
+    return `
+      <!-- Ball and Socket Joint (Shoulder / Hip) -->
+      <!-- Socket (Cup) -->
+      <path d="M 80 40 A 55 55 0 0 0 80 140 L 40 140 L 40 40 Z" fill="#334155" stroke="#94a3b8" stroke-width="3" />
+      <text x="50" y="25" fill="#94a3b8" font-size="12" font-weight="bold">Cup Socket (Scapula/Pelvis)</text>
+      <!-- Ball Head -->
+      <circle cx="95" cy="90" r="42" fill="#f59e0b" stroke="#fbbf24" stroke-width="3" opacity="0.9" />
+      <!-- Bone Shaft (Humerus/Femur) with rotary 360 degree arrows -->
+      <path d="M 130 90 L 260 90" stroke="#f59e0b" stroke-width="18" stroke-linecap="round" />
+      <text x="180" y="80" fill="#fde68a" font-size="12" font-weight="bold">Bone Shaft</text>
+      <!-- Rotary arrows -->
+      <circle cx="210" cy="90" r="28" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="8,4" />
+      <polygon points="238,90 232,82 244,82" fill="#38bdf8" />
+      <text x="175" y="145" fill="#38bdf8" font-size="12" font-weight="bold">360° Rotary Freedom</text>
+    `;
+  } else if (joint === 'hinge') {
+    return `
+      <!-- Hinge Joint (Elbow / Knee) -->
+      <rect x="30" y="75" width="90" height="26" rx="6" fill="#475569" stroke="#94a3b8" stroke-width="2" />
+      <text x="40" y="65" fill="#94a3b8" font-size="12" font-weight="bold">Fixed Upper Bone</text>
+      <!-- Hinge Pin -->
+      <circle cx="120" cy="88" r="14" fill="#f59e0b" stroke="#fbbf24" stroke-width="3" />
+      <!-- Swinging arm -->
+      <line x1="120" y1="88" x2="230" y2="40" stroke="#f59e0b" stroke-width="16" stroke-linecap="round" />
+      <!-- 1-direction Arc -->
+      <path d="M 230 40 A 120 120 0 0 1 230 135" fill="none" stroke="#10b981" stroke-width="3" stroke-dasharray="6,4" />
+      <polygon points="230,135 222,125 238,125" fill="#10b981" />
+      <text x="140" y="165" fill="#10b981" font-size="12" font-weight="bold">1-Direction Swing (180°)</text>
+    `;
+  } else if (joint === 'pivot') {
+    return `
+      <!-- Pivot Joint (Neck / Atlas-Axis) -->
+      <!-- Central Cylindrical Peg -->
+      <rect x="135" y="40" width="30" height="95" rx="10" fill="#f59e0b" stroke="#fbbf24" stroke-width="3" />
+      <text x="110" y="25" fill="#fde68a" font-size="12" font-weight="bold">Axis Peg (Spine)</text>
+      <!-- Rotating Ring (Atlas) -->
+      <ellipse cx="150" cy="85" rx="55" ry="24" fill="none" stroke="#06b6d4" stroke-width="10" />
+      <!-- Rotational arrows -->
+      <path d="M 90 85 A 60 25 0 0 1 210 85" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="6,4" />
+      <polygon points="210,85 204,78 214,78" fill="#38bdf8" />
+      <polygon points="90,85 96,92 86,92" fill="#38bdf8" />
+      <text x="100" y="155" fill="#06b6d4" font-size="12" font-weight="bold">Rotation Left & Right</text>
+    `;
+  } else {
+    // Gliding Joint (Wrist / Ankle)
+    return `
+      <!-- Gliding Joint (Carpals/Tarsals) -->
+      <!-- Flat Bone Plate 1 -->
+      <rect x="60" y="55" width="180" height="30" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2.5" />
+      <!-- Flat Bone Plate 2 -->
+      <rect x="80" y="95" width="180" height="30" rx="8" fill="#f59e0b" stroke="#fbbf24" stroke-width="2.5" />
+      <!-- Sliding arrows between them -->
+      <line x1="120" y1="90" x2="220" y2="90" stroke="#ec4899" stroke-width="3" />
+      <polygon points="220,90 212,85 212,95" fill="#ec4899" />
+      <polygon points="120,90 128,85 128,95" fill="#ec4899" />
+      <text x="85" y="40" fill="#94a3b8" font-size="12" font-weight="bold">Upper Bone Plate</text>
+      <text x="105" y="150" fill="#fde68a" font-size="12" font-weight="bold">Lower Bone Plate</text>
+      <text x="80" y="172" fill="#ec4899" font-size="12" font-weight="bold">Smooth Multi-directional Slide</text>
+    `;
+  }
+}
+
+function renderArmSVG(armState) {
+  const isFlexed = armState === 'flexed';
+  if (isFlexed) {
+    // BENT ARM: Biceps bulged/contracted (orange), Triceps stretched (grayish)
+    return `
+      <!-- Humerus (Upper arm) -->
+      <line x1="50" y1="120" x2="160" y2="120" stroke="#cbd5e1" stroke-width="16" stroke-linecap="round" />
+      <text x="70" y="145" fill="#94a3b8" font-size="11">Humerus</text>
+      <!-- Elbow Hinge Joint -->
+      <circle cx="160" cy="120" r="10" fill="#f59e0b" stroke="#fff" stroke-width="2" />
+      <!-- Forearm (bent up at 50 degrees) -->
+      <line x1="160" y1="120" x2="250" y2="40" stroke="#cbd5e1" stroke-width="14" stroke-linecap="round" />
+      <text x="220" y="25" fill="#94a3b8" font-size="11">Radius & Ulna</text>
+      <!-- Biceps (TOP - Bulged & Contracting) -->
+      <path d="M 75 110 Q 140 60 195 90" fill="none" stroke="#ef4444" stroke-width="14" stroke-linecap="round" filter="drop-shadow(0 0 6px rgba(239,68,68,0.7))" />
+      <text x="95" y="65" fill="#fca5a5" font-size="12" font-weight="bold">Biceps: CONTRACTED! (Bulging & Pulling)</text>
+      <!-- Triceps (BOTTOM - Relaxed & Stretched) -->
+      <path d="M 65 130 Q 120 145 155 132" fill="none" stroke="#64748b" stroke-width="8" stroke-linecap="round" />
+      <text x="80" y="165" fill="#94a3b8" font-size="11">Triceps: RELAXED (Lengthened)</text>
+    `;
+  } else {
+    // STRAIGHT ARM: Triceps contracted/bulged (orange), Biceps relaxed/stretched (grayish)
+    return `
+      <!-- Humerus (Upper arm) -->
+      <line x1="40" y1="90" x2="150" y2="90" stroke="#cbd5e1" stroke-width="16" stroke-linecap="round" />
+      <text x="65" y="75" fill="#94a3b8" font-size="11">Humerus</text>
+      <!-- Elbow Hinge Joint -->
+      <circle cx="150" cy="90" r="10" fill="#f59e0b" stroke="#fff" stroke-width="2" />
+      <!-- Forearm (straightened out horizontally) -->
+      <line x1="150" y1="90" x2="290" y2="90" stroke="#cbd5e1" stroke-width="14" stroke-linecap="round" />
+      <text x="210" y="75" fill="#94a3b8" font-size="11">Radius & Ulna</text>
+      <!-- Biceps (TOP - Relaxed & Thinned) -->
+      <path d="M 70 80 Q 140 76 210 82" fill="none" stroke="#64748b" stroke-width="8" stroke-linecap="round" />
+      <text x="95" y="55" fill="#94a3b8" font-size="11">Biceps: RELAXED (Stretched)</text>
+      <!-- Triceps (BOTTOM - Contracted & Bulged) -->
+      <path d="M 60 100 Q 125 125 158 102" fill="none" stroke="#ef4444" stroke-width="14" stroke-linecap="round" filter="drop-shadow(0 0 6px rgba(239,68,68,0.7))" />
+      <text x="75" y="145" fill="#fca5a5" font-size="12" font-weight="bold">Triceps: CONTRACTED! (Pulling Forearm Down)</text>
+    `;
+  }
+}
+
+function getSkeletalExplanationHTML(joint, arm) {
+  let jointText = '';
+  if (joint === 'ball_socket') {
+    jointText = '<strong>BALL & SOCKET JOINT:</strong> Ball fits in cup-like socket $\\implies$ <strong>360° Rotary Movement</strong>. Found in <strong>Shoulder & Hip</strong>. Like a computer joystick!';
+  } else if (joint === 'hinge') {
+    jointText = '<strong>HINGE JOINT:</strong> Opens and closes in <strong>1 Direction Only (180°)</strong> like a door hinge. Found in <strong>Knees, Elbows, Fingers, and Toes</strong>.';
+  } else if (joint === 'pivot') {
+    jointText = '<strong>PIVOT JOINT:</strong> Ring rotates around a central peg. Located between <strong>Skull & Backbone (Atlas & Axis)</strong>. Allows nodding "yes" and turning "no".';
+  } else {
+    jointText = '<strong>GLIDING JOINT:</strong> Flat bone surfaces slide past each other. Present in <strong>Wrists, Ankles, and Spine</strong>. Enables flexible twisting and waving.';
+  }
+
+  const armText = arm === 'flexed'
+    ? '<span style="color: #fbbf24;">Arm Flexion:</span> <strong>Biceps CONTRACTS</strong> (pulls forearm up) while <strong>Triceps RELAXES</strong>.'
+    : '<span style="color: #fbbf24;">Arm Extension:</span> <strong>Triceps CONTRACTS</strong> (pulls forearm down) while <strong>Biceps RELAXES</strong>.';
+
+  return `
+    <div style="margin-bottom: 0.5rem;">${jointText}</div>
+    <div style="background: rgba(245, 158, 11, 0.12); padding: 0.5rem 0.8rem; border-radius: 6px; border-left: 3px solid #f59e0b;">
+      ${armText} <em>(Golden rule: Muscles can ONLY PULL, they NEVER PUSH!)</em>
+    </div>
+  `;
+}
+
+function attachSkeletalGadgetEvents() {
+  const jointBtns = document.querySelectorAll('.lab-btn[data-joint]');
+  jointBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      AudioController.click();
+      jointBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.labStates.jointType = btn.getAttribute('data-joint');
+      updateSkeletalGadgetView();
+    });
+  });
+
+  const armToggleBtn = document.querySelector('.lab-btn[data-arm-toggle]');
+  if (armToggleBtn) {
+    armToggleBtn.addEventListener('click', toggleArmMovement);
+  }
+
+  const armMiniBtn = document.getElementById('btn-toggle-arm');
+  if (armMiniBtn) {
+    armMiniBtn.addEventListener('click', toggleArmMovement);
+  }
+}
+
+function toggleArmMovement() {
+  AudioController.click();
+  state.labStates.muscleArmState = (state.labStates.muscleArmState === 'flexed') ? 'extended' : 'flexed';
+  updateSkeletalGadgetView();
+}
+
+function updateSkeletalGadgetView() {
+  const stage = document.getElementById('skeletal-stage');
+  const exp = document.getElementById('skeletal-explanation');
+  if (stage) stage.innerHTML = getSkeletalStageHTML(state.labStates.jointType, state.labStates.muscleArmState);
+  if (exp) exp.innerHTML = getSkeletalExplanationHTML(state.labStates.jointType, state.labStates.muscleArmState);
+
+  // Update button label
+  const armToggleBtn = document.querySelector('.lab-btn[data-arm-toggle]');
+  if (armToggleBtn) {
+    armToggleBtn.textContent = (state.labStates.muscleArmState === 'flexed') ? '💪 Arm: BENT (Flexed)' : '🦾 Arm: STRAIGHT (Extended)';
+  }
+  const armMiniBtn = document.getElementById('btn-toggle-arm');
+  if (armMiniBtn) {
+    armMiniBtn.addEventListener('click', toggleArmMovement);
+  }
+}
+
+// --------------------------------------------------------------------------
+// L-4 NERVOUS SYSTEM & SENSE ORGANS INTERACTIVE GADGET
+// --------------------------------------------------------------------------
+function renderNervousGadget() {
+  const part = state.labStates.brainPart || 'cerebrum';
+  const isReflex = state.labStates.reflexTriggered || false;
+
+  return `
+    <div class="interactive-lab-container nervous-lab-theme">
+      <div class="lab-title-bar">
+        <h4>🧠 Interactive Brain Regions & Spinal Reflex Arc Simulator</h4>
+        <div class="lab-controls">
+          <button class="lab-btn ${part === 'cerebrum' ? 'active' : ''}" data-brain="cerebrum">🧠 Cerebrum (Thinking & Senses)</button>
+          <button class="lab-btn ${part === 'cerebellum' ? 'active' : ''}" data-brain="cerebellum">🤸 Cerebellum (Balance)</button>
+          <button class="lab-btn ${part === 'medulla' ? 'active' : ''}" data-brain="medulla">🫀 Medulla (24/7 Vitals)</button>
+          <button class="lab-btn ${isReflex ? 'active' : ''}" id="btn-trigger-reflex" style="border-color: #ef4444; color: #fca5a5;">🔥 Test Reflex Arc!</button>
+        </div>
+      </div>
+      <div class="lab-stage" id="nervous-stage">
+        ${getNervousStageHTML(part, isReflex)}
+      </div>
+      <div class="lab-explanation" id="nervous-explanation">
+        ${getNervousExplanationHTML(part, isReflex)}
+      </div>
+    </div>
+  `;
+}
+
+function getNervousStageHTML(part, isReflex) {
+  if (isReflex) {
+    return `
+      <!-- Animated Reflex Arc Simulation -->
+      <div style="width: 100%; max-width: 720px; text-align: center;">
+        <h5 style="color: #f87171; margin-bottom: 0.5rem; font-size: 1.05rem;">⚡ Emergency Reflex Loop: Skin → Sensory → Spinal Cord → Motor → Muscle</h5>
+        <svg viewBox="0 0 520 200" width="100%" height="190" class="reflex-arc-svg">
+          <!-- Hot Pan -->
+          <rect x="20" y="145" width="70" height="35" rx="6" fill="#475569" stroke="#ef4444" stroke-width="2" />
+          <path d="M 30 145 Q 40 125 50 145 Q 60 120 70 145" fill="none" stroke="#f97316" stroke-width="3" />
+          <text x="32" y="170" fill="#fca5a5" font-size="11" font-weight="bold">HOT PAN</text>
+          
+          <!-- Hand touching -->
+          <circle cx="55" cy="120" r="16" fill="#fbcfe8" stroke="#ec4899" stroke-width="2" />
+          <text x="15" y="105" fill="#f472b6" font-size="11">Skin Receptor</text>
+
+          <!-- Sensory Nerve Cable (Red Pulse to Spinal Cord) -->
+          <path d="M 68 112 C 140 50, 240 50, 360 85" fill="none" stroke="#ef4444" stroke-width="4" stroke-dasharray="8,4" class="animated-nerve-pulse" />
+          <text x="140" y="45" fill="#f87171" font-size="11" font-weight="bold">1. Sensory Nerve (Input Signal) →</text>
+
+          <!-- Spinal Cord Butterfly Section -->
+          <rect x="360" y="55" width="130" height="110" rx="16" fill="#1e293b" stroke="#8b5cf6" stroke-width="3" />
+          <path d="M 390 90 Q 425 110 400 135 Q 425 110 460 135 Q 435 110 460 90 Q 425 105 390 90 Z" fill="#ec4899" opacity="0.85" />
+          <text x="375" y="80" fill="#c084fc" font-size="12" font-weight="bold">SPINAL CORD</text>
+          <text x="370" y="155" fill="#a78bfa" font-size="10">(Brain Bypassed!)</text>
+
+          <!-- Motor Nerve Cable (Green Pulse Back to Muscle) -->
+          <path d="M 360 125 C 260 165, 180 160, 110 125" fill="none" stroke="#10b981" stroke-width="4" stroke-dasharray="8,4" class="animated-nerve-pulse-reverse" />
+          <text x="150" y="185" fill="#34d399" font-size="11" font-weight="bold">← 2. Motor Nerve (Yank Arm Command!)</text>
+
+          <!-- Arm Muscle Jerk Indicator -->
+          <rect x="75" y="85" width="55" height="24" rx="6" fill="#10b981" stroke="#34d399" stroke-width="2" />
+          <text x="80" y="101" fill="#fff" font-size="10" font-weight="bold">BICEPS</text>
+        </svg>
+      </div>
+    `;
+  }
+
+  // Brain Model
+  return `
+    <div style="display: flex; gap: 1.5rem; width: 100%; max-width: 820px; align-items: center; justify-content: space-around; flex-wrap: wrap;">
+      <!-- Brain SVG with active highlight -->
+      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(139, 92, 246, 0.35); border-radius: 14px; padding: 1rem; width: 360px; text-align: center;">
+        <h5 style="color: var(--accent-purple); margin-bottom: 0.4rem; font-size: 1rem;">Human Brain Architecture</h5>
+        <svg viewBox="0 0 320 220" width="100%" height="190" class="brain-vis-svg">
+          <!-- Cerebrum (Top Dome with Convolutions) -->
+          <path d="M 60 130 C 40 80, 70 30, 150 25 C 230 20, 280 60, 270 120 C 260 145, 210 150, 180 140 C 130 145, 80 145, 60 130 Z" 
+                fill="${part === 'cerebrum' ? '#8b5cf6' : '#475569'}" 
+                stroke="${part === 'cerebrum' ? '#c084fc' : '#94a3b8'}" 
+                stroke-width="3" 
+                filter="${part === 'cerebrum' ? 'drop-shadow(0 0 10px rgba(139,92,246,0.8))' : 'none'}" />
+          <!-- Cerebrum walnut folds lines -->
+          <path d="M 90 60 Q 140 80 120 110 M 150 45 Q 170 95 190 65 M 200 80 Q 240 105 220 130" fill="none" stroke="#cbd5e1" stroke-width="2" opacity="0.6" />
+          <text x="120" y="85" fill="#fff" font-size="13" font-weight="bold">CEREBRUM</text>
+
+          <!-- Cerebellum (Back Bottom Cauliflower) -->
+          <path d="M 195 135 C 240 135, 270 160, 250 185 C 220 205, 180 190, 175 160 Z" 
+                fill="${part === 'cerebellum' ? '#10b981' : '#334155'}" 
+                stroke="${part === 'cerebellum' ? '#34d399' : '#64748b'}" 
+                stroke-width="3" 
+                filter="${part === 'cerebellum' ? 'drop-shadow(0 0 10px rgba(16,185,129,0.8))' : 'none'}" />
+          <text x="185" y="165" fill="#fff" font-size="11" font-weight="bold">CEREBELLUM</text>
+
+          <!-- Medulla (Brain Stem leading to spinal cord) -->
+          <path d="M 150 145 L 175 155 L 145 215 L 125 210 Z" 
+                fill="${part === 'medulla' ? '#f59e0b' : '#1e293b'}" 
+                stroke="${part === 'medulla' ? '#fbbf24' : '#475569'}" 
+                stroke-width="3" 
+                filter="${part === 'medulla' ? 'drop-shadow(0 0 10px rgba(245,158,11,0.8))' : 'none'}" />
+          <text x="75" y="195" fill="${part === 'medulla' ? '#fbbf24' : '#94a3b8'}" font-size="11" font-weight="bold">MEDULLA →</text>
+        </svg>
+      </div>
+
+      <!-- Clinical / Daily Life Info Card -->
+      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(139, 92, 246, 0.35); border-radius: 14px; padding: 1.2rem; width: 380px; text-align: left;">
+        ${getBrainCardHTML(part)}
+      </div>
+    </div>
+  `;
+}
+
+function getBrainCardHTML(part) {
+  if (part === 'cerebrum') {
+    return `
+      <span class="badge" style="background: rgba(139, 92, 246, 0.2); color: #c084fc; font-weight: 700; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px;">Top Dome • ~85% of Mass</span>
+      <h4 style="color: #fff; margin: 0.5rem 0; font-size: 1.25rem;">🧠 The Cerebrum (CPU)</h4>
+      <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 0.6rem;">Has deep grooves and ridges resembling a walnut. Controls all mental and conscious operations.</p>
+      <ul style="font-size: 0.88rem; color: #94a3b8; padding-left: 1.2rem; line-height: 1.5;">
+        <li><strong>Mental Powers:</strong> Thinking, reasoning, logic, memory, spelling, imagination.</li>
+        <li><strong>Sensory Center:</strong> Decodes vision from eyes, hearing from ears, taste, touch, smell.</li>
+        <li><strong>Contralateral Rule:</strong> Left hemisphere controls right side of body; right hemisphere controls left!</li>
+      </ul>
+      <div style="margin-top: 0.75rem; background: rgba(139, 92, 246, 0.15); padding: 0.4rem 0.7rem; border-radius: 6px; font-size: 0.85rem; color: #e9d5ff;">
+        <strong>Daily Example:</strong> Memorizing your times tables and solving a science test!
+      </div>
+    `;
+  } else if (part === 'cerebellum') {
+    return `
+      <span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #6ee7b7; font-weight: 700; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px;">Lower Back • Muscle Master</span>
+      <h4 style="color: #fff; margin: 0.5rem 0; font-size: 1.25rem;">🤸 The Cerebellum (Gymnast)</h4>
+      <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 0.6rem;">Located under the cerebrum. Coordinates muscle timing and equilibrium.</p>
+      <ul style="font-size: 0.88rem; color: #94a3b8; padding-left: 1.2rem; line-height: 1.5;">
+        <li><strong>Muscle Coordination:</strong> Makes limb movements smooth and graceful instead of clumsy.</li>
+        <li><strong>Balance & Posture:</strong> Works closely with inner ear fluid canals so you stay upright.</li>
+        <li><strong>If Damaged:</strong> Walking becomes staggering, movements become jerky, speech slurs.</li>
+      </ul>
+      <div style="margin-top: 0.75rem; background: rgba(16, 185, 129, 0.15); padding: 0.4rem 0.7rem; border-radius: 6px; font-size: 0.85rem; color: #a7f3d0;">
+        <strong>Daily Example:</strong> Riding a two-wheel bicycle or balancing on one foot!
+      </div>
+    `;
+  } else {
+    return `
+      <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #fde68a; font-weight: 700; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px;">Brain Stem • Autonomous Life</span>
+      <h4 style="color: #fff; margin: 0.5rem 0; font-size: 1.25rem;">🫀 The Medulla (24/7 Life Guard)</h4>
+      <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 0.6rem;">Connects the brain to the spinal cord. Controls involuntary vitals.</p>
+      <ul style="font-size: 0.88rem; color: #94a3b8; padding-left: 1.2rem; line-height: 1.5;">
+        <li><strong>Never Sleeps:</strong> Operates 24 hours a day, 365 days a year without a single break!</li>
+        <li><strong>Vital Functions:</strong> Heartbeat, breathing rate, blood circulation, blood pressure.</li>
+        <li><strong>Protective Reflexes:</strong> Sneezing, coughing, swallowing food down food pipe.</li>
+      </ul>
+      <div style="margin-top: 0.75rem; background: rgba(245, 158, 11, 0.15); padding: 0.4rem 0.7rem; border-radius: 6px; font-size: 0.85rem; color: #fef3c7;">
+        <strong>Daily Example:</strong> Keeping your heart pumping and lungs breathing while you sleep at 3 AM!
+      </div>
+    `;
+  }
+}
+
+function getNervousExplanationHTML(part, isReflex) {
+  if (isReflex) {
+    return `
+      <strong style="color: #ef4444;">⚡ REFLEX ACTION EMERGENCY LOOP:</strong> 
+      Reaction time is only <strong>~0.05 seconds</strong>! Heat is sensed by skin → Sensory nerve carries signal to <strong>Spinal Cord</strong> → Spinal cord directly fires motor nerve → Biceps contracts and jerks hand away! 
+      <em>(The message reaches your cerebrum only AFTER your hand is safe, which is why you scream "OUCH!" a fraction of a second later!)</em>
+    `;
+  }
+
+  return `
+    <strong>CENTRAL NERVOUS SYSTEM BLUEPRINT:</strong> 
+    The <strong>Cerebrum</strong> thinks and stores memories; the <strong>Cerebellum</strong> balances muscles; the <strong>Medulla</strong> keeps you alive 24/7. 
+    Click <em>"🔥 Test Reflex Arc!"</em> to see how your spinal cord saves your hand from severe burns without waiting for the brain!
+  `;
+}
+
+function attachNervousGadgetEvents() {
+  const brainBtns = document.querySelectorAll('.lab-btn[data-brain]');
+  brainBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      AudioController.click();
+      brainBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.labStates.brainPart = btn.getAttribute('data-brain');
+      state.labStates.reflexTriggered = false;
+      const reflexBtn = document.getElementById('btn-trigger-reflex');
+      if (reflexBtn) reflexBtn.classList.remove('active');
+      updateNervousGadgetView();
+    });
+  });
+
+  const reflexBtn = document.getElementById('btn-trigger-reflex');
+  if (reflexBtn) {
+    reflexBtn.addEventListener('click', () => {
+      AudioController.fanfare();
+      state.labStates.reflexTriggered = true;
+      brainBtns.forEach(b => b.classList.remove('active'));
+      reflexBtn.classList.add('active');
+      updateNervousGadgetView();
+    });
+  }
+}
+
+function updateNervousGadgetView() {
+  const stage = document.getElementById('nervous-stage');
+  const exp = document.getElementById('nervous-explanation');
+  if (stage) stage.innerHTML = getNervousStageHTML(state.labStates.brainPart, state.labStates.reflexTriggered);
+  if (exp) exp.innerHTML = getNervousExplanationHTML(state.labStates.brainPart, state.labStates.reflexTriggered);
+}
+
 function attachGadgetEvents(ch) {
-  if (ch.id === 'ch13_matter') {
+  if (ch.id === 'ch3_skeletal') {
+    attachSkeletalGadgetEvents();
+  } else if (ch.id === 'ch4_nervous') {
+    attachNervousGadgetEvents();
+  } else if (ch.id === 'ch13_matter') {
     const svgEl = document.getElementById('molecule-svg');
     renderMoleculeSVG(svgEl, state.labStates.moleculeState);
 
@@ -3570,6 +5081,108 @@ function renderWorksheetView(container) {
 // 11. MODE 5: QUICK REVISION — COMPARISON TABLES
 // ==========================================================================
 const REVISION_TABLES_DATA = {
+  'ch3_skeletal': [
+    {
+      title: '🦴 4 Movable Joints — Mechanism, Motion & Body Locations',
+      icon: '🔗',
+      columns: ['Joint Type', 'Mechanical Analogy', 'Degree of Movement', 'Where in Human Body', 'Action Enabled'],
+      rows: [
+        ['Ball and Socket', 'Joystick / Mortar & Pestle', '360° Rotary motion in all planes', 'Shoulder (Humerus in Scapula) & Hip (Femur in Pelvis)', 'Bowling a cricket ball, swinging arm, kicking leg sideways'],
+        ['Hinge Joint', 'Door hinge / Pocket knife', '180° Single plane (Back and forth only)', 'Elbows, Knees, Fingers (phalanges), Toes', 'Bending elbow to drink water, kicking football, walking'],
+        ['Pivot Joint', 'Steering wheel / Peg & ring', 'Rotary motion around central axis', 'Neck (between Skull and first vertebra Atlas)', 'Shaking head "No" (side to side) and nodding "Yes"'],
+        ['Gliding Joint', 'Sliding floor tiles / Ice skates', 'Smooth sliding/gliding in multiple directions', 'Wrists (Carpals), Ankles (Tarsals), between Vertebrae', 'Waving goodbye, rolling ankle, twisting torso']
+      ],
+      takeaway: 'Ball & Socket = 360° (Shoulder/Hip) | Hinge = 1-way (Elbow/Knee) | Pivot = Neck rotation | Gliding = Sliding (Wrist/Ankle)'
+    },
+    {
+      title: '💪 The 3 Muscle Types — Striated, Smooth & Cardiac',
+      icon: '🥩',
+      columns: ['Muscle Type', 'Appearance / Structure', 'Control Type', 'Locations in Body', 'Key Special Power'],
+      rows: [
+        ['Striated (Skeletal) Muscle', 'Striped bands like a zebra, cylindrical fibers', 'Voluntary (Under our conscious control)', 'Attached to bones of arms, legs, face, neck', 'Fast, powerful contractions for running, writing, chewing'],
+        ['Smooth Muscle', 'No stripes, smooth spindle-shaped fibers', 'Involuntary (Automatic, no conscious control)', 'Walls of stomach, intestines, bladder, blood vessels', 'Slow, steady rhythmic contractions (peristalsis pushing food)'],
+        ['Cardiac Muscle', 'Faintly striped, branched interconnected network', 'Involuntary (Automatic, controlled by pacemaker)', 'Found EXCLUSIVELY in the walls of the Heart', 'Never gets tired! Pumps blood 24/7 throughout your entire life']
+      ],
+      takeaway: 'Striated = Voluntary (Arms/Legs) | Smooth = Involuntary (Digestive/Vessels) | Cardiac = Heart wall, tireless 24/7'
+    },
+    {
+      title: '🔗 Tendons vs Ligaments — The Master Rule',
+      icon: '🧬',
+      columns: ['Feature', 'Ligament (3 Ls Rule)', 'Tendon (3 Ts Rule)'],
+      rows: [
+        ['What it connects', 'Like to Like: Bone to Bone', 'Two Types: Muscle to Bone'],
+        ['Primary Function', 'Holds bones together at joints and prevents dislocations', 'Transmits pulling force from contracting muscle to bone'],
+        ['Elasticity', 'More elastic and flexible to allow joint motion', 'Tough, inelastic cord with extreme tensile strength'],
+        ['Classic Example', 'Anterior Cruciate Ligament (ACL) stabilizing the knee', 'Achilles tendon connecting calf muscle to heel bone']
+      ],
+      takeaway: 'Remember: 3 Ls = Ligaments for Like to Like (Bone-Bone) | 3 Ts = Tendons for Two Types (Muscle-Bone)'
+    },
+    {
+      title: '🏗️ Human Skeleton Master Blueprint — 206 Bones',
+      icon: '💀',
+      columns: ['Skeletal Component', 'Number of Bones', 'Key Structural Parts', 'Vital Organs Protected'],
+      rows: [
+        ['Skull', '22 Bones (8 Cranial + 14 Facial)', 'Braincase sutures + only ONE movable lower jaw (mandible)', 'Brain, eyes, inner ears, olfactory bulb'],
+        ['Vertebral Column (Spine)', '33 Vertebrae', 'Stacked ring bones separated by flexible cartilage discs', 'Spinal cord (central communication superhighway)'],
+        ['Ribcage', '25 Bones (12 pairs = 24 ribs + 1 sternum)', 'First 10 pairs attach to sternum; last 2 pairs are floating ribs', 'Heart and Lungs (allows thoracic volume expansion)'],
+        ['Upper Limbs (Arms)', '60 Bones (30 per arm)', 'Humerus (upper arm), Radius & Ulna (forearm), carpals & fingers', 'Carrying, lifting, precision manipulation, tool use'],
+        ['Lower Limbs (Legs)', '60 Bones (30 per leg)', 'Femur (thigh — longest bone!), Patella (knee), Tibia & Fibula', 'Locomotion, upright posture, supporting full body mass'],
+        ['Girdles', '6 Bones (2 Pectoral + 2 Pelvic)', 'Pectoral (shoulder blades & collarbones), Pelvic (hip bones)', 'Anchors limbs to torso and supports abdominal viscera']
+      ],
+      takeaway: 'Adult = 206 bones | Skull = 22 | Spine = 33 | Ribcage = 25 | Upper + Lower limbs = 120 | Girdles = 6'
+    }
+  ],
+  'ch4_nervous': [
+    {
+      title: '🧠 The 3 Brain Departments — Cerebrum, Cerebellum & Medulla',
+      icon: '💻',
+      columns: ['Brain Part', 'Location & Appearance', 'What It Controls (Functions)', 'What Happens If Impaired?', 'Daily Life Example'],
+      rows: [
+        ['Cerebrum', 'Top dome; largest part (~85%); folded walnut convolutions', 'Thinking, memory, logic, speech, reading, emotions, 5 senses', 'Memory loss, inability to speak, loss of conscious thought', 'Solving a maths puzzle, remembering a friend\'s name'],
+        ['Cerebellum', 'Lower back below cerebrum; cauliflower-like folds', 'Voluntary muscle coordination, body balance, posture', 'Loss of equilibrium, staggering/clumsy walk, slurred speech', 'Riding a bicycle without falling, gymnastics, walking a line'],
+        ['Medulla (Brain Stem)', 'Bottom stem connecting brain to top of spinal cord', 'Involuntary life vitals: heartbeat, breathing, swallowing, blood pressure', 'Fatal! Cessation of breathing and heart pumping', 'Breathing smoothly while in deep sleep at night']
+      ],
+      takeaway: 'Cerebrum = Thinking & Senses | Cerebellum = Balance & Muscle Coordination | Medulla = 24/7 Life Vitals (never sleeps!)'
+    },
+    {
+      title: '⚡ Reflex Action vs Voluntary Action — Who Decides?',
+      icon: '⚡',
+      columns: ['Feature', 'Reflex Action (Emergency Bypass)', 'Voluntary Action (Conscious Choice)'],
+      rows: [
+        ['Controlling Center', 'Spinal Cord (Bypasses brain to save vital milliseconds!)', 'Cerebrum of Brain (Analyzes, thinks, and decides)'],
+        ['Speed & Nature', 'Lightning-fast (~0.05 s), automatic, involuntary', 'Slower, deliberate, conscious, thoughtful'],
+        ['Involvement of Thought', 'Zero thinking! Reaction occurs before conscious awareness', 'Requires conscious attention, evaluation, and choice'],
+        ['Primary Purpose', 'Immediate protection against burns, cuts, and bodily trauma', 'Goal-directed daily tasks, learning, and communication'],
+        ['Classic Examples', 'Pulling hand from hot iron, blinking at flying dust, knee jerk', 'Writing an essay, packing school bag after bell rings, kicking ball']
+      ],
+      takeaway: 'Reflex = Spinal Cord instant emergency protection | Voluntary = Cerebrum conscious decision'
+    },
+    {
+      title: '📡 The 3 Nerve Types — Biological Telegrams',
+      icon: '📞',
+      columns: ['Nerve Type', 'Direction of Signal', 'From Where → To Where?', 'Information Carried', 'Real-World Analogy'],
+      rows: [
+        ['Sensory Nerves', 'Incoming (Afferent)', 'Sense Organs → Brain & Spinal Cord', '"The stove is hot", "Traffic light is green", "Aroma of pizza"', 'Input microphone / webcam streaming data to computer'],
+        ['Motor Nerves', 'Outgoing (Efferent)', 'Brain & Spinal Cord → Muscles & Glands', '"Contract bicep muscle", "Salivate saliva", "Blink eyelids"', 'Output motor / speaker executing computer instructions'],
+        ['Mixed Nerves', 'Two-way traffic', 'Bidirectional between CNS and body tissues', 'Both sensory inputs and motor muscle instructions in same cable', 'Broadband internet fiber cable handling both upload and download']
+      ],
+      takeaway: 'Sensory = Inputs to CNS | Motor = Outputs to Muscles | Mixed = Two-way bidirectional traffic'
+    },
+    {
+      title: '👁️ The 5 Sense Organs — Master Structure & Secret Powers',
+      icon: '👁️',
+      columns: ['Sense Organ', 'Sense Provided', 'Key Internal Structures', 'Connecting Nerve', 'Secret Survival Superpower'],
+      rows: [
+        ['Eyes', 'Vision (Sight)', 'Cornea (clear window), Iris (aperture), Pupil, Lens, Retina (screen)', 'Optic Nerve', 'Forms inverted image on retina; brain flips it right-side up!'],
+        ['Ears', 'Hearing & Balance!', 'Pinna (sound funnel), Eardrum, 3 ossicle bones, Cochlea (fluid snail)', 'Auditory Nerve', 'Inner ear semicircular canals keep you upright without falling!'],
+        ['Nose', 'Smell (Olfaction) & Respiration', 'Nostrils, Nasal cavity, olfactory receptors, mucus & filtering cilia', 'Olfactory Nerve', 'Detects smoke/spoiled food; smell contributes 80% to taste flavor!'],
+        ['Tongue', 'Taste (Gustation) & Speech', 'Thousands of taste buds sensitive to sweet, salty, sour, bitter, umami', 'Glossopharyngeal Nerves', 'Protects against poisons (bitter warning); essential for speech'],
+        ['Skin', 'Touch, Temp, Pain, Pressure', 'Epidermis shield, dermis with specialized nerve endings, sweat glands', 'Cutaneous Spinal Nerves', 'Largest organ of the body; thermal thermostat via sweating!']
+      ],
+      takeaway: 'Eyes → Optic | Ears → Auditory (+ Balance!) | Nose → Olfactory | Tongue → Taste | Skin → Largest Organ'
+    }
+  ],
+
   'ch2_animals': [
     {
       title: '🤿 Breathing Organs — Who Breathes How?',

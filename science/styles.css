@@ -2403,3 +2403,37 @@ a {
     color: #92400e !important;
   }
 }
+
+
+/* L-3 and L-4 Visual Gadget Themes & Animations */
+.skeletal-lab-theme {
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+}
+
+.nervous-lab-theme {
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
+}
+
+.joint-mechanics-svg, .muscle-arm-svg, .brain-vis-svg, .reflex-arc-svg {
+  max-width: 100%;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+@keyframes pulse-nerve-loop {
+  0% {
+    stroke-dashoffset: 24;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animated-nerve-pulse {
+  animation: pulse-nerve-loop 1s linear infinite;
+}
+
+.animated-nerve-pulse-reverse {
+  animation: pulse-nerve-loop 1s linear infinite reverse;
+}
