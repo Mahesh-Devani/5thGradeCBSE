@@ -11355,7 +11355,7 @@ function renderVedicTeenTeenModule(container) {
         <p>To multiply any two numbers between 11 and 19 without paper, use the ancient Indian <strong>Nikhilam Base-10 rule</strong>:
         <br>1. Take the first number, add the unit of the second, and multiply by 10.
         <br>2. Multiply both unit digits.
-        <br>3. Add them together! You can solve problems like $14 \times 17$ in under 2 seconds!</p>
+        <br>3. Add them together! You can solve problems like <strong>14 × 17</strong> in under 2 seconds!</p>
       </div>
 
       <div class="vedic-interactive-card">
@@ -11367,6 +11367,7 @@ function renderVedicTeenTeenModule(container) {
         <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem;">
           <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">Try Classic Presets:</span>
           ${[
+            [14, 17],
             [14, 13],
             [16, 12],
             [17, 14],
