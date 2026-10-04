@@ -5466,7 +5466,7 @@ function renderDetectiveModule(container) {
       <p>Select a clue phrase from a question to diagnose whether it requires HCF or LCM:</p>
       
       <div class="calc-inputs">
-        <select id="clue-selector" class="calc-input" style="width: auto; flex-grow: 1;">
+        <select id="clue-selector" class="calc-input" style="max-width: 100%; width: 100%;">
           <option value="hcf1">"What is the greatest number of identical gift boxes she can pack?"</option>
           <option value="lcm1">"After how many seconds will three church bells toll together again?"</option>
           <option value="hcf2">"Find the largest capacity measuring container to empty 48L and 72L cans."</option>

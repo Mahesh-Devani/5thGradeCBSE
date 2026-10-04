@@ -836,6 +836,7 @@ select.calc-input {
   background-color: #0f172a;
   color: var(--text-main);
   cursor: pointer;
+  max-width: 100%;
 }
 select.calc-input option {
   background-color: #0f172a;
@@ -2936,18 +2937,91 @@ select.calc-input option {
   }
 
   .top-bar {
-    padding: 0.65rem 0.85rem 0.5rem 0.85rem;
-    gap: 0.5rem;
+    padding: 0.6rem 0.75rem 0.45rem 0.75rem;
+    gap: 0.45rem;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  .top-bar-nav-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+    min-width: 0;
+  }
+  .menu-toggle-btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    font-size: 1.15rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+  }
+  .menu-toggle-btn .menu-label {
+    display: none;
+  }
+  .home-quick-btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    font-size: 1.15rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .top-bar-title-wrap {
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
   }
   .top-bar-title-wrap h2 {
-    font-size: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .top-bar-title-wrap p {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .top-bar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+  }
+  .top-bar-actions .btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
 
+  .main-content {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    min-width: 0;
+  }
   .content-viewport {
-    padding: 0.75rem;
+    padding: 0.75rem 0.65rem;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   /* Mode Tabs - 4-column equal grid segmented control on mobile */
@@ -3291,6 +3365,94 @@ select.calc-input option {
   .protractor-svg-wrapper svg {
     max-width: 100%;
     height: auto;
+  }
+
+  /* Select inputs overflow fix */
+  select.calc-input {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    text-overflow: ellipsis;
+  }
+  .calc-inputs select.calc-input {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Topic 6: Multiplication Tables Mobile Rules */
+  .tables-milestone-banner {
+    padding: 0.85rem 0.75rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .milestone-banner-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  .milestones-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+  .milestone-step-card {
+    padding: 0.65rem 0.75rem;
+  }
+  .milestone-step-header {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .vedic-interactive-card {
+    padding: 0.85rem 0.75rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .vedic-formula-banner {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.84rem;
+  }
+  .vedic-step-box {
+    padding: 0.75rem 0.8rem;
+    gap: 0.65rem;
+  }
+  .vedic-step-calc {
+    font-size: 0.95rem;
+    word-break: break-word;
+  }
+  .checkpoint-options-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .trick-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .split-add-card {
+    padding: 0.85rem 0.75rem;
+  }
+
+  /* Topic 5: Fractions Mobile Rules */
+  .fractions-milestone-banner {
+    padding: 0.85rem 0.75rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .fractions-milestones-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+  .frac-comparison-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .fraction-visual-container {
+    padding: 0.75rem 0.5rem;
+    overflow-x: auto;
   }
 }
 
