@@ -4723,11 +4723,17 @@ function generateDynamicFractionQuestion(skill = 'all') {
         source: 'Thinkbook Conceptual Deductions'
       };
     } else if (subType === 'mixed_whole') {
-      const w1 = 4;
-      const w2 = 3;
-      const correctStr = `${w1} 1/7 is greater (compare whole numbers first)`;
+      const w1 = getRandomChoice([4, 5, 6, 7]);
+      let w2 = getRandomChoice([2, 3, 4]);
+      while (w2 === w1) w2 = getRandomChoice([2, 3]);
+      const den = getRandomChoice([5, 7, 8, 9]);
+      const r1 = getRandomInt(1, den - 2);
+      const r2 = getRandomInt(r1 + 1, den - 1);
+      const largerW = Math.max(w1, w2);
+      const smallerW = Math.min(w1, w2);
+      const correctStr = `${largerW} ${r1}/${den} is greater (compare whole numbers first)`;
       const distractors = [
-        `${w2} 6/7 is greater (because 6/7 is larger than 1/7)`,
+        `${smallerW} ${r2}/${den} is greater (because ${r2}/${den} is larger than ${r1}/${den})`,
         'Both are equal',
         'Must convert to improper fractions first'
       ];
@@ -4736,19 +4742,30 @@ function generateDynamicFractionQuestion(skill = 'all') {
         id,
         skill: 'comparison_ordering',
         type: 'mcq',
-        question: `⚡ <strong>Shortcut 3 — Mixed Number Whole Comparison:</strong><br>Compare <strong>${formatMixed(4, 1, 7)}</strong> and <strong>${formatMixed(3, 6, 7)}</strong> without writing down calculations:`,
+        question: `⚡ <strong>Shortcut 3 — Mixed Number Whole Comparison:</strong><br>Compare <strong>${formatMixed(largerW, r1, den)}</strong> and <strong>${formatMixed(smallerW, r2, den)}</strong> without writing down calculations:`,
         options,
         correct,
-        explanation: `⚡ <strong>Whole Number Priority:</strong><br>4 whole pizzas and 1 slice is ALWAYS more than 3 whole pizzas, even if the second pizza has 6 slices!<br>Since 4 > 3, <strong>${formatMixed(4, 1, 7)} > ${formatMixed(3, 6, 7)}</strong> in 0.1 seconds!`,
+        explanation: `⚡ <strong>Whole Number Priority:</strong><br>${largerW} whole units is ALWAYS more than ${smallerW} whole units, even if the fractional slice of the second is larger!<br>Since ${largerW} > ${smallerW}, <strong>${formatMixed(largerW, r1, den)} > ${formatMixed(smallerW, r2, den)}</strong> in 0.1 seconds!`,
         source: 'No-Pen Mental Math'
       };
     } else {
-      const a = 3, b = 7, c = 4, d = 9;
-      const cross1 = a * d; // 27
-      const cross2 = b * c; // 28
-      const correctStr = `${c}/${d} is greater (${cross2} > ${cross1})`;
+      const pairs = [
+        { a: 2, b: 5, c: 3, d: 7 },
+        { a: 3, b: 8, c: 4, d: 9 },
+        { a: 5, b: 6, c: 7, d: 8 },
+        { a: 3, b: 7, c: 4, d: 9 },
+        { a: 4, b: 7, c: 5, d: 8 },
+        { a: 2, b: 9, c: 3, d: 11 },
+        { a: 5, b: 12, c: 4, d: 9 }
+      ];
+      const p = getRandomChoice(pairs);
+      const a = p.a, b = p.b, c = p.c, d = p.d;
+      const cross1 = a * d;
+      const cross2 = b * c;
+      const isLeftGreater = cross1 > cross2;
+      const correctStr = isLeftGreater ? `${a}/${b} is greater (${cross1} > ${cross2})` : `${c}/${d} is greater (${cross2} > ${cross1})`;
       const distractors = [
-        `${a}/${b} is greater (${cross1} > ${cross2})`,
+        isLeftGreater ? `${c}/${d} is greater (${cross2} > ${cross1})` : `${a}/${b} is greater (${cross1} > ${cross2})`,
         'Both fractions are equal',
         'Neither, they are incomparable'
       ];
@@ -4760,7 +4777,7 @@ function generateDynamicFractionQuestion(skill = 'all') {
         question: `🦋 <strong>Butterfly Cross-Multiplication:</strong><br>Compare <strong>${formatFrac(a, b)}</strong> and <strong>${formatFrac(c, d)}</strong> using cross-multiplication:`,
         options,
         correct,
-        explanation: `🦋 <strong>Cross-Multiply Diagonals:</strong><br>• Left Wing: ${a} × ${d} = <strong>${cross1}</strong><br>• Right Wing: ${b} × ${c} = <strong>${cross2}</strong><br>Since ${cross2} > ${cross1} (28 > 27), the right fraction is greater:<br><strong>${formatFrac(c, d)} > ${formatFrac(a, b)}</strong>.`,
+        explanation: `🦋 <strong>Cross-Multiply Diagonals:</strong><br>• Left Wing: ${a} × ${d} = <strong>${cross1}</strong><br>• Right Wing: ${b} × ${c} = <strong>${cross2}</strong><br>Since ${Math.max(cross1, cross2)} > ${Math.min(cross1, cross2)}, <strong>${isLeftGreater ? formatFrac(a, b) : formatFrac(c, d)} > ${isLeftGreater ? formatFrac(c, d) : formatFrac(a, b)}</strong>.`,
         source: 'CBSE Cross-Multiplication'
       };
     }
@@ -4795,7 +4812,9 @@ function generateDynamicFractionQuestion(skill = 'all') {
         { n1: 1, d1: 3, n2: 1, d2: 4 },
         { n1: 2, d1: 5, n2: 1, d2: 2 },
         { n1: 3, d1: 4, n2: 1, d2: 6 },
-        { n1: 1, d1: 2, n2: 1, d2: 3 }
+        { n1: 1, d1: 2, n2: 1, d2: 3 },
+        { n1: 2, d1: 3, n2: 1, d2: 5 },
+        { n1: 3, d1: 8, n2: 1, d2: 4 }
       ];
       const p = getRandomChoice(pairs);
       const commonD = lcm(p.d1, p.d2);
@@ -4825,7 +4844,8 @@ function generateDynamicFractionQuestion(skill = 'all') {
         { n1: 5, d1: 6, n2: 1, d2: 4 },
         { n1: 3, d1: 4, n2: 2, d2: 5 },
         { n1: 7, d1: 10, n2: 2, d2: 5 },
-        { n1: 7, d1: 8, n2: 1, d2: 2 }
+        { n1: 7, d1: 8, n2: 1, d2: 2 },
+        { n1: 4, d1: 5, n2: 1, d2: 3 }
       ];
       const p = getRandomChoice(pairs);
       const commonD = lcm(p.d1, p.d2);
@@ -4851,31 +4871,55 @@ function generateDynamicFractionQuestion(skill = 'all') {
         source: 'CBSE Subtraction'
       };
     } else if (subType === 'word_ribbon') {
-      const correctStr = '5/8 m';
-      const distractors = ['6/8 m', '1/2 m', '3/4 m'];
+      const ribbonPairs = [
+        { totN: 7, totD: 8, cutN: 1, cutD: 4, ansN: 5, ansD: 8 },
+        { totN: 5, totD: 6, cutN: 1, cutD: 3, ansN: 1, ansD: 2 },
+        { totN: 3, totD: 4, cutN: 1, cutD: 2, ansN: 1, ansD: 4 },
+        { totN: 9, totD: 10, cutN: 2, cutD: 5, ansN: 1, ansD: 2 },
+        { totN: 5, totD: 8, cutN: 1, cutD: 4, ansN: 3, ansD: 8 }
+      ];
+      const rp = getRandomChoice(ribbonPairs);
+      const correctStr = `${rp.ansN}/${rp.ansD} m`;
+      const distractors = [
+        `${rp.totN - rp.cutN}/${rp.totD} m`,
+        `${rp.ansN + 1}/${rp.ansD} m`,
+        `${rp.ansN}/${rp.ansD * 2} m`
+      ];
       const { options, correct } = shuffleFracOptionsAndGetCorrect(correctStr, distractors);
       return {
         id,
         skill: 'add_sub_operations',
         type: 'mcq',
-        question: `🎀 <strong>Applied Word Problem — Ribbon Cut:</strong><br>A ribbon was <strong>${formatFrac(7, 8)} meter</strong> long. An art student cut off <strong>${formatFrac(1, 4)} meter</strong> for a craft project. What length of ribbon is left?`,
+        question: `🎀 <strong>Applied Word Problem — Ribbon Cut:</strong><br>A ribbon was <strong>${formatFrac(rp.totN, rp.totD)} meter</strong> long. An art student cut off <strong>${formatFrac(rp.cutN, rp.cutD)} meter</strong> for a craft project. What length of ribbon is left?`,
         options,
         correct,
-        explanation: `🎀 <strong>Ribbon Remaining:</strong><br>Remaining = ${formatFrac(7, 8)} − ${formatFrac(1, 4)}.<br>LCM(8, 4) = 8. Convert ${formatFrac(1, 4)} = ${formatFrac(2, 8)}.<br>${formatFrac(7, 8)} − ${formatFrac(2, 8)} = ${formatFrac(5, 8)} meter.`,
+        explanation: `🎀 <strong>Ribbon Remaining:</strong><br>Remaining = ${formatFrac(rp.totN, rp.totD)} − ${formatFrac(rp.cutN, rp.cutD)}.<br>Convert to like fractions with common denominator: answer = <strong>${formatFrac(rp.ansN, rp.ansD)} meter</strong>.`,
         source: 'Worksheet 2026-27 (Ribbon Problem)'
       };
     } else {
-      const correctStr = '11/15 of the book';
-      const distractors = ['3/8 of the book', '2/15 of the book', '7/15 of the book'];
+      const readingPairs = [
+        { d1N: 1, d1D: 3, d2N: 2, d2D: 5, ansN: 11, ansD: 15 },
+        { d1N: 1, d1D: 4, d2N: 1, d2D: 2, ansN: 3, ansD: 4 },
+        { d1N: 2, d1D: 7, d2N: 3, d2D: 7, ansN: 5, ansD: 7 },
+        { d1N: 1, d1D: 6, d2N: 1, d2D: 3, ansN: 1, ansD: 2 },
+        { d1N: 3, d1D: 10, d2N: 2, d2D: 5, ansN: 7, ansD: 10 }
+      ];
+      const rdp = getRandomChoice(readingPairs);
+      const correctStr = `${rdp.ansN}/${rdp.ansD} of the book`;
+      const distractors = [
+        `${rdp.d1N + rdp.d2N}/${rdp.d1D + rdp.d2D} of the book`,
+        `${rdp.ansN - 2}/${rdp.ansD} of the book`,
+        `1/2 of the book`
+      ];
       const { options, correct } = shuffleFracOptionsAndGetCorrect(correctStr, distractors);
       return {
         id,
         skill: 'add_sub_operations',
         type: 'mcq',
-        question: `📖 <strong>Applied Word Problem — Weekend Reading:</strong><br>Rohan read <strong>${formatFrac(1, 3)}</strong> of a storybook on Saturday and <strong>${formatFrac(2, 5)}</strong> of it on Sunday. What fraction of the book did he read across the weekend?`,
+        question: `📖 <strong>Applied Word Problem — Weekend Reading:</strong><br>Rohan read <strong>${formatFrac(rdp.d1N, rdp.d1D)}</strong> of a storybook on Saturday and <strong>${formatFrac(rdp.d2N, rdp.d2D)}</strong> on Sunday. What fraction of the book did he read across the weekend?`,
         options,
         correct,
-        explanation: `📖 <strong>Total Read:</strong><br>Total = ${formatFrac(1, 3)} + ${formatFrac(2, 5)}.<br>LCM(3, 5) = 15.<br>Convert: ${formatFrac(5, 15)} + ${formatFrac(6, 15)} = <strong>${formatFrac(11, 15)} of the book</strong>.`,
+        explanation: `📖 <strong>Total Read:</strong><br>Total = ${formatFrac(rdp.d1N, rdp.d1D)} + ${formatFrac(rdp.d2N, rdp.d2D)}.<br>Find common denominator and sum: <strong>${formatFrac(rdp.ansN, rdp.ansD)} of the book</strong>.`,
         source: 'Worksheet 2026-27 (Word Problem)'
       };
     }
@@ -4903,17 +4947,25 @@ function generateDynamicFractionQuestion(skill = 'all') {
         source: 'Thinkbook "Of" Concept'
       };
     } else if (subType === 'slice_a_slice') {
-      const correctStr = '1/8';
-      const distractors = ['2/6 = 1/3', '1/6', '1/4'];
+      const slicePairs = [
+        { a: 2, b: 4, ans: 8 },
+        { a: 2, b: 3, ans: 6 },
+        { a: 3, b: 4, ans: 12 },
+        { a: 2, b: 5, ans: 10 },
+        { a: 3, b: 3, ans: 9 }
+      ];
+      const sp = getRandomChoice(slicePairs);
+      const correctStr = `1/${sp.ans}`;
+      const distractors = [`2/${sp.a + sp.b}`, `1/${sp.a + sp.b}`, `1/${sp.a * 2}`];
       const { options, correct } = shuffleFracOptionsAndGetCorrect(correctStr, distractors);
       return {
         id,
         skill: 'multiply_of',
         type: 'mcq',
-        question: `📄 <strong>Slicing a Slice:</strong><br>Take a sheet of paper. Fold it in half (${formatFrac(1, 2)}). Now fold that half into 4 equal quarters (${formatFrac(1, 4)}).<br>What fraction of the original paper is one of those small folded boxes? (${formatFrac(1, 2)} × ${formatFrac(1, 4)} = ?)`,
+        question: `📄 <strong>Slicing a Slice:</strong><br>Take a sheet of paper. Fold it into ${sp.a} equal sections (${formatFrac(1, sp.a)}). Now fold each section into ${sp.b} parts (${formatFrac(1, sp.b)}).<br>What fraction of the original paper is one small folded box? (${formatFrac(1, sp.a)} × ${formatFrac(1, sp.b)} = ?)`,
         options,
         correct,
-        explanation: `📄 <strong>Paper Folding Discovery:</strong><br>When you unfold the paper, there are 2 × 4 = 8 identical little sections!<br>Multiply numerators: 1 × 1 = 1.<br>Multiply denominators: 2 × 4 = 8.<br>Result = <strong>${formatFrac(1, 8)}</strong>.`,
+        explanation: `📄 <strong>Paper Folding Discovery:</strong><br>Unfolding reveals ${sp.a} × ${sp.b} = ${sp.ans} identical sections!<br>Multiply numerators: 1 × 1 = 1.<br>Multiply denominators: ${sp.a} × ${sp.b} = ${sp.ans}.<br>Result = <strong>${formatFrac(1, sp.ans)}</strong>.`,
         source: 'Thinkbook Visual Paper Model'
       };
     } else if (subType === 'cross_cancel') {
@@ -4942,17 +4994,24 @@ function generateDynamicFractionQuestion(skill = 'all') {
         source: 'CBSE Multiplication'
       };
     } else {
-      const correctStr = '4';
-      const distractors = ['2 1/3 (Rahul\'s trap)', '3 1/6', '5'];
+      const mixedPairs = [
+        { w1: 1, n1: 1, d1: 2, w2: 2, n2: 2, d2: 3, ans: '4', trap: '2 1/3 (Rahul\'s trap)', exp: '3/2 × 8/3 = 24/6 = 4' },
+        { w1: 1, n1: 1, d1: 4, w2: 1, n2: 3, d2: 5, ans: '2', trap: '1 3/20 (Rahul\'s trap)', exp: '5/4 × 8/5 = 40/20 = 2' },
+        { w1: 2, n1: 1, d1: 2, w2: 1, n2: 1, d2: 5, ans: '3', trap: '2 1/10 (Rahul\'s trap)', exp: '5/2 × 6/5 = 30/10 = 3' },
+        { w1: 1, n1: 2, d1: 3, w2: 1, n2: 4, d2: 5, ans: '3', trap: '1 8/15 (Rahul\'s trap)', exp: '5/3 × 9/5 = 45/15 = 3' }
+      ];
+      const mp = getRandomChoice(mixedPairs);
+      const correctStr = mp.ans;
+      const distractors = [mp.trap, String(parseInt(mp.ans) + 1), String(Math.max(1, parseInt(mp.ans) - 1))];
       const { options, correct } = shuffleFracOptionsAndGetCorrect(correctStr, distractors);
       return {
         id,
         skill: 'multiply_of',
         type: 'mcq',
-        question: `🚨 <strong>Mixed Number Multiplication Trap:</strong><br>Solve: <strong>${formatMixed(1, 1, 2)} × ${formatMixed(2, 2, 3)}</strong> = ______`,
+        question: `🚨 <strong>Mixed Number Multiplication Trap:</strong><br>Solve: <strong>${formatMixed(mp.w1, mp.n1, mp.d1)} × ${formatMixed(mp.w2, mp.n2, mp.d2)}</strong> = ______`,
         options,
         correct,
-        explanation: `🚨 <strong>Rahul\'s Mixed Trap:</strong><br>Rahul multiplied whole × whole (1 × 2 = 2) and fraction × fraction (1/2 × 2/3 = 1/3) to get 2 1/3. That is completely WRONG!<br><strong>Correct Method:</strong> Convert both to improper fractions first!<br>${formatMixed(1, 1, 2)} = ${formatFrac(3, 2)} and ${formatMixed(2, 2, 3)} = ${formatFrac(8, 3)}.<br>${formatFrac(3, 2)} × ${formatFrac(8, 3)} = ${formatFrac('3 × 8', '2 × 3')} = ${formatFrac(24, 6)} = <strong>4</strong>.`,
+        explanation: `🚨 <strong>Avoid Rahul\'s Trap!</strong><br>Never multiply whole × whole and fraction × fraction separately!<br><strong>Correct Method:</strong> Convert both to improper fractions first!<br>${mp.exp} = <strong>${mp.ans}</strong>.`,
         source: 'Thinkbook Rahul Trap'
       };
     }
@@ -4975,11 +5034,11 @@ function generateDynamicFractionQuestion(skill = 'all') {
         question: `🔄 <strong>Find the Reciprocal:</strong><br>What is the reciprocal (multiplicative inverse) of <strong>${formatFrac(n, d)}</strong>?`,
         options,
         correct,
-        explanation: `🔄 <strong>Reciprocal Definition:</strong><br>Two numbers are reciprocals if their product is 1.<br>To find the reciprocal of a fraction, simply flip the numerator and denominator upside down: ${formatFrac(n, d)} $\to$ <strong>${formatFrac(d, n)}</strong> (${formatFrac(n, d)} × ${formatFrac(d, n)} = 1).`,
+        explanation: `🔄 <strong>Reciprocal Definition:</strong><br>Two numbers are reciprocals if their product is 1.<br>To find the reciprocal of a fraction, simply flip numerator and denominator: ${formatFrac(n, d)} $\to$ <strong>${formatFrac(d, n)}</strong>.`,
         source: 'CBSE Reciprocals'
       };
     } else if (kind === 'whole') {
-      const w = getRandomChoice([5, 7, 8, 9]);
+      const w = getRandomChoice([5, 6, 7, 8, 9]);
       const correctStr = `1/${w}`;
       const distractors = [String(w), `${w}/1`, '0'];
       const { options, correct } = shuffleFracOptionsAndGetCorrect(correctStr, distractors);
@@ -4990,21 +5049,29 @@ function generateDynamicFractionQuestion(skill = 'all') {
         question: `🔄 <strong>Reciprocal of a Whole Number:</strong><br>What is the reciprocal of the whole number <strong>${w}</strong>?`,
         options,
         correct,
-        explanation: `🔄 <strong>Whole Number as Fraction:</strong><br>Write ${w} as ${formatFrac(w, 1)}.<br>Flipping it gives <strong>${formatFrac(1, w)}</strong>.<br>Check: ${w} × ${formatFrac(1, w)} = 1!`,
+        explanation: `🔄 <strong>Whole Number as Fraction:</strong><br>Write ${w} as ${formatFrac(w, 1)}. Inverting gives <strong>${formatFrac(1, w)}</strong>.`,
         source: 'CBSE Reciprocals'
       };
     } else if (kind === 'mixed') {
-      const correctStr = '3/7';
-      const distractors = ['2 3/1', '7/3', '1/2'];
+      const mixedRecips = [
+        { w: 2, n: 1, d: 3, imp: '7/3', ans: '3/7', trap: '2 3/1' },
+        { w: 3, n: 1, d: 2, imp: '7/2', ans: '2/7', trap: '3 2/1' },
+        { w: 1, n: 3, d: 4, imp: '7/4', ans: '4/7', trap: '1 4/3' },
+        { w: 2, n: 2, d: 5, imp: '12/5', ans: '5/12', trap: '2 5/2' },
+        { w: 4, n: 1, d: 2, imp: '9/2', ans: '2/9', trap: '4 2/1' }
+      ];
+      const mr = getRandomChoice(mixedRecips);
+      const correctStr = mr.ans;
+      const distractors = [mr.trap, `${mr.imp}`, `1/${mr.w}`];
       const { options, correct } = shuffleFracOptionsAndGetCorrect(correctStr, distractors);
       return {
         id,
         skill: 'divide_reciprocals',
         type: 'mcq',
-        question: `🔄 <strong>Reciprocal of a Mixed Number:</strong><br>What is the reciprocal of <strong>${formatMixed(2, 1, 3)}</strong>?`,
+        question: `🔄 <strong>Reciprocal of a Mixed Number:</strong><br>What is the reciprocal of <strong>${formatMixed(mr.w, mr.n, mr.d)}</strong>?`,
         options,
         correct,
-        explanation: `🚨 <strong>Mixed Reciprocal Rule:</strong><br>You CANNOT just flip the fraction part to get 2 3/1!<br>1. First convert mixed to improper: ${formatMixed(2, 1, 3)} = ${formatFrac('(2 × 3) + 1', 3)} = ${formatFrac(7, 3)}.<br>2. Now invert the improper fraction: reciprocal of ${formatFrac(7, 3)} is <strong>${formatFrac(3, 7)}</strong>!`,
+        explanation: `🚨 <strong>Mixed Reciprocal Rule:</strong><br>1. First convert mixed to improper: ${formatMixed(mr.w, mr.n, mr.d)} = ${mr.imp}.<br>2. Invert the improper fraction: reciprocal of ${mr.imp} is <strong>${mr.ans}</strong>!`,
         source: 'Thinkbook Reciprocal Trap'
       };
     } else {
@@ -5023,28 +5090,39 @@ function generateDynamicFractionQuestion(skill = 'all') {
       };
     }
   } else if (subType === 'measurement_cups') {
-    const correctStr = '12 cups';
-    const distractors = ['3 cups', '6 cups', '1 1/2 cups'];
+    const cupSets = [
+      { total: 6, den: 2, cups: 12 },
+      { total: 4, den: 2, cups: 8 },
+      { total: 5, den: 2, cups: 10 },
+      { total: 3, den: 4, cups: 12 },
+      { total: 2, den: 4, cups: 8 },
+      { total: 6, den: 3, cups: 18 }
+    ];
+    const cs = getRandomChoice(cupSets);
+    const correctStr = `${cs.cups} cups`;
+    const distractors = [`${cs.total / cs.den} cups`, `${cs.total} cups`, `${cs.cups / 2} cups`];
     const { options, correct } = shuffleFracOptionsAndGetCorrect(correctStr, distractors);
     return {
       id,
       skill: 'divide_reciprocals',
       type: 'mcq',
-      question: `🥛 <strong>Measurement Model — How Many Fit In?</strong><br>If you have <strong>6 liters</strong> of milk and each small drinking cup holds <strong>${formatFrac(1, 2)} liter</strong>, how many full cups can you fill? (6 ÷ ${formatFrac(1, 2)} = ?)`,
+      question: `🥛 <strong>Measurement Model — How Many Fit In?</strong><br>If you have <strong>${cs.total} liters</strong> of milk and each drinking cup holds <strong>${formatFrac(1, cs.den)} liter</strong>, how many full cups can you fill? (${cs.total} ÷ ${formatFrac(1, cs.den)} = ?)`,
       options,
       correct,
-      explanation: `🥛 <strong>Why Dividing Makes It Bigger!</strong><br>Each whole liter contains 2 half-liter cups.<br>So 6 whole liters contain: 6 × 2 = <strong>12 cups</strong>!<br>In mathematics: 6 ÷ ${formatFrac(1, 2)} = 6 × ${formatFrac(2, 1)} = <strong>12</strong>.<br>Dividing by a fraction less than 1 always creates a LARGER quotient!`,
+      explanation: `🥛 <strong>Dividing by Fractions:</strong><br>${cs.total} ÷ ${formatFrac(1, cs.den)} = ${cs.total} × ${cs.den} = <strong>${cs.cups} cups</strong>!<br>Dividing by a fraction less than 1 produces a larger quotient!`,
       source: 'Thinkbook Measurement Model'
     };
   } else if (subType === 'keep_change_flip') {
     const pairs = [
       { n1: 4, d1: 5, n2: 8, d2: 15, ans: '1 1/2' },
       { n1: 3, d1: 7, n2: 6, d2: 7, ans: '1/2' },
-      { n1: 2, d1: 3, n2: 4, d2: 9, ans: '1 1/2' }
+      { n1: 2, d1: 3, n2: 4, d2: 9, ans: '1 1/2' },
+      { n1: 5, d1: 6, n2: 5, d2: 12, ans: '2' },
+      { n1: 3, d1: 8, n2: 9, d2: 16, ans: '2/3' }
     ];
     const p = getRandomChoice(pairs);
     const correctStr = p.ans;
-    const distractors = ['8/15', '2/5', '3/4'];
+    const distractors = ['8/15', '2/5', '3/4', '1/4'].filter(x => x !== p.ans).slice(0, 3);
     const { options, correct } = shuffleFracOptionsAndGetCorrect(correctStr, distractors);
     return {
       id,
@@ -5053,21 +5131,29 @@ function generateDynamicFractionQuestion(skill = 'all') {
       question: `🔄 <strong>Keep, Change, Flip Algorithm:</strong><br>Solve: <div style="font-size: 1.3rem; margin: 0.5rem 0;">${formatFrac(p.n1, p.d1)} ÷ ${formatFrac(p.n2, p.d2)} = ______</div>`,
       options,
       correct,
-      explanation: `🔄 <strong>Keep, Change, Flip:</strong><br>1. <strong>Keep:</strong> ${formatFrac(p.n1, p.d1)}<br>2. <strong>Change:</strong> ÷ becomes ×<br>3. <strong>Flip:</strong> ${formatFrac(p.n2, p.d2)} becomes ${formatFrac(p.d2, p.n2)}<br>${formatFrac(p.n1, p.d1)} × ${formatFrac(p.d2, p.n2)} $\implies$ cancel and multiply $\implies$ <strong>${p.ans}</strong>.`,
+      explanation: `🔄 <strong>Keep, Change, Flip:</strong><br>1. <strong>Keep:</strong> ${formatFrac(p.n1, p.d1)}<br>2. <strong>Change:</strong> ÷ becomes ×<br>3. <strong>Flip:</strong> ${formatFrac(p.n2, p.d2)} becomes ${formatFrac(p.d2, p.n2)}<br>${formatFrac(p.n1, p.d1)} × ${formatFrac(p.d2, p.n2)} $\implies$ <strong>${p.ans}</strong>.`,
       source: 'CBSE Division'
     };
   } else {
-    const correctStr = '20 aprons';
-    const distractors = ['15 aprons', '11 aprons', '18 aprons'];
+    const tailorSets = [
+      { fabric: 15, cutN: 3, cutD: 4, ans: 20 },
+      { fabric: 12, cutN: 3, cutD: 4, ans: 16 },
+      { fabric: 18, cutN: 3, cutD: 4, ans: 24 },
+      { fabric: 21, cutN: 3, cutD: 4, ans: 28 },
+      { fabric: 10, cutN: 1, cutD: 2, ans: 20 }
+    ];
+    const ts = getRandomChoice(tailorSets);
+    const correctStr = `${ts.ans} aprons`;
+    const distractors = [`${ts.fabric} aprons`, `${ts.ans - 4} aprons`, `${ts.ans + 4} aprons`];
     const { options, correct } = shuffleFracOptionsAndGetCorrect(correctStr, distractors);
     return {
       id,
       skill: 'divide_reciprocals',
       type: 'mcq',
-      question: `✂️ <strong>Applied Word Problem — Tailor Masterji:</strong><br>A tailor has <strong>15 meters</strong> of fabric. If each child\'s apron requires <strong>${formatFrac(3, 4)} meter</strong> of cloth, how many total aprons can he stitch?`,
+      question: `✂️ <strong>Applied Word Problem — Tailor Masterji:</strong><br>A tailor has <strong>${ts.fabric} meters</strong> of fabric. If each child\'s apron requires <strong>${formatFrac(ts.cutN, ts.cutD)} meter</strong> of cloth, how many total aprons can he stitch?`,
       options,
       correct,
-      explanation: `✂️ <strong>Tailor Division:</strong><br>Number of aprons = 15 ÷ ${formatFrac(3, 4)}.<br>Apply Keep, Change, Flip: 15 × ${formatFrac(4, 3)} = (15 ÷ 3) × 4 = 5 × 4 = <strong>20 aprons</strong>!`,
+      explanation: `✂️ <strong>Tailor Division:</strong><br>Total aprons = ${ts.fabric} ÷ ${formatFrac(ts.cutN, ts.cutD)}.<br>Apply Keep, Change, Flip: ${ts.fabric} × ${formatFrac(ts.cutD, ts.cutN)} = <strong>${ts.ans} aprons</strong>!`,
       source: 'Worksheet 2026-27 (Tailor Problem)'
     };
   }
@@ -9536,6 +9622,9 @@ function renderPracticeView(container) {
       if (state.currentTopic === 'tables_speed_master') {
         state.tablesPracticeQueue = null; // force fresh generation
       }
+      if (state.currentTopic === 'fractions_master') {
+        state.fractionsPracticeQueue = null; // force fresh generation
+      }
       saveActiveState();
       renderViewport();
     });
@@ -9550,6 +9639,9 @@ function renderPracticeView(container) {
     state.userAnswers = {};
     if (state.currentTopic === 'tables_speed_master') {
       state.tablesPracticeQueue = null; // generate fresh random queue
+    }
+    if (state.currentTopic === 'fractions_master') {
+      state.fractionsPracticeQueue = null; // generate fresh random queue
     }
     saveActiveState();
     renderViewport();
@@ -9663,6 +9755,11 @@ function renderPracticeView(container) {
       renderViewport();
     } else if (state.currentTopic === 'tables_speed_master') {
       state.tablesPracticeQueue.push(...generateTablesPracticeQueue(state.practiceFilter, 10));
+      state.currentQuestionIndex++;
+      saveActiveState();
+      renderViewport();
+    } else if (state.currentTopic === 'fractions_master') {
+      state.fractionsPracticeQueue.push(...generateFractionsPracticeQueue(state.practiceFilter, 10));
       state.currentQuestionIndex++;
       saveActiveState();
       renderViewport();
@@ -11161,6 +11258,8 @@ function renderGridExplorerModule(container) {
 function renderSplitAddLabModule(container) {
   let selectedTeen = 17;
   let selectedMult = 8;
+  let cpTeen = getRandomInt(12, 19);
+  let cpMult = getRandomInt(4, 9);
 
   function render() {
     const cp = state.tablesLearnCheckpoints || {};
@@ -11172,12 +11271,18 @@ function renderSplitAddLabModule(container) {
     const totalProd = selectedTeen * selectedMult;
 
     // Dynamic Checkpoint 2 problem
-    const cpTeen = 14;
-    const cpMult = 9;
     const cpUnits = cpTeen - 10;
     const cpTensProd = 10 * cpMult;
     const cpUnitsProd = cpUnits * cpMult;
     const cpTotal = cpTeen * cpMult;
+
+    const cpDistractors = [
+      cpTotal + 10,
+      cpTotal - 10,
+      cpTotal - 4,
+      cpTotal + cpMult
+    ];
+    const { options: cpOptions, correct: cpCorrectIdx } = shuffleOptionsAndGetCorrect(cpTotal, cpDistractors);
 
     container.innerHTML = `
       <div class="think-callout-math">
@@ -11253,28 +11358,21 @@ function renderSplitAddLabModule(container) {
         </div>
 
         <div class="checkpoint-prompt">
-          <strong>Mental Split Challenge:</strong> Apply the Split-and-Add Hammer to calculate <strong>${cpTeen} × ${cpMult}</strong> in your head:<br>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span><strong>Mental Split Challenge:</strong> Apply the Split-and-Add Hammer to calculate <strong>${cpTeen} × ${cpMult}</strong> in your head:</span>
+            <button class="btn btn-secondary btn-sm" id="btn-roll-cp2" style="font-size: 0.78rem; padding: 4px 10px; min-height: 32px;">🎲 New Problem</button>
+          </div>
           <code style="color: var(--accent-amber-light); font-size: 1.05rem;">(${10} × ${cpMult}) + (${cpUnits} × ${cpMult}) = ${cpTensProd} + ${cpUnitsProd} = ?</code>
         </div>
 
         <div class="checkpoint-interactive-area">
           <div class="checkpoint-options-grid">
-            <button class="checkpoint-opt-btn" data-correct="true">
-              <span>A</span>
-              <strong>${cpTotal}</strong>
-            </button>
-            <button class="checkpoint-opt-btn" data-correct="false">
-              <span>B</span>
-              <strong>${cpTotal + 10}</strong>
-            </button>
-            <button class="checkpoint-opt-btn" data-correct="false">
-              <span>C</span>
-              <strong>${cpTotal - 10}</strong>
-            </button>
-            <button class="checkpoint-opt-btn" data-correct="false">
-              <span>D</span>
-              <strong>${cpTotal - 4}</strong>
-            </button>
+            ${cpOptions.map((opt, i) => `
+              <button class="checkpoint-opt-btn" data-correct="${i === cpCorrectIdx ? 'true' : 'false'}">
+                <span>${String.fromCharCode(65 + i)}</span>
+                <strong>${opt}</strong>
+              </button>
+            `).join('')}
           </div>
           <div class="checkpoint-feedback" id="cp2-feedback"></div>
         </div>
@@ -11296,6 +11394,14 @@ function renderSplitAddLabModule(container) {
         selectedMult = parseInt(btn.getAttribute('data-mult'));
         render();
       });
+    });
+
+    // Checkpoint 2 New Problem button
+    container.querySelector('#btn-roll-cp2')?.addEventListener('click', () => {
+      playClickSound();
+      cpTeen = getRandomInt(12, 19);
+      cpMult = getRandomInt(4, 9);
+      render();
     });
 
     // Checkpoint 2 Options
@@ -11329,6 +11435,8 @@ function renderSplitAddLabModule(container) {
 function renderVedicTeenTeenModule(container) {
   let teenA = 14;
   let teenB = 17;
+  let cpA = getRandomInt(12, 19);
+  let cpB = getRandomInt(12, 19);
 
   function render() {
     const cp = state.tablesLearnCheckpoints || {};
@@ -11341,13 +11449,19 @@ function renderVedicTeenTeenModule(container) {
     const totalVal = teenA * teenB;
 
     // Dynamic Checkpoint 3 problem
-    const cpA = 16;
-    const cpB = 13;
     const cpU1 = cpA % 10;
     const cpU2 = cpB % 10;
     const cpStep1 = (cpA + cpU2) * 10;
     const cpStep2 = cpU1 * cpU2;
     const cpTotal = cpA * cpB;
+
+    const cpDistractors = [
+      cpStep1 + cpU1 + cpU2,
+      cpTotal + 10,
+      cpTotal - 10,
+      (cpA + cpB) * 10
+    ];
+    const { options: cpOptions, correct: cpCorrectIdx } = shuffleOptionsAndGetCorrect(cpTotal, cpDistractors);
 
     container.innerHTML = `
       <div class="think-callout-math">
@@ -11378,6 +11492,9 @@ function renderVedicTeenTeenModule(container) {
               ${a} × ${b}
             </button>
           `).join('')}
+          <button class="grid-toggle-btn" id="btn-random-teen-preset" style="background: rgba(245, 158, 11, 0.15); border-color: var(--accent-amber); font-weight: 700;">
+            🎲 Random Teen Pair
+          </button>
         </div>
 
         <div class="vedic-steps-ladder">
@@ -11417,29 +11534,22 @@ function renderVedicTeenTeenModule(container) {
         </div>
 
         <div class="checkpoint-prompt">
-          <strong>Vedic Teen × Teen Challenge:</strong> Apply the 2-step Vedic rule to calculate <strong>${cpA} × ${cpB}</strong>:<br>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span><strong>Vedic Teen × Teen Challenge:</strong> Apply the 2-step Vedic rule to calculate <strong>${cpA} × ${cpB}</strong>:</span>
+            <button class="btn btn-secondary btn-sm" id="btn-roll-cp3" style="font-size: 0.78rem; padding: 4px 10px; min-height: 32px;">🎲 New Problem</button>
+          </div>
           <code style="color: #a5b4fc; font-size: 0.95rem;">Step 1: (${cpA} + ${cpU2}) × 10 = ${cpStep1} &nbsp;|&nbsp; Step 2: ${cpU1} × ${cpU2} = ${cpStep2}</code><br>
           What is the total product (${cpStep1} + ${cpStep2})?
         </div>
 
         <div class="checkpoint-interactive-area">
           <div class="checkpoint-options-grid">
-            <button class="checkpoint-opt-btn" data-correct="true">
-              <span>A</span>
-              <strong>${cpTotal}</strong>
-            </button>
-            <button class="checkpoint-opt-btn" data-correct="false">
-              <span>B</span>
-              <strong>${cpStep1 + cpU1 + cpU2}</strong>
-            </button>
-            <button class="checkpoint-opt-btn" data-correct="false">
-              <span>C</span>
-              <strong>${cpTotal + 10}</strong>
-            </button>
-            <button class="checkpoint-opt-btn" data-correct="false">
-              <span>D</span>
-              <strong>${cpTotal - 10}</strong>
-            </button>
+            ${cpOptions.map((opt, i) => `
+              <button class="checkpoint-opt-btn" data-correct="${i === cpCorrectIdx ? 'true' : 'false'}">
+                <span>${String.fromCharCode(65 + i)}</span>
+                <strong>${opt}</strong>
+              </button>
+            `).join('')}
           </div>
           <div class="checkpoint-feedback" id="cp3-feedback"></div>
         </div>
@@ -11454,6 +11564,22 @@ function renderVedicTeenTeenModule(container) {
         teenB = parseInt(btn.getAttribute('data-vb'));
         render();
       });
+    });
+
+    // Random Teen Pair preset listener
+    container.querySelector('#btn-random-teen-preset')?.addEventListener('click', () => {
+      playClickSound();
+      teenA = getRandomInt(12, 19);
+      teenB = getRandomInt(12, 19);
+      render();
+    });
+
+    // Checkpoint 3 New Problem button
+    container.querySelector('#btn-roll-cp3')?.addEventListener('click', () => {
+      playClickSound();
+      cpA = getRandomInt(12, 19);
+      cpB = getRandomInt(12, 19);
+      render();
     });
 
     // Checkpoint 3 Options
@@ -11719,22 +11845,31 @@ function generateFreshWorksheetTablesData() {
     vedicItems.push({ a, b, prod: a * b });
   }
 
+  const wp1T = getRandomChoice([13, 14, 16, 17, 18]);
+  const wp1V = getRandomInt(6, 9);
+  const wp2T = getRandomChoice([14, 16, 17, 18, 19]);
+  const wp2K = getRandomInt(6, 9);
+  const wp3T = getRandomChoice([13, 14, 15, 16, 17]);
+  const wp3P = getRandomChoice([12, 13, 14, 15]);
+  const wp4R = getRandomChoice([14, 16, 17, 18, 19]);
+  const wp4S = getRandomInt(6, 9);
+
   const wordProblems = [
     {
-      q: 'A CBSE school library ordered 14 sets of science encyclopedias. If each set contains 8 volumes, find the total number of books ordered.',
-      ans: '14 × 8 = (10 × 8) + (4 × 8) = 80 + 32 = 112 books.'
+      q: `A CBSE school library ordered ${wp1T} sets of science encyclopedias. If each set contains ${wp1V} volumes, find the total number of books ordered.`,
+      ans: `${wp1T} × ${wp1V} = (10 × ${wp1V}) + (${wp1T - 10} × ${wp1V}) = ${10 * wp1V} + ${(wp1T - 10) * wp1V} = ${wp1T * wp1V} books.`
     },
     {
-      q: 'An apple orchard packed 17 wooden crates with 9 kg of apples in each crate. What is the total weight of apples packed?',
-      ans: '17 × 9 = (10 × 9) + (7 × 9) = 90 + 63 = 153 kg.'
+      q: `An apple orchard packed ${wp2T} wooden crates with ${wp2K} kg of apples in each crate. What is the total weight of apples packed?`,
+      ans: `${wp2T} × ${wp2K} = (10 × ${wp2K}) + (${wp2T - 10} × ${wp2K}) = ${10 * wp2K} + ${(wp2T - 10) * wp2K} = ${wp2T * wp2K} kg.`
     },
     {
-      q: 'A sports coach bought 16 packets of shuttlecocks at ₹12 per packet. How much money did the coach spend in total?',
-      ans: '16 × 12 = 192 (Vedic base-10: (16 + 2) × 10 + 6 × 2 = 180 + 12 = ₹192).'
+      q: `A sports coach bought ${wp3T} packets of shuttlecocks at ₹${wp3P} per packet. How much money did the coach spend in total?`,
+      ans: `${wp3T} × ${wp3P} = ₹${wp3T * wp3P} (Vedic base-10: (${wp3T} + ${wp3P % 10}) × 10 + ${(wp3T % 10) * (wp3P % 10)} = ₹${wp3T * wp3P}).`
     },
     {
-      q: 'For an inter-school march-past, students were arranged in 19 rows with 7 students in each row. How many students participated?',
-      ans: '19 × 7 = (20 × 7) − 7 = 140 − 7 = 133 students.'
+      q: `For an inter-school march-past, students were arranged in ${wp4R} rows with ${wp4S} students in each row. How many students participated?`,
+      ans: `${wp4R} × ${wp4S} = (20 × ${wp4S}) − (${(20 - wp4R) * wp4S}) = ${20 * wp4S} − ${(20 - wp4R) * wp4S} = ${wp4R * wp4S} students.`
     }
   ];
 
@@ -12156,15 +12291,15 @@ function renderEqualSliceDetectiveModule(container) {
           <strong>Diagnostic Question:</strong> A round pancake is sliced into 3 pieces: 1 big half and 2 small quarters. Sneha takes 1 small quarter and claims she ate ⅓ of the pancake because there are 3 total pieces. What is the correct deduction?
         </div>
         <div class="checkpoint-options" id="cp-opts-1">
-          <button class="option-btn cp-opt-btn" data-opt-idx="0">
-            A) Sneha is incorrect. Because the pieces are not equal, her small slice is actually ¼ of the pancake, not ⅓!
-          </button>
-          <button class="option-btn cp-opt-btn" data-opt-idx="1">
-            B) Sneha is correct because there were 3 total pieces on the plate.
-          </button>
-          <button class="option-btn cp-opt-btn" data-opt-idx="2">
-            C) Sneha is correct because any piece can be called ⅓.
-          </button>
+          ${[
+            { text: 'Sneha is incorrect. Because the pieces are not equal, her small slice is actually ¼ of the pancake, not ⅓!', isCorrect: true },
+            { text: 'Sneha is correct because there were 3 total pieces on the plate.', isCorrect: false },
+            { text: 'Sneha is correct because any piece can be called ⅓.', isCorrect: false }
+          ].sort(() => Math.random() - 0.5).map((opt, i) => `
+            <button class="option-btn cp-opt-btn" data-is-correct="${opt.isCorrect}">
+              ${String.fromCharCode(65 + i)}) ${opt.text}
+            </button>
+          `).join('')}
         </div>
         <div class="checkpoint-feedback" id="cp-feedback-1" style="${isCpCleared ? 'display: block;' : 'display: none;'}">
           ${isCpCleared ? '<strong>🎉 Checkpoint Cleared!</strong> You mastered equal partitioning!' : ''}
@@ -12191,12 +12326,15 @@ function renderEqualSliceDetectiveModule(container) {
 
     container.querySelectorAll('#cp-opts-1 .cp-opt-btn').forEach(b => {
       b.addEventListener('click', () => {
-        const idx = parseInt(b.getAttribute('data-opt-idx'));
+        const isCorrect = b.getAttribute('data-is-correct') === 'true';
         const feedbackEl = container.querySelector('#cp-feedback-1');
         const boxEl = container.querySelector('#cp-box-1');
-        if (idx === 0) {
+        if (isCorrect) {
+          b.classList.add('correct');
+          container.querySelectorAll('#cp-opts-1 .cp-opt-btn').forEach(btn => btn.disabled = true);
           completeFractionsLearnCheckpoint('checkpoint_frac_1', feedbackEl, boxEl);
         } else {
+          b.classList.add('wrong');
           playWrongSound();
           if (feedbackEl) {
             feedbackEl.className = 'checkpoint-feedback wrong';
@@ -12219,6 +12357,10 @@ function renderProperImproperMixedModule(container) {
   let quartersCount = 11;
   let mixW = 2, mixN = 3, mixD = 4;
   let impN = 11, impD = 4;
+  let cp2D = getRandomChoice([3, 4, 5, 6, 7]);
+  let cp2W = getRandomInt(2, 5);
+  let cp2Rem = getRandomInt(1, cp2D - 1);
+  let cp2N = cp2W * cp2D + cp2Rem;
 
   function render() {
     const cp = state.fractionsLearnCheckpoints || {};
@@ -12400,18 +12542,22 @@ function renderProperImproperMixedModule(container) {
           <span style="font-size: 0.8rem; color: var(--text-muted);">Required for Star 1 ⭐</span>
         </div>
         <div class="checkpoint-prompt" style="margin: 0.75rem 0; font-size: 0.95rem; line-height: 1.45;">
-          <strong>Diagnostic Question:</strong> Convert the improper fraction <strong>${formatFrac(19, 5)}</strong> into a mixed number:
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span><strong>Diagnostic Question:</strong> Convert the improper fraction <strong>${formatFrac(cp2N, cp2D)}</strong> into a mixed number:</span>
+            <button class="btn btn-secondary btn-sm" id="btn-roll-cp-frac-2" style="font-size: 0.78rem; padding: 4px 10px; min-height: 32px;">🎲 New Problem</button>
+          </div>
         </div>
         <div class="checkpoint-options" id="cp-opts-2">
-          <button class="option-btn cp-opt-btn" data-opt-idx="0">
-            A) 3 4/5 (19 ÷ 5 = 3 with remainder 4)
-          </button>
-          <button class="option-btn cp-opt-btn" data-opt-idx="1">
-            B) 3 5/4 (accidental flip of remainder and denominator)
-          </button>
-          <button class="option-btn cp-opt-btn" data-opt-idx="2">
-            C) 4 1/5 (overestimated whole number)
-          </button>
+          ${[
+            { text: `${cp2W} ${cp2Rem}/${cp2D} (${cp2N} ÷ ${cp2D} = ${cp2W} with remainder ${cp2Rem})`, isCorrect: true },
+            { text: `${cp2W} ${cp2D}/${cp2Rem} (accidental flip of remainder and denominator)`, isCorrect: false },
+            { text: `${cp2W + 1} 1/${cp2D} (overestimated whole number)`, isCorrect: false },
+            { text: `${cp2Rem} ${cp2W}/${cp2D} (confusing quotient with remainder)`, isCorrect: false }
+          ].sort(() => Math.random() - 0.5).map((opt, i) => `
+            <button class="option-btn cp-opt-btn" data-is-correct="${opt.isCorrect}">
+              ${String.fromCharCode(65 + i)}) ${opt.text}
+            </button>
+          `).join('')}
         </div>
         <div class="checkpoint-feedback" id="cp-feedback-2" style="${isCpCleared ? 'display: block;' : 'display: none;'}">
           ${isCpCleared ? '<strong>🎉 Checkpoint Cleared!</strong> You mastered mixed and improper conversions!' : ''}
@@ -12447,18 +12593,31 @@ function renderProperImproperMixedModule(container) {
       render();
     });
 
+    // Checkpoint 2 New Problem button
+    container.querySelector('#btn-roll-cp-frac-2')?.addEventListener('click', () => {
+      playClickSound();
+      cp2D = getRandomChoice([3, 4, 5, 6, 7]);
+      cp2W = getRandomInt(2, 5);
+      cp2Rem = getRandomInt(1, cp2D - 1);
+      cp2N = cp2W * cp2D + cp2Rem;
+      render();
+    });
+
     container.querySelectorAll('#cp-opts-2 .cp-opt-btn').forEach(b => {
       b.addEventListener('click', () => {
-        const idx = parseInt(b.getAttribute('data-opt-idx'));
+        const isCorrect = b.getAttribute('data-is-correct') === 'true';
         const feedbackEl = container.querySelector('#cp-feedback-2');
         const boxEl = container.querySelector('#cp-box-2');
-        if (idx === 0) {
+        if (isCorrect) {
+          b.classList.add('correct');
+          container.querySelectorAll('#cp-opts-2 .cp-opt-btn').forEach(btn => btn.disabled = true);
           completeFractionsLearnCheckpoint('checkpoint_frac_2', feedbackEl, boxEl);
         } else {
+          b.classList.add('wrong');
           playWrongSound();
           if (feedbackEl) {
             feedbackEl.className = 'checkpoint-feedback wrong';
-            feedbackEl.innerHTML = '<strong>❌ Not quite!</strong> Divide 19 by 5: 19 ÷ 5 = <strong>3</strong> with remainder <strong>4</strong>. The denominator remains 5, giving <strong>3 4/5</strong>!';
+            feedbackEl.innerHTML = `<strong>❌ Not quite!</strong> Divide ${cp2N} by ${cp2D}: ${cp2N} ÷ ${cp2D} = <strong>${cp2W}</strong> with remainder <strong>${cp2Rem}</strong>. The denominator remains ${cp2D}, giving <strong>${cp2W} ${cp2Rem}/${cp2D}</strong>!`;
             feedbackEl.style.display = 'block';
           }
         }
@@ -12475,6 +12634,9 @@ function renderProperImproperMixedModule(container) {
 
 function renderEquivalentComparisonModule(container) {
   let bA = 3, bB = 7, bC = 4, bD = 9;
+  let cp3Num = getRandomChoice([3, 4, 5, 7]);
+  let cp3D1 = getRandomChoice([5, 6, 7, 8]);
+  let cp3D2 = cp3D1 + getRandomChoice([3, 4, 5]);
 
   function render() {
     const cp = state.fractionsLearnCheckpoints || {};
@@ -12621,18 +12783,21 @@ function renderEquivalentComparisonModule(container) {
           <span style="font-size: 0.8rem; color: var(--text-muted);">Required for Star 1 ⭐</span>
         </div>
         <div class="checkpoint-prompt" style="margin: 0.75rem 0; font-size: 0.95rem; line-height: 1.45;">
-          <strong>Diagnostic Question:</strong> Which fraction is greater: <strong>${formatFrac(5, 7)}</strong> or <strong>${formatFrac(5, 11)}</strong>, and what is the fastest "No-Pen" deductive reason?
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span><strong>Diagnostic Question:</strong> Which fraction is greater: <strong>${formatFrac(cp3Num, cp3D1)}</strong> or <strong>${formatFrac(cp3Num, cp3D2)}</strong>, and what is the fastest "No-Pen" deductive reason?</span>
+            <button class="btn btn-secondary btn-sm" id="btn-roll-cp-frac-3" style="font-size: 0.78rem; padding: 4px 10px; min-height: 32px;">🎲 New Problem</button>
+          </div>
         </div>
         <div class="checkpoint-options" id="cp-opts-3">
-          <button class="option-btn cp-opt-btn" data-opt-idx="0">
-            A) 5/7 is greater, because when numerators are equal, a smaller denominator means each slice is larger!
-          </button>
-          <button class="option-btn cp-opt-btn" data-opt-idx="1">
-            B) 5/11 is greater, because 11 is a larger number than 7.
-          </button>
-          <button class="option-btn cp-opt-btn" data-opt-idx="2">
-            C) Both fractions are equal because both have 5 as numerator.
-          </button>
+          ${[
+            { text: `${cp3Num}/${cp3D1} is greater, because when numerators are equal, a smaller denominator means each slice is larger!`, isCorrect: true },
+            { text: `${cp3Num}/${cp3D2} is greater, because ${cp3D2} is a larger number than ${cp3D1}.`, isCorrect: false },
+            { text: `Both fractions are equal because both have ${cp3Num} as numerator.`, isCorrect: false }
+          ].sort(() => Math.random() - 0.5).map((opt, i) => `
+            <button class="option-btn cp-opt-btn" data-is-correct="${opt.isCorrect}">
+              ${String.fromCharCode(65 + i)}) ${opt.text}
+            </button>
+          `).join('')}
         </div>
         <div class="checkpoint-feedback" id="cp-feedback-3" style="${isCpCleared ? 'display: block;' : 'display: none;'}">
           ${isCpCleared ? '<strong>🎉 Checkpoint Cleared!</strong> You mastered equivalence and comparison shortcuts!' : ''}
@@ -12646,18 +12811,30 @@ function renderEquivalentComparisonModule(container) {
     container.querySelector('#in-bf-c')?.addEventListener('input', e => { bC = parseInt(e.target.value) || 1; render(); });
     container.querySelector('#in-bf-d')?.addEventListener('input', e => { bD = parseInt(e.target.value) || 1; render(); });
 
+    // Checkpoint 3 New Problem button
+    container.querySelector('#btn-roll-cp-frac-3')?.addEventListener('click', () => {
+      playClickSound();
+      cp3Num = getRandomChoice([3, 4, 5, 7]);
+      cp3D1 = getRandomChoice([5, 6, 7, 8]);
+      cp3D2 = cp3D1 + getRandomChoice([3, 4, 5]);
+      render();
+    });
+
     container.querySelectorAll('#cp-opts-3 .cp-opt-btn').forEach(b => {
       b.addEventListener('click', () => {
-        const idx = parseInt(b.getAttribute('data-opt-idx'));
+        const isCorrect = b.getAttribute('data-is-correct') === 'true';
         const feedbackEl = container.querySelector('#cp-feedback-3');
         const boxEl = container.querySelector('#cp-box-3');
-        if (idx === 0) {
+        if (isCorrect) {
+          b.classList.add('correct');
+          container.querySelectorAll('#cp-opts-3 .cp-opt-btn').forEach(btn => btn.disabled = true);
           completeFractionsLearnCheckpoint('checkpoint_frac_3', feedbackEl, boxEl);
         } else {
+          b.classList.add('wrong');
           playWrongSound();
           if (feedbackEl) {
             feedbackEl.className = 'checkpoint-feedback wrong';
-            feedbackEl.innerHTML = '<strong>❌ Not quite!</strong> When numerators are equal, smaller denominator means LARGER slices! Slicing into 7 parts yields much bigger slices than slicing into 11 parts!';
+            feedbackEl.innerHTML = `<strong>❌ Not quite!</strong> When numerators are equal, smaller denominator means LARGER slices! Slicing into ${cp3D1} parts yields much bigger slices than slicing into ${cp3D2} parts!`;
             feedbackEl.style.display = 'block';
           }
         }
@@ -12675,6 +12852,15 @@ function renderEquivalentComparisonModule(container) {
 function renderAddSubtractLabModule(container) {
   let opA = 2, opB = 3, opC = 1, opD = 4;
   let opType = '+';
+  const cp4Pool = [
+    { a: 5, b: 6, c: 1, d: 4, lcm: 12, ansN: 7, ansD: 12 },
+    { a: 3, b: 4, c: 2, d: 5, lcm: 20, ansN: 7, ansD: 20 },
+    { a: 7, b: 8, c: 1, d: 3, lcm: 24, ansN: 13, ansD: 24 },
+    { a: 4, b: 5, c: 1, d: 2, lcm: 10, ansN: 3, ansD: 10 },
+    { a: 2, b: 3, c: 1, d: 4, lcm: 12, ansN: 5, ansD: 12 },
+    { a: 5, b: 8, c: 1, d: 6, lcm: 24, ansN: 11, ansD: 24 }
+  ];
+  let cp4Prob = getRandomChoice(cp4Pool);
 
   function render() {
     const cp = state.fractionsLearnCheckpoints || {};
@@ -12685,6 +12871,15 @@ function renderAddSubtractLabModule(container) {
     const scaled2 = opC * (commonD / opD);
     const resultN = opType === '+' ? scaled1 + scaled2 : scaled1 - scaled2;
     const simp = simplifyFrac(resultN, commonD);
+
+    const s1 = (cp4Prob.a * cp4Prob.lcm) / cp4Prob.b;
+    const s2 = (cp4Prob.c * cp4Prob.lcm) / cp4Prob.d;
+    const cp4Correct = `${cp4Prob.ansN}/${cp4Prob.ansD} (LCM(${cp4Prob.b}, ${cp4Prob.d}) = ${cp4Prob.lcm}, so ${s1}/${cp4Prob.lcm} − ${s2}/${cp4Prob.lcm} = ${cp4Prob.ansN}/${cp4Prob.ansD})`;
+    const cp4Choices = [
+      { text: cp4Correct, isCorrect: true },
+      { text: `${Math.abs(cp4Prob.a - cp4Prob.c)}/${Math.abs(cp4Prob.b - cp4Prob.d) || 2} (subtracting top and bottom directly)`, isCorrect: false },
+      { text: `${cp4Prob.ansN - 2}/${cp4Prob.ansD}`, isCorrect: false }
+    ].sort(() => Math.random() - 0.5);
 
     container.innerHTML = `
       <div class="think-callout-math">
@@ -12754,18 +12949,17 @@ function renderAddSubtractLabModule(container) {
           <span style="font-size: 0.8rem; color: var(--text-muted);">Required for Star 1 ⭐</span>
         </div>
         <div class="checkpoint-prompt" style="margin: 0.75rem 0; font-size: 0.95rem; line-height: 1.45;">
-          <strong>Diagnostic Question:</strong> Calculate <strong>${formatFrac(5, 6)} − ${formatFrac(1, 4)}</strong> in simplest form:
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span><strong>Diagnostic Question:</strong> Calculate <strong>${formatFrac(cp4Prob.a, cp4Prob.b)} − ${formatFrac(cp4Prob.c, cp4Prob.d)}</strong> in simplest form:</span>
+            <button class="btn btn-secondary btn-sm" id="btn-roll-cp-frac-4" style="font-size: 0.78rem; padding: 4px 10px; min-height: 32px;">🎲 New Problem</button>
+          </div>
         </div>
         <div class="checkpoint-options" id="cp-opts-4">
-          <button class="option-btn cp-opt-btn" data-opt-idx="0">
-            A) 7/12 (LCM(6, 4) = 12, so 10/12 − 3/12 = 7/12)
-          </button>
-          <button class="option-btn cp-opt-btn" data-opt-idx="1">
-            B) 4/2 = 2 (subtracting top and bottom directly)
-          </button>
-          <button class="option-btn cp-opt-btn" data-opt-idx="2">
-            C) 4/12 = 1/3
-          </button>
+          ${cp4Choices.map((opt, i) => `
+            <button class="option-btn cp-opt-btn" data-is-correct="${opt.isCorrect}">
+              ${String.fromCharCode(65 + i)}) ${opt.text}
+            </button>
+          `).join('')}
         </div>
         <div class="checkpoint-feedback" id="cp-feedback-4" style="${isCpCleared ? 'display: block;' : 'display: none;'}">
           ${isCpCleared ? '<strong>🎉 Checkpoint Cleared!</strong> You mastered like & unlike fraction addition/subtraction!' : ''}
@@ -12780,18 +12974,28 @@ function renderAddSubtractLabModule(container) {
     container.querySelector('#in-op-d')?.addEventListener('input', e => { opD = parseInt(e.target.value) || 1; render(); });
     container.querySelector('#btn-toggle-op')?.addEventListener('click', () => { opType = opType === '+' ? '−' : '+'; render(); });
 
+    // Checkpoint 4 New Problem button
+    container.querySelector('#btn-roll-cp-frac-4')?.addEventListener('click', () => {
+      playClickSound();
+      cp4Prob = getRandomChoice(cp4Pool);
+      render();
+    });
+
     container.querySelectorAll('#cp-opts-4 .cp-opt-btn').forEach(b => {
       b.addEventListener('click', () => {
-        const idx = parseInt(b.getAttribute('data-opt-idx'));
+        const isCorrect = b.getAttribute('data-is-correct') === 'true';
         const feedbackEl = container.querySelector('#cp-feedback-4');
         const boxEl = container.querySelector('#cp-box-4');
-        if (idx === 0) {
+        if (isCorrect) {
+          b.classList.add('correct');
+          container.querySelectorAll('#cp-opts-4 .cp-opt-btn').forEach(btn => btn.disabled = true);
           completeFractionsLearnCheckpoint('checkpoint_frac_4', feedbackEl, boxEl);
         } else {
+          b.classList.add('wrong');
           playWrongSound();
           if (feedbackEl) {
             feedbackEl.className = 'checkpoint-feedback wrong';
-            feedbackEl.innerHTML = '<strong>❌ Not quite!</strong> You cannot subtract denominators! First find LCM(6, 4) = 12, convert to 10/12 − 3/12 = <strong>7/12</strong>!';
+            feedbackEl.innerHTML = `<strong>❌ Not quite!</strong> You cannot subtract denominators! First find LCM(${cp4Prob.b}, ${cp4Prob.d}) = ${cp4Prob.lcm}, convert to ${s1}/${cp4Prob.lcm} − ${s2}/${cp4Prob.lcm} = <strong>${cp4Prob.ansN}/${cp4Prob.ansD}</strong>!`;
             feedbackEl.style.display = 'block';
           }
         }
@@ -12807,9 +13011,25 @@ function renderAddSubtractLabModule(container) {
    -------------------------------------------------------------------------- */
 
 function renderMultiplicationOfMagicModule(container) {
+  const cp5Pool = [
+    { a: 5, b: 12, c: 4, d: 15, ans: '1/9', exp: 'Cancel 5 & 15 by 5 to 1 & 3; Cancel 4 & 12 by 4 to 1 & 3 => (1×1)/(3×3) = 1/9', distractors: ['20/180', '1/6', '4/15'] },
+    { a: 3, b: 8, c: 4, d: 9, ans: '1/6', exp: 'Cancel 3 & 9 by 3 to 1 & 3; Cancel 4 & 8 by 4 to 1 & 2 => (1×1)/(2×3) = 1/6', distractors: ['12/72', '1/4', '3/8'] },
+    { a: 7, b: 10, c: 5, d: 14, ans: '1/4', exp: 'Cancel 7 & 14 by 7 to 1 & 2; Cancel 5 & 10 by 5 to 1 & 2 => (1×1)/(2×2) = 1/4', distractors: ['35/140', '1/2', '7/20'] },
+    { a: 2, b: 9, c: 3, d: 8, ans: '1/12', exp: 'Cancel 2 & 8 by 2 to 1 & 4; Cancel 3 & 9 by 3 to 1 & 3 => (1×1)/(3×4) = 1/12', distractors: ['6/72', '1/6', '2/9'] },
+    { a: 4, b: 15, c: 5, d: 8, ans: '1/6', exp: 'Cancel 4 & 8 by 4 to 1 & 2; Cancel 5 & 15 by 5 to 1 & 3 => (1×1)/(3×2) = 1/6', distractors: ['20/120', '1/3', '5/12'] }
+  ];
+  let cp5Prob = getRandomChoice(cp5Pool);
+
   function render() {
     const cp = state.fractionsLearnCheckpoints || {};
     const isCpCleared = !!cp.checkpoint_frac_5;
+
+    const cp5Choices = [
+      { text: `${cp5Prob.ans} (${cp5Prob.exp})`, isCorrect: true },
+      { text: `${cp5Prob.distractors[0]} (unreduced product)`, isCorrect: false },
+      { text: cp5Prob.distractors[1], isCorrect: false },
+      { text: cp5Prob.distractors[2], isCorrect: false }
+    ].sort(() => Math.random() - 0.5);
 
     container.innerHTML = `
       <div class="think-callout-math">
@@ -12879,6 +13099,7 @@ function renderMultiplicationOfMagicModule(container) {
               Look diagonally:<br>
               • 4 and 8 both divide by 4: (4 ➔ <strong>1</strong>, 8 ➔ <strong>2</strong>)<br>
               • 3 and 9 both divide by 3: (3 ➔ <strong>1</strong>, 9 ➔ <strong>3</strong>)<br>
+              • 3 and 9 both divide by 3: (3 ➔ <strong>1</strong>, 9 ➔ <strong>3</strong>)<br>
               Multiply survivors: (1 × 1) / (3 × 2) = <strong>⅙</strong> in 2 seconds!
             </p>
           </div>
@@ -12906,18 +13127,17 @@ function renderMultiplicationOfMagicModule(container) {
           <span style="font-size: 0.8rem; color: var(--text-muted);">Required for Star 1 ⭐</span>
         </div>
         <div class="checkpoint-prompt" style="margin: 0.75rem 0; font-size: 0.95rem; line-height: 1.45;">
-          <strong>Diagnostic Question:</strong> Find <strong>${formatFrac(5, 12)} × ${formatFrac(4, 15)}</strong> in simplest form using cross-cancellation:
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span><strong>Diagnostic Question:</strong> Find <strong>${formatFrac(cp5Prob.a, cp5Prob.b)} × ${formatFrac(cp5Prob.c, cp5Prob.d)}</strong> in simplest form using cross-cancellation:</span>
+            <button class="btn btn-secondary btn-sm" id="btn-roll-cp-frac-5" style="font-size: 0.78rem; padding: 4px 10px; min-height: 32px;">🎲 New Problem</button>
+          </div>
         </div>
         <div class="checkpoint-options" id="cp-opts-5">
-          <button class="option-btn cp-opt-btn" data-opt-idx="0">
-            A) 1/9 (Cancel 5 & 15 by 5 to 1 & 3; Cancel 4 & 12 by 4 to 1 & 3 => (1×1)/(3×3) = 1/9)
-          </button>
-          <button class="option-btn cp-opt-btn" data-opt-idx="1">
-            B) 20/180 (unreduced product)
-          </button>
-          <button class="option-btn cp-opt-btn" data-opt-idx="2">
-            C) 1/6
-          </button>
+          ${cp5Choices.map((opt, i) => `
+            <button class="option-btn cp-opt-btn" data-is-correct="${opt.isCorrect}">
+              ${String.fromCharCode(65 + i)}) ${opt.text}
+            </button>
+          `).join('')}
         </div>
         <div class="checkpoint-feedback" id="cp-feedback-5" style="${isCpCleared ? 'display: block;' : 'display: none;'}">
           ${isCpCleared ? '<strong>🎉 Checkpoint Cleared!</strong> You mastered fraction multiplication and cross-cancellation!' : ''}
@@ -12925,18 +13145,28 @@ function renderMultiplicationOfMagicModule(container) {
       </div>
     `;
 
+    // Checkpoint 5 New Problem button
+    container.querySelector('#btn-roll-cp-frac-5')?.addEventListener('click', () => {
+      playClickSound();
+      cp5Prob = getRandomChoice(cp5Pool);
+      render();
+    });
+
     container.querySelectorAll('#cp-opts-5 .cp-opt-btn').forEach(b => {
       b.addEventListener('click', () => {
-        const idx = parseInt(b.getAttribute('data-opt-idx'));
+        const isCorrect = b.getAttribute('data-is-correct') === 'true';
         const feedbackEl = container.querySelector('#cp-feedback-5');
         const boxEl = container.querySelector('#cp-box-5');
-        if (idx === 0) {
+        if (isCorrect) {
+          b.classList.add('correct');
+          container.querySelectorAll('#cp-opts-5 .cp-opt-btn').forEach(btn => btn.disabled = true);
           completeFractionsLearnCheckpoint('checkpoint_frac_5', feedbackEl, boxEl);
         } else {
+          b.classList.add('wrong');
           playWrongSound();
           if (feedbackEl) {
             feedbackEl.className = 'checkpoint-feedback wrong';
-            feedbackEl.innerHTML = '<strong>❌ Not quite!</strong> Cross-cancel: 5 & 15 become 1 & 3. 4 & 12 become 1 & 3. Result: (1×1)/(3×3) = <strong>1/9</strong>!';
+            feedbackEl.innerHTML = `<strong>❌ Not quite!</strong> Cross-cancel: ${cp5Prob.exp}!`;
             feedbackEl.style.display = 'block';
           }
         }
@@ -12952,9 +13182,25 @@ function renderMultiplicationOfMagicModule(container) {
    -------------------------------------------------------------------------- */
 
 function renderDivisionReciprocalsModule(container) {
+  const cp6Pool = [
+    { meters: 15, badgeN: 3, badgeD: 4, badges: 20, exp: '15 × 4/3 = (15÷3) × 4 = 5 × 4 = 20', distractors: ['11 badges (15 − 4)', '45 badges (15 × 3)'] },
+    { meters: 12, badgeN: 2, badgeD: 3, badges: 18, exp: '12 × 3/2 = (12÷2) × 3 = 6 × 3 = 18', distractors: ['8 badges (12 × 2/3)', '14 badges (12 + 2)'] },
+    { meters: 16, badgeN: 4, badgeD: 5, badges: 20, exp: '16 × 5/4 = (16÷4) × 5 = 4 × 5 = 20', distractors: ['12 badges (16 − 4)', '80 badges (16 × 5)'] },
+    { meters: 18, badgeN: 3, badgeD: 4, badges: 24, exp: '18 × 4/3 = (18÷3) × 4 = 6 × 4 = 24', distractors: ['14 badges (18 − 4)', '54 badges (18 × 3)'] },
+    { meters: 20, badgeN: 5, badgeD: 8, badges: 32, exp: '20 × 8/5 = (20÷5) × 8 = 4 × 8 = 32', distractors: ['12 badges (20 − 8)', '100 badges (20 × 5)'] },
+    { meters: 24, badgeN: 2, badgeD: 3, badges: 36, exp: '24 × 3/2 = (24÷2) × 3 = 12 × 3 = 36', distractors: ['16 badges (24 × 2/3)', '48 badges (24 × 2)'] }
+  ];
+  let cp6Prob = getRandomChoice(cp6Pool);
+
   function render() {
     const cp = state.fractionsLearnCheckpoints || {};
     const isCpCleared = !!cp.checkpoint_frac_6;
+
+    const cp6Choices = [
+      { text: `${cp6Prob.badges} badges (${cp6Prob.exp})`, isCorrect: true },
+      { text: cp6Prob.distractors[0], isCorrect: false },
+      { text: cp6Prob.distractors[1], isCorrect: false }
+    ].sort(() => Math.random() - 0.5);
 
     container.innerHTML = `
       <div class="think-callout-math">
@@ -13030,18 +13276,17 @@ function renderDivisionReciprocalsModule(container) {
           <span style="font-size: 0.8rem; color: var(--text-muted);">Required for Star 1 ⭐</span>
         </div>
         <div class="checkpoint-prompt" style="margin: 0.75rem 0; font-size: 0.95rem; line-height: 1.45;">
-          <strong>Diagnostic Question:</strong> A tailor has <strong>15 meters</strong> of ribbon. If each school badge takes <strong>¾ meter</strong> of ribbon, how many total badges can he stitch? (15 ÷ ¾ = ?)
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span><strong>Diagnostic Question:</strong> A tailor has <strong>${cp6Prob.meters} meters</strong> of ribbon. If each school badge takes <strong>${formatFrac(cp6Prob.badgeN, cp6Prob.badgeD)} meter</strong> of ribbon, how many total badges can he stitch? (${cp6Prob.meters} ÷ ${formatFrac(cp6Prob.badgeN, cp6Prob.badgeD)} = ?)</span>
+            <button class="btn btn-secondary btn-sm" id="btn-roll-cp-frac-6" style="font-size: 0.78rem; padding: 4px 10px; min-height: 32px;">🎲 New Problem</button>
+          </div>
         </div>
         <div class="checkpoint-options" id="cp-opts-6">
-          <button class="option-btn cp-opt-btn" data-opt-idx="0">
-            A) 20 badges (15 × 4/3 = (15÷3) × 4 = 5 × 4 = 20)
-          </button>
-          <button class="option-btn cp-opt-btn" data-opt-idx="1">
-            B) 11 badges (15 − 4)
-          </button>
-          <button class="option-btn cp-opt-btn" data-opt-idx="2">
-            C) 45 badges (15 × 3)
-          </button>
+          ${cp6Choices.map((opt, i) => `
+            <button class="option-btn cp-opt-btn" data-is-correct="${opt.isCorrect}">
+              ${String.fromCharCode(65 + i)}) ${opt.text}
+            </button>
+          `).join('')}
         </div>
         <div class="checkpoint-feedback" id="cp-feedback-6" style="${isCpCleared ? 'display: block;' : 'display: none;'}">
           ${isCpCleared ? '<strong>🎉 Checkpoint Cleared!</strong> You mastered fraction division and reciprocals!' : ''}
@@ -13049,18 +13294,28 @@ function renderDivisionReciprocalsModule(container) {
       </div>
     `;
 
+    // Checkpoint 6 New Problem button
+    container.querySelector('#btn-roll-cp-frac-6')?.addEventListener('click', () => {
+      playClickSound();
+      cp6Prob = getRandomChoice(cp6Pool);
+      render();
+    });
+
     container.querySelectorAll('#cp-opts-6 .cp-opt-btn').forEach(b => {
       b.addEventListener('click', () => {
-        const idx = parseInt(b.getAttribute('data-opt-idx'));
+        const isCorrect = b.getAttribute('data-is-correct') === 'true';
         const feedbackEl = container.querySelector('#cp-feedback-6');
         const boxEl = container.querySelector('#cp-box-6');
-        if (idx === 0) {
+        if (isCorrect) {
+          b.classList.add('correct');
+          container.querySelectorAll('#cp-opts-6 .cp-opt-btn').forEach(btn => btn.disabled = true);
           completeFractionsLearnCheckpoint('checkpoint_frac_6', feedbackEl, boxEl);
         } else {
+          b.classList.add('wrong');
           playWrongSound();
           if (feedbackEl) {
             feedbackEl.className = 'checkpoint-feedback wrong';
-            feedbackEl.innerHTML = '<strong>❌ Not quite!</strong> To divide 15 by 3/4: Keep 15, change ÷ to ×, flip 3/4 to 4/3! 15 × 4/3 = 5 × 4 = <strong>20 badges</strong>!';
+            feedbackEl.innerHTML = `<strong>❌ Not quite!</strong> To divide ${cp6Prob.meters} by ${cp6Prob.badgeN}/${cp6Prob.badgeD}: Keep ${cp6Prob.meters}, change ÷ to ×, flip ${cp6Prob.badgeN}/${cp6Prob.badgeD} to ${cp6Prob.badgeD}/${cp6Prob.badgeN}! ${cp6Prob.exp} = <strong>${cp6Prob.badges} badges</strong>!`;
             feedbackEl.style.display = 'block';
           }
         }
@@ -13199,39 +13454,155 @@ function renderSpotTheTrapsFractionsModule(container) {
 let cachedWorksheetFractionsData = null;
 
 function generateFreshWorksheetFractionsData() {
+  // I. Basics
+  const antBricks = getRandomChoice([4, 6, 8, 9, 12, 15, 16, 18]);
+  const antSimp = simplifyFrac(antBricks, 24);
+
+  const impD = getRandomChoice([3, 4, 5, 6, 7]);
+  const impW = getRandomInt(2, 5);
+  const impR = getRandomInt(1, impD - 1);
+  const impN = impW * impD + impR;
+
+  const mixD = getRandomChoice([3, 4, 5, 7, 8]);
+  const mixW = getRandomInt(2, 5);
+  const mixR = getRandomInt(1, mixD - 1);
+  const mixN = mixW * mixD + mixR;
+
+  const bottleMl = getRandomChoice([200, 250, 400, 500, 600, 750, 800]);
+  const bottleSimp = simplifyFrac(bottleMl, 1000);
+
   const basics = [
-    { q: 'An ant crawls across a wall of 24 equal bricks. If it walks over 8 bricks, what fraction of the wall did it cover in simplest form?', a: '8/24 = 1/3 of the wall' },
-    { q: 'Convert the improper fraction 23/5 into a mixed number.', a: '23 ÷ 5 = 4 R 3 = 4 3/5' },
-    { q: 'Convert the mixed number 3 5/8 into an improper fraction.', a: '(3 × 8 + 5)/8 = (24 + 5)/8 = 29/8' },
-    { q: 'A 1000 mL water bottle is filled to 750 mL. What fraction of the bottle is filled in lowest terms?', a: '750/1000 = 3/4' }
+    { q: `An ant crawls across a wall of 24 equal bricks. If it walks over ${antBricks} bricks, what fraction of the wall did it cover in simplest form?`, a: `${antBricks}/24 = ${antSimp.n}/${antSimp.d} of the wall` },
+    { q: `Convert the improper fraction ${impN}/${impD} into a mixed number.`, a: `${impN} ÷ ${impD} = ${impW} R ${impR} = ${impW} ${impR}/${impD}` },
+    { q: `Convert the mixed number ${mixW} ${mixR}/${mixD} into an improper fraction.`, a: `(${mixW} × ${mixD} + ${mixR})/${mixD} = (${mixW * mixD} + ${mixR})/${mixD} = ${mixN}/${mixD}` },
+    { q: `A 1000 mL water bottle is filled to ${bottleMl} mL. What fraction of the bottle is filled in lowest terms?`, a: `${bottleMl}/1000 = ${bottleSimp.n}/${bottleSimp.d}` }
   ];
+
+  // II. Equiv & Comparisons
+  const eqN = getRandomChoice([2, 3, 4, 5]);
+  const eqD = getRandomChoice([5, 7, 9, 11]);
+  const eqK = getRandomChoice([3, 4, 5, 6]);
+
+  const redBase = getRandomChoice([{ n: 2, d: 3 }, { n: 3, d: 4 }, { n: 2, d: 5 }, { n: 3, d: 5 }, { n: 5, d: 6 }]);
+  const redK = getRandomChoice([4, 6, 8, 9, 12]);
+
+  const numSame = getRandomChoice([3, 4, 5, 7]);
+  const den1 = getRandomChoice([6, 7, 8]);
+  const den2 = getRandomChoice([9, 11, 12, 13]);
+
+  const bfPairs = [
+    { a: 2, b: 5, c: 3, d: 7 },
+    { a: 3, b: 8, c: 4, d: 9 },
+    { a: 5, b: 6, c: 7, d: 8 },
+    { a: 4, b: 7, c: 5, d: 9 },
+    { a: 3, b: 7, c: 4, d: 9 }
+  ];
+  const bfp = getRandomChoice(bfPairs);
+  const cross1 = bfp.a * bfp.d;
+  const cross2 = bfp.b * bfp.c;
+  const bfpGreater = cross1 > cross2 ? `${bfp.a}/${bfp.b} > ${bfp.c}/${bfp.d}` : `${bfp.c}/${bfp.d} > ${bfp.a}/${bfp.b}`;
 
   const equiv = [
-    { q: 'Find the missing number: 3/7 = ______ / 35', a: '35 ÷ 7 = 5 => 3 × 5 = 15' },
-    { q: 'Reduce 24/36 to its simplest form by dividing by HCF.', a: 'HCF(24, 36) = 12 => 2/3' },
-    { q: 'Compare using No-Pen deduction: 5/9 ______ 5/12', a: '5/9 > 5/12 (smaller denominator = larger pieces)' },
-    { q: 'Compare using cross-multiplication: 4/7 ______ 5/9', a: '4 × 9 = 36 vs 7 × 5 = 35 => 4/7 > 5/9' }
+    { q: `Find the missing number: ${eqN}/${eqD} = ______ / ${eqD * eqK}`, a: `${eqD * eqK} ÷ ${eqD} = ${eqK} => ${eqN} × ${eqK} = ${eqN * eqK}` },
+    { q: `Reduce ${redBase.n * redK}/${redBase.d * redK} to its simplest form by dividing by HCF.`, a: `HCF = ${redK} => ${redBase.n}/${redBase.d}` },
+    { q: `Compare using No-Pen deduction: ${numSame}/${den1} ______ ${numSame}/${den2}`, a: `${numSame}/${den1} > ${numSame}/${den2} (smaller denominator = larger pieces)` },
+    { q: `Compare using cross-multiplication: ${bfp.a}/${bfp.b} ______ ${bfp.c}/${bfp.d}`, a: `${bfp.a} × ${bfp.d} = ${cross1} vs ${bfp.b} × ${bfp.c} = ${cross2} => ${bfpGreater}` }
   ];
+
+  // III. Operations
+  const likeD = getRandomChoice([9, 11, 13, 15]);
+  const likeA = getRandomInt(2, 4);
+  const likeB = getRandomInt(1, 3);
+
+  const subPairs = [
+    { n1: 5, d1: 6, n2: 1, d2: 4 },
+    { n1: 3, d1: 4, n2: 2, d2: 5 },
+    { n1: 7, d1: 10, n2: 2, d2: 5 },
+    { n1: 7, d1: 8, n2: 1, d2: 2 }
+  ];
+  const sp = getRandomChoice(subPairs);
+  const sLcm = lcm(sp.d1, sp.d2);
+  const sDiffN = sp.n1 * (sLcm / sp.d1) - sp.n2 * (sLcm / sp.d2);
+  const sSimp = simplifyFrac(sDiffN, sLcm);
+
+  const addPairs = [
+    { n1: 1, d1: 3, n2: 1, d2: 4 },
+    { n1: 2, d1: 5, n2: 1, d2: 2 },
+    { n1: 3, d1: 4, n2: 1, d2: 6 },
+    { n1: 1, d1: 2, n2: 1, d2: 3 }
+  ];
+  const ap = getRandomChoice(addPairs);
+  const aLcm = lcm(ap.d1, ap.d2);
+  const aSumN = ap.n1 * (aLcm / ap.d1) + ap.n2 * (aLcm / ap.d2);
+  const aSimp = simplifyFrac(aSumN, aLcm);
+
+  const ofD = getRandomChoice([4, 5, 6, 8]);
+  const ofN = getRandomChoice([2, 3, 5].filter(x => x < ofD));
+  const ofMult = getRandomChoice([5, 6, 7, 8, 9]);
+  const ofTotal = ofD * ofMult;
+  const ofAns = ofN * ofMult;
+
+  const ccSets = [
+    { n1: 3, d1: 8, n2: 4, d2: 9, ansN: 1, ansD: 6 },
+    { n1: 5, d1: 14, n2: 7, d2: 10, ansN: 1, ansD: 4 },
+    { n1: 2, d1: 3, n2: 9, d2: 10, ansN: 3, ansD: 5 },
+    { n1: 4, d1: 15, n2: 5, d2: 12, ansN: 1, ansD: 9 }
+  ];
+  const ccp = getRandomChoice(ccSets);
+
+  const divPairs = [
+    { n1: 4, d1: 5, n2: 8, d2: 15, ans: '1 1/2' },
+    { n1: 3, d1: 7, n2: 6, d2: 7, ans: '1/2' },
+    { n1: 2, d1: 3, n2: 4, d2: 9, ans: '1 1/2' },
+    { n1: 5, d1: 6, n2: 5, d2: 12, ans: '2' }
+  ];
+  const divp = getRandomChoice(divPairs);
 
   const ops = [
-    { q: '3/11 + 5/11 = ______', a: '(3 + 5)/11 = 8/11 (Never add denominators!)' },
-    { q: '5/6 − 1/4 = ______', a: 'LCM(6, 4) = 12 => 10/12 − 3/12 = 7/12' },
-    { q: '2/5 + 1/2 = ______', a: 'LCM(5, 2) = 10 => 4/10 + 5/10 = 9/10' },
-    { q: 'Find 3/4 of 48 kilograms.', a: '(48 ÷ 4) × 3 = 12 × 3 = 36 kg' },
-    { q: '3/8 × 4/9 in simplest form (use cross-cancellation).', a: '(1 × 1)/(2 × 3) = 1/6' },
-    { q: '4/5 ÷ 8/15 using Keep, Change, Flip.', a: '4/5 × 15/8 = 3/2 = 1 1/2' }
+    { q: `${likeA}/${likeD} + ${likeB}/${likeD} = ______`, a: `(${likeA} + ${likeB})/${likeD} = ${likeA + likeB}/${likeD} (Never add denominators!)` },
+    { q: `${sp.n1}/${sp.d1} − ${sp.n2}/${sp.d2} = ______`, a: `LCM(${sp.d1}, ${sp.d2}) = ${sLcm} => ${sSimp.n}/${sSimp.d}` },
+    { q: `${ap.n1}/${ap.d1} + ${ap.n2}/${ap.d2} = ______`, a: `LCM(${ap.d1}, ${ap.d2}) = ${aLcm} => ${aSimp.n}/${aSimp.d}` },
+    { q: `Find ${ofN}/${ofD} of ${ofTotal} kilograms.`, a: `(${ofTotal} ÷ ${ofD}) × ${ofN} = ${ofMult} × ${ofN} = ${ofAns} kg` },
+    { q: `${ccp.n1}/${ccp.d1} × ${ccp.n2}/${ccp.d2} in simplest form (use cross-cancellation).`, a: `Cancel common factors: ${ccp.ansN}/${ccp.ansD}` },
+    { q: `${divp.n1}/${divp.d1} ÷ ${divp.n2}/${divp.d2} using Keep, Change, Flip.`, a: `${divp.n1}/${divp.d1} × ${divp.d2}/${divp.n2} = ${divp.ans}` }
   ];
+
+  // IV. Words
+  const ribbonSets = [
+    { totN: 7, totD: 8, cutN: 1, cutD: 4, rem: '5/8' },
+    { totN: 5, totD: 6, cutN: 1, cutD: 3, rem: '1/2' },
+    { totN: 3, totD: 4, cutN: 1, cutD: 2, rem: '1/4' }
+  ];
+  const rSet = getRandomChoice(ribbonSets);
+
+  const readSets = [
+    { d1N: 1, d1D: 3, d2N: 2, d2D: 5, tot: '11/15' },
+    { d1N: 1, d1D: 4, d2N: 1, d2D: 2, tot: '3/4' },
+    { d1N: 2, d1D: 7, d2N: 3, d2D: 7, tot: '5/7' }
+  ];
+  const rdSet = getRandomChoice(readSets);
+
+  const tailorFabric = getRandomChoice([12, 15, 18, 21, 24]);
+  const tailorAprons = (tailorFabric / 3) * 4;
+
+  const classStudents = getRandomChoice([30, 35, 40, 45, 50]);
+  const busFraction = getRandomChoice([2, 3]);
+  const busStudents = (classStudents / 5) * busFraction;
 
   const words = [
-    { q: 'A roll of ribbon was 7/8 meter long. An art student cut off 1/4 meter for a bow. What length of ribbon is left?', a: '7/8 − 2/8 = 5/8 meter' },
-    { q: 'Rohan read 1/3 of a book on Saturday and 2/5 on Sunday. What fraction of the book did he read across the weekend?', a: '5/15 + 6/15 = 11/15 of the book' },
-    { q: 'A tailor needs 3/4 meter of cloth to stitch one child\'s apron. How many aprons can he make from 18 meters of cloth?', a: '18 ÷ 3/4 = 18 × 4/3 = 6 × 4 = 24 aprons' },
-    { q: 'In a class of 45 students, 3/5 of them travel by school bus. How many students travel by school bus?', a: '(45 ÷ 5) × 3 = 9 × 3 = 27 students' }
+    { q: `A roll of ribbon was ${rSet.totN}/${rSet.totD} meter long. An art student cut off ${rSet.cutN}/${rSet.cutD} meter for a bow. What length of ribbon is left?`, a: `${rSet.totN}/${rSet.totD} − ${rSet.cutN}/${rSet.cutD} = ${rSet.rem} meter` },
+    { q: `Rohan read ${rdSet.d1N}/${rdSet.d1D} of a book on Saturday and ${rdSet.d2N}/${rdSet.d2D} on Sunday. What fraction of the book did he read across the weekend?`, a: `Total = ${rdSet.d1N}/${rdSet.d1D} + ${rdSet.d2N}/${rdSet.d2D} = ${rdSet.tot} of the book` },
+    { q: `A tailor needs 3/4 meter of cloth to stitch one child\'s apron. How many aprons can he make from ${tailorFabric} meters of cloth?`, a: `${tailorFabric} ÷ 3/4 = ${tailorFabric} × 4/3 = ${tailorAprons} aprons` },
+    { q: `In a class of ${classStudents} students, ${busFraction}/5 of them travel by school bus. How many students travel by school bus?`, a: `(${classStudents} ÷ 5) × ${busFraction} = ${busStudents} students` }
   ];
 
+  // V. Traps
+  const trapLikeD = getRandomChoice([7, 9, 11, 13]);
+  const trapLikeA = getRandomInt(1, 3);
+  const trapLikeB = getRandomInt(1, 3);
   const traps = [
-    { q: 'Rahul wrote: 2/7 + 3/7 = 5/14. State the error and write the correct answer.', a: 'Rahul added the denominators! Denominators indicate slice size and never add. Correct = 5/7.' },
-    { q: 'Sneha wrote: The reciprocal of 0 is 0. Explain why Sneha is mistaken.', a: '0 has NO reciprocal because 1 ÷ 0 is undefined in mathematics, and 0 × any number = 0 (never 1).' }
+    { q: `Rahul wrote: ${trapLikeA}/${trapLikeD} + ${trapLikeB}/${trapLikeD} = ${trapLikeA + trapLikeB}/${trapLikeD * 2}. State the error and write the correct answer.`, a: `Rahul added the denominators! Denominators indicate slice size and never add together. Correct sum = ${trapLikeA + trapLikeB}/${trapLikeD}.` },
+    { q: `Sneha wrote: The reciprocal of 0 is 0. Explain why Sneha is mistaken.`, a: `0 has NO reciprocal because 1 ÷ 0 is undefined in mathematics, and 0 × any number = 0 (never 1).` }
   ];
 
   return { basics, equiv, ops, words, traps };

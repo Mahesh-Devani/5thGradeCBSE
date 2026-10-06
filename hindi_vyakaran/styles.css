@@ -2896,32 +2896,116 @@ body::after {
   }
 
   /* Sticky Top Bar on Mobile */
-  .menu-toggle-btn {
+  .top-bar {
+    padding: 8px 10px;
+    gap: 6px;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  .top-bar-nav-row {
     display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .menu-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+  }
+  .menu-toggle-btn .menu-label {
+    display: none;
   }
   .home-quick-btn {
-    display: flex;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    font-size: 1.15rem;
+    flex-shrink: 0;
   }
-  .top-bar {
-    padding: 10px 14px;
-    gap: 8px;
+  .top-bar-title {
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
   }
   .top-bar-title h2 {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .top-bar-title p {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .top-bar-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .btn-trans {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+  .btn-trans .trans-text {
+    display: none;
+  }
+  .top-bar-actions .btn-icon,
+  #btn-reset {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
   }
 
   /* Segmented Mode Tabs */
   .mode-tabs {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 3px;
   }
   .mode-tab {
+    min-width: 0;
     min-height: 42px;
-    font-size: 0.8rem;
-    padding: 6px 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.15;
+    white-space: normal;
   }
 
   /* Welcome Screen Mobile */
@@ -3036,30 +3120,100 @@ body::after {
 
   /* Vakyansh Mobile Layout */
   .vakyansh-area {
-    padding: 14px 12px 32px;
-    gap: 14px;
+    padding: 12px 10px 30px;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
   .vakyansh-hero-banner {
-    padding: 16px 14px;
+    padding: 14px 12px;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 12px;
+  }
+  .vakyansh-hero-content {
+    width: 100%;
+    min-width: 0;
   }
   .vakyansh-hero-content h3 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+  .vakyansh-hero-content p {
+    font-size: 0.82rem;
+    line-height: 1.4;
   }
   .vakyansh-stats-card {
     width: 100%;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    justify-content: stretch;
+  }
+  .vakyansh-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
   .vakyansh-controls-bar {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
+    padding: 10px 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .vocab-filters {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .vocab-filters::-webkit-scrollbar {
+    display: none;
+  }
+  .vocab-filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .vakyansh-search-input {
     width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
   .vakyansh-cards-grid {
     grid-template-columns: 1fr;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .vakyansh-card {
+    padding: 14px 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .vakyansh-card-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .vakyansh-phrase-group {
+    min-width: 0;
+  }
+  .vakyansh-word-badge {
+    align-self: flex-start;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .match-board {
     grid-template-columns: repeat(2, 1fr);
@@ -3076,20 +3230,47 @@ body::after {
 
   /* Sangya Mobile Layout */
   .sangya-area {
-    padding: 14px 12px 32px;
-    gap: 14px;
+    padding: 12px 10px 30px;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
   .sangya-hero-banner {
-    padding: 16px 14px;
+    padding: 14px 12px;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 12px;
+  }
+  .sangya-hero-content {
+    width: 100%;
+    min-width: 0;
   }
   .sangya-hero-content h3 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+  .sangya-hero-content p {
+    font-size: 0.82rem;
+    line-height: 1.4;
   }
   .sangya-stats-card {
     width: 100%;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    justify-content: stretch;
+  }
+  .sangya-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
   .sangya-pillars-grid {
     grid-template-columns: 1fr 1fr;
@@ -3130,9 +3311,6 @@ body::after {
 @media (max-width: 420px) {
   .top-bar-title p {
     display: none;
-  }
-  .btn-trans .trans-text {
-    font-size: 0.72rem;
   }
   .welcome-features {
     grid-template-columns: 1fr;
