@@ -729,6 +729,67 @@ html, body {
   color: var(--accent-amber);
 }
 
+/* Iceberg Anatomy Visual (L-6 Greenland) */
+.iceberg-diagram-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(2, 132, 199, 0.05);
+}
+.iceberg-zone {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: all var(--transition-fast);
+}
+.iceberg-zone-tip {
+  background: linear-gradient(90deg, rgba(224, 242, 254, 0.15), rgba(186, 230, 253, 0.08));
+  border-bottom: 1px dashed rgba(56, 189, 248, 0.3);
+}
+.iceberg-waterline {
+  background: linear-gradient(90deg, #0284c7, #0369a1);
+  color: #f0f9ff;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.iceberg-zone-submerged {
+  background: linear-gradient(90deg, rgba(3, 105, 161, 0.25), rgba(7, 89, 133, 0.35));
+}
+.iceberg-zone-text h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+.iceberg-zone-text p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+.iceberg-zone-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  color: #38bdf8;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.iceberg-zone-badge.alert {
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
 /* Government Structure Table */
 .gov-table-wrapper {
   overflow-x: auto;
@@ -1515,6 +1576,22 @@ html, body {
 
   .top-bar {
     padding: 10px 14px;
+  }
+  .mode-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+    padding: 3px;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .mode-tab {
+    flex-direction: column;
+    gap: 2px;
+    padding: 6px 2px;
+    font-size: 0.72rem;
+    min-width: 0;
+    min-height: 44px;
   }
   .content-viewport {
     padding: 14px;

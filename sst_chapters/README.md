@@ -16,11 +16,12 @@ Rather than passive memorization or tedious copy-writing, this app empowers stud
 
 ## 📚 Curriculum Coverage (Term 1)
 
-The platform launches with full coverage of the 4 Term 1 chapters from the school revision worksheet curriculum:
+The platform provides comprehensive coverage of 5 key curriculum chapters:
 
 | Chapter | Topic Title | Focus Areas |
 |---|---|---|
 | **L-5** | **The DRC — The Land of Dense Forest** | Equatorial climate, 4 o'clock rain, 3 rainforest layers (Emergent, Canopy, Understory), shifting cultivation (slash & burn), mineral wealth (cobalt, diamonds), Bambuti pygmies. |
+| **L-6** | **Greenland — The Land of Ice and Snow** | Frigid Zone location, Greenland Ice Sheet (80%+ permanent ice cover), iceberg buoyancy & hazards, tundra biome (mosses & lichens), Arctic fauna adaptations, Inuit heritage (igloos, kayaks, parkas), modern life in Nuuk & Sisimiut, fish processing, and global warming alert. |
 | **L-7** | **Saudi Arabia — The Land of Hot Sands** | Desert landforms, sand dunes, oasis lifelines, petroleum discovery ("Liquid Gold"), water solutions (desalination & drip irrigation), Bedouin nomadic herders, traditional dress (Thobe, Ghutrah, Egal). |
 | **L-17** | **The British Raj & The First War of Independence** | European traders (Vasco da Gama 1498), East India Company (1600), Battle of Plassey (1757), economic exploitation (farmers, weavers, traders, rulers & Doctrine of Lapse), greased cartridges, Mangal Pandey, 1857 Revolt & leaders, transfer to British Crown rule (1858). |
 | **L-20** | **Our Government** | Three Organs (Legislature, Executive, Judiciary), Three Levels (Central, State, Local), Lok Sabha (House of the People) vs Rajya Sabha (Council of States), Head of State (President) vs Head of Government (Prime Minister), Governor vs Chief Minister, Union Territories, Supreme Court in New Delhi. |
