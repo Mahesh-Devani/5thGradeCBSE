@@ -724,9 +724,215 @@
     updateAccessBadge();
   }
 
+  // 8. Google Drive Family Cloud Sync UI Controller
+  function initGoogleSyncUI() {
+    if (!window.GoogleDriveSync) return;
+
+    const btnOpenSync = document.getElementById('btn-open-google-sync');
+    const modal = document.getElementById('modal-google-sync');
+    const btnClose = document.getElementById('btn-close-sync-modal');
+    const btnDismiss = document.getElementById('btn-dismiss-sync-modal');
+    const accountBox = document.getElementById('sync-account-box');
+    const actionControls = document.getElementById('sync-action-controls');
+    const btnToggleSettings = document.getElementById('btn-toggle-sync-settings');
+    const settingsPanel = document.getElementById('sync-advanced-panel');
+    const inputClientId = document.getElementById('input-google-client-id');
+    const btnSaveClientId = document.getElementById('btn-save-client-id');
+    const btnSimulate = document.getElementById('btn-simulate-google-sync');
+
+    function formatTimeAgo(timestamp) {
+      if (!timestamp) return 'Never';
+      const diffSec = Math.floor((Date.now() - timestamp) / 1000);
+      if (diffSec < 60) return 'Just now';
+      const diffMin = Math.floor(diffSec / 60);
+      if (diffMin < 60) return `${diffMin}m ago`;
+      const diffHr = Math.floor(diffMin / 60);
+      if (diffHr < 24) return `${diffHr}h ago`;
+      return new Date(timestamp).toLocaleDateString();
+    }
+
+    function renderModalState() {
+      const isConnected = GoogleDriveSync.isConnected();
+      const session = GoogleDriveSync.session;
+
+      if (inputClientId) {
+        inputClientId.value = GoogleDriveSync.getClientId();
+      }
+
+      if (accountBox) {
+        if (isConnected && session) {
+          accountBox.innerHTML = `
+            <div class="sync-connected-card">
+              <div class="sync-avatar-wrap">${session.picture && session.picture.startsWith('http') ? `<img src="${session.picture}" alt="" style="width:100%;height:100%;border-radius:50%;" />` : (session.picture || '☁️')}</div>
+              <div class="sync-info-wrap">
+                <div class="sync-user-name">${session.name || 'Parent'}</div>
+                <div class="sync-user-email">${session.email}</div>
+                <div class="sync-time-badge">🕒 Last synced: <strong>${formatTimeAgo(session.lastSyncTime)}</strong></div>
+              </div>
+              <div class="sync-badge-active" title="Connected to Google Drive">● Active</div>
+            </div>
+          `;
+        } else {
+          accountBox.innerHTML = `
+            <div class="sync-disconnected-box">
+              <div class="sync-promo-icon">☁️</div>
+              <div class="sync-promo-text">
+                <strong>Multi-Device Cloud Sync</strong>
+                <p>Sign in with Google to keep all children's profiles, stars, and streaks synchronized across devices.</p>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      if (actionControls) {
+        if (isConnected) {
+          actionControls.innerHTML = `
+            <div class="sync-btn-row">
+              <button type="button" class="btn-cloud-action btn-sync-primary" id="btn-cloud-sync-now">
+                🔄 Sync Now
+              </button>
+              <button type="button" class="btn-cloud-action btn-sync-secondary" id="btn-cloud-disconnect">
+                Disconnect
+              </button>
+            </div>
+          `;
+
+          const btnSyncNow = actionControls.querySelector('#btn-cloud-sync-now');
+          if (btnSyncNow) {
+            btnSyncNow.addEventListener('click', async () => {
+              btnSyncNow.disabled = true;
+              btnSyncNow.textContent = '🔄 Syncing...';
+              showFeedback('🔄 Syncing with Google Drive...');
+              const res = await GoogleDriveSync.syncNow();
+              btnSyncNow.disabled = false;
+              btnSyncNow.textContent = '🔄 Sync Now';
+
+              if (res.success) {
+                showFeedback('✅ Google Drive sync complete!');
+                calculateTotalStars();
+                updateStreak();
+                updateResumeCard();
+                renderModalState();
+              } else {
+                showFeedback(`❌ Sync failed: ${res.error || res.reason}`, true);
+              }
+            });
+          }
+
+          const btnDisc = actionControls.querySelector('#btn-cloud-disconnect');
+          if (btnDisc) {
+            btnDisc.addEventListener('click', () => {
+              GoogleDriveSync.disconnect();
+              showFeedback('Disconnected from Google Drive.');
+              renderModalState();
+            });
+          }
+        } else {
+          actionControls.innerHTML = `
+            <div class="sync-btn-row">
+              <button type="button" class="btn-cloud-action btn-sync-primary" id="btn-connect-google">
+                🔗 Connect Google Drive
+              </button>
+            </div>
+          `;
+
+          const btnConnect = actionControls.querySelector('#btn-connect-google');
+          if (btnConnect) {
+            btnConnect.addEventListener('click', async () => {
+              btnConnect.disabled = true;
+              btnConnect.textContent = 'Connecting...';
+              const res = await GoogleDriveSync.requestAuth(true);
+              btnConnect.disabled = false;
+              btnConnect.textContent = '🔗 Connect Google Drive';
+
+              if (res.success) {
+                showFeedback('🎉 Connected and synchronized with Google Drive!');
+                calculateTotalStars();
+                updateStreak();
+                updateResumeCard();
+                renderModalState();
+              } else if (res.needsClientId) {
+                if (settingsPanel) settingsPanel.style.display = 'block';
+                showFeedback('💡 Set your Google Client ID or use the simulator below.', true);
+              } else {
+                showFeedback(`❌ ${res.error || 'Connection failed'}`, true);
+              }
+            });
+          }
+        }
+      }
+    }
+
+    function closeModal() {
+      if (modal) modal.style.display = 'none';
+    }
+
+    if (btnOpenSync && modal) {
+      btnOpenSync.addEventListener('click', () => {
+        renderModalState();
+        modal.style.display = 'flex';
+      });
+    }
+
+    if (btnClose) btnClose.addEventListener('click', closeModal);
+    if (btnDismiss) btnDismiss.addEventListener('click', closeModal);
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    if (btnToggleSettings && settingsPanel) {
+      btnToggleSettings.addEventListener('click', () => {
+        const isHidden = settingsPanel.style.display === 'none';
+        settingsPanel.style.display = isHidden ? 'block' : 'none';
+      });
+    }
+
+    if (btnSaveClientId && inputClientId) {
+      btnSaveClientId.addEventListener('click', () => {
+        const id = inputClientId.value.trim();
+        GoogleDriveSync.setClientId(id);
+        showFeedback('💾 Google Client ID saved!');
+      });
+    }
+
+    if (btnSimulate) {
+      btnSimulate.addEventListener('click', async () => {
+        btnSimulate.disabled = true;
+        btnSimulate.textContent = 'Simulating...';
+        const res = await GoogleDriveSync.simulateSync({
+          email: 'parent.demo@gmail.com',
+          name: 'Demo Family Account',
+          avatar: '👨‍👩‍👧‍👦'
+        });
+        btnSimulate.disabled = false;
+        btnSimulate.textContent = '🧪 Test / Simulate Cloud Sync';
+
+        if (res.success) {
+          showFeedback('🧪 Cloud Sync Simulation complete!');
+          calculateTotalStars();
+          updateStreak();
+          updateResumeCard();
+          renderModalState();
+        } else {
+          showFeedback(`❌ Simulation error: ${res.error}`, true);
+        }
+      });
+    }
+
+    // React to sync status events
+    window.addEventListener('googlesync:status', () => {
+      renderModalState();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initProfilesUI();
     initAuthUI();
+    initGoogleSyncUI();
     renderCurriculum(currentViewingGrade);
     calculateTotalStars();
     updateStreak();
@@ -734,4 +940,5 @@
     initBackupRestore();
   });
 })();
+
 

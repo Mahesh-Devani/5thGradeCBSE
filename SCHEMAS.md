@@ -244,7 +244,54 @@ interface ChildProfile {
 - `AppProfile.switchProfile(profileId)`: Snapshots active child's local state, swaps active child, restores target child's state into `localStorage`, and emits `profile:switched`.
 - `AppProfile.createProfile({ name, avatar, grade, makeActive })`: Creates and saves a new child profile.
 - `AppProfile.updateProfile(profileId, updates)`: Updates name, avatar, or grade.
-- `AppProfile.deleteProfile(profileId)`: Deletes profile (safeguarded: minimum 1 profile must exist).
+- [x] `AppProfile.deleteProfile(profileId)`: Deletes profile (safeguarded: minimum 1 profile must exist).
 - `AppProfile.saveActiveProfileState()`: Persists current `localStorage` state into active child's data snapshot.
+
+---
+
+## 8. Google Drive Family Sync Contract (`window.GoogleDriveSync`)
+
+Serverless multi-device family synchronization using the parent's private, sandboxed Google Drive AppData folder:
+
+### Storage & OAuth Configuration
+- **AppData File**: `cbse_family_progress.json` stored in hidden `drive.appdata` space.
+- **OAuth Scopes**:
+  - `https://www.googleapis.com/auth/drive.appdata`
+  - `https://www.googleapis.com/auth/userinfo.profile`
+  - `https://www.googleapis.com/auth/userinfo.email`
+- **Session Key**: `cbse_google_drive_session` in `localStorage`
+
+### Session Schema
+```typescript
+interface GoogleDriveSession {
+  email: string;
+  name: string;
+  picture: string;
+  accessToken: string;
+  expiresAt: number;        // Unix timestamp
+  lastSyncTime: number | null;
+  fileId: string | null;     // Google Drive file ID
+  isSimulated?: boolean;
+}
+```
+
+### Merging Strategy
+1. **Child Profiles Union**: Children present on either device are merged by profile `id`.
+2. **Profile Data Merge**: Child subject progress is merged key-by-key based on newest `_updated` timestamp.
+3. **Streak Preservation**: Highest continuous streak count and newest practice date are retained.
+4. **General Subject Keys**: Root progress keys (`cbse5_*`, `grammar-master-*`, `sst-map-*`) merge using newest `_updated` timestamps.
+
+### API Reference (`window.GoogleDriveSync`)
+- `GoogleDriveSync.init()`: Restores session, connects to `AppAuth`, registers with `AppStorage.registerSyncProvider()`.
+- `GoogleDriveSync.isConnected()`: Returns boolean indicating active Google connection.
+- `GoogleDriveSync.getClientId()` / `setClientId(id)`: Reads/saves Google OAuth Client ID.
+- `GoogleDriveSync.requestAuth(interactive)`: Launches Google Identity Services OAuth popup and signs in.
+- `GoogleDriveSync.pull()`: Fetches remote container from Google Drive AppData folder.
+- `GoogleDriveSync.pushAll(exportContainer)`: Uploads container to Google Drive AppData folder.
+- `GoogleDriveSync.mergeContainers(local, remote)`: Conflict-free bidirectional merge engine.
+- `GoogleDriveSync.syncNow()`: Orchestrates full pull, merge, import, and push cycle.
+- `GoogleDriveSync.simulateSync(options)`: Offline / demo simulator mode for instant testing without Google credentials.
+- `GoogleDriveSync.disconnect()`: Revokes token, signs out, and clears session.
+
 
 

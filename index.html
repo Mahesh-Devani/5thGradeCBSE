@@ -97,6 +97,9 @@
           </div>
         </div>
         <div class="backup-actions">
+          <button type="button" class="btn-backup btn-cloud-sync" id="btn-open-google-sync" title="Sync progress across devices with Google Drive">
+            ☁️ Cloud Sync
+          </button>
           <button type="button" class="btn-backup" id="btn-enter-access-code" title="Enter school or promotional access code">
             🔑 Access Pass
           </button>
@@ -351,6 +354,8 @@
           </div>
         </form>
       </div>
+    </div>
+
     <!-- ==================== ACCESS CODE REDEMPTION MODAL ==================== -->
     <div class="modal-overlay" id="modal-access-code" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-access-code-title">
       <div class="modal-card access-modal-card">
@@ -375,12 +380,65 @@
       </div>
     </div>
 
+    <!-- ==================== GOOGLE DRIVE FAMILY SYNC MODAL ==================== -->
+    <div class="modal-overlay" id="modal-google-sync" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-google-sync-title">
+      <div class="modal-card cloud-sync-modal-card">
+        <div class="modal-header">
+          <h3 id="modal-google-sync-title">☁️ Google Drive Family Sync</h3>
+          <button type="button" class="modal-close-btn" id="btn-close-sync-modal" aria-label="Close modal">✕</button>
+        </div>
+
+        <p class="modal-description">
+          Keep your children's stars, streaks, and study progress in sync across all family devices (phones, tablets, and PCs).
+          Data is saved safely in a private, sandboxed app folder inside your personal Google Drive ($0 serverless &amp; 100% private).
+        </p>
+
+        <!-- Dynamic Connection Box -->
+        <div class="sync-account-box" id="sync-account-box">
+          <!-- Populated by hub.js -->
+        </div>
+
+        <!-- Sync Action Controls -->
+        <div class="sync-action-controls" id="sync-action-controls">
+          <!-- Populated by hub.js -->
+        </div>
+
+        <!-- Settings & Dev Tools Accordion -->
+        <div class="sync-advanced-toggle">
+          <button type="button" class="btn-text-toggle" id="btn-toggle-sync-settings">
+            ⚙️ Google OAuth Client ID &amp; Options ▾
+          </button>
+        </div>
+
+        <div class="sync-advanced-panel" id="sync-advanced-panel" style="display: none;">
+          <div class="form-group" style="margin-bottom: 8px;">
+            <label for="input-google-client-id" style="font-size: 0.78rem;">Custom Google Cloud OAuth Client ID</label>
+            <input type="text" id="input-google-client-id" class="form-input" style="font-size: 0.8rem; font-family: monospace;" placeholder="your-app-id.apps.googleusercontent.com" />
+          </div>
+          <div style="display: flex; gap: 8px; justify-content: flex-end;">
+            <button type="button" class="btn-backup" id="btn-save-client-id" style="font-size: 0.78rem; padding: 4px 10px;">💾 Save Client ID</button>
+          </div>
+          <div style="margin-top: 12px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.1);">
+            <p style="font-size: 0.76rem; color: var(--text-muted); margin: 0 0 6px 0;">No Google Cloud project yet? Test the multi-device sync UX instantly:</p>
+            <button type="button" class="btn-backup" id="btn-simulate-google-sync" style="font-size: 0.78rem; padding: 5px 12px; width: 100%;">
+              🧪 Test / Simulate Cloud Sync
+            </button>
+          </div>
+        </div>
+
+        <div class="modal-actions" style="margin-top: 20px;">
+          <button type="button" class="btn-profile-cancel" id="btn-dismiss-sync-modal" style="width: 100%;">Close</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script src="shared/js/storage.js"></script>
   <script src="shared/js/profile.js"></script>
   <script src="shared/js/auth.js"></script>
   <script src="shared/js/curriculum.js"></script>
+  <script src="shared/js/google-drive-sync.js"></script>
   <script src="hub.js"></script>
   <script src="pwa.js"></script>
 </body>
