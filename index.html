@@ -66,6 +66,24 @@
         </div>
         <div class="resume-arrow">→</div>
       </a>
+
+      <!-- Data Backup & Multi-Device Transfer Bar -->
+      <div class="dashboard-backup-bar" id="dashboard-backup-bar">
+        <div class="backup-bar-info">
+          <span class="backup-icon">💾</span>
+          <span class="backup-title">Data Backup & Device Sync</span>
+        </div>
+        <div class="backup-actions">
+          <button class="btn-backup" id="btn-backup-export" title="Save your stars and study progress as a backup JSON file">
+            📥 Save Backup
+          </button>
+          <button class="btn-backup" id="btn-backup-import" title="Restore previously saved progress from file">
+            📤 Restore
+          </button>
+          <input type="file" id="backup-file-input" accept=".json,application/json" style="display: none;" />
+        </div>
+      </div>
+      <div class="backup-feedback-toast" id="backup-feedback-toast" style="display: none;" role="status"></div>
     </section>
 
     <!-- ==================== SUBJECTS GRID ==================== -->
@@ -257,6 +275,7 @@
 
   </div>
 
+  <script src="shared/js/storage.js"></script>
   <script src="hub.js"></script>
   <script src="pwa.js"></script>
 </body>

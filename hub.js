@@ -225,9 +225,84 @@
     }
   }
 
+  // 4. Data Backup & Restore Controllers
+  function showFeedback(msg, isError) {
+    const toast = document.getElementById('backup-feedback-toast');
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.className = 'backup-feedback-toast' + (isError ? ' toast-error' : '');
+    toast.style.display = 'block';
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 4500);
+  }
+
+  function initBackupRestore() {
+    const btnExport = document.getElementById('btn-backup-export');
+    const btnImport = document.getElementById('btn-backup-import');
+    const fileInput = document.getElementById('backup-file-input');
+
+    if (btnExport) {
+      btnExport.addEventListener('click', () => {
+        if (window.AppStorage && typeof window.AppStorage.downloadBackup === 'function') {
+          const res = window.AppStorage.downloadBackup();
+          if (res.success) {
+            showFeedback(`✅ Backup downloaded (${res.totalKeys} items saved)`);
+          } else {
+            showFeedback('❌ Could not create backup', true);
+          }
+        }
+      });
+    }
+
+    if (btnImport && fileInput) {
+      btnImport.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+      fileInput.addEventListener('change', async (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+
+        try {
+          if (window.AppStorage && typeof window.AppStorage.importFromFile === 'function') {
+            const res = await window.AppStorage.importFromFile(file);
+            showFeedback(`✅ Restored ${res.count} items! Updating dashboard...`);
+            calculateTotalStars();
+            updateStreak();
+            updateResumeCard();
+          }
+        } catch (err) {
+          showFeedback(`❌ Restore failed: ${err.message}`, true);
+        } finally {
+          fileInput.value = '';
+        }
+      });
+    }
+
+    // Auto-refresh when storage changes internally or across browser tabs
+    window.addEventListener('appstorage:change', () => {
+      calculateTotalStars();
+      updateResumeCard();
+    });
+
+    window.addEventListener('appstorage:imported', () => {
+      calculateTotalStars();
+      updateStreak();
+      updateResumeCard();
+    });
+
+    window.addEventListener('appstorage:cleared', () => {
+      calculateTotalStars();
+      updateResumeCard();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     calculateTotalStars();
     updateStreak();
     updateResumeCard();
+    initBackupRestore();
   });
 })();
+

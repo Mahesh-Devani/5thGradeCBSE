@@ -181,3 +181,31 @@ All `localStorage` keys are explicitly namespaced to prevent collisions between 
 | **SST Chapters** | `cbse5_sst_active_state` | `cbse5_sst_stars_{id}` |
 | **SST Maps** | `sst-map-active-state` | `sst-map-progress` |
 | **General Knowledge** | `cbse5_gk_active_state` | `cbse5_gk_stars_{id}` |
+
+---
+
+## 6. Pluggable Storage & Backup Contract (`window.AppStorage`)
+
+The unified storage adapter at `shared/js/storage.js` provides zero-dependency access, schema versioning, and parent/teacher backup export:
+
+### API Reference
+- `AppStorage.get(key, defaultValue)`: Safely reads and migrates stored JSON objects.
+- `AppStorage.set(key, value)`: Serializes object with `_v: 1` and `_updated: Date.now()` metadata, and dispatches `appstorage:change`.
+- `AppStorage.remove(key)`: Safely removes key and dispatches change event.
+- `AppStorage.exportData()`: Collects all namespaced application keys into an export object.
+- `AppStorage.downloadBackup(filename?)`: Downloads structured `.json` backup file for multi-device migration.
+- `AppStorage.importData(backupData, options?)`: Restores and merges backup keys into `localStorage`.
+- `AppStorage.importFromFile(file)`: Parses and restores uploaded `.json` backup.
+- `AppStorage.registerSyncProvider(provider)`: Extensibility point for future cloud sync adapters (Google OAuth / Supabase / Cloudflare).
+
+### Backup JSON Schema
+```typescript
+interface AppStorageBackup {
+  appName: '5thGradeCBSE';
+  schemaVersion: number;
+  exportedAt: string; // ISO 8601 timestamp
+  totalKeys: number;
+  data: Record<string, unknown>; // Map of namespaced keys to state objects
+}
+```
+

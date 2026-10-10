@@ -882,6 +882,89 @@ body::after {
   background: rgba(59, 130, 246, 0.25);
 }
 
+/* --- Backup & Multi-Device Sync Bar --- */
+.dashboard-backup-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 12px 20px;
+  font-size: 0.86rem;
+}
+
+.backup-bar-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.backup-icon {
+  font-size: 1.15rem;
+}
+
+.backup-title {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.backup-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-backup {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  touch-action: manipulation;
+}
+
+.btn-backup:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.45);
+  color: #93c5fd;
+  transform: translateY(-1px);
+}
+
+.btn-backup:active {
+  transform: translateY(0);
+}
+
+.backup-feedback-toast {
+  padding: 10px 16px;
+  background: rgba(16, 185, 129, 0.16);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-md);
+  color: #34d399;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.backup-feedback-toast.toast-error {
+  background: rgba(239, 68, 68, 0.16);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #f87171;
+}
+
 @media (max-width: 640px) {
   .dashboard-stats-card {
     flex-direction: column;
@@ -892,5 +975,18 @@ body::after {
   .streak-badge {
     align-self: flex-start;
   }
+  .dashboard-backup-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .backup-actions {
+    justify-content: stretch;
+  }
+  .btn-backup {
+    flex: 1;
+    justify-content: center;
+  }
 }
+
 
