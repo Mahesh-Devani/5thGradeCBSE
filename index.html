@@ -105,10 +105,20 @@
       <div class="backup-feedback-toast" id="backup-feedback-toast" style="display: none;" role="status"></div>
     </section>
 
+    <!-- ==================== GRADE / CLASS SELECTOR BAR ==================== -->
+    <div class="grade-nav-container" id="grade-nav-container">
+      <div class="grade-nav-label">
+        <span>📚 Select Class:</span>
+      </div>
+      <div class="grade-pills-row" id="grade-pills-row">
+        <!-- Dynamically rendered by hub.js -->
+      </div>
+    </div>
+
     <!-- ==================== SUBJECTS GRID ==================== -->
     <div class="section-header">
       <div class="section-line"></div>
-      <h2>Choose a Subject</h2>
+      <h2 id="curriculum-section-title">Choose a Subject (Class 5)</h2>
       <div class="section-line" style="background: linear-gradient(270deg, rgba(255,255,255,0.08) 0%, transparent 100%);"></div>
     </div>
 
@@ -341,6 +351,7 @@
   <script src="shared/js/storage.js"></script>
   <script src="shared/js/profile.js"></script>
   <script src="shared/js/auth.js"></script>
+  <script src="shared/js/curriculum.js"></script>
   <script src="hub.js"></script>
   <script src="pwa.js"></script>
 </body>

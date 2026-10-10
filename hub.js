@@ -102,10 +102,13 @@
     }
   };
 
+  let currentViewingGrade = 'class_5';
+
   // 1. Calculate Aggregate Stars
   function calculateTotalStars() {
     let earnedStars = 0;
-    const TOTAL_SYLLABUS_STARS = 110;
+    const gradeMeta = window.AppCurriculum ? AppCurriculum.getGrade(currentViewingGrade) : { totalSyllabusStars: 110 };
+    const TOTAL_SYLLABUS_STARS = gradeMeta.totalSyllabusStars || 110;
 
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
@@ -444,6 +447,7 @@
 
     // Initial render
     const active = AppProfile.getActiveProfile();
+    currentViewingGrade = (active && active.grade) || 'class_5';
     renderActivePill(active);
     renderDropdownList();
     renderAvatarPicker();
@@ -451,26 +455,214 @@
     // Listen to profile events
     window.addEventListener('profile:switched', (e) => {
       const p = e.detail && e.detail.profile;
+      currentViewingGrade = (p && p.grade) || 'class_5';
       renderActivePill(p);
       renderDropdownList();
+      renderCurriculum(currentViewingGrade);
       calculateTotalStars();
       updateStreak();
       updateResumeCard();
       if (p) showFeedback(`Switched to ${p.name}'s profile (${formatGradeLabel(p.grade)})`);
     });
 
-    window.addEventListener('profile:created', () => {
+    window.addEventListener('profile:created', (e) => {
+      const p = e.detail && e.detail.profile;
+      if (p) currentViewingGrade = p.grade || 'class_5';
       renderDropdownList();
+      renderCurriculum(currentViewingGrade);
     });
 
     window.addEventListener('profile:updated', () => {
-      renderActivePill(AppProfile.getActiveProfile());
+      const p = AppProfile.getActiveProfile();
+      renderActivePill(p);
       renderDropdownList();
     });
   }
 
+  // 6. Multi-Grade Curriculum Grid Controller
+  function selectCurriculumGrade(gradeId) {
+    currentViewingGrade = gradeId;
+    renderCurriculum(gradeId);
+    calculateTotalStars();
+    updateResumeCard();
+  }
+
+  function renderCurriculum(gradeId) {
+    const grid = document.getElementById('subjects-grid');
+    const titleEl = document.getElementById('curriculum-section-title');
+    const pillsRow = document.getElementById('grade-pills-row');
+    if (!grid) return;
+
+    const grade = window.AppCurriculum ? AppCurriculum.getGrade(gradeId) : { title: 'Class 5', status: 'active', subjects: [] };
+    if (titleEl) {
+      titleEl.textContent = `Choose a Subject (${grade.title})`;
+    }
+
+    // Render Grade Pills Bar
+    if (pillsRow && window.AppCurriculum) {
+      pillsRow.innerHTML = '';
+      AppCurriculum.getAllGrades().forEach(g => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'grade-pill-btn' + (g.id === gradeId ? ' active' : '') + (g.status === 'active' ? ' has-badge' : '');
+        btn.innerHTML = `${g.title}${g.status === 'active' ? ' ⭐' : ''}`;
+        btn.setAttribute('aria-label', `View ${g.title} syllabus`);
+        btn.addEventListener('click', () => {
+          selectCurriculumGrade(g.id);
+        });
+        pillsRow.appendChild(btn);
+      });
+    }
+
+    // Render Subjects Grid
+    grid.innerHTML = '';
+
+    if (grade.status === 'active') {
+      const c5Subjects = [
+        {
+          url: 'social_sicence_maps/index.html',
+          id: 'card-sst-maps',
+          icon: '🗺️',
+          theme: 'theme-blue',
+          title: 'Social Science Maps',
+          desc: 'Practice SST maps with interactive quizzes — Saudi Arabia, World Deserts, Equatorial Regions, and DRC & Neighbours.',
+          tags: ['✅ 4 Maps', '📖 Learn', '❓ Quiz', '⏱️ Timed', '🖨️ Print'],
+          ready: true
+        },
+        {
+          url: 'sst_chapters/index.html',
+          id: 'card-sst-chapters',
+          icon: '📚',
+          theme: 'theme-green',
+          title: 'Social Science (SST) Chapters',
+          desc: 'Democratic Republic of Congo (L-5), Greenland (L-6), Saudi Arabia (L-7), Revolt of 1857 (L-17), and Our Government (L-20).',
+          tags: ['✅ 5 Chapters', '⚡ Instant Flashcards', '❓ 25-Q Drill', '🖨️ Printable Worksheets'],
+          ready: true
+        },
+        {
+          url: 'maths/index.html',
+          id: 'card-maths',
+          icon: '🔢',
+          theme: 'theme-amber',
+          title: 'Mathematics',
+          desc: 'Factors & Multiples, Divisibility Rules (2-12), Expressions, Patterns, Geometry & Angles, Tables Speed Master & Fractions.',
+          tags: ['✅ 8 Modules Ready', '🔍 Visual Models', '❓ Multi-Format Quizzes', '🖨️ Printable Worksheets'],
+          ready: true
+        },
+        {
+          url: 'science/index.html',
+          id: 'card-science',
+          icon: '🔬',
+          theme: 'theme-cyan',
+          title: 'Science (EVS)',
+          desc: 'Animal Adaptations, Skeletal & Muscular, Nervous System & Sense Organs, Health & Nutrition, Air & Water, States of Matter.',
+          tags: ['✅ 6 Chapters', '🦴 Interactive 3D Anatomy', '❓ Concept Quizzes', '🖨️ Worksheets'],
+          ready: true
+        },
+        {
+          url: 'english_grammer/index.html',
+          id: 'card-english',
+          icon: '📝',
+          theme: 'theme-blue',
+          title: 'English Grammar',
+          desc: 'Master Articles (A, An, The), Simple Tenses, Continuous Tenses, Personification, Perfect Tenses & Hyperbole with real-time feedback.',
+          tags: ['✅ 7 Topics', '📖 Visual Rules', '❓ Multiple Choice', '⚡ Speed Challenge'],
+          ready: true
+        },
+        {
+          url: 'hindi_vyakaran/index.html',
+          id: 'card-hindi',
+          icon: '🇮🇳',
+          theme: 'theme-pink',
+          title: 'हिंदी व्याकरण व रचना',
+          desc: 'संज्ञा व पाँच भेद (पहचान सूत्र, तुलना दर्पण, भाववाचक निर्माण प्रयोगशाला व 5-घड़े खेल), वाक्यांश के लिए एक शब्द और चित्र वर्णन।',
+          tags: ['✅ 3 मुख्य विषय', '🏷️ संज्ञा व 5 भेद', '🏺 वर्गीकरण खेल', '✨ 12 वाक्यांश', '🖼️ चित्र वर्णन'],
+          ready: true
+        },
+        {
+          url: 'general_knowledge/index.html',
+          id: 'card-gk',
+          icon: '🌍',
+          theme: 'theme-purple',
+          title: 'General Knowledge (GK)',
+          desc: 'Master Term 1 Global Awareness (June, July, August 2026) with memory sparks, international cipher decoders, picture rounds, and school worksheets.',
+          tags: ['✅ June, Jul, Aug Ready', '💡 Memory Sparks', '🕵️ Codebreakers', '⚡ 60s Sprint', '🖨️ Worksheets'],
+          ready: true
+        }
+      ];
+
+      c5Subjects.forEach(s => {
+        const card = document.createElement('a');
+        card.href = s.url;
+        card.className = 'subject-card';
+        card.id = s.id;
+        card.innerHTML = `
+          <div class="card-icon ${s.theme}">${s.icon}</div>
+          <div class="card-content">
+            <h3>${s.title}</h3>
+            <p>${s.desc}</p>
+          </div>
+          <div class="card-tags">
+            ${s.tags.map((t, idx) => `<span class="card-tag ${idx === 0 ? 'tag-active' : ''}">${t}</span>`).join('')}
+          </div>
+          <div class="card-footer">
+            <div class="card-status status-ready">
+              <span class="status-dot"></span>
+              Ready to Practice
+            </div>
+            <div class="card-arrow">→</div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    } else {
+      // Non-Class-5 Grade: Roadmap & Syllabus Catalog
+      const banner = document.createElement('div');
+      banner.className = 'grade-roadmap-banner';
+      banner.innerHTML = `
+        <div class="banner-icon">🚀</div>
+        <div class="banner-content">
+          <h4>${grade.title} Syllabus Catalog &amp; Roadmap</h4>
+          <p>${grade.tagline}. Interactive questions for ${grade.title} are under active development. You can explore the subject syllabus below or jump into our complete <strong>Class 5 Interactive Suite</strong> anytime!</p>
+        </div>
+        <button type="button" class="btn-switch-grade-c5" id="btn-goto-c5">Go to Class 5 (Ready ⭐)</button>
+      `;
+      grid.appendChild(banner);
+
+      const c5Btn = banner.querySelector('#btn-goto-c5');
+      if (c5Btn) {
+        c5Btn.addEventListener('click', () => selectCurriculumGrade('class_5'));
+      }
+
+      grade.subjects.forEach(s => {
+        const card = document.createElement('div');
+        card.className = 'subject-card coming-soon';
+        card.innerHTML = `
+          <div class="card-icon ${s.theme}">${s.icon}</div>
+          <div class="card-content">
+            <h3>${s.name}</h3>
+            <p>${s.desc}</p>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">📋 CBSE Syllabus</span>
+            <span class="card-tag">⏳ Modules Coming Soon</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-status status-coming">
+              <span class="status-dot"></span>
+              In Development
+            </div>
+            <div class="card-arrow">🔒</div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initProfilesUI();
+    renderCurriculum(currentViewingGrade);
     calculateTotalStars();
     updateStreak();
     updateResumeCard();
