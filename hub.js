@@ -765,11 +765,13 @@
             <div class="sync-connected-card">
               <div class="sync-avatar-wrap">${session.picture && session.picture.startsWith('http') ? `<img src="${session.picture}" alt="" style="width:100%;height:100%;border-radius:50%;" />` : (session.picture || '☁️')}</div>
               <div class="sync-info-wrap">
-                <div class="sync-user-name">${session.name || 'Parent'}</div>
+                <div class="sync-user-header">
+                  <span class="sync-user-name">${session.name || 'Parent'}</span>
+                  <span class="sync-badge-active" title="Connected to Google Drive">● Active</span>
+                </div>
                 <div class="sync-user-email">${session.email}</div>
                 <div class="sync-time-badge">🕒 Last synced: <strong>${formatTimeAgo(session.lastSyncTime)}</strong></div>
               </div>
-              <div class="sync-badge-active" title="Connected to Google Drive">● Active</div>
             </div>
           `;
         } else {

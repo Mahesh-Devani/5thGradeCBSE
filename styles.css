@@ -1588,6 +1588,13 @@ body::after {
   min-width: 0;
 }
 
+.sync-user-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .sync-user-name {
   font-weight: 700;
   color: #ffffff;
@@ -1616,11 +1623,12 @@ body::after {
   background: rgba(16, 185, 129, 0.15);
   color: #34d399;
   border: 1px solid rgba(16, 185, 129, 0.3);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  padding: 4px 8px;
+  padding: 2px 7px;
   border-radius: var(--radius-full);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .sync-disconnected-box {
