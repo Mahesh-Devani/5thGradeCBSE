@@ -38,6 +38,36 @@
       </p>
     </header>
 
+    <!-- ==================== STUDENT MASTERY DASHBOARD ==================== -->
+    <section class="student-dashboard" id="student-dashboard" aria-label="Student Learning Progress">
+      <div class="dashboard-stats-card">
+        <div class="streak-badge" id="streak-badge" title="Consecutive days practiced">
+          <span class="streak-flame">🔥</span>
+          <span class="streak-text" id="streak-text">1-Day Streak</span>
+        </div>
+        <div class="mastery-summary">
+          <div class="mastery-title-row">
+            <span class="mastery-label">Class 5 Mastery Progress</span>
+            <span class="mastery-count" id="mastery-star-count">⭐ 0 / 110 Stars (0%)</span>
+          </div>
+          <div class="mastery-bar-track">
+            <div class="mastery-bar-fill" id="mastery-bar-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Resume Card (Visible if previous session exists) -->
+      <a href="#" class="resume-card" id="resume-card" style="display: none;">
+        <div class="resume-icon" id="resume-icon">⚡</div>
+        <div class="resume-info">
+          <span class="resume-tag">Jump Back In</span>
+          <h4 id="resume-title">Resume Topic</h4>
+          <p id="resume-sub">Click to pick up right where you left off</p>
+        </div>
+        <div class="resume-arrow">→</div>
+      </a>
+    </section>
+
     <!-- ==================== SUBJECTS GRID ==================== -->
     <div class="section-header">
       <div class="section-line"></div>
@@ -227,6 +257,7 @@
 
   </div>
 
+  <script src="hub.js"></script>
   <script src="pwa.js"></script>
 </body>
 </html>
