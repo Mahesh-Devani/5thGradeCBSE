@@ -1517,26 +1517,166 @@ html, body {
   margin-top: 8px;
 }
 
+/* ==================== PRINTABLE WORKSHEET CONTAINER ==================== */
+.print-container {
+  display: none;
+}
+
 /* ==================== PRINT STYLES ==================== */
 @media print {
-  body {
-    background: #fff !important;
-    color: #000 !important;
+  @page {
+    size: A4 portrait;
+    margin: 12mm 15mm 12mm 15mm;
   }
-  .no-print, .sidebar, .top-bar, #confetti-canvas, .feedback-flash {
+
+  html, body {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 10pt !important;
+    line-height: 1.45 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body::before,
+  body::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  /* Completely hide all screen application chrome & navigation */
+  .no-print,
+  .app-container,
+  .sidebar,
+  .sidebar-backdrop,
+  .main-content,
+  .top-bar,
+  .content-viewport,
+  .modal-overlay,
+  #confetti-canvas,
+  .feedback-flash,
+  .worksheet-controls-bar {
     display: none !important;
   }
-  .app-container, .main-content, .content-viewport {
+
+  /* Clean, structured printable worksheet container */
+  .print-container {
+    display: block !important;
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    background: #fff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
   }
+
+  .print-worksheet {
+    display: block !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .print-worksheet .paper-header {
+    border-bottom: 2.5px solid #000000 !important;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    text-align: center;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .print-worksheet .paper-header h2 {
+    font-size: 13pt !important;
+    font-weight: 800;
+    color: #000000 !important;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+  }
+
+  .print-worksheet .paper-header h3 {
+    font-size: 10.5pt !important;
+    font-weight: 700;
+    color: #111111 !important;
+    margin-bottom: 10px;
+  }
+
+  .print-worksheet .paper-meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9pt !important;
+    font-weight: 600;
+    color: #000000 !important;
+    border-top: 1px solid #bbbbbb;
+    padding-top: 5px;
+  }
+
+  .print-worksheet .paper-section {
+    display: block !important;
+    margin-bottom: 16px;
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  .print-worksheet .paper-section h4 {
+    font-size: 10pt !important;
+    font-weight: 700;
+    color: #000000 !important;
+    border-bottom: 1.5px solid #222222 !important;
+    padding-bottom: 3px;
+    margin-bottom: 8px;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .print-worksheet .paper-q {
+    display: block !important;
+    margin-bottom: 8px;
+    font-size: 9pt !important;
+    line-height: 1.4;
+    color: #000000 !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-worksheet .paper-lines {
+    border-bottom: 1px dashed #777777 !important;
+    height: 26px;
+    margin-top: 4px;
+  }
+
+  .print-worksheet table {
+    width: 100% !important;
+    border-collapse: collapse;
+    margin-top: 5px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-worksheet table td {
+    padding: 3px 5px !important;
+    font-size: 9pt !important;
+    color: #000000 !important;
+    vertical-align: top;
+  }
+
+  /* Fallback if app-container is ever printed */
   .worksheet-paper {
+    display: block !important;
     box-shadow: none !important;
     padding: 0 !important;
+    border: none !important;
     border-radius: 0 !important;
-    color: #000 !important;
+    color: #000000 !important;
+    background: #ffffff !important;
   }
 }
 

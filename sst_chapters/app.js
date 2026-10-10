@@ -1762,6 +1762,7 @@ class SSTApp {
     this.switchChapter(this.activeChapterId, false);
     this.setMode(this.activeMode, false);
     this.updateProgressHUD();
+    this.updatePrintWorksheet();
   }
 
   // ==================== STATE PERSISTENCE ====================
@@ -1883,6 +1884,7 @@ class SSTApp {
 
     this.renderCurrentMode();
     this.updateProgressHUD();
+    this.updatePrintWorksheet();
   }
 
   setMode(mode, shouldSave = true) {
@@ -1943,10 +1945,15 @@ class SSTApp {
     const printBtn = document.getElementById('btn-print');
     if (printBtn) {
       printBtn.addEventListener('click', () => {
-        this.setMode('worksheet');
-        setTimeout(() => window.print(), 300);
+        this.updatePrintWorksheet();
+        window.print();
       });
     }
+
+    // Native browser print listener (Ctrl + P / browser menu)
+    window.addEventListener('beforeprint', () => {
+      this.updatePrintWorksheet();
+    });
   }
 
   closeSidebar() {
@@ -3154,6 +3161,7 @@ class SSTApp {
       </div>
     `;
     controls.querySelector('#btn-trigger-print').addEventListener('click', () => {
+      this.updatePrintWorksheet();
       window.print();
     });
     wrap.appendChild(controls);
@@ -3223,6 +3231,75 @@ class SSTApp {
 
     wrap.appendChild(paper);
     container.appendChild(wrap);
+    this.updatePrintWorksheet();
+  }
+
+  updatePrintWorksheet() {
+    const printContainer = document.getElementById('print-container');
+    if (!printContainer) return;
+    const chap = CHAPTERS_DATA.find(c => c.id === this.activeChapterId) || CHAPTERS_DATA[0];
+
+    printContainer.innerHTML = `
+      <div class="print-worksheet">
+        <div class="paper-header">
+          <h2>CENTRAL BOARD OF SECONDARY EDUCATION (CBSE)</h2>
+          <h3>Revision Worksheet: ${chap.number} — ${chap.title}</h3>
+          <div class="paper-meta-row">
+            <span>Student Name: ___________________________</span>
+            <span>Grade: V &nbsp;&nbsp; Sec: _____</span>
+            <span>Date: ____________</span>
+          </div>
+        </div>
+
+        <div class="paper-section">
+          <h4>I. Fill in the Blanks / Objective Questions</h4>
+          ${chap.practiceQuestions.filter(q => q.type === 'blank').map((q, idx) => `
+            <div class="paper-q">
+              <strong>${idx + 1}.</strong> ${q.prompt}
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="paper-section">
+          <h4>II. State Whether True or False (Correct if False)</h4>
+          ${chap.practiceQuestions.filter(q => q.type === 'tf').map((q, idx) => `
+            <div class="paper-q">
+              <strong>${idx + 1}.</strong> ${q.prompt} [ &nbsp; &nbsp; &nbsp; &nbsp; ]
+              <div class="paper-lines" style="height: 24px;">Correction (if False): </div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="paper-section">
+          <h4>III. Match the Following</h4>
+          ${chap.practiceQuestions.filter(q => q.type === 'match').map(q => `
+            <div class="paper-q">
+              <p><strong>${q.prompt}</strong></p>
+              <table>
+                ${q.pairs.map((p, i) => `
+                  <tr>
+                    <td style="width: 45%;">(${i + 1}) ${p.left}</td>
+                    <td style="width: 10%; text-align: center;">[ &nbsp; &nbsp; ]</td>
+                    <td style="width: 45%;">(${String.fromCharCode(65 + i)}) ${p.right}</td>
+                  </tr>
+                `).join('')}
+              </table>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="paper-section">
+          <h4>IV. Subjective & Conceptual Reasoning Questions</h4>
+          ${chap.practiceQuestions.filter(q => q.type === 'short' || q.type === 'long').map((q, idx) => `
+            <div class="paper-q">
+              <strong>${idx + 1}.</strong> ${q.prompt}
+              <div class="paper-lines"></div>
+              <div class="paper-lines"></div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
   }
 
   // ==================== FEEDBACK HELPERS ====================
