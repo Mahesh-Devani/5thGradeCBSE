@@ -2,7 +2,7 @@
    5th Grade CBSE — Service Worker (Offline & Auto-Update Engine)
    ========================================================== */
 
-const CACHE_NAME = 'cbse5-app-v1.0.0';
+const CACHE_NAME = 'cbse5-app-v1.1.0';
 
 // Core App Shell assets to pre-cache immediately on install
 const PRECACHE_ASSETS = [
@@ -20,6 +20,15 @@ const PRECACHE_ASSETS = [
   // Maths
   './maths/index.html',
   './maths/styles.css',
+  './maths/engines/solvers.js',
+  './maths/data/topic1_hcf_lcm.js',
+  './maths/data/topic2_divisibility.js',
+  './maths/data/topic3_expressions.js',
+  './maths/data/topic4_patterns.js',
+  './maths/data/topic5_geometry.js',
+  './maths/data/topic_tables.js',
+  './maths/data/topic_fractions.js',
+  './maths/data/topic_revision.js',
   './maths/app.js',
   // Science
   './science/index.html',

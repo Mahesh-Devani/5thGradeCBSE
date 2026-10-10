@@ -139,6 +139,25 @@ Do **NOT** rename, remove, or alter the IDs of these DOM elements. They are hard
 
 ---
 
+## 4.5 Modular Architecture & AI Token Efficiency (MANDATORY)
+
+The Mathematics module is divided into dedicated data files and calculation engines to ensure high performance and minimize AI token overhead:
+
+- `maths/engines/solvers.js`: Core math algorithms (`gcd`, `lcm`, primes, factors, short division, long division, divisibility).
+- `maths/data/topic1_hcf_lcm.js`: Topic 1 learn modules, practice pool (20+ CBSE worksheet questions), and challenge pool.
+- `maths/data/topic2_divisibility.js`: Topic 2 learn modules, practice pool, and challenge questions.
+- `maths/data/topic3_expressions.js`: Topic 3 clue words, expression presets, learn modules, and practice pool.
+- `maths/data/topic4_patterns.js`: Topic 4 number patterns presets, triangular/square numbers data, and practice pool.
+- `maths/data/topic5_geometry.js`: Topic 5 foundations, angle/line relationships, and practice pool.
+- `maths/data/topic_tables.js`: Topic 6 multiplication learn modules.
+- `maths/data/topic_fractions.js`: Topic 7 fractions learn modules.
+- `maths/data/topic_revision.js`: Mixed revision learn modules and practice pool.
+- `maths/app.js`: State manager, view coordinators, and interactive UI renderers.
+
+> **AI Agent Rule**: When modifying questions or adding curriculum content for a specific topic, ONLY read and edit the corresponding `maths/data/topic*.js` file. Do NOT load `maths/app.js` into context.
+
+---
+
 ## 5. Topic 6 Architecture: Tables (1 to 20) & Mental Speed Master
 
 Topic 6 (`tables_speed_master`) is designed to combat math anxiety, prevent rote memorization of static question options, and stop students from skipping lessons to farm stars:

@@ -158,4 +158,19 @@ Before completing a turn or pushing commits:
 - **English Grammar**: Read **[english_grammer/README.md](english_grammer/README.md)** and **[english_grammer/AGENTS.md](english_grammer/AGENTS.md)**.
 - **Social Science Maps**: Read **[social_sicence_maps/AGENTS.md](social_sicence_maps/AGENTS.md)**.
 - **Hindi Vyakaran**: Read **[hindi_vyakaran/README.md](hindi_vyakaran/README.md)** and **[hindi_vyakaran/AGENTS.md](hindi_vyakaran/AGENTS.md)**.
+- **Data Schemas Contract**: Read **[SCHEMAS.md](SCHEMAS.md)** for official question formats and state shapes.
+
+---
+
+## 6. AI Token Optimization & Context Efficiency (MANDATORY)
+
+To prevent massive AI token consumption, memory bloat, and context truncation:
+1. **Never Read Monolithic Application Files for Schemas**:
+   - When asked to add questions, lessons, or examine data structures, consult **[SCHEMAS.md](SCHEMAS.md)**.
+   - Do NOT load entire 5,000–14,000 line `app.js` files into context just to see how a question is shaped.
+2. **Surgical, Targeted File Edits**:
+   - Edit topic-specific modular data files (e.g. `maths/data/*.js`) rather than large monolithic engines.
+   - Always use line-bounded range editing (`replace_file_content`) instead of rewriting whole files.
+3. **Ignore Scratch and Cache Directories**:
+   - Never search, grep, or read files in `scratch/`, `graphify-out/`, `.gemini/`, or raw camera photo folders (`science/chapters/`).
 
