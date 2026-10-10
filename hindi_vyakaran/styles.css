@@ -3325,3 +3325,34 @@ body::after {
     grid-column: span 1;
   }
 }
+
+/* Pronunciation Audio Button */
+.speech-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  padding: 3px 8px;
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: all var(--transition-fast);
+  touch-action: manipulation;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+.speech-btn:hover {
+  background: rgba(245, 158, 11, 0.22);
+  border-color: var(--accent-saffron);
+  transform: scale(1.1);
+}
+.speech-btn.speaking {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+  animation: pulse 1s infinite;
+}
+

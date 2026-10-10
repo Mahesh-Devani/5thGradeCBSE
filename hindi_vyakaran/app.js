@@ -3233,6 +3233,7 @@ class HindiLearningApp {
           </div>
           <div class="vakyansh-word-badge">
             <span class="vakyansh-word-hi">${item.wordHi}</span>
+            <button class="speech-btn" data-speak="${item.wordHi}" title="उच्चारण सुनें (Pronounce)">🔊</button>
             ${enWord}
           </div>
         </div>
