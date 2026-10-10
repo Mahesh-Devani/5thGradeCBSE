@@ -8,7 +8,7 @@
   'use strict';
 
   const SCHEMA_VERSION = 1;
-  const APP_PREFIXES = ['cbse5_', 'grammar-master-', 'sst-map-'];
+  const APP_PREFIXES = ['cbse', 'grammar-master-', 'sst-map-'];
 
   // In-memory migration registry: versionNumber -> function(data) -> migratedData
   const migrations = new Map();

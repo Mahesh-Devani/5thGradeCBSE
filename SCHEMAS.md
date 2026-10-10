@@ -209,3 +209,42 @@ interface AppStorageBackup {
 }
 ```
 
+---
+
+## 7. Multi-Child Profile Schema (`AppProfile` & `cbse_family_profiles`)
+
+Multi-child profiles decouple student progress per child under a unified family container:
+
+```typescript
+interface FamilyProfilesContainer {
+  schemaVersion: 2;
+  lastUpdated: number; // Unix timestamp
+  profiles: ChildProfile[];
+}
+
+interface ChildProfile {
+  id: string;          // e.g. "child_default" or "child_m3k9_x4y2"
+  name: string;        // e.g. "Aarav", "Ananya"
+  avatar: string;      // e.g. "🦁", "🚀", "🦋", "🎨", "⚡", "🐼", "🐬", "🌟"
+  grade: string;       // e.g. "class_5", "class_3", "class_1"
+  createdAt: number;
+  streak: {
+    count: number;
+    lastDate: string;  // "YYYY-MM-DD"
+  };
+  /** Isolated snapshot of subject progress & stars for this child */
+  data: Record<string, string | unknown>;
+}
+```
+
+### API Reference (`window.AppProfile`)
+- `AppProfile.init()`: Initializes profiles, auto-migrates single-user legacy state into default profile.
+- `AppProfile.getProfiles()`: Returns array of family child profiles.
+- `AppProfile.getActiveProfile()`: Returns current active child profile.
+- `AppProfile.switchProfile(profileId)`: Snapshots active child's local state, swaps active child, restores target child's state into `localStorage`, and emits `profile:switched`.
+- `AppProfile.createProfile({ name, avatar, grade, makeActive })`: Creates and saves a new child profile.
+- `AppProfile.updateProfile(profileId, updates)`: Updates name, avatar, or grade.
+- `AppProfile.deleteProfile(profileId)`: Deletes profile (safeguarded: minimum 1 profile must exist).
+- `AppProfile.saveActiveProfileState()`: Persists current `localStorage` state into active child's data snapshot.
+
+

@@ -298,7 +298,179 @@
     });
   }
 
+  // 5. Family Profiles UI Controller
+  function initProfilesUI() {
+    if (!window.AppProfile) return;
+    AppProfile.init();
+
+    const pillBtn = document.getElementById('btn-profile-pill');
+    const dropdown = document.getElementById('profile-dropdown');
+    const dropdownList = document.getElementById('profile-dropdown-list');
+    const activeAvatarEl = document.getElementById('active-profile-avatar');
+    const activeNameEl = document.getElementById('active-profile-name');
+    const activeGradeEl = document.getElementById('active-profile-grade');
+
+    const modal = document.getElementById('modal-add-profile');
+    const btnAddTrigger = document.getElementById('btn-add-profile-trigger');
+    const btnCloseModal = document.getElementById('btn-close-profile-modal');
+    const btnCancelModal = document.getElementById('btn-cancel-profile');
+    const formAdd = document.getElementById('form-add-profile');
+    const inputName = document.getElementById('input-child-name');
+    const selectGrade = document.getElementById('select-child-grade');
+    const avatarGrid = document.getElementById('avatar-picker-grid');
+
+    let selectedAvatar = '🦁';
+
+    function formatGradeLabel(gradeId) {
+      if (!gradeId) return 'Class 5';
+      const num = gradeId.replace('class_', '');
+      return `Class ${num}`;
+    }
+
+    function renderActivePill(profile) {
+      if (!profile) return;
+      if (activeAvatarEl) activeAvatarEl.textContent = profile.avatar || '🦁';
+      if (activeNameEl) activeNameEl.textContent = profile.name || 'Student';
+      if (activeGradeEl) activeGradeEl.textContent = formatGradeLabel(profile.grade);
+    }
+
+    function renderDropdownList() {
+      if (!dropdownList) return;
+      const profiles = AppProfile.getProfiles();
+      const active = AppProfile.getActiveProfile();
+
+      dropdownList.innerHTML = '';
+      profiles.forEach(p => {
+        const item = document.createElement('div');
+        const isActive = active && active.id === p.id;
+        item.className = 'profile-dropdown-item' + (isActive ? ' active' : '');
+        item.setAttribute('data-profile-id', p.id);
+        item.innerHTML = `
+          <span class="item-avatar">${p.avatar || '🦁'}</span>
+          <div class="item-info">
+            <span class="item-name">${p.name}</span>
+            <span class="item-grade">${formatGradeLabel(p.grade)}</span>
+          </div>
+          ${isActive ? '<span class="item-badge-active">Active</span>' : ''}
+        `;
+
+        item.addEventListener('click', () => {
+          if (!isActive) {
+            AppProfile.switchProfile(p.id);
+            if (dropdown) dropdown.style.display = 'none';
+          }
+        });
+
+        dropdownList.appendChild(item);
+      });
+    }
+
+    function renderAvatarPicker() {
+      if (!avatarGrid) return;
+      avatarGrid.innerHTML = '';
+      AppProfile.DEFAULT_AVATARS.forEach(av => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'avatar-option-btn' + (av === selectedAvatar ? ' selected' : '');
+        btn.textContent = av;
+        btn.addEventListener('click', () => {
+          selectedAvatar = av;
+          document.querySelectorAll('.avatar-option-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+        });
+        avatarGrid.appendChild(btn);
+      });
+    }
+
+    // Toggle dropdown
+    if (pillBtn && dropdown) {
+      pillBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = dropdown.style.display === 'block';
+        dropdown.style.display = isOpen ? 'none' : 'block';
+        pillBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('#profile-switcher-wrapper')) {
+          dropdown.style.display = 'none';
+          pillBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Open Add Profile modal
+    if (btnAddTrigger && modal) {
+      btnAddTrigger.addEventListener('click', () => {
+        if (dropdown) dropdown.style.display = 'none';
+        selectedAvatar = '🦁';
+        if (inputName) inputName.value = '';
+        renderAvatarPicker();
+        modal.style.display = 'flex';
+        if (inputName) inputName.focus();
+      });
+    }
+
+    function closeModal() {
+      if (modal) modal.style.display = 'none';
+    }
+
+    if (btnCloseModal) btnCloseModal.addEventListener('click', closeModal);
+    if (btnCancelModal) btnCancelModal.addEventListener('click', closeModal);
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    // Submit Add Profile Form
+    if (formAdd) {
+      formAdd.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = (inputName && inputName.value.trim()) || 'Child';
+        const grade = (selectGrade && selectGrade.value) || 'class_5';
+
+        const created = AppProfile.createProfile({
+          name,
+          avatar: selectedAvatar,
+          grade,
+          makeActive: true
+        });
+
+        closeModal();
+        showFeedback(`🎉 Created profile for ${created.name}!`);
+      });
+    }
+
+    // Initial render
+    const active = AppProfile.getActiveProfile();
+    renderActivePill(active);
+    renderDropdownList();
+    renderAvatarPicker();
+
+    // Listen to profile events
+    window.addEventListener('profile:switched', (e) => {
+      const p = e.detail && e.detail.profile;
+      renderActivePill(p);
+      renderDropdownList();
+      calculateTotalStars();
+      updateStreak();
+      updateResumeCard();
+      if (p) showFeedback(`Switched to ${p.name}'s profile (${formatGradeLabel(p.grade)})`);
+    });
+
+    window.addEventListener('profile:created', () => {
+      renderDropdownList();
+    });
+
+    window.addEventListener('profile:updated', () => {
+      renderActivePill(AppProfile.getActiveProfile());
+      renderDropdownList();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
+    initProfilesUI();
     calculateTotalStars();
     updateStreak();
     updateResumeCard();

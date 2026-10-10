@@ -23,6 +23,25 @@
     <!-- ==================== HERO ==================== -->
     <header class="hero">
       <div class="hero-top-row">
+        <!-- Family Profile Switcher Pill -->
+        <div class="profile-switcher-wrapper" id="profile-switcher-wrapper">
+          <button class="profile-pill" id="btn-profile-pill" aria-haspopup="true" aria-expanded="false" title="Switch or manage student profile">
+            <span class="profile-avatar" id="active-profile-avatar">🦁</span>
+            <span class="profile-name" id="active-profile-name">Student 1</span>
+            <span class="profile-grade-tag" id="active-profile-grade">Class 5</span>
+            <span class="profile-caret">▾</span>
+          </button>
+          <div class="profile-dropdown" id="profile-dropdown" style="display: none;">
+            <div class="profile-dropdown-header">
+              <span>Family Profiles</span>
+              <button type="button" class="btn-profile-add-mini" id="btn-add-profile-trigger">➕ Add Child</button>
+            </div>
+            <div class="profile-list" id="profile-dropdown-list">
+              <!-- Dynamically populated by hub.js -->
+            </div>
+          </div>
+        </div>
+
         <div class="hero-badge">
           <span class="badge-dot"></span>
           CBSE Curriculum 2025–26
@@ -273,9 +292,55 @@
       <p style="margin-top: 4px; font-size: 0.78rem;">Aligned to CBSE / NCERT Curriculum 2025–26</p>
     </footer>
 
+    <!-- ==================== ADD CHILD PROFILE MODAL ==================== -->
+    <div class="modal-overlay" id="modal-add-profile" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-add-profile-title">
+      <div class="modal-card profile-modal-card">
+        <div class="modal-header">
+          <h3 id="modal-add-profile-title">👶 Add Child Profile</h3>
+          <button type="button" class="modal-close-btn" id="btn-close-profile-modal" aria-label="Close modal">✕</button>
+        </div>
+        <form id="form-add-profile">
+          <div class="form-group">
+            <label for="input-child-name">Child's Name</label>
+            <input type="text" id="input-child-name" class="form-input" placeholder="e.g. Aarav, Ananya" maxlength="24" required />
+          </div>
+
+          <div class="form-group">
+            <label>Choose an Avatar</label>
+            <div class="avatar-picker-grid" id="avatar-picker-grid">
+              <!-- Dynamically populated by hub.js -->
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="select-child-grade">Class / Grade</label>
+            <select id="select-child-grade" class="form-select">
+              <option value="class_5" selected>Class 5 (Full Syllabus Ready ⭐)</option>
+              <option value="class_1">Class 1</option>
+              <option value="class_2">Class 2</option>
+              <option value="class_3">Class 3</option>
+              <option value="class_4">Class 4</option>
+              <option value="class_6">Class 6</option>
+              <option value="class_7">Class 7</option>
+              <option value="class_8">Class 8</option>
+              <option value="class_9">Class 9</option>
+              <option value="class_10">Class 10</option>
+            </select>
+          </div>
+
+          <div class="modal-actions">
+            <button type="submit" class="btn-profile-submit" id="btn-save-profile">✨ Create Profile</button>
+            <button type="button" class="btn-profile-cancel" id="btn-cancel-profile">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
   </div>
 
   <script src="shared/js/storage.js"></script>
+  <script src="shared/js/profile.js"></script>
+  <script src="shared/js/auth.js"></script>
   <script src="hub.js"></script>
   <script src="pwa.js"></script>
 </body>
