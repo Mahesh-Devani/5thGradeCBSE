@@ -660,8 +660,73 @@
     }
   }
 
+  // 7. Access Gate & License Pass UI Controller
+  function initAuthUI() {
+    if (!window.AppAuth) return;
+    AppAuth.init();
+
+    const labelEl = document.getElementById('access-status-label');
+    const dotEl = document.getElementById('access-badge-dot');
+    const btnEnterCode = document.getElementById('btn-enter-access-code');
+    const modal = document.getElementById('modal-access-code');
+    const btnClose = document.getElementById('btn-close-access-modal');
+    const btnCancel = document.getElementById('btn-cancel-access-modal');
+    const formCode = document.getElementById('form-access-code');
+    const inputCode = document.getElementById('input-access-code');
+
+    function updateAccessBadge() {
+      const status = AppAuth.getAccessStatus();
+      if (labelEl) labelEl.textContent = status.label;
+      if (dotEl) {
+        dotEl.style.backgroundColor = status.badgeColor;
+      }
+    }
+
+    function closeModal() {
+      if (modal) modal.style.display = 'none';
+      if (inputCode) inputCode.value = '';
+    }
+
+    if (btnEnterCode && modal) {
+      btnEnterCode.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        if (inputCode) inputCode.focus();
+      });
+    }
+
+    if (btnClose) btnClose.addEventListener('click', closeModal);
+    if (btnCancel) btnCancel.addEventListener('click', closeModal);
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    if (formCode) {
+      formCode.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const code = (inputCode && inputCode.value) || '';
+        const res = await AppAuth.redeemCode(code);
+        if (res.success) {
+          updateAccessBadge();
+          closeModal();
+          showFeedback(`🎉 Access unlocked: ${res.label}!`);
+        } else {
+          showFeedback(`❌ ${res.error || 'Invalid code'}`, true);
+        }
+      });
+    }
+
+    window.addEventListener('auth:change', () => {
+      updateAccessBadge();
+    });
+
+    updateAccessBadge();
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initProfilesUI();
+    initAuthUI();
     renderCurriculum(currentViewingGrade);
     calculateTotalStars();
     updateStreak();

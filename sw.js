@@ -2,7 +2,7 @@
    5th Grade CBSE — Service Worker (Offline & Auto-Update Engine)
    ========================================================== */
 
-const CACHE_NAME = 'cbse5-app-v1.7.0';
+const CACHE_NAME = 'cbse5-app-v1.8.0';
 
 // Core App Shell assets to pre-cache immediately on install
 const PRECACHE_ASSETS = [

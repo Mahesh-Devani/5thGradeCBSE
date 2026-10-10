@@ -90,9 +90,16 @@
       <div class="dashboard-backup-bar" id="dashboard-backup-bar">
         <div class="backup-bar-info">
           <span class="backup-icon">💾</span>
-          <span class="backup-title">Data Backup & Device Sync</span>
+          <span class="backup-title">Data Backup &amp; Device Sync</span>
+          <div class="access-status-indicator" id="access-status-indicator" title="Current access tier">
+            <span class="access-badge-dot" id="access-badge-dot"></span>
+            <span id="access-status-label">Open Community Access</span>
+          </div>
         </div>
         <div class="backup-actions">
+          <button type="button" class="btn-backup" id="btn-enter-access-code" title="Enter school or promotional access code">
+            🔑 Access Pass
+          </button>
           <button class="btn-backup" id="btn-backup-export" title="Save your stars and study progress as a backup JSON file">
             📥 Save Backup
           </button>
@@ -341,6 +348,28 @@
           <div class="modal-actions">
             <button type="submit" class="btn-profile-submit" id="btn-save-profile">✨ Create Profile</button>
             <button type="button" class="btn-profile-cancel" id="btn-cancel-profile">Cancel</button>
+          </div>
+        </form>
+      </div>
+    <!-- ==================== ACCESS CODE REDEMPTION MODAL ==================== -->
+    <div class="modal-overlay" id="modal-access-code" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-access-code-title">
+      <div class="modal-card access-modal-card">
+        <div class="modal-header">
+          <h3 id="modal-access-code-title">🔑 Enter Access Passcode</h3>
+          <button type="button" class="modal-close-btn" id="btn-close-access-modal" aria-label="Close modal">✕</button>
+        </div>
+        <form id="form-access-code">
+          <p class="modal-description">Have a school partner pass, teacher invite, or family pass? Enter it below to unlock all curriculum features.</p>
+          <div class="form-group">
+            <label for="input-access-code">Access Passcode</label>
+            <input type="text" id="input-access-code" class="form-input code-input" placeholder="e.g. CBSE2026" maxlength="32" required />
+          </div>
+          <div class="access-code-hint">
+            💡 <em>Demo Pass: Enter <code>CBSE2026</code> for instant all-access family pass.</em>
+          </div>
+          <div class="modal-actions">
+            <button type="submit" class="btn-profile-submit" id="btn-submit-access-code">✨ Unlock Access</button>
+            <button type="button" class="btn-profile-cancel" id="btn-cancel-access-modal">Cancel</button>
           </div>
         </form>
       </div>
