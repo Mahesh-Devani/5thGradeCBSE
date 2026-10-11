@@ -19,7 +19,7 @@
   const GIS_SCRIPT_URL = 'https://accounts.google.com/gsi/client';
 
   // Fallback / configurable default Client ID (can be overridden in UI or localStorage)
-  const DEFAULT_CLIENT_ID = '938173491204-demoappcbse5thgrade.apps.googleusercontent.com';
+  const DEFAULT_CLIENT_ID = '272983840378-sek27rdlfsjm8181r0kc4tu9nn0hpinc.apps.googleusercontent.com';
 
   const OAUTH_SCOPES = [
     'https://www.googleapis.com/auth/drive.appdata',
