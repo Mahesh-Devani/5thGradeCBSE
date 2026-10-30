@@ -2653,6 +2653,564 @@ const CHAPTERS_DATA = [
   },
 
   // ------------------------------------------------------------------------
+  // CHAPTER: L-11 ROCKS AND MINERALS
+  // ------------------------------------------------------------------------
+  {
+    id: 'ch11_rocks',
+    number: 'L-11',
+    title: 'Rocks and Minerals',
+    sub: 'Igneous, Sedimentary, Metamorphic, Rock Cycle, Ores & Fossil Fuels',
+    themeColor: '#d97706',
+    icon: '🪨',
+    summary: 'Discover how magma, weathering, and heat create igneous, sedimentary, and metamorphic rocks. Explore the rock cycle, mineral ores, coal grades, petroleum, and resource conservation.',
+
+    learnCards: [
+      {
+        badge: 'Igneous Genesis',
+        title: '🌋 Fire-Born Rocks: Magma, Lava & Cooling Rates',
+        metaphor: 'The Earth’s kitchen cooks with fiery magma! If it cools slowly underground, it grows sparkling mineral crystals; if it burps onto the surface as lava, it freezes quickly or traps frothy gas bubbles!',
+        points: [
+          '<strong>Formation:</strong> Igneous rocks are formed when molten rock (magma deep inside Earth or lava on the surface) cools and solidifies. They were the very first rocks formed on Earth (parent rocks).',
+          '<strong>Granite (Intrusive):</strong> Forms when magma cools slowly <em>beneath</em> Earth\'s surface. Named from Latin <em>granum</em> (grain). Composed of three primary minerals: <strong>mica</strong> (shiny flakes), <strong>quartz</strong> (glassy hardness), and <strong>feldspar</strong>. White, pink, or grey. Extremely hard — used for building construction, flooring, and statues.',
+          '<strong>Pumice (Extrusive & Frothy):</strong> Formed when lava with high gas bubbles under high temperature and pressure erupts from volcanoes and solidifies rapidly. The escaping gas bubbles create millions of tiny pores. Ground into powder called <strong>pumicite</strong>. <em>It is so light it floats on water!</em> Used as decorative stone, body/foot scrubbers, floor polish, and by dentists to polish teeth.',
+          '<strong>Basalt (Ocean Basins & Moon):</strong> Dark-coloured, fine-grained rock formed when lava >1000°C pours out from cracks and cools quickly in weeks. <em>Most abundant rock in Earth\'s crust</em> (forms ocean basins). Rich in iron and magnesium (feldspar and pyroxene). Used in building construction and crushed for roads and pavements. Also forms dark flat plains on the Moon called <strong>lunar maria</strong>.'
+        ],
+        thinkPrompt: 'Why does pumice float like a sponge on water, while basalt from the same volcano sinks like an iron anchor?'
+      },
+      {
+        badge: 'Sedimentary Layers',
+        title: '🌊 The Layer-Cake Builders: Weathering & Compaction',
+        metaphor: 'Think of a gigantic multi-decker sandwich pressed over millions of years! Wind and rivers grind mountain rocks into sand and mud, stacking them layer upon layer until gravity cements them into stone.',
+        points: [
+          '<strong>Sedimentation Process:</strong> Weathering by wind, water, rain, ice, and glaciers breaks rocks into small fragments. Flowing rivers carry them into lakes and oceans where they sink to the bottom in layers. Top layers squeeze bottom layers over millions of years, cementing them into hard sedimentary rock.',
+          '<strong>Sandstone:</strong> Formed when sand grains get compressed and cemented together. The principal mineral is <strong>quartz</strong>. Yellow, brown, pink, or red. <em>The famous Red Fort in Delhi and Qutub Minar are built of red sandstone!</em>',
+          '<strong>Shale:</strong> Formed from hardened layers of fine clay and mud. Smooth, split-prone rock used to manufacture building bricks and tiles.',
+          '<strong>Limestone:</strong> Mainly composed of skeletal fragments and shells of marine organisms (corals, molluscs, clams). Rich in <strong>calcite and aragonite</strong> (calcium carbonate). <em>Chalk is a common soft limestone!</em> Used to make cement, bricks, and glass.',
+          '<strong>Conglomerate:</strong> Rounded river pebbles and gravel cemented together with sand and mineral paste. Grey or orange. Used to polish ornaments and as decorative stone.'
+        ],
+        thinkPrompt: 'If you discover a rock containing fossilized sea shells and coral fragments high up on a dry hill, what does it prove about that hill’s ancient past?'
+      },
+      {
+        badge: 'Metamorphic Changes',
+        title: '⚡ Metamorphic Magic: Extreme Heat & Crushing Pressure',
+        metaphor: 'Metamorphosis means "complete change"! Just as a caterpillar transforms into a butterfly, intense underground heat and tectonic weight transform ordinary rocks into dazzling crystalline gems.',
+        points: [
+          '<strong>Formation:</strong> Deep inside Earth\'s crust, existing igneous or sedimentary rocks are subjected to intense baking heat and crushing pressure, changing their mineral composition and texture without melting them into liquid.',
+          '<strong>Limestone → Marble:</strong> Soft, dull limestone recrystallizes into hard, glistening marble. Can be polished to a mirror-like shine. <em>The world-famous Taj Mahal in Agra is carved from white Makrana marble!</em>',
+          '<strong>Sandstone → Quartzite:</strong> Gritty sandstone fuses into interlocking quartz crystals. <em>Quartzite is so extraordinarily hard that it can scratch a steel knife!</em> Used for statues, watches (quartz crystals), glassmaking, and gemstones.',
+          '<strong>Shale → Slate:</strong> Soft clay shale transforms into dense, flat-splitting slate. Usually black or grey, but also purple and green. Used to make blackboards, writing slates, and rainproof roofing tiles.',
+          '<strong>Granite → Gneiss (pronounced "nice"):</strong> Coarse granite undergoes directional shear. Its mica flakes align into glistening ribbon-like dark and light bands of different colours.'
+        ],
+        thinkPrompt: 'Why can you split a slab of slate into razor-thin flat sheets for roofing tiles, but granite only fractures into rough, irregular chunks?'
+      },
+      {
+        badge: 'Rock Cycle Dynamics',
+        title: '🔄 Earth\'s Eternal Recycling Loop: The Rock Cycle',
+        metaphor: 'Earth never throws away a single pebble! No rock stays the same forever — every stone is on an endless multi-million-year voyage through fire, water, pressure, and crustal uplift.',
+        points: [
+          '<strong>Metamorphic to Igneous:</strong> Deep tectonic subduction pushes metamorphic rocks into the hot mantle where they melt into magma → cools and solidifies into new igneous rock.',
+          '<strong>Igneous to Sedimentary:</strong> Surface igneous rocks undergo weathering by rain, wind, and ice → washed into oceans as sediments → compacted into sedimentary rocks.',
+          '<strong>Sedimentary to Metamorphic:</strong> Sedimentary layers sink deeper under accumulating sediment weight, encountering fierce magma heat and tectonic pressure → deform into metamorphic rocks.',
+          '<strong>Dynamic Shortcuts:</strong> Sedimentary rocks can melt directly into magma during deep tectonic earthquakes; metamorphic rocks can be uplifted by mountain-building, weathered by rivers, and deposited directly as new sedimentary layers!'
+        ],
+        thinkPrompt: 'Could a quartz grain in your beach sand today have been part of an ancient granite mountain 200 million years ago and quartzite 100 million years ago?'
+      },
+      {
+        badge: 'Minerals & Energy',
+        title: '⛏️ Mineral Wealth, Fossil Fuels & Conservation',
+        metaphor: 'Minerals are the crystalline Lego bricks of our planet. When packed with valuable metals, we call them ores. When packed with ancient prehistoric solar energy, we call them fossil fuels!',
+        points: [
+          '<strong>Minerals:</strong> Naturally occurring crystalline chemical substances. They are the basic building blocks of rocks; rocks are made of different minerals and varying percentages of each mineral.',
+          '<strong>Metallic Minerals (Ores):</strong> Natural rocks from which valuable metals are economically extracted: <strong>Sphalerite</strong> → Zinc, <strong>Haematite</strong> → Iron, <strong>Bauxite</strong> → Aluminium, <strong>Cuprite</strong> → Copper, <strong>Galena</strong> → Lead. Precious metals: Gold and Silver for jewellery.',
+          '<strong>Coal (Sedimentary Rock!):</strong> Formed from prehistoric swamp forests buried millions of years ago under intense mud pressure. Four types: (1) <strong>Peat:</strong> earliest form, high moisture, low heat; (2) <strong>Lignite:</strong> brown coal, largest portion of world\'s reserves (Neyveli); (3) <strong>Bituminous:</strong> soft coal, burns with smoke, widely used in power and steel plants (Dhanbad, Raniganj); (4) <strong>Anthracite:</strong> hard coal, <em>best coal</em> with maximum heat and very little smoke.',
+          '<strong>Petroleum ("Black Gold"):</strong> Crude oil formed from buried marine plankton and organisms under ocean sediments over millions of years. Refined into petrol, diesel, LPG, CNG, kerosene, and <strong>paraffin wax</strong> (candles and polish). Major Indian fields: <strong>Bombay High</strong> (off Mumbai coast) and <strong>Digboi</strong> (Assam).',
+          '<strong>Conservation:</strong> Minerals and fossil fuels are non-renewable and take millions of years to regenerate. Conserve by keeping vehicle engines tuned, using clean alternative energy (solar, wind, hydroelectric), preventing mining wastage, and switching off lights.'
+        ],
+        thinkPrompt: 'Why do geologists classify coal as a sedimentary rock, even though it formed from dead trees rather than sand or silt?'
+      }
+    ],
+
+    examTraps: [
+      {
+        id: 'trap_l11_minerals',
+        student: 'Rohan',
+        question: 'What is the relationship between rocks and minerals?',
+        studentAnswer: 'Rocks and minerals are exact synonyms. Minerals are made of crushed rocks.',
+        prompt: 'Diagnose Rohan’s conceptual error:',
+        options: [
+          'Minerals are naturally occurring pure crystalline chemical substances (the basic building blocks); rocks are solid mixtures composed of one or more minerals in varying proportions.',
+          'Rocks are living biological animals, whereas minerals are synthetic plastics made in chemical factories.',
+          'Minerals contain only rainwater, while rocks contain only gold and silver.'
+        ],
+        correctIndex: 0,
+        teacherFeedback: 'Spot-on diagnosis! Think of a chocolate chip cookie: the cookie is the rock, and the chocolate chips, flour, and sugar are the individual minerals that build it.'
+      },
+      {
+        id: 'trap_l11_pumice',
+        student: 'Priya',
+        question: 'Why does a piece of pumice float on water while a piece of basalt sinks immediately?',
+        studentAnswer: 'Because pumice is completely hollow inside like an empty plastic ball, while basalt is filled with solid lead.',
+        prompt: 'What volcanic formation fact did Priya miss?',
+        options: [
+          'Pumice formed from frothy volcanic lava ejected with high gas pressure; rapid cooling trapped gas bubbles into millions of porous holes, lowering its overall density below water.',
+          'Pumice floats because it is magnetized and repelled by water molecules.',
+          'Pumice is made of dried wood ashes from ancient forest fires.'
+        ],
+        correctIndex: 0,
+        teacherFeedback: 'Outstanding teacher reasoning! Pumice is a sponge-like volcanic rock riddled with trapped air pockets. Basalt cools into dense, compact rock rich in heavy iron and magnesium, so it sinks!'
+      },
+      {
+        id: 'trap_l11_monuments',
+        student: 'Arjun',
+        question: 'Identify the rocks used to construct the Red Fort in Delhi and the Taj Mahal in Agra.',
+        studentAnswer: 'The Red Fort is built of Red Granite (igneous), and the Taj Mahal is built of White Quartzite (metamorphic).',
+        prompt: 'Correct Arjun’s architectural rock identification:',
+        options: [
+          'Red Fort is made of Red Sandstone (a sedimentary rock of quartz sand); Taj Mahal is made of White Marble (a metamorphic rock transformed from limestone).',
+          'Red Fort is made of baked clay shale; Taj Mahal is made of polished basalt.',
+          'Both monuments are constructed from crushed pumice mixed with river clay.'
+        ],
+        correctIndex: 0,
+        teacherFeedback: 'Brilliant historical geology catch! Delhi’s Red Fort is built from sedimentary Red Sandstone, while Agra’s Taj Mahal is carved from metamorphic Makrana White Marble.'
+      },
+      {
+        id: 'trap_l11_coal',
+        student: 'Sneha',
+        question: 'Between Peat, Lignite, Bituminous, and Anthracite, which is the highest quality coal and why?',
+        studentAnswer: 'Peat is the best coal because it is soft and easy to dig, while Anthracite is the worst because it is too hard and produces only smoke.',
+        prompt: 'Diagnose Sneha’s grading blunder:',
+        options: [
+          'Anthracite is the highest grade ("best coal") because it has the highest carbon concentration, burning with maximum heat and almost zero smoke; Peat is the earliest, lowest-grade stage with low heat and heavy smoke.',
+          'Lignite is the only usable coal; neither Peat nor Anthracite can catch fire.',
+          'Bituminous coal produces no heat at all and is only used to make blackboard chalk.'
+        ],
+        correctIndex: 0,
+        teacherFeedback: 'Masterful correction! Coal quality is determined by carbon content and heat output (calorific value), NOT ease of digging. Anthracite is the undisputed king of coals!'
+      }
+    ],
+
+    questions: [
+      // --- SECTION 1: MCQs & DEDUCTIONS ---
+      {
+        id: 'l11_q1',
+        category: 'mcq',
+        source: 'Worksheet I • Section A • Q1',
+        wsNumber: 1,
+        marks: '1 Mark',
+        body: 'Which of the following was the FIRST type of rock to be formed on Earth, formed when molten magma or lava cooled and hardened?',
+        options: [
+          'Igneous rocks (Parent rocks)',
+          'Sedimentary rocks',
+          'Metamorphic rocks',
+          'Fossil fuels'
+        ],
+        correct: 0,
+        explanation: 'Igneous rocks were the first rocks formed on Earth when molten magma or lava cooled and solidified. Because all other rocks ultimately originate from them, they are also known as primary or parent rocks.',
+        takeaway: 'First rocks on Earth = Igneous rocks (formed from cooling magma/lava).'
+      },
+      {
+        id: 'l11_q2',
+        category: 'mcq',
+        source: 'Worksheet I • Section A • Q2',
+        wsNumber: 1,
+        marks: '1 Mark',
+        body: 'Granite is a hard, coarse-grained igneous rock formed slowly beneath Earth’s surface. What are the THREE primary minerals that compose granite?',
+        options: [
+          'Mica, quartz, and feldspar',
+          'Calcite, aragonite, and clay',
+          'Iron, magnesium, and pyroxene',
+          'Coal, petroleum, and bauxite'
+        ],
+        correct: 0,
+        explanation: 'Granite (from the Latin word "granum", meaning grain) forms when magma cools slowly beneath Earth\'s crust. It consists of three key minerals: shiny flakes of mica, hard glassy quartz, and pink, white, or grey feldspar.',
+        takeaway: 'Granite = Mica + Quartz + Feldspar (magma cooled beneath Earth\'s surface).'
+      },
+      {
+        id: 'l11_q3',
+        category: 'mcq',
+        source: 'Worksheet I • Section A • Q3',
+        wsNumber: 1,
+        marks: '1 Mark',
+        body: 'Basalt is the most abundant rock in the Earth’s crust and forms most ocean basins. Which minerals give basalt its characteristic dark colour and high density?',
+        options: [
+          'Iron and magnesium (in feldspar and pyroxene)',
+          'Calcite and aragonite',
+          'Pure silica and mica',
+          'Aluminium and lead'
+        ],
+        correct: 0,
+        explanation: 'Basalt is a dark, fine-grained igneous rock formed from quick-cooling lava (>1000°C). Its dark colour and heavy density are due to high contents of iron and magnesium present in the minerals feldspar and pyroxene.',
+        takeaway: 'Basalt = Dark, fine-grained, rich in Iron & Magnesium, forms ocean floors & lunar maria.'
+      },
+      {
+        id: 'l11_q4',
+        category: 'mcq',
+        source: 'Worksheet I • Section A • Q4',
+        wsNumber: 1,
+        marks: '1 Mark',
+        body: 'The Red Fort in Delhi is a world-renowned historical monument. Which type of rock was quarried and used to construct its imposing red walls?',
+        options: [
+          'Red Sandstone (a sedimentary rock)',
+          'Red Granite (an igneous rock)',
+          'Red Slate (a metamorphic rock)',
+          'Conglomerate (a decorative rock)'
+        ],
+        correct: 0,
+        explanation: 'The Red Fort in Delhi was built from red sandstone, a sedimentary rock formed when small grains of quartz sand were compressed and cemented together over millions of years.',
+        takeaway: 'Delhi Red Fort = Red Sandstone (Sedimentary rock formed from quartz sand).'
+      },
+      {
+        id: 'l11_q5',
+        category: 'mcq',
+        source: 'Worksheet II • Section A • Q5',
+        wsNumber: 2,
+        marks: '1 Mark',
+        body: 'Limestone is composed mainly of skeletal fragments of marine organisms (corals and molluscs). What common classroom item is a soft, white type of limestone?',
+        options: [
+          'Chalk',
+          'Graphite',
+          'Charcoal',
+          'Wax crayon'
+        ],
+        correct: 0,
+        explanation: 'Chalk is a very common, soft, porous form of sedimentary limestone composed of microscopic calcite shells of marine plankton. Limestone is also used to make cement, bricks, and glass.',
+        takeaway: 'Chalk = Soft limestone rock formed from marine organism skeletal fragments.'
+      },
+      {
+        id: 'l11_q6',
+        category: 'mcq',
+        source: 'Worksheet II • Section A • Q6',
+        wsNumber: 2,
+        marks: '1 Mark',
+        body: 'When sedimentary sandstone is subjected to intense subterranean heat and pressure, into which exceptionally hard metamorphic rock does it transform?',
+        options: [
+          'Quartzite (which can scratch steel!)',
+          'Marble',
+          'Slate',
+          'Gneiss'
+        ],
+        correct: 0,
+        explanation: 'Under intense heat and pressure, sandstone metamorphoses into quartzite. Quartzite is so hard that it can leave a clear scratch mark on steel! Used for statues, watches, and gemstones.',
+        takeaway: 'Sandstone → Quartzite (Metamorphic rock that scratches steel).'
+      },
+      {
+        id: 'l11_q7',
+        category: 'mcq',
+        source: 'Worksheet II • Section A • Q7',
+        wsNumber: 2,
+        marks: '1 Mark',
+        body: 'Which form of coal is universally recognized as the "best coal" because it contains the highest carbon percentage, burning with maximum heat and almost zero smoke?',
+        options: [
+          'Anthracite (Hard coal)',
+          'Bituminous (Soft coal)',
+          'Lignite (Brown coal)',
+          'Peat (Earliest form)'
+        ],
+        correct: 0,
+        explanation: 'Anthracite (hard coal) has the highest carbon concentration (>90%). When burned, it releases great amounts of heat with very little smoke, making it the finest grade of coal.',
+        takeaway: 'Best Coal = Anthracite (>90% carbon, highest heat, minimal smoke).'
+      },
+      {
+        id: 'l11_q8',
+        category: 'mcq',
+        source: 'Worksheet III • Section A • Q8',
+        wsNumber: 3,
+        marks: '1 Mark',
+        body: 'Petroleum is called "Black Gold" because of its immense value. Which useful byproduct obtained during petroleum refining is used to make candles and polishes?',
+        options: [
+          'Paraffin wax',
+          'Kerosene',
+          'Compressed Natural Gas (CNG)',
+          'Bitumen'
+        ],
+        correct: 0,
+        explanation: 'Paraffin wax is obtained from petroleum refining. It is widely used to make candles, shoe and floor polishes, wax paper, and cosmetic ointments.',
+        takeaway: 'Paraffin wax is refined from petroleum and used for candles and polish.'
+      },
+
+      // --- SECTION 2: WHO AM I? RIDDLES ---
+      {
+        id: 'l11_q9',
+        category: 'whoami',
+        source: 'Textbook Page 136 • Track Your Progress 1a',
+        wsNumber: 1,
+        marks: '1.5 Marks',
+        body: 'Who am I? <em>"I am a light-coloured volcanic rock formed when gas bubbles in frothy lava solidifying rapidly get trapped inside me. I have millions of pores, dentists use my powder to polish teeth, and I can float on water!"</em>',
+        options: [
+          'Pumice',
+          'Basalt',
+          'Obsidian',
+          'Granite'
+        ],
+        correct: 0,
+        explanation: 'Pumice is an extrusive igneous rock formed from frothy, gas-rich lava. Its sponge-like porous network traps air, making it less dense than water so it floats! Dentists use powdered pumicite to polish teeth.',
+        takeaway: 'Pumice = Porous volcanic rock that floats on water; used as scrubber and dental polish.'
+      },
+      {
+        id: 'l11_q10',
+        category: 'whoami',
+        source: 'Textbook Page 136 • Track Your Progress 1b',
+        wsNumber: 1,
+        marks: '1.5 Marks',
+        body: 'Who am I? <em>"I am a dark-coloured, heavy, fine-grained rock and the most abundant rock in Earth’s crust. Oceans lie in basins made of me, and astronauts discovered me on the Moon forming dark plains called lunar maria!"</em>',
+        options: [
+          'Basalt',
+          'Pumice',
+          'Shale',
+          'Quartzite'
+        ],
+        correct: 0,
+        explanation: 'Basalt forms when lava >1000°C cools quickly on Earth\'s surface. It makes up the bedrock of ocean basins and forms the dark, flat basaltic plains on the Moon known as lunar maria.',
+        takeaway: 'Basalt = Dark, dense crust rock; ocean basins & Moon\'s lunar maria.'
+      },
+      {
+        id: 'l11_q11',
+        category: 'whoami',
+        source: 'Textbook Page 136 • Track Your Progress 1c',
+        wsNumber: 1,
+        marks: '1.5 Marks',
+        body: 'Who am I? <em>"I am a strong metamorphic rock formed from limestone under immense heat and pressure. I can be polished to a mirror shine, and Emperor Shah Jahan chose my pure white variety to build the Taj Mahal in Agra!"</em>',
+        options: [
+          'Marble',
+          'Sandstone',
+          'Slate',
+          'Gneiss'
+        ],
+        correct: 0,
+        explanation: 'Marble is formed when sedimentary limestone is subjected to underground heat and pressure. White marble from Makrana (Rajasthan) was used to construct the Taj Mahal.',
+        takeaway: 'Marble = Metamorphic rock formed from limestone; Taj Mahal & flooring.'
+      },
+      {
+        id: 'l11_q12',
+        category: 'whoami',
+        source: 'Textbook Page 136 • Track Your Progress 1d',
+        wsNumber: 1,
+        marks: '1.5 Marks',
+        body: 'Who am I? <em>"I am a metamorphic rock formed from granite. I contain glittering flakes of mica that make me sparkle, and I feature alternating light and dark bands of colours (ribbon stripes)!"</em>',
+        options: [
+          'Gneiss (pronounced "nice")',
+          'Shale',
+          'Conglomerate',
+          'Basalt'
+        ],
+        correct: 0,
+        explanation: 'Gneiss is a foliated metamorphic rock formed when granite is heated and squeezed deep within Earth. Its minerals segregate into glistening mica ribbons and alternating dark and light bands.',
+        takeaway: 'Gneiss = Metamorphic rock from granite; shiny mica flakes and ribbon-like stripes.'
+      },
+
+      // --- SECTION 3: COMPARE & CONTRAST ---
+      {
+        id: 'l11_q13',
+        category: 'compare',
+        source: 'Textbook Page 140 • Section E • Q2',
+        wsNumber: 2,
+        marks: '2 Marks',
+        body: 'Compare and contrast <strong>Shale</strong> and <strong>Slate</strong>. Which statement accurately identifies their rock families and transformation relationship?',
+        options: [
+          'Shale is a sedimentary rock formed from hardened clay; Slate is a fine-grained metamorphic rock formed when shale is subjected to underground heat and pressure.',
+          'Shale is an igneous rock formed from lava; Slate is a sedimentary rock formed from sand.',
+          'Shale is formed on the Moon; Slate is formed inside ocean coral reefs.',
+          'Both Shale and Slate are identical igneous rocks with different colours.'
+        ],
+        correct: 0,
+        explanation: 'Shale is sedimentary (hardened clay/mud layers used for bricks). When subjected to metamorphic heat and pressure, its clay minerals recrystallize into slate, a metamorphic rock that splits into smooth, flat sheets (ideal for blackboards and roof shingles).',
+        takeaway: 'Shale (Sedimentary clay) → Slate (Metamorphic sheets for blackboards/roofs).'
+      },
+      {
+        id: 'l11_q14',
+        category: 'compare',
+        source: 'Textbook Page 140 • Section E • Q7 & Section G • Q3',
+        wsNumber: 2,
+        marks: '2 Marks',
+        body: 'Compare <strong>Peat</strong>, <strong>Lignite</strong>, and <strong>Bituminous coal</strong>. Why is Bituminous coal far more commonly used in thermal power plants and steel mills than Lignite or Peat?',
+        options: [
+          'Bituminous coal has much higher carbon content and produces significantly more heat than Peat (which gives off very little heat) or Lignite (brown coal with high moisture).',
+          'Peat explodes if heated, while Bituminous coal is as cold as ice.',
+          'Lignite is only found in space, whereas Bituminous coal is dug from river beds.',
+          'Bituminous coal is a renewable plant that grows back every rainy season.'
+        ],
+        correct: 0,
+        explanation: 'Peat is the earliest, least compact stage with high water content and low heat output. Lignite (brown coal) is soft with high moisture. Bituminous coal ("soft coal") has high carbon concentration, burns hotter, and is readily available for power generation and steel smelting.',
+        takeaway: 'Coal rank: Peat (lowest heat) < Lignite (brown) < Bituminous (industrial fuel) < Anthracite (best heat).'
+      },
+      {
+        id: 'l11_q15',
+        category: 'compare',
+        source: 'Textbook Page 140 • Section F • Q1',
+        wsNumber: 2,
+        marks: '2 Marks',
+        body: 'How do <strong>Igneous rocks</strong> and <strong>Metamorphic rocks</strong> fundamentally differ in their process of formation?',
+        options: [
+          'Igneous rocks form from the cooling and solidification of molten magma or lava; Metamorphic rocks form when existing rocks are chemically and physically transformed by intense subterranean heat and pressure without melting.',
+          'Igneous rocks form only inside ocean shells, while metamorphic rocks form from river sand.',
+          'Igneous rocks are always soft and soluble in water, while metamorphic rocks are made of gas.',
+          'Igneous rocks are made in factories, while metamorphic rocks fall from outer space.'
+        ],
+        correct: 0,
+        explanation: 'Igneous rocks crystallize from a liquid melt (magma or lava). Metamorphic rocks transform in the solid state when existing rocks are baked by geothermal heat and squeezed by tectonic pressure deep underground without melting into magma.',
+        takeaway: 'Igneous = Solidification of liquid molten rock | Metamorphic = Solid-state transformation by heat & pressure.'
+      },
+      {
+        id: 'l11_q16',
+        category: 'compare',
+        source: 'Textbook Page 140 • Section D • Mineral-Metal Match',
+        wsNumber: 2,
+        marks: '2 Marks',
+        body: 'Compare the metallic mineral ores <strong>Bauxite</strong>, <strong>Haematite</strong>, and <strong>Cuprite</strong>. Which option correctly matches each ore with its extracted metal?',
+        options: [
+          'Bauxite → Aluminium | Haematite → Iron | Cuprite → Copper',
+          'Bauxite → Gold | Haematite → Lead | Cuprite → Zinc',
+          'Bauxite → Iron | Haematite → Aluminium | Cuprite → Silver',
+          'Bauxite → Copper | Haematite → Zinc | Cuprite → Iron'
+        ],
+        correct: 0,
+        explanation: 'Bauxite is the ore of Aluminium (lightweight metal for airplanes and foils). Haematite is the principal ore of Iron (used for steel and construction). Cuprite is an ore of Copper (used in electrical wiring and cookware). Sphalerite yields Zinc and Galena yields Lead.',
+        takeaway: 'Ores: Bauxite → Aluminium | Haematite → Iron | Cuprite → Copper | Galena → Lead | Sphalerite → Zinc.'
+      },
+
+      // --- SECTION 4: ODD ONE OUT WITH JUSTIFICATION ---
+      {
+        id: 'l11_q17',
+        category: 'oddone',
+        source: 'Textbook Page 139 • Section B • Q1 & Page 140',
+        wsNumber: 3,
+        marks: '2 Marks',
+        body: 'Find the <strong>ODD ONE OUT</strong> among these rocks and identify the scientific justification:<br><strong>Granite, Pumice, Sandstone, Basalt</strong>',
+        options: [
+          'Sandstone — because it is a SEDIMENTARY rock formed from sand layers, whereas Granite, Pumice, and Basalt are all IGNEOUS rocks formed from cooled magma/lava.',
+          'Granite — because it is the only rock found on the Moon.',
+          'Pumice — because it is made of melted gold.',
+          'Basalt — because it cannot be touched by human hands.'
+        ],
+        correct: 0,
+        explanation: 'Granite, Pumice, and Basalt are all igneous rocks formed from cooling magma or lava. Sandstone is a sedimentary rock formed from compressed grains of quartz sand cemented together over time.',
+        takeaway: 'Odd One: Sandstone (Sedimentary rock; others are all Igneous rocks).'
+      },
+      {
+        id: 'l11_q18',
+        category: 'oddone',
+        source: 'Textbook Page 133-134 • Metamorphic Family',
+        wsNumber: 3,
+        marks: '2 Marks',
+        body: 'Find the <strong>ODD ONE OUT</strong> among these transformation pairs:<br><strong>Limestone → Marble &nbsp;|&nbsp; Sandstone → Quartzite &nbsp;|&nbsp; Shale → Slate &nbsp;|&nbsp; Pumice → Coal</strong>',
+        options: [
+          'Pumice → Coal — because Pumice is volcanic and Coal is formed from compressed swamp plant remains; Coal does NOT form from Pumice!',
+          'Limestone → Marble — because limestone never changes.',
+          'Sandstone → Quartzite — because quartzite is softer than talcum powder.',
+          'Shale → Slate — because slate is made of melted plastic.'
+        ],
+        correct: 0,
+        explanation: 'Limestone → Marble, Sandstone → Quartzite, and Shale → Slate are valid metamorphic parent-daughter transformations. Pumice is a volcanic igneous rock; Coal is a sedimentary fossil fuel formed from buried prehistoric swamp vegetation!',
+        takeaway: 'Odd One: Pumice → Coal (Pumice does not form coal; coal forms from ancient plant debris).'
+      },
+      {
+        id: 'l11_q19',
+        category: 'oddone',
+        source: 'Textbook Page 136 • Metallic Ores',
+        wsNumber: 3,
+        marks: '2 Marks',
+        body: 'Find the <strong>ODD ONE OUT</strong> among these minerals:<br><strong>Haematite, Bauxite, Sphalerite, Petroleum</strong>',
+        options: [
+          'Petroleum — because it is a liquid NON-METALLIC fossil fuel mineral, whereas Haematite (Iron), Bauxite (Aluminium), and Sphalerite (Zinc) are solid METALLIC mineral ores.',
+          'Haematite — because it does not contain any metal.',
+          'Bauxite — because it is only found inside rain clouds.',
+          'Sphalerite — because it is an animal bone.'
+        ],
+        correct: 0,
+        explanation: 'Haematite, Bauxite, and Sphalerite are metallic ores used to extract Iron, Aluminium, and Zinc respectively. Petroleum is an organic non-metallic mineral / fossil fuel formed from marine organisms.',
+        takeaway: 'Odd One: Petroleum (Non-metallic liquid fossil fuel; others are metallic mineral ores).'
+      },
+      {
+        id: 'l11_q20',
+        category: 'oddone',
+        source: 'Textbook Page 138 • Conservation of Resources',
+        wsNumber: 3,
+        marks: '2 Marks',
+        body: 'Find the <strong>ODD ONE OUT</strong> in terms of resource renewability:<br><strong>Solar energy, Wind energy, Hydroelectric (water) energy, Coal</strong>',
+        options: [
+          'Coal — because it is a NON-RENEWABLE fossil fuel that takes millions of years to form and gets depleted, whereas Solar, Wind, and Water are RENEWABLE, inexhaustible clean energy sources.',
+          'Solar energy — because sunlight produces thick smoke.',
+          'Wind energy — because wind cannot generate electricity.',
+          'Hydroelectric energy — because water is made of coal.'
+        ],
+        correct: 0,
+        explanation: 'Sun, wind, and water provide inexhaustible renewable energy that does not deplete Earth\'s reserves. Coal is a finite non-renewable fossil fuel being depleted at an alarming rate.',
+        takeaway: 'Odd One: Coal (Finite non-renewable fossil fuel; Sun, Wind, and Water are renewable alternatives).'
+      },
+
+      // --- SECTION 5: REAL-WORLD SCENARIOS & CASE STUDIES ---
+      {
+        id: 'l11_q21',
+        category: 'scenario',
+        source: 'Textbook Page 141 • Competency Based Q1',
+        wsNumber: 3,
+        marks: '3 Marks',
+        body: 'Maya is on a field trip to a volcanic island. She picks up a light grey rock with dozens of tiny holes that floats when dropped into a tide pool. Her teammate Rahul finds a dark, heavy, fine-grained rock that sinks to the bottom like lead.<br><strong>Identify both rocks and explain why Maya’s rock floats while Rahul’s sinks:</strong>',
+        options: [
+          'Maya found Pumice and Rahul found Basalt. Pumice floats because frothy lava rapidly trapped gas bubbles into porous chambers (density < water); Basalt sinks because it cooled into dense, compact rock rich in heavy iron and magnesium.',
+          'Maya found Chalk and Rahul found Marble. Chalk floats because it is made of birds’ feathers.',
+          'Maya found Coal and Rahul found Granite. Coal always floats on sea water.',
+          'Both found pieces of dried coral reef that differ only in paint colour.'
+        ],
+        correct: 0,
+        explanation: 'During volcanic eruptions, frothy lava expelled under high pressure cools quickly into pumice, trapping millions of tiny air holes that lower its bulk density below that of water (1 g/cm³). Basalt forms from dense, iron-rich liquid lava cooling into heavy, compact stone with no trapped gas pores.',
+        takeaway: 'Pumice floats due to trapped air pores; Basalt sinks due to compact iron-magnesium mineral density.'
+      },
+      {
+        id: 'l11_q22',
+        category: 'scenario',
+        source: 'Textbook Page 141 • Project Work & Scratch Hardness Test',
+        wsNumber: 3,
+        marks: '3 Marks',
+        body: 'In a science laboratory, Ananya is given four rock specimens: <strong>Marble</strong>, <strong>Granite</strong>, <strong>Sandstone</strong>, and <strong>Quartzite</strong>. She performs a scratch test using an ordinary steel nail and a glass slide.<br><strong>Which rock is so exceptionally hard that it can leave a clear scratch mark on steel?</strong>',
+        options: [
+          'Quartzite (Metamorphic rock formed from sandstone)',
+          'Marble (Metamorphic rock formed from limestone)',
+          'Shale (Sedimentary rock formed from clay)',
+          'Chalk (Sedimentary rock formed from shells)'
+        ],
+        correct: 0,
+        explanation: 'Quartzite is an extraordinarily hard metamorphic rock composed of interlocking quartz crystals. It has a Mohs hardness of 7, easily scratching glass (hardness ~5.5) and common steel (hardness ~5 to 6.5).',
+        takeaway: 'Quartzite is so hard it can scratch steel and glass!'
+      },
+      {
+        id: 'l11_q23',
+        category: 'scenario',
+        source: 'Textbook Page 141 • Section G • Q5 • House Architect',
+        wsNumber: 3,
+        marks: '3 Marks',
+        body: 'Kabir is designing an eco-friendly CBSE model house. He needs to choose the most suitable rocks for four distinct structural parts:<br><strong>(1) Durable kitchen slab &nbsp;|&nbsp; (2) Bathroom floor scrubber &nbsp;|&nbsp; (3) Rainproof flat roof &nbsp;|&nbsp; (4) Window glass</strong><br>Which rock selection is scientifically correct?',
+        options: [
+          '(1) Granite | (2) Pumice | (3) Slate | (4) Quartzite / Silica sand',
+          '(1) Pumice | (2) Granite | (3) Limestone | (4) Coal',
+          '(1) Shale | (2) Marble | (3) Pumice | (4) Basalt',
+          '(1) Chalk | (2) Slate | (3) Conglomerate | (4) Petroleum'
+        ],
+        correct: 0,
+        explanation: 'Granite is hard, heat-resistant, and non-porous (ideal for kitchen counters). Pumice is porous and abrasive (ideal for foot scrubbers). Slate splits into waterproof flat slabs (ideal for roofs). Quartzite/silica sand is melted to make glass windows!',
+        takeaway: 'Rock uses: Granite for slabs | Pumice for scrubbers | Slate for roofs | Quartzite/sand for glass.'
+      },
+      {
+        id: 'l11_q24',
+        category: 'scenario',
+        source: 'Textbook Page 138 • Subject Connect • Map of India',
+        wsNumber: 3,
+        marks: '3 Marks',
+        body: 'Arnav is marking energy and mineral extraction centers on an outline map of India for his CBSE project. Which location correctly identifies India’s premier offshore petroleum extraction platform and India’s oldest active oil refinery?',
+        options: [
+          'Bombay High (off the coast of Mumbai in the Arabian Sea) and Digboi (in Assam)',
+          'Dhanbad (Jharkhand) and Neyveli (Tamil Nadu)',
+          'Raniganj (West Bengal) and Delhi',
+          'Kolkata and Chennai'
+        ],
+        correct: 0,
+        explanation: 'Bombay High is an offshore petroleum field located in the Arabian Sea off the Mumbai coast. Digboi in Assam is India’s (and Asia’s) oldest commercial oil field and operating refinery.',
+        takeaway: 'Indian Oil Reserves: Bombay High (Mumbai coast offshore) & Digboi (Assam oldest onshore field).'
+      }
+    ]
+  },
+
+  // ------------------------------------------------------------------------
   // CHAPTER 4: L-13 STATES OF MATTER
   // ------------------------------------------------------------------------
   {
@@ -3144,7 +3702,8 @@ let state = {
     muscleArmState: 'flexed',
     // L-4 Nervous Lab
     brainPart: 'cerebrum',
-    reflexTriggered: false
+    reflexTriggered: false,
+    rockSample: 'pumice'
   },
   // Printable Worksheet settings
   worksheetSettings: {
@@ -3572,6 +4131,28 @@ function renderInteractiveGadget(ch) {
     return renderSkeletalGadget();
   } else if (ch.id === 'ch4_nervous') {
     return renderNervousGadget();
+  } else if (ch.id === 'ch11_rocks') {
+    const currentSample = state.labStates.rockSample || 'pumice';
+    return `
+      <div class="interactive-lab-container">
+        <div class="lab-title-bar">
+          <h4>🪨 Interactive Rock & Mineral Detective Lab</h4>
+          <div class="lab-controls">
+            <button class="lab-btn ${currentSample === 'pumice' ? 'active' : ''}" data-rock="pumice">🧼 Pumice vs Basalt</button>
+            <button class="lab-btn ${currentSample === 'granite' ? 'active' : ''}" data-rock="granite">🏛️ Granite Minerals</button>
+            <button class="lab-btn ${currentSample === 'sandstone_limestone' ? 'active' : ''}" data-rock="sandstone_limestone">🏰 Red Fort & Chalk</button>
+            <button class="lab-btn ${currentSample === 'metamorphic' ? 'active' : ''}" data-rock="metamorphic">⚡ Metamorphosis Chamber</button>
+            <button class="lab-btn ${currentSample === 'coal_petroleum' ? 'active' : ''}" data-rock="coal_petroleum">⛏️ Coal & Black Gold</button>
+          </div>
+        </div>
+        <div class="lab-stage" id="rock-stage">
+          ${getRockStageHTML(currentSample)}
+        </div>
+        <div class="lab-explanation" id="rock-explanation">
+          ${getRockExplanationHTML(currentSample)}
+        </div>
+      </div>
+    `;
   } else if (ch.id === 'ch13_matter') {
     return `
       <div class="interactive-lab-container">
@@ -3706,6 +4287,216 @@ function renderMoleculeSVG(svgEl, stateType) {
     circle.setAttribute('filter', 'drop-shadow(0px 0px 4px rgba(6,182,212,0.6))');
     svgEl.appendChild(circle);
   });
+}
+
+
+function getRockStageHTML(sample) {
+  if (sample === 'granite') {
+    return `
+      <svg viewBox="0 0 500 200" width="100%" height="200" class="rock-svg">
+        <!-- Granite Slab -->
+        <rect x="30" y="30" width="160" height="140" rx="8" fill="#475569" stroke="#94a3b8" stroke-width="2"/>
+        <text x="110" y="22" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Granite Rock Slab</text>
+        <!-- Speckles in granite -->
+        <rect x="45" y="45" width="18" height="14" rx="2" fill="#fda4af" />
+        <rect x="80" y="70" width="22" height="16" rx="2" fill="#fda4af" />
+        <rect x="130" y="50" width="20" height="15" rx="2" fill="#fda4af" />
+        <polygon points="50,110 65,100 70,120" fill="#e2e8f0" opacity="0.9"/>
+        <polygon points="120,115 135,105 140,125" fill="#e2e8f0" opacity="0.9"/>
+        <polygon points="90,140 105,130 110,150" fill="#e2e8f0" opacity="0.9"/>
+        <circle cx="95" cy="55" r="5" fill="#0f172a" />
+        <circle cx="155" cy="90" r="6" fill="#0f172a" />
+        <circle cx="65" cy="145" r="5" fill="#0f172a" />
+        <circle cx="145" cy="145" r="6" fill="#0f172a" />
+
+        <!-- 3 Mineral Anatomy Cards on Right -->
+        <!-- Feldspar -->
+        <g transform="translate(220, 25)">
+          <rect x="0" y="0" width="260" height="46" rx="6" fill="rgba(244, 63, 94, 0.15)" stroke="#fb7185" stroke-width="1.5"/>
+          <circle cx="24" cy="23" r="12" fill="#fda4af"/>
+          <text x="46" y="20" font-size="12" font-weight="bold" fill="#fecdd3">🌸 Feldspar Mineral (~60%)</text>
+          <text x="46" y="36" font-size="10.5" fill="#cbd5e1">Gives granite its white, pink, or grey body colour.</text>
+        </g>
+
+        <!-- Quartz -->
+        <g transform="translate(220, 78)">
+          <rect x="0" y="0" width="260" height="46" rx="6" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1.5"/>
+          <circle cx="24" cy="23" r="12" fill="#bae6fd"/>
+          <text x="46" y="20" font-size="12" font-weight="bold" fill="#bae6fd">💎 Quartz Mineral (~30%)</text>
+          <text x="46" y="36" font-size="10.5" fill="#cbd5e1">Glassy crystalline hardness; resists scratches & weathering.</text>
+        </g>
+
+        <!-- Mica -->
+        <g transform="translate(220, 131)">
+          <rect x="0" y="0" width="260" height="46" rx="6" fill="rgba(234, 179, 8, 0.15)" stroke="#facc15" stroke-width="1.5"/>
+          <circle cx="24" cy="23" r="12" fill="#fde047"/>
+          <text x="46" y="20" font-size="12" font-weight="bold" fill="#fef08a">✨ Mica Mineral (~10%)</text>
+          <text x="46" y="36" font-size="10.5" fill="#cbd5e1">Thin shimmering flakes that make granite sparkle in light.</text>
+        </g>
+      </svg>
+    `;
+  } else if (sample === 'sandstone_limestone') {
+    return `
+      <svg viewBox="0 0 500 200" width="100%" height="200" class="rock-svg">
+        <!-- Sandstone Box -->
+        <g transform="translate(20, 20)">
+          <rect x="0" y="0" width="220" height="160" rx="8" fill="rgba(239, 68, 68, 0.12)" stroke="#f87171" stroke-width="1.5"/>
+          <text x="110" y="25" font-size="13" font-weight="bold" fill="#fca5a5" text-anchor="middle">🏰 Red Sandstone</text>
+          <!-- Compressed Layers -->
+          <rect x="20" y="38" width="180" height="16" rx="3" fill="#b91c1c" opacity="0.8"/>
+          <rect x="20" y="58" width="180" height="16" rx="3" fill="#991b1b" opacity="0.9"/>
+          <rect x="20" y="78" width="180" height="16" rx="3" fill="#7f1d1d"/>
+          <!-- Sand grains text -->
+          <text x="110" y="112" font-size="11" fill="#fecaca" text-anchor="middle">Compressed Quartz Sand Layers</text>
+          <text x="110" y="130" font-size="10" fill="#cbd5e1" text-anchor="middle">Used to build Delhi’s Red Fort &</text>
+          <text x="110" y="145" font-size="10" font-weight="bold" fill="#f87171" text-anchor="middle">Qutub Minar (resists weather!)</text>
+        </g>
+
+        <!-- Limestone Box -->
+        <g transform="translate(260, 20)">
+          <rect x="0" y="0" width="220" height="160" rx="8" fill="rgba(16, 185, 129, 0.12)" stroke="#34d399" stroke-width="1.5"/>
+          <text x="110" y="25" font-size="13" font-weight="bold" fill="#6ee7b7" text-anchor="middle">🐚 Limestone & Chalk</text>
+          <!-- Corals & Shells illustration -->
+          <circle cx="60" cy="62" r="16" fill="rgba(52, 211, 153, 0.25)" stroke="#34d399"/>
+          <text x="60" y="67" font-size="14" text-anchor="middle">🐚</text>
+          <circle cx="110" cy="62" r="16" fill="rgba(52, 211, 153, 0.25)" stroke="#34d399"/>
+          <text x="110" y="67" font-size="14" text-anchor="middle">🪸</text>
+          <circle cx="160" cy="62" r="16" fill="rgba(52, 211, 153, 0.25)" stroke="#34d399"/>
+          <text x="160" y="67" font-size="14" text-anchor="middle">🖍️</text>
+          <!-- Text -->
+          <text x="110" y="105" font-size="11" fill="#a7f3d0" text-anchor="middle">Calcite & Aragonite from sea shells</text>
+          <text x="110" y="125" font-size="10" fill="#cbd5e1" text-anchor="middle">Chalk is a common soft limestone!</text>
+          <text x="110" y="142" font-size="10" font-weight="bold" fill="#34d399" text-anchor="middle">Raw material for Cement, Glass & Bricks</text>
+        </g>
+      </svg>
+    `;
+  } else if (sample === 'metamorphic') {
+    return `
+      <svg viewBox="0 0 500 200" width="100%" height="200" class="rock-svg">
+        <!-- 4 Metamorphic Transformers -->
+        <!-- 1. Limestone to Marble -->
+        <g transform="translate(15, 20)">
+          <rect x="0" y="0" width="225" height="72" rx="6" fill="rgba(244, 244, 245, 0.08)" stroke="#a1a1aa" stroke-width="1.2"/>
+          <text x="12" y="24" font-size="11" fill="#cbd5e1">Sedimentary: <strong fill="#fff">Limestone</strong></text>
+          <text x="112" y="44" font-size="13" fill="#38bdf8" text-anchor="middle">🔥 Heat & Pressure ➔</text>
+          <text x="12" y="62" font-size="11.5" font-weight="bold" fill="#f8fafc">🏛️ White Marble (Taj Mahal)</text>
+        </g>
+
+        <!-- 2. Sandstone to Quartzite -->
+        <g transform="translate(260, 20)">
+          <rect x="0" y="0" width="225" height="72" rx="6" fill="rgba(234, 179, 8, 0.08)" stroke="#eab308" stroke-width="1.2"/>
+          <text x="12" y="24" font-size="11" fill="#cbd5e1">Sedimentary: <strong fill="#fff">Sandstone</strong></text>
+          <text x="112" y="44" font-size="13" fill="#eab308" text-anchor="middle">🔥 Heat & Pressure ➔</text>
+          <text x="12" y="62" font-size="11.5" font-weight="bold" fill="#fde047">🗡️ Quartzite (Scratches Steel!)</text>
+        </g>
+
+        <!-- 3. Shale to Slate -->
+        <g transform="translate(15, 108)">
+          <rect x="0" y="0" width="225" height="72" rx="6" fill="rgba(148, 163, 184, 0.08)" stroke="#94a3b8" stroke-width="1.2"/>
+          <text x="12" y="24" font-size="11" fill="#cbd5e1">Sedimentary: <strong fill="#fff">Shale (Clay)</strong></text>
+          <text x="112" y="44" font-size="13" fill="#94a3b8" text-anchor="middle">🔥 Heat & Pressure ➔</text>
+          <text x="12" y="62" font-size="11.5" font-weight="bold" fill="#e2e8f0">📋 Slate (Blackboards & Roofs)</text>
+        </g>
+
+        <!-- 4. Granite to Gneiss -->
+        <g transform="translate(260, 108)">
+          <rect x="0" y="0" width="225" height="72" rx="6" fill="rgba(168, 85, 247, 0.08)" stroke="#a855f7" stroke-width="1.2"/>
+          <text x="12" y="24" font-size="11" fill="#cbd5e1">Igneous: <strong fill="#fff">Granite</strong></text>
+          <text x="112" y="44" font-size="13" fill="#c084fc" text-anchor="middle">🔥 Heat & Pressure ➔</text>
+          <text x="12" y="62" font-size="11.5" font-weight="bold" fill="#e9d5ff">🦓 Gneiss (Shiny Mica Ribbons)</text>
+        </g>
+      </svg>
+    `;
+  } else if (sample === 'coal_petroleum') {
+    return `
+      <svg viewBox="0 0 500 200" width="100%" height="200" class="rock-svg">
+        <!-- Coal Column -->
+        <g transform="translate(20, 20)">
+          <rect x="0" y="0" width="220" height="160" rx="8" fill="rgba(245, 158, 11, 0.1)" stroke="#f59e0b" stroke-width="1.5"/>
+          <text x="110" y="24" font-size="12.5" font-weight="bold" fill="#fde68a" text-anchor="middle">🔥 4 Coal Grades</text>
+          <rect x="15" y="36" width="190" height="24" rx="4" fill="#78350f"/>
+          <text x="25" y="52" font-size="11" fill="#fef3c7">1. Peat (Earliest, low heat, smoky)</text>
+          <rect x="15" y="66" width="190" height="24" rx="4" fill="#451a03"/>
+          <text x="25" y="82" font-size="11" fill="#fef3c7">2. Lignite ("Brown coal", Neyveli)</text>
+          <rect x="15" y="96" width="190" height="24" rx="4" fill="#292524"/>
+          <text x="25" y="112" font-size="11" fill="#fef3c7">3. Bituminous ("Soft coal", power plants)</text>
+          <rect x="15" y="126" width="190" height="24" rx="4" fill="#09090b" stroke="#f59e0b"/>
+          <text x="25" y="142" font-size="11" font-weight="bold" fill="#facc15">4. Anthracite (Best Coal! Max heat)</text>
+        </g>
+
+        <!-- Petroleum Refining Column -->
+        <g transform="translate(260, 20)">
+          <rect x="0" y="0" width="220" height="160" rx="8" fill="rgba(6, 182, 212, 0.1)" stroke="#06b6d4" stroke-width="1.5"/>
+          <text x="110" y="24" font-size="12.5" font-weight="bold" fill="#a5f3fc" text-anchor="middle">🛢️ Petroleum ("Black Gold")</text>
+          <text x="110" y="44" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Formed from ancient marine plankton</text>
+          <text x="110" y="60" font-size="10.5" fill="#67e8f9" text-anchor="middle">📍 Bombay High & Digboi (Assam)</text>
+          
+          <rect x="15" y="74" width="190" height="72" rx="4" fill="rgba(15, 23, 42, 0.7)" stroke="#38bdf8" stroke-width="1"/>
+          <text x="25" y="94" font-size="10.5" fill="#e2e8f0">🚗 Petrol & Diesel (Vehicle fuels)</text>
+          <text x="25" y="112" font-size="10.5" fill="#e2e8f0">🔥 LPG & CNG (Clean cooking & transport)</text>
+          <text x="25" y="130" font-size="10.5" font-weight="bold" fill="#fde047">🕯️ Paraffin Wax (Candles & polish)</text>
+        </g>
+      </svg>
+    `;
+  } else {
+    // Default: Pumice vs Basalt Floating Beaker Lab
+    return `
+      <svg viewBox="0 0 500 200" width="100%" height="200" class="rock-svg">
+        <!-- Laboratory Glass Beaker -->
+        <rect x="110" y="25" width="280" height="155" rx="8" fill="rgba(6, 182, 212, 0.08)" stroke="#38bdf8" stroke-width="2.5"/>
+        
+        <!-- Water Body -->
+        <path d="M112,75 Q180,68 250,75 T388,75 L388,178 L112,178 Z" fill="rgba(6, 182, 212, 0.28)"/>
+        <line x1="112" y1="75" x2="388" y2="75" stroke="#7dd3fc" stroke-width="2" stroke-dasharray="4,3"/>
+
+        <!-- Pumice Floating Rock (Light, Porous) -->
+        <g transform="translate(160, 58)">
+          <path d="M0,15 Q15,0 45,5 Q70,0 80,18 Q85,35 65,42 Q30,45 10,38 Q-5,28 0,15 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5"/>
+          <!-- Sponge-like pores -->
+          <circle cx="20" cy="18" r="3" fill="#64748b" opacity="0.6"/>
+          <circle cx="38" cy="22" r="3.5" fill="#64748b" opacity="0.6"/>
+          <circle cx="58" cy="16" r="2.5" fill="#64748b" opacity="0.6"/>
+          <circle cx="30" cy="32" r="3" fill="#64748b" opacity="0.6"/>
+          <circle cx="50" cy="30" r="2.5" fill="#64748b" opacity="0.6"/>
+          <!-- Trapped air bubbles in water -->
+          <circle cx="25" cy="50" r="2.5" fill="#e0f2fe" opacity="0.8"/>
+          <circle cx="65" cy="48" r="3" fill="#e0f2fe" opacity="0.8"/>
+          <circle cx="45" cy="54" r="2" fill="#e0f2fe" opacity="0.8"/>
+        </g>
+        <text x="200" y="50" font-size="11.5" font-weight="bold" fill="#f8fafc" text-anchor="middle">🧼 Pumice (Floats!)</text>
+        <text x="200" y="115" font-size="10" fill="#bae6fd" text-anchor="middle">Air-filled porous cavities</text>
+
+        <!-- Basalt Sunken Rock (Dense, Heavy) -->
+        <g transform="translate(280, 142)">
+          <polygon points="0,28 15,5 55,2 75,18 70,32 10,34" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+          <polygon points="15,5 35,12 55,2" fill="#334155"/>
+          <polygon points="35,12 55,2 75,18 45,22" fill="#475569"/>
+        </g>
+        <text x="320" y="136" font-size="11.5" font-weight="bold" fill="#f87171" text-anchor="middle">🌋 Basalt (Sinks!)</text>
+        <text x="320" y="190" font-size="10" fill="#fca5a5" text-anchor="middle">Dense Iron & Magnesium (Ocean crust)</text>
+
+        <!-- Beaker Measurement Ticks -->
+        <line x1="370" y1="50" x2="385" y2="50" stroke="#7dd3fc" stroke-width="1.5"/>
+        <line x1="375" y1="80" x2="385" y2="80" stroke="#7dd3fc" stroke-width="1.5"/>
+        <line x1="370" y1="110" x2="385" y2="110" stroke="#7dd3fc" stroke-width="1.5"/>
+        <line x1="375" y1="140" x2="385" y2="140" stroke="#7dd3fc" stroke-width="1.5"/>
+      </svg>
+    `;
+  }
+}
+
+function getRockExplanationHTML(sample) {
+  if (sample === 'granite') {
+    return '<strong>GRANITE:</strong> An intrusive igneous rock formed when magma cools slowly <em>deep beneath</em> Earth\'s surface. Latin <em>granum</em> (grain). Composed of three minerals: <strong>feldspar</strong> (pink/white crystals), <strong>quartz</strong> (glassy hardness), and <strong>mica</strong> (shiny sparkle). Used for kitchen countertops, flooring, and statues.';
+  } else if (sample === 'sandstone_limestone') {
+    return '<strong>SEDIMENTARY GIANTS:</strong> <strong>Sandstone</strong> forms from compressed quartz sand grains (e.g. Red Fort in Delhi, Qutub Minar). <strong>Limestone</strong> forms from compressed shells and corals of sea organisms (calcite); common soft limestone is <strong>chalk</strong>, and it is the key ingredient in cement!';
+  } else if (sample === 'metamorphic') {
+    return '<strong>THE METAMORPHOSIS CHAMBER:</strong> Under immense subterranean heat and pressure: <em>Limestone → Marble</em> (Taj Mahal in Agra); <em>Sandstone → Quartzite</em> (so hard it scratches steel!); <em>Shale → Slate</em> (blackboards & roofs); <em>Granite → Gneiss</em> (shiny ribbon stripes with mica).';
+  } else if (sample === 'coal_petroleum') {
+    return '<strong>FOSSIL FUELS & ORES:</strong> <strong>Coal</strong> is a sedimentary rock formed from ancient swamps in 4 stages: Peat → Lignite ("brown coal") → Bituminous ("soft coal") → Anthracite ("hard best coal"). <strong>Petroleum</strong> ("Black Gold") is pumped from Bombay High & Digboi and refined into fuels and paraffin wax.';
+  } else {
+    return '<strong>VOLCANIC EXPERIMENT:</strong> <strong>Pumice</strong> formed from frothy volcanic lava with escaping gas bubbles that froze instantly into millions of tiny pores. Its bulk density is less than water, so it <strong>floats like a sponge</strong>! In contrast, <strong>Basalt</strong> cooled into dense, compact rock rich in iron and magnesium, so it sinks instantly.';
+  }
 }
 
 function renderBalanceSVG(svgEl, isPricked) {
@@ -4307,6 +5098,20 @@ function attachGadgetEvents(ch) {
     attachSkeletalGadgetEvents();
   } else if (ch.id === 'ch4_nervous') {
     attachNervousGadgetEvents();
+  } else if (ch.id === 'ch11_rocks') {
+    const btns = document.querySelectorAll('.lab-btn[data-rock]');
+    btns.forEach(b => {
+      b.addEventListener('click', () => {
+        AudioController.click();
+        btns.forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+        state.labStates.rockSample = b.getAttribute('data-rock');
+        const stage = document.getElementById('rock-stage');
+        const exp = document.getElementById('rock-explanation');
+        if (stage) stage.innerHTML = getRockStageHTML(state.labStates.rockSample);
+        if (exp) exp.innerHTML = getRockExplanationHTML(state.labStates.rockSample);
+      });
+    });
   } else if (ch.id === 'ch13_matter') {
     const svgEl = document.getElementById('molecule-svg');
     renderMoleculeSVG(svgEl, state.labStates.moleculeState);
@@ -5367,6 +6172,59 @@ const REVISION_TABLES_DATA = {
       takeaway: 'Air has mass (dipping balloon balance) | Occupies space (inverted glass bubbles) | Exerts pressure (straw & suction cups) | Supports burning (candle under jar)'
     }
   ],
+
+  'ch11_rocks': [
+    {
+      title: '🪨 The Three Rock Families — Formation, Characteristics & Everyday Uses',
+      icon: '🏔️',
+      columns: ['Rock Family', 'Formation Mechanism', 'Distinguishing Characteristics', 'Classic Rock Examples', 'Famous Monuments & Uses'],
+      rows: [
+        ['Igneous Rocks', 'Cooling and solidification of molten magma (underground) or lava (surface); first rocks formed on Earth', 'Crystalline, very hard or spongy porous with gas holes; no fossils', 'Granite, Pumice, Basalt', 'Granite: kitchen slabs & statues; Pumice: floats on water, dentist polish; Basalt: ocean floors, road gravel'],
+        ['Sedimentary Rocks', 'Weathering of rocks, river transport, layer-by-layer deposition and compaction over millions of years', 'Distinct horizontal layers (strata); often contains fossils of shells and plants', 'Sandstone, Shale, Limestone, Conglomerate, Coal', 'Sandstone: Red Fort (Delhi); Limestone: Cement, bricks & chalk; Shale: Tiles; Coal: Thermal power'],
+        ['Metamorphic Rocks', 'Existing igneous or sedimentary rocks baked by intense underground heat and crushed by tectonic pressure', 'Recrystallized, ultra-dense, foliated ribbon-like stripes or interlocking crystals', 'Marble, Quartzite, Slate, Gneiss', 'Marble: Taj Mahal (Agra) & floors; Quartzite: Scratches steel, watches & glass; Slate: Blackboards & roofs; Gneiss: Sparkling mica bands']
+      ],
+      takeaway: 'Igneous = Fire-born (Granite/Pumice/Basalt) | Sedimentary = Layered sediments (Sandstone/Limestone) | Metamorphic = Heat & pressure transformed (Marble/Quartzite/Slate/Gneiss)'
+    },
+    {
+      title: '⚡ The Metamorphic Transformation Matrix — Parent Rock to Transformed Rock',
+      icon: '🔄',
+      columns: ['Original Parent Rock', 'Parent Rock Family', 'Transforming Geological Forces', 'Resulting Metamorphic Rock', 'Key Superpower & Human Uses'],
+      rows: [
+        ['Limestone (Calcite shells)', 'Sedimentary', 'Intense underground baking heat & pressure', 'Marble', 'Can be carved and polished to a mirror shine; Taj Mahal; statues & flooring'],
+        ['Sandstone (Quartz sand grains)', 'Sedimentary', 'Extreme baking heat & tectonic compression', 'Quartzite', 'Interlocking dense quartz crystals; so hard it scratches steel; watches & glassmaking'],
+        ['Shale (Hardened clay mud)', 'Sedimentary', 'Directional compression & moderate heat', 'Slate', 'Splits along parallel planes into smooth, flat waterproof sheets; blackboards & roof shingles'],
+        ['Granite (Coarse magma crystals)', 'Igneous', 'Extreme directional shear pressure & heat', 'Gneiss (pronounced "nice")', 'Minerals segregate into glistening ribbons of mica with alternating dark and light stripes']
+      ],
+      takeaway: 'Limestone ➔ Marble (Taj Mahal) | Sandstone ➔ Quartzite (Scratches steel) | Shale ➔ Slate (Blackboards) | Granite ➔ Gneiss (Mica ribbons)'
+    },
+    {
+      title: '🔥 The 4 Coal Grades — Rank, Carbon Purity, Heat & Smoke',
+      icon: '⛏️',
+      columns: ['Coal Grade', 'Formation Stage', 'Carbon % & Visual Appearance', 'Heat Output (Calorific Value)', 'Smoke Emission & Primary Applications'],
+      rows: [
+        ['Peat', 'Earliest stage (decayed swamp vegetation)', '<60% Carbon; fibrous, spongy, light brown', 'Very low heat output', 'Burns with thick, heavy smoke; rarely used as industrial fuel'],
+        ['Lignite ("Brown Coal")', 'Second stage of compaction', '~65–70% Carbon; dark brown, soft & crumbly', 'Moderate heat output', 'Largest portion of world’s coal reserves; used in thermal power; Neyveli (Tamil Nadu)'],
+        ['Bituminous ("Soft Coal")', 'Third stage under intense pressure', '~75–85% Carbon; dense black, layered', 'High heat output', 'Burns with smoke; most widely used coal for electricity generation & steel mills; Dhanbad & Raniganj'],
+        ['Anthracite ("Hard Coal")', 'Final metamorphic grade (The Best Coal!)', '>90% Carbon; lustrous, jet-black, rock-hard', 'Maximum heat output', 'Burns with intense, steady heat and almost zero smoke; cleanest & highest grade coal']
+      ],
+      takeaway: 'Coal Rank: Peat (lowest heat, smoky) < Lignite (brown, Neyveli) < Bituminous (soft coal, power plants) < Anthracite (hard coal, best heat, no smoke)'
+    },
+    {
+      title: '💎 Metallic Ores & Fossil Fuels — Extracted Resources & Products',
+      icon: '⚙️',
+      columns: ['Mineral / Resource', 'Type / Classification', 'Extracted Metal or Fuel Product', 'Chemical Basis / Origin', 'Essential Daily Products & Applications'],
+      rows: [
+        ['Bauxite', 'Metallic Mineral Ore', 'Aluminium (Al)', 'Hydrated aluminium oxides', 'Aeroplane bodies, kitchen foils, beverage cans, electrical overhead cables'],
+        ['Haematite', 'Metallic Mineral Ore', 'Iron (Fe)', 'Iron oxide (Fe₂O₃)', 'Steel manufacturing, railway tracks, building bridges & girders, car chassis, nails & screws'],
+        ['Cuprite', 'Metallic Mineral Ore', 'Copper (Cu)', 'Copper oxide (Cu₂O)', 'Electrical wiring, motors, generators, coins, water pipes & cookware'],
+        ['Galena', 'Metallic Mineral Ore', 'Lead (Pb)', 'Lead sulphide (PbS)', 'Automobile lead-acid batteries, X-ray room radiation shielding'],
+        ['Sphalerite', 'Metallic Mineral Ore', 'Zinc (Zn)', 'Zinc sulphide (ZnS)', 'Galvanizing steel/iron sheets to prevent rust, brass alloy production'],
+        ['Petroleum ("Black Gold")', 'Non-Metallic Fossil Fuel', 'Petrol, Diesel, LPG, CNG, Paraffin Wax', 'Buried prehistoric marine plankton & sea organisms', 'Automobile & jet fuels, clean cooking gas, candle making, shoe polish, plastics & cosmetics; Bombay High & Digboi']
+      ],
+      takeaway: 'Ores: Bauxite ➔ Aluminium | Haematite ➔ Iron | Cuprite ➔ Copper | Galena ➔ Lead | Sphalerite ➔ Zinc | Petroleum ➔ Fuels & Paraffin Wax'
+    }
+  ],
+
   'ch13_matter': [
     {
       title: '⚗️ States of Matter — Solid vs Liquid vs Gas',
