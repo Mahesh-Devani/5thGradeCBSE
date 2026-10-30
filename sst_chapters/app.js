@@ -1301,7 +1301,624 @@ const CHAPTERS_DATA = [
   },
 
   // --------------------------------------------------------------------------
-  // CHAPTER 4: L-20 OUR GOVERNMENT
+  // CHAPTER 5: L-18 THE STRUGGLE FOR INDEPENDENCE
+  // --------------------------------------------------------------------------
+  {
+    id: 'ch18_struggle_independence',
+    number: 'L-18',
+    title: 'The Struggle for Independence',
+    themeColor: '#f59e0b',
+    icon: '✊',
+    tag: 'History',
+    summary: 'Trace the birth of Indian nationalism, the founding of the INC in 1885, Moderates vs Radicals, Partition of Bengal, Swadeshi & Boycott, and early Revolutionaries.',
+    learnCards: [
+      {
+        title: 'The Rise of Indian Nationalism',
+        icon: '🇮🇳',
+        body: 'Although the First War of Independence (1857) was suppressed by the British, it served as a historic turning point. It brought people across diverse provinces together, making them realise they shared a common anger and resentment against British exploitation. This unified awakening led to <strong>nationalism</strong> — <em>the profound feeling of love and pride people feel towards their own country</em>.'
+      },
+      {
+        title: 'Formation of the Indian National Congress (1885)',
+        icon: '🏛️',
+        body: 'As the spirit of nationalism gained momentum, Indian thinkers felt the need for an all-India political body to represent people\'s demands to the colonial government. In <strong>1885</strong>, a group of educated Indians, along with retired British civil servant <strong>A. O. Hume</strong>, founded the <strong>Indian National Congress (INC)</strong>. Its first historic session took place in <strong>Bombay (Mumbai)</strong>, presided over by <strong>Womesh Chandra Bonnerjee (W. C. Bonnerjee)</strong>.'
+      },
+      {
+        title: 'The Moderates — The Gentle Reformers',
+        icon: '🕊️',
+        body: 'In its opening decades, the INC adopted a cautious, constitutional \'soft\' approach. They did not immediately demand complete freedom from British rule; rather, they petitioned for administrative reforms, lower taxes, and better living conditions for Indians. Key Moderate leaders included <strong>Dadabhai Naoroji</strong> (known as the Grand Old Man of India), <strong>Gopal Krishna Gokhale</strong>, and <strong>W. C. Bonnerjee</strong>.'
+      },
+      {
+        title: 'The Radicals — Swaraj is Our Birthright',
+        icon: '🔥',
+        body: 'A younger group of leaders believed prayers and polite petitions would achieve nothing from colonial rulers. They demanded <strong>Swaraj</strong> (self-rule). Led by the celebrated trio <strong>Lal-Bal-Pal</strong>:<ul><li><strong>Lala Lajpat Rai</strong> (Punjab — \'Punjab Kesari\')</li><li><strong>Lokmanya Bal Gangadhar Tilak</strong> (Maharashtra) — who proclaimed: <em>\'Swaraj is my birthright, and I shall have it!\'</em> and published the fiery Marathi paper <strong>Kesari</strong>.</li><li><strong>Bipin Chandra Pal</strong> (Bengal)</li></ul>'
+      },
+      {
+        title: 'The Partition of Bengal (1905) & Divide-and-Rule',
+        icon: '✂️',
+        body: 'Alarmed by the growing unity of Indian nationalists, the British (under Viceroy Lord Curzon) devised a calculated strategy of <strong>"Divide and Rule"</strong>. Because Bengal was the vibrant epicentre of the freedom movement, the British decided in <strong>1905</strong> to partition Bengal into two halves — one for Hindus (West Bengal) and one for Muslims (East Bengal) — aiming to split Indians on religious grounds.'
+      },
+      {
+        title: 'The Swadeshi & Boycott Movement',
+        icon: '🪔',
+        body: 'The partition ignited massive nationwide outrage, sparking the <strong>Swadeshi Movement</strong>. <em>Swadeshi</em> literally means <strong>\'of one\'s own country\'</strong>:<ul><li><strong>Swadeshi:</strong> Indians pledged to manufacture and use only domestic Indian goods (spinning yarn and weaving khadi cloth).</li><li><strong>Boycott:</strong> People refused to buy British manufactured goods, piling them into huge public <strong>bonfires of British cloth</strong>.</li></ul>Women and students actively picketed foreign shops. The protest was so overwhelming that the British were ultimately compelled to <strong>reunite Bengal</strong> and call off the partition.'
+      },
+      {
+        title: 'The Revolutionaries & Secret Societies',
+        icon: '⚡',
+        body: 'Disillusioned by slow constitutional protests, many brave young patriots formed secret revolutionary societies. They were ready to take up arms and sacrifice their lives to liberate the motherland. Iconic revolutionaries included <strong>Aurobindo Ghosh</strong>, <strong>Barindra Kumar Ghosh</strong>, <strong>Khudiram Bose</strong> (martyred at just 18 years old), <strong>Chandrashekhar Azad</strong>, <strong>Shaheed Bhagat Singh</strong>, <strong>Sukhdev</strong>, <strong>Rajguru</strong>, and <strong>Udham Singh</strong>.'
+      },
+      {
+        title: 'World War I (1914–1918) & Rising Disillusionment',
+        icon: '🎖️',
+        body: 'When World War I broke out in <strong>1914</strong>, lakhs of Indian soldiers fought valiantly for Britain overseas, and thousands laid down their lives. Indians hoped Britain would reward this loyalty with self-rule. Instead, the British imposed crushing new wartime taxes and harsher repressive laws. Meanwhile, in <strong>1915</strong>, <strong>Mahatma Gandhi returned from South Africa</strong>, ushering in the next mass phase of the freedom struggle.'
+      }
+    ],
+    examTraps: [
+      {
+        trap: 'Confusing Moderates and Radicals as members of two completely different political parties.',
+        truth: 'Both Moderates and Radicals were factions inside the Indian National Congress (INC)! Moderates preferred polite petitions and constitutional reforms, while Radicals demanded assertive self-rule (Swaraj).'
+      },
+      {
+        trap: 'Thinking the British partitioned Bengal in 1905 for administrative convenience or gender division.',
+        truth: 'The British partitioned Bengal specifically to weaken Indian unity by driving a communal wedge between Hindus and Muslims (Divide and Rule).'
+      },
+      {
+        trap: 'Confusing the year of the INC formation (1885) with the Partition of Bengal (1905) or Gandhi\'s return (1915).',
+        truth: 'Remember the sequence: 1885 (INC in Bombay) -> 1905 (Bengal Partition & Swadeshi) -> 1914 (WWI begins) -> 1915 (Gandhiji arrives from South Africa).'
+      }
+    ],
+    practiceQuestions: [
+      // Fill in Blanks
+      {
+        id: 'struggle_b1',
+        type: 'blank',
+        prompt: 'The first session of the Indian National Congress was held in the city of _______ in December 1885.',
+        acceptableAnswers: ['bombay', 'mumbai'],
+        hint: 'Present-day Mumbai, presided over by W. C. Bonnerjee.',
+        explanation: 'The inaugural session of the INC was held at Gokuldas Tejpal Sanskrit College in Bombay in 1885.'
+      },
+      {
+        id: 'struggle_b2',
+        type: 'blank',
+        prompt: 'The leaders of the INC who preferred a cautious, soft approach towards the British were known as _______.',
+        acceptableAnswers: ['moderates', 'the moderates'],
+        hint: 'Led by Dadabhai Naoroji and Gopal Krishna Gokhale.',
+        explanation: 'The Moderates believed in constitutional agitation, peaceful meetings, and petitions.'
+      },
+      {
+        id: 'struggle_b3',
+        type: 'blank',
+        prompt: 'Indians who believed that the British should be driven out through armed struggle and sacrifice were known as _______.',
+        acceptableAnswers: ['revolutionaries', 'the revolutionaries'],
+        hint: 'Brave patriots like Khudiram Bose, Bhagat Singh, and Chandrashekhar Azad.',
+        explanation: 'Revolutionaries formed secret societies and took up arms to overthrow colonial rule.'
+      },
+      {
+        id: 'struggle_b4',
+        type: 'blank',
+        prompt: 'Lokmanya Bal Gangadhar Tilak published the anti-British Marathi newspaper named _______.',
+        acceptableAnswers: ['kesari'],
+        hint: 'Meaning Lion in Sanskrit; Tilak used it to awaken national pride.',
+        explanation: 'Tilak started the newspaper Kesari to openly criticize British injustices and ignite nationalist fervor.'
+      },
+      {
+        id: 'struggle_b5',
+        type: 'blank',
+        prompt: 'During the _______ Movement, people boycotted foreign goods and made public bonfires of British clothes.',
+        acceptableAnswers: ['swadeshi', 'swadeshi movement'],
+        hint: 'Means \'of one\'s own country\'; launched in 1905.',
+        explanation: 'The Swadeshi Movement rallied Indians to use homegrown products and boycott British imports.'
+      },
+
+      // True / False
+      {
+        id: 'struggle_tf1',
+        type: 'tf',
+        prompt: 'Lokmanya Bal Gangadhar Tilak was a prominent Moderate leader who favored a soft approach.',
+        isTrue: false,
+        correction: 'Lokmanya Tilak was a fierce Radical who demanded Swaraj as a birthright and rejected soft petitions.',
+        explanation: 'Tilak was one of the prominent Radicals along with Lala Lajpat Rai and Bipin Chandra Pal (Lal-Bal-Pal).'
+      },
+      {
+        id: 'struggle_tf2',
+        type: 'tf',
+        prompt: 'The British partitioned Bengal in 1905 to divide Indians on religious grounds.',
+        isTrue: true,
+        explanation: 'Bengal was the hub of nationalist activity; Lord Curzon divided it to weaken unity between Hindus and Muslims.'
+      },
+      {
+        id: 'struggle_tf3',
+        type: 'tf',
+        prompt: 'Mahatma Gandhi returned to India from South Africa in the year 1905.',
+        isTrue: false,
+        correction: 'Mahatma Gandhi returned to India from South Africa in 1915, during the First World War.',
+        explanation: 'Gandhiji returned in January 1915 after leading non-violent civil rights campaigns in South Africa.'
+      },
+      {
+        id: 'struggle_tf4',
+        type: 'tf',
+        prompt: 'The intense opposition of the Swadeshi Movement forced the British to call off the partition of Bengal.',
+        isTrue: true,
+        explanation: 'The united boycott and widespread protests compelled the British government to annul the partition and reunite Bengal in 1911.'
+      },
+      {
+        id: 'struggle_tf5',
+        type: 'tf',
+        prompt: 'Following World War I, the British rewarded Indian wartime sacrifices by reducing taxes and expanding self-rule.',
+        isTrue: false,
+        correction: 'The British imposed harsher taxes and enacted repressive laws to recover their war debt.',
+        explanation: 'Despite heavy Indian casualties in WWI, Britain intensified economic exploitation and enacted strict laws like the Rowlatt Act.'
+      },
+
+      // Match the Following
+      {
+        id: 'struggle_m1',
+        type: 'match',
+        prompt: 'Match the Freedom Fighters and Leaders with their group or role:',
+        pairs: [
+          { left: 'Dadabhai Naoroji & Gokhale', right: 'Moderates (Reforms & Petitions)' },
+          { left: 'Lal, Bal & Pal (Lal-Bal-Pal)', right: 'Radicals (Demand for Swaraj)' },
+          { left: 'Khudiram Bose & Bhagat Singh', right: 'Revolutionaries (Armed Action)' },
+          { left: 'Womesh Chandra Bonnerjee', right: 'First INC President (1885)' }
+        ]
+      },
+      {
+        id: 'struggle_m2',
+        type: 'match',
+        prompt: 'Match the Milestone Events of the Freedom Struggle to the correct year:',
+        pairs: [
+          { left: 'First Session of the INC', right: '1885' },
+          { left: 'Partition of Bengal (Swadeshi)', right: '1905' },
+          { left: 'Outbreak of World War I', right: '1914' },
+          { left: 'Return of Gandhiji to India', right: '1915' }
+        ]
+      },
+
+      // Short Answer Questions
+      {
+        id: 'struggle_s1',
+        type: 'short',
+        prompt: 'What is the meaning of nationalism, and how did the First War of Independence (1857) contribute to its growth?',
+        thinkingClue: '💡 Think About It: Nationalism means love and pride for one\'s country; how did shared suffering under British rule unite people?',
+        keyPoints: [
+          '<strong>Nationalism</strong> is the deep feeling of love, pride, and devotion people feel towards their own country.',
+          'Although the 1857 Uprising was crushed, it brought Indians from different regions together, awakening a shared awareness of colonial exploitation and forging a common national identity.'
+        ]
+      },
+      {
+        id: 'struggle_s2',
+        type: 'short',
+        prompt: 'Who said \'Swaraj is my birthright, and I shall have it\'? How does this slogan reflect the ideology of the Radicals?',
+        thinkingClue: '💡 Think About It: Spoken by Lokmanya Tilak; contrast \'birthright\' with the Moderates\' polite prayers for concessions.',
+        keyPoints: [
+          'This famous battle cry was proclaimed by <strong>Lokmanya Bal Gangadhar Tilak</strong>.',
+          'It reflects the Radical belief that self-rule (<strong>Swaraj</strong>) is an inalienable birthright that must be fearlessly demanded and seized, rather than politely requested through humble petitions.'
+        ]
+      },
+      {
+        id: 'struggle_s3',
+        type: 'short',
+        prompt: 'What was the Swadeshi Movement? Explain its two complementary principles: Swadeshi and Boycott.',
+        thinkingClue: '💡 Think About It: What does Swadeshi mean literally? How did burning British cloth complement spinning Indian yarn?',
+        keyPoints: [
+          'The Swadeshi Movement was launched in 1905 in response to the British decision to partition Bengal.',
+          '<strong>Swadeshi (Constructive):</strong> Pledged to manufacture and purchase indigenous Indian goods, promoting self-reliance and domestic khadi weavers.',
+          '<strong>Boycott (Resistance):</strong> Refused to buy foreign British merchandise, resulting in massive public bonfires of imported cloth.'
+        ]
+      },
+
+      // Long Answer Scaffold Studio
+      {
+        id: 'struggle_l1',
+        type: 'long',
+        prompt: 'Why did the British decide to partition Bengal in 1905? Explain how Indians resisted this decision through the Swadeshi Movement and assess its final outcome.',
+        blueprintTitle: '1905 Bengal Partition & The Swadeshi Movement',
+        pillars: [
+          {
+            id: 'p1',
+            title: 'British Motive: Divide and Rule',
+            prompt: 'Why was Bengal targeted and divided along religious lines?',
+            keywords: ['bengal', 'epicenter', 'divide and rule', 'hindus and muslims', 'curzon', 'weaken unity']
+          },
+          {
+            id: 'p2',
+            title: 'Indian Resistance: Swadeshi & Boycott',
+            prompt: 'How did people protest using Swadeshi and public bonfires?',
+            keywords: ['swadeshi', 'boycott', 'bonfires of cloth', 'students and women', 'pledge', 'khadi']
+          },
+          {
+            id: 'p3',
+            title: 'British Repression & Final Victory',
+            prompt: 'How did the British react, and why were they forced to reunite Bengal?',
+            keywords: ['force', 'arrests', 'beaten', 'called off', 'reunited', '1911', 'success']
+          }
+        ],
+        modelAnswer: `<strong>The Partition of Bengal (1905) and the Swadeshi Movement:</strong>
+<ol>
+  <li><strong>British Motive (Divide and Rule):</strong>
+    <ul>
+      <li>At the turn of the 20th century, Bengal was the vibrant intellectual and political centre of the Indian freedom movement.</li>
+      <li>Fearing that a unified Indian population would soon overthrow colonial authority, the British (under Viceroy Lord Curzon) partitioned Bengal in 1905 into two provinces along religious lines — one for Hindus and one for Muslims — to foster communal friction.</li>
+    </ul>
+  </li>
+  <li><strong>The Swadeshi & Boycott Resistance:</strong>
+    <ul>
+      <li>Indians across religious communities rose in united opposition, launching the <strong>Swadeshi Movement</strong> (<em>Swadeshi</em> means \'of one\'s own country\').</li>
+      <li><strong>Swadeshi:</strong> Citizens pledged to wear indigenous Indian handloom cloth (khadi) and buy locally produced goods.</li>
+      <li><strong>Boycott:</strong> Foreign goods were rejected nationwide, and huge public bonfires of imported British fabrics were organized across streets and squares. Men, women, and students actively joined processions.</li>
+    </ul>
+  </li>
+  <li><strong>British Reaction and Eventual Outcome:</strong>
+    <ul>
+      <li>The British administration attempted to crush the movement through harsh police crackdowns, caning protestors, and imprisoning leaders.</li>
+      <li>However, the sustained economic boycott severely hurt British merchants in Manchester. Faced with unbroken Indian solidarity, the British government was finally forced to <strong>call off the partition and reunite Bengal in 1911</strong>.</li>
+    </ul>
+  </li>
+</ol>`
+      },
+      {
+        id: 'struggle_l2',
+        type: 'long',
+        prompt: 'Compare and contrast the methods, goals, and leaders of the three major streams of the early freedom struggle: the Moderates, the Radicals, and the Revolutionaries.',
+        blueprintTitle: 'Three Streams: Moderates, Radicals & Revolutionaries',
+        pillars: [
+          {
+            id: 'p1',
+            title: 'The Moderates',
+            prompt: 'Explain their soft constitutional method, key leaders, and early aims.',
+            keywords: ['moderates', 'soft approach', 'petitions', 'prayers', 'reforms', 'dadabhai naoroji', 'gokhale', 'w c bonnerjee']
+          },
+          {
+            id: 'p2',
+            title: 'The Radicals',
+            prompt: 'Explain their demand for Swaraj, direct action, and Lal-Bal-Pal.',
+            keywords: ['radicals', 'swaraj', 'birthright', 'assertive', 'lal bal pal', 'tilak', 'kesari', 'boycott']
+          },
+          {
+            id: 'p3',
+            title: 'The Revolutionaries',
+            prompt: 'Explain their armed struggle, secret societies, and supreme sacrifice.',
+            keywords: ['revolutionaries', 'armed struggle', 'secret groups', 'sacrifice', 'khudiram bose', 'bhagat singh', 'azad']
+          }
+        ],
+        modelAnswer: `<strong>Comparison of Moderates, Radicals, and Revolutionaries:</strong>
+<ol>
+  <li><strong>The Moderates (Constitutional Agitators):</strong>
+    <ul>
+      <li><strong>Philosophy:</strong> Believed in British justice and favored a peaceful, gradual \'soft\' approach through petitions, memorandums, and public speeches.</li>
+      <li><strong>Demands:</strong> Did not demand complete independence; asked for civil reforms, reduced taxes, and greater Indian representation in administration.</li>
+      <li><strong>Prominent Leaders:</strong> Dadabhai Naoroji, Gopal Krishna Gokhale, and Womesh Chandra Bonnerjee.</li>
+    </ul>
+  </li>
+  <li><strong>The Radicals (Assertive Nationalists):</strong>
+    <ul>
+      <li><strong>Philosophy:</strong> Rejected \'political mendicancy\' (begging for favors). Believed freedom required direct mass mobilization, self-reliance, and active agitation.</li>
+      <li><strong>Demands:</strong> Demanded complete <strong>Swaraj (Self-rule)</strong> as an inalienable birthright.</li>
+      <li><strong>Prominent Leaders:</strong> The famous trio <strong>Lal-Bal-Pal</strong> (Lala Lajpat Rai, Lokmanya Bal Gangadhar Tilak, Bipin Chandra Pal). Tilak spread nationalist consciousness through the newspaper <em>Kesari</em>.</li>
+    </ul>
+  </li>
+  <li><strong>The Revolutionaries (Armed Patriots):</strong>
+    <ul>
+      <li><strong>Philosophy:</strong> Believed the colonial empire could only be dislodged by meeting force with armed resistance.</li>
+      <li><strong>Methods:</strong> Formed secret societies, assassinated oppressive colonial officials, and fearlessly went to the gallows.</li>
+      <li><strong>Prominent Heroes:</strong> Aurobindo Ghosh, Khudiram Bose, Chandrashekhar Azad, Shaheed Bhagat Singh, Sukhdev, and Rajguru.</li>
+    </ul>
+  </li>
+</ol>`
+      }
+    ]
+  },
+
+  // --------------------------------------------------------------------------
+  // CHAPTER 6: L-19 FREEDOM AT LAST!
+  // --------------------------------------------------------------------------
+  {
+    id: 'ch19_freedom_at_last',
+    number: 'L-19',
+    title: 'Freedom at Last!',
+    themeColor: '#10b981',
+    icon: '🕊️',
+    tag: 'History',
+    summary: 'Follow the climactic phase of India’s freedom saga: Gandhiji\'s Satyagraha, Jallianwala Bagh, Non-Cooperation, Dandi March, Quit India, Netaji\'s INA, and 1947 Independence.',
+    learnCards: [
+      {
+        title: 'Gandhiji Returns & Tours the Nation (1915)',
+        icon: '🚂',
+        body: 'In <strong>1915</strong>, Mohandas Karamchand Gandhi returned to India after 21 years in South Africa. Before plunging into political protests, he travelled across the subcontinent by third-class railway to witness the true living conditions of ordinary peasants and workers. Deeply moved by widespread poverty, caste discrimination, and social inequality, Gandhiji insisted that genuine freedom required Indians to first treat one another as equals with mutual respect.'
+      },
+      {
+        title: 'The Weapon of Satyagraha',
+        icon: '🧘',
+        body: 'Gandhiji introduced a revolutionary method of moral resistance called <strong>Satyagraha</strong> (holding firmly to <em>Satya</em> / Truth, through <em>Ahimsa</em> / Non-violence). A Satyagrahi refused to obey unjust laws, accepted punishments without retaliation, and sought to awaken the conscience of the oppressor without harboring hatred or malice.'
+      },
+      {
+        title: 'The Rowlatt Act & Jallianwala Bagh Massacre (1919)',
+        icon: '🕯️',
+        body: 'In 1919, the British passed the oppressive <strong>Rowlatt Act</strong>, granting police sweeping powers to arrest and jail any citizen without trial or lawyer. On <strong>13 April 1919</strong> (the auspicious festival of Baisakhi), over 10,000 peaceful men, women, and children assembled at <strong>Jallianwala Bagh</strong> in Amritsar. British Brigadier-General <strong>Reginald Dyer</strong> blocked the sole narrow exit and ordered his troops to fire directly into the unarmed gathering until ammunition ran out. Thousands were slaughtered or wounded. Dyer was forced to resign in 1920, and the horrific massacre permanently turned the nation against British rule.'
+      },
+      {
+        title: 'The Non-Cooperation Movement (1920–1922)',
+        icon: '🚫',
+        body: 'In 1920, Gandhiji launched the historic <strong>Non-Cooperation Movement</strong>. He reasoned that British rule survived only because Indians cooperated. Indians resigned from government jobs, lawyers boycotted colonial courts, and parents withdrew children from government schools. Dynamic young leaders such as <strong>Pandit Jawaharlal Nehru</strong>, <strong>Subhas Chandra Bose</strong>, and <strong>Maulana Abul Kalam Azad</strong> joined the forefront. However, in <strong>1922</strong>, after protestors set fire to a police station at <strong>Chauri Chaura</strong> (Uttar Pradesh) following police gunfire, Gandhiji immediately suspended the movement, refusing to compromise on non-violence.'
+      },
+      {
+        title: 'Simon Commission (1928) & Purna Swaraj (1929)',
+        icon: '📜',
+        body: 'In <strong>1928</strong>, the British dispatched the <strong>Simon Commission</strong> to examine constitutional reforms for India. Because it did not include a single Indian representative, citizens nationwide boycotted it with black flags and the resounding chant: <em>\'Simon, Go Back!\'</em>. A year later, in <strong>December 1929</strong> at the Lahore session chaired by Jawaharlal Nehru, the INC declared that partial reforms were no longer acceptable; the goal was <strong>Purna Swaraj</strong> (Complete Independence).'
+      },
+      {
+        title: 'The Dandi March & Civil Disobedience (1930)',
+        icon: '🧂',
+        body: 'In <strong>1930</strong>, Gandhiji initiated the <strong>Civil Disobedience Movement</strong> by deliberately defying the British <strong>Salt Law</strong>, which imposed an unfair tax on salt and made it illegal for Indians to produce it. Gandhiji and 78 followers embarked on a 24-day, 390 km march from <strong>Sabarmati Ashram</strong> (Ahmedabad) to the coastal village of <strong>Dandi</strong>. On 6 April 1930, Gandhiji scooped up a lump of natural sea salt, breaking colonial law. A tidal wave of civil disobedience swept across India as millions made salt and refused to pay taxes.'
+      },
+      {
+        title: 'The Quit India Movement (1942)',
+        icon: '📢',
+        body: 'In 1939, Britain dragged India into World War II without consulting Indian leaders, causing Congress provincial ministries to resign in protest. In <strong>August 1942</strong>, Gandhiji delivered a decisive ultimatum to the British Empire: the <strong>Quit India Movement</strong> (<em>Bharat Chhodo</em>), giving Indians the immortal clarion call: <strong>"Do or Die"</strong> (<em>Karo ya Maro</em>). Even though British authorities arrested all senior Congress leaders overnight, underground networks and millions of ordinary citizens paralyzed colonial administration.'
+      },
+      {
+        title: 'Netaji Subhas Chandra Bose & The INA',
+        icon: '⚔️',
+        body: '<strong>Netaji Subhas Chandra Bose</strong> was convinced that non-violence alone would never dislodge the British; an armed struggle was indispensable. Escaping British surveillance, he reached Japan in 1943. With revolutionary <strong>Rash Behari Bose</strong>, he reorganized Indian soldiers into the <strong>Azad Hind Fauj (Indian National Army - INA)</strong>. Netaji inspired millions with electric battle cries: <em>\'Jai Hind\'</em>, <em>\'Dilli Chalo\'</em>, and <em>\'Give me blood, and I will give you freedom!\'</em>. The INA notably included the pioneering all-female <strong>Rani of Jhansi Regiment</strong> led by <strong>Captain Lakshmi Sahgal</strong>.'
+      },
+      {
+        title: 'Birth of a Free Nation (15 August 1947)',
+        icon: '🇮🇳',
+        body: 'Devastated by World War II and confronted by the unyielding pressure of the Quit India agitation, INA trials, and Royal Indian Navy mutinies, Britain accepted that it could no longer hold India. Negotiations culminated in independence, but colonial \'Divide and Rule\' bore bitter fruit: the Muslim League (led by <strong>Mohammad Ali Jinnah</strong>) insisted on a separate state. On <strong>15 August 1947</strong>, India won its freedom, partitioned into <strong>India and Pakistan</strong>. Jawaharlal Nehru addressed the world as the Indian Tricolour was hoisted atop the Red Fort, marking the birth of the world\'s largest democracy.'
+      }
+    ],
+    examTraps: [
+      {
+        trap: 'Confusing the Non-Cooperation Movement (1920) with the Civil Disobedience Movement (1930).',
+        truth: 'Non-Cooperation meant withdrawing cooperation (boycotting jobs, schools, courts). Civil Disobedience went a step further by actively breaking unjust colonial laws (such as making salt at Dandi).'
+      },
+      {
+        trap: 'Thinking Mahatma Gandhi and Netaji Subhas Chandra Bose followed the exact same strategy for independence.',
+        truth: 'Both were great patriots aiming for complete freedom, but Gandhiji followed strict non-violence (Satyagraha), whereas Netaji believed an armed military army (INA) was necessary to drive out the British.'
+      },
+      {
+        trap: 'Believing that General Dyer was arrested or executed for the Jallianwala Bagh massacre.',
+        truth: 'General Dyer was merely censured and forced to resign from his military commission in March 1920; the colonial government never imprisoned him.'
+      }
+    ],
+    practiceQuestions: [
+      // Fill in Blanks
+      {
+        id: 'freedom_b1',
+        type: 'blank',
+        prompt: 'Mahatma Gandhi returned to India from South Africa in the year _______.',
+        acceptableAnswers: ['1915'],
+        hint: 'Returned in the middle of World War I to begin his nationwide tour.',
+        explanation: 'Gandhiji returned to India in January 1915 after over two decades in South Africa.'
+      },
+      {
+        id: 'freedom_b2',
+        type: 'blank',
+        prompt: 'Under the repressive _______ Act of 1919, the British could arrest and imprison any Indian without a trial.',
+        acceptableAnswers: ['rowlatt', 'rowlatt act'],
+        hint: 'Named after Sir Sidney Rowlatt; opposed by nationwide Satyagraha.',
+        explanation: 'The Rowlatt Act authorized the British government to imprison suspects without court trial or legal representation.'
+      },
+      {
+        id: 'freedom_b3',
+        type: 'blank',
+        prompt: 'The tragic Jallianwala Bagh massacre took place on 13 April 1919 in the sacred city of _______.',
+        acceptableAnswers: ['amritsar'],
+        hint: 'Located in Punjab, famous for the Golden Temple.',
+        explanation: 'General Dyer ordered troops to fire upon thousands of unarmed pilgrims and protestors inside Jallianwala Bagh in Amritsar.'
+      },
+      {
+        id: 'freedom_b4',
+        type: 'blank',
+        prompt: 'In 1930, Mahatma Gandhi marched from Sabarmati Ashram to the coastal village of _______ to break the salt law.',
+        acceptableAnswers: ['dandi'],
+        hint: 'Famous coastal march spanning 390 kilometers.',
+        explanation: 'The Dandi March culminated on 6 April 1930 when Gandhiji picked up natural sea salt at Dandi, Gujarat.'
+      },
+      {
+        id: 'freedom_b5',
+        type: 'blank',
+        prompt: 'Netaji Subhas Chandra Bose reorganized the Azad Hind Fauj, also known as the Indian _______ Army.',
+        acceptableAnswers: ['national', 'indian national army'],
+        hint: 'Commonly abbreviated as the INA.',
+        explanation: 'The Indian National Army (INA) was formed with Indian soldiers to fight militarily for national liberation.'
+      },
+
+      // True / False
+      {
+        id: 'freedom_tf1',
+        type: 'tf',
+        prompt: 'Gandhiji\'s philosophy of Satyagraha is rooted firmly in truth and non-violence.',
+        isTrue: true,
+        explanation: 'Satyagraha means holding steadfastly to truth without resorting to physical violence or bitterness.'
+      },
+      {
+        id: 'freedom_tf2',
+        type: 'tf',
+        prompt: 'The Simon Commission sent to India in 1928 was welcomed warmly because it included prominent Indian leaders.',
+        isTrue: false,
+        correction: 'The Simon Commission was boycotted with black flags and \'Simon, Go Back!\' because it had NO Indian members.',
+        explanation: 'Indians protested against the all-British commission that presumed to decide India\'s constitutional destiny without Indian voices.'
+      },
+      {
+        id: 'freedom_tf3',
+        type: 'tf',
+        prompt: 'Gandhiji called off the Non-Cooperation Movement in 1922 following violent clashes at Chauri Chaura.',
+        isTrue: true,
+        explanation: 'When protestors set fire to a police station in Chauri Chaura, Gandhiji halted the movement to preserve the sanctity of non-violence.'
+      },
+      {
+        id: 'freedom_tf4',
+        type: 'tf',
+        prompt: 'Mahatma Gandhi launched the Quit India Movement in August 1942 with the historic battle cry \'Do or Die\'.',
+        isTrue: true,
+        explanation: 'Gandhiji gave the mantra \'Karo ya Maro\' (Do or Die), demanding immediate British withdrawal during World War II.'
+      },
+      {
+        id: 'freedom_tf5',
+        type: 'tf',
+        prompt: 'India achieved independence on 15 August 1947 as a single, undivided nation.',
+        isTrue: false,
+        correction: 'India won independence on 15 August 1947, but was partitioned into two separate countries: India and Pakistan.',
+        explanation: 'Colonial Divide-and-Rule policies culminated in the tragic partition of the subcontinent along religious lines.'
+      },
+
+      // Match the Following
+      {
+        id: 'freedom_m1',
+        type: 'match',
+        prompt: 'Match the Historic Milestones with the correct calendar year:',
+        pairs: [
+          { left: 'Jallianwala Bagh Massacre', right: '1919' },
+          { left: 'Non-Cooperation Movement', right: '1920' },
+          { left: 'Dandi March & Salt Satyagraha', right: '1930' },
+          { left: 'Quit India Movement ("Do or Die")', right: '1942' }
+        ]
+      },
+      {
+        id: 'freedom_m2',
+        type: 'match',
+        prompt: 'Match each National Icon to their historic role or slogan:',
+        pairs: [
+          { left: 'Mahatma Gandhi', right: 'Satyagraha & "Do or Die"' },
+          { left: 'Netaji Subhas Chandra Bose', right: '"Jai Hind" & Azad Hind Fauj (INA)' },
+          { left: 'Pandit Jawaharlal Nehru', right: 'First Prime Minister ("Tryst with Destiny")' },
+          { left: 'Brigadier General Dyer', right: 'Ordered unprovoked firing at Jallianwala Bagh' }
+        ]
+      },
+
+      // Short Answer Questions
+      {
+        id: 'freedom_s1',
+        type: 'short',
+        prompt: 'What was the Rowlatt Act of 1919, and why did Indians vehemently oppose it?',
+        thinkingClue: '💡 Think About It: Arrest without warrant or trial; suppression of civil liberties.',
+        keyPoints: [
+          'The <strong>Rowlatt Act</strong> was enacted by the British in 1919, empowering the police to arrest and jail any Indian without a warrant, court trial, or right to legal counsel.',
+          'Indians denounced it as a draconian \'Black Act\' because it completely stripped citizens of fundamental rights and fair legal justice.'
+        ]
+      },
+      {
+        id: 'freedom_s2',
+        type: 'short',
+        prompt: 'Why did Mahatma Gandhi suddenly call off the Non-Cooperation Movement in 1922?',
+        thinkingClue: '💡 Think About It: What happened at Chauri Chaura, and why was non-violence non-negotiable for Gandhiji?',
+        keyPoints: [
+          'In February 1922, a protest at <strong>Chauri Chaura</strong> in Gorakhpur (UP) turned violent when police opened fire; an enraged mob attacked and burned the police station, killing 22 policemen.',
+          'Gandhiji held that genuine Swaraj could never be built on bloodshed; seeing that the movement was deviating from absolute non-violence, he immediately called it off.'
+        ]
+      },
+      {
+        id: 'freedom_s3',
+        type: 'short',
+        prompt: 'Why did Mahatma Gandhi select common salt as the central symbol for the Civil Disobedience Movement in 1930?',
+        thinkingClue: '💡 Think About It: Salt is essential to every single human being; the British tax hit the poorest citizens most severely.',
+        keyPoints: [
+          'Salt is a basic, indispensable daily necessity required by every human being, regardless of wealth, caste, or religion.',
+          'The British monopoly and tax on salt cruelly burdened the poorest peasants, making it a universal and powerful symbol of unjust colonial oppression.'
+        ]
+      },
+
+      // Long Answer Scaffold Studio
+      {
+        id: 'freedom_l1',
+        type: 'long',
+        prompt: 'Describe the events of the Jallianwala Bagh massacre on 13 April 1919. Explain what led to the gathering, what General Dyer did, and how it impacted the Indian freedom struggle.',
+        blueprintTitle: 'The Jallianwala Bagh Massacre (13 April 1919)',
+        pillars: [
+          {
+            id: 'p1',
+            title: 'The Peaceful Assembly',
+            prompt: 'Why did thousands gather at Jallianwala Bagh on Baisakhi day?',
+            keywords: ['13 april 1919', 'baisakhi', 'amritsar', 'rowlatt act', 'peaceful crowd', 'unarmed', 'women and children']
+          },
+          {
+            id: 'p2',
+            title: 'General Dyer\'s Brutal Assault',
+            prompt: 'How did Dyer block the exit and order unprovoked firing?',
+            keywords: ['general dyer', 'blocked exit', 'fired without warning', 'thousands killed', 'bullet marks']
+          },
+          {
+            id: 'p3',
+            title: 'Nationwide Shock & Historic Turning Point',
+            prompt: 'How did this brutality transform India\'s freedom struggle?',
+            keywords: ['nationwide outrage', 'dyer forced to resign', 'rabindranath tagore renounced knighthood', 'turning point', 'non cooperation']
+          }
+        ],
+        modelAnswer: `<strong>The Jallianwala Bagh Massacre (13 April 1919) and Its Impact:</strong>
+<ol>
+  <li><strong>The Peaceful Assembly:</strong>
+    <ul>
+      <li>On 13 April 1919, the festive day of Baisakhi, around 10,000 men, women, and children gathered peacefully at the enclosed ground of Jallianwala Bagh in Amritsar, Punjab.</li>
+      <li>Many had come to celebrate the harvest festival, while others attended to peacefully protest the arrest of nationalist leaders under the oppressive Rowlatt Act.</li>
+    </ul>
+  </li>
+  <li><strong>The Massacre by General Dyer:</strong>
+    <ul>
+      <li>British army officer Brigadier-General Reginald Dyer marched into the park with armed troops and stationed them at the sole narrow entrance.</li>
+      <li>Without giving any dispersal warning to the peaceful crowd, Dyer ordered soldiers to open fire directly into the trapped gathering. Firing continued for 10 minutes until ammunition was exhausted, slaughtering hundreds and injuring thousands.</li>
+    </ul>
+  </li>
+  <li><strong>Impact on the Freedom Movement:</strong>
+    <ul>
+      <li>The atrocity sent shockwaves across India and the globe. In moral protest, Nobel Laureate Rabindranath Tagore renounced his British Knighthood.</li>
+      <li>Dyer was condemned and forced to resign in 1920. The massacre shattered any remaining faith Indians had in British benevolence, convincing even Moderates that full freedom was essential and paving the way for Gandhiji\'s mass Non-Cooperation Movement.</li>
+    </ul>
+  </li>
+</ol>`
+      },
+      {
+        id: 'freedom_l2',
+        type: 'long',
+        prompt: 'Trace the three major nationwide mass movements led by Mahatma Gandhi (Non-Cooperation, Civil Disobedience, and Quit India) and explain how they ultimately compelled the British to grant independence in 1947.',
+        blueprintTitle: 'Gandhian Mass Movements (1920–1947)',
+        pillars: [
+          {
+            id: 'p1',
+            title: 'Non-Cooperation Movement (1920–1922)',
+            prompt: 'How did refusing to cooperate shake British administration?',
+            keywords: ['1920', 'boycott schools courts', 'resignations', 'chauri chaura', 'called off', 'non cooperation']
+          },
+          {
+            id: 'p2',
+            title: 'Civil Disobedience & Dandi March (1930)',
+            prompt: 'How did breaking the Salt Law mobilize millions?',
+            keywords: ['1930', 'dandi march', 'sabarmati', 'salt law broken', 'refusal to pay taxes', 'civil disobedience']
+          },
+          {
+            id: 'p3',
+            title: 'Quit India Movement & 1947 Freedom',
+            prompt: 'How did the 1942 ultimatum and INA campaigns lead to Independence?',
+            keywords: ['1942', 'quit india', 'do or die', 'ina', 'subhas chandra bose', '15 august 1947', 'partition']
+          }
+        ],
+        modelAnswer: `<strong>Three Gandhian Mass Movements Leading to Independence (1920–1947):</strong>
+<ol>
+  <li><strong>The Non-Cooperation Movement (1920–1922):</strong>
+    <ul>
+      <li>Launched after the Jallianwala Bagh tragedy, Gandhiji asked Indians to withdraw all cooperation from the British administration.</li>
+      <li>Indians resigned from government posts, lawyers boycotted imperial courts, and students left government schools. The movement demonstrated that British rule was paralyzed without Indian collaboration. It was halted in 1922 after the Chauri Chaura violence.</li>
+    </ul>
+  </li>
+  <li><strong>The Civil Disobedience Movement (1930):</strong>
+    <ul>
+      <li>Began with the historic 390 km <strong>Dandi March</strong> from Sabarmati Ashram to the Gujarat seashore. By lifting natural sea salt, Gandhiji openly broke the British Salt Law.</li>
+      <li>Unlike Non-Cooperation, this movement actively broke unjust laws and refused tax payments. Millions participated, and despite massive arrests, the British were forced to convene negotiations and concede provincial elections in 1935.</li>
+    </ul>
+  </li>
+  <li><strong>The Quit India Movement (1942) and Freedom (1947):</strong>
+    <ul>
+      <li>During World War II, Gandhiji launched the <strong>Quit India Movement</strong> in August 1942 with the thunderous slogan <em>"Do or Die"</em>, demanding unconditional British departure.</li>
+      <li>Simultaneously, <strong>Netaji Subhas Chandra Bose\'s Azad Hind Fauj (INA)</strong> mounted an armed offensive. Combined with post-war economic exhaustion and widespread Indian unrest, Britain acknowledged it could no longer hold India. On <strong>15 August 1947</strong>, India won its independence as a sovereign democracy, partitioned into India and Pakistan.</li>
+    </ul>
+  </li>
+</ol>`
+      }
+    ]
+  },
+
+  // --------------------------------------------------------------------------
+  // CHAPTER 7: L-20 OUR GOVERNMENT
   // --------------------------------------------------------------------------
   {
     id: 'ch20_government',
@@ -3112,7 +3729,7 @@ class SSTApp {
         list.push({
           prompt: q.prompt.replace(/______+/g, '_____'),
           correctAnswer: q.acceptableAnswers[0],
-          distractors: ['1947', 'Africa', 'Wheat', 'Savannas', 'Kinshasa', 'Riyadh', '1757', 'Speaker', 'Governor', 'New Delhi']
+          distractors: ['1947', 'Africa', 'Wheat', 'Savannas', 'Kinshasa', 'Riyadh', '1757', 'Speaker', 'Governor', 'New Delhi', '1885', '1905', '1915', '1919', '1930', '1942', 'Bombay', 'Amritsar', 'Dandi', 'Moderates', 'Radicals', 'Revolutionaries', 'Kesari', 'Swadeshi', 'National']
         });
       } else if (q.type === 'tf') {
         list.push({

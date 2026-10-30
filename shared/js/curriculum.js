@@ -84,8 +84,8 @@
           icon: '📚',
           theme: 'theme-green',
           url: 'sst_chapters/index.html',
-          desc: 'Democratic Republic of Congo (L-5), Greenland (L-6), Saudi Arabia (L-7), Revolt of 1857 (L-17), and Our Government (L-20).',
-          tags: ['✅ 5 Chapters', '⚡ Instant Flashcards', '❓ 25-Q Drill', '🖨️ Printable Worksheets'],
+          desc: 'Democratic Republic of Congo (L-5), Greenland (L-6), Saudi Arabia (L-7), British Raj (L-17), Struggle for Independence (L-18), Freedom at Last (L-19), and Our Government (L-20).',
+          tags: ['✅ 7 Chapters', '⚡ Instant Flashcards', '❓ 35-Q Drill', '🖨️ Printable Worksheets'],
           ready: true
         },
         {

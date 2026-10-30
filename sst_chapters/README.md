@@ -14,9 +14,9 @@ Rather than passive memorization or tedious copy-writing, this app empowers stud
 
 ---
 
-## 📚 Curriculum Coverage (Term 1)
+## 📚 Curriculum Coverage (Term Revision)
 
-The platform provides comprehensive coverage of 5 key curriculum chapters:
+The platform provides comprehensive coverage of 7 key curriculum chapters:
 
 | Chapter | Topic Title | Focus Areas |
 |---|---|---|
@@ -24,6 +24,8 @@ The platform provides comprehensive coverage of 5 key curriculum chapters:
 | **L-6** | **Greenland — The Land of Ice and Snow** | Frigid Zone location, Greenland Ice Sheet (80%+ permanent ice cover), iceberg buoyancy & hazards, tundra biome (mosses & lichens), Arctic fauna adaptations, Inuit heritage (igloos, kayaks, parkas), modern life in Nuuk & Sisimiut, fish processing, and global warming alert. |
 | **L-7** | **Saudi Arabia — The Land of Hot Sands** | Desert landforms, sand dunes, oasis lifelines, petroleum discovery ("Liquid Gold"), water solutions (desalination & drip irrigation), Bedouin nomadic herders, traditional dress (Thobe, Ghutrah, Egal). |
 | **L-17** | **The British Raj & The First War of Independence** | European traders (Vasco da Gama 1498), East India Company (1600), Battle of Plassey (1757), economic exploitation (farmers, weavers, traders, rulers & Doctrine of Lapse), greased cartridges, Mangal Pandey, 1857 Revolt & leaders, transfer to British Crown rule (1858). |
+| **L-18** | **The Struggle for Independence** | Rise of Indian nationalism, INC foundation (1885 in Bombay), Moderates (Gokhale, Naoroji) vs Radicals (Lal-Bal-Pal, Tilak's Swaraj & Kesari), Partition of Bengal (1905), Swadeshi & Boycott bonfires, Revolutionaries (Khudiram Bose, Bhagat Singh), WWI & Gandhiji's return (1915). |
+| **L-19** | **Freedom at Last!** | Gandhiji's Satyagraha, Rowlatt Act & Jallianwala Bagh massacre (1919, General Dyer), Non-Cooperation Movement (1920) & Chauri Chaura (1922), Simon Commission (1928), Purna Swaraj (1929), Dandi Salt March & Civil Disobedience (1930), Quit India Movement (1942, "Do or Die"), Netaji Subhas Chandra Bose & Azad Hind Fauj (INA), Independence & Partition (15 August 1947). |
 | **L-20** | **Our Government** | Three Organs (Legislature, Executive, Judiciary), Three Levels (Central, State, Local), Lok Sabha (House of the People) vs Rajya Sabha (Council of States), Head of State (President) vs Head of Government (Prime Minister), Governor vs Chief Minister, Union Territories, Supreme Court in New Delhi. |
 
 ---
