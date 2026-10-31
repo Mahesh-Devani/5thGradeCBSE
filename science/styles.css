@@ -2998,3 +2998,85 @@ a {
   20%, 60% { transform: translateX(-4px); }
   40%, 80% { transform: translateX(4px); }
 }
+
+/* Subtopic Navigation Pills & Next Button */
+.subtopic-nav-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.subtopic-tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.8rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+
+.subtopic-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.subtopic-tab-btn.active {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: #38bdf8;
+  color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+}
+
+.subtopic-tab-btn.cleared {
+  border-color: rgba(16, 185, 129, 0.45);
+  color: #6ee7b7;
+}
+
+.subtopic-tab-btn.cleared.active {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
+}
+
+.subtopic-tab-num {
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.subtopic-tab-label {
+  font-size: 0.78rem;
+}
+
+.subtopic-next-btn {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+  align-self: flex-start;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+}
+
+.subtopic-next-btn:hover {
+  background: linear-gradient(135deg, #0369a1, #075985);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
+  transform: translateY(-1px);
+}
