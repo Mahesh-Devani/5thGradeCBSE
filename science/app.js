@@ -149,6 +149,7 @@ const CHAPTERS_DATA = [
   {
     id: 'ch2_animals',
     number: 'L-2',
+    targetStars: 9,
     title: 'Animals in Their Surroundings',
     sub: 'Habitats, Adaptations, Breathing Organs & Locomotion',
     themeColor: '#10b981',
@@ -1701,6 +1702,7 @@ const CHAPTERS_DATA = [
   {
     id: 'ch5_health',
     number: 'L-5',
+    targetStars: 10,
     title: 'Good Health & Nutrition',
     sub: 'Nutrients, Food Pyramid, Deficiency Diseases & Hygiene',
     themeColor: '#06b6d4',
@@ -2237,6 +2239,7 @@ const CHAPTERS_DATA = [
   {
     id: 'ch7_air_water',
     number: 'L-7',
+    targetStars: 7,
     title: 'Air and Water',
     sub: 'Atmosphere Layers, Air Properties, Impurities & Purification',
     themeColor: '#3b82f6',
@@ -2658,6 +2661,7 @@ const CHAPTERS_DATA = [
   {
     id: 'ch11_rocks',
     number: 'L-11',
+    targetStars: 10,
     title: 'Rocks and Minerals',
     sub: 'Igneous, Sedimentary, Metamorphic, Rock Cycle, Ores & Fossil Fuels',
     themeColor: '#d97706',
@@ -3216,6 +3220,7 @@ const CHAPTERS_DATA = [
   {
     id: 'ch13_matter',
     number: 'L-13',
+    targetStars: 8,
     title: 'States of Matter',
     sub: 'Molecules, Compressibility, Changes of State & Chemical Reactions',
     themeColor: '#8b5cf6',
@@ -3674,6 +3679,332 @@ const CHAPTERS_DATA = [
   }
 ];
 
+
+const CHAPTER_MILESTONES = {
+  'ch7_air_water': [
+    {
+      id: 'learn_part1',
+      title: 'Atmosphere & Air Properties',
+      desc: 'Mastered Atmosphere layers and properties of air concept cards (mass & space)',
+      hint: 'Explore cards 1 & 2 in Learn mode and tap reflection',
+      check: (d) => (d.learnCards[0] && d.learnCards[1])
+    },
+    {
+      id: 'learn_part2',
+      title: 'Combustion & Water Purification',
+      desc: 'Mastered Combustion and Soluble/Insoluble water purification methods',
+      hint: 'Explore cards 3, 4 & 5 in Learn mode and tap reflection',
+      check: (d) => (d.learnCards[2] && (d.learnCards[3] || d.learnCards[4]))
+    },
+    {
+      id: 'lab_investigation',
+      title: "Tina's Balloon Balance Lab",
+      desc: 'Tested the interactive balance scale proving air has measurable mass',
+      hint: 'Operate the interactive lab in Learn mode',
+      check: (d) => d.labInteracted
+    },
+    {
+      id: 'exam_traps',
+      title: 'Air & Water Exam Traps',
+      desc: 'Diagnosed all 4 tricky CBSE student exam slips in "Be the Teacher"',
+      hint: 'Diagnose all 4 traps in Spot Traps mode',
+      check: (d) => d.trapsCount >= 4
+    },
+    {
+      id: 'practice_mcq',
+      title: 'Atmosphere & Purification MCQs',
+      desc: 'Solved foundational multiple-choice deduction questions',
+      hint: 'Solve at least 4 MCQs correctly in Practice mode',
+      check: (d) => (d.categorySolved.mcq || 0) >= 4
+    },
+    {
+      id: 'practice_scenarios',
+      title: 'Case Studies & Pure Water Paradox',
+      desc: 'Solved scenarios (Meena’s tilted bottle, candle jar, distilled water)',
+      hint: 'Solve at least 3 case study/scenario questions in Practice mode',
+      check: (d) => (d.categorySolved.scenario || 0) >= 3
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Exam Readiness',
+      desc: 'Achieved ≥40 points in the 60s Sprint and ≥80% practice accuracy',
+      hint: 'Score 40+ points in 60-Second Science Sprint',
+      check: (d) => d.sprintHighScore >= 40 && d.accuracy >= 80
+    }
+  ],
+
+  'ch13_matter': [
+    {
+      id: 'learn_part1',
+      title: 'Molecular Kinetic Theory',
+      desc: 'Mastered Molecular dance floor and gas compressibility (CNG/LPG) cards',
+      hint: 'Explore cards 1 & 2 in Learn mode and tap reflection',
+      check: (d) => (d.learnCards[0] && d.learnCards[1])
+    },
+    {
+      id: 'learn_part2',
+      title: 'Thermal Diffusion & Changes of State',
+      desc: 'Mastered Coffee scent rocket, sublimation, physical vs chemical changes, and rusting',
+      hint: 'Explore cards 3, 4 & 5 in Learn mode and tap reflection',
+      check: (d) => (d.learnCards[2] && (d.learnCards[3] || d.learnCards[4]))
+    },
+    {
+      id: 'lab_investigation',
+      title: 'Molecular Agitator Lab',
+      desc: 'Operated the interactive solid, liquid, and gas particle agitator simulation',
+      hint: 'Operate the interactive lab in Learn mode',
+      check: (d) => d.labInteracted
+    },
+    {
+      id: 'exam_traps',
+      title: 'Matter & Reaction Exam Traps',
+      desc: 'Diagnosed all 4 tricky CBSE student exam slips in "Be the Teacher"',
+      hint: 'Diagnose all 4 traps in Spot Traps mode',
+      check: (d) => d.trapsCount >= 4
+    },
+    {
+      id: 'practice_mcq',
+      title: 'Kinetic States & Transitions MCQs',
+      desc: 'Solved foundational multiple-choice deduction questions',
+      hint: 'Solve at least 4 MCQs correctly in Practice mode',
+      check: (d) => (d.categorySolved.mcq || 0) >= 4
+    },
+    {
+      id: 'practice_compare',
+      title: 'Physical vs Chemical Comparisons',
+      desc: 'Correctly distinguished reversible state changes from irreversible chemical changes',
+      hint: 'Solve at least 3 Compare & Contrast questions in Practice mode',
+      check: (d) => (d.categorySolved.compare || 0) >= 3
+    },
+    {
+      id: 'practice_scenarios',
+      title: 'Real-World Case Studies & Rusting',
+      desc: 'Solved application scenarios (Anshul in Kerala vs Charu in Rajasthan, mothballs)',
+      hint: 'Solve at least 3 scenario questions in Practice mode',
+      check: (d) => (d.categorySolved.scenario || 0) >= 3
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Exam Readiness',
+      desc: 'Achieved ≥40 points in the 60s Sprint and ≥80% practice accuracy',
+      hint: 'Score 40+ points in 60-Second Science Sprint',
+      check: (d) => d.sprintHighScore >= 40 && d.accuracy >= 80
+    }
+  ],
+
+  'ch2_animals': [
+    {
+      id: 'learn_part1',
+      title: 'Habitats & Protective Coverings',
+      desc: 'Mastered Terrestrial, Aquatic, scales, shells, cuticle, feathers and fur cards',
+      hint: 'Explore cards 1 & 2 in Learn mode and tap reflection',
+      check: (d) => (d.learnCards[0] && d.learnCards[1])
+    },
+    {
+      id: 'learn_part2',
+      title: 'Respiration, Limbs & Food Chains',
+      desc: 'Mastered Gills, spiracles, lungs, flippers, talons, migration and dentition cards',
+      hint: 'Explore cards 3, 4 & 5 in Learn mode and tap reflection',
+      check: (d) => (d.learnCards[2] && (d.learnCards[3] || d.learnCards[4]))
+    },
+    {
+      id: 'lab_investigation',
+      title: 'Animal Adaptation Blueprint Lab',
+      desc: 'Explored interactive animal adaptation blueprints (eagle, penguin, whale, snake)',
+      hint: 'Operate the interactive lab in Learn mode',
+      check: (d) => d.labInteracted
+    },
+    {
+      id: 'exam_traps',
+      title: 'Animal Adaptation Exam Traps',
+      desc: 'Diagnosed all 4 tricky CBSE student exam slips in "Be the Teacher"',
+      hint: 'Diagnose all 4 traps in Spot Traps mode',
+      check: (d) => d.trapsCount >= 4
+    },
+    {
+      id: 'practice_mcq',
+      title: 'Habitats & Breathing MCQs',
+      desc: 'Solved foundational multiple-choice deduction questions',
+      hint: 'Solve at least 4 MCQs correctly in Practice mode',
+      check: (d) => (d.categorySolved.mcq || 0) >= 4
+    },
+    {
+      id: 'practice_whoami',
+      title: 'Who Am I? Animal Riddles',
+      desc: 'Identified animals from respiratory, locomotion, and camouflage clues',
+      hint: 'Solve at least 3 Who Am I riddles in Practice mode',
+      check: (d) => (d.categorySolved.whoami || 0) >= 3
+    },
+    {
+      id: 'practice_compare',
+      title: 'Compare & Contrast Anatomies',
+      desc: 'Compared blowholes vs gills, herbivore vs carnivore skulls',
+      hint: 'Solve at least 3 Compare & Contrast questions in Practice mode',
+      check: (d) => (d.categorySolved.compare || 0) >= 3
+    },
+    {
+      id: 'practice_scenarios',
+      title: 'Camouflage & Migration Case Studies',
+      desc: 'Solved scenarios (Gerry & Freddy camouflage, Arctic tern long-distance migration)',
+      hint: 'Solve at least 3 scenario questions in Practice mode',
+      check: (d) => (d.categorySolved.scenario || 0) >= 3
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Exam Readiness',
+      desc: 'Achieved ≥40 points in the 60s Sprint and ≥85% practice accuracy',
+      hint: 'Score 40+ points in 60-Second Science Sprint',
+      check: (d) => d.sprintHighScore >= 40 && d.accuracy >= 85
+    }
+  ],
+
+  'ch5_health': [
+    {
+      id: 'learn_part1',
+      title: 'Nutrients & Energy Metabolism',
+      desc: 'Mastered Carbohydrates, proteins, fats and fasting glycogen/fat reserves cards',
+      hint: 'Explore cards 1, 2 & 3 in Learn mode and tap reflection',
+      check: (d) => (d.learnCards[0] && d.learnCards[1])
+    },
+    {
+      id: 'learn_part2',
+      title: 'Deficiency Diseases & Prevention',
+      desc: 'Mastered Night blindness, scurvy, rickets, beriberi, pathogens, vectors & hygiene cards',
+      hint: 'Explore cards 4 & 5 in Learn mode and tap reflection',
+      check: (d) => (d.learnCards[3] && d.learnCards[4])
+    },
+    {
+      id: 'lab_investigation',
+      title: 'Nutrient Inspector Lab',
+      desc: 'Explored the interactive nutrient role & deficiency visualizer',
+      hint: 'Operate the interactive lab in Learn mode',
+      check: (d) => d.labInteracted
+    },
+    {
+      id: 'exam_traps',
+      title: 'Nutrition & Disease Exam Traps',
+      desc: 'Diagnosed all 4 tricky CBSE student exam slips in "Be the Teacher"',
+      hint: 'Diagnose all 4 traps in Spot Traps mode',
+      check: (d) => d.trapsCount >= 4
+    },
+    {
+      id: 'practice_mcq',
+      title: 'Dietary Nutrient MCQs',
+      desc: 'Solved foundational multiple-choice deduction questions',
+      hint: 'Solve at least 4 MCQs correctly in Practice mode',
+      check: (d) => (d.categorySolved.mcq || 0) >= 4
+    },
+    {
+      id: 'practice_whoami',
+      title: 'Who Am I? Deficiency Riddles',
+      desc: 'Identified nutrients and diseases from symptoms and food sources',
+      hint: 'Solve at least 3 Who Am I riddles in Practice mode',
+      check: (d) => (d.categorySolved.whoami || 0) >= 3
+    },
+    {
+      id: 'practice_compare',
+      title: 'Disease Classification Comparisons',
+      desc: 'Compared Communicable vs Non-communicable diseases and Vectors vs Pathogens',
+      hint: 'Solve at least 3 Compare & Contrast questions in Practice mode',
+      check: (d) => (d.categorySolved.compare || 0) >= 3
+    },
+    {
+      id: 'practice_oddone',
+      title: 'Odd One Out with Justifications',
+      desc: 'Classified dietary sources and disease types with justifications',
+      hint: 'Solve at least 3 Odd One Out questions in Practice mode',
+      check: (d) => (d.categorySolved.oddone || 0) >= 3
+    },
+    {
+      id: 'practice_scenarios',
+      title: 'Dietary Case Studies & Fasting',
+      desc: 'Solved clinical scenarios (Shama’s fasting metabolism, Anu’s breakfast, Danny’s rickets)',
+      hint: 'Solve at least 3 scenario questions in Practice mode',
+      check: (d) => (d.categorySolved.scenario || 0) >= 3
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Exam Readiness',
+      desc: 'Achieved ≥40 points in the 60s Sprint and ≥85% practice accuracy',
+      hint: 'Score 40+ points in 60-Second Science Sprint',
+      check: (d) => d.sprintHighScore >= 40 && d.accuracy >= 85
+    }
+  ],
+
+  'ch11_rocks': [
+    {
+      id: 'learn_part1',
+      title: 'Rock Genesis & Sedimentary Layers',
+      desc: 'Mastered Igneous genesis (magma/lava, granite, basalt, pumice) and Sedimentary compaction (sandstone, limestone, shale)',
+      hint: 'Explore cards 1 & 2 in Learn mode and tap reflection',
+      check: (d) => (d.learnCards[0] && d.learnCards[1])
+    },
+    {
+      id: 'learn_part2',
+      title: 'Metamorphic Magic, Cycle & Minerals',
+      desc: 'Mastered Metamorphic transformations (marble, quartzite, slate, gneiss), rock cycle, ores & coal/petroleum',
+      hint: 'Explore cards 3, 4 & 5 in Learn mode and tap reflection',
+      check: (d) => (d.learnCards[2] && (d.learnCards[3] || d.learnCards[4]))
+    },
+    {
+      id: 'lab_investigation',
+      title: 'Rock Detective Lab Investigation',
+      desc: 'Operated the interactive Rock & Mineral Detective Lab (pumice floatability, granite crystals, metamorphosis chamber, coal/petroleum)',
+      hint: 'Operate the interactive lab in Learn mode',
+      check: (d) => d.labInteracted
+    },
+    {
+      id: 'exam_traps',
+      title: 'Rock & Mineral Exam Traps',
+      desc: 'Diagnosed all 4 tricky CBSE student exam slips in "Be the Teacher" (Rohan, Priya, Arjun, Sneha)',
+      hint: 'Diagnose all 4 traps in Spot Traps mode',
+      check: (d) => d.trapsCount >= 4
+    },
+    {
+      id: 'practice_mcq',
+      title: 'Geological MCQs & Deductions',
+      desc: 'Solved foundational multiple-choice deduction questions',
+      hint: 'Solve at least 4 MCQs correctly in Practice mode',
+      check: (d) => (d.categorySolved.mcq || 0) >= 4
+    },
+    {
+      id: 'practice_whoami',
+      title: 'Who Am I? Rock & Mineral Riddles',
+      desc: 'Identified rocks and ores from geological clues (floating pumice, lunar basalt, marble, gneiss)',
+      hint: 'Solve at least 3 Who Am I riddles in Practice mode',
+      check: (d) => (d.categorySolved.whoami || 0) >= 3
+    },
+    {
+      id: 'practice_compare',
+      title: 'Compare & Contrast Formations',
+      desc: 'Compared Shale vs Slate, Peat vs Anthracite coal, and Metallic Ores to Metals',
+      hint: 'Solve at least 3 Compare & Contrast questions in Practice mode',
+      check: (d) => (d.categorySolved.compare || 0) >= 3
+    },
+    {
+      id: 'practice_oddone',
+      title: 'Odd One Out with Justifications',
+      desc: 'Classified rock families, mineral ores, and energy renewability with justifications',
+      hint: 'Solve at least 3 Odd One Out questions in Practice mode',
+      check: (d) => (d.categorySolved.oddone || 0) >= 3
+    },
+    {
+      id: 'practice_scenarios',
+      title: 'Real-World Case Studies',
+      desc: 'Solved application scenarios (volcanic island exploration, scratch test, eco-house, oil map)',
+      hint: 'Solve at least 3 scenario questions in Practice mode',
+      check: (d) => (d.categorySolved.scenario || 0) >= 3
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Exam Readiness',
+      desc: 'Achieved ≥40 points in the 60s Sprint and ≥85% practice accuracy',
+      hint: 'Score 40+ points in 60-Second Science Sprint',
+      check: (d) => d.sprintHighScore >= 40 && d.accuracy >= 85
+    }
+  ]
+};
+
 // ==========================================================================
 // 4. ACTIVE STATE & LOCALSTORAGE PERSISTENCE ENGINE
 // ==========================================================================
@@ -3682,6 +4013,7 @@ const STORAGE_KEY_STARS_PREFIX = 'cbse5_science_stars_';
 
 let state = {
   activeChapterId: 'ch2_animals',
+  chapterProgress: {}, // chapterId -> { learnCards: {}, labInteracted: false, sprintHighScore: 0 }
   activeMode: 'learn', // 'learn' | 'traps' | 'practice' | 'challenge' | 'worksheet'
   activePracticeFilter: 'all', // 'all' | 'mcq' | 'whoami' | 'compare' | 'oddone' | 'scenario'
   activeWsFilter: 'all', // 'all' | 1 | 2 | 3
@@ -3731,6 +4063,7 @@ function saveActiveState() {
       scoreWrong: state.scoreWrong,
       answeredMap: state.answeredMap,
       trapAnswers: state.trapAnswers,
+      chapterProgress: state.chapterProgress,
       worksheetSettings: state.worksheetSettings,
       activeWsFilter: state.activeWsFilter
     };
@@ -3769,6 +4102,9 @@ function loadActiveState() {
       if (parsed.trapAnswers) {
         state.trapAnswers = parsed.trapAnswers;
       }
+      if (parsed.chapterProgress && typeof parsed.chapterProgress === 'object') {
+        state.chapterProgress = parsed.chapterProgress;
+      }
       if (parsed.worksheetSettings) {
         state.worksheetSettings = parsed.worksheetSettings;
       }
@@ -3802,48 +4138,250 @@ function setChapterStars(chapterId, stars) {
   }
 }
 
-function evaluateAndAwardStars(chapterId) {
+function getChapterProgressData(chapterId) {
   const ch = CHAPTERS_DATA.find(c => c.id === chapterId);
-  if (!ch) return 0;
+  if (!ch) return { learnCards: {}, labInteracted: false, trapsCount: 0, trapsTotal: 0, categorySolved: {}, totalSolved: 0, totalQuestions: 0, sprintHighScore: 0, accuracy: 0 };
 
-  let correctPracticeCount = 0;
-  ch.questions.forEach(q => {
-    if (state.answeredMap[q.id] && state.answeredMap[q.id].isCorrect) {
-      correctPracticeCount++;
-    }
-  });
+  const prog = (state.chapterProgress && state.chapterProgress[chapterId]) || {};
+  const learnCards = prog.learnCards || {};
+  const labInteracted = !!prog.labInteracted;
+  const sprintHighScore = prog.sprintHighScore || 0;
 
-  let correctTrapsCount = 0;
+  // Traps diagnosed
+  let trapsCount = 0;
   if (ch.examTraps && ch.examTraps.length > 0) {
     ch.examTraps.forEach(trap => {
       const correctIdx = (typeof trap.correctIndex === 'number') ? trap.correctIndex : (typeof trap.correct === 'number' ? trap.correct : 0);
-      if (state.trapAnswers[trap.id] === correctIdx) {
-        correctTrapsCount++;
+      if (state.trapAnswers && state.trapAnswers[trap.id] === correctIdx) {
+        trapsCount++;
       }
     });
   }
 
-  const totalQuestions = ch.questions.length;
-  // Progress-based stars rewarding:
-  // 1 Star: Solved at least 3 practice questions correctly (or 20%) OR diagnosed all traps in the chapter
-  // 2 Stars: Solved at least 50% of questions correctly
-  // 3 Stars: Solved at least 85% of questions correctly
-  let stars = 0;
-  if (correctPracticeCount >= Math.ceil(totalQuestions * 0.85)) {
-    stars = 3;
-  } else if (correctPracticeCount >= Math.ceil(totalQuestions * 0.50)) {
-    stars = 2;
-  } else if (correctPracticeCount >= Math.max(1, Math.min(3, Math.ceil(totalQuestions * 0.20))) || (ch.examTraps && ch.examTraps.length > 0 && correctTrapsCount >= ch.examTraps.length)) {
-    stars = 1;
-  }
+  // Category solved
+  const categorySolved = { mcq: 0, whoami: 0, compare: 0, oddone: 0, scenario: 0 };
+  let totalSolved = 0;
+  let totalAttempted = 0;
+  ch.questions.forEach(q => {
+    const ans = state.answeredMap && state.answeredMap[q.id];
+    if (ans) {
+      totalAttempted++;
+      if (ans.isCorrect) {
+        totalSolved++;
+        const cat = q.category || 'mcq';
+        categorySolved[cat] = (categorySolved[cat] || 0) + 1;
+      }
+    }
+  });
+
+  const accuracy = totalAttempted > 0 ? Math.round((totalSolved / totalAttempted) * 100) : 0;
+
+  return {
+    learnCards,
+    labInteracted,
+    trapsCount,
+    trapsTotal: ch.examTraps ? ch.examTraps.length : 0,
+    categorySolved,
+    totalSolved,
+    totalQuestions: ch.questions.length,
+    sprintHighScore,
+    accuracy
+  };
+}
+
+function evaluateAndAwardStars(chapterId) {
+  const ch = CHAPTERS_DATA.find(c => c.id === chapterId);
+  if (!ch) return 0;
+
+  const milestones = CHAPTER_MILESTONES[chapterId] || [];
+  const data = getChapterProgressData(chapterId);
+  const clearedMilestones = milestones.filter(m => m.check(data));
+  const targetStars = ch.targetStars || 10;
+  const stars = Math.min(targetStars, clearedMilestones.length);
 
   const oldStars = getChapterStars(chapterId);
   if (stars > oldStars) {
     setChapterStars(chapterId, stars);
-    AudioController.fanfare();
-    ConfettiController.launch();
+    if (stars >= targetStars) {
+      AudioController.fanfare();
+      ConfettiController.launch();
+    } else {
+      AudioController.correct();
+    }
   }
+
+  updateSidebarProgress();
+  updateTopBarPassportButton();
   return stars;
+}
+
+function toggleLearnCheckpoint(chapterId, cardIdx) {
+  state.chapterProgress = state.chapterProgress || {};
+  state.chapterProgress[chapterId] = state.chapterProgress[chapterId] || {};
+  state.chapterProgress[chapterId].learnCards = state.chapterProgress[chapterId].learnCards || {};
+
+  const current = !!state.chapterProgress[chapterId].learnCards[cardIdx];
+  state.chapterProgress[chapterId].learnCards[cardIdx] = !current;
+  saveActiveState();
+
+  if (!current) {
+    AudioController.correct();
+  } else {
+    AudioController.click();
+  }
+
+  evaluateAndAwardStars(chapterId);
+  renderCurrentView();
+}
+
+function markLabInteracted(chapterId) {
+  state.chapterProgress = state.chapterProgress || {};
+  state.chapterProgress[chapterId] = state.chapterProgress[chapterId] || {};
+  if (!state.chapterProgress[chapterId].labInteracted) {
+    state.chapterProgress[chapterId].labInteracted = true;
+    saveActiveState();
+    evaluateAndAwardStars(chapterId);
+  }
+}
+
+function renderMasteryBanner(ch) {
+  const stars = getChapterStars(ch.id);
+  const target = ch.targetStars || 10;
+  const pct = Math.round((stars / target) * 100);
+  return `
+    <div class="chapter-mastery-banner no-print" style="--chapter-theme: ${ch.themeColor}">
+      <div class="mastery-banner-left">
+        <div class="mastery-star-pill">
+          <span>⭐</span>
+          <span><strong>${stars}</strong> / ${target} Stars</span>
+        </div>
+        <div class="mastery-bar-track">
+          <div class="mastery-bar-fill" style="width: ${pct}%;"></div>
+        </div>
+        <span class="mastery-pct-label">${pct}% Mastered ${stars === target ? '• 🏅 Certified!' : ''}</span>
+      </div>
+      <div class="mastery-banner-right">
+        <button class="btn-passport-trigger" id="btn-banner-passport">
+          📋 Learning Passport & Parent Report
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function bindMasteryBannerEvents(container, chapterId) {
+  if (!container) return;
+  const bannerBtn = container.querySelector('#btn-banner-passport');
+  if (bannerBtn) {
+    bannerBtn.addEventListener('click', () => {
+      AudioController.click();
+      openLearningPassport(chapterId);
+    });
+  }
+}
+
+function updateTopBarPassportButton() {
+  const ch = getActiveChapter();
+  const stars = getChapterStars(ch.id);
+  const target = ch.targetStars || 10;
+  const btn = document.getElementById('btn-passport');
+  if (btn) {
+    btn.innerHTML = `📋 <span class="passport-btn-label">⭐ ${stars}/${target}</span>`;
+  }
+}
+
+function openLearningPassport(chapterId) {
+  const ch = CHAPTERS_DATA.find(c => c.id === chapterId) || getActiveChapter();
+  const modal = document.getElementById('passport-modal');
+  if (!modal) return;
+
+  const milestones = CHAPTER_MILESTONES[ch.id] || [];
+  const data = getChapterProgressData(ch.id);
+  const clearedCount = milestones.filter(m => m.check(data)).length;
+  const targetStars = ch.targetStars || 10;
+  const isAllCleared = clearedCount >= targetStars;
+  const pct = Math.round((clearedCount / targetStars) * 100);
+
+  document.getElementById('passport-icon').textContent = ch.icon;
+  document.getElementById('passport-title').textContent = `${ch.number}: ${ch.title} — Learning Passport`;
+  document.getElementById('passport-subtitle').textContent = `Parent & Teacher Comprehensive Audit Report • ${ch.sub}`;
+  document.getElementById('passport-stars-display').textContent = `⭐ ${clearedCount} / ${targetStars} Stars Earned`;
+  document.getElementById('passport-progress-fill').style.width = `${pct}%`;
+  document.getElementById('passport-status-text').textContent = isAllCleared ? '🎉 Chapter Fully Certified! 100% Mastered' : `${pct}% Completed (${targetStars - clearedCount} milestones remaining)`;
+
+  const listEl = document.getElementById('passport-milestones-list');
+  if (listEl) {
+    listEl.innerHTML = milestones.map((m, idx) => {
+      const cleared = m.check(data);
+      return `
+        <div class="milestone-card ${cleared ? 'cleared' : 'pending'}">
+          <div class="milestone-left">
+            <div class="milestone-star-num">Star ${idx + 1}</div>
+            <div class="milestone-status-icon">${cleared ? '✅' : '⏳'}</div>
+          </div>
+          <div class="milestone-center">
+            <div class="milestone-title">${m.title}</div>
+            <div class="milestone-desc">${m.desc}</div>
+            ${!cleared ? `<div class="milestone-hint">👉 <strong>How to unlock:</strong> ${m.hint}</div>` : ''}
+          </div>
+          <div class="milestone-right">
+            <span class="milestone-badge ${cleared ? 'badge-cleared' : 'badge-pending'}">
+              ${cleared ? '✓ Verified ⭐' : 'In Progress'}
+            </span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  const guaranteeBox = document.getElementById('passport-guarantee-box');
+  if (guaranteeBox) {
+    if (isAllCleared) {
+      guaranteeBox.style.display = 'block';
+      guaranteeBox.innerHTML = `
+        <div class="guarantee-inner">
+          <div class="guarantee-seal">🏅</div>
+          <div>
+            <h4>Official Parent & Teacher Mastery Certificate</h4>
+            <p>This certifies that <strong>the student has successfully completed 100% of all required lessons, hands-on scientific labs, diagnostic traps, practice categories, and rapid recall sprint</strong> for <strong>${ch.number}: ${ch.title}</strong>. Full conceptual understanding, critical thinking, and exam readiness are verified.</p>
+          </div>
+        </div>
+      `;
+    } else {
+      guaranteeBox.style.display = 'none';
+    }
+  }
+
+  const closeBtn = document.getElementById('btn-passport-close');
+  const closeX = document.getElementById('btn-passport-close-x');
+  const actionBtn = document.getElementById('btn-passport-action');
+
+  const closeFn = () => {
+    modal.classList.remove('active');
+  };
+
+  if (closeBtn) closeBtn.onclick = closeFn;
+  if (closeX) closeX.onclick = closeFn;
+  modal.onclick = (e) => {
+    if (e.target === modal) closeFn();
+  };
+
+  if (actionBtn) {
+    actionBtn.onclick = () => {
+      closeFn();
+      // Find first pending milestone
+      const pendingMilestone = milestones.find(m => !m.check(data));
+      if (pendingMilestone) {
+        if (pendingMilestone.id.startsWith('learn')) switchMode('learn');
+        else if (pendingMilestone.id.startsWith('lab')) switchMode('learn');
+        else if (pendingMilestone.id.startsWith('exam')) switchMode('traps');
+        else if (pendingMilestone.id.startsWith('practice')) switchMode('practice');
+        else if (pendingMilestone.id.startsWith('sprint')) switchMode('challenge');
+      }
+    };
+  }
+
+  modal.classList.add('active');
 }
 
 function getActiveChapter() {
@@ -3880,7 +4418,8 @@ function initSidebar() {
 
   CHAPTERS_DATA.forEach(ch => {
     const stars = getChapterStars(ch.id);
-    const starString = '⭐'.repeat(stars) + '☆'.repeat(3 - stars);
+    const target = ch.targetStars || 10;
+    const pct = Math.round((stars / target) * 100);
 
     const btn = document.createElement('button');
     btn.className = `chapter-btn ${ch.id === state.activeChapterId ? 'active' : ''}`;
@@ -3890,8 +4429,11 @@ function initSidebar() {
       <div class="chapter-info">
         <div class="chapter-name">${ch.title}</div>
         <div class="chapter-sub">${ch.sub}</div>
+        <div class="sidebar-mini-progress">
+          <div class="mini-progress-fill" style="width: ${pct}%"></div>
+        </div>
       </div>
-      <div class="chapter-stars" title="${stars} of 3 Stars">${starString}</div>
+      <div class="chapter-star-badge" title="${stars} of ${target} Mastery Stars Earned">⭐ ${stars}/${target}</div>
     `;
 
     btn.addEventListener('click', () => {
@@ -3971,28 +4513,46 @@ function updateActiveSidebarButton() {
 
 function updateSidebarProgress() {
   let totalStars = 0;
+  let maxStars = 0;
   CHAPTERS_DATA.forEach(ch => {
     const s = getChapterStars(ch.id);
+    const target = ch.targetStars || 10;
     totalStars += s;
-    const starEl = document.querySelector(`.chapter-btn[data-chapter-id="${ch.id}"] .chapter-stars`);
+    maxStars += target;
+    const starEl = document.querySelector(`.chapter-btn[data-chapter-id="${ch.id}"] .chapter-star-badge`);
+    const fillEl = document.querySelector(`.chapter-btn[data-chapter-id="${ch.id}"] .mini-progress-fill`);
+    const pct = Math.round((s / target) * 100);
     if (starEl) {
-      starEl.textContent = '⭐'.repeat(s) + '☆'.repeat(3 - s);
-      starEl.title = `${s} of 3 Stars`;
+      starEl.textContent = `⭐ ${s}/${target}`;
+      starEl.title = `${s} of ${target} Mastery Stars`;
+      if (s === target) starEl.classList.add('gold');
+      else starEl.classList.remove('gold');
+    }
+    if (fillEl) {
+      fillEl.style.width = `${pct}%`;
     }
   });
-  const maxStars = CHAPTERS_DATA.length * 3;
-  const pct = Math.round((totalStars / maxStars) * 100);
 
+  const overallPct = Math.round((totalStars / maxStars) * 100);
   const fillEl = document.getElementById('progress-fill');
   const labelEl = document.getElementById('progress-label');
   const badgeEl = document.getElementById('star-badge-total');
 
-  if (fillEl) fillEl.style.width = `${pct}%`;
-  if (labelEl) labelEl.textContent = `${pct}% Syllabus Mastered`;
+  if (fillEl) fillEl.style.width = `${overallPct}%`;
+  if (labelEl) labelEl.textContent = `${overallPct}% Syllabus Mastered`;
   if (badgeEl) badgeEl.textContent = `⭐ ${totalStars} / ${maxStars}`;
+  updateTopBarPassportButton();
 }
 
 function initTopBar() {
+  const passportBtn = document.getElementById('btn-passport');
+  if (passportBtn) {
+    passportBtn.addEventListener('click', () => {
+      AudioController.click();
+      openLearningPassport(state.activeChapterId);
+    });
+  }
+
   const resetBtn = document.getElementById('btn-reset');
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
@@ -4087,7 +4647,9 @@ function renderCurrentView() {
 function renderLearnView(container) {
   const ch = getActiveChapter();
 
-  let html = `
+  let html = renderMasteryBanner(ch);
+
+  html += `
     <div class="view-header">
       <div class="view-header-title">
         <h3>${ch.icon} ${ch.number}: ${ch.title}</h3>
@@ -4099,11 +4661,15 @@ function renderLearnView(container) {
   // Render Interactive Visual Gadget
   html += renderInteractiveGadget(ch);
 
+  const prog = (state.chapterProgress && state.chapterProgress[ch.id]) || {};
+  const clearedCards = prog.learnCards || {};
+
   // Concept Cards Grid
   html += `<div class="learn-grid">`;
-  ch.learnCards.forEach(card => {
+  ch.learnCards.forEach((card, idx) => {
+    const isCleared = !!clearedCards[idx];
     html += `
-      <div class="concept-card">
+      <div class="concept-card ${isCleared ? 'cleared-card' : ''}">
         <span class="concept-badge">${card.badge}</span>
         <h4>${card.title}</h4>
         <div class="concept-metaphor">${card.metaphor}</div>
@@ -4117,6 +4683,14 @@ function renderLearnView(container) {
             <p>${card.thinkPrompt}</p>
           </div>
         </div>
+        <div class="concept-checkpoint-box ${isCleared ? 'cleared' : ''}" id="checkpoint-card-${idx}">
+          <button class="checkpoint-btn ${isCleared ? 'cleared' : ''}" data-card-idx="${idx}">
+            ${isCleared ? '✓ Concept Mastered ⭐' : '💡 I Understood & Reasoned This!'}
+          </button>
+          <span class="checkpoint-status">
+            ${isCleared ? '✓ Milestone progress saved towards Learn Stars!' : 'Tap after reflecting on the prompt above'}
+          </span>
+        </div>
       </div>
     `;
   });
@@ -4124,6 +4698,17 @@ function renderLearnView(container) {
 
   container.innerHTML = html;
   attachGadgetEvents(ch);
+  bindMasteryBannerEvents(container, ch.id);
+
+  // Bind checkpoint buttons
+  const cpBtns = container.querySelectorAll('.checkpoint-btn[data-card-idx]');
+  cpBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = parseInt(btn.getAttribute('data-card-idx'), 10);
+      toggleLearnCheckpoint(ch.id, idx);
+    });
+  });
 }
 
 function renderInteractiveGadget(ch) {
@@ -5094,6 +5679,12 @@ function updateNervousGadgetView() {
 }
 
 function attachGadgetEvents(ch) {
+  const allLabBtns = document.querySelectorAll('.interactive-lab-container .lab-btn');
+  allLabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      markLabInteracted(ch.id);
+    });
+  });
   if (ch.id === 'ch3_skeletal') {
     attachSkeletalGadgetEvents();
   } else if (ch.id === 'ch4_nervous') {
@@ -5195,7 +5786,8 @@ function renderTrapsView(container) {
     }
   });
 
-  let html = `
+  let html = renderMasteryBanner(ch);
+  html += `
     <div class="view-header">
       <div class="view-header-title">
         <h3>🔍 ${ch.number}: Spot the Exam Traps</h3>
@@ -5331,6 +5923,7 @@ function renderTrapsView(container) {
 
   html += `</div>`;
   container.innerHTML = html;
+  bindMasteryBannerEvents(container, ch.id);
 
   // Event Listeners for Trap Options
   const optionBtns = container.querySelectorAll('.trap-option-btn');
@@ -5404,7 +5997,8 @@ function renderPracticeView(container) {
   const answeredInfo = state.answeredMap[q.id];
   const isAnswered = !!answeredInfo;
 
-  let html = `
+  let html = renderMasteryBanner(ch);
+  html += `
     <div class="practice-container">
       <div class="view-header">
         <div class="view-header-title">
@@ -5441,8 +6035,8 @@ function renderPracticeView(container) {
             <span class="score-item score-correct">✅ ${state.scoreCorrect}</span>
             <span class="score-item score-wrong">❌ ${state.scoreWrong}</span>
           </div>
-          <div class="practice-stars-display" title="Mastery Stars for ${ch.number}" style="font-size: 1.15rem; letter-spacing: 2px;">
-            ${'⭐'.repeat(getChapterStars(ch.id))}${'☆'.repeat(3 - getChapterStars(ch.id))}
+          <div class="practice-stars-display" title="Mastery Stars for ${ch.number}" style="font-size: 0.95rem; font-weight: 700; color: #fde047;">
+            ⭐ ${getChapterStars(ch.id)} / ${ch.targetStars || 10} Stars
           </div>
         </div>
       </div>
@@ -5502,6 +6096,7 @@ function renderPracticeView(container) {
   `;
 
   container.innerHTML = html;
+  bindMasteryBannerEvents(container, ch.id);
 
   // Worksheet filter click handlers
   const wsFilterPills = container.querySelectorAll('.ws-filter');
@@ -5588,7 +6183,8 @@ function renderPracticeView(container) {
 function renderChallengeView(container) {
   const ch = getActiveChapter();
 
-  let html = `
+  let html = renderMasteryBanner(ch);
+  html += `
     <div class="sprint-container">
       <div class="view-header" style="justify-content: center; text-align: center;">
         <div class="view-header-title">
@@ -5644,6 +6240,7 @@ function renderChallengeView(container) {
   `;
 
   container.innerHTML = html;
+  bindMasteryBannerEvents(container, ch.id);
 
   const startBtn = document.getElementById('btn-start-sprint');
   if (startBtn) {
@@ -5740,6 +6337,14 @@ function renderSprintQuestion() {
 function endSprintGame() {
   clearInterval(state.sprint.timerId);
   state.sprint.running = false;
+
+  // Record sprint high score for sprint milestone
+  state.chapterProgress = state.chapterProgress || {};
+  state.chapterProgress[state.activeChapterId] = state.chapterProgress[state.activeChapterId] || {};
+  const prevHigh = state.chapterProgress[state.activeChapterId].sprintHighScore || 0;
+  state.chapterProgress[state.activeChapterId].sprintHighScore = Math.max(prevHigh, state.sprint.score);
+  saveActiveState();
+  evaluateAndAwardStars(state.activeChapterId);
 
   const totalPossible = state.sprint.currentIndex;
   const correctCount = Math.round(state.sprint.score / 10);
@@ -6302,7 +6907,8 @@ function renderRevisionView(container) {
     return;
   }
 
-  let html = `
+  let html = renderMasteryBanner(ch);
+  html += `
     <div class="revision-container">
       <div class="view-header">
         <div class="view-header-title">
@@ -6348,6 +6954,7 @@ function renderRevisionView(container) {
   `;
 
   container.innerHTML = html;
+  bindMasteryBannerEvents(container, ch.id);
 }
 
 // ==========================================================================
@@ -6380,13 +6987,20 @@ function showResultsModal(correct, total) {
     AudioController.correct();
   }
 
-  // Update stars in persistent storage
-  setChapterStars(state.activeChapterId, stars);
-  updateSidebarProgress();
+  // Record high score for sprint milestone
+  state.chapterProgress = state.chapterProgress || {};
+  state.chapterProgress[state.activeChapterId] = state.chapterProgress[state.activeChapterId] || {};
+  const prevHigh = state.chapterProgress[state.activeChapterId].sprintHighScore || 0;
+  state.chapterProgress[state.activeChapterId].sprintHighScore = Math.max(prevHigh, state.sprint.score);
+  saveActiveState();
+
+  const chSprint = getActiveChapter();
+  const currentChapterStars = evaluateAndAwardStars(state.activeChapterId);
+  const targetStars = chSprint.targetStars || 10;
 
   document.getElementById('result-emoji').textContent = emoji;
   document.getElementById('result-title').textContent = title;
-  document.getElementById('result-stars').textContent = '⭐'.repeat(stars) + '☆'.repeat(3 - stars);
+  document.getElementById('result-stars').textContent = `⭐ ${currentChapterStars} / ${targetStars} Chapter Stars Earned`;
   document.getElementById('result-message').textContent = msg;
   document.getElementById('result-correct').textContent = correct;
   document.getElementById('result-total').textContent = total;
