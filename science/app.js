@@ -5101,6 +5101,7 @@ function closeMobileSidebar() {
   const backdrop = document.getElementById('sidebar-backdrop');
   if (sidebar) sidebar.classList.remove('open');
   if (backdrop) backdrop.classList.remove('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function updateActiveSidebarButton() {
@@ -5217,6 +5218,7 @@ function switchMode(newMode) {
   state.activeMode = newMode;
   saveActiveState();
   updateActiveModeTabs();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   renderCurrentView();
 }
 
@@ -5429,6 +5431,10 @@ function renderLearnView(container) {
       const cardIdx = parseInt(btn.getAttribute('data-card-idx'), 10);
       const nextSub = parseInt(btn.getAttribute('data-next-sub'), 10);
       switchSubtopicTab(cardIdx, nextSub, container);
+      const cardEl = document.getElementById(`concept-card-${cardIdx}`);
+      if (cardEl) {
+        cardEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     });
   });
 
