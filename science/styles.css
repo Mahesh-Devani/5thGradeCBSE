@@ -2818,3 +2818,183 @@ a {
   line-height: 1.45;
 }
 
+
+
+/* ==========================================================================
+   CONCEPT QUESTION CHECKPOINT (LEARN MODE MICRO-QUIZ)
+   ========================================================================== */
+.concept-check-box {
+  margin-top: 1.25rem;
+  padding: 1.15rem;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.concept-check-box.cleared {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.45);
+}
+
+.concept-check-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.concept-check-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+.concept-check-badge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.concept-check-badge.pending {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fde047;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.concept-check-badge.cleared {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.45);
+}
+
+.concept-check-q {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #f8fafc;
+  line-height: 1.45;
+  margin: 0.2rem 0;
+}
+
+.concept-check-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.concept-opt-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 0.9rem;
+  color: #e2e8f0;
+  font-size: 0.84rem;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+
+.concept-opt-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(56, 189, 248, 0.45);
+  transform: translateX(2px);
+}
+
+.concept-opt-btn.selected-correct {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: #10b981;
+  color: #a7f3d0;
+  font-weight: 600;
+}
+
+.concept-opt-btn.selected-wrong {
+  background: rgba(239, 68, 68, 0.22);
+  border-color: #ef4444;
+  color: #fca5a5;
+  animation: conceptShake 0.35s ease;
+}
+
+.concept-opt-btn:disabled {
+  cursor: default;
+  opacity: 0.95;
+}
+
+.concept-opt-label {
+  font-weight: 800;
+  color: #38bdf8;
+  min-width: 1.3rem;
+  font-size: 0.86rem;
+}
+
+.concept-opt-btn.selected-correct .concept-opt-label {
+  color: #34d399;
+}
+
+.concept-opt-btn.selected-wrong .concept-opt-label {
+  color: #f87171;
+}
+
+.concept-opt-text {
+  flex: 1;
+}
+
+.concept-feedback-box {
+  padding: 0.75rem 0.95rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.83rem;
+  line-height: 1.45;
+  margin-top: 0.25rem;
+}
+
+.concept-feedback-box.correct {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #a7f3d0;
+}
+
+.concept-feedback-box.wrong {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
+.concept-retake-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  align-self: flex-end;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s ease;
+}
+
+.concept-retake-btn:hover {
+  color: #38bdf8;
+}
+
+@keyframes conceptShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}

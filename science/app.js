@@ -167,7 +167,17 @@ const CHAPTERS_DATA = [
           '<strong>Structural Adaptation:</strong> Physical body features like eagle talons, camel humps, or fish scales.',
           '<strong>Behavioural Adaptation:</strong> Actions animals take to survive, such as migration in winter or nocturnal hunting.'
         ],
-        thinkPrompt: 'Ask yourself: If a duck was born with sharp eagle claws instead of webbed feet, what would happen when it entered the pond?'
+        thinkPrompt: 'Ask yourself: If a duck was born with sharp eagle claws instead of webbed feet, what would happen when it entered the pond?',
+        checkQuestion: {
+                  "question": "If a duck had sharp eagle claws instead of webbed feet, what would happen in water?",
+                  "options": [
+                            "It would swim twice as fast by grabbing the water.",
+                            "It could not paddle efficiently and would struggle to swim forward.",
+                            "Its feathers would immediately absorb water and become heavy."
+                  ],
+                  "correct": 1,
+                  "explanation": "Webbed feet act like broad paddles or oars to push water backwards, creating forward thrust. Sharp talons are built for clutching prey, not paddling!"
+        }
       },
       {
         badge: 'Breathing Organs',
@@ -179,7 +189,17 @@ const CHAPTERS_DATA = [
           '<strong>Moist Skin & Lungs (Amphibians):</strong> Frogs breathe through smooth moist skin underwater, and through lungs on land!',
           '<strong>Lungs & Blowholes (Marine Mammals):</strong> Whales and dolphins are NOT fish! They have blowholes on top of their head to inhale atmospheric air.'
         ],
-        thinkPrompt: 'Why can a whale drown if it stays submerged too long, while a goldfish can stay underwater forever?'
+        thinkPrompt: 'Why can a whale drown if it stays submerged too long, while a goldfish can stay underwater forever?',
+        checkQuestion: {
+                  "question": "Why does a dolphin or whale need to come to the ocean surface to breathe, while a goldfish stays underwater?",
+                  "options": [
+                            "Whales breathe atmospheric air using lungs and blowholes, whereas fish extract dissolved oxygen using gills.",
+                            "Whales need sunlight to keep their blowholes warm.",
+                            "Fish do not need any oxygen at all to survive in water."
+                  ],
+                  "correct": 0,
+                  "explanation": "Whales and dolphins are mammals with lungs! They cannot extract dissolved oxygen from water like fish do with gills, so they must surface for air."
+        }
       },
       {
         badge: 'Body Armor & Coverings',
@@ -191,7 +211,17 @@ const CHAPTERS_DATA = [
           '<strong>Overlapping Scales (Fish & Reptiles):</strong> Waterproof shield in fish; grip-assisting belly scales in snakes.',
           '<strong>Thick Fur & Blubber (Polar Bears):</strong> Double-layer thermal insulation for freezing Arctic cold.'
         ],
-        thinkPrompt: 'Why are fish scales overlapping backwards like roof tiles instead of pointing forward?'
+        thinkPrompt: 'Why are fish scales overlapping backwards like roof tiles instead of pointing forward?',
+        checkQuestion: {
+                  "question": "Why do fish scales overlap backwards (head to tail) like tiles on a roof?",
+                  "options": [
+                            "To stop sunlight from heating up the fish's internal organs.",
+                            "To streamline water flow smoothly, reduce friction, and protect the skin.",
+                            "To help the fish bite through predator shells."
+                  ],
+                  "correct": 1,
+                  "explanation": "Backwards-overlapping scales allow water to slide effortlessly over the body (reducing drag) while forming a flexible, waterproof protective shield!"
+        }
       },
       {
         badge: 'Movement & Feeding',
@@ -203,7 +233,17 @@ const CHAPTERS_DATA = [
           '<strong>Nares:</strong> Nostril openings at the base of a bird’s beak for breathing air (NOT for locomotion!).',
           '<strong>Carnivore vs Herbivore Skulls:</strong> Carnivores possess dagger-like canines and sharp shearing molars; herbivores have broad, flat grinding molars.'
         ],
-        thinkPrompt: 'If you discover an unknown animal skull in the jungle with sharp dagger canines, what was on its dinner menu?'
+        thinkPrompt: 'If you discover an unknown animal skull in the jungle with sharp dagger canines, what was on its dinner menu?',
+        checkQuestion: {
+                  "question": "You discover an unknown animal skull with large, sharp pointed canines and shear-like molars. What was on its dinner menu?",
+                  "options": [
+                            "Grass, leaves, and tree bark (Herbivore).",
+                            "Flesh and meat of other animals (Carnivore).",
+                            "Only soft fruits, grains, and flower nectar."
+                  ],
+                  "correct": 1,
+                  "explanation": "Sharp dagger canines are built to pierce and tear flesh, while shearing molars cut meat like scissors \u2014 definitive hallmarks of a carnivore!"
+        }
       }
     ],
 
@@ -1721,7 +1761,17 @@ const CHAPTERS_DATA = [
           '<strong>Vitamins & Minerals:</strong> Protective nutrients required in small amounts to ward off infections and sustain organ function.',
           '<strong>Roughage (Dietary Fiber):</strong> Indigestible plant material essential for bowel regularity and waste elimination.'
         ],
-        thinkPrompt: 'Why does a marathon runner drink glucose water right before a race instead of eating a big block of cheese?'
+        thinkPrompt: 'Why does a marathon runner drink glucose water right before a race instead of eating a big block of cheese?',
+        checkQuestion: {
+                  "question": "Why does a sports coach give athletes glucose water right before a sprint instead of a block of cheese?",
+                  "options": [
+                            "Glucose is a simple carbohydrate that absorbs into the blood almost instantly for quick energy.",
+                            "Glucose builds bone and muscle fibers in seconds during a sprint.",
+                            "Cheese makes human bones too heavy to run fast."
+                  ],
+                  "correct": 0,
+                  "explanation": "Carbohydrates (especially simple sugars like glucose) provide rapid, accessible fuel! Fats and proteins take hours of complex digestion to release energy."
+        }
       },
       {
         badge: 'Metabolic Deduction',
@@ -1732,7 +1782,17 @@ const CHAPTERS_DATA = [
           'Once glycogen is depleted, the body taps into <strong>adipose fat reserves</strong>, burning them to release continuous energy for the brain and heart.',
           'This stored reserve keeps vital organs functioning smoothly during temporary fasting.'
         ],
-        thinkPrompt: 'If fats give more energy than carbs, why don’t we just eat 100% butter every single day?'
+        thinkPrompt: 'If fats give more energy than carbs, why don’t we just eat 100% butter every single day?',
+        checkQuestion: {
+                  "question": "Why shouldn't a person eat only butter and fat, even though fat stores the most energy per gram?",
+                  "options": [
+                            "Fats have zero calories and starve the brain cells.",
+                            "The body also needs proteins for repair, vitamins for protection, and excess fat causes heart disease.",
+                            "Butter neutralizes stomach acid completely."
+                  ],
+                  "correct": 1,
+                  "explanation": "A balanced diet requires all 5 nutrient groups. Fats are excellent backup insulation and energy reserves, but excess fats lead to obesity and heart disease, and cannot replace body-building proteins or protective vitamins!"
+        }
       },
       {
         badge: 'Nutritional Traps',
@@ -1746,7 +1806,17 @@ const CHAPTERS_DATA = [
           '<strong>Iron → Anaemia:</strong> Lack of red blood cell haemoglobin; person feels chronically tired and pale (Sources: dates, spinach, apples, jaggery).',
           '<strong>Iodine → Goitre:</strong> Swelling of the thyroid gland in the neck region (Source: iodised salt).'
         ],
-        thinkPrompt: 'Why do doctors tell kids with bowed legs to play outside in morning sunlight and drink fresh milk?'
+        thinkPrompt: 'Why do doctors tell kids with bowed legs to play outside in morning sunlight and drink fresh milk?',
+        checkQuestion: {
+                  "question": "Why do pediatricians prescribe vitamin D and calcium to children suffering from bowed legs (Rickets)?",
+                  "options": [
+                            "Vitamin D helps bones absorb calcium and harden properly under body weight.",
+                            "Vitamin D kills the bacteria that infect bone marrow.",
+                            "Calcium increases the volume of blood in the leg veins."
+                  ],
+                  "correct": 0,
+                  "explanation": "Calcium provides the hard mineral structure of bones, while Vitamin D is the essential catalyst needed for the intestines to absorb that calcium! Without both, bones remain soft and bend under body weight (Rickets)."
+        }
       },
       {
         badge: 'Disease & Defense',
@@ -1758,7 +1828,17 @@ const CHAPTERS_DATA = [
           '<strong>Mosquito Control:</strong> Mosquitoes lay eggs in stagnant water. Spraying a thin film of kerosene or oil on water prevents larvae from breathing oxygen, cutting off the life cycle!',
           '<strong>Vaccination:</strong> Introduces weakened antigens to train your immune system to produce antibodies without falling ill.'
         ],
-        thinkPrompt: 'How does pouring a spoonful of oil on a puddle in your garden protect your whole neighborhood from dengue?'
+        thinkPrompt: 'How does pouring a spoonful of oil on a puddle in your garden protect your whole neighborhood from dengue?',
+        checkQuestion: {
+                  "question": "Why does pouring a thin film of oil on stagnant puddle water stop mosquito breeding?",
+                  "options": [
+                            "Mosquito larvae breathe atmospheric air through surface tubes; the oil film cuts off their oxygen supply.",
+                            "The smell of oil scares adult mosquitoes away to another city.",
+                            "Oil instantly dissolves all mosquito eggs into water."
+                  ],
+                  "correct": 0,
+                  "explanation": "Mosquito larvae hang upside down beneath the water surface, poking tiny breathing tubes into the air. An oil film suffocates them instantly without using dangerous toxic sprays!"
+        }
       }
     ],
 
@@ -2258,7 +2338,17 @@ const CHAPTERS_DATA = [
           '<strong>Thermosphere (80–500 km):</strong> High temperature layer containing the ionosphere, bouncing radio signals back to Earth.',
           '<strong>Exosphere (>500 km):</strong> Farthest, thinnest boundary transitioning gradually into the vacuum of space.'
         ],
-        thinkPrompt: 'Why do commercial jetliners love cruising in the lower stratosphere instead of flying down in the troposphere?'
+        thinkPrompt: 'Why do commercial jetliners love cruising in the lower stratosphere instead of flying down in the troposphere?',
+        checkQuestion: {
+                  "question": "Why do commercial aeroplanes fly in the lower Stratosphere rather than the Troposphere below?",
+                  "options": [
+                            "The stratosphere has zero gravity so planes glide without fuel.",
+                            "The stratosphere is above weather clouds, storms, and bumpy convective turbulence.",
+                            "The stratosphere contains pure liquid oxygen."
+                  ],
+                  "correct": 1,
+                  "explanation": "All weather phenomena (clouds, thunderstorms, rain, strong updrafts) happen in the Troposphere. Flying in the lower Stratosphere provides calm, stable air and smooth, fuel-efficient flights!"
+        }
       },
       {
         badge: 'Properties of Air',
@@ -2270,7 +2360,17 @@ const CHAPTERS_DATA = [
           '<strong>Air Exerts Pressure:</strong> Atmospheric air presses in all directions, allowing us to drink through a straw and suck medicine into a dropper.',
           '<strong>Air Supports Combustion:</strong> Fires require oxygen to burn. Covering a lighted candle with a jar extinguishes the flame as oxygen is consumed.'
         ],
-        thinkPrompt: 'Why does soda shoot up into your mouth when you suck on a straw?'
+        thinkPrompt: 'Why does soda shoot up into your mouth when you suck on a straw?',
+        checkQuestion: {
+                  "question": "When you drink juice through a straw, what actually forces the juice up into your mouth?",
+                  "options": [
+                            "Your mouth pulls the liquid like a magnetic tractor beam.",
+                            "Sucking removes air from inside the straw, and higher atmospheric pressure outside pushes the liquid up.",
+                            "The straw creates a miniature whirlpool that spins liquid upwards."
+                  ],
+                  "correct": 1,
+                  "explanation": "When you suck, you create low pressure inside the straw. The standard atmospheric pressure pushing down on the surface of the juice in the glass pushes the juice up into the straw!"
+        }
       },
       {
         badge: 'Water Impurities',
@@ -2280,7 +2380,17 @@ const CHAPTERS_DATA = [
           '<strong>Insoluble Impurities (Sand, Clay, Mud, Sawdust):</strong> Particles remain intact as solid suspensions. Purified by physical settling and straining.',
           '<strong>Soluble Impurities (Salt, Sugar, Chemicals):</strong> Molecules dissociate and spread throughout water. <em>Filter paper cannot catch them!</em> Purified by evaporation or distillation.'
         ],
-        thinkPrompt: 'If you pour salty seawater through ten layers of filter paper, will the water come out sweet and fresh? Why not?'
+        thinkPrompt: 'If you pour salty seawater through ten layers of filter paper, will the water come out sweet and fresh? Why not?',
+        checkQuestion: {
+                  "question": "If you pour salty seawater through 10 layers of fine filter paper, will the water taste sweet? Why?",
+                  "options": [
+                            "Yes, filter paper catches all minerals and salts.",
+                            "No, dissolved salt particles are individual molecules smaller than paper pores and pass right through.",
+                            "Yes, because filter paper chemically neutralizes salt into fresh water."
+                  ],
+                  "correct": 1,
+                  "explanation": "Filtration only removes insoluble solids (like sand or mud). Dissolved salt molecules pass right through the microscopic pores of filter paper with the water molecules!"
+        }
       },
       {
         badge: 'Purification Science',
@@ -2293,7 +2403,17 @@ const CHAPTERS_DATA = [
           '<strong>Distillation:</strong> Boils water into vapor (leaving soluble salts behind), then cools the vapor in a condenser back into pure liquid.',
           '<strong>The Pure Water Paradox:</strong> Distilled water is 100% chemically pure, ideal for car batteries, inverters, and science labs. However, it is <em>not ideal for daily drinking</em> because it lacks essential minerals like calcium and magnesium!'
         ],
-        thinkPrompt: 'Why shouldn’t a family install a distillation plant to prepare all their daily drinking water at home?'
+        thinkPrompt: 'Why shouldn’t a family install a distillation plant to prepare all their daily drinking water at home?',
+        checkQuestion: {
+                  "question": "Why is 100% pure distilled water NOT recommended for regular daily drinking by families?",
+                  "options": [
+                            "Distilled water contains dangerous chemical acids from boiling.",
+                            "Distillation removes all beneficial natural minerals (like calcium and magnesium) needed by our bodies.",
+                            "Distilled water is too heavy for the human stomach to digest."
+                  ],
+                  "correct": 1,
+                  "explanation": "While distilled water is chemically pure (ideal for car batteries and medicines), it lacks essential natural dissolved salts and minerals that human bodies require for electrolyte balance and bone health!"
+        }
       }
     ],
 
@@ -2679,7 +2799,17 @@ const CHAPTERS_DATA = [
           '<strong>Pumice (Extrusive & Frothy):</strong> Formed when lava with high gas bubbles under high temperature and pressure erupts from volcanoes and solidifies rapidly. The escaping gas bubbles create millions of tiny pores. Ground into powder called <strong>pumicite</strong>. <em>It is so light it floats on water!</em> Used as decorative stone, body/foot scrubbers, floor polish, and by dentists to polish teeth.',
           '<strong>Basalt (Ocean Basins & Moon):</strong> Dark-coloured, fine-grained rock formed when lava >1000°C pours out from cracks and cools quickly in weeks. <em>Most abundant rock in Earth\'s crust</em> (forms ocean basins). Rich in iron and magnesium (feldspar and pyroxene). Used in building construction and crushed for roads and pavements. Also forms dark flat plains on the Moon called <strong>lunar maria</strong>.'
         ],
-        thinkPrompt: 'Why does pumice float like a sponge on water, while basalt from the same volcano sinks like an iron anchor?'
+        thinkPrompt: 'Why does pumice float like a sponge on water, while basalt from the same volcano sinks like an iron anchor?',
+        checkQuestion: {
+                  "question": "Why does pumice float on water like a sponge, while basalt from the same volcano sinks?",
+                  "options": [
+                            "Pumice is made of frozen ocean foam.",
+                            "Pumice cooled so rapidly that escaping frothy gas bubbles were trapped as air pockets, making it lighter than water.",
+                            "Basalt contains heavy iron magnets that pull it underwater."
+                  ],
+                  "correct": 1,
+                  "explanation": "Frothy, gas-rich lava erupted and chilled in mid-air, freezing gas pockets inside pumice like sponge cake. This porous structure gives pumice a density lower than water!"
+        }
       },
       {
         badge: 'Sedimentary Layers',
@@ -2692,7 +2822,17 @@ const CHAPTERS_DATA = [
           '<strong>Limestone:</strong> Mainly composed of skeletal fragments and shells of marine organisms (corals, molluscs, clams). Rich in <strong>calcite and aragonite</strong> (calcium carbonate). <em>Chalk is a common soft limestone!</em> Used to make cement, bricks, and glass.',
           '<strong>Conglomerate:</strong> Rounded river pebbles and gravel cemented together with sand and mineral paste. Grey or orange. Used to polish ornaments and as decorative stone.'
         ],
-        thinkPrompt: 'If you discover a rock containing fossilized sea shells and coral fragments high up on a dry hill, what does it prove about that hill’s ancient past?'
+        thinkPrompt: 'If you discover a rock containing fossilized sea shells and coral fragments high up on a dry hill, what does it prove about that hill’s ancient past?',
+        checkQuestion: {
+                  "question": "If a geologist finds marine seashells and fish skeletons fossilized inside limestone on a dry desert hill, what does it prove?",
+                  "options": [
+                            "Birds dropped fresh shells onto the desert hill yesterday.",
+                            "That dry land was once submerged under an ancient ocean where sediments and shells accumulated over millions of years.",
+                            "Volcanic lava baked desert sand into fake shell shapes."
+                  ],
+                  "correct": 1,
+                  "explanation": "Sedimentary rocks preserve Earth's historical diary! Finding marine fossils on modern hilltops proves that plate tectonics uplifted what was once an ancient ocean floor."
+        }
       },
       {
         badge: 'Metamorphic Changes',
@@ -2705,7 +2845,17 @@ const CHAPTERS_DATA = [
           '<strong>Shale → Slate:</strong> Soft clay shale transforms into dense, flat-splitting slate. Usually black or grey, but also purple and green. Used to make blackboards, writing slates, and rainproof roofing tiles.',
           '<strong>Granite → Gneiss (pronounced "nice"):</strong> Coarse granite undergoes directional shear. Its mica flakes align into glistening ribbon-like dark and light bands of different colours.'
         ],
-        thinkPrompt: 'Why can you split a slab of slate into razor-thin flat sheets for roofing tiles, but granite only fractures into rough, irregular chunks?'
+        thinkPrompt: 'Why can you split a slab of slate into razor-thin flat sheets for roofing tiles, but granite only fractures into rough, irregular chunks?',
+        checkQuestion: {
+                  "question": "Why does limestone transform into dazzling marble when buried deep inside the crust?",
+                  "options": [
+                            "Intense geothermal heat and crushing pressure cause calcite crystals to recrystallize and lock together tightly.",
+                            "Underground rivers bleach the limestone white with chlorine.",
+                            "Underground earthquakes break limestone into liquid marble."
+                  ],
+                  "correct": 0,
+                  "explanation": "Metamorphism doesn't melt the rock entirely; instead, extreme heat and pressure recrystallize the minerals into a denser, interlocking crystalline texture (limestone becomes marble)!"
+        }
       },
       {
         badge: 'Rock Cycle Dynamics',
@@ -2717,7 +2867,17 @@ const CHAPTERS_DATA = [
           '<strong>Sedimentary to Metamorphic:</strong> Sedimentary layers sink deeper under accumulating sediment weight, encountering fierce magma heat and tectonic pressure → deform into metamorphic rocks.',
           '<strong>Dynamic Shortcuts:</strong> Sedimentary rocks can melt directly into magma during deep tectonic earthquakes; metamorphic rocks can be uplifted by mountain-building, weathered by rivers, and deposited directly as new sedimentary layers!'
         ],
-        thinkPrompt: 'Could a quartz grain in your beach sand today have been part of an ancient granite mountain 200 million years ago and quartzite 100 million years ago?'
+        thinkPrompt: 'Could a quartz grain in your beach sand today have been part of an ancient granite mountain 200 million years ago and quartzite 100 million years ago?',
+        checkQuestion: {
+                  "question": "Can a grain of sand on a beach today eventually turn into part of a granite mountain millions of years from now?",
+                  "options": [
+                            "No, sand grains can only ever remain sand forever.",
+                            "Yes, if subducted deep underground, melted into magma, and slowly cooled below the surface as granite.",
+                            "Yes, by leaving it in the hot summer sun for two weeks."
+                  ],
+                  "correct": 1,
+                  "explanation": "The rock cycle is continuous! Weathered sediments get buried, compressed into sandstone, subducted into the mantle to melt into magma, and re-crystallize as plutonic granite over geologic eras."
+        }
       },
       {
         badge: 'Minerals & Energy',
@@ -2730,7 +2890,17 @@ const CHAPTERS_DATA = [
           '<strong>Petroleum ("Black Gold"):</strong> Crude oil formed from buried marine plankton and organisms under ocean sediments over millions of years. Refined into petrol, diesel, LPG, CNG, kerosene, and <strong>paraffin wax</strong> (candles and polish). Major Indian fields: <strong>Bombay High</strong> (off Mumbai coast) and <strong>Digboi</strong> (Assam).',
           '<strong>Conservation:</strong> Minerals and fossil fuels are non-renewable and take millions of years to regenerate. Conserve by keeping vehicle engines tuned, using clean alternative energy (solar, wind, hydroelectric), preventing mining wastage, and switching off lights.'
         ],
-        thinkPrompt: 'Why do geologists classify coal as a sedimentary rock, even though it formed from dead trees rather than sand or silt?'
+        thinkPrompt: 'Why do geologists classify coal as a sedimentary rock, even though it formed from dead trees rather than sand or silt?',
+        checkQuestion: {
+                  "question": "Why do geologists classify coal as a sedimentary rock, rather than an igneous or metamorphic rock?",
+                  "options": [
+                            "Coal is formed from volcanic ash ejected by active craters.",
+                            "Coal formed from ancient swamp plants and ferns compacted in sequential layers under heavy sediments over millions of years.",
+                            "Coal is a pure mineral crystal that grew in underground caves."
+                  ],
+                  "correct": 1,
+                  "explanation": "Coal is an organic sedimentary rock! Ancient swamp forests died and were buried under layers of mud and sand, where pressure and heat slowly compressed the carbon layers into solid coal seams."
+        }
       }
     ],
 
@@ -3237,7 +3407,17 @@ const CHAPTERS_DATA = [
           '<strong>Liquids:</strong> Molecules are moderately packed with weaker attraction. Indefinite shape (takes the shape of the container) but definite volume. Molecules slide past each other.',
           '<strong>Gases:</strong> Molecules are widely spaced with negligible attractive forces. Indefinite shape and indefinite volume. Molecules zip around at high speeds.'
         ],
-        thinkPrompt: 'If you pour 200 mL of water from a tall cylindrical glass into a wide flat plate, which property changes and which remains identical?'
+        thinkPrompt: 'If you pour 200 mL of water from a tall cylindrical glass into a wide flat plate, which property changes and which remains identical?',
+        checkQuestion: {
+                  "question": "When you pour 250 mL of water from a tall thin bottle into a flat square baking dish, what happens?",
+                  "options": [
+                            "Both the volume and the shape change completely.",
+                            "The volume stays exactly 250 mL, but the shape changes to match the flat square container.",
+                            "The water expands into 500 mL because the dish is wider."
+                  ],
+                  "correct": 1,
+                  "explanation": "Liquids have a definite volume (250 mL remains 250 mL) but no fixed shape \u2014 their molecules slide past each other to take the shape of whatever vessel holds them!"
+        }
       },
       {
         badge: 'Gas Dynamics',
@@ -3248,7 +3428,17 @@ const CHAPTERS_DATA = [
           '<strong>Daily Applications:</strong> Compressed Natural Gas (CNG) cylinders in city buses and Liquefied Petroleum Gas (LPG) kitchen cylinders store massive gas quantities in compact volume under high pressure.',
           'Solids and liquids have virtually zero compressibility because their molecules are already touching.'
         ],
-        thinkPrompt: 'Why can you squish an air-filled syringe down with your thumb, but cannot push down a syringe filled with water or sand?'
+        thinkPrompt: 'Why can you squish an air-filled syringe down with your thumb, but cannot push down a syringe filled with water or sand?',
+        checkQuestion: {
+                  "question": "Why can huge amounts of natural gas be squeezed into a small vehicle fuel cylinder (CNG), while liquid water cannot be squished?",
+                  "options": [
+                            "Gas molecules have massive empty spaces between them that can be pressed closer together.",
+                            "Natural gas turns into invisible ghost matter under pressure.",
+                            "Water molecules are much lighter than gas molecules."
+                  ],
+                  "correct": 0,
+                  "explanation": "In gases, intermolecular spaces are huge! Applying pressure easily squeezes molecules closer together (high compressibility). In liquids and solids, molecules are already packed closely."
+        }
       },
       {
         badge: 'Thermal Physics',
@@ -3259,7 +3449,17 @@ const CHAPTERS_DATA = [
           'High kinetic energy causes hot vapor molecules to <strong>diffuse</strong> (mix and spread) rapidly through ambient air.',
           'Molecules in cold food move sluggishly, diffusing slowly over short distances.'
         ],
-        thinkPrompt: 'Why does incense stick smoke rise and scent the whole house only after you light it on fire?'
+        thinkPrompt: 'Why does incense stick smoke rise and scent the whole house only after you light it on fire?',
+        checkQuestion: {
+                  "question": "Why does the aroma of sizzling hot food reach across the house in seconds, while cold food can only be smelled close up?",
+                  "options": [
+                            "Heat makes molecules gain kinetic energy and move much faster, increasing the rate of diffusion.",
+                            "Cold food does not contain any molecules at all.",
+                            "Heat makes air heavier, dragging the scent across the floor."
+                  ],
+                  "correct": 0,
+                  "explanation": "Higher temperature increases the kinetic energy and thermal vibration of molecules! Gas particles move with greater speed, diffusing rapidly throughout the room."
+        }
       },
       {
         badge: 'Changes of State',
@@ -3273,7 +3473,17 @@ const CHAPTERS_DATA = [
           '<strong>Sublimation:</strong> Solid changes <em>directly into gas</em> without melting into a liquid (e.g. Naphthalene mothballs, Dry Ice / solid $CO_2$, Camphor).',
           '<strong>Deposition:</strong> Gas changes directly into solid (e.g. Frost formation, dry ice manufacturing).'
         ],
-        thinkPrompt: 'When mothballs in your winter wardrobe shrink and disappear over months, did they melt and wet your clothes? Where did they go?'
+        thinkPrompt: 'When mothballs in your winter wardrobe shrink and disappear over months, did they melt and wet your clothes? Where did they go?',
+        checkQuestion: {
+                  "question": "Naphthalene balls (mothballs) placed in a woolen wardrobe shrink and disappear over months without leaving any liquid spot. What is this called?",
+                  "options": [
+                            "Evaporation of water.",
+                            "Sublimation (direct change from solid to gas without becoming liquid).",
+                            "Condensation into cold air."
+                  ],
+                  "correct": 1,
+                  "explanation": "Sublimation is the special process where a solid converts directly into gas without passing through the liquid phase (e.g. camphor, dry ice, and naphthalene balls)!"
+        }
       },
       {
         badge: 'Chemistry Lab',
@@ -3284,7 +3494,17 @@ const CHAPTERS_DATA = [
           '<strong>Chemical Change:</strong> New substances with different chemical properties are formed; irreversible (e.g. frying an omelette, sliced apple turning brown due to oxidation, burning wood, rusting iron).',
           '<strong>The Tale of Two Hooks:</strong> Anshul’s iron hook in coastal Kerala rusted in weeks, while Charu’s hook in Rajasthan stayed shiny for years! Why? <em>Rusting requires BOTH oxygen AND moisture!</em> Kerala has humid coastal air; Rajasthan is dry desert air.'
         ],
-        thinkPrompt: 'If you paint an iron garden gate with oil paint, why does it stop the gate from rusting?'
+        thinkPrompt: 'If you paint an iron garden gate with oil paint, why does it stop the gate from rusting?',
+        checkQuestion: {
+                  "question": "Why is rusting of iron classified as a chemical change, while freezing water into ice cubes is a physical change?",
+                  "options": [
+                            "Rusting forms a completely new substance (iron oxide) that cannot be easily reversed, whereas ice is still H2O molecules.",
+                            "Rusting happens in the dark, but ice only forms in the light.",
+                            "Ice change cannot be undone, but rust easily washes off with water."
+                  ],
+                  "correct": 0,
+                  "explanation": "In a physical change (freezing ice), molecular identity remains H2O and melting reverses it. In rusting, iron atoms chemically react with oxygen and moisture to form a brand new compound (hydrated iron oxide), which cannot be reversed by simple physical cooling or heating!"
+        }
       }
     ],
 
@@ -3685,15 +3905,15 @@ const CHAPTER_MILESTONES = {
     {
       id: 'learn_part1',
       title: 'Atmosphere & Air Properties',
-      desc: 'Mastered Atmosphere layers and properties of air concept cards (mass & space)',
-      hint: 'Explore cards 1 & 2 in Learn mode and tap reflection',
+      desc: 'Solved concept checkpoint questions on Atmosphere layers and Air properties (mass & space)',
+      hint: 'Answer concept check questions on cards 1 & 2 in Learn mode',
       check: (d) => (d.learnCards[0] && d.learnCards[1])
     },
     {
       id: 'learn_part2',
       title: 'Combustion & Water Purification',
-      desc: 'Mastered Combustion and Soluble/Insoluble water purification methods',
-      hint: 'Explore cards 3, 4 & 5 in Learn mode and tap reflection',
+      desc: 'Solved concept checkpoint questions on Combustion and Soluble/Insoluble purification methods',
+      hint: 'Answer concept check questions on cards 3 & 4 in Learn mode',
       check: (d) => (d.learnCards[2] && (d.learnCards[3] || d.learnCards[4]))
     },
     {
@@ -3737,15 +3957,15 @@ const CHAPTER_MILESTONES = {
     {
       id: 'learn_part1',
       title: 'Molecular Kinetic Theory',
-      desc: 'Mastered Molecular dance floor and gas compressibility (CNG/LPG) cards',
-      hint: 'Explore cards 1 & 2 in Learn mode and tap reflection',
+      desc: 'Solved concept checkpoint questions on Molecular motion and Gas compressibility (CNG/LPG)',
+      hint: 'Answer concept check questions on cards 1 & 2 in Learn mode',
       check: (d) => (d.learnCards[0] && d.learnCards[1])
     },
     {
       id: 'learn_part2',
       title: 'Thermal Diffusion & Changes of State',
-      desc: 'Mastered Coffee scent rocket, sublimation, physical vs chemical changes, and rusting',
-      hint: 'Explore cards 3, 4 & 5 in Learn mode and tap reflection',
+      desc: 'Solved concept checkpoint questions on Thermal diffusion, Sublimation, and Physical vs Chemical changes',
+      hint: 'Answer concept check questions on cards 3, 4 & 5 in Learn mode',
       check: (d) => (d.learnCards[2] && (d.learnCards[3] || d.learnCards[4]))
     },
     {
@@ -3796,15 +4016,15 @@ const CHAPTER_MILESTONES = {
     {
       id: 'learn_part1',
       title: 'Habitats & Protective Coverings',
-      desc: 'Mastered Terrestrial, Aquatic, scales, shells, cuticle, feathers and fur cards',
-      hint: 'Explore cards 1 & 2 in Learn mode and tap reflection',
+      desc: 'Solved concept checkpoint questions on Animal adaptations, Habitats, and Protective body coverings',
+      hint: 'Answer concept check questions on cards 1 & 2 in Learn mode',
       check: (d) => (d.learnCards[0] && d.learnCards[1])
     },
     {
       id: 'learn_part2',
       title: 'Respiration, Limbs & Food Chains',
-      desc: 'Mastered Gills, spiracles, lungs, flippers, talons, migration and dentition cards',
-      hint: 'Explore cards 3, 4 & 5 in Learn mode and tap reflection',
+      desc: 'Solved concept checkpoint questions on Respiration organs, Flippers/talons, and Carnivore/herbivore dentition',
+      hint: 'Answer concept check questions on cards 3 & 4 in Learn mode',
       check: (d) => (d.learnCards[2] && (d.learnCards[3] || d.learnCards[4]))
     },
     {
@@ -3862,15 +4082,15 @@ const CHAPTER_MILESTONES = {
     {
       id: 'learn_part1',
       title: 'Nutrients & Energy Metabolism',
-      desc: 'Mastered Carbohydrates, proteins, fats and fasting glycogen/fat reserves cards',
-      hint: 'Explore cards 1, 2 & 3 in Learn mode and tap reflection',
+      desc: 'Solved concept checkpoint questions on Nutrient architecture, Energy fuel, and Fasting glycogen/fat reserves',
+      hint: 'Answer concept check questions on cards 1 & 2 in Learn mode',
       check: (d) => (d.learnCards[0] && d.learnCards[1])
     },
     {
       id: 'learn_part2',
       title: 'Deficiency Diseases & Prevention',
-      desc: 'Mastered Night blindness, scurvy, rickets, beriberi, pathogens, vectors & hygiene cards',
-      hint: 'Explore cards 4 & 5 in Learn mode and tap reflection',
+      desc: 'Solved concept checkpoint questions on Deficiency diseases (Rickets/Scurvy) and Immune defense & Vectors',
+      hint: 'Answer concept check questions on cards 3 & 4 in Learn mode',
       check: (d) => (d.learnCards[3] && d.learnCards[4])
     },
     {
@@ -3935,15 +4155,15 @@ const CHAPTER_MILESTONES = {
     {
       id: 'learn_part1',
       title: 'Rock Genesis & Sedimentary Layers',
-      desc: 'Mastered Igneous genesis (magma/lava, granite, basalt, pumice) and Sedimentary compaction (sandstone, limestone, shale)',
-      hint: 'Explore cards 1 & 2 in Learn mode and tap reflection',
+      desc: 'Solved concept checkpoint questions on Igneous genesis (magma/lava, pumice) and Sedimentary compaction (limestone, fossils)',
+      hint: 'Answer concept check questions on cards 1 & 2 in Learn mode',
       check: (d) => (d.learnCards[0] && d.learnCards[1])
     },
     {
       id: 'learn_part2',
       title: 'Metamorphic Magic, Cycle & Minerals',
-      desc: 'Mastered Metamorphic transformations (marble, quartzite, slate, gneiss), rock cycle, ores & coal/petroleum',
-      hint: 'Explore cards 3, 4 & 5 in Learn mode and tap reflection',
+      desc: 'Solved concept checkpoint questions on Metamorphic transformation, Rock cycle dynamics, and Mineral/Fossil fuel genesis',
+      hint: 'Answer concept check questions on cards 3, 4 & 5 in Learn mode',
       check: (d) => (d.learnCards[2] && (d.learnCards[3] || d.learnCards[4]))
     },
     {
@@ -4215,23 +4435,71 @@ function evaluateAndAwardStars(chapterId) {
   return stars;
 }
 
-function toggleLearnCheckpoint(chapterId, cardIdx) {
+function handleConceptCheckAnswer(chId, cardIdx, optIdx, container) {
+  const ch = CHAPTERS_DATA.find(c => c.id === chId);
+  if (!ch || !ch.learnCards[cardIdx] || !ch.learnCards[cardIdx].checkQuestion) return;
+
+  const q = ch.learnCards[cardIdx].checkQuestion;
+  const isCorrect = (optIdx === q.correct);
+
   state.chapterProgress = state.chapterProgress || {};
-  state.chapterProgress[chapterId] = state.chapterProgress[chapterId] || {};
-  state.chapterProgress[chapterId].learnCards = state.chapterProgress[chapterId].learnCards || {};
+  state.chapterProgress[chId] = state.chapterProgress[chId] || {};
+  state.chapterProgress[chId].learnCards = state.chapterProgress[chId].learnCards || {};
+  state.chapterProgress[chId].learnAnswers = state.chapterProgress[chId].learnAnswers || {};
 
-  const current = !!state.chapterProgress[chapterId].learnCards[cardIdx];
-  state.chapterProgress[chapterId].learnCards[cardIdx] = !current;
-  saveActiveState();
+  state.chapterProgress[chId].learnAnswers[cardIdx] = optIdx;
 
-  if (!current) {
+  if (isCorrect) {
+    state.chapterProgress[chId].learnCards[cardIdx] = true;
+    saveActiveState();
     AudioController.correct();
-  } else {
-    AudioController.click();
-  }
+    triggerFlash('correct');
 
-  evaluateAndAwardStars(chapterId);
-  renderCurrentView();
+    evaluateAndAwardStars(chId);
+
+    // Re-render learn view so that card status, passport, and banner update
+    renderLearnView(container);
+  } else {
+    // Incorrect answer
+    saveActiveState();
+    AudioController.wrong();
+    triggerFlash('wrong');
+
+    const feedbackEl = document.getElementById(`check-feedback-${cardIdx}`);
+    const optionsEl = document.getElementById(`check-options-${cardIdx}`);
+
+    if (feedbackEl) {
+      feedbackEl.style.display = 'block';
+      feedbackEl.className = 'concept-feedback-box wrong';
+      feedbackEl.innerHTML = `❌ <strong>Not quite!</strong> Re-read the metaphor and points above, then choose the correct deduction.`;
+    }
+
+    if (optionsEl) {
+      const btns = optionsEl.querySelectorAll('.concept-opt-btn');
+      btns.forEach(b => {
+        const bOpt = parseInt(b.getAttribute('data-opt-idx'), 10);
+        if (bOpt === optIdx) {
+          b.classList.add('selected-wrong');
+        } else {
+          b.classList.remove('selected-wrong');
+        }
+      });
+    }
+  }
+}
+
+function retakeConceptCheckQuestion(chId, cardIdx, container) {
+  state.chapterProgress = state.chapterProgress || {};
+  state.chapterProgress[chId] = state.chapterProgress[chId] || {};
+  state.chapterProgress[chId].learnCards = state.chapterProgress[chId].learnCards || {};
+  state.chapterProgress[chId].learnAnswers = state.chapterProgress[chId].learnAnswers || {};
+
+  delete state.chapterProgress[chId].learnAnswers[cardIdx];
+  state.chapterProgress[chId].learnCards[cardIdx] = false;
+  saveActiveState();
+  evaluateAndAwardStars(chId);
+  AudioController.click();
+  renderLearnView(container);
 }
 
 function markLabInteracted(chapterId) {
@@ -4663,13 +4931,17 @@ function renderLearnView(container) {
 
   const prog = (state.chapterProgress && state.chapterProgress[ch.id]) || {};
   const clearedCards = prog.learnCards || {};
+  const learnAnswers = prog.learnAnswers || {};
 
   // Concept Cards Grid
   html += `<div class="learn-grid">`;
   ch.learnCards.forEach((card, idx) => {
     const isCleared = !!clearedCards[idx];
+    const savedAnswer = learnAnswers[idx];
+    const q = card.checkQuestion;
+
     html += `
-      <div class="concept-card ${isCleared ? 'cleared-card' : ''}">
+      <div class="concept-card ${isCleared ? 'cleared-card' : ''}" id="concept-card-${idx}">
         <span class="concept-badge">${card.badge}</span>
         <h4>${card.title}</h4>
         <div class="concept-metaphor">${card.metaphor}</div>
@@ -4683,14 +4955,45 @@ function renderLearnView(container) {
             <p>${card.thinkPrompt}</p>
           </div>
         </div>
-        <div class="concept-checkpoint-box ${isCleared ? 'cleared' : ''}" id="checkpoint-card-${idx}">
-          <button class="checkpoint-btn ${isCleared ? 'cleared' : ''}" data-card-idx="${idx}">
-            ${isCleared ? '✓ Concept Mastered ⭐' : '💡 I Understood & Reasoned This!'}
-          </button>
-          <span class="checkpoint-status">
-            ${isCleared ? '✓ Milestone progress saved towards Learn Stars!' : 'Tap after reflecting on the prompt above'}
-          </span>
-        </div>
+
+        <!-- Concept Question Checkpoint (Micro-Quiz) -->
+        ${q ? `
+          <div class="concept-check-box ${isCleared ? 'cleared' : ''}" id="concept-check-${idx}">
+            <div class="concept-check-header">
+              <span class="concept-check-title">🎯 Concept Checkpoint Question</span>
+              <span class="concept-check-badge ${isCleared ? 'cleared' : 'pending'}">
+                ${isCleared ? '✓ Verified ⭐' : 'Solve to Unlock Star'}
+              </span>
+            </div>
+
+            <p class="concept-check-q">${q.question}</p>
+
+            <div class="concept-check-options" id="check-options-${idx}">
+              ${q.options.map((opt, optIdx) => {
+                let optClass = 'concept-opt-btn';
+                if (typeof savedAnswer === 'number') {
+                  if (optIdx === q.correct) optClass += ' selected-correct';
+                  else if (optIdx === savedAnswer) optClass += ' selected-wrong';
+                }
+                const isBtnDisabled = isCleared ? 'disabled' : '';
+                return `
+                  <button class="${optClass}" data-card-idx="${idx}" data-opt-idx="${optIdx}" ${isBtnDisabled}>
+                    <span class="concept-opt-label">${String.fromCharCode(65 + optIdx)}.</span>
+                    <span class="concept-opt-text">${opt}</span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+
+            <div class="concept-feedback-box ${isCleared ? 'correct' : ''}" id="check-feedback-${idx}" style="${isCleared ? '' : 'display: none;'}">
+              ${isCleared ? `✅ <strong>Brilliant Reasoning!</strong> ${q.explanation}` : ''}
+            </div>
+
+            ${isCleared ? `
+              <button class="concept-retake-btn" data-card-idx="${idx}">↺ Retake Question</button>
+            ` : ''}
+          </div>
+        ` : ''}
       </div>
     `;
   });
@@ -4700,13 +5003,24 @@ function renderLearnView(container) {
   attachGadgetEvents(ch);
   bindMasteryBannerEvents(container, ch.id);
 
-  // Bind checkpoint buttons
-  const cpBtns = container.querySelectorAll('.checkpoint-btn[data-card-idx]');
-  cpBtns.forEach(btn => {
+  // Bind concept check option click handlers
+  const optBtns = container.querySelectorAll('.concept-opt-btn:not(:disabled)');
+  optBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const idx = parseInt(btn.getAttribute('data-card-idx'), 10);
-      toggleLearnCheckpoint(ch.id, idx);
+      const cardIdx = parseInt(btn.getAttribute('data-card-idx'), 10);
+      const optIdx = parseInt(btn.getAttribute('data-opt-idx'), 10);
+      handleConceptCheckAnswer(ch.id, cardIdx, optIdx, container);
+    });
+  });
+
+  // Bind retake question buttons
+  const retakeBtns = container.querySelectorAll('.concept-retake-btn');
+  retakeBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const cardIdx = parseInt(btn.getAttribute('data-card-idx'), 10);
+      retakeConceptCheckQuestion(ch.id, cardIdx, container);
     });
   });
 }
