@@ -71,31 +71,24 @@ body {
 }
 
 /* Background Atmospheric Glows */
+/* --- Ambient Background Glows (Flicker-Free, Zero-GPU Steady Gradients) --- */
 body::before, body::after {
   content: '';
   position: fixed;
   border-radius: 50%;
-  filter: blur(130px);
-  opacity: 0.14;
-  z-index: 0;
   pointer-events: none;
+  z-index: 0;
+  transform: translateZ(0);
 }
 body::before {
-  width: 620px; height: 620px;
-  background: var(--accent-saffron);
+  width: 650px; height: 650px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.14) 0%, rgba(245, 158, 11, 0) 70%);
   top: -220px; right: -120px;
-  animation: floatOrb 22s ease-in-out infinite;
 }
 body::after {
-  width: 520px; height: 520px;
-  background: var(--accent-green);
+  width: 550px; height: 550px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(16, 185, 129, 0) 70%);
   bottom: -180px; left: -120px;
-  animation: floatOrb 26s ease-in-out infinite reverse;
-}
-@keyframes floatOrb {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(35px, -35px) scale(1.06); }
-  66% { transform: translate(-25px, 25px) scale(0.95); }
 }
 
 /* Confetti Canvas */
@@ -3356,3 +3349,18 @@ body::after {
   animation: pulse 1s infinite;
 }
 
+
+/* Hardware acceleration layer isolation to prevent GPU compositing flicker */
+.top-bar,
+.quiz-card {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

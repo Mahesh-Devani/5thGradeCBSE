@@ -68,39 +68,29 @@ body {
   line-height: 1.6;
 }
 
-/* --- Animated Background Blobs --- */
+/* --- Ambient Background Glows (Flicker-Free, Zero-GPU Steady Gradients) --- */
 body::before,
 body::after {
   content: '';
   position: fixed;
   border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.12;
-  z-index: 0;
   pointer-events: none;
+  z-index: 0;
+  transform: translateZ(0);
 }
 body::before {
-  width: 600px;
-  height: 600px;
-  background: var(--accent-blue);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.14) 0%, rgba(59, 130, 246, 0) 70%);
   top: -200px;
   right: -100px;
-  animation: blobFloat 20s ease-in-out infinite;
 }
 body::after {
-  width: 500px;
-  height: 500px;
-  background: var(--accent-purple);
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(139, 92, 246, 0) 70%);
   bottom: -150px;
   left: -100px;
-  animation: blobFloat 25s ease-in-out infinite reverse;
-}
-
-@keyframes blobFloat {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(30px, -40px) scale(1.05); }
-  50% { transform: translate(-20px, 20px) scale(0.95); }
-  75% { transform: translate(40px, 30px) scale(1.02); }
 }
 
 /* --- Page Container --- */
@@ -529,8 +519,8 @@ body::after {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
 }
 
 @keyframes shimmer {
@@ -1741,3 +1731,20 @@ body::after {
 
 
 
+
+/* Hardware acceleration layer isolation to prevent GPU compositing flicker */
+.nav-bar,
+.hero-card,
+.stat-card,
+.subject-card {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1183,8 +1183,8 @@ a {
 }
 
 @keyframes pulseLight {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.03); opacity: 0.9; }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
 }
 
 .instruction-sub {
@@ -3624,5 +3624,23 @@ button,
 
   .subtopic-tab-btn {
     flex: 1 1 100%; /* Full width subtopics on 360px */
+  }
+}
+
+/* Hardware acceleration layer isolation for flicker-free rendering */
+.top-bar,
+.chapter-mastery-banner,
+.concept-card,
+.question-card,
+.trap-card {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
