@@ -751,28 +751,30 @@ const CHAPTERS_DATA = [
   "title": "The Skeletal and Muscular System",
   "sub": "Framework of 206 Bones, 4 Movable Joints, Tendons vs Ligaments & Antagonistic Muscles",
   "themeColor": "#f59e0b",
-  "icon": "🦴",
+  "icon": "\ud83e\uddb4",
+  "targetStars": 10,
   "summary": "Master the architectural framework of 206 bones, bone marrow blood cell factory, skull helmet, flexible vertebral column, ribcage shield, 4 movable joints, and antagonistic muscle pairs that only pull!",
   "learnCards": [
     {
       "badge": "Architectural Framework",
-      "title": "🏗️ The Living Scaffolding & Blood Factory",
-      "metaphor": "The skeleton is not a dried-up museum relic — it is a living, blood-rich architectural marvel that holds our body upright!",
+      "title": "\ud83c\udfd7\ufe0f The Living Scaffolding & Blood Factory",
+      "metaphor": "The skeleton is not a dried-up museum relic \u2014 it is a living, blood-rich architectural marvel that holds our body upright!",
       "points": [
         "<strong>Living Framework:</strong> An adult human skeleton contains <strong>206 bones</strong>. A newborn baby has over <strong>300 bones</strong>, but as the baby grows, many small bones fuse together!",
         "<strong>Vertebral Column (Spine):</strong> Made up of <strong>33 ring-like bones called vertebrae</strong>. It forms the main axis of our body, encloses and protects the delicate spinal cord, and allows bending and twisting.",
         "<strong>Bone Marrow Factory:</strong> The hollow interior of long bones (like the femur) contains a soft, spongy tissue called <strong>bone marrow</strong>, which manufactures millions of new red and white blood cells every day!",
-        "<strong>Mineral Storage:</strong> Bones serve as the body’s primary storage bank for vital minerals like <strong>calcium and phosphorus</strong>."
+        "<strong>Mineral Storage:</strong> Bones serve as the body\u2019s primary storage bank for vital minerals like <strong>calcium and phosphorus</strong>."
       ],
       "thinkPrompt": "If an adult human had a single solid spine bone instead of 33 vertebrae, how would tying your shoelaces or sitting on a chair be affected?"
     },
     {
       "badge": "Biological Armor",
-      "title": "🛡️ The Skull Helmet & The Ribcage Shield",
+      "title": "\ud83d\udee1\ufe0f The Skull Helmet & The Ribcage Shield",
       "metaphor": "Your most precious organs are shielded inside biological helmets and cages engineered by nature!",
       "points": [
         "<strong>The Skull (22 Bones):</strong> 8 flat interlocking cranial bones fuse tightly like a motorcycle helmet to safeguard the brain. The remaining 14 bones form the facial framework.",
-        "<strong>Only ONE Movable Skull Bone:</strong> Out of all 22 skull bones, <strong>only the lower jaw (mandible) is movable</strong>! This lets us chew, talk, and yawn. The upper jaw is fused immovable.",
+        "<strong>Why Cranial Joints are Immovable:</strong> The 8 cranial plates have fixed jigsaw-like suture joints so they can never slide upon impact. If cranial joints were movable, any cricket ball or fall would cause bones to press inward, crushing the brain!",
+        "<strong>Only ONE Movable Skull Bone:</strong> Out of all 22 skull bones, <strong>only the lower jaw (mandible) is movable</strong>! This allows us to chew food, talk, yawn, and express emotions. The upper jaw is fused immovable.",
         "<strong>The Ribcage (12 Pairs / 25 Bones):</strong> Made of 12 pairs of bow-shaped ribs plus the central breastbone (<strong>sternum</strong>). It forms a protective cage around the heart and lungs.",
         "<strong>Floating Ribs:</strong> The first 10 pairs attach to the sternum in front, but the <strong>last 2 pairs (11th and 12th)</strong> attach only to the backbone behind. They are called <strong>floating ribs</strong>, giving the diaphragm and lungs freedom to expand during deep breathing!"
       ],
@@ -780,27 +782,53 @@ const CHAPTERS_DATA = [
     },
     {
       "badge": "Mechanical Bearings",
-      "title": "🔗 Movable Joints — Nature's Mechanical Bearings",
+      "title": "\ud83d\udd17 Movable Joints \u2014 Nature's Mechanical Bearings",
       "metaphor": "Wherever two bones meet, joints determine the directions and freedom of movement like mechanical hinges and swivels!",
       "points": [
-        "<strong>Ball and Socket Joint:</strong> The rounded ball-head of one bone fits inside the cup-like socket of another. Allows full <strong>360° rotary motion in all directions</strong> (like a joystick!). Present in <strong>shoulders</strong> (humerus in pectoral girdle) and <strong>hips</strong> (femur in pelvic girdle).",
-        "<strong>Hinge Joint:</strong> Works exactly like a <strong>door hinge</strong>, allowing movement back and forth in <strong>ONE direction only</strong>. Found in <strong>elbows, knees, fingers, and toes</strong>.",
-        "<strong>Pivot Joint:</strong> One bone rotates around a ring-like peg of another bone. Found between the <strong>skull and the first vertebra (spine)</strong>. Allows our head to turn sideways, nod up, and tilt down!",
-        "<strong>Gliding Joint (Planar Joint):</strong> Flat bone surfaces slide or glide smoothly past one another in multiple directions. Present in <strong>wrists, ankles</strong>, and between adjacent vertebrae in the backbone."
+        "<strong>Ball and Socket Joint:</strong> The rounded ball-head of one bone fits inside the cup-like socket of another. Allows full <strong>360\u00b0 rotary motion in all directions</strong> (like a joystick!). Present in <strong>shoulders</strong> (humerus in pectoral girdle) and <strong>hips</strong> (femur in pelvic girdle).",
+        "<strong>Hinge Joint:</strong> Works exactly like a <strong>door hinge</strong>, allowing movement back and forth in <strong>ONE direction only</strong>. Found in <strong>elbows, knees, fingers (phalanges), and toes</strong>.",
+        "<strong>Why Knees Need Hinge Joints:</strong> If our knees had ball-and-socket joints like our shoulders, our legs would wobble, twist sideways, and buckle under our weight! Hinge joints provide rock-solid stability to carry our body upright and run.",
+        "<strong>Pivot Joint:</strong> One bone rotates around a ring-like peg of another bone. Found between the <strong>skull and the first vertebra (atlas & axis)</strong>. Allows our head to turn sideways ('No') and nod up-and-down ('Yes')!",
+        "<strong>Gliding Joint (Planar Joint):</strong> Flat bone surfaces slide or glide smoothly past one another. Present in <strong>wrists (carpals), ankles (tarsals)</strong>, and between adjacent vertebrae in the backbone."
       ],
       "thinkPrompt": "Why did nature give us a hinge joint at the knee instead of a ball and socket joint? What would happen when you try to kick a football or run?"
     },
     {
       "badge": "Force & Locomotion",
-      "title": "💪 Tendons, Ligaments & Antagonistic Muscle Pairs",
-      "metaphor": "Muscles are biological pull-cords — they can ONLY PULL, they NEVER PUSH!",
+      "title": "\ud83d\udcaa Tendons, Ligaments & Antagonistic Muscle Pairs",
+      "metaphor": "Muscles are biological pull-cords \u2014 they can ONLY PULL, they NEVER PUSH!",
       "points": [
-        "<strong>The 3 Ls Rule:</strong> <strong>L</strong>igaments connect <strong>L</strong>ike to <strong>L</strong>ike → <strong>Bone to Bone</strong> at joints!",
-        "<strong>The 3 Ts Rule:</strong> <strong>T</strong>endons connect <strong>T</strong>wo <strong>T</strong>ypes → <strong>Bone to Muscle</strong>!",
-        "<strong>Antagonistic Muscle Pairs:</strong> Because muscle fibers can only contract (shorten and pull), they must work in opposing pairs! To <strong>bend the elbow</strong>, the <strong>Biceps contracts</strong> (pulls forearm up) while the <strong>Triceps relaxes</strong>. To <strong>straighten the arm</strong>, the <strong>Triceps contracts</strong> (pulls forearm down) while the <strong>Biceps relaxes</strong>.",
-        "<strong>3 Muscle Types:</strong> <strong>Striated/Skeletal</strong> (voluntary, striped, attached to bones for walking/writing), <strong>Smooth</strong> (involuntary, unstriped, in stomach/intestines/blood vessels), and <strong>Cardiac</strong> (involuntary, striated, in heart walls — works 24/7 without fatigue!)."
+        "<strong>The 3 Ls Rule:</strong> <strong>L</strong>igaments connect <strong>L</strong>ike to <strong>L</strong>ike \u2192 <strong>Bone to Bone</strong> at joints!",
+        "<strong>The 3 Ts Rule:</strong> <strong>T</strong>endons connect <strong>T</strong>wo <strong>T</strong>ypes \u2192 <strong>Bone to Muscle</strong>!",
+        "<strong>Cartilage Cushion:</strong> Tough, smooth, flexible tissue covering bone ends in movable joints to reduce friction and absorb shock.",
+        "<strong>Antagonistic Muscle Pairs:</strong> Because muscle fibers can only contract (shorten and pull), they must work in opposing pairs! To <strong>bend the elbow</strong>, the <strong>Biceps contracts</strong> while the <strong>Triceps relaxes</strong>. To <strong>straighten the arm</strong>, the <strong>Triceps contracts</strong> while the <strong>Biceps relaxes</strong>.",
+        "<strong>Limbs Protection:</strong> Long limb bones bear great stress \u2014 the <strong>femur</strong> in the thigh, the <strong>tibia (shin bone)</strong> and <strong>fibula (calf bone)</strong> in the leg (shielded by cricket pads!), and the <strong>humerus, radius, and ulna</strong> in the arm."
       ],
       "thinkPrompt": "Can regular exercise convert body fat directly into muscle tissue? (Exam trap: Fat cells and muscle fibers are completely different biological tissues!)"
+    },
+    {
+      "badge": "Muscle Control",
+      "title": "\ud83e\udd69 The 3 Muscle Types & Sports Physiology",
+      "metaphor": "Voluntary muscles obey your thoughts; involuntary muscles protect your life 24/7 without being asked!",
+      "points": [
+        "<strong>Striated / Skeletal Muscle:</strong> Voluntary, striped fibers attached to bones by tendons. Controlled consciously by our cerebrum for walking, running, writing, and talking.",
+        "<strong>Why Leg Muscles MUST Be Voluntary:</strong> You need conscious control to choose when to walk, run, sprint, jump, or stop. If leg muscles were involuntary, they would twitch and kick autonomously without your control!",
+        "<strong>Smooth Muscle:</strong> Involuntary, unstriped spindle fibers in the walls of the stomach, intestines, and blood vessels. Churns food automatically via peristalsis.",
+        "<strong>Cardiac Muscle:</strong> Involuntary, striated network exclusively in heart walls. Contracts rhythmically 24/7 throughout life without ever getting tired!",
+        "<strong>Sports Fatigue:</strong> When Keshav's legs ache after a 100m sprint, it is due to temporary lactic acid accumulation in hard-working voluntary muscles \u2014 resolved with rest, deep breathing, and hydration."
+      ],
+      "thinkPrompt": "What would happen if your heart muscles were voluntary instead of involuntary?"
+    },
+    {
+      "badge": "Comparative Biology",
+      "title": "\ud83d\udc0d Endoskeletons vs Exoskeletons in Animals",
+      "metaphor": "Vertebrates build their bone fortress INSIDE; invertebrates wear their armor OUTSIDE!",
+      "points": [
+        "<strong>Endoskeleton (Vertebrates):</strong> Internal framework of bones inside the body. Mammals, birds, reptiles, amphibians, and fish have backbones and endoskeletons. <em>Snakes are vertebrates with a flexible backbone and hundreds of ribs inside!</em>",
+        "<strong>Exoskeleton (Invertebrates):</strong> Hard outer shell or casing enclosing the soft body. Insects (flies, beetles) have chitinous exoskeletons; snails have hard calcium shells.",
+        "<strong>Hydrostatic Skeleton:</strong> Soft-bodied invertebrates like earthworms have neither bones nor shells; they rely on pressurized fluid in body segments to burrow."
+      ],
+      "thinkPrompt": "Why can an animal with an endoskeleton (like an elephant or blue whale) grow vastly larger than an animal with an exoskeleton (like a beetle)?"
     }
   ],
   "examTraps": [
@@ -809,7 +837,7 @@ const CHAPTERS_DATA = [
       "student": "Rohan",
       "question": "When we chew a slice of bread, how do our jaws move?",
       "studentAnswer": "Both our upper jaw and lower jaw move up and down to crush the food between our teeth.",
-      "prompt": "What is Rohan’s anatomical misconception?",
+      "prompt": "What is Rohan\u2019s anatomical misconception?",
       "options": [
         "Only the upper jaw moves up and down; the lower jaw remains stationary against the neck.",
         "The upper jaw is fused immovable to the skull; ONLY the lower jaw (mandible) is movable during chewing and talking!",
@@ -837,7 +865,7 @@ const CHAPTERS_DATA = [
       "student": "Aman",
       "question": "How do muscles extend our forearm when pushing open a door?",
       "studentAnswer": "The bicep muscle pushes the forearm bones forward like a piston.",
-      "prompt": "Why is Aman’s understanding of muscle mechanics physically impossible?",
+      "prompt": "Why is Aman\u2019s understanding of muscle mechanics physically impossible?",
       "options": [
         "Biceps pull the shoulder backward, which causes the arm to push forward by momentum.",
         "Muscles can ONLY PULL by contracting; they can NEVER PUSH! To straighten the arm, the opposing tricep muscle contracts and pulls the forearm down.",
@@ -851,7 +879,7 @@ const CHAPTERS_DATA = [
       "student": "Sneha",
       "question": "What are floating ribs in the human ribcage?",
       "studentAnswer": "Floating ribs are broken ribs that detached from the spine and float freely in the stomach.",
-      "prompt": "Diagnose Sneha’s medical and anatomical error:",
+      "prompt": "Diagnose Sneha\u2019s medical and anatomical error:",
       "options": [
         "Floating ribs are the top two ribs that float above the collarbone.",
         "Floating ribs are normal, healthy ribs (pairs 11 & 12) attached to the backbone behind, but unattached to the sternum in front to allow lung expansion.",
@@ -865,7 +893,7 @@ const CHAPTERS_DATA = [
       "student": "Kunal",
       "question": "Can regular gym workouts turn body fat directly into muscle?",
       "studentAnswer": "Yes, when we do heavy exercise, fat turns directly into muscle tissue.",
-      "prompt": "Why is Kunal’s statement scientifically flawed?",
+      "prompt": "Why is Kunal\u2019s statement scientifically flawed?",
       "options": [
         "Fat turns into bone first, and then bone turns into muscle tissue.",
         "Fat and muscle are two entirely different biological tissues; exercise burns fat for fuel and builds muscle fibers, but fat never morphs into muscle!",
@@ -873,13 +901,588 @@ const CHAPTERS_DATA = [
       ],
       "correctIndex": 1,
       "teacherFeedback": "Excellent! Fat (adipose tissue) and muscle fibers are distinct cell lineages. You burn fat as metabolic fuel and synthesize new muscle proteins, but one cannot morph into the other."
+    },
+    {
+      "id": "trap_l3_involuntary_legs",
+      "student": "Keshav",
+      "question": "Why shouldn't leg muscles be involuntary so athletes never feel tired during sports day?",
+      "studentAnswer": "Having involuntary muscles in legs would be great because athletes would never have to try hard and could win every race automatically.",
+      "prompt": "What critical biological flaw is Keshav overlooking?",
+      "options": [
+        "Involuntary muscles move without conscious control; if leg muscles were involuntary, you could never decide when to walk, run, stop, or stand still!",
+        "Involuntary muscles are found only in dead organisms.",
+        "Legs have no muscles at all; they move purely using bone electricity."
+      ],
+      "correctIndex": 0,
+      "teacherFeedback": "Outstanding critical diagnosis! Voluntary control is essential for conscious locomotion. If your legs were involuntary, they would march or kick unpredictably without your command!"
+    },
+    {
+      "id": "trap_l3_movable_cranium",
+      "student": "Roy",
+      "question": "Can we replace cricket helmets if our cranium had movable joints like our fingers?",
+      "studentAnswer": "Yes, movable joints in the skull would make the head flexible so a cricket ball would bounce off without pain.",
+      "prompt": "Diagnose Roy's dangerous anatomical misconception:",
+      "options": [
+        "Movable cranial plates would shift and press inward upon ball impact, crushing the delicate brain inside! Fixed suture joints are essential to form a rigid, impenetrable protective helmet.",
+        "The cranium already has movable joints, but helmets are required to keep the sun off our face.",
+        "Cranial bones are made of rubber, so they do not need joints."
+      ],
+      "correctIndex": 0,
+      "teacherFeedback": "Life-saving deduction! The 8 cranial bones must remain immovably fused to form an unyielding protective shell around the delicate brain. Movable joints would cause catastrophic brain compression upon impact!"
     }
   ],
   "questions": [
     {
+      "id": "l3_ws1_q1",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet I \u2022 Q1",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "image": "images/l3_ws1_arm_tendon.png",
+      "body": "Observe the diagram of the human arm muscles and joints below.<br>Identify <strong>M</strong> and <strong>N</strong> respectively:",
+      "options": [
+        "Tendon and cartilage",
+        "Cartilage and tendon",
+        "Tendon and ligament",
+        "Ligament and tendon"
+      ],
+      "correct": 0,
+      "explanation": "Label M points to the tendon that firmly anchors the bicep muscle to the shoulder bone (scapula). Label N points to the cartilage pad at the elbow joint that prevents bone wear and reduces friction.",
+      "metacognitiveClue": "Remember the 3 Ts rule: Tendon connects Two Types (Muscle to Bone). Cartilage cushions bone ends at the joint.",
+      "examTrap": "\u26a0\ufe0f Common Exam Trap: Do not confuse tendons (muscle-to-bone) with ligaments (bone-to-bone).",
+      "takeaway": "Tendon (M) anchors muscle to bone; Cartilage (N) lines the movable joint surface to prevent friction."
+    },
+    {
+      "id": "l3_ws1_q2",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet I \u2022 Q2",
+      "wsNumber": 1,
+      "image": "images/l3_ws1_hip_joint.png",
+      "body": "Observe the diagram of the pelvic girdle and lower limbs below.<br>Identify the type of joint labelled <strong>S</strong> at the hip:",
+      "options": [
+        "Hinge joint",
+        "Pivot joint",
+        "Ball and socket joint",
+        "Gliding joint"
+      ],
+      "correct": 2,
+      "explanation": "Label S points to the hip joint, where the spherical head of the femur (thigh bone) fits neatly inside the cup-like socket of the pelvis. This is a classic Ball and Socket joint permitting 360\u00b0 rotation.",
+      "metacognitiveClue": "Ask yourself: Which joint allows you to swing your leg in circles, kick sideways, and move in all directions?",
+      "takeaway": "Hip joint (S) = Ball and Socket Joint (allows 360\u00b0 multidirectional movement)."
+    },
+    {
+      "id": "l3_ws1_q3",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet I \u2022 Q3",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "The joint present in the human skeletal girdles (shoulder pectoral girdle and hip pelvic girdle) is a ball-and-socket joint that:",
+      "options": [
+        "allows movement in only one direction",
+        "is completely immovable",
+        "allows movement in all directions (360\u00b0 rotary motion)",
+        "allows sliding in two fixed directions only"
+      ],
+      "correct": 2,
+      "explanation": "Both the pectoral (shoulder) and pelvic (hip) girdles feature ball-and-socket joints that allow the greatest freedom of movement of any joint \u2014 rotating smoothly in all directions (360\u00b0).",
+      "takeaway": "Girdle joints = Ball and socket = Full 360\u00b0 rotary movement in all planes."
+    },
+    {
+      "id": "l3_ws1_q4",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet I \u2022 Q4",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "__________ is a smooth, tough, and flexible connective tissue present in the joints to cushion bone ends and reduce friction during movement.",
+      "options": [
+        "Tendon",
+        "Ligament",
+        "Cartilage",
+        "Bone marrow"
+      ],
+      "correct": 2,
+      "explanation": "Cartilage forms a slippery, smooth, rubbery coating over the articulating ends of bones inside movable joints, reducing friction and absorbing mechanical shocks.",
+      "metacognitiveClue": "Think of cartilage as nature's Teflon coating between bones so they slide without grinding.",
+      "takeaway": "Cartilage = Friction reducer & shock absorber at joint surfaces."
+    },
+    {
+      "id": "l3_ws1_q5",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet I \u2022 Q5",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "The bony protective helmet part of the skull which encloses and safeguards the delicate brain is called the:",
+      "options": [
+        "Lower jaw (mandible)",
+        "Vertebrae",
+        "Cranium (brain box)",
+        "Sternum"
+      ],
+      "correct": 2,
+      "explanation": "The cranium is the upper part of the skull made of 8 flat interlocking cranial bones fused tightly together to form a protective helmet that shields the brain.",
+      "takeaway": "Cranium = 8 fused bones forming the protective brain box."
+    },
+    {
+      "id": "l3_ws1_q6",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet I \u2022 Q6",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "Animals that do not possess a backbone or internal vertebral column are classified as:",
+      "options": [
+        "Invertebrates",
+        "Rodents",
+        "Reptiles",
+        "Vertebrates"
+      ],
+      "correct": 0,
+      "explanation": "Invertebrates are animals without a backbone or vertebral column. Examples include insects, snails, worms, and jellyfish. Vertebrates are animals with backbones (mammals, birds, reptiles, fish).",
+      "takeaway": "Invertebrates = Animals without a backbone."
+    },
+    {
+      "id": "l3_ws1_q8",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet I \u2022 Q8",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "image": "images/l3_ws1_pivot_joint.png",
+      "body": "Observe the diagram below showing the skull resting upon the neck vertebrae with rotational arrows.<br>Identify the movable joint <strong>X</strong>:",
+      "options": [
+        "Pivot joint",
+        "Gliding joint",
+        "Ball and socket joint",
+        "Hinge joint"
+      ],
+      "correct": 0,
+      "explanation": "Joint X is the Pivot Joint located between the skull (atlas vertebra) and the axis vertebra of the neck. It allows our head to twist from side to side (shaking 'No') and tilt up and down (nodding 'Yes').",
+      "takeaway": "Neck joint (X) = Pivot Joint (allows rotational turning and twisting of the head)."
+    },
+    {
+      "id": "l3_ws1_q9",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet I \u2022 Q9",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "image": "images/l3_ws1_animals_endoskeleton.png",
+      "body": "Which of the four organisms shown below has an <strong>endoskeleton</strong> (an internal skeleton made of bones inside its body)?<br>(a) Snake &nbsp;&nbsp;&nbsp; (b) Snail &nbsp;&nbsp;&nbsp; (c) Earthworm &nbsp;&nbsp;&nbsp; (d) Housefly",
+      "options": [
+        "Snake (a)",
+        "Snail (b)",
+        "Earthworm (c)",
+        "Housefly (d)"
+      ],
+      "correct": 0,
+      "explanation": "Snakes are true reptiles (vertebrates) possessing an internal bony endoskeleton made of a skull, a long flexible vertebral column, and hundreds of ribs. Snails have an outer shell (exoskeleton), earthworms have a hydrostatic fluid skeleton, and houseflies have an outer chitin exoskeleton.",
+      "metacognitiveClue": "Ask yourself: Which of these animals has a real internal spine of bones?",
+      "takeaway": "Snake = Vertebrate with an internal bony endoskeleton."
+    },
+    {
+      "id": "l3_ws1_q10",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet I \u2022 Q10",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "The human skull is made up of 22 bones: the cranium is made up of _____ bones and our face including the lower jaw is made of _____ bones.",
+      "options": [
+        "8, 14",
+        "1, 8",
+        "12, 10",
+        "14, 8"
+      ],
+      "correct": 0,
+      "explanation": "The human skull has 22 bones in total: exactly 8 flat bones fused into the cranium (helmet) and 14 bones making up the facial structure (including the movable lower jaw).",
+      "takeaway": "Skull (22 bones) = 8 Cranial helmet bones + 14 Facial bones."
+    },
+    {
+      "id": "l3_ws1_q11",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet I \u2022 Q11",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "__________ is a flexible, shock-absorbing cartilage pad present between adjacent vertebrae of the backbone that allows bending and cushions the spine.",
+      "options": [
+        "Intervertebral disc",
+        "Spinal cord",
+        "Sternum",
+        "Floating rib"
+      ],
+      "correct": 0,
+      "explanation": "Intervertebral discs are tough fibrocartilage pads situated between each pair of vertebrae. They act as cushions that absorb shock when walking or jumping and allow the spine to bend smoothly.",
+      "takeaway": "Intervertebral discs = Cartilage cushions between vertebrae for bending and shock absorption."
+    },
+    {
+      "id": "l3_ws1_q12",
+      "category": "oddone",
+      "source": "Freedom International School \u2022 Worksheet I \u2022 Q12",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "Choose the <strong>odd one out</strong> based on voluntary versus involuntary muscular control:<br><strong>Stomach, Intestine, Skeletal muscles, Cardiac muscles</strong>",
+      "options": [
+        "Stomach muscles",
+        "Intestine muscles",
+        "Skeletal muscles",
+        "Cardiac muscles"
+      ],
+      "correct": 2,
+      "explanation": "Skeletal muscles are VOLUNTARY muscles under our conscious control (for running, writing, speaking). In contrast, the stomach and intestine (smooth muscles) and the heart (cardiac muscle) are all INVOLUNTARY muscles operating autonomously 24/7.",
+      "takeaway": "Skeletal muscles = Voluntary; Stomach, intestine, and cardiac muscles = Involuntary."
+    },
+    {
+      "id": "l3_ws1_q13",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet I \u2022 Q13",
+      "wsNumber": 1,
+      "marks": "1 Mark",
+      "body": "The 11th and 12th pairs of ribs in the human ribcage are called floating ribs because they are attached to the backbone behind, but are NOT attached to the __________ in front.",
+      "options": [
+        "Backbone",
+        "Spine",
+        "Sternum (breastbone)",
+        "Femur"
+      ],
+      "correct": 2,
+      "explanation": "Floating ribs (the bottom two pairs, 11 & 12) attach to the thoracic vertebrae of the backbone at the rear, but remain free at the front without connecting to the central breastbone (sternum).",
+      "takeaway": "Floating ribs = 11th & 12th rib pairs not attached to the sternum."
+    },
+    {
+      "id": "l3_ws2_q1",
+      "category": "scenario",
+      "source": "Freedom International School \u2022 Worksheet II \u2022 Q I",
+      "wsNumber": 2,
+      "marks": "2 Marks",
+      "body": "How are <strong>involuntary muscles</strong> useful to our survival? Explain with a concrete daily life example.",
+      "options": [
+        "They work automatically without conscious effort, maintaining vital body functions like food digestion in the intestines and blood pumping by cardiac heart muscles 24/7 even while we sleep.",
+        "They allow us to run faster in 100m sports races by thinking hard about our legs.",
+        "They help us lift heavy school bags by conscious choice.",
+        "They produce white and red blood cells inside long bones."
+      ],
+      "correct": 0,
+      "explanation": "Involuntary muscles operate automatically without requiring conscious thought or effort. They ensure vital processes never stop \u2014 smooth muscles churn and push food through the stomach and intestines (peristalsis), and cardiac muscles pump blood through blood vessels 24/7 without fatigue.",
+      "takeaway": "Involuntary muscles = Autonomous 24/7 lifesavers (heart pumping, digestive churning)."
+    },
+    {
+      "id": "l3_ws2_q2",
+      "category": "compare",
+      "source": "Freedom International School \u2022 Worksheet II \u2022 Q II.1",
+      "wsNumber": 2,
+      "marks": "2 Marks",
+      "body": "Which statement accurately differentiates between the <strong>Rib Cage</strong> and the <strong>Skull</strong>?",
+      "options": [
+        "Rib cage consists of 12 pairs of curved ribs and the sternum protecting the heart and lungs; Skull consists of 22 bones (8 cranial + 14 facial) safeguarding the brain and sense organs.",
+        "Rib cage has 33 vertebrae; Skull has 24 floating ribs.",
+        "Rib cage has immovable joints only; Skull has ball-and-socket joints for chewing.",
+        "Rib cage is made of bone marrow; Skull is made entirely of cartilage."
+      ],
+      "correct": 0,
+      "explanation": "The Rib Cage has 12 pairs of curved bones attached to the sternum and spine to protect thoracic organs (heart and lungs) and expand during breathing. The Skull has 22 bones protecting the encephalon (brain) and housing facial sense organs, with immovable cranial sutures.",
+      "takeaway": "Rib cage = 12 rib pairs protecting heart/lungs; Skull = 22 bones protecting brain/facial organs."
+    },
+    {
+      "id": "l3_ws2_q3",
+      "category": "compare",
+      "source": "Freedom International School \u2022 Worksheet II \u2022 Q II.2",
+      "wsNumber": 2,
+      "marks": "2 Marks",
+      "body": "Differentiate between a <strong>Tendon</strong> and a <strong>Ligament</strong> using the master biological mnemonics (3 Ls and 3 Ts):",
+      "options": [
+        "Ligament connects Like to Like (Bone to Bone at joints); Tendon connects Two Types (Muscle to Bone).",
+        "Ligament connects muscle to bone; Tendon connects bone to bone.",
+        "Ligaments are located only in the skull; Tendons are located only in the rib cage.",
+        "Ligaments produce red blood cells; Tendons store calcium."
+      ],
+      "correct": 0,
+      "explanation": "Ligament (3 Ls: Like to Like) connects Bone to Bone, holding articulating bones together at joints. Tendon (3 Ts: Two Types) connects Muscle to Bone, transmitting pulling muscular force to move bones.",
+      "takeaway": "Ligament = Like-to-Like (Bone-Bone); Tendon = Two-Types (Muscle-Bone)."
+    },
+    {
+      "id": "l3_ws2_q4",
+      "category": "whoami",
+      "source": "Freedom International School \u2022 Worksheet II \u2022 Q III",
+      "wsNumber": 2,
+      "marks": "2 Marks",
+      "body": "What are <strong>immovable (fixed) joints</strong>, and how are the immovable joints in the human skull helpful to us?",
+      "options": [
+        "They are joints where bones are fused rigidly and permit zero movement; in the skull, they lock the 8 cranial plates into a tough, solid helmet that shields the soft brain from injury and shock.",
+        "They are joints that rotate 360\u00b0; they allow the skull to spin around without breaking.",
+        "They allow the brain to expand and contract like an accordion.",
+        "They are joints connecting teeth directly to the collarbone."
+      ],
+      "correct": 0,
+      "explanation": "Immovable joints feature tightly interlocked jagged bone edges fused by dense fibrous tissue with no joint cavity. In the skull, the 8 cranial bones fuse rigidly into a protective helmet, ensuring external bumps and pressure do not compress the delicate brain.",
+      "takeaway": "Immovable joints = Zero movement; in the skull, they form an impenetrable shield for the brain."
+    },
+    {
+      "id": "l3_ws2_q5",
+      "category": "oddone",
+      "source": "Freedom International School \u2022 Worksheet II \u2022 Q IV",
+      "wsNumber": 2,
+      "marks": "2 Marks",
+      "body": "Choose the <strong>odd one out</strong> and identify the correct scientific justification:<br><strong>Femur, Calf bone (Fibula), Humerus, Shin bone (Tibia)</strong>",
+      "options": [
+        "Humerus \u2014 It is the single long bone of the upper arm (forelimb), whereas femur, calf bone, and shin bone are all bones of the leg (hindlimb).",
+        "Femur \u2014 It is located in the arm, while all others are in the leg.",
+        "Calf bone \u2014 It is made of cartilage, while all others are made of bone.",
+        "Shin bone \u2014 It is an involuntary muscle, while the others are bones."
+      ],
+      "correct": 0,
+      "explanation": "The humerus is the upper arm bone of the forelimb. In contrast, the femur (thigh bone), shin bone (tibia), and calf bone (fibula) are all constituent long bones of the lower limb (hindlimb).",
+      "takeaway": "Humerus = Upper arm (forelimb); Femur, tibia, and fibula = Leg bones (hindlimb)."
+    },
+    {
+      "id": "l3_ws2_q6",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet II \u2022 Q V.1-2",
+      "wsNumber": 2,
+      "marks": "2 Marks",
+      "image": "images/l3_ws2_vertebral_column.png",
+      "body": "Observe the biological structure labelled <strong>X</strong> shown below.<br>Identify structure X and the labelled parts <strong>L</strong> and <strong>M</strong>:",
+      "options": [
+        "Structure X: Vertebral column (Backbone); L: Vertebra (individual ring bone); M: Intervertebral disc (Cartilage cushion)",
+        "Structure X: Femur; L: Bone marrow; M: Tendon",
+        "Structure X: Ribcage; L: Sternum; M: Floating rib",
+        "Structure X: Pelvis; L: Ball; M: Socket"
+      ],
+      "correct": 0,
+      "explanation": "Structure X is the human vertebral column (spine). Label L points to an individual vertebra (one of 33 ring-like bones). Label M points to the intervertebral disc of cartilage sandwiched between adjacent vertebrae.",
+      "takeaway": "Structure X = Vertebral column; L = Vertebra; M = Cartilage intervertebral disc."
+    },
+    {
+      "id": "l3_ws2_q7",
+      "category": "scenario",
+      "source": "Freedom International School \u2022 Worksheet II \u2022 Q V.3",
+      "wsNumber": 2,
+      "marks": "2 Marks",
+      "image": "images/l3_ws2_vertebral_column.png",
+      "body": "Referring to structure X (Backbone), what is the vital significance of having <strong>33 small vertebrae (L)</strong> separated by <strong>cartilage discs (M)</strong> instead of a single solid bone?",
+      "options": [
+        "The multiple interlocking vertebrae allow flexible bending, twisting, and shock absorption, whereas a single solid bone would leave our spine stiff and unable to bend!",
+        "They produce digestive saliva and enzymes during running.",
+        "They prevent our head from turning towards our shoulders.",
+        "They maintain our body temperature by sweating."
+      ],
+      "correct": 0,
+      "explanation": "If the spine were a single unbroken rod of bone, we could never bend forward to tie our shoes, sit on a chair, or twist our torso. The 33 vertebrae connected by flexible cartilage discs give our back flexibility, absorb jumping shocks, and shield the spinal cord.",
+      "takeaway": "33 vertebrae + cartilage discs = Spinal flexibility and shock absorption."
+    },
+    {
+      "id": "l3_ws2_q8",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet II \u2022 Q VI",
+      "wsNumber": 2,
+      "marks": "2 Marks",
+      "image": "images/l3_ws2_knee_joint.png",
+      "body": "Observe the knee joint diagram shown below.<br>Identify labelled part <strong>P</strong>, the type of joint, and the primary role of P:",
+      "options": [
+        "P is the Patella (kneecap) in a Hinge joint; it shields the front of the knee joint from impact and improves thigh muscle pulling leverage.",
+        "P is a Ball and socket joint; it allows the knee to spin 360\u00b0 in all directions.",
+        "P is the Bicep tendon in a Pivot joint; it rotates the ankle.",
+        "P is the Cranium in an Immovable joint; it shields the spinal cord."
+      ],
+      "correct": 0,
+      "explanation": "Label P is the Patella (kneecap), an oval bone situated in front of the knee joint. The knee is a Hinge Joint. The patella protects the delicate joint structures from falls and increases the leverage of the quadriceps tendon when extending the leg.",
+      "takeaway": "P = Patella (kneecap) protecting the Hinge joint of the knee."
+    },
+    {
+      "id": "l3_ws2_q9",
+      "category": "compare",
+      "source": "Freedom International School \u2022 Worksheet II \u2022 Q VII",
+      "wsNumber": 2,
+      "marks": "2 Marks",
+      "image": "images/l3_ws2_skull_neck_joints.png",
+      "body": "Observe pictures 1 and 2 below showing joints in the human head and neck.<br>Identify the two joint types and their biological roles:",
+      "options": [
+        "1: Immovable / Fixed joint (locks cranial plates together to protect brain); 2: Pivot joint (allows head to rotate side-to-side and tilt up-and-down).",
+        "1: Hinge joint (allows forehead to open); 2: Ball and socket joint (allows head to spin 360\u00b0 like a propeller).",
+        "1: Gliding joint; 2: Immovable joint.",
+        "Both 1 and 2 are voluntary skeletal muscles."
+      ],
+      "correct": 0,
+      "explanation": "Picture 1 shows the cranial suture joints \u2014 Immovable (fixed) joints that fuse cranial bones together to protect the brain. Picture 2 shows the joint between the skull and the first two cervical vertebrae \u2014 a Pivot Joint allowing the head to turn left, right, up, and down.",
+      "takeaway": "Picture 1 = Immovable skull sutures (brain armor); Picture 2 = Pivot joint (head rotation)."
+    },
+    {
+      "id": "l3_ws2_q10",
+      "category": "compare",
+      "source": "Freedom International School \u2022 Worksheet II \u2022 Q VIII",
+      "wsNumber": 2,
+      "marks": "2 Marks",
+      "image": "images/l3_ws2_movements.png",
+      "body": "Observe the two movements shown below.<br>Classify the joints used for movement 1 (bending forearm) and movement 2 (swinging leg outward):",
+      "options": [
+        "Movement 1: Elbow joint (Hinge joint); Movement 2: Hip joint (Ball and socket joint).",
+        "Movement 1: Shoulder joint (Pivot); Movement 2: Knee joint (Gliding).",
+        "Movement 1: Immovable joint; Movement 2: Fixed joint.",
+        "Movement 1: Gliding joint; Movement 2: Hinge joint."
+      ],
+      "correct": 0,
+      "explanation": "Movement 1 shows bending the arm at the elbow, which is a Hinge Joint operating back-and-forth in one direction. Movement 2 shows raising and swinging the leg outward at the hip, which utilizes the Ball and Socket Joint.",
+      "takeaway": "Movement 1 = Elbow Hinge joint (1-way bend); Movement 2 = Hip Ball & Socket joint (multidirectional swing)."
+    },
+    {
+      "id": "l3_ws3_q1",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet III \u2022 Q I.1",
+      "wsNumber": 3,
+      "marks": "5 Marks",
+      "image": "images/l3_ws3_full_skeleton.png",
+      "body": "In the skeletal diagram below, observe bones <strong>A, B, C, D</strong> and joints <strong>P, Q, R, S</strong>.<br>Which option correctly identifies ALL labelled parts?",
+      "options": [
+        "Bones: A-Ribs/Sternum, B-Backbone, C-Pelvis, D-Femur | Joints: P-Pivot (Neck), Q-Hinge (Elbow), R-Gliding (Wrist), S-Hinge (Knee)",
+        "Bones: A-Femur, B-Pelvis, C-Ribs, D-Backbone | Joints: P-Hinge, Q-Pivot, R-Ball & Socket, S-Gliding",
+        "Bones: A-Skull, B-Clavicle, C-Humerus, D-Tibia | Joints: P-Fixed, Q-Gliding, R-Hinge, S-Pivot",
+        "Bones: A-Sternum, B-Femur, C-Patella, D-Fibula | Joints: P-Gliding, Q-Pivot, R-Ball & Socket, S-Fixed"
+      ],
+      "correct": 0,
+      "explanation": "Bones: A = Ribs / Sternum (chest shield), B = Backbone / Vertebral column, C = Pelvis / Pelvic girdle (hip), D = Femur (thigh bone). Joints: P = Pivot joint at neck, Q = Hinge joint at elbow, R = Gliding joint at wrist, S = Hinge joint at knee.",
+      "takeaway": "Bones: A-Ribs, B-Spine, C-Pelvis, D-Femur | Joints: P-Pivot, Q-Elbow hinge, R-Wrist gliding, S-Knee hinge."
+    },
+    {
+      "id": "l3_ws3_q2",
+      "category": "whoami",
+      "source": "Freedom International School \u2022 Worksheet III \u2022 Q I.2-3",
+      "wsNumber": 3,
+      "marks": "2 Marks",
+      "image": "images/l3_ws3_full_skeleton.png",
+      "body": "Referring to the full skeleton diagram, what is found inside the hollow cavity of bone <strong>D (femur)</strong>, and what holds bones together at joints?",
+      "options": [
+        "Inside D is Bone Marrow (produces red and white blood cells); bones are held together at joints by strong fibrous bands called Ligaments.",
+        "Inside D is Cartilage (produces hair); bones are held together by Tendons.",
+        "Inside D is Stomach acid; bones are held together by Muscles.",
+        "Inside D is Pure calcium stone; bones are held together by Floating ribs."
+      ],
+      "correct": 0,
+      "explanation": "Inside long bones like the femur (D) is a soft, spongy tissue called Bone Marrow, which manufactures millions of new red blood cells and white blood cells daily. Bones are bound together at joints by tough, elastic fibrous bands called Ligaments (3 Ls rule: Like to Like).",
+      "takeaway": "Femur interior = Bone Marrow (blood factory); Bones held together = Ligaments."
+    },
+    {
+      "id": "l3_ws3_q3",
+      "category": "whoami",
+      "source": "Freedom International School \u2022 Worksheet III \u2022 Q B.1-4",
+      "wsNumber": 3,
+      "marks": "5 Marks",
+      "image": "images/l3_ws3_skull.png",
+      "body": "Observe diagram <strong>X</strong> showing the human skull.<br>How many bones make up X, what joints does it contain, and what are its key functions?",
+      "options": [
+        "22 bones (8 cranial + 14 facial); immovable suture joints in cranium and ONLY ONE movable joint at the lower jaw; protects the brain and sense organs, shapes the face, and enables chewing and talking.",
+        "33 bones; all ball-and-socket joints; produces digestive enzymes.",
+        "206 bones; all hinge joints; pumps blood to the limbs.",
+        "12 bones; immovable jaw and movable cranium; filters air during breathing."
+      ],
+      "correct": 0,
+      "explanation": "Structure X is the human skull (22 bones). The cranium consists of 8 interlocking bones joined by immovable suture joints to protect the brain. The facial skeleton has 14 bones, where only the lower jaw (mandible) is movable, allowing chewing, speaking, and yawning.",
+      "takeaway": "Skull (X) = 22 bones (8 cranial + 14 facial); only lower jaw is movable; protects brain & enables speech/chewing."
+    },
+    {
+      "id": "l3_ws3_q4",
+      "category": "scenario",
+      "source": "Freedom International School \u2022 Worksheet III \u2022 Q II.1",
+      "wsNumber": 3,
+      "marks": "3 Marks",
+      "body": "After the 100m sprint on Sports Day, Keshav's legs ached and he wished he had <em>involuntary muscles</em> instead of <em>voluntary muscles</em> in his legs. Is this a good idea? Why or why not?",
+      "options": [
+        "No, it is a bad idea! Voluntary muscles give us conscious command to run, walk, stop, kick, or stand at will. If leg muscles were involuntary, they would contract automatically on their own, making coordinated walking impossible!",
+        "Yes, it is a great idea! Involuntary muscles never get tired, so Keshav could run at 100 km/h all day without stopping.",
+        "Yes, involuntary muscles only contract when we think about medals.",
+        "No, because involuntary muscles only exist in insects and spiders."
+      ],
+      "correct": 0,
+      "explanation": "Voluntary control is indispensable for locomotion. Conscious will allows us to accelerate, slow down, stop at red lights, climb stairs, or kick a ball. If legs were involuntary, they would move autonomously like our intestines, causing uncontrolled kicking or walking!",
+      "metacognitiveClue": "Ask yourself: What does 'involuntary' mean? Can you tell your stomach to stop digesting right now?",
+      "takeaway": "Leg muscles MUST be voluntary to give us conscious control over walking, running, and stopping."
+    },
+    {
+      "id": "l3_ws3_q5",
+      "category": "scenario",
+      "source": "Freedom International School \u2022 Worksheet III \u2022 Q II.2-4",
+      "wsNumber": 3,
+      "marks": "2 Marks",
+      "body": "How do voluntary muscles move our bones, and which joints did Grade V students use during their Sports Day display to (1) turn umbrellas around themselves and (2) hold the umbrellas?",
+      "options": [
+        "Muscles pull on bones via tendons by contracting (they never push); (1) Ball and socket joint in shoulder to rotate umbrellas, (2) Gliding joints in wrists and hinge joints in fingers to grip and hold.",
+        "Muscles push on bones like pistons; (1) Hinge joint in knees, (2) Pivot joint in neck.",
+        "Muscles inflate like balloons to push bones away; (1) Fixed joints, (2) Floating ribs.",
+        "Bones move on their own; muscles are only for storing water."
+      ],
+      "correct": 0,
+      "explanation": "Muscles move bones by contracting (shortening) and pulling on bones via inelastic tendons. To swing/turn an umbrella in a circle around the body, the Ball and Socket joint of the shoulder is used. To hold the handle, the Gliding joints in the wrist and Hinge joints of the finger phalanges grip the stick.",
+      "takeaway": "Muscles only PULL via tendons; Turning umbrellas = Shoulder Ball & Socket; Holding umbrellas = Finger Hinge & Wrist Gliding."
+    },
+    {
+      "id": "l3_ws3_q6",
+      "category": "scenario",
+      "source": "Freedom International School \u2022 Worksheet III \u2022 Q III.1-2",
+      "wsNumber": 3,
+      "marks": "3 Marks",
+      "image": "images/l3_ws3_cricket_batsman.png",
+      "body": "Cricket captain Roy fractured his leg after batting without his protective pad <strong>X</strong>.<br>Which bone was protected by X, and what would happen if the joint in our shoulders (ball & socket) were shifted to our knees?",
+      "options": [
+        "X protected the Shin bone (Tibia) & calf bone (Fibula); if knees had ball-and-socket joints, our lower legs would wobble and buckle sideways, making standing upright and bearing body weight impossible!",
+        "X protected the Humerus; if knees had ball-and-socket joints, we could run twice as fast.",
+        "X protected the Sternum; knees already have ball-and-socket joints.",
+        "X protected the Skull; our legs would become completely stiff like wooden logs."
+      ],
+      "correct": 0,
+      "explanation": "Cricket batting pads (X) shield the shin bone (Tibia) and calf bone (Fibula). If the knee had a ball-and-socket joint, the lower leg would swing in all 360\u00b0 directions, twisting and buckling under body weight, making stable standing, walking, and running impossible!",
+      "takeaway": "Pad X protects the Tibia (shin bone); Knees need Hinge joints for upright stability against buckling."
+    },
+    {
+      "id": "l3_ws3_q7",
+      "category": "scenario",
+      "source": "Freedom International School \u2022 Worksheet III \u2022 Q III.3-4",
+      "wsNumber": 3,
+      "marks": "2 Marks",
+      "body": "Roy thought he could skip wearing a batting helmet if his cranium had movable joints instead of fixed joints.<br>Why is Roy's hypothesis dangerous, and how does the movable joint in our lower jaw actually help us?",
+      "options": [
+        "Dangerous: Movable cranial plates would slide and press inward upon ball impact, crushing the delicate brain! The movable lower jaw enables us to chew food, speak, sing, and express facial emotions.",
+        "Roy is correct: Movable cranial plates would bounce the cricket ball away like rubber; the lower jaw does not move.",
+        "Dangerous: Helmets are only meant to keep hair neat; cranium joints are already movable.",
+        "Roy is correct: Fixed bones make the skull too heavy for batting; the lower jaw rotates the neck."
+      ],
+      "correct": 0,
+      "explanation": "Fixed cranial suture joints form an unyielding, rigid helmet around the soft brain tissue. If cranial joints were movable, any cricket ball impact would push the bones inwards, causing catastrophic brain trauma. The movable lower jaw (mandible) allows chewing, talking, and facial expression.",
+      "takeaway": "Cranium must have FIXED joints to protect the brain; Lower jaw movable joint allows chewing and speaking."
+    },
+    {
+      "id": "l3_ws3_q8",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet III \u2022 Q IV",
+      "wsNumber": 3,
+      "marks": "4 Marks",
+      "image": "images/l3_ws3_hand_joints.png",
+      "body": "Observe the skeletal diagram of the human hand shown below.<br>Identify the movable joints present in the wrist and fingers, and explain the movements they enable:",
+      "options": [
+        "Gliding joints between wrist carpal bones (sliding and waving motion) and Hinge joints between finger phalanges (bending and straightening to grip objects).",
+        "Pivot joints only, allowing fingers to rotate 360\u00b0 like propellers.",
+        "Immovable suture joints that prevent the hand from bending or grasping.",
+        "Ball and socket joints in each finger knuckle that allow fingers to detach."
+      ],
+      "correct": 0,
+      "explanation": "The wrist contains 8 carpal bones connected by Gliding Joints, allowing multi-directional sliding (waving, tilting, rolling the wrist). The finger joints between phalanges are Hinge Joints that allow bending and straightening in one plane to grasp tools, write, and hold objects.",
+      "takeaway": "Wrist = Gliding joints (multi-directional sliding); Fingers = Hinge joints (1-way bending to grasp)."
+    },
+    {
+      "id": "l3_ws3_q9",
+      "category": "mcq",
+      "source": "Freedom International School \u2022 Worksheet III \u2022 Q V",
+      "wsNumber": 3,
+      "marks": "3 Marks",
+      "image": "images/l3_ws3_joints_flowchart.png",
+      "body": "Observe the flowchart below classifying joints based on movement.<br>Which sequence correctly completes blanks <strong>a, b, c, d, e, f</strong>?<br>\u2022 A place where two or more bones meet &rarr; <strong>a</strong><br>\u2022 Moves? NO &rarr; <strong>b</strong><br>\u2022 Moves? YES &rarr; <strong>c</strong><br>\u2022 Allows movement in one direction? YES &rarr; <strong>d</strong><br>\u2022 Allows movement in 360\u00b0? YES &rarr; <strong>e</strong><br>\u2022 It allows us to twist, bend and turn? YES &rarr; <strong>f</strong>",
+      "options": [
+        "a: Joint, b: Immovable / Fixed joint, c: Movable joint, d: Hinge joint, e: Ball and socket joint, f: Pivot joint",
+        "a: Cartilage, b: Hinge joint, c: Tendon, d: Gliding joint, e: Pivot joint, f: Fixed joint",
+        "a: Ligament, b: Movable joint, c: Fixed joint, d: Ball and socket, e: Hinge, f: Spine",
+        "a: Muscle, b: Striated, c: Smooth, d: Cardiac, e: Tendon, f: Bone marrow"
+      ],
+      "correct": 0,
+      "explanation": "A place where two or more bones meet is a (a) Joint. If it does not move, it is an (b) Immovable (Fixed) Joint. If it moves, it is a (c) Movable Joint. Movement in one direction only = (d) Hinge Joint. Movement in 360\u00b0 = (e) Ball and Socket Joint. Twisting and rotational turning = (f) Pivot Joint.",
+      "takeaway": "a: Joint, b: Immovable/Fixed, c: Movable, d: Hinge, e: Ball and socket, f: Pivot."
+    },
+    {
       "id": "l3_q1",
       "category": "mcq",
-      "source": "Textbook • Section A • Q1",
+      "source": "NCERT / CBSE \u2022 Textbook Core \u2022 Q1",
       "wsNumber": 1,
       "marks": "1 Mark",
       "body": "How many bones are present in the adult human skeleton?",
@@ -896,7 +1499,7 @@ const CHAPTERS_DATA = [
     {
       "id": "l3_q2",
       "category": "mcq",
-      "source": "Thinkbook • Sheet 1 • Q4",
+      "source": "NCERT / CBSE \u2022 Development \u2022 Q2",
       "wsNumber": 1,
       "marks": "1 Mark",
       "body": "A newborn baby is born with more than 300 bones. Why does an adult have only 206 bones?",
@@ -913,7 +1516,7 @@ const CHAPTERS_DATA = [
     {
       "id": "l3_q3",
       "category": "mcq",
-      "source": "Textbook • Section A • Q4",
+      "source": "NCERT / CBSE \u2022 Bone Interior \u2022 Q3",
       "wsNumber": 1,
       "marks": "1 Mark",
       "body": "Long bones like the femur are filled inside with a soft, spongy tissue that produces new blood cells. What is this tissue called?",
@@ -930,7 +1533,7 @@ const CHAPTERS_DATA = [
     {
       "id": "l3_q4",
       "category": "mcq",
-      "source": "Textbook • Limbs • Q2",
+      "source": "NCERT / CBSE \u2022 Limbs Anatomy \u2022 Q4",
       "wsNumber": 1,
       "marks": "1 Mark",
       "image": "images/l3_limbs_girdles.png",
@@ -946,314 +1549,145 @@ const CHAPTERS_DATA = [
       "takeaway": "Femur = Longest & strongest bone in human body (thigh)."
     },
     {
-      "id": "l3_q5",
-      "category": "mcq",
-      "source": "Textbook • Skull • Q1",
-      "wsNumber": 1,
-      "marks": "1 Mark",
-      "body": "The human skull is made up of 22 bones. Out of these 22 bones, how many bones are movable?",
-      "options": [
-        "All 22 bones are movable",
-        "8 cranial bones are movable",
-        "Only ONE bone is movable: the lower jaw (mandible)",
-        "None of the bones can move"
-      ],
-      "correct": 2,
-      "explanation": "In the skull, 21 bones are fused firmly with immovable interlocking sutures. Only the lower jaw (mandible) is movable, which allows chewing, speaking, and yawning.",
-      "takeaway": "Skull: 22 bones total (8 cranial + 14 facial) → ONLY lower jaw moves!"
-    },
-    {
-      "id": "l3_q6",
-      "category": "mcq",
-      "source": "Textbook • Backbone • Q2",
-      "wsNumber": 1,
-      "marks": "1 Mark",
-      "body": "The human backbone (vertebral column) protects the delicate spinal cord. It is composed of a flexible chain of how many small bones called vertebrae?",
-      "options": [
-        "12 vertebrae",
-        "24 vertebrae",
-        "33 vertebrae",
-        "46 vertebrae"
-      ],
-      "correct": 2,
-      "explanation": "The human vertebral column consists of 33 vertebrae stacked on top of each other, separated by cartilage discs that provide flexibility for bending and twisting.",
-      "takeaway": "Vertebral column = 33 vertebrae protecting the spinal cord."
-    },
-    {
       "id": "l3_q7",
       "category": "mcq",
-      "source": "Textbook • Ribcage • Q3",
+      "source": "NCERT / CBSE \u2022 Ribcage \u2022 Q7",
       "wsNumber": 1,
       "marks": "1 Mark",
       "image": "images/l3_ribcage.png",
-      "body": "Observe the ribcage diagram below.<br>Why are the <strong>11th and 12th pairs of ribs</strong> called <strong>floating ribs</strong>?",
+      "body": "Observe the ribcage diagram below.<br>Why are the <strong>11th and 12th pairs of ribs</strong> called <em>floating ribs</em>?",
       "options": [
-        "They float in water if removed from the body",
-        "They are attached only to the backbone behind and are NOT connected to the breastbone (sternum) in front",
-        "They are made of cartilage instead of real bone",
-        "They are attached to the collarbone instead of the spine"
+        "Because they float on water if detached",
+        "Because they are attached to the backbone behind, but are NOT attached to the sternum (breastbone) in front",
+        "Because they float freely in the abdominal cavity with no spinal attachment",
+        "Because they move up into the neck during breathing"
       ],
       "correct": 1,
-      "explanation": "The human ribcage has 12 pairs of ribs. The first 10 pairs attach to the sternum in front, while the last two pairs (11 and 12) attach only to the thoracic spine, leaving their front ends free (floating).",
-      "takeaway": "Floating ribs = 2 pairs (11th & 12th) attached ONLY to backbone, free in front."
-    },
-    {
-      "id": "l3_q8",
-      "category": "mcq",
-      "source": "Textbook • Section A • Q2",
-      "wsNumber": 2,
-      "marks": "1 Mark",
-      "body": "What is the biological term for a place in the skeletal system where two or more bones meet?",
-      "options": [
-        "A marrow",
-        "A tendon",
-        "A joint",
-        "A vertebrae"
-      ],
-      "correct": 2,
-      "explanation": "A joint (articulation) is the junction where two or more bones connect. Joints enable movement and provide mechanical support.",
-      "takeaway": "Joint = Place where two or more bones meet."
+      "explanation": "The 11th and 12th rib pairs are attached only to the thoracic vertebrae of the backbone behind, but their front ends are completely free and unattached to the sternum. This allows diaphragmatic breathing.",
+      "takeaway": "Floating ribs = Last 2 pairs (11 & 12) unattached to the sternum in front."
     },
     {
       "id": "l3_q9",
       "category": "mcq",
-      "source": "Textbook • Movable Joints • Q1",
+      "source": "NCERT / CBSE \u2022 Joints \u2022 Q9",
       "wsNumber": 2,
       "marks": "1 Mark",
       "image": "images/l3_joints.png",
-      "body": "Which type of movable joint allows <strong>rotary motion in all directions (360°)</strong>, similar to a computer gaming joystick?",
+      "body": "Which type of movable joint allows <strong>rotary motion in all directions (360\u00b0 freedom)</strong> like a joystick, and is found in our shoulders and hips?",
       "options": [
         "Hinge joint",
-        "Gliding joint",
         "Ball and socket joint",
-        "Pivot joint"
+        "Pivot joint",
+        "Gliding joint"
       ],
-      "correct": 2,
-      "explanation": "The ball and socket joint (found in shoulders and hips) features a rounded bone head fitting into a cup cavity, permitting circular rotary movement in all planes.",
-      "takeaway": "Ball and socket = 360° rotary motion in all directions (Shoulder & Hip)."
+      "correct": 1,
+      "explanation": "The ball and socket joint consists of the ball-like head of one bone fitting into a cup-like socket of another bone. It allows full 360\u00b0 circular motion in all directions (shoulder and hip).",
+      "takeaway": "Ball and socket joint = 360\u00b0 freedom in all directions (shoulder & hip)."
     },
     {
       "id": "l3_q10",
       "category": "mcq",
-      "source": "Textbook • Movable Joints • Q2",
+      "source": "NCERT / CBSE \u2022 Joints \u2022 Q10",
       "wsNumber": 2,
       "marks": "1 Mark",
-      "body": "A door hinge allows a wooden door to open and close in only one direction. Which joints in the human body are <strong>hinge joints</strong>?",
+      "image": "images/l3_joints.png",
+      "body": "A door hinge allows a wooden door to open and close in only one direction. Which joints in the human body work on the exact same mechanical principle?",
       "options": [
-        "Shoulder and hip joints",
-        "Knee, elbow, finger, and toe joints",
-        "Neck and skull joint",
-        "Wrist and ankle joints"
-      ],
-      "correct": 1,
-      "explanation": "Hinge joints allow movement in a single plane (bending and straightening only), just like door hinges. Examples include elbows, knees, fingers, and toes.",
-      "takeaway": "Hinge joint = One-direction planar motion (Elbow, Knee, Fingers, Toes)."
-    },
-    {
-      "id": "l3_q11",
-      "category": "mcq",
-      "source": "Textbook • Movable Joints • Q3",
-      "wsNumber": 2,
-      "marks": "1 Mark",
-      "body": "The joint present between the skull and the first vertebra of the backbone that allows us to turn our head sideways and nod up and down is called a __________.",
-      "options": [
-        "Gliding joint",
-        "Hinge joint",
-        "Pivot joint",
-        "Ball and socket joint"
-      ],
-      "correct": 2,
-      "explanation": "The pivot joint (atlantoaxial joint) between the skull base and top vertebra permits rotation around a single central axis, letting you turn your head side-to-side and tilt up-and-down.",
-      "takeaway": "Pivot joint = Neck rotation between skull and spine."
-    },
-    {
-      "id": "l3_q12",
-      "category": "mcq",
-      "source": "Textbook • Movable Joints • Q4",
-      "wsNumber": 2,
-      "marks": "1 Mark",
-      "body": "Which joints allow bones to slide smoothly over each other in multiple directions, such as when you wave your hand at the wrist or roll your ankle?",
-      "options": [
-        "Gliding joints",
-        "Hinge joints",
-        "Ball and socket joints",
-        "Immovable joints"
+        "Elbows, knees, and finger joints",
+        "Shoulders and hips",
+        "Skull and first vertebra",
+        "Wrists and ankles"
       ],
       "correct": 0,
-      "explanation": "Gliding joints (planar joints) have flat bone surfaces that slide past each other. They are found in the wrists (carpals), ankles (tarsals), and between vertebrae.",
-      "takeaway": "Gliding joint = Sliding planar motion (Wrists, Ankles, Vertebrae)."
-    },
-    {
-      "id": "l3_q13",
-      "category": "mcq",
-      "source": "Textbook • Section A • Q3",
-      "wsNumber": 2,
-      "marks": "1 Mark",
-      "body": "Tough, elastic fibrous bands of tissue that hold <strong>bone to bone</strong> together at joints are called __________.",
-      "options": [
-        "Tendons",
-        "Ligaments",
-        "Cartilages",
-        "Vertebrae"
-      ],
-      "correct": 1,
-      "explanation": "Ligaments join bone to bone at joints (3 Ls: Ligaments for Like to Like). Tendons connect muscle to bone (3 Ts: Tendons for Two Types).",
-      "takeaway": "Ligaments = Bone to Bone (Like to Like) | Tendons = Muscle to Bone (Two Types)."
+      "explanation": "Hinge joints allow movement in only one plane (back and forth, like opening and closing a door). They are found in the elbows, knees, fingers (phalanges), and toes.",
+      "takeaway": "Hinge joint = Back-and-forth movement in one direction only (elbow, knee, fingers)."
     },
     {
       "id": "l3_q14",
-      "category": "mcq",
-      "source": "Thinkbook • Sheet 4 • Q5",
+      "category": "scenario",
+      "source": "NCERT / CBSE \u2022 Mechanics \u2022 Q14",
       "wsNumber": 3,
-      "marks": "1 Mark",
+      "marks": "2 Marks",
       "image": "images/l3_bow_analogy.png",
-      "body": "Observe the archer's bow shown below.<br>In the human body's movement system, which components function like the <strong>wooden bow</strong> and the <strong>flexible pulled string</strong>?",
+      "body": "Observe the archer's bow shown below.<br>In the human body's movement system, which component corresponds to the <strong>rigid wooden frame</strong> and which corresponds to the <strong>elastic pulled string</strong>?",
       "options": [
-        "Bow functions like Muscles; String functions like Bones",
-        "Bow functions like Bones (rigid frame); String functions like Muscles (pulling cord)",
-        "Bow functions like Bone Marrow; String functions like Blood Vessels",
-        "Bow functions like Tendons; String functions like Ligaments"
+        "Bones are like the rigid frame; Muscles are like the pulling string",
+        "Muscles are like the rigid frame; Bones are like the pulling string",
+        "Cartilage is like the frame; Bone marrow is like the string",
+        "Ligaments are like the frame; Tendons are like the arrow"
       ],
-      "correct": 1,
+      "correct": 0,
       "explanation": "The stiff wooden bow acts like rigid bones that provide skeletal structure, while the elastic pulled string acts like muscles that contract and pull to generate kinetic force!",
-      "takeaway": "Bow & Arrow analogy: Rigid wooden bow = Bones | Contracting pulling string = Muscles."
+      "takeaway": "Bones = Rigid architectural frame | Muscles = Elastic tension cables that pull."
     },
     {
       "id": "l3_q15",
-      "category": "mcq",
-      "source": "Thinkbook • Sheet 4 • Q6",
+      "category": "scenario",
+      "source": "NCERT / CBSE \u2022 Antagonistic Pairs \u2022 Q15",
       "wsNumber": 3,
-      "marks": "1 Mark",
+      "marks": "2 Marks",
       "image": "images/l3_arm_muscles.png",
-      "body": "When you bend your elbow to lift an apple to your mouth, what happens to the bicep and tricep muscles of your arm?",
+      "body": "When you bend your elbow to lift an apple to your mouth, what happens to the <strong>biceps</strong> and <strong>triceps</strong> muscles?",
       "options": [
-        "Biceps contracts (bulges and pulls); Triceps relaxes (lengthens)",
-        "Triceps contracts; Biceps relaxes",
-        "Both biceps and triceps contract simultaneously",
-        "Both biceps and triceps relax completely"
+        "Biceps contracts (shortens) and Triceps relaxes (lengthens)",
+        "Biceps relaxes and Triceps contracts",
+        "Both biceps and triceps contract at the same time",
+        "Both biceps and triceps push against each other"
       ],
       "correct": 0,
-      "explanation": "When bending the arm, the front muscle (biceps) contracts and bulges, pulling the forearm bones upward. At the same time, the back muscle (triceps) relaxes and stretches.",
-      "takeaway": "Bending elbow: Biceps contracts (pulls UP), Triceps relaxes. Straightening: Triceps contracts, Biceps relaxes."
+      "explanation": "Muscles work in opposing (antagonistic) pairs because they can only pull, never push. To bend the elbow, the biceps contracts (pulls forearm up) while the triceps relaxes.",
+      "takeaway": "Bending elbow: Biceps contracts (pulls) & Triceps relaxes."
     },
     {
       "id": "l3_q16",
-      "category": "mcq",
-      "source": "Textbook • Muscles • Q1",
+      "category": "scenario",
+      "source": "NCERT / CBSE \u2022 Muscle Mechanics \u2022 Q16",
       "wsNumber": 3,
-      "marks": "1 Mark",
+      "marks": "2 Marks",
       "body": "Why do skeletal muscles always work in <strong>antagonistic (opposing) pairs</strong> like the biceps and triceps?",
       "options": [
-        "Because one muscle pushes while the other muscle pulls",
-        "Because muscles can ONLY PULL by contracting; they CANNOT PUSH!",
-        "Because one muscle produces blood while the other stores calcium",
-        "Because bones only respond when two electrical signals arrive together"
+        "Because muscles can ONLY PULL by contracting; they can NEVER PUSH. A second muscle is needed to pull the bone back!",
+        "Because one muscle sleeps while the other is awake",
+        "Because bones are too heavy for a single muscle to lift",
+        "Because one muscle produces blood cells while the other burns sugar"
       ],
-      "correct": 1,
-      "explanation": "Muscle fibers generate mechanical force solely by contracting (shortening and pulling). They have no mechanism to push bones outward. Therefore, an opposing partner muscle is needed to pull the bone back!",
-      "takeaway": "Fundamental rule: Muscles can ONLY PULL, never push! Opposing pairs are mandatory."
+      "correct": 0,
+      "explanation": "Muscle fibers can only contract (shorten and exert a tensile pull). They cannot push a bone away. To move a bone in the opposite direction, an antagonistic muscle on the other side must pull it back.",
+      "takeaway": "Muscles can ONLY PULL, never push \u2014 requiring opposing pairs to move bones back and forth."
     },
     {
       "id": "l3_q17",
       "category": "mcq",
-      "source": "Textbook • Muscle Types • Q2",
-      "wsNumber": 3,
+      "source": "NCERT / CBSE \u2022 Cardiac Muscle \u2022 Q17",
+      "wsNumber": 2,
       "marks": "1 Mark",
-      "body": "Which type of muscle is found ONLY in the walls of the heart, works 24 hours a day without stopping, and never gets fatigued?",
+      "body": "Which type of muscle is found ONLY in the walls of the heart, works 24 hours a day without fatigue, and is involuntary in nature?",
       "options": [
-        "Striated voluntary muscle",
-        "Smooth involuntary muscle",
+        "Smooth muscle",
         "Cardiac muscle",
-        "Skeletal muscle"
+        "Striated skeletal muscle",
+        "Voluntary muscle"
       ],
-      "correct": 2,
-      "explanation": "Cardiac muscle is specialized heart muscle. It is involuntary (not under conscious control), rhythmic, and continuously pumps blood throughout our entire lifetime without fatigue.",
-      "takeaway": "Cardiac muscle = Heart wall, involuntary, tireless 24/7 pumper."
+      "correct": 1,
+      "explanation": "Cardiac muscle is unique to the heart. It is striated in structure, involuntary in function, and contracts rhythmically without stopping throughout a person's life without fatigue.",
+      "takeaway": "Cardiac muscle = Involuntary, tireless, exclusive to heart walls."
     },
     {
       "id": "l3_q18",
       "category": "whoami",
-      "source": "Textbook • Section B • Q1",
-      "wsNumber": 2,
-      "marks": "1 Mark",
-      "body": "<strong>Who am I?</strong><br>I am the long flat bone located in the center of the chest (also called breastbone). The first 10 pairs of ribs are attached to me in front.",
+      "source": "NCERT / CBSE \u2022 Diagnostic Riddle \u2022 Q18",
+      "wsNumber": 1,
+      "marks": "1.5 Marks",
+      "body": "<strong>Who am I?</strong><br>I am the flat dagger-shaped bone located right in the center of the chest. The first 10 pairs of ribs attach to me in front to form a protective cage for your heart.",
       "options": [
-        "Femur",
-        "Sternum",
-        "Humerus",
-        "Clavicle"
+        "Vertebra",
+        "Sternum (Breastbone)",
+        "Clavicle (Collarbone)",
+        "Scapula (Shoulder blade)"
       ],
       "correct": 1,
-      "explanation": "The sternum (breastbone) is the dagger-shaped bone in the middle of the chest to which the true ribs and false ribs attach anteriorly.",
-      "takeaway": "Sternum = Breastbone anchoring the front of the ribcage."
-    },
-    {
-      "id": "l3_q19",
-      "category": "whoami",
-      "source": "Textbook • Section B • Q2",
-      "wsNumber": 2,
-      "marks": "1 Mark",
-      "body": "<strong>Who am I?</strong><br>I am the single bone of your upper arm. My upper rounded ball fits into the shoulder girdle, and my lower end forms the elbow joint with the radius and ulna.",
-      "options": [
-        "Femur",
-        "Fibula",
-        "Humerus",
-        "Tibia"
-      ],
-      "correct": 2,
-      "explanation": "The humerus is the upper arm bone extending from the shoulder socket to the elbow.",
-      "takeaway": "Humerus = Upper arm bone (shoulder to elbow)."
-    },
-    {
-      "id": "l3_q20",
-      "category": "compare",
-      "source": "Textbook • Section D • Q3",
-      "wsNumber": 3,
-      "marks": "2 Marks",
-      "body": "Which statement correctly differentiates <strong>voluntary muscles</strong> from <strong>involuntary muscles</strong>?",
-      "options": [
-        "Voluntary muscles are under our conscious control (e.g. arm and leg muscles); involuntary muscles work automatically without our conscious effort (e.g. stomach and heart)",
-        "Voluntary muscles work when we sleep; involuntary muscles work only when we run",
-        "Voluntary muscles are found inside blood vessels; involuntary muscles are attached to the skeleton",
-        "Voluntary muscles can push bones; involuntary muscles can only pull"
-      ],
-      "correct": 0,
-      "explanation": "Voluntary (skeletal) muscles are governed by our conscious will via the cerebrum. Involuntary (smooth and cardiac) muscles operate autonomously via autonomic nerve centers without requiring conscious thought.",
-      "takeaway": "Voluntary = Conscious will (limbs) | Involuntary = Automatic 24/7 (stomach, lungs, heart)."
-    },
-    {
-      "id": "l3_q21",
-      "category": "oddone",
-      "source": "Textbook • Section E • Q2",
-      "wsNumber": 3,
-      "marks": "1 Mark",
-      "body": "<strong>Find the Odd One Out:</strong><br>Humerus, Radius, Femur, Ulna.",
-      "options": [
-        "Humerus — because it is attached to the collarbone",
-        "Femur — because it is a bone of the lower limb (leg), while the others belong to the upper limb (arm)!",
-        "Radius — because it has no bone marrow",
-        "Ulna — because it is made of cartilage"
-      ],
-      "correct": 1,
-      "explanation": "Humerus, Radius, and Ulna are the three long bones of the upper limb (arm). The Femur is the thigh bone of the lower limb (leg).",
-      "takeaway": "Odd one out: Femur (Leg / Lower limb) vs Humerus, Radius, Ulna (Arm / Upper limb)."
-    },
-    {
-      "id": "l3_q22",
-      "category": "scenario",
-      "source": "Thinkbook • Sheet 2 • Q1",
-      "wsNumber": 3,
-      "marks": "2 Marks",
-      "body": "Rahul slipped while playing football and suffered a bone fracture in one of his <strong>lower limbs</strong> (legs). Which of the following daily activities will be <strong>directly affected</strong> while he heals in a cast?",
-      "options": [
-        "Walking and jumping",
-        "Chewing food and swallowing",
-        "Thinking and memorizing spelling",
-        "Breathing and heartbeat"
-      ],
-      "correct": 0,
-      "explanation": "The lower limbs consist of the thighs, knees, legs, ankles, and feet (femur, patella, tibia, fibula). A fracture directly impairs walking, running, and jumping. Chewing uses facial muscles, breathing uses the diaphragm/ribcage, and thinking uses the cerebrum.",
-      "takeaway": "Lower limb = Locomotion (walking, jumping, standing). Non-limb functions remain unaffected."
+      "explanation": "The sternum (breastbone) is the central flat chest bone that anchors the upper 10 pairs of ribs via costal cartilage to complete the thoracic ribcage shield.",
+      "takeaway": "Sternum = Central breastbone anchoring ribs in front."
     }
   ]
 },
@@ -6713,19 +7147,18 @@ function renderPracticeView(container) {
   const ch = getActiveChapter();
 
   // Filter questions by worksheet number first
-  let filtered = ch.questions;
-  if (state.activeWsFilter !== 'all') {
-    filtered = filtered.filter(q => q.wsNumber === state.activeWsFilter);
-  }
-  // Then filter by category
+  const wsQuestions = (state.activeWsFilter === 'all')
+    ? ch.questions
+    : ch.questions.filter(q => q.wsNumber === state.activeWsFilter);
+
+  let filtered = wsQuestions;
   if (state.activePracticeFilter !== 'all') {
     filtered = filtered.filter(q => q.category === state.activePracticeFilter);
   }
   // Fallback if no questions match
   if (filtered.length === 0) {
     state.activePracticeFilter = 'all';
-    state.activeWsFilter = 'all';
-    filtered = ch.questions;
+    filtered = wsQuestions;
   }
 
   // Ensure valid current index
@@ -6756,7 +7189,7 @@ function renderPracticeView(container) {
 
       <!-- Category Filter Pills -->
       <div class="practice-filters">
-        <button class="filter-pill ${state.activePracticeFilter === 'all' ? 'active' : ''}" data-filter="all">🎯 All Types (${ch.questions.length})</button>
+        <button class="filter-pill ${state.activePracticeFilter === 'all' ? 'active' : ''}" data-filter="all">🎯 All Types (${wsQuestions.length})</button>
         <button class="filter-pill ${state.activePracticeFilter === 'mcq' ? 'active' : ''}" data-filter="mcq">🔘 MCQs & Deductions</button>
         <button class="filter-pill ${state.activePracticeFilter === 'whoami' ? 'active' : ''}" data-filter="whoami">❓ Who Am I? Riddles</button>
         <button class="filter-pill ${state.activePracticeFilter === 'compare' ? 'active' : ''}" data-filter="compare">⚖️ Compare & Contrast</button>
@@ -7096,15 +7529,34 @@ function endSprintGame() {
 // ==========================================================================
 function renderWorksheetView(container) {
   const ch = getActiveChapter();
+  const isCh3 = (ch.id === 'ch3_skeletal');
+  const selWs = state.worksheetSettings.selectedWs || 'all';
+  const showAnswers = !!state.worksheetSettings.showAnswers;
 
-  let html = `
+  let controlsHtml = `
     <div class="worksheet-studio">
       <div class="worksheet-controls-bar no-print">
         <div class="worksheet-select-group">
+          <label>Select Worksheet:</label>
+          <select class="worksheet-select" id="ws-number-select">
+            <option value="all" ${selWs === 'all' ? 'selected' : ''}>📚 Comprehensive Assessment (${isCh3 ? '25 Marks' : 'Unit Review'})</option>
+            ${isCh3 ? `
+              <option value="1" ${selWs === '1' ? 'selected' : ''}>📄 Freedom International • Worksheet I (Objective & MCQs • 13 Marks)</option>
+              <option value="2" ${selWs === '2' ? 'selected' : ''}>📄 Freedom International • Worksheet II (Structure & Short Answers • 16 Marks)</option>
+              <option value="3" ${selWs === '3' ? 'selected' : ''}>📄 Freedom International • Worksheet III (Diagrams & Critical Thinking • 27 Marks)</option>
+            ` : `
+              <option value="1" ${selWs === '1' ? 'selected' : ''}>📄 School Revision Sheet 1</option>
+              <option value="2" ${selWs === '2' ? 'selected' : ''}>📄 School Revision Sheet 2</option>
+              <option value="3" ${selWs === '3' ? 'selected' : ''}>📄 School Revision Sheet 3</option>
+            `}
+          </select>
+        </div>
+
+        <div class="worksheet-select-group">
           <label>View Mode:</label>
           <select class="worksheet-select" id="ws-mode-select">
-            <option value="test" ${!state.worksheetSettings.showAnswers ? 'selected' : ''}>📝 Student Test Paper (Blank Lines)</option>
-            <option value="key" ${state.worksheetSettings.showAnswers ? 'selected' : ''}>🔑 Teacher Answer Key (With Solutions)</option>
+            <option value="test" ${!showAnswers ? 'selected' : ''}>📝 Student Test Paper (Blank Lines / For Practice)</option>
+            <option value="key" ${showAnswers ? 'selected' : ''}>🔑 Teacher Answer Key (With Full Solutions)</option>
           </select>
         </div>
 
@@ -7114,88 +7566,525 @@ function renderWorksheetView(container) {
       </div>
 
       <div class="worksheet-paper">
-        <div class="ws-school-header">
-          <h3>CBSE SCIENCE ASSESSMENT</h3>
-          <h4>THINKING CLASSROOM REVISION WORKSHEET</h4>
-          <p>Class: V &nbsp;|&nbsp; Subject: Science (EVS) &nbsp;|&nbsp; Unit: ${ch.number} ${ch.title.toUpperCase()}</p>
-        </div>
-
-        <div class="ws-student-meta-grid">
-          <div class="ws-meta-field">Student Name: _______________________</div>
-          <div class="ws-meta-field">Roll No: ___________ &nbsp; Sec: _____</div>
-          <div class="ws-meta-field">Date: ____________ &nbsp; Marks: ____/25</div>
-        </div>
-
-        <!-- Section A: Multiple Choice Thinking Questions -->
-        <div class="ws-section">
-          <div class="ws-section-title">SECTION A: DEDUCTIVE THINKING & MULTIPLE CHOICE (1 Mark Each)</div>
-          ${ch.questions.filter(q => q.category === 'mcq').slice(0, 5).map((q, i) => `
-            <div class="ws-question-item">
-              <div class="ws-question-text">
-                <strong>Q${i + 1}.</strong> ${q.body} <span class="ws-marks">[1M]</span>
-              </div>
-              ${q.image ? `<div class="ws-question-diagram-wrap"><img src="${q.image}" alt="Question Diagram" class="ws-question-diagram-img" /></div>` : ''}
-              <div style="margin-left: 1.25rem; font-size: 0.88rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.25rem;">
-                ${q.options.map((opt, idx) => `<div>(${String.fromCharCode(97 + idx)}) ${opt}</div>`).join('')}
-              </div>
-              ${state.worksheetSettings.showAnswers ? `
-                <div class="ws-answer-key-box">
-                  <strong>Answer:</strong> (${String.fromCharCode(97 + q.correct)}) ${q.options[q.correct]}<br>
-                  <em>Reasoning:</em> ${q.explanation}
-                </div>
-              ` : `
-                <div style="margin-top: 0.4rem; font-weight: 600;">Ans: (___)</div>
-              `}
-            </div>
-          `).join('')}
-        </div>
-
-        <!-- Section B: Scientific Riddles & Concept Classification -->
-        <div class="ws-section">
-          <div class="ws-section-title">SECTION B: SCIENTIFIC TERMS & CLASSIFICATION (1.5 Marks Each)</div>
-          ${ch.questions.filter(q => q.category === 'whoami' || q.category === 'oddone').slice(0, 3).map((q, i) => `
-            <div class="ws-question-item">
-              <div class="ws-question-text">
-                <strong>Q${i + 6}.</strong> ${q.body} <span class="ws-marks">[1.5M]</span>
-              </div>
-              ${q.image ? `<div class="ws-question-diagram-wrap"><img src="${q.image}" alt="Question Diagram" class="ws-question-diagram-img" /></div>` : ''}
-              ${state.worksheetSettings.showAnswers ? `
-                <div class="ws-answer-key-box">
-                  <strong>Answer:</strong> ${q.options[q.correct]}<br>
-                  <em>Reasoning:</em> ${q.explanation}
-                </div>
-              ` : `
-                <div class="ws-answer-lines"></div>
-              `}
-            </div>
-          `).join('')}
-        </div>
-
-        <!-- Section C: Scenario Reasoning & Case Studies -->
-        <div class="ws-section">
-          <div class="ws-section-title">SECTION C: CASE STUDIES & APPLICATION (3 Marks Each)</div>
-          ${ch.questions.filter(q => q.category === 'scenario' || q.category === 'compare').slice(0, 3).map((q, i) => `
-            <div class="ws-question-item">
-              <div class="ws-question-text">
-                <strong>Q${i + 9}.</strong> ${q.body} <span class="ws-marks">[3M]</span>
-              </div>
-              ${q.image ? `<div class="ws-question-diagram-wrap"><img src="${q.image}" alt="Question Diagram" class="ws-question-diagram-img" /></div>` : ''}
-              ${state.worksheetSettings.showAnswers ? `
-                <div class="ws-answer-key-box">
-                  <strong>Model Answer:</strong> ${q.options[q.correct]}<br>
-                  <em>Marking Criteria:</em> ${q.explanation}
-                </div>
-              ` : `
-                <div class="ws-answer-lines" style="height: 72px;"></div>
-              `}
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </div>
   `;
 
-  container.innerHTML = html;
+  let paperHtml = '';
+
+  if (isCh3 && selWs === '1') {
+    // ------------------------------------------------------------------------
+    // FREEDOM INTERNATIONAL SCHOOL — WORKSHEET I
+    // ------------------------------------------------------------------------
+    const ws1Questions = ch.questions.filter(q => q.wsNumber === 1);
+    paperHtml += `
+      <div class="ws-school-header">
+        <div class="ws-school-badge" style="font-weight: 800; letter-spacing: 0.1em; color: #0284c7; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 0.35rem;">FREEDOM INTERNATIONAL SCHOOL</div>
+        <h3>SCIENCE WORKSHEET-I</h3>
+        <h4>L-3 THE SKELETAL AND MUSCULAR SYSTEM</h4>
+        <p>CLASS: V &nbsp;|&nbsp; SUBJECT: SCIENCE (EVS) &nbsp;|&nbsp; TIME: 35 MINS &nbsp;|&nbsp; MAX MARKS: 13</p>
+      </div>
+
+      <div class="ws-student-meta-grid">
+        <div class="ws-meta-field">Student Name: _______________________</div>
+        <div class="ws-meta-field">Roll No: ___________ &nbsp; Sec: _____</div>
+        <div class="ws-meta-field">Date: ____________ &nbsp; Marks: ____/13</div>
+      </div>
+
+      <div class="ws-section">
+        <div class="ws-section-title">DO AS DIRECTED: MULTIPLE CHOICE QUESTIONS (1 Mark Each)</div>
+        ${ws1Questions.map((q, i) => `
+          <div class="ws-question-item">
+            <div class="ws-question-text">
+              <strong>Q${i + 1}.</strong> ${q.body} <span class="ws-marks">[${q.marks || '1 Mark'}]</span>
+            </div>
+            ${q.image ? `<div class="ws-question-diagram-wrap"><img src="${q.image}" alt="Question Diagram" class="ws-question-diagram-img" /></div>` : ''}
+            <div style="margin-left: 1.25rem; font-size: 0.9rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.35rem; margin-top: 0.35rem;">
+              ${q.options.map((opt, idx) => `
+                <div style="${showAnswers && idx === q.correct ? 'font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 6px; border-radius: 4px; display: inline-block;' : ''}">
+                  (${String.fromCharCode(97 + idx)}) ${opt}
+                </div>
+              `).join('')}
+            </div>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>Correct Answer:</strong> (${String.fromCharCode(97 + q.correct)}) ${q.options[q.correct]}<br>
+                <em>Scientific Reasoning:</em> ${q.explanation}<br>
+                <strong>Takeaway:</strong> ${q.takeaway || ''}
+              </div>
+            ` : `
+              <div style="margin-top: 0.45rem; font-weight: 600; color: #334155;">Ans: [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]</div>
+            `}
+          </div>
+        `).join('')}
+      </div>
+    `;
+
+  } else if (isCh3 && selWs === '2') {
+    // ------------------------------------------------------------------------
+    // FREEDOM INTERNATIONAL SCHOOL — WORKSHEET II
+    // ------------------------------------------------------------------------
+    paperHtml += `
+      <div class="ws-school-header">
+        <div class="ws-school-badge" style="font-weight: 800; letter-spacing: 0.1em; color: #0284c7; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 0.35rem;">FREEDOM INTERNATIONAL SCHOOL</div>
+        <h3>SCIENCE-WORKSHEET-II</h3>
+        <h4>L-3 THE SKELETAL AND MUSCULAR SYSTEM</h4>
+        <p>CLASS: V &nbsp;|&nbsp; SUBJECT: SCIENCE (EVS) &nbsp;|&nbsp; TIME: 45 MINS &nbsp;|&nbsp; MAX MARKS: 16</p>
+      </div>
+
+      <div class="ws-student-meta-grid">
+        <div class="ws-meta-field">Student Name: _______________________</div>
+        <div class="ws-meta-field">Roll No: ___________ &nbsp; Sec: _____</div>
+        <div class="ws-meta-field">Date: ____________ &nbsp; Marks: ____/16</div>
+      </div>
+
+      <div class="ws-section">
+        <div class="ws-section-title">DO AS DIRECTED: STRUCTURE ANALYSIS & SHORT ANSWERS</div>
+
+        <!-- Question I -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>I.</strong> How are involuntary muscles useful to us? Explain with an example. <span class="ws-marks">[2 Marks]</span>
+          </div>
+          ${showAnswers ? `
+            <div class="ws-answer-key-box">
+              <strong>Model Answer:</strong> Involuntary muscles work automatically without our conscious effort or command. They maintain vital body processes continuously even when we are asleep.<br>
+              <strong>Example:</strong> (1) Smooth muscles in the stomach and intestines contract rhythmically (peristalsis) to digest and push food along the alimentary canal. (2) Cardiac muscles in the heart pump blood through blood vessels 24/7 without stopping.<br>
+              <em>Marking:</em> 1M for definition/usefulness + 1M for valid example.
+            </div>
+          ` : `
+            <div class="ws-answer-lines" style="height: 54px;"></div>
+          `}
+        </div>
+
+        <!-- Question II -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>II.</strong> Differentiate between: <span class="ws-marks">[4 Marks]</span>
+          </div>
+          <div style="margin-left: 1.25rem;">
+            <p><strong>1. Rib cage and skull</strong> <span class="ws-marks">[2M]</span></p>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                • <strong>Rib cage:</strong> Formed of 12 pairs of curved bones (24 ribs) attached to the spine and central sternum. It expands during breathing and protects thoracic organs (heart and lungs).<br>
+                • <strong>Skull:</strong> Formed of 22 bones (8 cranial + 14 facial). It forms a rigid helmet with immovable suture joints protecting the brain, with only the lower jaw movable.
+              </div>
+            ` : `
+              <div class="ws-answer-lines" style="height: 48px;"></div>
+            `}
+
+            <p style="margin-top: 0.75rem;"><strong>2. Tendon and ligament</strong> <span class="ws-marks">[2M]</span></p>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                • <strong>Tendon (3 Ts Rule):</strong> Tough, inelastic cord of fibrous tissue that connects <em>Two Types</em> &rarr; <strong>Muscle to Bone</strong>. Transmits muscular pull to move bones.<br>
+                • <strong>Ligament (3 Ls Rule):</strong> Strong, elastic band of connective tissue that connects <em>Like to Like</em> &rarr; <strong>Bone to Bone</strong> at joints, stabilizing joints.
+              </div>
+            ` : `
+              <div class="ws-answer-lines" style="height: 48px;"></div>
+            `}
+          </div>
+        </div>
+
+        <!-- Question III -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>III.</strong> What are immovable joints? How are the immovable joints in the skull helpful to us? <span class="ws-marks">[2 Marks]</span>
+          </div>
+          ${showAnswers ? `
+            <div class="ws-answer-key-box">
+              <strong>Model Answer:</strong> Immovable (fixed) joints are joints where adjacent bones are locked tightly together by fibrous sutures and permit zero movement.<br>
+              <strong>Helpfulness in Skull:</strong> The 8 cranial bones fuse rigidly into a solid, impenetrable helmet around the brain, preventing the bones from shifting or pressing against the soft brain during bumps and falls.
+            </div>
+          ` : `
+            <div class="ws-answer-lines" style="height: 54px;"></div>
+          `}
+        </div>
+
+        <!-- Question IV -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>IV.</strong> Choose the odd one out and justify your choice: <span class="ws-marks">[2 Marks]</span><br>
+            <em>femur, calf bone, humerus, shin bone</em>
+          </div>
+          ${showAnswers ? `
+            <div class="ws-answer-key-box">
+              <strong>Odd One Out:</strong> Humerus<br>
+              <strong>Justification:</strong> The humerus is the single long bone of the upper arm (forelimb), whereas the femur (thigh bone), calf bone (fibula), and shin bone (tibia) are all bones of the leg (hindlimb).
+            </div>
+          ` : `
+            <div class="ws-answer-lines" style="height: 48px;"></div>
+          `}
+        </div>
+
+        <!-- Question V -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>V.</strong> Observe the given structure <strong>X</strong> and answer the questions that follow: <span class="ws-marks">[2 Marks]</span>
+          </div>
+          <div class="ws-question-diagram-wrap">
+            <img src="images/l3_ws2_vertebral_column.png" alt="Vertebral Column Structure X" class="ws-question-diagram-img" />
+          </div>
+          <div style="margin-left: 1.25rem;">
+            <p>1. Identify the given structure X.</p>
+            <p>2. Name the labelled parts L and M.</p>
+            <p>3. Mention the significance of L and M in our body movements.</p>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>1. Structure X:</strong> Vertebral column (Backbone / Spine).<br>
+                <strong>2. Labelled parts:</strong> L = Vertebra (one of 33 ring bones); M = Intervertebral disc (Cartilage cushion).<br>
+                <strong>3. Significance:</strong> The 33 individual vertebrae allow the spine to bend, twist, and arch flexibly (rather than being a stiff rigid rod), while the cartilage pads (M) absorb shocks and protect the delicate spinal cord inside.
+              </div>
+            ` : `
+              <div class="ws-answer-lines" style="height: 72px;"></div>
+            `}
+          </div>
+        </div>
+
+        <!-- Question VI -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>VI.</strong> The given picture shows a joint present in our body. Observe it and answer the questions given below: <span class="ws-marks">[2 Marks]</span>
+          </div>
+          <div class="ws-question-diagram-wrap">
+            <img src="images/l3_ws2_knee_joint.png" alt="Knee Joint P" class="ws-question-diagram-img" />
+          </div>
+          <div style="margin-left: 1.25rem;">
+            <p>1. Identify P and the type of joint shown in the diagram above.</p>
+            <p>2. Explain the role of the labelled part P in the given joint.</p>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>1. Identification:</strong> P is the <strong>Patella (kneecap)</strong>; the type of joint is a <strong>Hinge joint</strong>.<br>
+                <strong>2. Role of P:</strong> Protects the front of the knee joint from impact and trauma, and increases the pulling leverage of the quadriceps tendon when extending the leg.
+              </div>
+            ` : `
+              <div class="ws-answer-lines" style="height: 54px;"></div>
+            `}
+          </div>
+        </div>
+
+        <!-- Question VII -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>VII.</strong> The pictures given below show the different joints present in the human body. Identify the type of joint. Also mention how they are helpful to us. <span class="ws-marks">[2 Marks]</span>
+          </div>
+          <div class="ws-question-diagram-wrap">
+            <img src="images/l3_ws2_skull_neck_joints.png" alt="Skull Sutures & Neck Pivot Joint" class="ws-question-diagram-img" />
+          </div>
+          <div style="margin-left: 1.25rem;">
+            <p><strong>1. Cranium Suture Joint:</strong></p>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>Type:</strong> Immovable / Fixed joint.<br>
+                <strong>Helpfulness:</strong> Fuses the 8 cranial plates tightly to protect the soft brain from injury.
+              </div>
+            ` : `
+              <div class="ws-answer-lines" style="height: 44px;"></div>
+            `}
+            <p style="margin-top: 0.5rem;"><strong>2. Neck Joint:</strong></p>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>Type:</strong> Pivot joint.<br>
+                <strong>Helpfulness:</strong> Allows our head to rotate from side to side ('No') and nod up and down ('Yes').
+              </div>
+            ` : `
+              <div class="ws-answer-lines" style="height: 44px;"></div>
+            `}
+          </div>
+        </div>
+
+        <!-- Question VIII -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>VIII.</strong> Name the joint used for the marked movement in the pictures given below and classify them: <span class="ws-marks">[2 Marks]</span>
+          </div>
+          <div class="ws-question-diagram-wrap">
+            <img src="images/l3_ws2_movements.png" alt="Movements 1 and 2" class="ws-question-diagram-img" />
+          </div>
+          <div style="margin-left: 1.25rem;">
+            <p><strong>1. Bending the arm at the elbow:</strong></p>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>Joint:</strong> Elbow joint | <strong>Classification:</strong> Movable joint &rarr; Hinge joint (back-and-forth movement in one direction).
+              </div>
+            ` : `
+              <div class="ws-answer-lines" style="height: 40px;"></div>
+            `}
+            <p style="margin-top: 0.5rem;"><strong>2. Swinging the leg outward at the hip:</strong></p>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>Joint:</strong> Hip joint | <strong>Classification:</strong> Movable joint &rarr; Ball and socket joint (360° rotary movement in all planes).
+              </div>
+            ` : `
+              <div class="ws-answer-lines" style="height: 40px;"></div>
+            `}
+          </div>
+        </div>
+
+      </div>
+    `;
+
+  } else if (isCh3 && selWs === '3') {
+    // ------------------------------------------------------------------------
+    // FREEDOM INTERNATIONAL SCHOOL — WORKSHEET III
+    // ------------------------------------------------------------------------
+    paperHtml += `
+      <div class="ws-school-header">
+        <div class="ws-school-badge" style="font-weight: 800; letter-spacing: 0.1em; color: #0284c7; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 0.35rem;">FREEDOM INTERNATIONAL SCHOOL</div>
+        <h3>SCIENCE-WORKSHEET-III</h3>
+        <h4>L-3 THE SKELETAL AND MUSCULAR SYSTEM</h4>
+        <p>CLASS: V &nbsp;|&nbsp; SUBJECT: SCIENCE (EVS) &nbsp;|&nbsp; TIME: 50 MINS &nbsp;|&nbsp; MAX MARKS: 27</p>
+      </div>
+
+      <div class="ws-student-meta-grid">
+        <div class="ws-meta-field">Student Name: _______________________</div>
+        <div class="ws-meta-field">Roll No: ___________ &nbsp; Sec: _____</div>
+        <div class="ws-meta-field">Date: ____________ &nbsp; Marks: ____/27</div>
+      </div>
+
+      <div class="ws-section">
+        <div class="ws-section-title">DO AS DIRECTED: DIAGRAM INVESTIGATION & CASE STUDIES</div>
+
+        <!-- Question I -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>I.</strong> In the diagram given below, A, B, C and D represents the bones present in our body. Whereas P, Q, R and S denote the different joints. Observe it and answer the following questions: <span class="ws-marks">[5 Marks]</span>
+          </div>
+          <div class="ws-question-diagram-wrap">
+            <img src="images/l3_ws3_full_skeleton.png" alt="Skeleton Bones A,B,C,D and Joints P,Q,R,S" class="ws-question-diagram-img" style="max-height: 250px;" />
+          </div>
+          <div style="margin-left: 1.25rem;">
+            <p>1. Identify the labelled parts: Bones (A, B, C, D) and Joints (P, Q, R, S).</p>
+            <p>2. What do you find inside the labelled part D? Write its function.</p>
+            <p>3. Bones are held together by strong bands of fibre like structure. Name it.</p>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>1. Bones:</strong> A = Ribs / Rib cage (or Sternum), B = Backbone / Vertebral column, C = Pelvis / Pelvic girdle, D = Femur (thigh bone).<br>
+                <strong>Joints:</strong> P = Pivot joint (Neck), Q = Hinge joint (Elbow), R = Gliding joint (Wrist), S = Hinge joint (Knee).<br>
+                <strong>2. Inside D (Femur):</strong> Bone Marrow. <em>Function:</em> Manufactures red blood cells (RBCs) and white blood cells (WBCs), and stores fat/minerals.<br>
+                <strong>3. Fibre-like structure:</strong> Ligament (connects bone to bone).
+              </div>
+            ` : `
+              <div class="ws-answer-lines" style="height: 80px;"></div>
+            `}
+          </div>
+        </div>
+
+        <!-- Question B -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>B.</strong> Observe the given skull diagram <strong>X</strong> and answer the questions: <span class="ws-marks">[5 Marks]</span>
+          </div>
+          <div class="ws-question-diagram-wrap">
+            <img src="images/l3_ws3_skull.png" alt="Skull Diagram X" class="ws-question-diagram-img" />
+          </div>
+          <div style="margin-left: 1.25rem;">
+            <p>1. Identify X.</p>
+            <p>2. How many bones are present in X?</p>
+            <p>3. What type of joints are present in X and mention its location?</p>
+            <p>4. What is the role of X in our body?</p>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>1. Identify X:</strong> Human Skull.<br>
+                <strong>2. Bones present:</strong> 22 bones (8 cranial helmet bones + 14 facial bones).<br>
+                <strong>3. Joints:</strong> (a) Immovable / fixed suture joints located between the 8 cranial bones. (b) Movable joint located at the lower jaw (mandible).<br>
+                <strong>4. Role of X:</strong> Protects the delicate brain from injury, gives shape and framework to our face, encloses and shields sense organs (eyes, ears, nose), and allows eating and talking via the movable lower jaw.
+              </div>
+            ` : `
+              <div class="ws-answer-lines" style="height: 84px;"></div>
+            `}
+          </div>
+        </div>
+
+        <!-- Question II -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>II. Sports Day Case Study:</strong> Grade V students were taking part in different events in the Sports Day. Some students were in track and field events and some were in display. After the 100 m race Keshav felt very tired and his leg muscles started to ache. He was very upset as he had another event later. He felt that he should have involuntary muscles instead of voluntary muscles in his legs. <span class="ws-marks">[5 Marks]</span>
+          </div>
+          <div style="margin-left: 1.25rem;">
+            <p>1. Do you think it is a good idea to have involuntary muscles in our legs? Justify your choice. <span class="ws-marks">[2M]</span></p>
+            <p>2. How are voluntary muscles able to move our bones? <span class="ws-marks">[1M]</span></p>
+            <p>3. During the display Grade V students used umbrellas, which joint did they use to turn the umbrellas around themselves? <span class="ws-marks">[1M]</span></p>
+            <p>4. Which joint was used when they were holding their umbrellas? <span class="ws-marks">[1M]</span></p>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>1. Justification:</strong> No, it is a bad idea! Voluntary muscles allow us to control when to walk, run, sprint, jump, or stop at our conscious will. If leg muscles were involuntary, they would contract automatically on their own, making coordinated walking impossible! Keshav's fatigue was due to temporary lactic acid buildup, solved by rest.<br>
+                <strong>2. Muscle pull:</strong> Muscles are attached to bones by tendons. They contract (pull) in antagonistic pairs (e.g., biceps and triceps); muscles can ONLY pull, never push.<br>
+                <strong>3. Turning umbrellas:</strong> Ball and socket joint in the shoulder (360° circular rotation).<br>
+                <strong>4. Holding umbrellas:</strong> Gliding joints in the wrist and Hinge joints in the fingers (phalanges) for gripping.
+              </div>
+            ` : `
+              <div class="ws-answer-lines" style="height: 96px;"></div>
+            `}
+          </div>
+        </div>
+
+        <!-- Question III -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>III. Cricket Captain Roy Case Study:</strong> The winners of the cricket team were given medals. The captain of the team, Roy was absent as he had fractured his leg. The picture shows a labelled part X which Roy didn't use while batting. <span class="ws-marks">[5 Marks]</span>
+          </div>
+          <div class="ws-question-diagram-wrap">
+            <img src="images/l3_ws3_cricket_batsman.png" alt="Cricket Batsman Roy with Pad X" class="ws-question-diagram-img" />
+          </div>
+          <div style="margin-left: 1.25rem;">
+            <p>1. Which bone was protected by X? <span class="ws-marks">[1M]</span></p>
+            <p>2. What might happen if the joint present in our shoulders is shifted to our knees? <span class="ws-marks">[2M]</span></p>
+            <p>Roy thought that he should not use helmet at all. He was thinking that instead of having fixed joints our cranium should had movable joints.</p>
+            <p>3. Is this a good thought? Explain. <span class="ws-marks">[1M]</span></p>
+            <p>4. How is the movable joint present in our lower jaw helpful to us? <span class="ws-marks">[1M]</span></p>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>1. Bone protected:</strong> Shin bone (Tibia) and calf bone (Fibula).<br>
+                <strong>2. Shoulder joint at knees:</strong> Shoulders have ball-and-socket joints allowing 360° rotation. If knees had ball-and-socket joints, our lower legs would wobble and twist sideways, causing knees to buckle under our body weight, making standing upright and walking impossible!<br>
+                <strong>3. Roy's helmet thought:</strong> No, it is a very dangerous thought! Fixed cranial suture joints create an unyielding, rigid helmet around the delicate brain. If cranial joints were movable, any cricket ball impact would push the bones inwards, crushing and severely damaging the soft brain tissue!<br>
+                <strong>4. Lower jaw movable joint:</strong> Allows us to open and close our mouth to chew food, speak, sing, yawn, and express facial emotions.
+              </div>
+            ` : `
+              <div class="ws-answer-lines" style="height: 104px;"></div>
+            `}
+          </div>
+        </div>
+
+        <!-- Question IV -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>IV.</strong> Identify the joints in the given diagram and explain. <span class="ws-marks">[4 Marks]</span>
+          </div>
+          <div class="ws-question-diagram-wrap">
+            <img src="images/l3_ws3_hand_joints.png" alt="Hand Skeleton Joints" class="ws-question-diagram-img" />
+          </div>
+          ${showAnswers ? `
+            <div class="ws-answer-key-box">
+              <strong>1. Gliding Joints:</strong> Located between the 8 carpal bones in the wrist. They allow flat surfaces of bones to slide smoothly past each other in multiple directions, giving the wrist multi-directional flexibility to wave, roll, and tilt.<br>
+              <strong>2. Hinge Joints:</strong> Located between the phalanges (finger bones). They allow fingers to bend and straighten in only one direction (like a door hinge), allowing our hand to firmly grasp objects, hold pens, and grip tools.
+            </div>
+          ` : `
+            <div class="ws-answer-lines" style="height: 72px;"></div>
+          `}
+        </div>
+
+        <!-- Question V -->
+        <div class="ws-question-item">
+          <div class="ws-question-text">
+            <strong>V.</strong> Complete the flow chart: <span class="ws-marks">[3 Marks]</span>
+          </div>
+          <div class="ws-question-diagram-wrap">
+            <img src="images/l3_ws3_joints_flowchart.png" alt="Joints Flowchart" class="ws-question-diagram-img" style="max-height: 280px;" />
+          </div>
+          ${showAnswers ? `
+            <div class="ws-answer-key-box">
+              <strong>Completed Flowchart:</strong><br>
+              • <strong>a:</strong> Joint (A place where two or more bones meet)<br>
+              • <strong>b:</strong> Immovable / Fixed joint (Moves? NO)<br>
+              • <strong>c:</strong> Movable joint (Moves? YES)<br>
+              • <strong>d:</strong> Hinge joint (Allows movement in one direction: YES)<br>
+              • <strong>e:</strong> Ball and socket joint (Allows movement in 360°: YES)<br>
+              • <strong>f:</strong> Pivot joint (It allows us to twist, bend and turn: YES)
+            </div>
+          ` : `
+            <div style="margin-top: 0.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-weight: 600;">
+              <div>a. ___________________________</div>
+              <div>b. ___________________________</div>
+              <div>c. ___________________________</div>
+              <div>d. ___________________________</div>
+              <div>e. ___________________________</div>
+              <div>f. ___________________________</div>
+            </div>
+          `}
+        </div>
+
+      </div>
+    `;
+
+  } else {
+    // ------------------------------------------------------------------------
+    // COMPREHENSIVE ALL-IN-ONE WORKSHEET (25 MARKS)
+    // ------------------------------------------------------------------------
+    paperHtml += `
+      <div class="ws-school-header">
+        <div class="ws-school-badge" style="font-weight: 800; letter-spacing: 0.1em; color: #0284c7; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 0.35rem;">CBSE SCIENCE ASSESSMENT</div>
+        <h3>${ch.number} ${ch.title.toUpperCase()}</h3>
+        <h4>THINKING CLASSROOM REVISION & DIAGNOSTIC ASSESSMENT</h4>
+        <p>CLASS: V &nbsp;|&nbsp; SUBJECT: SCIENCE (EVS) &nbsp;|&nbsp; TOTAL MARKS: 25</p>
+      </div>
+
+      <div class="ws-student-meta-grid">
+        <div class="ws-meta-field">Student Name: _______________________</div>
+        <div class="ws-meta-field">Roll No: ___________ &nbsp; Sec: _____</div>
+        <div class="ws-meta-field">Date: ____________ &nbsp; Marks: ____/25</div>
+      </div>
+
+      <!-- Section A: Multiple Choice Thinking Questions -->
+      <div class="ws-section">
+        <div class="ws-section-title">SECTION A: DEDUCTIVE THINKING & MULTIPLE CHOICE (1 Mark Each)</div>
+        ${ch.questions.filter(q => q.category === 'mcq').slice(0, 5).map((q, i) => `
+          <div class="ws-question-item">
+            <div class="ws-question-text">
+              <strong>Q${i + 1}.</strong> ${q.body} <span class="ws-marks">[1M]</span>
+            </div>
+            ${q.image ? `<div class="ws-question-diagram-wrap"><img src="${q.image}" alt="Question Diagram" class="ws-question-diagram-img" /></div>` : ''}
+            <div style="margin-left: 1.25rem; font-size: 0.88rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.25rem;">
+              ${q.options.map((opt, idx) => `
+                <div style="${showAnswers && idx === q.correct ? 'font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 6px; border-radius: 4px; display: inline-block;' : ''}">
+                  (${String.fromCharCode(97 + idx)}) ${opt}
+                </div>
+              `).join('')}
+            </div>
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>Answer:</strong> (${String.fromCharCode(97 + q.correct)}) ${q.options[q.correct]}<br>
+                <em>Reasoning:</em> ${q.explanation}
+              </div>
+            ` : `
+              <div style="margin-top: 0.4rem; font-weight: 600;">Ans: (___)</div>
+            `}
+          </div>
+        `).join('')}
+      </div>
+
+      <!-- Section B: Scientific Terms & Concept Classification -->
+      <div class="ws-section">
+        <div class="ws-section-title">SECTION B: SCIENTIFIC TERMS & CLASSIFICATION (1.5 Marks Each)</div>
+        ${ch.questions.filter(q => q.category === 'whoami' || q.category === 'oddone').slice(0, 3).map((q, i) => `
+          <div class="ws-question-item">
+            <div class="ws-question-text">
+              <strong>Q${i + 6}.</strong> ${q.body} <span class="ws-marks">[1.5M]</span>
+            </div>
+            ${q.image ? `<div class="ws-question-diagram-wrap"><img src="${q.image}" alt="Question Diagram" class="ws-question-diagram-img" /></div>` : ''}
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>Answer:</strong> ${q.options[q.correct]}<br>
+                <em>Reasoning:</em> ${q.explanation}
+              </div>
+            ` : `
+              <div class="ws-answer-lines"></div>
+            `}
+          </div>
+        `).join('')}
+      </div>
+
+      <!-- Section C: Scenario Reasoning & Case Studies -->
+      <div class="ws-section">
+        <div class="ws-section-title">SECTION C: CASE STUDIES & APPLICATION (3 Marks Each)</div>
+        ${ch.questions.filter(q => q.category === 'scenario' || q.category === 'compare').slice(0, 3).map((q, i) => `
+          <div class="ws-question-item">
+            <div class="ws-question-text">
+              <strong>Q${i + 9}.</strong> ${q.body} <span class="ws-marks">[3M]</span>
+            </div>
+            ${q.image ? `<div class="ws-question-diagram-wrap"><img src="${q.image}" alt="Question Diagram" class="ws-question-diagram-img" /></div>` : ''}
+            ${showAnswers ? `
+              <div class="ws-answer-key-box">
+                <strong>Model Answer:</strong> ${q.options[q.correct]}<br>
+                <em>Marking Criteria:</em> ${q.explanation}
+              </div>
+            ` : `
+              <div class="ws-answer-lines" style="height: 72px;"></div>
+            `}
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  container.innerHTML = controlsHtml + paperHtml + `</div></div>`;
 
   const modeSelect = document.getElementById('ws-mode-select');
   if (modeSelect) {
@@ -7225,6 +8114,7 @@ function renderWorksheetView(container) {
     });
   }
 }
+
 
 // ==========================================================================
 // 11. MODE 5: QUICK REVISION — COMPARISON TABLES
