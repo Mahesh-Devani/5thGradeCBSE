@@ -22,6 +22,7 @@ const CHAPTERS_DATA = [
     themeColor: '#10b981',
     icon: '🌳',
     tag: 'Geography',
+    targetStars: 10,
     summary: 'Explore equatorial rainforests, 4 o\'clock convectional rain, 3 forest layers, shifting agriculture, and mineral riches of Central Africa.',
     learnCards: [
       {
@@ -315,6 +316,7 @@ const CHAPTERS_DATA = [
     themeColor: '#0284c7',
     icon: '❄️',
     tag: 'Geography',
+    targetStars: 10,
     summary: 'Explore the Frigid Zone, the massive Greenland Ice Sheet, floating icebergs, tundra vegetation, Arctic fauna, Inuit heritage (igloos, kayaks, parkas), and modern lifestyle in Nuuk.',
     learnCards: [
       {
@@ -728,6 +730,7 @@ const CHAPTERS_DATA = [
     themeColor: '#f59e0b',
     icon: '🏜️',
     tag: 'Geography',
+    targetStars: 10,
     summary: 'Discover desert landforms, sand dunes, oasis lifelines, petroleum transformation, Bedouin nomadic culture, and climate adaptations.',
     learnCards: [
       {
@@ -1032,6 +1035,7 @@ const CHAPTERS_DATA = [
     themeColor: '#f43f5e',
     icon: '⚔️',
     tag: 'History',
+    targetStars: 10,
     summary: 'Trace European traders, East India Company rule, the Battle of Plassey, severe social exploitation, Mangal Pandey\'s sacrifice, and the 1857 Uprising.',
     learnCards: [
       {
@@ -1310,6 +1314,7 @@ const CHAPTERS_DATA = [
     themeColor: '#f59e0b',
     icon: '✊',
     tag: 'History',
+    targetStars: 10,
     summary: 'Trace the birth of Indian nationalism, the founding of the INC in 1885, Moderates vs Radicals, Partition of Bengal, Swadeshi & Boycott, and early Revolutionaries.',
     learnCards: [
       {
@@ -1619,6 +1624,7 @@ const CHAPTERS_DATA = [
     themeColor: '#10b981',
     icon: '🕊️',
     tag: 'History',
+    targetStars: 10,
     summary: 'Follow the climactic phase of India’s freedom saga: Gandhiji\'s Satyagraha, Jallianwala Bagh, Non-Cooperation, Dandi March, Quit India, Netaji\'s INA, and 1947 Independence.',
     learnCards: [
       {
@@ -1927,6 +1933,7 @@ const CHAPTERS_DATA = [
     themeColor: '#3b82f6',
     icon: '🏛️',
     tag: 'Civics',
+    targetStars: 10,
     summary: 'Master the three organs of democracy (Legislature, Executive, Judiciary), three levels of government, Lok Sabha vs Rajya Sabha, and the Supreme Court.',
     learnCards: [
       {
@@ -2225,6 +2232,520 @@ const CHAPTERS_DATA = [
   }
 ];
 
+// ==================== CHAPTER MILESTONES (10 STARS PER CHAPTER) ====================
+const CHAPTER_MILESTONES = {
+  'ch5_drc': [
+    {
+      id: 'learn_part1',
+      title: 'Equatorial Rainforest Architecture',
+      desc: 'Explored the 3-Storey Rainforest diagram (Emergent, Canopy, Understory) and 4 O\'Clock Convectional Rain engine',
+      hint: 'Review concept cards 1 & 2 and Rainforest layers in Learn mode',
+      check: (d) => (d.learnCardsRead >= 2 || d.interactiveExplored)
+    },
+    {
+      id: 'learn_part2',
+      title: 'Mineral Wealth & Pygmy Culture',
+      desc: 'Explored DRC\'s cobalt & industrial diamond wealth, shifting cultivation, and indigenous Bambuti pygmies',
+      hint: 'Review concept cards 3, 4 & 5 in Learn mode',
+      check: (d) => d.learnCardsRead >= 4
+    },
+    {
+      id: 'exam_traps',
+      title: 'Rainforest & Evergreen Traps',
+      desc: 'Diagnosed tricky CBSE exam misconceptions in "Be the Teacher" (evergreen leaf shedding vs deciduous, mineral paradox)',
+      hint: 'Read and diagnose the exam traps in Learn mode',
+      check: (d) => d.trapsDiagnosed >= 2
+    },
+    {
+      id: 'practice_blanks',
+      title: 'Geographical Fact Precision (Blanks)',
+      desc: 'Correctly completed foundational fill-in-the-blank questions on DRC\'s rivers, capital, and climate',
+      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode',
+      check: (d) => (d.categorySolved.blank || 0) >= 3
+    },
+    {
+      id: 'practice_tf',
+      title: 'True/False Deductions & Corrections',
+      desc: 'Evaluated True/False statements with geographic reasoning',
+      hint: 'Solve at least 3 True/False questions in Practice mode',
+      check: (d) => (d.categorySolved.tf || 0) >= 3
+    },
+    {
+      id: 'practice_match',
+      title: 'Resource & Agricultural Matching',
+      desc: 'Paired DRC\'s crops, minerals, and indigenous groups to their roles',
+      hint: 'Solve Match the Following questions in Practice mode',
+      check: (d) => (d.categorySolved.match || 0) >= 1
+    },
+    {
+      id: 'practice_short',
+      title: 'Short Answer Reasoning (2 Marks)',
+      desc: 'Formulated concise 2-mark conceptual explanations (4 o\'clock rain, transport challenges)',
+      hint: 'Solve at least 2 Short Answer questions in Practice mode',
+      check: (d) => (d.categorySolved.short || 0) >= 2
+    },
+    {
+      id: 'practice_long',
+      title: 'Long Answer Scaffold Mastery (5 Marks)',
+      desc: 'Chunked and conquered 5-mark subjective exam questions using the 4-pillar scaffold',
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
+      check: (d) => (d.categorySolved.long || 0) >= 1
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Comprehensive Chapter Breadth',
+      desc: 'Solved at least 10 questions across all practice categories',
+      hint: 'Solve at least 10 total practice questions',
+      check: (d) => d.totalSolved >= 10
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Exam Readiness',
+      desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
+      hint: 'Score 7+ points in the 60s Challenge',
+      check: (d) => d.sprintHighScore >= 7
+    }
+  ],
+
+  'ch6_greenland': [
+    {
+      id: 'learn_part1',
+      title: 'Frigid Zone & Iceberg Dynamics',
+      desc: 'Explored Greenland Ice Sheet (80%+ ice cover), iceberg buoyancy tip (~10%), and Midnight Sun',
+      hint: 'Review concept cards 1 & 2 and the Iceberg anatomy diagram in Learn mode',
+      check: (d) => (d.learnCardsRead >= 2 || d.interactiveExplored)
+    },
+    {
+      id: 'learn_part2',
+      title: 'Tundra Ecology & Inuit Culture',
+      desc: 'Mastered Arctic flora/fauna adaptations and traditional vs modern Inuit lifestyles (kayaks, igloos, Nuuk)',
+      hint: 'Review concept cards 3, 4 & 5 in Learn mode',
+      check: (d) => d.learnCardsRead >= 5
+    },
+    {
+      id: 'exam_traps',
+      title: 'Arctic Misconceptions Diagnostic',
+      desc: 'Diagnosed tricky CBSE exam traps (Greenland naming irony, permanent vs temporary snow igloos, iceberg mass)',
+      hint: 'Read and diagnose at least 3 exam traps in Learn mode',
+      check: (d) => d.trapsDiagnosed >= 3
+    },
+    {
+      id: 'practice_blanks',
+      title: 'Arctic Fact Precision (Blanks)',
+      desc: 'Correctly completed foundational fill-in-the-blank questions on Nuuk, icebergs, harpoons, and tundra',
+      hint: 'Solve at least 5 Fill in the Blanks questions in Practice mode',
+      check: (d) => (d.categorySolved.blank || 0) >= 5
+    },
+    {
+      id: 'practice_tf',
+      title: 'Polar True/False Deductions',
+      desc: 'Evaluated True/False statements regarding Arctic flora, fauna, and seasons with reasoning',
+      hint: 'Solve at least 4 True/False questions in Practice mode',
+      check: (d) => (d.categorySolved.tf || 0) >= 4
+    },
+    {
+      id: 'practice_match',
+      title: 'Arctic Terminology & Gear Matching',
+      desc: 'Matched Inuit terms (Parka, Kayak, Umiak, Harpoon, Igloo) with precision',
+      hint: 'Solve at least 2 Match the Following sets in Practice mode',
+      check: (d) => (d.categorySolved.match || 0) >= 2
+    },
+    {
+      id: 'practice_short',
+      title: 'Polar Conceptual Reasoning (2 Marks)',
+      desc: 'Formulated concise 2-mark conceptual explanations (why trees don\'t grow, iceberg danger to ships)',
+      hint: 'Solve at least 3 Short Answer questions in Practice mode',
+      check: (d) => (d.categorySolved.short || 0) >= 3
+    },
+    {
+      id: 'practice_long',
+      title: 'Long Answer Scaffold Mastery (5 Marks)',
+      desc: 'Chunked and conquered 5-mark subjective exam questions on Inuit lifestyle changes and climate',
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
+      check: (d) => (d.categorySolved.long || 0) >= 1
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Comprehensive Arctic Practice Breadth',
+      desc: 'Solved at least 15 questions across all practice categories',
+      hint: 'Solve at least 15 total practice questions',
+      check: (d) => d.totalSolved >= 15
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Polar Recall',
+      desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
+      hint: 'Score 7+ points in the 60s Challenge',
+      check: (d) => d.sprintHighScore >= 7
+    }
+  ],
+
+  'ch7_saudi': [
+    {
+      id: 'learn_part1',
+      title: 'Desert Landforms & Liquid Gold',
+      desc: 'Explored Arabian peninsula geography, sand dunes, oasis ecosystems, and petroleum wealth',
+      hint: 'Review concept cards 1 & 2 in Learn mode',
+      check: (d) => d.learnCardsRead >= 2
+    },
+    {
+      id: 'learn_part2',
+      title: 'Water Solutions & Modern Economy',
+      desc: 'Mastered desalination plants, drip irrigation, Bedouin traditions, and modern Riyadh & Jeddah',
+      hint: 'Review concept cards 3, 4 & 5 in Learn mode',
+      check: (d) => d.learnCardsRead >= 4
+    },
+    {
+      id: 'exam_traps',
+      title: 'Desert Climate & Oasis Traps',
+      desc: 'Diagnosed tricky CBSE exam traps (extreme diurnal temperature range, oasis underground water source)',
+      hint: 'Read and diagnose the exam traps in Learn mode',
+      check: (d) => d.trapsDiagnosed >= 2
+    },
+    {
+      id: 'practice_blanks',
+      title: 'Desert Geography Precision (Blanks)',
+      desc: 'Completed foundational blanks on Riyadh, Rub\' al Khali, Red Sea, and oil fields',
+      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode',
+      check: (d) => (d.categorySolved.blank || 0) >= 3
+    },
+    {
+      id: 'practice_tf',
+      title: 'True/False Desert Deductions',
+      desc: 'Evaluated statements on Arabian climate, rivers (wadis), and Bedouin tents with corrections',
+      hint: 'Solve at least 3 True/False questions in Practice mode',
+      check: (d) => (d.categorySolved.tf || 0) >= 3
+    },
+    {
+      id: 'practice_match',
+      title: 'Arabian Culture & Resource Matching',
+      desc: 'Connected Saudi garments (Thobe, Ghutrah), cities, and resources to their roles',
+      hint: 'Solve Match the Following questions in Practice mode',
+      check: (d) => (d.categorySolved.match || 0) >= 1
+    },
+    {
+      id: 'practice_short',
+      title: 'Short Answer Reasoning (2 Marks)',
+      desc: 'Formulated concise 2-mark conceptual explanations (why camel is ship of the desert, how oil transformed life)',
+      hint: 'Solve at least 2 Short Answer questions in Practice mode',
+      check: (d) => (d.categorySolved.short || 0) >= 2
+    },
+    {
+      id: 'practice_long',
+      title: 'Long Answer Scaffold Mastery (5 Marks)',
+      desc: 'Chunked and conquered 5-mark subjective exam questions on Saudi Arabia\'s transformation',
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
+      check: (d) => (d.categorySolved.long || 0) >= 1
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Comprehensive Desert Breadth',
+      desc: 'Solved at least 10 questions across all practice categories',
+      hint: 'Solve at least 10 total practice questions',
+      check: (d) => d.totalSolved >= 10
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Desert Recall',
+      desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
+      hint: 'Score 7+ points in the 60s Challenge',
+      check: (d) => d.sprintHighScore >= 7
+    }
+  ],
+
+  'ch17_british_raj': [
+    {
+      id: 'learn_part1',
+      title: 'Trade to Conquest Foundations',
+      desc: 'Explored Vasco da Gama\'s arrival (1498), East India Company (1600), and Battle of Plassey (1757)',
+      hint: 'Review concept cards 1 & 2 in Learn mode',
+      check: (d) => d.learnCardsRead >= 2
+    },
+    {
+      id: 'learn_part2',
+      title: 'Economic Exploitation & 1857 Spark',
+      desc: 'Mastered Doctrine of Lapse, forced indigo/cotton farming, greased cartridges, Mangal Pandey, and Crown Rule (1858)',
+      hint: 'Review concept cards 3, 4 & 5 in Learn mode',
+      check: (d) => d.learnCardsRead >= 4
+    },
+    {
+      id: 'exam_traps',
+      title: 'Colonial Exploitation Traps',
+      desc: 'Diagnosed tricky CBSE exam traps (Company rule vs Crown rule, economic vs religious causes of 1857)',
+      hint: 'Read and diagnose the exam traps in Learn mode',
+      check: (d) => d.trapsDiagnosed >= 2
+    },
+    {
+      id: 'practice_blanks',
+      title: 'Historical Chronology (Blanks)',
+      desc: 'Completed blanks on Plassey, Bahadur Shah Zafar, Rani Lakshmibai, and Queen Victoria\'s proclamation',
+      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode',
+      check: (d) => (d.categorySolved.blank || 0) >= 3
+    },
+    {
+      id: 'practice_tf',
+      title: '1857 Revolt True/False Deductions',
+      desc: 'Evaluated historical statements with cause-and-effect reasoning',
+      hint: 'Solve at least 3 True/False questions in Practice mode',
+      check: (d) => (d.categorySolved.tf || 0) >= 3
+    },
+    {
+      id: 'practice_match',
+      title: '1857 Revolt Leaders & Centers',
+      desc: 'Matched revolutionary leaders (Nana Saheb, Tantia Tope, Rani Lakshmibai, Kunwar Singh) to their centers',
+      hint: 'Solve Match the Following questions in Practice mode',
+      check: (d) => (d.categorySolved.match || 0) >= 1
+    },
+    {
+      id: 'practice_short',
+      title: 'Short Answer Historical Reasoning (2 Marks)',
+      desc: 'Formulated 2-mark explanations (why Indian weavers suffered, why the 1857 revolt failed to dislodge British)',
+      hint: 'Solve at least 2 Short Answer questions in Practice mode',
+      check: (d) => (d.categorySolved.short || 0) >= 2
+    },
+    {
+      id: 'practice_long',
+      title: 'Long Answer Scaffold Mastery (5 Marks)',
+      desc: 'Mastered 5-mark subjective answers on causes of the 1857 Revolt and aftermath',
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
+      check: (d) => (d.categorySolved.long || 0) >= 1
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Comprehensive British Raj Breadth',
+      desc: 'Solved at least 10 questions across all practice categories',
+      hint: 'Solve at least 10 total practice questions',
+      check: (d) => d.totalSolved >= 10
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Freedom Chronology',
+      desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
+      hint: 'Score 7+ points in the 60s Challenge',
+      check: (d) => d.sprintHighScore >= 7
+    }
+  ],
+
+  'ch18_struggle_independence': [
+    {
+      id: 'learn_part1',
+      title: 'Rise of Nationalism & INC (1885)',
+      desc: 'Explored birth of Indian National Congress (A.O. Hume, W.C. Bonnerjee) and Moderates\' constitutional petitions',
+      hint: 'Review concept cards 1 & 2 in Learn mode',
+      check: (d) => d.learnCardsRead >= 2
+    },
+    {
+      id: 'learn_part2',
+      title: 'Radicals, Partition of Bengal & Swadeshi',
+      desc: 'Mastered Lal-Bal-Pal, Tilak\'s Swaraj proclamation, 1905 Partition of Bengal, Swadeshi bonfires, and Revolutionaries',
+      hint: 'Review concept cards 3, 4 & 5 in Learn mode',
+      check: (d) => d.learnCardsRead >= 4
+    },
+    {
+      id: 'exam_traps',
+      title: 'Nationalist Movement Traps',
+      desc: 'Diagnosed tricky CBSE exam traps (Moderates vs Radicals methods, Bengal partition real motive vs British excuse)',
+      hint: 'Read and diagnose the exam traps in Learn mode',
+      check: (d) => d.trapsDiagnosed >= 2
+    },
+    {
+      id: 'practice_blanks',
+      title: 'Nationalist Chronology (Blanks)',
+      desc: 'Completed blanks on Bombay 1885, Lord Curzon 1905, Kesari, and Swadeshi',
+      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode',
+      check: (d) => (d.categorySolved.blank || 0) >= 3
+    },
+    {
+      id: 'practice_tf',
+      title: 'True/False Nationalist Deductions',
+      desc: 'Evaluated historical statements on Moderate prayers vs Radical direct action',
+      hint: 'Solve at least 3 True/False questions in Practice mode',
+      check: (d) => (d.categorySolved.tf || 0) >= 3
+    },
+    {
+      id: 'practice_match',
+      title: 'Leaders, Publications & Movements',
+      desc: 'Matched leaders (Tilak, Gokhale, Khudiram Bose, Curzon) to their contributions',
+      hint: 'Solve Match the Following questions in Practice mode',
+      check: (d) => (d.categorySolved.match || 0) >= 1
+    },
+    {
+      id: 'practice_short',
+      title: 'Short Answer Reasoning (2 Marks)',
+      desc: 'Formulated 2-mark conceptual explanations (difference between Moderates and Radicals, Swadeshi movement)',
+      hint: 'Solve at least 2 Short Answer questions in Practice mode',
+      check: (d) => (d.categorySolved.short || 0) >= 2
+    },
+    {
+      id: 'practice_long',
+      title: 'Long Answer Scaffold Mastery (5 Marks)',
+      desc: 'Mastered 5-mark subjective answers on Partition of Bengal and the Swadeshi & Boycott Movement',
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
+      check: (d) => (d.categorySolved.long || 0) >= 1
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Comprehensive Nationalist Practice',
+      desc: 'Solved at least 10 questions across all practice categories',
+      hint: 'Solve at least 10 total practice questions',
+      check: (d) => d.totalSolved >= 10
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Nationalist Recall',
+      desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
+      hint: 'Score 7+ points in the 60s Challenge',
+      check: (d) => d.sprintHighScore >= 7
+    }
+  ],
+
+  'ch19_freedom_at_last': [
+    {
+      id: 'learn_part1',
+      title: 'Gandhian Era & Jallianwala Bagh',
+      desc: 'Explored Satyagraha, Rowlatt Act, Jallianwala Bagh tragedy (13 April 1919, General Dyer), and Non-Cooperation',
+      hint: 'Review concept cards 1, 2 & 3 in Learn mode',
+      check: (d) => d.learnCardsRead >= 3
+    },
+    {
+      id: 'learn_part2',
+      title: 'Civil Disobedience, Quit India & INA',
+      desc: 'Mastered Dandi Salt March (1930), Quit India ("Do or Die" 1942), Netaji Subhas Chandra Bose & INA, and 15 August 1947',
+      hint: 'Review concept cards 4, 5 & 6 in Learn mode',
+      check: (d) => d.learnCardsRead >= 5
+    },
+    {
+      id: 'exam_traps',
+      title: 'Mass Movement Traps',
+      desc: 'Diagnosed tricky CBSE exam traps (why Non-Cooperation was suspended after Chauri Chaura, Simon Commission boycott reason)',
+      hint: 'Read and diagnose the exam traps in Learn mode',
+      check: (d) => d.trapsDiagnosed >= 2
+    },
+    {
+      id: 'practice_blanks',
+      title: 'Gandhian Movements Precision (Blanks)',
+      desc: 'Completed blanks on Satyagraha, Dyer, Dandi, Chauri Chaura, and INA',
+      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode',
+      check: (d) => (d.categorySolved.blank || 0) >= 3
+    },
+    {
+      id: 'practice_tf',
+      title: 'Freedom Movement True/False Deductions',
+      desc: 'Evaluated historical statements on non-violence, salt tax defiance, and Azad Hind Fauj',
+      hint: 'Solve at least 3 True/False questions in Practice mode',
+      check: (d) => (d.categorySolved.tf || 0) >= 3
+    },
+    {
+      id: 'practice_match',
+      title: 'Freedom Slogans & Historic Years',
+      desc: 'Matched iconic slogans ("Jai Hind", "Do or Die", "Give me blood") and key years (1919, 1930, 1942, 1947)',
+      hint: 'Solve Match the Following questions in Practice mode',
+      check: (d) => (d.categorySolved.match || 0) >= 1
+    },
+    {
+      id: 'practice_short',
+      title: 'Short Answer Historical Reasoning (2 Marks)',
+      desc: 'Formulated 2-mark conceptual explanations (why Gandhiji picked salt for civil disobedience, why Simon Commission was boycotted)',
+      hint: 'Solve at least 2 Short Answer questions in Practice mode',
+      check: (d) => (d.categorySolved.short || 0) >= 2
+    },
+    {
+      id: 'practice_long',
+      title: 'Long Answer Scaffold Mastery (5 Marks)',
+      desc: 'Mastered 5-mark subjective answers on Jallianwala Bagh and the Dandi March',
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
+      check: (d) => (d.categorySolved.long || 0) >= 1
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Comprehensive Freedom Breadth',
+      desc: 'Solved at least 10 questions across all practice categories',
+      hint: 'Solve at least 10 total practice questions',
+      check: (d) => d.totalSolved >= 10
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Freedom Milestones',
+      desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
+      hint: 'Score 7+ points in the 60s Challenge',
+      check: (d) => d.sprintHighScore >= 7
+    }
+  ],
+
+  'ch20_government': [
+    {
+      id: 'learn_part1',
+      title: '3 Organs & 3 Levels of Governance',
+      desc: 'Explored the 3 Organs (Legislature makes laws, Executive enforces, Judiciary protects) and 3 Levels (Central, State, Local)',
+      hint: 'Review concept cards 1 & 2 and the Governance matrix diagram in Learn mode',
+      check: (d) => (d.learnCardsRead >= 2 || d.interactiveExplored)
+    },
+    {
+      id: 'learn_part2',
+      title: 'Parliament, President & Courts',
+      desc: 'Mastered Lok Sabha vs Rajya Sabha, Head of State (President) vs Head of Government (PM), and Supreme Court in New Delhi',
+      hint: 'Review concept cards 3, 4 & 5 in Learn mode',
+      check: (d) => d.learnCardsRead >= 4
+    },
+    {
+      id: 'exam_traps',
+      title: 'Constitutional Roles Traps',
+      desc: 'Diagnosed tricky CBSE exam traps (President vs Prime Minister powers, Lok Sabha vs Rajya Sabha membership term)',
+      hint: 'Read and diagnose the exam traps in Learn mode',
+      check: (d) => d.trapsDiagnosed >= 2
+    },
+    {
+      id: 'practice_blanks',
+      title: 'Governance Fact Precision (Blanks)',
+      desc: 'Completed blanks on Parliament, Chief Justice, Vidhan Sabha, and Lok Sabha elections',
+      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode',
+      check: (d) => (d.categorySolved.blank || 0) >= 3
+    },
+    {
+      id: 'practice_tf',
+      title: 'Constitutional True/False Deductions',
+      desc: 'Evaluated statements on democratic branches, Supreme Court authority, and election ages',
+      hint: 'Solve at least 3 True/False questions in Practice mode',
+      check: (d) => (d.categorySolved.tf || 0) >= 3
+    },
+    {
+      id: 'practice_match',
+      title: 'Constitutional Roles & Organs',
+      desc: 'Matched organs (Legislature, Executive, Judiciary) and constitutional heads (President, PM, Chief Justice, Governor)',
+      hint: 'Solve Match the Following questions in Practice mode',
+      check: (d) => (d.categorySolved.match || 0) >= 1
+    },
+    {
+      id: 'practice_short',
+      title: 'Short Answer Governance Reasoning (2 Marks)',
+      desc: 'Formulated 2-mark conceptual explanations (why judiciary must be independent, how Lok Sabha members are elected)',
+      hint: 'Solve at least 2 Short Answer questions in Practice mode',
+      check: (d) => (d.categorySolved.short || 0) >= 2
+    },
+    {
+      id: 'practice_long',
+      title: 'Long Answer Scaffold Mastery (5 Marks)',
+      desc: 'Mastered 5-mark subjective answers on the 3 Organs of Government and Lok Sabha vs Rajya Sabha',
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
+      check: (d) => (d.categorySolved.long || 0) >= 1
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Comprehensive Civics Breadth',
+      desc: 'Solved at least 10 questions across all practice categories',
+      hint: 'Solve at least 10 total practice questions',
+      check: (d) => d.totalSolved >= 10
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Civics Recall',
+      desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
+      hint: 'Score 7+ points in the 60s Challenge',
+      check: (d) => d.sprintHighScore >= 7
+    }
+  ]
+};
+
 // ==================== NATIVE AUDIO SYNTHESIZER ====================
 class SoundFX {
   constructor() {
@@ -2357,6 +2878,9 @@ class SSTApp {
     this.practiceScore = { correct: 0, incorrect: 0 };
     this.studentDrafts = {}; // { qId: text }
 
+    // Multi-milestone Chapter Progress
+    this.chapterProgress = {}; // { [chapId]: { learnCardsRead: num, trapsDiagnosed: num, sprintHighScore: num, interactiveExplored: bool } }
+
     // Match interaction state
     this.matchSelectedLeft = null;
     this.matchedPairs = {}; // { qId: [leftId, ...] }
@@ -2374,6 +2898,21 @@ class SSTApp {
 
   init() {
     this.loadActiveState();
+
+    // Wire top bar passport button
+    const passportBtn = document.getElementById('btn-passport');
+    if (passportBtn) {
+      passportBtn.addEventListener('click', () => {
+        sfx.click();
+        this.openLearningPassport(this.activeChapterId);
+      });
+    }
+
+    // Silently evaluate stars for all chapters on startup to sync existing solved questions
+    CHAPTERS_DATA.forEach(chap => {
+      this.evaluateAndAwardStars(chap.id, true);
+    });
+
     this.renderSidebar();
     this.bindGlobalEvents();
     this.switchChapter(this.activeChapterId, false);
@@ -2392,7 +2931,8 @@ class SSTApp {
         practiceIndex: this.practiceIndex,
         practiceAnswered: this.practiceAnswered,
         practiceScore: this.practiceScore,
-        studentDrafts: this.studentDrafts
+        studentDrafts: this.studentDrafts,
+        chapterProgress: this.chapterProgress
       };
       localStorage.setItem(STORAGE_KEY_STATE, JSON.stringify(stateObj));
     } catch (e) {
@@ -2420,6 +2960,7 @@ class SSTApp {
         if (parsed.practiceAnswered) this.practiceAnswered = parsed.practiceAnswered;
         if (parsed.practiceScore) this.practiceScore = parsed.practiceScore;
         if (parsed.studentDrafts) this.studentDrafts = parsed.studentDrafts;
+        if (parsed.chapterProgress) this.chapterProgress = parsed.chapterProgress;
       }
     } catch (e) {
       console.warn('LocalStorage load failed:', e);
@@ -2445,6 +2986,238 @@ class SSTApp {
     }
   }
 
+  // ==================== MULTI-MILESTONE EVALUATOR & PASSPORT ====================
+  getChapterProgressData(chapterId) {
+    if (!this.chapterProgress[chapterId]) {
+      this.chapterProgress[chapterId] = {
+        cardsRead: {},
+        trapsDiagnosed: {},
+        interactiveExplored: false,
+        sprintHighScore: 0
+      };
+    }
+    const prog = this.chapterProgress[chapterId];
+    if (!prog.cardsRead) prog.cardsRead = {};
+    if (!prog.trapsDiagnosed) prog.trapsDiagnosed = {};
+
+    const chap = CHAPTERS_DATA.find(c => c.id === chapterId) || CHAPTERS_DATA[0];
+    const allQs = chap.practiceQuestions || [];
+
+    let totalSolved = 0;
+    const categorySolved = { blank: 0, tf: 0, match: 0, short: 0, long: 0 };
+
+    allQs.forEach(q => {
+      const st = this.practiceAnswered[q.id];
+      if (st && (st.answered || st.correct || st.revealed)) {
+        totalSolved++;
+        if (categorySolved[q.type] !== undefined) {
+          categorySolved[q.type]++;
+        }
+      }
+    });
+
+    const learnCardsRead = typeof prog.cardsRead === 'object'
+      ? Object.values(prog.cardsRead).filter(Boolean).length
+      : (prog.learnCardsRead || 0);
+
+    const trapsDiagnosed = typeof prog.trapsDiagnosed === 'object'
+      ? Object.values(prog.trapsDiagnosed).filter(Boolean).length
+      : (prog.trapsDiagnosedCount || 0);
+
+    return {
+      cardsRead: prog.cardsRead,
+      learnCardsRead,
+      trapsDiagnosedMap: prog.trapsDiagnosed,
+      trapsDiagnosed,
+      interactiveExplored: !!prog.interactiveExplored,
+      sprintHighScore: prog.sprintHighScore || 0,
+      categorySolved,
+      totalSolved
+    };
+  }
+
+  evaluateAndAwardStars(chapterId, silent = false) {
+    const milestones = CHAPTER_MILESTONES[chapterId] || [];
+    if (milestones.length === 0) return 0;
+    const data = this.getChapterProgressData(chapterId);
+
+    let earnedStars = 0;
+    milestones.forEach(m => {
+      try {
+        if (m.check(data)) {
+          earnedStars++;
+        }
+      } catch (e) {
+        console.warn(`Milestone check failed for ${m.id}:`, e);
+      }
+    });
+
+    const prevStars = this.getChapterStars(chapterId);
+    if (earnedStars > prevStars) {
+      this.setChapterStars(chapterId, earnedStars);
+      if (!silent) {
+        sfx.complete();
+        if (earnedStars >= 10) {
+          this.confetti.blast();
+        }
+      }
+      this.updateProgressHUD();
+      this.renderSidebar();
+      this.updateTopBarPassportButton();
+    }
+    return earnedStars;
+  }
+
+  updateTopBarPassportButton() {
+    const btn = document.getElementById('btn-passport');
+    if (!btn) return;
+    const stars = this.getChapterStars(this.activeChapterId);
+    const chap = CHAPTERS_DATA.find(c => c.id === this.activeChapterId) || CHAPTERS_DATA[0];
+    const target = chap.targetStars || 10;
+    btn.innerHTML = `📋 ⭐ ${stars}/${target} <span class="passport-btn-label">Passport</span>`;
+  }
+
+  renderChapterMasteryBanner(chap) {
+    const stars = this.getChapterStars(chap.id);
+    const target = chap.targetStars || 10;
+    const pct = Math.round((stars / target) * 100);
+    return `
+      <div class="chapter-mastery-banner no-print" style="--chapter-theme: ${chap.themeColor}">
+        <div class="mastery-banner-left">
+          <div class="mastery-star-pill">
+            <span>⭐</span>
+            <span><strong>${stars}</strong> / ${target} Stars</span>
+          </div>
+          <div class="mastery-bar-track">
+            <div class="mastery-bar-fill" style="width: ${pct}%;"></div>
+          </div>
+          <span class="mastery-pct-label">${pct}% Mastered ${stars === target ? '• 🏅 Certified!' : ''}</span>
+        </div>
+        <div class="mastery-banner-right">
+          <button class="btn-passport-trigger" id="btn-banner-passport">
+            📋 Learning Passport & Parent Report
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  bindMasteryBannerEvents(container, chapterId) {
+    if (!container) return;
+    const bannerBtn = container.querySelector('#btn-banner-passport');
+    if (bannerBtn) {
+      bannerBtn.addEventListener('click', () => {
+        sfx.click();
+        this.openLearningPassport(chapterId);
+      });
+    }
+  }
+
+  openLearningPassport(chapterId) {
+    const chap = CHAPTERS_DATA.find(c => c.id === chapterId) || CHAPTERS_DATA.find(c => c.id === this.activeChapterId) || CHAPTERS_DATA[0];
+    const modal = document.getElementById('passport-modal');
+    if (!modal) return;
+
+    const milestones = CHAPTER_MILESTONES[chap.id] || [];
+    const data = this.getChapterProgressData(chap.id);
+    const clearedCount = milestones.filter(m => {
+      try { return m.check(data); } catch (e) { return false; }
+    }).length;
+    const targetStars = chap.targetStars || 10;
+    const isAllCleared = clearedCount >= targetStars;
+    const pct = Math.round((clearedCount / targetStars) * 100);
+
+    const iconEl = document.getElementById('passport-icon');
+    const titleEl = document.getElementById('passport-title');
+    const subtitleEl = document.getElementById('passport-subtitle');
+    const starsEl = document.getElementById('passport-stars-display');
+    const fillEl = document.getElementById('passport-progress-fill');
+    const statusEl = document.getElementById('passport-status-text');
+
+    if (iconEl) iconEl.textContent = chap.icon;
+    if (titleEl) titleEl.textContent = `${chap.number}: ${chap.title} — Learning Passport`;
+    if (subtitleEl) subtitleEl.textContent = `Parent & Teacher Comprehensive Audit Report • ${chap.tag}`;
+    if (starsEl) starsEl.textContent = `⭐ ${clearedCount} / ${targetStars} Stars Earned`;
+    if (fillEl) fillEl.style.width = `${pct}%`;
+    if (statusEl) statusEl.textContent = isAllCleared ? '🎉 Chapter Fully Certified! 100% Mastered' : `${pct}% Completed (${targetStars - clearedCount} milestones remaining)`;
+
+    const listEl = document.getElementById('passport-milestones-list');
+    if (listEl) {
+      listEl.innerHTML = milestones.map((m, idx) => {
+        let cleared = false;
+        try { cleared = m.check(data); } catch (e) { cleared = false; }
+        return `
+          <div class="milestone-card ${cleared ? 'cleared' : 'pending'}">
+            <div class="milestone-left">
+              <div class="milestone-star-num">Star ${idx + 1}</div>
+              <div class="milestone-status-icon">${cleared ? '✅' : '⏳'}</div>
+            </div>
+            <div class="milestone-center">
+              <div class="milestone-title">${m.title}</div>
+              <div class="milestone-desc">${m.desc}</div>
+              ${!cleared ? `<div class="milestone-hint">👉 <strong>How to unlock:</strong> ${m.hint}</div>` : ''}
+            </div>
+            <div class="milestone-right">
+              <span class="milestone-badge ${cleared ? 'badge-cleared' : 'badge-pending'}">
+                ${cleared ? '✓ Verified ⭐' : 'In Progress'}
+              </span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    const guaranteeBox = document.getElementById('passport-guarantee-box');
+    if (guaranteeBox) {
+      if (isAllCleared) {
+        guaranteeBox.style.display = 'block';
+        guaranteeBox.innerHTML = `
+          <div class="guarantee-inner">
+            <div class="guarantee-seal">🏅</div>
+            <div>
+              <h4>Official Parent & Teacher Mastery Certificate</h4>
+              <p>This certifies that <strong>the student has successfully completed 100% of all required concept lessons, diagnostic traps, practice categories, and rapid recall sprint</strong> for <strong>${chap.number}: ${chap.title}</strong>. Full conceptual understanding, critical thinking, and exam readiness are verified.</p>
+            </div>
+          </div>
+        `;
+      } else {
+        guaranteeBox.style.display = 'none';
+      }
+    }
+
+    const closeBtn = document.getElementById('btn-passport-close');
+    const closeX = document.getElementById('btn-passport-close-x');
+    const actionBtn = document.getElementById('btn-passport-action');
+
+    const closeFn = () => {
+      modal.classList.remove('active');
+    };
+
+    if (closeBtn) closeBtn.onclick = closeFn;
+    if (closeX) closeX.onclick = closeFn;
+    modal.onclick = (e) => {
+      if (e.target === modal) closeFn();
+    };
+
+    if (actionBtn) {
+      actionBtn.onclick = () => {
+        closeFn();
+        const pendingMilestone = milestones.find(m => {
+          try { return !m.check(data); } catch (e) { return true; }
+        });
+        if (pendingMilestone) {
+          if (pendingMilestone.id.startsWith('learn')) this.setMode('learn');
+          else if (pendingMilestone.id.startsWith('interactive')) this.setMode('learn');
+          else if (pendingMilestone.id.startsWith('exam')) this.setMode('learn');
+          else if (pendingMilestone.id.startsWith('practice')) this.setMode('practice');
+          else if (pendingMilestone.id.startsWith('sprint')) this.setMode('challenge');
+        }
+      };
+    }
+
+    modal.classList.add('active');
+  }
+
   // ==================== SIDEBAR & NAVIGATION ====================
   renderSidebar() {
     const listEl = document.getElementById('sidebar-topics');
@@ -2453,7 +3226,8 @@ class SSTApp {
 
     CHAPTERS_DATA.forEach(chap => {
       const stars = this.getChapterStars(chap.id);
-      const starStr = '⭐'.repeat(stars) + '☆'.repeat(3 - stars);
+      const target = chap.targetStars || 10;
+      const pct = Math.round((stars / target) * 100);
 
       const item = document.createElement('div');
       item.className = `topic-item ${chap.id === this.activeChapterId ? 'active' : ''}`;
@@ -2466,7 +3240,10 @@ class SSTApp {
         <p class="topic-desc">${chap.summary}</p>
         <div class="topic-meta">
           <span class="badge badge-active">${chap.tag}</span>
-          <span class="topic-stars" title="${stars} Stars">${starStr}</span>
+          <span class="topic-stars" title="${stars}/${target} Stars">⭐ ${stars}/${target}</span>
+        </div>
+        <div class="sidebar-mini-progress">
+          <div class="mini-progress-fill" style="width: ${pct}%;"></div>
         </div>
       `;
       item.addEventListener('click', () => {
@@ -2585,7 +3362,7 @@ class SSTApp {
     CHAPTERS_DATA.forEach(c => {
       totalStars += this.getChapterStars(c.id);
     });
-    const maxStars = CHAPTERS_DATA.length * 3;
+    const maxStars = CHAPTERS_DATA.length * 10;
     const fillEl = document.getElementById('progress-fill');
     const labelEl = document.getElementById('progress-label');
     if (fillEl) {
@@ -2594,6 +3371,7 @@ class SSTApp {
     if (labelEl) {
       labelEl.textContent = `${totalStars} / ${maxStars} Stars Earned`;
     }
+    this.updateTopBarPassportButton();
   }
 
   // ==================== DISPATCH RENDERER ====================
@@ -2629,11 +3407,26 @@ class SSTApp {
     container.innerHTML = '';
     const chap = CHAPTERS_DATA.find(c => c.id === this.activeChapterId) || CHAPTERS_DATA[0];
 
+    // Progress state for this chapter
+    if (!this.chapterProgress[chap.id]) {
+      this.chapterProgress[chap.id] = {
+        cardsRead: {},
+        trapsDiagnosed: {},
+        interactiveExplored: false,
+        sprintHighScore: 0
+      };
+    }
+    const prog = this.chapterProgress[chap.id];
+    if (!prog.cardsRead) prog.cardsRead = {};
+    if (!prog.trapsDiagnosed) prog.trapsDiagnosed = {};
+
     const wrap = document.createElement('div');
     wrap.className = 'learn-container';
 
-    // Hero banner
+    // Hero banner & chapter mastery banner
     wrap.innerHTML = `
+      ${this.renderChapterMasteryBanner(chap)}
+
       <div class="chapter-hero-banner" style="border-left: 6px solid ${chap.themeColor};">
         <div class="chapter-hero-icon">${chap.icon}</div>
         <div class="chapter-hero-info">
@@ -2697,7 +3490,19 @@ class SSTApp {
             <div class="rf-layer-height">Ground 0–5 m</div>
           </div>
         </div>
+        <div style="margin-top: 10px; display: flex; justify-content: flex-end;">
+          <button class="btn btn-sm ${prog.interactiveExplored ? 'btn-success' : 'btn-secondary'} btn-explore-diagram">
+            ${prog.interactiveExplored ? '✅ Diagram Explored' : '🔬 Mark Diagram Explored'}
+          </button>
+        </div>
       `;
+      diag.querySelector('.btn-explore-diagram').addEventListener('click', () => {
+        sfx.click();
+        prog.interactiveExplored = true;
+        this.saveActiveState();
+        this.evaluateAndAwardStars(chap.id);
+        this.renderLearnMode(container);
+      });
       wrap.appendChild(diag);
     }
 
@@ -2777,7 +3582,19 @@ class SSTApp {
             </tbody>
           </table>
         </div>
+        <div style="margin-top: 10px; display: flex; justify-content: flex-end;">
+          <button class="btn btn-sm ${prog.interactiveExplored ? 'btn-success' : 'btn-secondary'} btn-explore-iceberg">
+            ${prog.interactiveExplored ? '✅ Iceberg Explored' : '🔬 Mark Iceberg Explored'}
+          </button>
+        </div>
       `;
+      diag.querySelector('.btn-explore-iceberg').addEventListener('click', () => {
+        sfx.click();
+        prog.interactiveExplored = true;
+        this.saveActiveState();
+        this.evaluateAndAwardStars(chap.id);
+        this.renderLearnMode(container);
+      });
       wrap.appendChild(diag);
     }
 
@@ -2819,7 +3636,19 @@ class SSTApp {
             </tbody>
           </table>
         </div>
+        <div style="margin-top: 10px; display: flex; justify-content: flex-end;">
+          <button class="btn btn-sm ${prog.interactiveExplored ? 'btn-success' : 'btn-secondary'} btn-explore-gov">
+            ${prog.interactiveExplored ? '✅ Structure Explored' : '🔬 Mark Structure Explored'}
+          </button>
+        </div>
       `;
+      diag.querySelector('.btn-explore-gov').addEventListener('click', () => {
+        sfx.click();
+        prog.interactiveExplored = true;
+        this.saveActiveState();
+        this.evaluateAndAwardStars(chap.id);
+        this.renderLearnMode(container);
+      });
       wrap.appendChild(diag);
     }
 
@@ -2827,32 +3656,58 @@ class SSTApp {
     const grid = document.createElement('div');
     grid.className = 'concept-grid';
 
-    chap.learnCards.forEach(c => {
+    chap.learnCards.forEach((c, idx) => {
+      const isRead = !!prog.cardsRead[idx];
       const card = document.createElement('div');
-      card.className = 'concept-card';
+      card.className = `concept-card ${isRead ? 'card-completed' : ''}`;
       card.innerHTML = `
         <div class="concept-card-header">
           <span class="concept-card-icon">${c.icon}</span>
           <h3 class="concept-card-title">${c.title}</h3>
         </div>
         <div class="concept-card-body">${c.body}</div>
+        <div style="margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border-color); display: flex; justify-content: flex-end;">
+          <button class="btn btn-sm ${isRead ? 'btn-success' : 'btn-secondary'} btn-mark-read">
+            ${isRead ? '✅ Read & Understood' : '📖 Mark as Read'}
+          </button>
+        </div>
       `;
+      card.querySelector('.btn-mark-read').addEventListener('click', () => {
+        sfx.click();
+        prog.cardsRead[idx] = true;
+        this.saveActiveState();
+        this.evaluateAndAwardStars(chap.id);
+        this.renderLearnMode(container);
+      });
       grid.appendChild(card);
     });
     wrap.appendChild(grid);
 
     // Spot the Exam Trap Section
     if (chap.examTraps && chap.examTraps.length > 0) {
-      chap.examTraps.forEach(trap => {
+      chap.examTraps.forEach((trap, idx) => {
+        const isDiagnosed = !!prog.trapsDiagnosed[idx];
         const trapCard = document.createElement('div');
-        trapCard.className = 'trap-card';
+        trapCard.className = `trap-card ${isDiagnosed ? 'trap-completed' : ''}`;
         trapCard.innerHTML = `
           <div class="trap-card-icon">🚨</div>
-          <div class="trap-card-content">
+          <div class="trap-card-content" style="flex: 1;">
             <h3>Spot the Exam Trap: ${trap.trap}</h3>
             <p><strong>Examiner\'s Truth:</strong> ${trap.truth}</p>
+            <div style="margin-top: 10px; display: flex; justify-content: flex-end;">
+              <button class="btn btn-sm ${isDiagnosed ? 'btn-success' : 'btn-secondary'} btn-mark-trap">
+                ${isDiagnosed ? '✅ Trap Diagnosed & Avoided' : '🔍 I Understand & Avoid This Trap'}
+              </button>
+            </div>
           </div>
         `;
+        trapCard.querySelector('.btn-mark-trap').addEventListener('click', () => {
+          sfx.click();
+          prog.trapsDiagnosed[idx] = true;
+          this.saveActiveState();
+          this.evaluateAndAwardStars(chap.id);
+          this.renderLearnMode(container);
+        });
         wrap.appendChild(trapCard);
       });
     }
@@ -2872,6 +3727,7 @@ class SSTApp {
     });
     wrap.appendChild(cta);
 
+    this.bindMasteryBannerEvents(wrap, chap.id);
     container.appendChild(wrap);
   }
 
@@ -2902,6 +3758,7 @@ class SSTApp {
 
     const wrap = document.createElement('div');
     wrap.className = 'practice-container';
+    wrap.innerHTML = this.renderChapterMasteryBanner(chap);
 
     // 1. Filter Chips Row
     const filterRow = document.createElement('div');
@@ -2933,12 +3790,17 @@ class SSTApp {
     // 2. Practice Stats Bar
     const statsBar = document.createElement('div');
     statsBar.className = 'practice-header-card';
+    const stars = this.getChapterStars(chap.id);
+    const target = chap.targetStars || 10;
     statsBar.innerHTML = `
       <div class="practice-progress-info">
         <span class="question-count-badge">Question ${this.practiceIndex + 1} of ${filteredQuestions.length}</span>
         <span class="practice-score-tally">
           Score: <span class="score-correct">${this.practiceScore.correct}</span> Correct | 
           <span class="score-incorrect">${this.practiceScore.incorrect}</span> Incorrect
+        </span>
+        <span class="practice-star-badge" style="font-weight: 700; color: var(--accent-amber); margin-left: 8px;">
+          ⭐ ${stars}/${target} Stars
         </span>
       </div>
       <div class="practice-actions-row">
@@ -3053,6 +3915,7 @@ class SSTApp {
 
     qCard.appendChild(navRow);
     wrap.appendChild(qCard);
+    this.bindMasteryBannerEvents(wrap, chap.id);
     container.appendChild(wrap);
   }
 
@@ -3103,6 +3966,7 @@ class SSTApp {
         studentAnswer: input.value.trim()
       };
       this.saveActiveState();
+      this.evaluateAndAwardStars(this.activeChapterId);
       rerender();
     };
 
@@ -3164,6 +4028,7 @@ class SSTApp {
         studentAnswer: choiceBool ? 'true' : 'false'
       };
       this.saveActiveState();
+      this.evaluateAndAwardStars(this.activeChapterId);
       rerender();
     };
 
@@ -3249,8 +4114,11 @@ class SSTApp {
               this.practiceScore.correct++;
               this.practiceAnswered[question.id] = { answered: true, correct: true };
               this.flashFeedback('correct');
+              this.saveActiveState();
+              this.evaluateAndAwardStars(this.activeChapterId);
+            } else {
+              this.saveActiveState();
             }
-            this.saveActiveState();
             rerender();
           } else {
             // Wrong match
@@ -3348,6 +4216,7 @@ class SSTApp {
       };
       this.studentDrafts[question.id] = val;
       this.saveActiveState();
+      this.evaluateAndAwardStars(this.activeChapterId);
       rerender();
     });
 
@@ -3361,6 +4230,7 @@ class SSTApp {
         studentAnswer: textarea.value.trim() || qState.studentAnswer || ''
       };
       this.saveActiveState();
+      this.evaluateAndAwardStars(this.activeChapterId);
       rerender();
     });
 
@@ -3484,7 +4354,16 @@ class SSTApp {
 
     textarea.addEventListener('input', e => {
       this.studentDrafts[question.id] = e.target.value;
+      if (e.target.value.trim().length > 10) {
+        if (!this.practiceAnswered[question.id]) {
+          this.practiceAnswered[question.id] = { answered: true, correct: true, revealed: false, studentAnswer: e.target.value };
+        } else {
+          this.practiceAnswered[question.id].answered = true;
+          this.practiceAnswered[question.id].studentAnswer = e.target.value;
+        }
+      }
       this.saveActiveState();
+      this.evaluateAndAwardStars(this.activeChapterId);
       updateFeedback(e.target.value);
     });
 
@@ -3506,9 +4385,11 @@ class SSTApp {
       this.practiceAnswered[question.id] = {
         answered: true,
         correct: true,
-        revealed: !qState.revealed
+        revealed: !qState.revealed,
+        studentAnswer: this.studentDrafts[question.id] || qState.studentAnswer || ''
       };
       this.saveActiveState();
+      this.evaluateAndAwardStars(this.activeChapterId);
       rerender();
     });
 
@@ -3684,33 +4565,48 @@ class SSTApp {
     sfx.complete();
     const chap = CHAPTERS_DATA.find(c => c.id === this.activeChapterId);
 
-    // Stars awarded
-    let stars = 1;
-    if (this.challengeScore >= 7) stars = 3;
-    else if (this.challengeScore >= 4) stars = 2;
+    // Save sprint high score
+    if (!this.chapterProgress[chap.id]) {
+      this.chapterProgress[chap.id] = {
+        learnCardsRead: 0,
+        trapsDiagnosed: 0,
+        interactiveExplored: false,
+        sprintHighScore: 0
+      };
+    }
+    this.chapterProgress[chap.id].sprintHighScore = Math.max(
+      this.chapterProgress[chap.id].sprintHighScore || 0,
+      this.challengeScore
+    );
+    this.saveActiveState();
 
-    this.setChapterStars(chap.id, stars);
-    this.updateProgressHUD();
-    this.renderSidebar();
-
-    if (stars === 3) this.confetti.blast();
+    this.evaluateAndAwardStars(chap.id);
+    const currentStars = this.getChapterStars(chap.id);
+    const targetStars = chap.targetStars || 10;
 
     const wrap = document.createElement('div');
     wrap.className = 'challenge-container';
     wrap.innerHTML = `
       <div style="font-size: 4rem;">🏆</div>
       <h2>Challenge Complete!</h2>
-      <div class="stars-display" style="font-size: 2.2rem; margin: 10px 0;">${'⭐'.repeat(stars)}${'☆'.repeat(3 - stars)}</div>
+      <div class="stars-display" style="font-size: 1.6rem; margin: 10px 0; font-weight: 700; color: var(--accent-amber);">
+        ⭐ ${currentStars} / ${targetStars} Chapter Mastery Stars Earned
+      </div>
       <p style="font-size: 1.1rem; color: var(--text-secondary);">
         You scored <strong>${this.challengeScore} / ${this.challengeQuestions.length}</strong> points!
+        ${this.challengeScore >= 7 ? '<br><span style="color:var(--color-success); font-weight:700;">🌟 Sprint Milestone Star Unlocked!</span>' : '<br><em>(Aim for 7+ points to unlock Star 10)</em>'}
       </p>
-      <div style="display: flex; gap: 12px; margin-top: 20px;">
+      <div style="display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; justify-content: center;">
         <button class="btn btn-primary" id="btn-retry-sprint">🔁 Try Sprint Again</button>
-        <button class="btn btn-secondary" id="btn-sprint-learn">📖 Review Concepts</button>
+        <button class="btn btn-secondary" id="btn-passport-from-sprint">📋 View Learning Passport</button>
+        <button class="btn btn-ghost" id="btn-sprint-learn">📖 Review Concepts</button>
       </div>
     `;
     wrap.querySelector('#btn-retry-sprint').addEventListener('click', () => {
       this.startChallenge(chap, container);
+    });
+    wrap.querySelector('#btn-passport-from-sprint').addEventListener('click', () => {
+      this.openLearningPassport(chap.id);
     });
     wrap.querySelector('#btn-sprint-learn').addEventListener('click', () => {
       this.setMode('learn');
@@ -3934,18 +4830,17 @@ class SSTApp {
     const modal = document.getElementById('results-modal');
     if (!modal) return;
 
+    this.evaluateAndAwardStars(chapter.id);
+    const currentStars = this.getChapterStars(chapter.id);
+    const targetStars = chapter.targetStars || 10;
+
     const correct = this.practiceScore.correct;
     const accuracy = totalQuestions > 0 ? Math.round((correct / totalQuestions) * 100) : 100;
 
-    let stars = 1;
-    if (accuracy >= 80) stars = 3;
-    else if (accuracy >= 50) stars = 2;
-
-    this.setChapterStars(chapter.id, stars);
     this.updateProgressHUD();
     this.renderSidebar();
 
-    if (stars === 3) this.confetti.blast();
+    if (currentStars >= targetStars) this.confetti.blast();
 
     const titleEl = document.getElementById('result-title');
     const msgEl = document.getElementById('result-message');
@@ -3954,9 +4849,9 @@ class SSTApp {
     const totEl = document.getElementById('result-total');
     const accEl = document.getElementById('result-accuracy');
 
-    if (titleEl) titleEl.textContent = stars === 3 ? 'Outstanding Thinking!' : 'Great Effort!';
+    if (titleEl) titleEl.textContent = currentStars >= targetStars ? 'Chapter Mastery Certified! 🏅' : 'Outstanding Effort!';
     if (msgEl) msgEl.textContent = `You completed the revision drill for ${chapter.number}: ${chapter.title}!`;
-    if (starsEl) starsEl.textContent = '⭐'.repeat(stars) + '☆'.repeat(3 - stars);
+    if (starsEl) starsEl.textContent = `⭐ ${currentStars} / ${targetStars} Mastery Stars Earned`;
     if (corEl) corEl.textContent = correct.toString();
     if (totEl) totEl.textContent = totalQuestions.toString();
     if (accEl) accEl.textContent = `${accuracy}%`;

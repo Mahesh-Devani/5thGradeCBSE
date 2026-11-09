@@ -156,6 +156,7 @@ Before completing a turn or pushing commits:
 - **Mathematics Master**: Read **[maths/README.md](maths/README.md)** and **[maths/AGENTS.md](maths/AGENTS.md)**.
 - **Science Master**: Read **[science/README.md](science/README.md)** and **[science/AGENTS.md](science/AGENTS.md)**.
 - **English Grammar**: Read **[english_grammer/README.md](english_grammer/README.md)** and **[english_grammer/AGENTS.md](english_grammer/AGENTS.md)**.
+- **Social Science Chapters**: Read **[sst_chapters/README.md](sst_chapters/README.md)** and **[sst_chapters/AGENTS.md](sst_chapters/AGENTS.md)**.
 - **Social Science Maps**: Read **[social_sicence_maps/AGENTS.md](social_sicence_maps/AGENTS.md)**.
 - **Hindi Vyakaran**: Read **[hindi_vyakaran/README.md](hindi_vyakaran/README.md)** and **[hindi_vyakaran/AGENTS.md](hindi_vyakaran/AGENTS.md)**.
 - **Data Schemas Contract**: Read **[SCHEMAS.md](SCHEMAS.md)** for official question formats and state shapes.

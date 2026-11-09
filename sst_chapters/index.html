@@ -56,7 +56,7 @@
         <div class="progress-bar-container">
           <div class="progress-bar-fill" id="progress-fill"></div>
         </div>
-        <div class="progress-label" id="progress-label">0 / 21 Stars Earned</div>
+        <div class="progress-label" id="progress-label">0 / 70 Stars Earned</div>
       </div>
     </aside>
 
@@ -78,6 +78,7 @@
           </div>
 
           <div class="top-bar-actions">
+            <button class="btn btn-secondary btn-sm" id="btn-passport" title="View Chapter Learning Passport & Parent Report" aria-label="Learning Passport">📋 <span class="passport-btn-label">Passport</span></button>
             <button class="btn btn-icon" id="btn-print" title="Print Revision Worksheet" aria-label="Print">🖨️</button>
             <button class="btn btn-icon" id="btn-reset" title="Restart Practice Drill" aria-label="Reset">🔄</button>
           </div>
@@ -135,6 +136,41 @@
         <button class="btn btn-primary" id="btn-modal-retry">🔁 Try Again</button>
         <button class="btn btn-secondary" id="btn-modal-review">📖 Review Concepts</button>
         <button class="btn btn-ghost" id="btn-modal-close">✕ Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== LEARNING PASSPORT & PARENT AUDIT MODAL ==================== -->
+  <div class="modal-overlay" id="passport-modal">
+    <div class="modal-card passport-modal-card">
+      <div class="passport-header">
+        <div class="passport-badge-icon" id="passport-icon">📋</div>
+        <div>
+          <h3 id="passport-title">Chapter Mastery Passport</h3>
+          <p id="passport-subtitle">Pedagogical Checklist & Parent Audit Report</p>
+        </div>
+        <button class="modal-close-x" id="btn-passport-close-x" aria-label="Close">✕</button>
+      </div>
+
+      <div class="passport-summary-bar">
+        <div class="passport-stars-big" id="passport-stars-display">⭐ 0 / 10 Stars Earned</div>
+        <div class="passport-progress-track">
+          <div class="passport-progress-fill" id="passport-progress-fill"></div>
+        </div>
+        <div class="passport-status-text" id="passport-status-text">In Progress</div>
+      </div>
+
+      <div class="passport-milestones-list" id="passport-milestones-list">
+        <!-- Dynamically rendered milestones with checkmarks -->
+      </div>
+
+      <div class="parent-guarantee-box" id="passport-guarantee-box" style="display: none;">
+        <!-- Rendered when all stars earned -->
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="btn-passport-action">🚀 Continue Learning</button>
+        <button class="btn btn-ghost" id="btn-passport-close">✕ Close</button>
       </div>
     </div>
   </div>

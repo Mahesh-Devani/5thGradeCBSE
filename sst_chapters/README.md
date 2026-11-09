@@ -11,12 +11,37 @@ Rather than passive memorization or tedious copy-writing, this app empowers stud
 2. **Metacognitive Self-Talk (`💡 Think About It` Prompts)**: Guiding questions that prompt students on *how to reason through the problem* before answering.
 3. **Diagnostic "Spot the Exam Trap"**: Exposing classic 5th-grade misconceptions (e.g., assuming evergreen trees never drop leaves, confusing the Head of State with the Head of Government).
 4. **Long Answer "Chunk & Conquer" Studio**: Breaking overwhelming 5-mark subjective questions into 3–4 logical memory pillars, interactive keyword indicators, and an active writing scratchpad with real-time feedback.
+5. **10-Star Mastery Progression & Learning Passport**: Eliminating superficial star inflation by requiring 10 distinct, deliberate pedagogical milestones per chapter (70 total stars across 7 chapters) verified through an interactive Parent & Teacher Audit Report.
+
+---
+
+## ⭐ 10-Star Chapter Mastery Architecture
+
+Each chapter features **10 Mastery Stars** earned through verified milestone accomplishments across all app modes:
+
+| Star | Milestone Category | Requirement & Pedagogical Objective |
+|---|---|---|
+| **⭐ 1** | **Foundational Concepts Part 1** | Study Cards 1 & 2 or explore the interactive biome/governance diagram |
+| **⭐ 2** | **Deep Conceptual Exploration Part 2** | Study Cards 3, 4, 5 (climate drivers, economic adaptations, historical turning points) |
+| **⭐ 3** | **CBSE Exam Trap Diagnostic** | Diagnose and master tricky student misconceptions ("Be the Teacher") |
+| **⭐ 4** | **Fill in the Blanks Precision** | Complete at least 3 objective keyword recall questions without hints |
+| **⭐ 5** | **True / False Deductions** | Evaluate at least 3 conceptual statements and provide required corrections |
+| **⭐ 6** | **Match the Following Synthesis** | Pair all structural terms, constitutional heads, dates, or flora/fauna |
+| **⭐ 7** | **Short Answer Reasoning (2 Marks)** | Formulate 2-mark conceptual explanations and self-check with CBSE model points |
+| **⭐ 8** | **Long Answer Scaffold Studio (5 Marks)** | Chunk & conquer 5-mark subjective blueprints using keyword scratchpad notes |
+| **⭐ 9** | **Curriculum Breadth** | Solve at least 10 practice questions across all exercise categories |
+| **⭐ 10** | **Mental Speed Sprint (60s Challenge)** | Score $\ge 7$ points in the 60-Second Rapid-Fire Recall Challenge |
+
+### 📋 Learning Passport & Parent Audit Report
+- Click the top-bar `📋 ⭐ X/10 Passport` button or the banner on any chapter.
+- Inspect an itemized audit card for each star showing verified status, detailed descriptions, and actionable unlock hints.
+- Unlocking all 10 stars generates the official **Parent & Teacher Mastery Certificate**.
 
 ---
 
 ## 📚 Curriculum Coverage (Term Revision)
 
-The platform provides comprehensive coverage of 7 key curriculum chapters:
+The platform provides comprehensive coverage of 7 key curriculum chapters (70 Max Stars):
 
 | Chapter | Topic Title | Focus Areas |
 |---|---|---|
@@ -33,16 +58,17 @@ The platform provides comprehensive coverage of 7 key curriculum chapters:
 ## 🛠️ Modes & Features
 
 1. **📖 Learn & Explore**:
-   - Visual concept cards with bite-sized highlights.
-   - Interactive diagrams (e.g. Rainforest 3-Storey architecture, Government 3-tier matrix).
-   - "🚨 Spot the Exam Trap" diagnostic callouts.
+   - Visual concept cards with bite-sized highlights and "Mark as Read & Understood" tracking.
+   - Interactive diagrams (e.g. Rainforest 3-Storey architecture, Iceberg Buoyancy, Government 3-tier matrix).
+   - "🚨 Spot the Exam Trap" diagnostic callouts with mastery checkboxes.
 2. **🧩 Practice & Solve**:
    - Filterable drills: **Fill in the Blanks**, **True / False with Corrections**, **Match the Following**, **Short Answers (2 Marks)**, and **Long Answer Scaffolder (5 Marks)**.
+   - Live chapter mastery banner displaying real-time star progress.
    - In-progress session persistence across browser reloads.
    - Prominent `🔄 Restart Drill` button.
 3. **⚡ 60-Second Challenge**:
    - Gamified rapid-fire recall sprint testing retention under gentle time pressure.
-   - Earn up to 3 stars per chapter based on performance.
+   - Score $\ge 7$ points to unlock Star 10 (Sprint Milestone).
 4. **📄 Printable Worksheet Mode**:
    - Formatted for crisp A4 black-and-white printing matching school exam papers.
    - Student lines and teacher/parent review layout.
@@ -53,26 +79,9 @@ The platform provides comprehensive coverage of 7 key curriculum chapters:
 
 To add a new chapter (e.g., L-1 The Globe, L-2 Maps, or Term 2 chapters):
 1. Open `sst_chapters/app.js`.
-2. Add a new object to the `CHAPTERS_DATA` array following this schema:
-
-```javascript
-{
-  id: 'ch1_globe',
-  number: 'L-1',
-  title: 'The Globe — A Model of the Earth',
-  themeColor: '#38bdf8',
-  icon: '🌐',
-  tag: 'Geography',
-  summary: 'Latitudes, longitudes, hemispheres, poles, and grid systems.',
-  learnCards: [ ... ],
-  examTraps: [ ... ],
-  practiceQuestions: [
-    // Type: 'blank' | 'tf' | 'match' | 'short' | 'long'
-  ]
-}
-```
-
-The app will automatically render the new chapter in the sidebar, update star calculations, and include it in print and practice modes!
+2. Add a new object to the `CHAPTERS_DATA` array following the standard schema in `SCHEMAS.md`.
+3. Add 10 corresponding pedagogical milestones in `CHAPTER_MILESTONES[newChapterId]`.
+4. Update `index.html` total stars display target (`CHAPTERS_DATA.length * 10`).
 
 ---
 
@@ -82,3 +91,4 @@ The app will automatically render the new chapter in the sidebar, update star ca
 - **Mobile First**: Sliding drawer on screens `≤ 860px`, `touch-action: manipulation;`, 44px+ touch targets.
 - **Audio Feedback**: Native Web Audio API (`AudioContext`) oscillator synthesizer.
 - **State Persistence**: `localStorage` key `cbse5_sst_active_state` and `cbse5_sst_stars_*`.
+- **CSS Brace Balance**: Verified brace balance = 0.

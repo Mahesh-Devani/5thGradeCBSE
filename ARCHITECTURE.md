@@ -354,27 +354,49 @@ const state = {
 #### Directory Structure
 ```
 sst_chapters/
-├── index.html                      # App shell, responsive off-canvas drawer, top bar, modals
-├── styles.css                      # Modern dark theme (Gold/Emerald/Rose/Blue), Chunk & Conquer UI, print layout
-├── app.js                          # State engine, 4 Term 1 chapters, Long Answer Scaffolder, Web Audio, Confetti
-├── README.md                       # Comprehensive guide, pedagogical principles, extension schema
-└── REV_WS_T1_G5__1788952775.pdf    # Term 1 school revision worksheet
+├── index.html                      # App shell, responsive off-canvas drawer, top bar, passport & results modals
+├── styles.css                      # Modern dark theme (Gold/Emerald/Rose/Blue), Chunk & Conquer UI, Passport & print layout
+├── app.js                          # State engine, 7 curriculum chapters, 10-Star Milestone Architecture, Web Audio, Confetti
+├── README.md                       # Comprehensive guide, pedagogical principles, 10-star roadmap
+└── AGENTS.md                       # AI agent instructions, schemas, CSS balance rules
 ```
 
 #### State Machine & Storage Keys (`app.js`)
 - **Active State (`cbse5_sst_active_state`)**:
   ```javascript
   {
-    activeChapterId: 'ch5_drc',       // 'ch5_drc' | 'ch7_saudi' | 'ch17_british_raj' | 'ch20_government'
+    activeChapterId: 'ch5_drc',       // 'ch5_drc' | 'ch6_greenland' | 'ch7_saudi' | 'ch17_british_raj' | 'ch18_struggle_independence' | 'ch19_freedom_at_last' | 'ch20_government'
     activeMode: 'learn',              // 'learn' | 'practice' | 'challenge' | 'worksheet'
     activePracticeFilter: 'all',      // 'all' | 'blank' | 'tf' | 'match' | 'short' | 'long'
     practiceIndex: 0,
     practiceAnswered: { qId: { answered: true, correct: true, studentAnswer: '...' } },
     practiceScore: { correct: 0, incorrect: 0 },
-    studentDrafts: { qId: '...' }      // Free-form student essay/bullet drafts
+    studentDrafts: { qId: '...' },    // Free-form student essay/bullet drafts
+    chapterProgress: {
+      [chapterId]: {
+        cardsRead: { 0: true, 1: true },
+        trapsDiagnosed: { 0: true },
+        interactiveExplored: true,
+        sprintHighScore: 8
+      }
+    }
   }
   ```
-- **Star Progress (`cbse5_sst_stars_<chapterId>`)**: Tracks 0–3 stars earned per chapter.
+- **Star Progress (`cbse5_sst_stars_<chapterId>`)**: Tracks 0–10 Mastery Stars earned per chapter (70 total max stars).
+
+#### 10-Star Chapter Mastery Architecture & Learning Passport
+- Replaces superficial quiz star systems with a rigorous 10-star curriculum milestone journey.
+- Star 1: Cards 1 & 2 / Interactive biome/governance diagram.
+- Star 2: Cards 3, 4, 5 (climate drivers, adaptations, turning points).
+- Star 3: CBSE Exam Trap diagnostics ("Be the Teacher").
+- Star 4: Fill in the Blanks precision.
+- Star 5: True/False deductions with required exam corrections.
+- Star 6: Match the Following pairing synthesis.
+- Star 7: Short answer reasoning (2 Marks).
+- Star 8: Long Answer Scaffold Studio ("Chunk & Conquer" 5 Marks).
+- Star 9: Practice breadth (≥10 questions solved).
+- Star 10: Mental speed sprint (60-second challenge score ≥7).
+- Top-bar Learning Passport (`📋 ⭐ X/10`) opens interactive Parent & Teacher Comprehensive Audit Report.
 
 #### Long Answer Chunk & Conquer Engine
 - Breaks heavy 5-mark subjective questions into 3–4 bite-sized visual **Pillars**.

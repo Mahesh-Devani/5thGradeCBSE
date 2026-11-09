@@ -157,8 +157,16 @@ interface StudentActiveState {
     isAnswered: boolean;
   };
 
-  /** Earned star ratings keyed by topic ID (0 to 3 stars) */
+  /** Earned star ratings keyed by topic ID (0 to 10 stars) */
   stars: Record<string, number>;
+
+  /** Multi-milestone chapter progress snapshots */
+  chapterProgress?: Record<string, {
+    cardsRead?: Record<number, boolean>;
+    trapsDiagnosed?: Record<number, boolean>;
+    interactiveExplored?: boolean;
+    sprintHighScore?: number;
+  }>;
 
   /** Unix timestamp of last interaction */
   lastUpdated: number;
@@ -167,7 +175,79 @@ interface StudentActiveState {
 
 ---
 
-## 5. Storage Key Conventions
+## 5. 10-Star Chapter Mastery Architecture & Milestones Schema
+
+Adopted across **Science**, **Maths**, and **SST Chapters** to provide lengthy, pedagogically grounded star progression eliminating superficial star inflation:
+
+```typescript
+interface ChapterMilestone {
+  /** Unique milestone ID (e.g., 'learn_part1', 'exam_traps', 'practice_blank', 'sprint_mastery') */
+  id: string;
+
+  /** Display title shown in Learning Passport modal */
+  title: string;
+
+  /** Comprehensive pedagogical description of skills verified */
+  desc: string;
+
+  /** Actionable hint explaining how to unlock this star */
+  hint: string;
+
+  /** Evaluation predicate returning true when milestone conditions are satisfied */
+  check: (data: ChapterProgressSnapshot) => boolean;
+}
+
+interface ChapterProgressSnapshot {
+  /** Number of concept lesson cards marked read & understood */
+  learnCardsRead: number;
+
+  /** Map of card index to boolean */
+  cardsRead?: Record<number, boolean>;
+
+  /** Number of diagnostic exam traps diagnosed */
+  trapsDiagnosed: number;
+
+  /** Map of trap index to boolean */
+  trapsDiagnosedMap?: Record<number, boolean>;
+
+  /** Whether interactive biome, diagram, or governance matrix was explored */
+  interactiveExplored: boolean;
+
+  /** Highest score achieved in 60-second speed recall sprint */
+  sprintHighScore: number;
+
+  /** Solved question counts broken down by category */
+  categorySolved: {
+    blank?: number;
+    tf?: number;
+    match?: number;
+    short?: number;
+    long?: number;
+    mcq?: number;
+    whoami?: number;
+    compare?: number;
+  };
+
+  /** Total questions solved across all categories */
+  totalSolved: number;
+}
+```
+
+### Standard 10-Star Progression Roadmap
+1. **Star 1**: Foundational Concept Cards 1 & 2 / Interactive Diagram Exploration.
+2. **Star 2**: Core Concept Cards 3, 4, 5 (climate drivers, adaptations, key events).
+3. **Star 3**: CBSE Exam Trap Diagnostics ("Be the Teacher" flaw detection).
+4. **Star 4**: Fill in the Blanks Precision without hints.
+5. **Star 5**: True / False Deductions with required exam corrections.
+6. **Star 6**: Match the Following Pairing synthesis.
+7. **Star 7**: Short Conceptual Answer Reasoning (2 Marks) self-checked against CBSE points.
+8. **Star 8**: Long Answer Scaffold Studio (5 Marks Chunk & Conquer).
+9. **Star 9**: Curriculum Breadth (≥10 questions solved across categories).
+10. **Star 10**: Mental Speed Sprint (60-second challenge with score ≥7).
+
+---
+
+## 6. Storage Key Conventions
 
 All `localStorage` keys are explicitly namespaced to prevent collisions between subjects:
 
