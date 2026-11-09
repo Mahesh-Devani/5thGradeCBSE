@@ -50,7 +50,7 @@
         <div class="progress-bar-container">
           <div class="progress-bar-fill" id="progress-fill"></div>
         </div>
-        <div class="progress-label" id="progress-label">0 / 21 stars earned</div>
+        <div class="progress-label" id="progress-label">0 / 70 Stars Earned</div>
       </div>
     </aside>
 
@@ -71,7 +71,12 @@
             <p id="top-bar-subtitle">Select a topic to get started</p>
           </div>
 
-          <button class="btn btn-icon" id="btn-reset" title="Reset Topic Progress" aria-label="Reset">🔄</button>
+          <div class="top-bar-actions" style="display: flex; align-items: center; gap: 8px;">
+            <button class="btn btn-secondary btn-sm" id="btn-passport" title="View Learning Passport & Parent Audit Report">
+              📋 <span class="passport-btn-label">Passport</span>
+            </button>
+            <button class="btn btn-icon" id="btn-reset" title="Reset Topic Progress" aria-label="Reset">🔄</button>
+          </div>
         </div>
 
         <div class="mode-tabs" id="mode-tabs">
@@ -135,8 +140,44 @@
       </div>
       <div class="modal-actions">
         <button class="btn btn-primary" id="btn-retry">🔁 Try Again</button>
+        <button class="btn" id="btn-modal-passport">📋 View Passport</button>
         <button class="btn" id="btn-review">📖 Review</button>
         <button class="btn" id="btn-close-modal">✖ Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== LEARNING PASSPORT & PARENT AUDIT MODAL ==================== -->
+  <div class="modal-overlay" id="passport-modal">
+    <div class="modal passport-modal-card">
+      <div class="passport-header">
+        <div class="passport-badge-icon" id="passport-icon">📋</div>
+        <div>
+          <h3 id="passport-title">Topic Mastery Passport</h3>
+          <p id="passport-subtitle">Pedagogical Checklist & Parent Audit Report</p>
+        </div>
+        <button class="passport-close-x" id="btn-passport-close-x" aria-label="Close">✕</button>
+      </div>
+
+      <div class="passport-summary-bar">
+        <div class="passport-stars-tally" id="passport-stars-display">⭐ 0 / 10 Stars Earned</div>
+        <div class="passport-progress-bar">
+          <div class="passport-progress-fill" id="passport-progress-fill" style="width: 0%;"></div>
+        </div>
+        <div class="passport-status-label" id="passport-status-text">0% Completed (10 milestones remaining)</div>
+      </div>
+
+      <div class="passport-milestones-list" id="passport-milestones-list">
+        <!-- Populated dynamically by app.js -->
+      </div>
+
+      <div class="parent-guarantee-box" id="passport-guarantee-box" style="display: none;">
+        <!-- Shown when 10/10 stars earned -->
+      </div>
+
+      <div class="modal-actions" style="margin-top: 1.5rem;">
+        <button class="btn btn-primary" id="btn-passport-action">🚀 Resume Next Pending Milestone</button>
+        <button class="btn btn-ghost" id="btn-passport-close">✕ Close Report</button>
       </div>
     </div>
   </div>

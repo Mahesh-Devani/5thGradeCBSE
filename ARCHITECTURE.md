@@ -113,7 +113,7 @@ To provide equal usability for students on desktop monitors, iPads, and budget s
 #### State Model
 ```javascript
 const state = {
-  currentTopic: null,          // e.g. 'articles', 'simple-tenses'
+  currentTopic: null,          // e.g. 'articles', 'simpleTenses'
   currentMode: 'learn',        // 'learn' | 'practice' | 'challenge'
   exerciseIndex: 0,            // Current question pointer
   shuffledExercises: [],       // Randomized exercise array for this run
@@ -124,18 +124,27 @@ const state = {
   },
   answered: false,             // Prevents double-clicking options
   timeLeft: 0,                 // Countdown timer in seconds (Challenge mode)
-  timerInterval: null
+  timerInterval: null,
+  topicProgress: {},           // { [topicId]: { sectionsRead, trapsDiagnosed, challengeHighScore } }
+  answeredExercises: {}        // { [topicId]: { [realIdx]: { answered, correct } } }
 };
 ```
 
-#### Topic Data Schema
-Every grammar topic in `TOPIC_DATA` adheres to this schema:
+#### Topic Data Schema & 10-Star Mastery
+Every grammar topic in `TOPIC_DATA` adheres to this schema with 10 target stars and diagnostic exam traps:
 ```javascript
 TOPIC_DATA['topic_id'] = {
   id: 'topic_id',
   title: 'Human Readable Title',
   subtitle: 'Catchy Subtitle (e.g., The Time Detective)',
   icon: '🔍',
+  targetStars: 10,
+  examTraps: [
+    {
+      trap: 'Trap description diagnosing common Class 5 misconceptions',
+      truth: 'CBSE grammatical rule and explanation'
+    }
+  ],
   lesson: {
     intro: 'High-level intro paragraph.',
     sections: [

@@ -175,9 +175,9 @@ interface StudentActiveState {
 
 ---
 
-## 5. 10-Star Chapter Mastery Architecture & Milestones Schema
+## 5. 10-Star Mastery Architecture & Milestones Schema
 
-Adopted across **Science**, **Maths**, and **SST Chapters** to provide lengthy, pedagogically grounded star progression eliminating superficial star inflation:
+Adopted across **Science**, **Maths**, **SST Chapters**, and **English Grammar Master** to provide lengthy, pedagogically grounded star progression eliminating superficial star inflation:
 
 ```typescript
 interface ChapterMilestone {

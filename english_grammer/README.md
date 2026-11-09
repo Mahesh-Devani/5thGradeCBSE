@@ -20,23 +20,53 @@ Traditional grammar worksheets ask children to memorize rules like formulas. **G
 
 ---
 
+## 🎮 Learning Modes & 10-Star Mastery Architecture
+
+Unlike superficial quizzes where children get 3 stars for clicking through questions once, **English Grammar Master** features a deep, rigorous **10-Star Mastery Architecture** with 70 stars total across all 7 topics.
+
+### 🌟 10 Pedagogical Stars Per Topic
+1. **Star 1 (Foundations I)**: Read and mark Lesson Cards 1 & 2 as understood.
+2. **Star 2 (Advanced Rules II)**: Read and mark Lesson Cards 3 & 4 as understood.
+3. **Star 3 (CBSE Exam Trap Detective)**: Diagnose subtle exam pitfalls (silent letters, stative verbs, specific past timestamps, double-past auxiliary errors).
+4. **Star 4 (Fill-in / Identification Precision)**: Complete at least 3 fill-in-the-gap or identification exercises with correct conjugation.
+5. **Star 5 (Multiple-Choice Deduction)**: Successfully solve at least 3 multiple-choice conceptual questions.
+6. **Star 6 (Rule Detective Mastery)**: Correctly answer the topic's hallmark rule deduction question (e.g., silent 'h' sound rule, stative verb rule, past timeline restriction).
+7. **Star 7 (Contrast & Application Mastery)**: Correctly answer the topic's comparative contrast question (e.g., Simple vs Continuous, Present Perfect vs Simple Past).
+8. **Star 8 (High Practice Accuracy)**: Achieve high precision with at least 5 correctly solved practice questions.
+9. **Star 9 (Full Curriculum Breadth)**: Solve at least 8 questions across the entire question bank.
+10. **Star 10 (15s Rapid Recall Sprint)**: Score at least 7 in the high-pressure 15-second timed Challenge mode.
+
+---
+
+## 📋 Learning Passport & Parent Audit Report
+
+- Accessible anytime via the **`📋 ⭐ X/10 Passport`** top bar button or topic mastery banner.
+- Displays an itemized checklist of all 10 pedagogical milestones with real-time status (`✓ Verified ⭐` or `In Progress`).
+- Provides explicit **"How to unlock"** guidance for pending milestones.
+- Unlocks the **Official Parent & Teacher Mastery Certificate** upon reaching 10/10 stars.
+
+---
+
 ## 🎮 Learning Modes
 
 1. **📖 Learn Mode**:
    - Structured visual lessons with real-world examples.
    - Distinct green highlights for correct usage and red strikethroughs for common pitfalls.
    - **🧠 Think About It** callouts providing memory tricks and logic rules.
+   - Interactive **📖 Mark Section Understood (+1 ⭐)** verification buttons on every card.
+   - **🚨 Spot the CBSE Exam Traps** diagnostic section with reveal-and-learn remedies.
 
 2. **🧩 Practice Mode**:
    - Untimed, stress-free practice questions.
-   - Live score tracker: **Correct**, **Wrong**, and **Left**.
+   - Live score tracker: **Correct**, **Wrong**, **Left**, and clickable **Mastery ⭐ X/10** pill.
    - Immediate explanatory feedback on every question breaking down *why* an answer is correct and why other choices fail.
+   - Question-by-question progress autosaved to `localStorage` so in-progress drills resume automatically on refresh.
 
 3. **🎯 Challenge Mode**:
    - Timed speed quiz (15 seconds per question).
    - Dynamic countdown timer with warning colors.
-   - Performance scoring with up to 3 stars ⭐⭐⭐ and celebratory confetti! 🎉
-   - Progress saved automatically in the browser's `localStorage`.
+   - High score tracking toward Star 10 certification and celebratory confetti! 🎉
+   - Comprehensive performance feedback and direct button to inspect the Learning Passport.
 
 ---
 

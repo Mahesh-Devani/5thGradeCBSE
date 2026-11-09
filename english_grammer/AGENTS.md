@@ -34,9 +34,23 @@ Do **NOT** rename, remove, or alter the IDs of these DOM elements. They are hard
 | `menu-toggle-btn` | `<button>` | Hamburger button (☰ Topics) in mobile sticky top bar |
 | `sidebar-topics` | `<div>` | Container populated dynamically by `renderSidebar()` |
 | `progress-fill` | `<div>` | Width set dynamically (`pct + '%'`) based on stars earned |
-| `progress-label` | `<div>` | Star progress counter (e.g., `"15 / 21 stars earned"`) |
+| `progress-label` | `<div>` | Star progress counter (e.g., `"42 / 70 stars earned"`) |
 | `top-bar-title` | `<h2>` | Displays active topic title |
 | `top-bar-subtitle` | `<p>` | Displays active topic subtitle |
+| `btn-passport` | `<button>` | Top bar Passport button displaying `⭐ X/10 Passport` |
+| `btn-modal-passport` | `<button>` | Modal action to open Passport directly from Results modal |
+| `passport-modal` | `<div>` | Learning Passport modal backdrop and container |
+| `passport-icon` | `<div>` | Topic emoji icon in Passport header |
+| `passport-title` | `<h3>` | Topic title in Passport header |
+| `passport-subtitle` | `<p>` | Subtitle / audit summary in Passport header |
+| `passport-stars-display` | `<div>` | `⭐ X / 10 Stars Earned` tally in Passport summary bar |
+| `passport-progress-fill` | `<div>` | Progress percentage bar in Passport summary |
+| `passport-status-text` | `<div>` | Status text showing completion percentage and remaining milestones |
+| `passport-milestones-list` | `<div>` | Dynamic container rendering all 10 milestone cards |
+| `passport-guarantee-box` | `<div>` | Official Parent & Teacher Mastery Certificate seal (visible at 10/10) |
+| `btn-passport-action` | `<button>` | Smart action button navigating to next pending milestone mode |
+| `btn-passport-close` | `<button>` | Close button in Passport footer |
+| `btn-passport-close-x` | `<button>` | Close button (✕) in Passport header |
 | `btn-reset` | `<button>` | Resets stored progress for the active topic |
 | `tab-learn` | `<button>` | Mode tab switching to `learn` |
 | `tab-practice` | `<button>` | Mode tab switching to `practice` |
@@ -59,41 +73,71 @@ Do **NOT** rename, remove, or alter the IDs of these DOM elements. They are hard
 
 ## 3. Data Schema & Content Architecture
 
-Topics are defined in `TOPIC_DATA` inside `app.js`:
+Topics are defined in `TOPIC_DATA` inside `app.js` with 10 Mastery Stars and diagnostic exam traps:
 
 ```javascript
-TOPIC_DATA['topic_id'] = {
+TOPIC_DATA['articles'] = {
   id: 'articles',
-  title: 'Articles (A, An, The)',
-  subtitle: 'The Finger Pointer Rule',
-  icon: '🔤',
-  color: '#4ade80',
-  description: 'Short 1-sentence topic description',
-  lessons: [
+  title: 'Articles',
+  subtitle: 'The Article Detective 🔍',
+  icon: '🔍',
+  color: '#3b82f6',
+  targetStars: 10,
+  examTraps: [
     {
-      title: 'Sub-lesson Title',
-      concept: 'Concept explanation in child-friendly prose',
-      formula: 'Visual syntax card (e.g., A/An + Singular Noun)',
-      rules: [
-        { text: 'Core rule definition', example: 'Sentence illustrating the rule' }
-      ],
-      pitfalls: [
-        { wrong: 'Common student mistake', correct: 'Accurate form', why: 'Why it is wrong' }
-      ],
-      thinkAboutIt: 'Detective trick or mental model to avoid memorizing'
+      trap: 'Looking at spelling letters instead of the starting SOUND for A vs An.',
+      truth: '"University" starts with vowel letter \'u\', but sounds like "yoo-niversity" (consonant sound). So say "A university"!'
     }
   ],
+  lesson: {
+    intro: 'Articles are tiny words...',
+    sections: [
+      {
+        title: '🅰️ "A" — Any One Thing',
+        content: '<p>Use "a" before words that start with a consonant SOUND.</p>',
+        examples: [{ text: '<span class="correct">a</span> ball' }],
+        think: '💡 It\'s about the SOUND, not the letter!'
+      }
+    ]
+  },
   exercises: [
     {
-      type: 'mcq', // 'mcq' | 'fill' | 'spot'
-      question: 'Question sentence with clear instructions',
-      options: ['Option A', 'Option B', 'Option C', 'Option D'],
+      type: 'fill', // 'mcq' | 'fill'
+      question: 'She waited for ___ hour.',
+      options: ['a', 'an', 'the', 'no article'],
       correct: 1, // 0-based index of correct option
-      explanation: 'Clear explanation of why Option B is correct and others are not.'
+      explanation: '"Hour" starts with a silent "h", so the starting sound is "our" (vowel sound) → use "an"!'
     }
   ]
 };
 ```
+
+### 10-Star Milestone Architecture Schema
+
+Every topic must have an array of 10 pedagogical milestones in `TOPIC_MILESTONES[topicId]`:
+
+```javascript
+TOPIC_MILESTONES['articles'] = [
+  {
+    id: 'learn_foundations',
+    title: 'Foundation: Indefinite Articles (A vs An)',
+    desc: 'Understand and complete Lesson Cards 1 & 2.',
+    hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 1 & 2.',
+    check: (d) => !!(d.sectionsRead && d.sectionsRead[0] && d.sectionsRead[1])
+  },
+  // ... Star 2 to Star 10
+];
+```
+
+The milestone evaluation engine receives `d = getTopicProgressData(topicId)` containing:
+- `sectionsRead`: map of section indices marked understood
+- `trapsDiagnosed`: map of diagnosed exam traps
+- `totalSolved`: total questions answered in practice mode
+- `correctSolved`: correct answers in practice mode
+- `mcqSolved`: MCQ questions solved
+- `fillSolved`: fill-in-the-gap questions solved
+- `answered`: map of question index to `{ answered, correct }`
+- `challengeHighScore`: high score achieved in 15-second timed Challenge mode
 
 ---
 

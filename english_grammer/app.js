@@ -14,6 +14,21 @@ const TOPIC_DATA = {
     subtitle: 'The Article Detective 🔍',
     icon: '🔍',
     color: '#3b82f6',
+    targetStars: 10,
+    examTraps: [
+      {
+        trap: 'Looking at spelling letters instead of the starting SOUND for A vs An.',
+        truth: '"University" starts with vowel letter \'u\', but sounds like "yoo-niversity" (consonant sound). So say "A university"! "Hour" starts with \'h\', but the \'h\' is silent (sounds like "our"). So say "AN hour"!'
+      },
+      {
+        trap: 'Placing "a" or "an" before uncountable nouns or plural objects.',
+        truth: '"A" and "an" strictly mean ONE countable thing. Never say "a water", "a milk", or "an advice" — say "some water", "a glass of milk", or "a piece of advice"!'
+      },
+      {
+        trap: 'Using "the" before ordinary proper country or people names.',
+        truth: 'Never say "the India" or "the John"! "The" is used for unique geographical bodies (the Ganga, the Himalayas) or compound country names (the UK, the USA).'
+      }
+    ],
     lesson: {
       intro: 'Articles are tiny words — <strong>a</strong>, <strong>an</strong>, and <strong>the</strong> — that go before nouns. They might be small, but getting them wrong changes everything!',
       sections: [
@@ -81,6 +96,21 @@ const TOPIC_DATA = {
     subtitle: 'The Time Machine ⏰',
     icon: '⏰',
     color: '#8b5cf6',
+    targetStars: 10,
+    examTraps: [
+      {
+        trap: 'Dropping the 3rd person singular -s/-es in Simple Present.',
+        truth: 'With he, she, it, or singular names, the verb MUST end with -s or -es! Say "He plays cricket", NOT "He play cricket".'
+      },
+      {
+        trap: 'Using a double-past with auxiliary "did" in questions or negatives.',
+        truth: '"Did" already shows the past tense! The main verb must stay in base form. Say "Did you see him?", NOT "Did you saw him?".'
+      },
+      {
+        trap: 'Changing universal truths and scientific facts into the past tense.',
+        truth: 'Universal facts remain in Simple Present forever! Say "The teacher taught that the Earth rotates around the Sun", not "rotated".'
+      }
+    ],
     lesson: {
       intro: 'Imagine you have a <strong>Time Machine</strong>! Simple tenses take you to three zones: <strong>Yesterday</strong> (Past), <strong>Today</strong> (Present), and <strong>Tomorrow</strong> (Future).',
       sections: [
@@ -147,6 +177,21 @@ const TOPIC_DATA = {
     subtitle: 'Caught in the Act! 📸',
     icon: '📸',
     color: '#06b6d4',
+    targetStars: 10,
+    examTraps: [
+      {
+        trap: 'Dropping the helping auxiliary verb (am/is/are or was/were) before the -ing verb.',
+        truth: 'A verb ending in -ing cannot stand alone as a continuous tense! Say "She is reading" or "She was reading", NEVER "She reading".'
+      },
+      {
+        trap: 'Using continuous tenses for feeling/stative verbs (know, believe, like, love, understand).',
+        truth: 'Mental states and emotions do NOT take continuous tense. Say "I understand the lesson", NOT "I am understanding the lesson"!'
+      },
+      {
+        trap: 'Mixing up Past Continuous and Simple Past in interrupted actions.',
+        truth: 'The ongoing background action takes Past Continuous ("I was sleeping"), while the sudden interruption takes Simple Past ("when the phone rang").'
+      }
+    ],
     lesson: {
       intro: 'Imagine you have a <strong>camera</strong> 📸 that freezes a moment in time. Continuous tenses describe actions that are <strong>happening right at that moment</strong> — like a snapshot!',
       sections: [
@@ -214,6 +259,21 @@ const TOPIC_DATA = {
     subtitle: 'Things Come Alive! 🌟',
     icon: '🌟',
     color: '#ec4899',
+    targetStars: 10,
+    examTraps: [
+      {
+        trap: 'Confusing normal animal behaviors with personification.',
+        truth: '"The lion roared loudly" or "The dog barked" is NOT personification because animals really make those sounds! Personification requires giving human-only qualities ("The trees whispered secrets").'
+      },
+      {
+        trap: 'Confusing a simile (using "like" or "as") with personification.',
+        truth: '"He ran like the wind" is a simile! Personification gives the object human feelings or actions directly: "The wind howled in anger".'
+      },
+      {
+        trap: 'Thinking personification only applies to objects, not abstract ideas or time.',
+        truth: 'Personification can bring abstract concepts alive too! Say "Time flies when you\'re having fun" or "Opportunity knocked on my door".'
+      }
+    ],
     lesson: {
       intro: 'What if your shoes could talk? What if the wind could whisper secrets? <strong>Personification</strong> is when we give <strong>human qualities to non-human things</strong> — and it makes writing magical! ✨',
       sections: [
@@ -281,6 +341,21 @@ const TOPIC_DATA = {
     subtitle: 'Have You Ever...? ✅',
     icon: '✅',
     color: '#10b981',
+    targetStars: 10,
+    examTraps: [
+      {
+        trap: 'Using Present Perfect with specific past timestamps (yesterday, last night, in 2021).',
+        truth: 'Never use Present Perfect with exact past times! Say "I saw that movie yesterday" (Simple Past), NOT "I have seen that movie yesterday".'
+      },
+      {
+        trap: 'Confusing "since" (starting timestamp point) with "for" (length of elapsed time).',
+        truth: 'Use "since" with a fixed starting point ("since 2018", "since 9 AM"). Use "for" with a duration ("for 5 years", "for two hours").'
+      },
+      {
+        trap: 'Using past tense form (V2) instead of past participle (V3) after have/has.',
+        truth: 'Always follow has/have with the third form participle (V3)! Say "I have eaten" (not have ate), and "She has written" (not has wrote).'
+      }
+    ],
     lesson: {
       intro: 'The Present Perfect is the <strong>"bridge" tense</strong> — it connects something that happened in the <strong>past</strong> to <strong>right now</strong>. "I have eaten" means I ate (past) and it matters NOW (I\'m full!).',
       sections: [
@@ -350,6 +425,21 @@ const TOPIC_DATA = {
     subtitle: 'The Flashback ⏪',
     icon: '⏪',
     color: '#f59e0b',
+    targetStars: 10,
+    examTraps: [
+      {
+        trap: 'Using Past Perfect when there is only a single past event without a timeline reference.',
+        truth: 'Past Perfect is specifically the "past of the past". If an event happened once in the past on its own, just use Simple Past! Say "I ate lunch", NOT "I had eaten lunch" without context.'
+      },
+      {
+        trap: 'Applying Past Perfect to the second (later) event instead of the earlier one.',
+        truth: 'The event that happened FIRST always gets "had + V3". The second event takes Simple Past: "The train had left (1st) before I reached the station (2nd)".'
+      },
+      {
+        trap: 'Saying "had did" or "had went" instead of past participle (V3).',
+        truth: 'Always use past participle after had! Say "had done" (not had did), "had gone" (not had went), and "had forgotten" (not had forgot).'
+      }
+    ],
     lesson: {
       intro: 'You know how movies sometimes show a <strong>flashback</strong>? The Past Perfect is like that — when you\'re already in the past, and you need to go <strong>even further back</strong>! It\'s the "past of the past." 🎬',
       sections: [
@@ -415,6 +505,21 @@ const TOPIC_DATA = {
     subtitle: 'Exaggeration Station 🎪',
     icon: '🎪',
     color: '#ef4444',
+    targetStars: 10,
+    examTraps: [
+      {
+        trap: 'Confusing possible high quantities with impossible hyperbole.',
+        truth: '"I ate four dosas today" could easily be true! Hyperbole must be so ridiculously impossible that no one takes it literally ("I ate a mountain of dosas").'
+      },
+      {
+        trap: 'Confusing hyperbole with lying or deceit.',
+        truth: 'Hyperbole is a literary device used for humor and dramatic emphasis. Saying "I died laughing" is obvious exaggeration, not an attempt to trick anyone!'
+      },
+      {
+        trap: 'Confusing metaphor with hyperbole.',
+        truth: 'A metaphor asserts equivalence ("Her heart is gold"). Hyperbole stretches reality to a comic or extreme boundary ("She cried an entire ocean of tears").'
+      }
+    ],
     lesson: {
       intro: 'Have you ever been SO hungry you could eat a horse? 🐴 No? Well, that\'s <strong>HYPERBOLE</strong> (say: hy-PER-bo-lee) — making things sound WAAAY bigger, longer, worse, or better than they really are!',
       sections: [
@@ -476,6 +581,523 @@ const TOPIC_DATA = {
 };
 
 // ============================================
+// 10-STAR MASTERY MILESTONES DEFINITIONS
+// ============================================
+
+const TOPIC_MILESTONES = {
+  articles: [
+    {
+      id: 'learn_foundations',
+      title: 'Foundation: Indefinite Articles (A vs An)',
+      desc: 'Understand and complete Lesson Cards 1 & 2 ("A — Any One Thing" & "An — Vowel Sounds").',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 1 & 2.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[0] && d.sectionsRead[1])
+    },
+    {
+      id: 'learn_advanced',
+      title: 'Advanced: The & Zero Articles',
+      desc: 'Understand and complete Lesson Cards 3 & 4 ("The — Specific One" & "Zero Articles").',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 3 & 4.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[2] && d.sectionsRead[3])
+    },
+    {
+      id: 'exam_traps',
+      title: 'CBSE Exam Trap Detective',
+      desc: 'Diagnose traps regarding silent "h", consonant "u" sound, and uncountable nouns.',
+      hint: 'In Learn Mode, diagnose at least 2 CBSE Exam Traps in the traps section.',
+      check: (d) => (d.trapsDiagnosedCount || 0) >= 2
+    },
+    {
+      id: 'practice_fill',
+      title: 'Fill-in-the-Blank Precision',
+      desc: 'Correctly fill in articles in sentence contexts.',
+      hint: 'In Practice Mode, complete at least 3 fill-in-the-gap article questions.',
+      check: (d) => (d.fillSolved || 0) >= 3
+    },
+    {
+      id: 'practice_mcq',
+      title: 'Multiple-Choice Deduction',
+      desc: 'Identify correct articles and eliminate distractor options.',
+      hint: 'In Practice Mode, solve at least 3 multiple-choice questions.',
+      check: (d) => (d.mcqSolved || 0) >= 3
+    },
+    {
+      id: 'rule_detective',
+      title: 'Sound Detective Mastery (Silent "H")',
+      desc: 'Master the vowel-sound test for words like "hour" and "honest".',
+      hint: 'Answer Question 1 ("She waited for ___ hour") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[0] && d.answered[0].correct)
+    },
+    {
+      id: 'proper_noun_rule',
+      title: 'Geography & Proper Noun Protocol',
+      desc: 'Master article usage with mountain ranges and unique landmarks.',
+      hint: 'Answer Question 2 ("___ Himalayas are the highest mountains") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[1] && d.answered[1].correct)
+    },
+    {
+      id: 'practice_accuracy',
+      title: 'High Practice Accuracy',
+      desc: 'Demonstrate precision across the question bank.',
+      hint: 'Solve at least 5 practice questions correctly.',
+      check: (d) => (d.correctSolved || 0) >= 5
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Full Curriculum Breadth',
+      desc: 'Explore diverse article rules across the entire question bank.',
+      hint: 'Complete at least 8 practice questions across the topic.',
+      check: (d) => (d.totalSolved || 0) >= 8
+    },
+    {
+      id: 'challenge_sprint',
+      title: '15-Second Rapid Recall Sprint',
+      desc: 'Demonstrate rapid, instinctive article mastery under time pressure.',
+      hint: 'Score at least 7 points in timed Challenge Mode.',
+      check: (d) => (d.challengeHighScore || 0) >= 7
+    }
+  ],
+
+  simpleTenses: [
+    {
+      id: 'learn_foundations',
+      title: 'Foundation: Simple Present & Daily Habits',
+      desc: 'Understand habitual actions and universal facts in Simple Present.',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 1 & 2.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[0] && d.sectionsRead[1])
+    },
+    {
+      id: 'learn_advanced',
+      title: 'Advanced: Past & Future Timeline Jump',
+      desc: 'Master irregular past forms and simple future constructions with "will".',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 3 & 4.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[2] && d.sectionsRead[3])
+    },
+    {
+      id: 'exam_traps',
+      title: 'CBSE Exam Trap Detective',
+      desc: 'Diagnose 3rd person singular -s/-es drops and double-past errors with "did".',
+      hint: 'In Learn Mode, diagnose at least 2 CBSE Exam Traps in the traps section.',
+      check: (d) => (d.trapsDiagnosedCount || 0) >= 2
+    },
+    {
+      id: 'practice_fill',
+      title: 'Verb Conjugation Fill Precision',
+      desc: 'Accurately conjugate base verbs into correct tense forms.',
+      hint: 'In Practice Mode, complete at least 3 fill-in-the-gap tense questions.',
+      check: (d) => (d.fillSolved || 0) >= 3
+    },
+    {
+      id: 'practice_mcq',
+      title: 'Multiple-Choice Timeline Deduction',
+      desc: 'Classify sentences into Past, Present, or Future by detecting signal words.',
+      hint: 'In Practice Mode, solve at least 3 multiple-choice tense questions.',
+      check: (d) => (d.mcqSolved || 0) >= 3
+    },
+    {
+      id: 'rule_detective',
+      title: 'Universal Truth & Fact Rule',
+      desc: 'Recognize that universal truths never change into the past tense.',
+      hint: 'Answer Question 6 ("Water boils at 100°C — Why Simple Present?") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[5] && d.answered[5].correct)
+    },
+    {
+      id: 'irregular_rule',
+      title: 'Irregular Past & Habitual Deduction',
+      desc: 'Conjugate irregular past forms like "bought" and "went" accurately.',
+      hint: 'Answer Question 5 ("My father ___ a car last year") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[4] && d.answered[4].correct)
+    },
+    {
+      id: 'practice_accuracy',
+      title: 'High Practice Accuracy',
+      desc: 'Maintain high precision across simple verb tenses.',
+      hint: 'Solve at least 5 practice questions correctly.',
+      check: (d) => (d.correctSolved || 0) >= 5
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Full Curriculum Breadth',
+      desc: 'Work through diverse habit, history, and future prediction problems.',
+      hint: 'Complete at least 8 practice questions across the topic.',
+      check: (d) => (d.totalSolved || 0) >= 8
+    },
+    {
+      id: 'challenge_sprint',
+      title: '15-Second Rapid Recall Sprint',
+      desc: 'Demonstrate rapid tense recognition under time pressure.',
+      hint: 'Score at least 7 points in timed Challenge Mode.',
+      check: (d) => (d.challengeHighScore || 0) >= 7
+    }
+  ],
+
+  continuousTenses: [
+    {
+      id: 'learn_foundations',
+      title: 'Foundation: Snapshot Camera & Present Continuous',
+      desc: 'Understand actions happening right at this very moment ("am/is/are + verb-ing").',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 1 & 2.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[0] && d.sectionsRead[1])
+    },
+    {
+      id: 'learn_advanced',
+      title: 'Advanced: Future Continuous & Simple vs Continuous',
+      desc: 'Distinguish habitual facts from ongoing snapshots in the future and past.',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 3 & 4.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[2] && d.sectionsRead[3])
+    },
+    {
+      id: 'exam_traps',
+      title: 'CBSE Exam Trap Detective',
+      desc: 'Diagnose stative verb traps and missing auxiliary verbs (is/are/was/were).',
+      hint: 'In Learn Mode, diagnose at least 2 CBSE Exam Traps in the traps section.',
+      check: (d) => (d.trapsDiagnosedCount || 0) >= 2
+    },
+    {
+      id: 'practice_fill',
+      title: 'Continuous Auxiliary + ing Fill Practice',
+      desc: 'Select the right auxiliary and -ing participle in sentence contexts.',
+      hint: 'In Practice Mode, complete at least 3 fill-in continuous questions.',
+      check: (d) => (d.fillSolved || 0) >= 3
+    },
+    {
+      id: 'practice_mcq',
+      title: 'Tense Formula & Moment Identification',
+      desc: 'Identify ongoing actions across past, present, and future timelines.',
+      hint: 'In Practice Mode, solve at least 3 multiple-choice continuous questions.',
+      check: (d) => (d.mcqSolved || 0) >= 3
+    },
+    {
+      id: 'rule_detective',
+      title: 'Interrupted Past Action Diagnostic',
+      desc: 'Master the combination of Past Continuous background action and Simple Past interruption.',
+      hint: 'Answer Question 2 ("She ___ a letter when the lights went off") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[1] && d.answered[1].correct)
+    },
+    {
+      id: 'contrast_rule',
+      title: 'Habit vs Ongoing Contrast Mastery',
+      desc: 'Contrast everyday routine with actions happening at this exact second.',
+      hint: 'Answer Question 7 ("I eat breakfast every day" vs "I am eating breakfast") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[6] && d.answered[6].correct)
+    },
+    {
+      id: 'practice_accuracy',
+      title: 'High Practice Accuracy',
+      desc: 'Demonstrate consistency across continuous tense questions.',
+      hint: 'Solve at least 5 practice questions correctly.',
+      check: (d) => (d.correctSolved || 0) >= 5
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Full Curriculum Breadth',
+      desc: 'Solve problems across present, past, and future continuous structures.',
+      hint: 'Complete at least 8 practice questions across the topic.',
+      check: (d) => (d.totalSolved || 0) >= 8
+    },
+    {
+      id: 'challenge_sprint',
+      title: '15-Second Rapid Recall Sprint',
+      desc: 'Deliver quick and accurate continuous tense responses.',
+      hint: 'Score at least 7 points in timed Challenge Mode.',
+      check: (d) => (d.challengeHighScore || 0) >= 7
+    }
+  ],
+
+  personification: [
+    {
+      id: 'learn_foundations',
+      title: 'Foundation: Giving Life to Things',
+      desc: 'Understand how human qualities, actions, and feelings bring non-human objects alive.',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 1 & 2.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[0] && d.sectionsRead[1])
+    },
+    {
+      id: 'learn_advanced',
+      title: 'Advanced: Feelings & Figurative Writing',
+      desc: 'Contrast boring literal facts with rich, emotional personification.',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 3 & 4.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[2] && d.sectionsRead[3])
+    },
+    {
+      id: 'exam_traps',
+      title: 'CBSE Exam Trap Detective',
+      desc: 'Diagnose subtle traps separating actual animal behavior from genuine personification.',
+      hint: 'In Learn Mode, diagnose at least 2 CBSE Exam Traps in the traps section.',
+      check: (d) => (d.trapsDiagnosedCount || 0) >= 2
+    },
+    {
+      id: 'practice_identify',
+      title: 'Personification Detective',
+      desc: 'Spot figurative language where objects perform human actions.',
+      hint: 'In Practice Mode, solve at least 3 personification identification questions.',
+      check: (d) => (d.mcqSolved || 0) >= 3
+    },
+    {
+      id: 'rule_discriminator',
+      title: 'Non-Personification Discriminator',
+      desc: 'Distinguish genuine animal behaviors from figurative human actions.',
+      hint: 'Answer Question 4 ("Which is NOT personification? — Lion roared") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[3] && d.answered[3].correct)
+    },
+    {
+      id: 'rule_action',
+      title: 'Human Action Attribution',
+      desc: 'Select verbs that give inanimate items human personality and voice.',
+      hint: 'Answer Question 5 ("My alarm clock yells at me every morning") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[4] && d.answered[4].correct)
+    },
+    {
+      id: 'creative_authoring',
+      title: 'Creative Personification Authoring',
+      desc: 'Transform flat sentences into vivid, living mental imagery.',
+      hint: 'Answer Question 10 ("Create personification! The old car wheezed and groaned") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[9] && d.answered[9].correct)
+    },
+    {
+      id: 'practice_accuracy',
+      title: 'High Practice Accuracy',
+      desc: 'Demonstrate solid command over figurative language interpretation.',
+      hint: 'Solve at least 5 practice questions correctly.',
+      check: (d) => (d.correctSolved || 0) >= 5
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Full Curriculum Breadth',
+      desc: 'Explore personification across poetry, weather, objects, and abstract ideas.',
+      hint: 'Complete at least 8 practice questions across the topic.',
+      check: (d) => (d.totalSolved || 0) >= 8
+    },
+    {
+      id: 'challenge_sprint',
+      title: '15-Second Rapid Recall Sprint',
+      desc: 'Rapidly spot and decipher personification under time pressure.',
+      hint: 'Score at least 7 points in timed Challenge Mode.',
+      check: (d) => (d.challengeHighScore || 0) >= 7
+    }
+  ],
+
+  presentPerfect: [
+    {
+      id: 'learn_foundations',
+      title: 'Foundation: The Past-to-Present Bridge',
+      desc: 'Understand that Present Perfect links past actions to the present moment ("has/have + V3").',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 1 & 2.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[0] && d.sectionsRead[1])
+    },
+    {
+      id: 'learn_advanced',
+      title: 'Advanced: Signal Words & Life Experiences',
+      desc: 'Master clue words (already, just, never, yet, since, for) and lifetime inquiries.',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 3 & 4.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[2] && d.sectionsRead[3])
+    },
+    {
+      id: 'exam_traps',
+      title: 'CBSE Exam Trap Detective',
+      desc: 'Diagnose specific past timestamp restrictions and since vs for distinctions.',
+      hint: 'In Learn Mode, diagnose at least 2 CBSE Exam Traps in the traps section.',
+      check: (d) => (d.trapsDiagnosedCount || 0) >= 2
+    },
+    {
+      id: 'practice_fill',
+      title: 'Past Participle Fill Precision',
+      desc: 'Conjugate irregular past participles (eaten, seen, arrived, broken) after has/have.',
+      hint: 'In Practice Mode, complete at least 3 fill-in Present Perfect questions.',
+      check: (d) => (d.fillSolved || 0) >= 3
+    },
+    {
+      id: 'practice_mcq',
+      title: 'Present Result Reasoning',
+      desc: 'Deduce why a past action connects to now (e.g., lost phone = still missing!).',
+      hint: 'In Practice Mode, solve at least 3 multiple-choice Present Perfect questions.',
+      check: (d) => (d.mcqSolved || 0) >= 3
+    },
+    {
+      id: 'rule_detective',
+      title: 'Specific Past Time Restriction Rule',
+      desc: 'Guard against using Present Perfect with exact past times like "yesterday".',
+      hint: 'Answer Question 5 ("Which sentence is correct? I went to Delhi yesterday") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[4] && d.answered[4].correct)
+    },
+    {
+      id: 'since_for_rule',
+      title: '"Since" vs "For" Precision Rule',
+      desc: 'Correctly pair starting points with "since" and durations with "for".',
+      hint: 'Answer Question 8 ("We have lived in this house since 2018") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[7] && d.answered[7].correct)
+    },
+    {
+      id: 'practice_accuracy',
+      title: 'High Practice Accuracy',
+      desc: 'Maintain high accuracy on participle forms and auxiliary choice (has vs have).',
+      hint: 'Solve at least 5 practice questions correctly.',
+      check: (d) => (d.correctSolved || 0) >= 5
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Full Curriculum Breadth',
+      desc: 'Master lifetime experience, recent completion, and continuing state questions.',
+      hint: 'Complete at least 8 practice questions across the topic.',
+      check: (d) => (d.totalSolved || 0) >= 8
+    },
+    {
+      id: 'challenge_sprint',
+      title: '15-Second Rapid Recall Sprint',
+      desc: 'Rapidly bridge past and present under time pressure.',
+      hint: 'Score at least 7 points in timed Challenge Mode.',
+      check: (d) => (d.challengeHighScore || 0) >= 7
+    }
+  ],
+
+  pastPerfect: [
+    {
+      id: 'learn_foundations',
+      title: 'Foundation: The "Past of the Past" Flashback',
+      desc: 'Understand that Past Perfect ("had + V3") marks the earlier of two past events.',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 1 & 2.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[0] && d.sectionsRead[1])
+    },
+    {
+      id: 'learn_advanced',
+      title: 'Advanced: Connectors & Narrative Clarity',
+      desc: 'Use "before", "after", "by the time", and "already" to order story events.',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 3 & 4.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[2] && d.sectionsRead[3])
+    },
+    {
+      id: 'exam_traps',
+      title: 'CBSE Exam Trap Detective',
+      desc: 'Diagnose single-event redundancy and reverse-chronology blunders.',
+      hint: 'In Learn Mode, diagnose at least 2 CBSE Exam Traps in the traps section.',
+      check: (d) => (d.trapsDiagnosedCount || 0) >= 2
+    },
+    {
+      id: 'practice_fill',
+      title: 'Auxiliary "Had" + V3 Fill Mastery',
+      desc: 'Select "had" and the correct third-form participle across sequence sentences.',
+      hint: 'In Practice Mode, complete at least 3 fill-in Past Perfect questions.',
+      check: (d) => (d.fillSolved || 0) >= 3
+    },
+    {
+      id: 'practice_mcq',
+      title: 'Chronological Order Deduction',
+      desc: 'Sequence two past events by identifying which occurred first.',
+      hint: 'In Practice Mode, solve at least 3 multiple-choice sequence questions.',
+      check: (d) => (d.mcqSolved || 0) >= 3
+    },
+    {
+      id: 'rule_detective',
+      title: 'Event 1 Chronology Detective',
+      desc: 'Recognize that "had + participle" always signals the first completed action.',
+      hint: 'Answer Question 1 ("When I reached the station, the train had already left") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[0] && d.answered[0].correct)
+    },
+    {
+      id: 'sequence_rule',
+      title: 'Conjunction & Sequence Mastery',
+      desc: 'Order sentences using "after", "before", and "by the time" flawlessly.',
+      hint: 'Answer Question 3 ("After the rain had stopped, the children went outside") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[2] && d.answered[2].correct)
+    },
+    {
+      id: 'practice_accuracy',
+      title: 'High Practice Accuracy',
+      desc: 'Keep event timelines and participle spellings crystal clear.',
+      hint: 'Solve at least 5 practice questions correctly.',
+      check: (d) => (d.correctSolved || 0) >= 5
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Full Curriculum Breadth',
+      desc: 'Work through diverse cinematic flashbacks, departures, and realizations.',
+      hint: 'Complete at least 8 practice questions across the topic.',
+      check: (d) => (d.totalSolved || 0) >= 8
+    },
+    {
+      id: 'challenge_sprint',
+      title: '15-Second Rapid Recall Sprint',
+      desc: 'Rapidly untangle complex past timelines under time pressure.',
+      hint: 'Score at least 7 points in timed Challenge Mode.',
+      check: (d) => (d.challengeHighScore || 0) >= 7
+    }
+  ],
+
+  hyperbole: [
+    {
+      id: 'learn_foundations',
+      title: 'Foundation: Extreme Exaggeration Station',
+      desc: 'Understand that hyperbole stretches reality to impossible extremes for humor and drama.',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 1 & 2.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[0] && d.sectionsRead[1])
+    },
+    {
+      id: 'learn_advanced',
+      title: 'Advanced: Spotting & Crafting Hyperbole',
+      desc: 'Apply the "Really?!" test and the recipe to inflate normal descriptions.',
+      hint: 'In Learn Mode, read and click "Mark Section Understood" on Sections 3 & 4.',
+      check: (d) => !!(d.sectionsRead && d.sectionsRead[2] && d.sectionsRead[3])
+    },
+    {
+      id: 'exam_traps',
+      title: 'CBSE Exam Trap Detective',
+      desc: 'Diagnose traps between believable high numbers, dishonesty, and true hyperbole.',
+      hint: 'In Learn Mode, diagnose at least 2 CBSE Exam Traps in the traps section.',
+      check: (d) => (d.trapsDiagnosedCount || 0) >= 2
+    },
+    {
+      id: 'practice_spot',
+      title: 'Hyperbole Spotter Detective',
+      desc: 'Detect figurative exaggerations like "a million times" and "cried a river".',
+      hint: 'In Practice Mode, solve at least 3 hyperbole identification questions.',
+      check: (d) => (d.mcqSolved || 0) >= 3
+    },
+    {
+      id: 'rule_discriminator',
+      title: 'Literal vs Figurative Discriminator',
+      desc: 'Separate normal factual statements from impossible humorous exaggerations.',
+      hint: 'Answer Question 4 ("Which is NOT hyperbole? — He ate two sandwiches") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[3] && d.answered[3].correct)
+    },
+    {
+      id: 'rule_translator',
+      title: 'Real Meaning Translator',
+      desc: 'Translate impossible figures of speech back to their true everyday meaning.',
+      hint: 'Answer Question 3 ("This suitcase weighs a ton! — What does speaker mean?") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[2] && d.answered[2].correct)
+    },
+    {
+      id: 'rule_creative',
+      title: 'Creative Exaggerator Transformation',
+      desc: 'Turn ordinary flat sentences into cosmic, unforgettable exaggerations.',
+      hint: 'Answer Question 6 ("Turn this into hyperbole: The test was hard") correctly in Practice Mode.',
+      check: (d) => !!(d.answered && d.answered[5] && d.answered[5].correct)
+    },
+    {
+      id: 'practice_accuracy',
+      title: 'High Practice Accuracy',
+      desc: 'Accurately distinguish hyperbole from literal sentences and similes.',
+      hint: 'Solve at least 5 practice questions correctly.',
+      check: (d) => (d.correctSolved || 0) >= 5
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Full Curriculum Breadth',
+      desc: 'Explore hyperbole in speech, literature, humor, and everyday conversation.',
+      hint: 'Complete at least 8 practice questions across the topic.',
+      check: (d) => (d.totalSolved || 0) >= 8
+    },
+    {
+      id: 'challenge_sprint',
+      title: '15-Second Rapid Recall Sprint',
+      desc: 'Rapidly spot and interpret hyperbole under time pressure.',
+      hint: 'Score at least 7 points in timed Challenge Mode.',
+      check: (d) => (d.challengeHighScore || 0) >= 7
+    }
+  ]
+};
+
+// ============================================
 // APPLICATION STATE
 // ============================================
 
@@ -491,7 +1113,9 @@ const state = {
   timeLeft: 0,
   progress: {},
   shuffledExercises: [],
-  sortState: { selectedItem: null, placements: {} }
+  sortState: { selectedItem: null, placements: {} },
+  topicProgress: {},
+  answeredExercises: {}
 };
 
 const STORAGE_KEY = 'grammar-master-progress';
@@ -501,7 +1125,12 @@ const CHALLENGE_TIME_PER_Q = 15;
 function loadActiveState() {
   try {
     const saved = localStorage.getItem(ACTIVE_STATE_KEY);
-    if (saved) return JSON.parse(saved);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed.topicProgress) state.topicProgress = parsed.topicProgress;
+      if (parsed.answeredExercises) state.answeredExercises = parsed.answeredExercises;
+      return parsed;
+    }
   } catch (e) {}
   return null;
 }
@@ -511,7 +1140,9 @@ function saveActiveState() {
     if (state.currentTopic) {
       const payload = {
         currentTopic: state.currentTopic,
-        currentMode: state.currentMode
+        currentMode: state.currentMode,
+        topicProgress: state.topicProgress,
+        answeredExercises: state.answeredExercises
       };
       if (state.currentMode === 'practice' && Array.isArray(state.exerciseIndices) && state.exerciseIndices.length > 0) {
         payload.practiceSession = {
@@ -651,7 +1282,7 @@ function flashFeedback(type) {
 }
 
 // ============================================
-// PROGRESS MANAGEMENT
+// PROGRESS & 10-STAR MASTERY MANAGEMENT
 // ============================================
 
 function loadProgress() {
@@ -689,18 +1320,270 @@ function calcStars(correct, total) {
 }
 
 function renderStars(count) {
-  return '⭐'.repeat(count) + '☆'.repeat(Math.max(0, 3 - count));
+  return '⭐ ' + count + '/10';
 }
 
 function updateOverallProgress() {
   const topicIds = Object.keys(TOPIC_DATA);
-  const totalPossible = topicIds.length * 3;
+  const totalPossible = topicIds.length * 10;
   let totalEarned = 0;
   topicIds.forEach(id => { totalEarned += getStars(id); });
   const fill = document.getElementById('progress-fill');
   const label = document.getElementById('progress-label');
   if (fill) fill.style.width = (totalEarned / totalPossible * 100) + '%';
   if (label) label.textContent = totalEarned + ' / ' + totalPossible + ' stars earned';
+}
+
+function getTopicProgressData(topicId) {
+  if (!state.topicProgress[topicId]) {
+    state.topicProgress[topicId] = {
+      sectionsRead: {},
+      trapsDiagnosed: {},
+      challengeHighScore: 0
+    };
+  }
+  const prog = state.topicProgress[topicId];
+  if (!prog.sectionsRead) prog.sectionsRead = {};
+  if (!prog.trapsDiagnosed) prog.trapsDiagnosed = {};
+
+  const topic = TOPIC_DATA[topicId];
+  const allExercises = topic ? topic.exercises : [];
+  const answered = state.answeredExercises[topicId] || {};
+
+  let totalSolved = 0;
+  let correctSolved = 0;
+  let mcqSolved = 0;
+  let fillSolved = 0;
+
+  Object.entries(answered).forEach(([idxStr, st]) => {
+    const idx = parseInt(idxStr, 10);
+    const ex = allExercises[idx];
+    if (st && st.answered) {
+      totalSolved++;
+      if (st.correct) correctSolved++;
+      if (ex) {
+        if (ex.type === 'mcq') mcqSolved++;
+        else if (ex.type === 'fill') fillSolved++;
+      }
+    }
+  });
+
+  const sectionsReadCount = Object.values(prog.sectionsRead).filter(Boolean).length;
+  const trapsDiagnosedCount = Object.values(prog.trapsDiagnosed).filter(Boolean).length;
+
+  return {
+    sectionsRead: prog.sectionsRead,
+    sectionsReadCount,
+    trapsDiagnosed: prog.trapsDiagnosed,
+    trapsDiagnosedCount,
+    challengeHighScore: prog.challengeHighScore || 0,
+    totalSolved,
+    correctSolved,
+    mcqSolved,
+    fillSolved,
+    answered
+  };
+}
+
+function evaluateAndAwardStars(topicId, silent = false) {
+  const milestones = TOPIC_MILESTONES[topicId] || [];
+  if (milestones.length === 0) return 0;
+  const data = getTopicProgressData(topicId);
+
+  let earnedStars = 0;
+  milestones.forEach(m => {
+    try {
+      if (m.check(data)) {
+        earnedStars++;
+      }
+    } catch (e) {
+      console.warn(`Milestone check failed for ${m.id}:`, e);
+    }
+  });
+
+  const prevStars = getStars(topicId);
+  if (earnedStars > prevStars) {
+    setStars(topicId, earnedStars);
+    if (!silent) {
+      playCorrectSound();
+      if (earnedStars >= 10) {
+        launchConfetti();
+      }
+    }
+    updateOverallProgress();
+    renderSidebar();
+    updateTopBarPassportButton();
+  }
+  return earnedStars;
+}
+
+function updateTopBarPassportButton() {
+  const btn = document.getElementById('btn-passport');
+  if (!btn) return;
+  const topicId = state.currentTopic || 'articles';
+  const stars = getStars(topicId);
+  const label = btn.querySelector('.passport-btn-label');
+  if (label) {
+    label.textContent = `⭐ ${stars}/10 Passport`;
+  } else {
+    btn.innerHTML = `📋 ⭐ ${stars}/10 Passport`;
+  }
+}
+
+function renderTopicMasteryBanner(topic) {
+  const stars = getStars(topic.id);
+  const pct = Math.round((stars / 10) * 100);
+  return `
+    <div class="topic-mastery-banner" id="topic-mastery-banner">
+      <div class="mastery-banner-left">
+        <div class="mastery-star-pill">⭐ ${stars} / 10 Stars</div>
+        <div class="mastery-bar-track">
+          <div class="mastery-bar-fill" style="width: ${pct}%;"></div>
+        </div>
+        <div class="mastery-pct-label">${pct}% Mastered</div>
+      </div>
+      <button class="btn-passport-trigger" id="btn-banner-passport" onclick="openLearningPassport('${topic.id}')">
+        📋 View Learning Passport
+      </button>
+    </div>
+  `;
+}
+
+function toggleSectionRead(topicId, sectionIdx) {
+  if (!state.topicProgress[topicId]) {
+    state.topicProgress[topicId] = { sectionsRead: {}, trapsDiagnosed: {}, challengeHighScore: 0 };
+  }
+  if (!state.topicProgress[topicId].sectionsRead) {
+    state.topicProgress[topicId].sectionsRead = {};
+  }
+  state.topicProgress[topicId].sectionsRead[sectionIdx] = true;
+  playTapSound();
+  evaluateAndAwardStars(topicId);
+  saveActiveState();
+  renderLearnMode();
+}
+
+function diagnoseTrap(topicId, trapIdx) {
+  if (!state.topicProgress[topicId]) {
+    state.topicProgress[topicId] = { sectionsRead: {}, trapsDiagnosed: {}, challengeHighScore: 0 };
+  }
+  if (!state.topicProgress[topicId].trapsDiagnosed) {
+    state.topicProgress[topicId].trapsDiagnosed = {};
+  }
+  state.topicProgress[topicId].trapsDiagnosed[trapIdx] = true;
+  playCorrectSound();
+  evaluateAndAwardStars(topicId);
+  saveActiveState();
+  renderLearnMode();
+}
+
+function openLearningPassport(topicId) {
+  const topic = TOPIC_DATA[topicId] || TOPIC_DATA[state.currentTopic] || TOPIC_DATA.articles;
+  const modal = document.getElementById('passport-modal');
+  if (!modal) return;
+
+  const milestones = TOPIC_MILESTONES[topic.id] || [];
+  const data = getTopicProgressData(topic.id);
+  const clearedCount = milestones.filter(m => {
+    try { return m.check(data); } catch (e) { return false; }
+  }).length;
+  const targetStars = topic.targetStars || 10;
+  const isAllCleared = clearedCount >= targetStars;
+  const pct = Math.round((clearedCount / targetStars) * 100);
+
+  const iconEl = document.getElementById('passport-icon');
+  const titleEl = document.getElementById('passport-title');
+  const subtitleEl = document.getElementById('passport-subtitle');
+  const starsEl = document.getElementById('passport-stars-display');
+  const fillEl = document.getElementById('passport-progress-fill');
+  const statusEl = document.getElementById('passport-status-text');
+
+  if (iconEl) iconEl.textContent = topic.icon;
+  if (titleEl) titleEl.textContent = `${topic.title} — Learning Passport`;
+  if (subtitleEl) subtitleEl.textContent = `Parent & Teacher Comprehensive Audit Report • ${topic.subtitle}`;
+  if (starsEl) starsEl.textContent = `⭐ ${clearedCount} / ${targetStars} Stars Earned`;
+  if (fillEl) fillEl.style.width = `${pct}%`;
+  if (statusEl) statusEl.textContent = isAllCleared
+    ? '🎉 Topic Fully Certified! 100% Mastered'
+    : `${pct}% Completed (${targetStars - clearedCount} milestones remaining)`;
+
+  const listEl = document.getElementById('passport-milestones-list');
+  if (listEl) {
+    listEl.innerHTML = milestones.map((m, idx) => {
+      let cleared = false;
+      try { cleared = m.check(data); } catch (e) { cleared = false; }
+      return `
+        <div class="milestone-card ${cleared ? 'cleared' : 'pending'}">
+          <div class="milestone-left">
+            <div class="milestone-star-num">Star ${idx + 1}</div>
+            <div class="milestone-status-icon">${cleared ? '✅' : '⏳'}</div>
+          </div>
+          <div class="milestone-center">
+            <div class="milestone-title">${m.title}</div>
+            <div class="milestone-desc">${m.desc}</div>
+            ${!cleared ? `<div class="milestone-hint">👉 <strong>How to unlock:</strong> ${m.hint}</div>` : ''}
+          </div>
+          <div class="milestone-right">
+            <span class="milestone-badge ${cleared ? 'badge-cleared' : 'badge-pending'}">
+              ${cleared ? '✓ Verified ⭐' : 'In Progress'}
+            </span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  const guaranteeBox = document.getElementById('passport-guarantee-box');
+  if (guaranteeBox) {
+    if (isAllCleared) {
+      guaranteeBox.style.display = 'block';
+      guaranteeBox.innerHTML = `
+        <div class="guarantee-inner">
+          <div class="guarantee-seal">🏅</div>
+          <div>
+            <h4>Official Parent & Teacher Mastery Certificate</h4>
+            <p>This certifies that <strong>the student has successfully completed 100% of all required concept lessons, diagnostic traps, practice categories, and rapid recall sprint</strong> for <strong>${topic.title}</strong>. Full conceptual understanding, critical thinking, and CBSE exam readiness are verified.</p>
+          </div>
+        </div>
+      `;
+    } else {
+      guaranteeBox.style.display = 'none';
+    }
+  }
+
+  const closeBtn = document.getElementById('btn-passport-close');
+  const closeX = document.getElementById('btn-passport-close-x');
+  const actionBtn = document.getElementById('btn-passport-action');
+
+  const closeFn = () => {
+    modal.classList.remove('visible');
+  };
+
+  if (closeBtn) closeBtn.onclick = closeFn;
+  if (closeX) closeX.onclick = closeFn;
+  modal.onclick = (e) => {
+    if (e.target === modal) closeFn();
+  };
+
+  if (actionBtn) {
+    actionBtn.onclick = () => {
+      closeFn();
+      const pendingMilestone = milestones.find(m => {
+        try { return !m.check(data); } catch (e) { return true; }
+      });
+      if (pendingMilestone) {
+        if (pendingMilestone.id.startsWith('learn') || pendingMilestone.id === 'exam_traps') {
+          setMode('learn');
+        } else if (pendingMilestone.id === 'challenge_sprint') {
+          setMode('challenge');
+        } else {
+          setMode('practice');
+        }
+      }
+    };
+  }
+
+  modal.classList.add('visible');
 }
 
 // ============================================
@@ -721,8 +1604,11 @@ function renderSidebar() {
       <div class="topic-info">
         <div class="topic-name">${topic.title}</div>
         <div class="topic-subtitle">${topic.subtitle}</div>
+        <div class="sidebar-mini-progress">
+          <div class="mini-progress-fill" style="width: ${stars * 10}%"></div>
+        </div>
       </div>
-      <div class="topic-stars">${renderStars(stars)}</div>
+      <div class="topic-stars">⭐ ${stars}/10</div>
     `;
     card.addEventListener('click', () => selectTopic(topic.id));
     container.appendChild(card);
@@ -755,6 +1641,7 @@ function selectTopic(topicId, targetMode = 'learn', isResume = false) {
 
   closeSidebar();
   renderSidebar();
+  updateTopBarPassportButton();
   setMode(targetMode, isResume);
   saveActiveState();
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -773,6 +1660,8 @@ function setMode(mode, isResume = false) {
   document.querySelectorAll('.mode-tab').forEach(tab => {
     tab.classList.toggle('active', tab.dataset.mode === mode);
   });
+
+  updateTopBarPassportButton();
 
   if (mode === 'learn') renderLearnMode();
   else if (mode === 'practice') startExercises(false, isResume);
@@ -796,16 +1685,20 @@ function renderLearnMode() {
   if (!topic) return;
   const area = document.getElementById('content-area');
   const lesson = topic.lesson;
+  const progData = getTopicProgressData(topic.id);
 
-  let html = `<div class="lesson-container">
-    <div class="lesson-header">
+  let html = `<div class="lesson-container">`;
+  html += renderTopicMasteryBanner(topic);
+
+  html += `<div class="lesson-header">
       <div class="lesson-icon">${topic.icon}</div>
       <h3>${topic.title}</h3>
       <p>${lesson.intro}</p>
     </div>`;
 
   lesson.sections.forEach((section, i) => {
-    html += `<div class="lesson-card" style="animation-delay: ${i * 0.1}s">
+    const isRead = !!(progData.sectionsRead && progData.sectionsRead[i]);
+    html += `<div class="lesson-card ${isRead ? 'card-completed' : ''}" style="animation-delay: ${i * 0.1}s">
       <h4>${section.title}</h4>
       ${section.content}`;
 
@@ -820,8 +1713,42 @@ function renderLearnMode() {
         <p>${section.think}</p>
       </div>`;
     }
+
+    html += `<div style="margin-top: 1rem; text-align: right;">
+      <button class="btn btn-sm ${isRead ? 'btn-success' : ''}" onclick="toggleSectionRead('${topic.id}', ${i})">
+        ${isRead ? '✅ Understood & Concept Checked' : '📖 Mark Section Understood (+1 ⭐)'}
+      </button>
+    </div>`;
+
     html += `</div>`;
   });
+
+  // CBSE Exam Traps Section
+  if (topic.examTraps && topic.examTraps.length > 0) {
+    html += `<div class="exam-traps-section">
+      <h3 class="exam-traps-title">🚨 Spot the CBSE Exam Traps</h3>
+      <p style="font-size: 0.88rem; color: #94a3b8; margin-bottom: 1rem;">
+        Diagnose the sneaky errors examiners use to trap Class 5 students! Click to reveal the secret CBSE defense rule and earn Star 3.
+      </p>`;
+
+    topic.examTraps.forEach((trap, i) => {
+      const isDiagnosed = !!(progData.trapsDiagnosed && progData.trapsDiagnosed[i]);
+      html += `
+        <div class="trap-card ${isDiagnosed ? 'trap-completed' : ''}" id="trap-${topic.id}-${i}">
+          <div class="trap-card-icon">${isDiagnosed ? '🛡️' : '⚠️'}</div>
+          <div class="trap-card-content">
+            <h4>${trap.trap}</h4>
+            ${isDiagnosed
+              ? `<p class="trap-truth" style="margin-top: 6px; font-size: 0.88rem; color: #86efac; line-height: 1.5;">💡 <strong>CBSE Rule / Remedy:</strong> ${trap.truth}</p>`
+              : `<button class="btn btn-sm btn-secondary" style="margin-top: 6px;" onclick="diagnoseTrap('${topic.id}', ${i})">🔍 Diagnose Exam Trap & Reveal Secret (+1 ⭐)</button>`
+            }
+          </div>
+        </div>
+      `;
+    });
+
+    html += `</div>`;
+  }
 
   html += `<div class="lesson-nav">
     <button class="btn btn-primary" onclick="setMode('practice')">🧩 Start Practice →</button>
@@ -925,17 +1852,24 @@ function renderExercise() {
     return;
   }
 
+  const topic = TOPIC_DATA[state.currentTopic];
+  const stars = getStars(state.currentTopic);
   const ex = state.shuffledExercises[state.exerciseIndex];
   const total = state.shuffledExercises.length;
   const num = state.exerciseIndex + 1;
 
-  let html = `<div class="exercise-container">`;
+  let html = renderTopicMasteryBanner(topic);
+  html += `<div class="exercise-container">`;
 
   // Score bar
   html += `<div class="score-bar">
     <div class="score-item score-correct"><div class="score-value">${state.score.correct}</div><div class="score-label">Correct</div></div>
     <div class="score-item score-wrong"><div class="score-value">${state.score.incorrect}</div><div class="score-label">Wrong</div></div>
     <div class="score-item score-remaining"><div class="score-value">${total - num + 1}</div><div class="score-label">Left</div></div>
+    <div class="score-item" style="cursor: pointer;" onclick="openLearningPassport('${state.currentTopic}')" title="Click to view Learning Passport">
+      <div class="score-value" style="color: #fde047;">⭐ ${stars}/10</div>
+      <div class="score-label">Mastery</div>
+    </div>
   </div>`;
 
   // Timer
@@ -997,6 +1931,18 @@ function handleAnswer(selectedIndex) {
   const ex = state.shuffledExercises[state.exerciseIndex];
   const isCorrect = selectedIndex === ex.correct;
 
+  // Track answered exercises for milestone progression
+  const realIdx = state.exerciseIndices[state.exerciseIndex];
+  if (realIdx !== undefined) {
+    if (!state.answeredExercises[state.currentTopic]) {
+      state.answeredExercises[state.currentTopic] = {};
+    }
+    state.answeredExercises[state.currentTopic][realIdx] = {
+      answered: true,
+      correct: isCorrect
+    };
+  }
+
   // Update score
   if (isCorrect) {
     state.score.correct++;
@@ -1008,6 +1954,7 @@ function handleAnswer(selectedIndex) {
     flashFeedback('incorrect');
   }
 
+  evaluateAndAwardStars(state.currentTopic);
   showExplanationAndOptions(selectedIndex, isCorrect);
   saveActiveState();
 }
@@ -1073,25 +2020,45 @@ function finishExercises() {
 
   const correct = state.score.correct;
   const total = state.shuffledExercises.length;
-  const stars = calcStars(correct, total);
 
   if (state.currentMode === 'challenge') {
-    setStars(state.currentTopic, stars);
-    renderSidebar();
+    if (!state.topicProgress[state.currentTopic]) {
+      state.topicProgress[state.currentTopic] = { sectionsRead: {}, trapsDiagnosed: {}, challengeHighScore: 0 };
+    }
+    const currentHigh = state.topicProgress[state.currentTopic].challengeHighScore || 0;
+    state.topicProgress[state.currentTopic].challengeHighScore = Math.max(currentHigh, correct);
   }
+
+  const currentStars = evaluateAndAwardStars(state.currentTopic);
+  renderSidebar();
+  updateTopBarPassportButton();
 
   // Update modal
   const pct = total > 0 ? Math.round(correct / total * 100) : 0;
   let emoji = '🏆', title = 'Great Job!', msg = '';
 
-  if (stars === 3) { emoji = '🌟'; title = 'PERFECT! 🎉'; msg = 'Incredible — you got every single one right!'; launchConfetti(); }
-  else if (stars === 2) { emoji = '🎯'; title = 'Well Done!'; msg = `${pct}% correct! Almost there — try again for all 3 stars!`; }
-  else if (stars === 1) { emoji = '💪'; title = 'Good Start!'; msg = `${pct}% correct. Review the lesson and try again!`; }
-  else { emoji = '📖'; title = 'Keep Learning!'; msg = `${pct}% correct. Go back to the lesson and you\'ll improve!`; }
+  if (currentStars >= 10) {
+    emoji = '🌟';
+    title = '10/10 TOPIC CERTIFIED! 🎉';
+    msg = 'Incredible — you have mastered every single pedagogical milestone!';
+    launchConfetti();
+  } else if (currentStars >= 7) {
+    emoji = '🎯';
+    title = 'Well Done!';
+    msg = `You have earned ${currentStars}/10 Mastery Stars! Check your Learning Passport for remaining goals.`;
+  } else if (currentStars >= 4) {
+    emoji = '💪';
+    title = 'Good Progress!';
+    msg = `${currentStars}/10 Mastery Stars unlocked. Check your Learning Passport to unlock the rest!`;
+  } else {
+    emoji = '📖';
+    title = 'Keep Learning!';
+    msg = `${currentStars}/10 Stars earned so far. Review lessons and diagnose traps to unlock more stars!`;
+  }
 
   document.getElementById('result-emoji').textContent = emoji;
   document.getElementById('result-title').textContent = title;
-  document.getElementById('result-stars').textContent = renderStars(stars);
+  document.getElementById('result-stars').textContent = `⭐ ${currentStars} / 10 Mastery Stars Earned`;
   document.getElementById('result-message').textContent = msg;
   document.getElementById('result-correct').textContent = correct;
   document.getElementById('result-total').textContent = total;
@@ -1140,7 +2107,32 @@ function toggleSidebar() {
 
 function init() {
   loadProgress();
+  loadActiveState();
+
+  // Wire up passport button in top bar
+  const passportBtn = document.getElementById('btn-passport');
+  if (passportBtn) {
+    passportBtn.addEventListener('click', () => {
+      openLearningPassport(state.currentTopic || 'articles');
+    });
+  }
+
+  // Wire up passport button in results modal
+  const modalPassportBtn = document.getElementById('btn-modal-passport');
+  if (modalPassportBtn) {
+    modalPassportBtn.addEventListener('click', () => {
+      closeModal();
+      openLearningPassport(state.currentTopic || 'articles');
+    });
+  }
+
+  // Silently evaluate stars for all topics on startup to sync existing progress
+  Object.keys(TOPIC_DATA).forEach(id => {
+    evaluateAndAwardStars(id, true);
+  });
+
   renderSidebar();
+  updateTopBarPassportButton();
 
   const active = loadActiveState();
   if (active && active.currentTopic && TOPIC_DATA[active.currentTopic]) {
@@ -1210,6 +2202,8 @@ function init() {
     if (e.key === 'Escape') {
       closeSidebar();
       closeModal();
+      const passportModal = document.getElementById('passport-modal');
+      if (passportModal) passportModal.classList.remove('visible');
     }
   });
 }
