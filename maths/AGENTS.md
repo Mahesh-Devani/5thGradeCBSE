@@ -26,18 +26,24 @@ Do **NOT** rename, remove, or alter the IDs of these DOM elements. They are hard
 
 | Element ID | Element Type | Role in `app.js` |
 |---|---|---|
-| `confetti-canvas` | `<canvas>` | Full-screen canvas for celebratory 3-star confetti particles |
+| `confetti-canvas` | `<canvas>` | Full-screen canvas for celebratory 10-star confetti particles |
 | `feedback-flash` | `<div>` | Screen border indicator (green for correct, red for incorrect) |
 | `sidebar` | `<aside>` | Sidebar drawer container (`.sidebar-open` applied on mobile) |
 | `sidebar-backdrop` | `<div>` | Blurred dimming overlay when mobile drawer is open (`.active`) |
 | `sidebar-close-btn` | `<button>` | Close button (✕) inside the mobile drawer |
 | `menu-toggle-btn` | `<button>` | Hamburger button (☰ Topics) in mobile sticky top bar |
-| `topic-item-hcf-lcm` | `<div>` | Active curriculum topic card in sidebar |
-| `progress-fill` | `<div>` | Star progress bar fill (`style.width = pct + '%'`) |
-| `progress-label` | `<div>` | Progress text (e.g. `"3 / 3 stars earned"`) |
-| `stars-factors-multiples` | `<span>` | Star display inside topic card (⭐⭐⭐) |
-| `stars-tables-speed` | `<span>` | Star display inside Tables (1 to 20) topic card (⭐⭐⭐) |
-| `stars-fractions` | `<span>` | Star display inside Fractions Master topic card (⭐⭐⭐) |
+| `btn-passport` | `<button>` | Quick top-bar trigger opening the Topic Learning Passport & Parent Report modal |
+| `star-badge-total` | `<span>` | Sidebar overall syllabus star tally (`⭐ X / 80`) |
+| `progress-fill` | `<div>` | Overall star progress bar fill (`style.width = pct + '%'`) |
+| `progress-label` | `<div>` | Overall progress text (e.g. `"X% Syllabus Mastered"`) |
+| `stars-factors-multiples` | `<span>` | Star display inside topic card (`⭐ X/10`) |
+| `stars-divisibility` | `<span>` | Star display inside Divisibility topic card (`⭐ X/10`) |
+| `stars-expressions` | `<span>` | Star display inside Expressions topic card (`⭐ X/10`) |
+| `stars-patterns` | `<span>` | Star display inside Patterns topic card (`⭐ X/10`) |
+| `stars-geometry` | `<span>` | Star display inside Geometry topic card (`⭐ X/10`) |
+| `stars-tables-speed` | `<span>` | Star display inside Tables (1 to 20) topic card (`⭐ X/10`) |
+| `stars-fractions` | `<span>` | Star display inside Fractions Master topic card (`⭐ X/10`) |
+| `stars-revision` | `<span>` | Star display inside Term Revision topic card (`⭐ X/10`) |
 | `topic-item-fractions` | `<div>` | Topic 7 Fractions Master sidebar card |
 | `top-bar-title` | `<h2>` | Displays active topic title |
 | `top-bar-subtitle` | `<p>` | Displays active topic subtitle |
@@ -48,10 +54,11 @@ Do **NOT** rename, remove, or alter the IDs of these DOM elements. They are hard
 | `tab-challenge` | `<button>` | Mode tab switching to `challenge` |
 | `tab-worksheet` | `<button>` | Mode tab switching to `worksheet` |
 | `content-viewport` | `<div>` | Main dynamic viewport where Learn, Practice, and Challenge modes render |
+| `passport-modal` | `<div>` | Learning Passport & Parent Audit modal with 10 milestones per topic |
 | `results-modal` | `<div>` | Results modal dialog rendered after challenge completion |
 | `result-emoji` | `<div>` | Header emoji (🏆 / 🌟 / 💪) |
 | `result-title` | `<h3>` | Modal heading |
-| `result-stars` | `<div>` | Star icons display (⭐⭐⭐) |
+| `result-stars` | `<div>` | Star icons display (`⭐ X / 10 Topic Stars Earned`) |
 | `result-message` | `<p>` | Encouraging feedback message |
 | `result-correct` | `<div>` | Correct questions count |
 | `result-total` | `<div>` | Total questions count |

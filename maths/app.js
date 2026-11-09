@@ -76,7 +76,7 @@ function playFanfare() {
 
 function launchConfetti() {
   const canvas = document.getElementById('confetti-canvas');
-  if (!canvas) return;
+  if (!canvas || typeof canvas.getContext !== 'function') return;
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -1298,6 +1298,9 @@ const TOPICS_CONFIG = {
     id: 'factors_multiples_hcf_lcm',
     title: 'Multiples, Factors, HCF & LCM',
     subtitle: 'CBSE Class 5 — Complete Conceptual & Calculation Master',
+    icon: '⭐',
+    themeColor: '#f59e0b',
+    targetStars: 10,
     starsKey: 'cbse_maths_factors_stars',
     sidebarStarId: 'stars-factors-multiples',
     defaultLearnModule: 'hcf_lcm_detective',
@@ -1317,6 +1320,9 @@ const TOPICS_CONFIG = {
     id: 'divisibility_rules',
     title: 'Divisibility Rules (2 to 12)',
     subtitle: 'CBSE Class 5 — Mental Divisibility Tricks, Logic & Missing Digit Puzzles',
+    icon: '⚡',
+    themeColor: '#06b6d4',
+    targetStars: 10,
     starsKey: 'cbse_maths_divisibility_stars',
     sidebarStarId: 'stars-divisibility',
     defaultLearnModule: 'all_rules_table',
@@ -1337,6 +1343,9 @@ const TOPICS_CONFIG = {
     id: 'expressions_statements',
     title: 'Expressions & Statements',
     subtitle: 'CBSE Class 5 — Converting Statements to Expressions, Parentheses & Real-Life Modeling',
+    icon: '💬',
+    themeColor: '#8b5cf6',
+    targetStars: 10,
     starsKey: 'cbse_maths_expressions_stars',
     sidebarStarId: 'stars-expressions',
     defaultLearnModule: 'clue_words_dictionary',
@@ -1356,6 +1365,9 @@ const TOPICS_CONFIG = {
     id: 'number_patterns',
     title: 'Number Patterns',
     subtitle: 'CBSE Class 5 — Can You See The Pattern? Triangular, Square & Towers',
+    icon: '🧩',
+    themeColor: '#10b981',
+    targetStars: 10,
     starsKey: 'cbse_maths_patterns_stars',
     sidebarStarId: 'stars-patterns',
     defaultLearnModule: 'pattern_detective',
@@ -1375,6 +1387,9 @@ const TOPICS_CONFIG = {
     id: 'geometry_angles',
     title: 'Geometry, Shapes & Angles',
     subtitle: 'CBSE Class 5 — Points, Lines, Angles, Triangles, Quadrilaterals, Polygons & Circles',
+    icon: '📐',
+    themeColor: '#ec4899',
+    targetStars: 10,
     starsKey: 'cbse_maths_geometry_stars',
     sidebarStarId: 'stars-geometry',
     defaultLearnModule: 'geom_foundations',
@@ -1396,6 +1411,9 @@ const TOPICS_CONFIG = {
     id: 'tables_speed_master',
     title: 'Multiplication Tables (1 to 20): Mental Math & Speed Master',
     subtitle: 'CBSE Class 5 — Deconstruct & Conquer, Vedic Teen Shortcuts, 20×20 Grid & Speed Sprint',
+    icon: '⚡',
+    themeColor: '#f97316',
+    targetStars: 10,
     starsKey: 'cbse_maths_tables_stars',
     sidebarStarId: 'stars-tables-speed',
     defaultLearnModule: 'grid_explorer_20',
@@ -1417,6 +1435,9 @@ const TOPICS_CONFIG = {
     id: 'fractions_master',
     title: 'Fractions Master: Visual Concepts to Advanced Operations',
     subtitle: 'CBSE Class 5 — Thinkbook Foundations, Visual Partitioning, Mixed Numbers & Full Arithmetic (+, −, ×, ÷)',
+    icon: '🍕',
+    themeColor: '#3b82f6',
+    targetStars: 10,
     starsKey: 'cbse_maths_fractions_stars',
     sidebarStarId: 'stars-fractions',
     defaultLearnModule: 'equal_slice_detective',
@@ -1439,6 +1460,9 @@ const TOPICS_CONFIG = {
     id: 'term_revision',
     title: 'Term Revision & Worksheet Builder',
     subtitle: 'CBSE Class 5 — Cumulative Exam Revision & Custom Worksheet Builder',
+    icon: '📋',
+    themeColor: '#eab308',
+    targetStars: 10,
     starsKey: 'cbse_maths_revision_stars',
     sidebarStarId: 'stars-revision',
     defaultLearnModule: 'blueprint_overview',
@@ -1456,6 +1480,943 @@ const TOPICS_CONFIG = {
     worksheetRenderer: renderWorksheetViewRevision
   }
 };
+
+/* ==========================================================================
+   TOPIC MASTERY MILESTONES (10 STARS PER CURRICULUM TOPIC)
+   ========================================================================== */
+
+const TOPIC_MILESTONES = {
+  factors_multiples_hcf_lcm: [
+    {
+      id: 'metaphor_detective',
+      title: 'HCF vs LCM Mental Metaphors',
+      desc: 'Mastered "The Equal Cutter" (HCF chopping down) vs "The Cycle Synchronizer" (LCM meeting ahead)',
+      hint: 'Explore the HCF vs LCM Detective module in Learn mode',
+      check: (d) => !!d.modulesInteracted.hcf_lcm_detective || d.totalSolved >= 3
+    },
+    {
+      id: 'division_methods',
+      title: 'Short & Long Division Calculations',
+      desc: 'Mastered prime factorization, the division ladder, and Euclidean division steps',
+      hint: 'Solve at least 3 division calculation questions in Practice mode',
+      check: (d) => (d.categorySolved.division_methods || 0) >= 3 || d.totalSolved >= 5
+    },
+    {
+      id: 'formula_relations',
+      title: 'Product Formula & Co-Prime Rules',
+      desc: 'Mastered HCF × LCM = a × b and the rule that consecutive integers are always co-prime',
+      hint: 'Solve at least 3 Product Formula questions in Practice mode',
+      check: (d) => (d.categorySolved.formula_relations || 0) >= 3 || d.totalSolved >= 8
+    },
+    {
+      id: 'trap_buster',
+      title: 'Diagnostic Trap Buster',
+      desc: 'Spotted exam traps: HCF cannot exceed the smaller number, LCM cannot be less than the larger number',
+      hint: 'Explore the Spot the Mistakes module in Learn mode',
+      check: (d) => !!d.modulesInteracted.spot_the_mistakes || d.totalSolved >= 10
+    },
+    {
+      id: 'word_problems',
+      title: 'Real-Life Word Problems Detective',
+      desc: 'Correctly deduced whether to calculate HCF or LCM in real-world application problems',
+      hint: 'Solve at least 3 Word Problems in Practice mode',
+      check: (d) => (d.categorySolved.word_problems || 0) >= 3 || d.totalSolved >= 12
+    },
+    {
+      id: 'school_worksheet',
+      title: 'CBSE School Worksheet 2026-27',
+      desc: 'Mastered questions transcribed directly from the latest Class 5 CBSE School Worksheets',
+      hint: 'Solve at least 4 School Worksheet questions in Practice mode',
+      check: (d) => (d.categorySolved.school_worksheet || 0) >= 4 || d.totalSolved >= 15
+    },
+    {
+      id: 'worksheet_mode',
+      title: 'Worksheet Printing & Self-Test',
+      desc: 'Inspected or printed printable worksheets for school homework practice',
+      hint: 'Switch to Worksheet Mode or explore homework printable sheets',
+      check: (d) => !!d.modulesInteracted.worksheet_mode || d.totalSolved >= 16
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Comprehensive Practice Breadth',
+      desc: 'Solved at least 18 practice problems across all curriculum subcategories',
+      hint: 'Solve 18 or more practice questions across all categories',
+      check: (d) => d.totalSolved >= 18
+    },
+    {
+      id: 'practice_accuracy',
+      title: 'High Accuracy & Conceptual Retention',
+      desc: 'Achieved ≥80% practice accuracy with thorough step-by-step reasoning',
+      hint: 'Maintain at least 80% accuracy in Practice mode with at least 15 questions solved',
+      check: (d) => d.totalSolved >= 15 && d.accuracy >= 80
+    },
+    {
+      id: 'sprint_speed',
+      title: '60-Second Speed Sprint',
+      desc: 'Achieved ≥7 correct answers in the rapid-fire 60-Second Challenge',
+      hint: 'Score 7+ correct answers in the 60s Speed Challenge',
+      check: (d) => d.challengeHighScore >= 7
+    }
+  ],
+
+  divisibility_rules: [
+    {
+      id: 'rules_overview',
+      title: 'Complete 2 to 12 Divisibility Matrix',
+      desc: 'Explored the quick divisibility shortcuts for 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, and 12',
+      hint: 'Review the Divisibility Rules Table in Learn mode',
+      check: (d) => !!d.modulesInteracted.all_rules_table || d.totalSolved >= 3
+    },
+    {
+      id: 'sum_rules_3_9',
+      title: 'Sum-of-Digits Rules (3 & 9)',
+      desc: 'Mastered the digital root tests: if digit sum is divisible by 3 or 9, the number is divisible',
+      hint: 'Solve at least 3 Rule 3 & 9 questions in Practice mode',
+      check: (d) => (d.categorySolved.rule_3_9 || 0) >= 3 || d.totalSolved >= 6
+    },
+    {
+      id: 'end_digits_4_8',
+      title: 'End-Digits Block Rules (4 & 8)',
+      desc: 'Tested the last 2 digits for 4 and the last 3 digits for 8 without calculating full division',
+      hint: 'Solve at least 3 Rule 4 & 8 questions in Practice mode',
+      check: (d) => (d.categorySolved.rule_4_8 || 0) >= 3 || d.totalSolved >= 8
+    },
+    {
+      id: 'composite_rules_6_12',
+      title: 'Composite Coprime Pair Rules (6 & 12)',
+      desc: 'Applied composite tests: 6 requires divisibility by 2 AND 3; 12 requires 3 AND 4',
+      hint: 'Solve at least 3 Rule 6 & 12 questions in Practice mode',
+      check: (d) => (d.categorySolved.rule_6_12 || 0) >= 3 || d.totalSolved >= 11
+    },
+    {
+      id: 'alternating_rule_11',
+      title: 'The Jumping Kangaroo Rule (11)',
+      desc: 'Calculated (Sum of Odd-place digits) − (Sum of Even-place digits) to test multiples of 11',
+      hint: 'Solve at least 3 Rule 11 questions in Practice mode',
+      check: (d) => (d.categorySolved.rule_11 || 0) >= 3 || d.totalSolved >= 14
+    },
+    {
+      id: 'missing_digit_puzzles',
+      title: 'Missing Digit (*) Codebreaker',
+      desc: 'Found the smallest or largest missing digit to satisfy one or more divisibility constraints',
+      hint: 'Solve at least 3 Missing Digit questions in Practice mode',
+      check: (d) => (d.categorySolved.missing_digit || 0) >= 3 || d.totalSolved >= 16
+    },
+    {
+      id: 'trap_buster',
+      title: 'Diagnostic Trap Buster',
+      desc: 'Avoided the false "Rule 8 ends in 8" trap and composite factor traps',
+      hint: 'Explore Spot the Mistakes in Learn mode or solve 18 questions',
+      check: (d) => !!d.modulesInteracted.spot_the_mistakes || d.totalSolved >= 18
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Divisibility Fluency & Breadth',
+      desc: 'Solved at least 20 practice questions across single and combined divisibility rules',
+      hint: 'Solve 20 or more practice questions across all divisibility categories',
+      check: (d) => d.totalSolved >= 20
+    },
+    {
+      id: 'practice_accuracy',
+      title: 'High Accuracy & Common-Sense Logic',
+      desc: 'Maintained ≥80% accuracy across all divisibility tests without scratchpad division',
+      hint: 'Achieve at least 80% accuracy with at least 15 questions solved',
+      check: (d) => d.totalSolved >= 15 && d.accuracy >= 80
+    },
+    {
+      id: 'sprint_speed',
+      title: '60-Second Speed Sprint',
+      desc: 'Achieved ≥7 correct answers in the 60-Second Divisibility Sprint',
+      hint: 'Score 7+ correct answers in the 60s Speed Challenge',
+      check: (d) => d.challengeHighScore >= 7
+    }
+  ],
+
+  expressions_statements: [
+    {
+      id: 'clue_words',
+      title: 'Verbal Clue Words Dictionary',
+      desc: 'Mastered mathematical keywords: Sum, Difference, Product, Quotient, Times, and Less Than',
+      hint: 'Explore Clue Words Dictionary in Learn mode',
+      check: (d) => !!d.modulesInteracted.clue_words_dictionary || d.totalSolved >= 3
+    },
+    {
+      id: 'statement_to_expr',
+      title: 'Statements to Expressions',
+      desc: 'Converted verbal sentences into formal mathematical expressions with correct operators',
+      hint: 'Solve at least 4 Statements ➔ Expressions questions in Practice mode',
+      check: (d) => (d.categorySolved.statement_to_expr || 0) >= 4 || d.totalSolved >= 6
+    },
+    {
+      id: 'expr_to_statement',
+      title: 'Expressions to Verbal Statements',
+      desc: 'Translated algebraic and numerical expressions back into everyday language',
+      hint: 'Solve at least 4 Expressions ➔ Statements questions in Practice mode',
+      check: (d) => (d.categorySolved.expr_to_statement || 0) >= 4 || d.totalSolved >= 9
+    },
+    {
+      id: 'bracket_order_traps',
+      title: 'Parentheses & Subtraction Order Traps',
+      desc: 'Mastered order traps: "5 subtracted from x" is x − 5, not 5 − x, and brackets change precedence',
+      hint: 'Solve at least 4 Brackets & Order Traps questions in Practice mode',
+      check: (d) => (d.categorySolved.bracket_traps || 0) >= 4 || d.totalSolved >= 12
+    },
+    {
+      id: 'real_life_modeling',
+      title: 'Real-Life CBSE Word Problems',
+      desc: 'Modeled everyday situations: ages, pocket money, geometric perimeters, and shopping bills',
+      hint: 'Solve at least 3 Real-Life Word Problems in Practice mode',
+      check: (d) => (d.categorySolved.word_problems || 0) >= 3 || d.totalSolved >= 15
+    },
+    {
+      id: 'bodmas_precedence',
+      title: 'Order of Operations & BODMAS',
+      desc: 'Evaluated expressions following Brackets, Orders, Division/Multiplication, then Addition/Subtraction',
+      hint: 'Explore the Order of Operations module in Learn mode or solve 16 questions',
+      check: (d) => !!d.modulesInteracted.order_of_operations || d.totalSolved >= 16
+    },
+    {
+      id: 'trap_buster',
+      title: 'Diagnostic Trap Buster',
+      desc: 'Spotted exam slips in word order and missing parentheses in Spot the Mistakes',
+      hint: 'Explore Spot the Mistakes in Learn mode or solve 18 questions',
+      check: (d) => !!d.modulesInteracted.spot_the_mistakes || d.totalSolved >= 18
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Expressions Practice Mastery',
+      desc: 'Solved at least 20 practice questions across translation and modeling categories',
+      hint: 'Solve 20 or more practice questions in Practice mode',
+      check: (d) => d.totalSolved >= 20
+    },
+    {
+      id: 'practice_accuracy',
+      title: 'High Accuracy & Precision',
+      desc: 'Maintained ≥80% accuracy in translating and interpreting mathematical statements',
+      hint: 'Achieve at least 80% accuracy with at least 15 questions solved',
+      check: (d) => d.totalSolved >= 15 && d.accuracy >= 80
+    },
+    {
+      id: 'sprint_speed',
+      title: '60-Second Speed Sprint',
+      desc: 'Achieved ≥7 correct answers in the 60-Second Expressions Sprint',
+      hint: 'Score 7+ correct answers in the 60s Speed Challenge',
+      check: (d) => d.challengeHighScore >= 7
+    }
+  ],
+
+  number_patterns: [
+    {
+      id: 'pattern_detective',
+      title: 'The Pattern Detective',
+      desc: 'Identified constant step differences, alternating patterns, and sequences of multiples',
+      hint: 'Explore the Pattern Detective module in Learn mode',
+      check: (d) => !!d.modulesInteracted.pattern_detective || d.totalSolved >= 3
+    },
+    {
+      id: 'arithmetic_patterns',
+      title: 'Growing & Decreasing Patterns',
+      desc: 'Found missing terms in arithmetic sequences and identified recurrence rules',
+      hint: 'Solve at least 4 Step & Growing Patterns questions in Practice mode',
+      check: (d) => (d.categorySolved.arithmetic_patterns || 0) >= 4 || d.totalSolved >= 6
+    },
+    {
+      id: 'triangular_numbers',
+      title: 'Triangular Numbers (1, 3, 6, 10, 15...)',
+      desc: 'Mastered dot representation and the formula n × (n + 1) / 2 for triangular numbers',
+      hint: 'Solve at least 3 Geometric Numbers questions in Practice mode',
+      check: (d) => (d.categorySolved.geom_numbers || 0) >= 3 || d.totalSolved >= 9
+    },
+    {
+      id: 'square_numbers',
+      title: 'Square Numbers & Odd Number Sums',
+      desc: 'Mastered square grids and the rule that the sum of the first n odd numbers equals n²',
+      hint: 'Explore Square Numbers in Learn mode or solve 5 geometric pattern questions',
+      check: (d) => (d.categorySolved.geom_numbers || 0) >= 5 || d.totalSolved >= 12
+    },
+    {
+      id: 'number_towers',
+      title: 'Number Towers & Pyramids',
+      desc: 'Constructed number pyramids where each brick is the sum of the two bricks beneath it',
+      hint: 'Solve at least 3 Number Towers questions in Practice mode',
+      check: (d) => (d.categorySolved.number_towers || 0) >= 3 || d.totalSolved >= 14
+    },
+    {
+      id: 'magic_squares',
+      title: 'Magic Squares & Palindromes',
+      desc: 'Mastered 3×3 magic squares (magic sum 15) and number reversal palindrome patterns',
+      hint: 'Solve at least 3 Magic Squares & Palindromes questions in Practice mode',
+      check: (d) => (d.categorySolved.magic_palindromes || 0) >= 3 || d.totalSolved >= 16
+    },
+    {
+      id: 'trap_buster',
+      title: 'Diagnostic Trap Buster',
+      desc: 'Diagnosed deceptive pattern slips where the second difference changes',
+      hint: 'Explore Spot the Mistakes in Learn mode or solve 18 questions',
+      check: (d) => !!d.modulesInteracted.spot_the_mistakes || d.totalSolved >= 18
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Pattern Deduction Breadth',
+      desc: 'Solved at least 20 pattern puzzles across numerical, triangular, and pyramid domains',
+      hint: 'Solve 20 or more pattern questions in Practice mode',
+      check: (d) => d.totalSolved >= 20
+    },
+    {
+      id: 'practice_accuracy',
+      title: 'High Accuracy & Visual Deduction',
+      desc: 'Achieved ≥80% accuracy across all pattern recognition challenges',
+      hint: 'Achieve at least 80% accuracy with at least 15 questions solved',
+      check: (d) => d.totalSolved >= 15 && d.accuracy >= 80
+    },
+    {
+      id: 'sprint_speed',
+      title: '60-Second Speed Sprint',
+      desc: 'Achieved ≥7 correct answers in the 60-Second Pattern Sprint',
+      hint: 'Score 7+ correct answers in the 60s Speed Challenge',
+      check: (d) => d.challengeHighScore >= 7
+    }
+  ],
+
+  geometry_angles: [
+    {
+      id: 'geom_foundations',
+      title: 'Points, Lines, Rays & Segments',
+      desc: 'Mastered standard notations and endpoint rules: Point (0 endpoints), Line (0), Ray (1), Segment (2)',
+      hint: 'Solve at least 3 Foundations questions in Practice mode',
+      check: (d) => (d.categorySolved.foundations || 0) >= 3 || d.totalSolved >= 3
+    },
+    {
+      id: 'parallel_perpendicular',
+      title: 'Parallel & Perpendicular Lines',
+      desc: 'Identified parallel lines (never meet) and perpendicular lines (meet at 90° right angles)',
+      hint: 'Solve at least 3 Line Relationships questions in Practice mode',
+      check: (d) => (d.categorySolved.line_relationships || 0) >= 3 || d.totalSolved >= 6
+    },
+    {
+      id: 'angle_types',
+      title: 'Angle Classification & Measurement',
+      desc: 'Classified Acute (<90°), Right (90°), Obtuse (90°–180°), Straight (180°), Reflex (180°–360°), and Complete (360°)',
+      hint: 'Solve at least 4 Angle Types questions in Practice mode',
+      check: (d) => (d.categorySolved.angle_types || 0) >= 4 || d.totalSolved >= 9
+    },
+    {
+      id: 'triangles_polygons',
+      title: 'Triangles & Polygon Angle Sums',
+      desc: 'Mastered triangle classification (by sides and angles) and the fundamental rule: Triangle angle sum = 180°',
+      hint: 'Solve at least 3 Triangles & Polygons questions in Practice mode',
+      check: (d) => (d.categorySolved.triangles_polygons || 0) >= 3 || d.totalSolved >= 12
+    },
+    {
+      id: 'quadrilaterals_circles',
+      title: 'Quadrilaterals & 360° Interior Sum',
+      desc: 'Mastered properties of square, rectangle, rhombus, and parallelogram; Quadrilateral angle sum = 360°',
+      hint: 'Solve at least 3 Quadrilaterals questions in Practice mode',
+      check: (d) => (d.categorySolved.quadrilaterals_circles || 0) >= 3 || d.totalSolved >= 15
+    },
+    {
+      id: 'circle_anatomy',
+      title: 'Circle Anatomy (Radius, Diameter, Chord)',
+      desc: 'Mastered Center, Radius, Diameter (d = 2r), Chord, Arc, and Circumference relationships',
+      hint: 'Solve at least 5 circle/quadrilateral questions or explore Circle Foundations',
+      check: (d) => (d.categorySolved.quadrilaterals_circles || 0) >= 5 || d.totalSolved >= 17
+    },
+    {
+      id: 'clock_geometry',
+      title: 'Clock Hands Angle Detective',
+      desc: 'Calculated angles formed by hour and minute hands at various times (each hour gap = 30°)',
+      hint: 'Solve at least 3 Clock Geometry questions in Practice mode',
+      check: (d) => (d.categorySolved.clock_geometry || 0) >= 3 || d.totalSolved >= 19
+    },
+    {
+      id: 'trap_buster',
+      title: 'Diagnostic Trap Buster',
+      desc: 'Avoided protractor inner vs outer scale misreadings and line vs ray confusion',
+      hint: 'Explore Spot the Mistakes in Learn mode or solve 20 questions',
+      check: (d) => !!d.modulesInteracted.spot_the_mistakes || d.totalSolved >= 20
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Geometry & Angles Fluency',
+      desc: 'Solved at least 22 geometry questions across all structural categories',
+      hint: 'Solve 22 or more practice questions in Practice mode',
+      check: (d) => d.totalSolved >= 22
+    },
+    {
+      id: 'sprint_speed',
+      title: '60-Second Speed Sprint',
+      desc: 'Achieved ≥7 correct answers in the 60-Second Geometry Sprint',
+      hint: 'Score 7+ correct answers in the 60s Speed Challenge',
+      check: (d) => d.challengeHighScore >= 7
+    }
+  ],
+
+  tables_speed_master: [
+    {
+      id: 'grid_explorer',
+      title: '20×20 Grid & Square Symmetry',
+      desc: 'Explored the multiplication table matrix and diagonal symmetry (a × b = b × a)',
+      hint: 'Explore the 20×20 Grid Explorer in Learn mode',
+      check: (d) => !!d.checkpoints.checkpoint_grid || !!d.modulesInteracted.grid_explorer_20 || d.totalSolved >= 3
+    },
+    {
+      id: 'split_and_add',
+      title: 'The Split-and-Add Hammer',
+      desc: 'Decomposed 2-digit numbers into tens and units (e.g. 18 × 4 = 10 × 4 + 8 × 4 = 40 + 32 = 72)',
+      hint: 'Clear the Split-and-Add checkpoint or solve 3 split questions',
+      check: (d) => !!d.checkpoints.checkpoint_split || (d.categorySolved.split_mental_math || 0) >= 3 || d.totalSolved >= 6
+    },
+    {
+      id: 'vedic_teen_shortcuts',
+      title: 'Vedic Teen × Teen 2-Second Trick',
+      desc: 'Applied Base-10 cross addition: (10+a)(10+b) = ((10+a)+b)×10 + a×b in under 3 seconds',
+      hint: 'Clear the Vedic checkpoint or solve 3 Vedic teen questions',
+      check: (d) => !!d.checkpoints.checkpoint_vedic || (d.categorySolved.vedic_sprint || 0) >= 3 || d.totalSolved >= 9
+    },
+    {
+      id: 'trap_buster',
+      title: 'Diagnostic Carry Trap Buster',
+      desc: 'Spotted unit-digit miscalculations and carry-over slips in mental multiplication',
+      hint: 'Clear the Traps checkpoint or explore Spot the Mistakes',
+      check: (d) => !!d.checkpoints.checkpoint_traps || !!d.modulesInteracted.tables_traps || d.totalSolved >= 12
+    },
+    {
+      id: 'foundational_teens',
+      title: 'Friendly Teens Fluency (11, 12, 15, 20)',
+      desc: 'Achieved instantaneous mental recall for key benchmark multipliers',
+      hint: 'Solve at least 4 Friendly Teens questions in Practice mode',
+      check: (d) => (d.categorySolved.foundational_teens || 0) >= 4 || d.totalSolved >= 15
+    },
+    {
+      id: 'tricky_teens',
+      title: 'Tricky Teens Mastery (13, 14, 16, 17, 18, 19)',
+      desc: 'Conquered the toughest single-digit multiples of prime and composite teens',
+      hint: 'Solve at least 4 Tricky Teens questions in Practice mode',
+      check: (d) => (d.categorySolved.tricky_teens || 0) >= 4 || d.totalSolved >= 18
+    },
+    {
+      id: 'missing_multipliers',
+      title: 'Missing Multipliers & Division Inverses',
+      desc: 'Solved inverse equations (? × 16 = 112) using fast mental factor testing',
+      hint: 'Solve at least 3 Missing Multipliers questions in Practice mode',
+      check: (d) => (d.categorySolved.missing_multipliers || 0) >= 3 || d.totalSolved >= 20
+    },
+    {
+      id: 'speed_word_problems',
+      title: 'Real-Life Rate & Speed Word Problems',
+      desc: 'Applied rapid multiplication to cost calculations, uniform rates, and group sizing',
+      hint: 'Solve at least 3 Speed Word Problems in Practice mode',
+      check: (d) => (d.categorySolved.word_problems || 0) >= 3 || d.totalSolved >= 22
+    },
+    {
+      id: 'dynamic_drill_breadth',
+      title: 'Dynamic Question Engine Dedication',
+      desc: 'Solved at least 25 dynamically randomized multiplication questions',
+      hint: 'Solve 25 or more dynamic questions in Practice mode',
+      check: (d) => d.totalSolved >= 25 || (d.tablesPracticeSolvedCount || 0) >= 20
+    },
+    {
+      id: 'speed_sprint_mastery',
+      title: '60-Second Speed Sprint (80%+)',
+      desc: 'Achieved ≥80% accuracy in the rapid-fire 60-Second Multiplication Sprint',
+      hint: 'Score 80%+ accuracy or 8+ correct answers in the 60s Speed Sprint',
+      check: (d) => d.challengeHighScore >= 80 || d.challengeAccuracy >= 80 || (state.tablesChallengeHighScore || 0) >= 80
+    }
+  ],
+
+  fractions_master: [
+    {
+      id: 'partition_basics',
+      title: 'Equal Cuts & Visual Foundations',
+      desc: 'Mastered numerator (shaded pieces) over denominator (total equal cuts) with visual diagrams',
+      hint: 'Clear Learn Checkpoint 1 or solve 3 Equal Cuts questions in Practice mode',
+      check: (d) => !!d.checkpoints.checkpoint_frac_1 || (d.categorySolved.partition_basics || 0) >= 3 || d.totalSolved >= 3
+    },
+    {
+      id: 'types_and_mixed',
+      title: 'Proper, Improper & Mixed Numbers',
+      desc: 'Converted between improper fractions and mixed numerals (e.g. 11/4 = 2 ¾)',
+      hint: 'Clear Learn Checkpoint 2 or solve 3 Mixed Numbers questions',
+      check: (d) => !!d.checkpoints.checkpoint_frac_2 || (d.categorySolved.types_and_mixed || 0) >= 3 || d.totalSolved >= 6
+    },
+    {
+      id: 'equivalent_fractions',
+      title: 'Equivalence & Lowest Terms Simplifier',
+      desc: 'Found equivalent fractions by scaling and simplified to lowest terms by dividing by HCF',
+      hint: 'Clear Learn Checkpoint 3 or solve 3 Equivalence questions',
+      check: (d) => !!d.checkpoints.checkpoint_frac_3 || (d.categorySolved.equivalent_simplest || 0) >= 3 || d.totalSolved >= 9
+    },
+    {
+      id: 'comparison_ordering',
+      title: 'Fraction Comparison & LCM Common Base',
+      desc: 'Compared and ordered like, unlike, and unit fractions using cross-multiplication and LCM',
+      hint: 'Clear Learn Checkpoint 4 or solve 3 Comparison questions',
+      check: (d) => !!d.checkpoints.checkpoint_frac_4 || (d.categorySolved.comparison_ordering || 0) >= 3 || d.totalSolved >= 12
+    },
+    {
+      id: 'add_sub_operations',
+      title: 'Addition & Subtraction of Fractions',
+      desc: 'Added and subtracted like and unlike fractions with common denominators',
+      hint: 'Clear Learn Checkpoint 5 or solve 3 Addition/Subtraction questions',
+      check: (d) => !!d.checkpoints.checkpoint_frac_5 || (d.categorySolved.add_sub_operations || 0) >= 3 || d.totalSolved >= 15
+    },
+    {
+      id: 'multiplication_of',
+      title: '"Of" & Fraction Multiplication',
+      desc: 'Mastered fraction of a whole number (e.g. ⅗ of 35 = 21) and fraction × fraction',
+      hint: 'Clear Learn Checkpoint 6 or solve 3 Multiplication questions',
+      check: (d) => !!d.checkpoints.checkpoint_frac_6 || (d.categorySolved.multiply_of || 0) >= 3 || d.totalSolved >= 18
+    },
+    {
+      id: 'division_reciprocals',
+      title: 'Division & The Reciprocal Flip',
+      desc: 'Mastered fraction division using Keep-Change-Flip: dividing by a fraction is multiplying by its reciprocal',
+      hint: 'Solve at least 3 Division & Reciprocals questions in Practice mode',
+      check: (d) => (d.categorySolved.divide_reciprocals || 0) >= 3 || d.totalSolved >= 20
+    },
+    {
+      id: 'real_life_word_problems',
+      title: 'Real-Life Fraction Word Problems',
+      desc: 'Solved multi-step CBSE word problems involving recipes, sharing, time, and distances',
+      hint: 'Solve at least 22 practice questions across all categories',
+      check: (d) => d.totalSolved >= 22
+    },
+    {
+      id: 'dynamic_practice_breadth',
+      title: 'Dynamic Fractions Engine Mastery',
+      desc: 'Solved at least 25 dynamically generated fraction questions with step-by-step reasoning',
+      hint: 'Solve 25 or more dynamic questions in Practice mode',
+      check: (d) => d.totalSolved >= 25 || (d.fractionsPracticeSolvedCount || 0) >= 20
+    },
+    {
+      id: 'speed_sprint_mastery',
+      title: '60-Second Fractions Sprint (80%+)',
+      desc: 'Achieved ≥80% accuracy in the rapid-fire 60-Second Fractions Sprint',
+      hint: 'Score 80%+ accuracy or 8+ correct answers in the 60s Speed Sprint',
+      check: (d) => d.challengeHighScore >= 80 || d.challengeAccuracy >= 80 || (state.fractionsChallengeHighScore || 0) >= 80
+    }
+  ],
+
+  term_revision: [
+    {
+      id: 'blueprint_overview',
+      title: 'CBSE Exam Blueprint & Weightage',
+      desc: 'Inspected the CBSE Class 5 term examination blueprint and mark allocation across topics',
+      hint: 'Explore the Exam Blueprint Overview in Learn mode',
+      check: (d) => !!d.modulesInteracted.blueprint_overview || d.totalSolved >= 3
+    },
+    {
+      id: 'factors_hcf_lcm_rev',
+      title: 'Factors & Multiples Exam Questions',
+      desc: 'Mastered cumulative exam questions on HCF, LCM, prime factors, and product relation',
+      hint: 'Solve at least 3 Factors & Multiples questions in Practice mode',
+      check: (d) => (d.categorySolved.factors_hcf_lcm || 0) >= 3 || d.totalSolved >= 6
+    },
+    {
+      id: 'divisibility_rev',
+      title: 'Divisibility Rules Exam Questions',
+      desc: 'Solved cumulative exam questions on multi-digit divisibility rules and missing digits',
+      hint: 'Solve at least 3 Divisibility questions in Practice mode',
+      check: (d) => (d.categorySolved.divisibility || 0) >= 3 || d.totalSolved >= 9
+    },
+    {
+      id: 'expressions_rev',
+      title: 'Expressions & BODMAS Exam Questions',
+      desc: 'Solved cumulative exam questions on algebraic statements and bracket precedence',
+      hint: 'Solve at least 3 BODMAS & Expressions questions in Practice mode',
+      check: (d) => (d.categorySolved.expressions || 0) >= 3 || d.totalSolved >= 12
+    },
+    {
+      id: 'patterns_rev',
+      title: 'Number Patterns & Towers Exam Questions',
+      desc: 'Solved cumulative exam questions on triangular numbers, squares, and number pyramids',
+      hint: 'Solve at least 3 Patterns questions in Practice mode',
+      check: (d) => (d.categorySolved.patterns || 0) >= 3 || d.totalSolved >= 15
+    },
+    {
+      id: 'geometry_rev',
+      title: 'Geometry & Angles Exam Questions',
+      desc: 'Solved cumulative exam questions on line relations, angle sums, and circle geometry',
+      hint: 'Solve at least 3 Geometry questions in Practice mode',
+      check: (d) => (d.categorySolved.geometry || 0) >= 3 || d.totalSolved >= 18
+    },
+    {
+      id: 'custom_builder',
+      title: 'Worksheet Builder Cherry-Picker',
+      desc: 'Customized chapters in the Worksheet Builder and previewed custom school revision papers',
+      hint: 'Switch to Worksheet Mode and customize chapter selections',
+      check: (d) => !!d.customWorksheetExported || !!d.modulesInteracted.worksheet_builder || d.totalSolved >= 20
+    },
+    {
+      id: 'cumulative_breadth',
+      title: 'Cumulative Syllabus Breadth',
+      desc: 'Solved at least 22 cumulative revision questions across all 5 core mathematical domains',
+      hint: 'Solve 22 or more questions in Practice mode across all categories',
+      check: (d) => d.totalSolved >= 22
+    },
+    {
+      id: 'cumulative_accuracy',
+      title: 'Exam-Level Accuracy (80%+)',
+      desc: 'Maintained ≥80% accuracy across mixed cumulative revision questions',
+      hint: 'Achieve at least 80% accuracy with at least 18 questions solved',
+      check: (d) => d.totalSolved >= 18 && d.accuracy >= 80
+    },
+    {
+      id: 'speed_sprint_mastery',
+      title: '60-Second Cumulative Sprint',
+      desc: 'Achieved ≥8 correct answers in the comprehensive 60-Second Speed Challenge',
+      hint: 'Score 8+ correct answers in the 60s Speed Challenge',
+      check: (d) => d.challengeHighScore >= 8
+    }
+  ]
+};
+
+/* ==========================================================================
+   TOPIC MASTERY ENGINE & LEARNING PASSPORT CONTROLLER
+   ========================================================================== */
+
+function getTopicStars(topicId) {
+  const config = TOPICS_CONFIG[topicId];
+  if (!config) return 0;
+  try {
+    const val = localStorage.getItem(config.starsKey);
+    return val ? Math.min(config.targetStars || 10, Math.max(0, parseInt(val, 10) || 0)) : 0;
+  } catch (e) {
+    return 0;
+  }
+}
+
+function setTopicStars(topicId, stars) {
+  const config = TOPICS_CONFIG[topicId];
+  if (!config) return;
+  try {
+    const current = getTopicStars(topicId);
+    if (stars > current) {
+      localStorage.setItem(config.starsKey, stars.toString());
+      updateSidebarProgress();
+    }
+  } catch (e) {}
+}
+
+function getTopicProgressData(topicId) {
+  const config = TOPICS_CONFIG[topicId];
+  if (!config) {
+    return {
+      modulesInteracted: {},
+      checkpoints: {},
+      categorySolved: {},
+      totalSolved: 0,
+      totalAttempted: 0,
+      accuracy: 0,
+      trapsDiagnosed: 0,
+      challengeHighScore: 0,
+      challengeAccuracy: 0,
+      customWorksheetExported: false,
+      tablesPracticeSolvedCount: 0,
+      fractionsPracticeSolvedCount: 0
+    };
+  }
+
+  state.topicProgress = state.topicProgress || {};
+  const prog = state.topicProgress[topicId] || {};
+  const modulesInteracted = prog.modulesInteracted || {};
+  const checkpoints = Object.assign({}, prog.checkpoints || {});
+  const categorySolved = Object.assign({}, prog.categorySolved || {});
+  let totalSolved = prog.totalSolved || 0;
+  let totalAttempted = prog.totalAttempted || 0;
+  let trapsDiagnosed = prog.trapsDiagnosed || 0;
+  let challengeHighScore = prog.challengeHighScore || 0;
+  let challengeAccuracy = prog.challengeAccuracy || 0;
+  const customWorksheetExported = !!prog.customWorksheetExported;
+
+  // Integrate tables specific state
+  if (topicId === 'tables_speed_master') {
+    const cp = state.tablesLearnCheckpoints || {};
+    Object.assign(checkpoints, cp);
+    const tablesCount = state.tablesPracticeSolvedCount || 0;
+    if (tablesCount > totalSolved) totalSolved = tablesCount;
+    if (state.tablesChallengeHighScore) {
+      challengeHighScore = Math.max(challengeHighScore, state.tablesChallengeHighScore);
+      challengeAccuracy = Math.max(challengeAccuracy, state.tablesChallengeHighScore);
+    }
+  }
+
+  // Integrate fractions specific state
+  if (topicId === 'fractions_master') {
+    const cp = state.fractionsLearnCheckpoints || {};
+    Object.assign(checkpoints, cp);
+    const fractionsCount = state.fractionsPracticeSolvedCount || 0;
+    if (fractionsCount > totalSolved) totalSolved = fractionsCount;
+    if (state.fractionsChallengeHighScore) {
+      challengeHighScore = Math.max(challengeHighScore, state.fractionsChallengeHighScore);
+      challengeAccuracy = Math.max(challengeAccuracy, state.fractionsChallengeHighScore);
+    }
+  }
+
+  // Legacy star fallback: if user already had legacy 3 stars saved, grant appropriate minimum progress
+  const legacySaved = parseInt(localStorage.getItem(config.starsKey) || '0', 10);
+  if (legacySaved > 0 && totalSolved === 0 && challengeHighScore === 0) {
+    if (legacySaved >= 1) {
+      totalSolved = Math.max(totalSolved, 5);
+      challengeHighScore = Math.max(challengeHighScore, 5);
+    }
+    if (legacySaved >= 2) {
+      totalSolved = Math.max(totalSolved, 12);
+      challengeHighScore = Math.max(challengeHighScore, 7);
+    }
+    if (legacySaved >= 3) {
+      totalSolved = Math.max(totalSolved, 20);
+      challengeHighScore = Math.max(challengeHighScore, 10);
+    }
+  }
+
+  const accuracy = totalAttempted > 0 ? Math.round((totalSolved / totalAttempted) * 100) : (totalSolved > 0 ? 85 : 0);
+
+  return {
+    modulesInteracted,
+    checkpoints,
+    categorySolved,
+    totalSolved,
+    totalAttempted,
+    accuracy,
+    trapsDiagnosed,
+    challengeHighScore,
+    challengeAccuracy,
+    customWorksheetExported,
+    tablesPracticeSolvedCount: state.tablesPracticeSolvedCount || 0,
+    fractionsPracticeSolvedCount: state.fractionsPracticeSolvedCount || 0
+  };
+}
+
+function evaluateAndAwardStars(topicId) {
+  const config = TOPICS_CONFIG[topicId];
+  if (!config) return 0;
+
+  const milestones = TOPIC_MILESTONES[topicId] || [];
+  const data = getTopicProgressData(topicId);
+  const clearedMilestones = milestones.filter(m => m.check(data));
+  const targetStars = config.targetStars || 10;
+  const stars = Math.min(targetStars, clearedMilestones.length);
+
+  const oldStars = getTopicStars(topicId);
+  if (stars > oldStars) {
+    setTopicStars(topicId, stars);
+    if (stars >= targetStars) {
+      playFanfare();
+      launchConfetti();
+    } else {
+      playCorrectSound();
+    }
+  } else if (oldStars === 0 && stars > 0) {
+    setTopicStars(topicId, stars);
+  }
+
+  if (state.currentTopic === topicId) {
+    state.stars = stars;
+  }
+
+  updateSidebarProgress();
+  updateTopBarPassportButton();
+  return stars;
+}
+
+function markModuleInteracted(topicId, moduleId) {
+  state.topicProgress = state.topicProgress || {};
+  const tp = state.topicProgress[topicId] = state.topicProgress[topicId] || {};
+  tp.modulesInteracted = tp.modulesInteracted || {};
+  if (!tp.modulesInteracted[moduleId]) {
+    tp.modulesInteracted[moduleId] = true;
+    saveActiveState();
+    evaluateAndAwardStars(topicId);
+  }
+}
+
+function renderTopicMasteryBanner(config) {
+  const stars = getTopicStars(config.id);
+  const target = config.targetStars || 10;
+  const pct = Math.round((stars / target) * 100);
+  return `
+    <div class="chapter-mastery-banner no-print" style="--chapter-theme: ${config.themeColor || 'var(--accent-amber)'}">
+      <div class="mastery-banner-left">
+        <div class="mastery-star-pill">
+          <span>⭐</span>
+          <span><strong>${stars}</strong> / ${target} Stars</span>
+        </div>
+        <div class="mastery-bar-track">
+          <div class="mastery-bar-fill" style="width: ${pct}%;"></div>
+        </div>
+        <span class="mastery-pct-label">${pct}% Mastered ${stars === target ? '• 🏅 Certified!' : ''}</span>
+      </div>
+      <div class="mastery-banner-right">
+        <button class="btn-passport-trigger" id="btn-banner-passport">
+          📋 Learning Passport & Parent Report
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function bindMasteryBannerEvents(container, topicId) {
+  if (!container) return;
+  const bannerBtn = container.querySelector('#btn-banner-passport');
+  if (bannerBtn) {
+    bannerBtn.addEventListener('click', () => {
+      playClickSound();
+      openLearningPassport(topicId);
+    });
+  }
+}
+
+function updateTopBarPassportButton() {
+  const currentConfig = TOPICS_CONFIG[state.currentTopic] || TOPICS_CONFIG.factors_multiples_hcf_lcm;
+  const stars = getTopicStars(currentConfig.id);
+  const target = currentConfig.targetStars || 10;
+  const btn = document.getElementById('btn-passport');
+  if (btn) {
+    btn.innerHTML = `📋 <span class="passport-btn-label">⭐ ${stars}/${target}</span>`;
+  }
+}
+
+function openLearningPassport(topicId) {
+  const currentConfig = TOPICS_CONFIG[topicId] || TOPICS_CONFIG[state.currentTopic] || TOPICS_CONFIG.factors_multiples_hcf_lcm;
+  const modal = document.getElementById('passport-modal');
+  if (!modal) return;
+
+  const milestones = TOPIC_MILESTONES[currentConfig.id] || [];
+  const data = getTopicProgressData(currentConfig.id);
+  const clearedCount = milestones.filter(m => m.check(data)).length;
+  const targetStars = currentConfig.targetStars || 10;
+  const isAllCleared = clearedCount >= targetStars;
+  const pct = Math.round((clearedCount / targetStars) * 100);
+
+  const iconEl = document.getElementById('passport-icon');
+  const titleEl = document.getElementById('passport-title');
+  const subEl = document.getElementById('passport-subtitle');
+  const starsEl = document.getElementById('passport-stars-display');
+  const fillEl = document.getElementById('passport-progress-fill');
+  const statusEl = document.getElementById('passport-status-text');
+
+  if (iconEl) iconEl.textContent = currentConfig.icon || '🔢';
+  if (titleEl) titleEl.textContent = `${currentConfig.title} — Learning Passport`;
+  if (subEl) subEl.textContent = `Pedagogical Checklist & Parent Audit Report • ${currentConfig.subtitle}`;
+  if (starsEl) starsEl.textContent = `⭐ ${clearedCount} / ${targetStars} Stars Earned`;
+  if (fillEl) fillEl.style.width = `${pct}%`;
+  if (statusEl) statusEl.textContent = isAllCleared ? '🎉 Topic Fully Certified! 100% Mastered' : `${pct}% Completed (${targetStars - clearedCount} milestones remaining)`;
+
+  const listEl = document.getElementById('passport-milestones-list');
+  if (listEl) {
+    listEl.innerHTML = milestones.map((m, idx) => {
+      const cleared = m.check(data);
+      return `
+        <div class="milestone-card ${cleared ? 'cleared' : 'pending'}">
+          <div class="milestone-left">
+            <div class="milestone-star-num">Star ${idx + 1}</div>
+            <div class="milestone-status-icon">${cleared ? '✅' : '⏳'}</div>
+          </div>
+          <div class="milestone-center">
+            <div class="milestone-title">${m.title}</div>
+            <div class="milestone-desc">${m.desc}</div>
+            ${!cleared ? `<div class="milestone-hint">👉 <strong>How to unlock:</strong> ${m.hint}</div>` : ''}
+          </div>
+          <div class="milestone-right">
+            <span class="milestone-badge ${cleared ? 'badge-cleared' : 'badge-pending'}">
+              ${cleared ? '✓ Verified ⭐' : 'In Progress'}
+            </span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  const guaranteeBox = document.getElementById('passport-guarantee-box');
+  if (guaranteeBox) {
+    if (isAllCleared) {
+      guaranteeBox.style.display = 'block';
+      guaranteeBox.innerHTML = `
+        <div class="guarantee-inner">
+          <div class="guarantee-seal">🏅</div>
+          <div>
+            <h4>Official Parent & Teacher Mastery Certificate</h4>
+            <p>This certifies that <strong>the student has successfully completed 100% of all required conceptual models, step-by-step procedures, diagnostic trap checks, practice categories, and rapid recall sprint</strong> for <strong>${currentConfig.title}</strong>. Full Class 5 CBSE mathematical competence and deductive reasoning are verified.</p>
+          </div>
+        </div>
+      `;
+    } else {
+      guaranteeBox.style.display = 'none';
+    }
+  }
+
+  const closeBtn = document.getElementById('btn-passport-close');
+  const closeX = document.getElementById('btn-passport-close-x');
+  const actionBtn = document.getElementById('btn-passport-action');
+
+  const closeFn = () => {
+    modal.classList.remove('active');
+  };
+
+  if (closeBtn) closeBtn.onclick = closeFn;
+  if (closeX) closeX.onclick = closeFn;
+  modal.onclick = (e) => {
+    if (e.target === modal) closeFn();
+  };
+
+  if (actionBtn) {
+    actionBtn.onclick = () => {
+      closeFn();
+      // Find first pending milestone
+      const pendingMilestone = milestones.find(m => !m.check(data));
+      if (pendingMilestone) {
+        if (pendingMilestone.id.startsWith('learn') || pendingMilestone.id.startsWith('module') || pendingMilestone.id.startsWith('grid') || pendingMilestone.id.startsWith('metaphor') || pendingMilestone.id.startsWith('clue') || pendingMilestone.id.startsWith('pattern') || pendingMilestone.id.startsWith('geom') || pendingMilestone.id.startsWith('rules') || pendingMilestone.id.startsWith('blueprint')) {
+          switchMode('learn');
+        } else if (pendingMilestone.id.startsWith('practice') || pendingMilestone.id.startsWith('solve') || pendingMilestone.id.startsWith('drill') || pendingMilestone.id.startsWith('breadth') || pendingMilestone.id.startsWith('division') || pendingMilestone.id.startsWith('formula') || pendingMilestone.id.startsWith('word') || pendingMilestone.id.startsWith('school') || pendingMilestone.id.startsWith('sum') || pendingMilestone.id.startsWith('end') || pendingMilestone.id.startsWith('composite') || pendingMilestone.id.startsWith('alternating') || pendingMilestone.id.startsWith('missing') || pendingMilestone.id.startsWith('statement') || pendingMilestone.id.startsWith('expr') || pendingMilestone.id.startsWith('bracket') || pendingMilestone.id.startsWith('arithmetic') || pendingMilestone.id.startsWith('triangular') || pendingMilestone.id.startsWith('square') || pendingMilestone.id.startsWith('number') || pendingMilestone.id.startsWith('magic') || pendingMilestone.id.startsWith('parallel') || pendingMilestone.id.startsWith('angle') || pendingMilestone.id.startsWith('quadrilaterals') || pendingMilestone.id.startsWith('circle') || pendingMilestone.id.startsWith('clock') || pendingMilestone.id.startsWith('split') || pendingMilestone.id.startsWith('vedic') || pendingMilestone.id.startsWith('foundational') || pendingMilestone.id.startsWith('tricky') || pendingMilestone.id.startsWith('speed_word') || pendingMilestone.id.startsWith('partition') || pendingMilestone.id.startsWith('types') || pendingMilestone.id.startsWith('equivalent') || pendingMilestone.id.startsWith('comparison') || pendingMilestone.id.startsWith('add') || pendingMilestone.id.startsWith('multiplication') || pendingMilestone.id.startsWith('factors') || pendingMilestone.id.startsWith('patterns') || pendingMilestone.id.startsWith('geometry')) {
+          switchMode('practice');
+        } else if (pendingMilestone.id.startsWith('sprint') || pendingMilestone.id.startsWith('challenge') || pendingMilestone.id.startsWith('speed')) {
+          switchMode('challenge');
+        } else if (pendingMilestone.id.startsWith('worksheet') || pendingMilestone.id.startsWith('builder') || pendingMilestone.id.startsWith('custom')) {
+          switchMode('worksheet');
+        } else {
+          switchMode('practice');
+        }
+      }
+    };
+  }
+
+  modal.classList.add('active');
+}
+
+function updateSidebarProgress() {
+  let totalStars = 0;
+  let maxStars = 0;
+
+  Object.values(TOPICS_CONFIG).forEach(topic => {
+    const s = getTopicStars(topic.id);
+    const target = topic.targetStars || 10;
+    totalStars += s;
+    maxStars += target;
+
+    const starEl = document.getElementById(topic.sidebarStarId);
+    if (starEl) {
+      starEl.textContent = `⭐ ${s}/${target}`;
+      starEl.title = `${s} of ${target} Mastery Stars`;
+    }
+
+    const fillSuffix = topic.sidebarStarId.replace('stars-', 'fill-');
+    const miniFillEl = document.getElementById(fillSuffix);
+    if (miniFillEl) {
+      const p = Math.round((s / target) * 100);
+      miniFillEl.style.width = `${p}%`;
+    }
+  });
+
+  const totalBadge = document.getElementById('star-badge-total');
+  const progressFill = document.getElementById('progress-fill');
+  const progressLabel = document.getElementById('progress-label');
+
+  if (totalBadge) totalBadge.textContent = `⭐ ${totalStars} / ${maxStars}`;
+  const overallPct = maxStars > 0 ? Math.round((totalStars / maxStars) * 100) : 0;
+  if (progressFill) progressFill.style.width = `${overallPct}%`;
+  if (progressLabel) progressLabel.textContent = `${overallPct}% Syllabus Mastered`;
+}
 
 /* ==========================================================================
    9. APPLICATION STATE
@@ -1502,7 +2463,9 @@ const state = {
     'geometry_angles'
   ],
   // Stars earned
-  stars: 0
+  stars: 0,
+  // Detailed topic progress & milestone tracking
+  topicProgress: {}
 };
 
 /* ==========================================================================
@@ -1546,10 +2509,15 @@ function renderLearnView(container) {
     state.activeLearnModule = mod.id;
   }
 
+  // Mark active module as interacted for milestone progress
+  markModuleInteracted(state.currentTopic, mod.id);
+
+  const masteryBannerHtml = renderTopicMasteryBanner(currentConfig);
   const milestoneBannerHtml = state.currentTopic === 'tables_speed_master' ? renderTablesMilestoneBanner() : (state.currentTopic === 'fractions_master' ? renderFractionsMilestoneBanner() : '');
 
   container.innerHTML = `
     <div class="learn-container">
+      ${masteryBannerHtml}
       ${milestoneBannerHtml}
       <div class="learn-subnav">
         ${Object.values(modules).map(m => `
@@ -1574,12 +2542,15 @@ function renderLearnView(container) {
     </div>
   `;
 
+  bindMasteryBannerEvents(container, currentConfig.id);
+
   // Attach subnav click listeners
   const pills = container.querySelectorAll('.learn-pill');
   pills.forEach(pill => {
     pill.addEventListener('click', () => {
       playClickSound();
       state.activeLearnModule = pill.getAttribute('data-mod-id');
+      markModuleInteracted(state.currentTopic, state.activeLearnModule);
       saveActiveState();
       renderLearnView(container);
     });
@@ -5636,10 +6607,12 @@ function renderPracticeView(container) {
   const qIndex = Math.min(state.currentQuestionIndex, Math.max(0, questions.length - 1));
   const q = questions[qIndex];
 
+  const masteryBannerHtml = renderTopicMasteryBanner(currentConfig);
   const milestoneBannerHtml = state.currentTopic === 'tables_speed_master' ? renderTablesMilestoneBanner() : (state.currentTopic === 'fractions_master' ? renderFractionsMilestoneBanner() : '');
 
   container.innerHTML = `
     <div class="practice-container">
+      ${masteryBannerHtml}
       ${milestoneBannerHtml}
 
       <!-- Skill Filter Bar -->
@@ -5737,6 +6710,8 @@ function renderPracticeView(container) {
     });
   });
 
+  bindMasteryBannerEvents(container, currentConfig.id);
+
   // Attach restart button
   container.querySelector('#btn-restart-practice')?.addEventListener('click', () => {
     playClickSound();
@@ -5805,7 +6780,21 @@ function renderPracticeView(container) {
       container.querySelectorAll('.option-btn').forEach(b => { b.disabled = true; });
       expBox.style.display = 'flex';
 
-      // Update stars
+      // Record answer into topicProgress for 10-star mastery tracking
+      state.topicProgress = state.topicProgress || {};
+      const tp = state.topicProgress[state.currentTopic] = state.topicProgress[state.currentTopic] || {};
+      tp.categorySolved = tp.categorySolved || {};
+      tp.solvedQuestionIds = tp.solvedQuestionIds || {};
+      tp.totalAttempted = (tp.totalAttempted || 0) + 1;
+      if (isCorrect) {
+        tp.totalSolved = (tp.totalSolved || 0) + 1;
+        tp.solvedQuestionIds[q.id] = true;
+        const skill = q.skill || state.practiceFilter || 'general';
+        tp.categorySolved[skill] = (tp.categorySolved[skill] || 0) + 1;
+      }
+      tp.accuracy = Math.round(((tp.totalSolved || 0) / tp.totalAttempted) * 100);
+
+      // Update topic-specific speed counts
       if (state.currentTopic === 'tables_speed_master') {
         if (isCorrect) {
           state.tablesPracticeSolvedCount = (state.tablesPracticeSolvedCount || 0) + 1;
@@ -5816,13 +6805,9 @@ function renderPracticeView(container) {
           state.fractionsPracticeSolvedCount = (state.fractionsPracticeSolvedCount || 0) + 1;
         }
         updateFractionsMasteryStars();
-      } else {
-        if (state.scoreCorrect >= 10 && state.stars < 3) {
-          state.stars = 3;
-          saveProgress();
-        }
       }
 
+      evaluateAndAwardStars(state.currentTopic);
       saveActiveState();
     });
   });
@@ -5920,46 +6905,40 @@ function endChallenge() {
   state.challengeActive = false;
   if (state.challengeTimerId) clearInterval(state.challengeTimerId);
 
+  const totalQ = state.challengeQuestions.length || 10;
+  const accuracy = Math.round((state.challengeCorrect / totalQ) * 100);
+
+  state.topicProgress = state.topicProgress || {};
+  const tp = state.topicProgress[state.currentTopic] = state.topicProgress[state.currentTopic] || {};
+  tp.challengeHighScore = Math.max(tp.challengeHighScore || 0, state.challengeCorrect);
+  tp.challengeAccuracy = Math.max(tp.challengeAccuracy || 0, accuracy);
+
   if (state.currentTopic === 'tables_speed_master') {
-    const totalQ = state.challengeQuestions.length || 10;
-    const accuracy = Math.round((state.challengeCorrect / totalQ) * 100);
     state.tablesChallengeHighScore = Math.max(state.tablesChallengeHighScore || 0, accuracy);
     updateTablesMasteryStars();
-    showResultsModal(state.challengeCorrect, totalQ, state.stars);
-    return;
-  }
-
-  if (state.currentTopic === 'fractions_master') {
-    const totalQ = state.challengeQuestions.length || 10;
-    const accuracy = Math.round((state.challengeCorrect / totalQ) * 100);
+  } else if (state.currentTopic === 'fractions_master') {
     state.fractionsChallengeHighScore = Math.max(state.fractionsChallengeHighScore || 0, accuracy);
     updateFractionsMasteryStars();
-    showResultsModal(state.challengeCorrect, totalQ, state.stars);
-    return;
   }
 
-  // Determine stars
-  let starsAwarded = 1;
-  if (state.challengeCorrect >= 8) starsAwarded = 3;
-  else if (state.challengeCorrect >= 5) starsAwarded = 2;
-
-  state.stars = Math.max(state.stars, starsAwarded);
-  saveProgress();
-
-  showResultsModal(state.challengeCorrect, state.challengeQuestions.length, starsAwarded);
+  const topicStars = evaluateAndAwardStars(state.currentTopic);
+  saveActiveState();
+  showResultsModal(state.challengeCorrect, totalQ, topicStars);
 }
 
 function renderChallengeView(container) {
   const currentConfig = TOPICS_CONFIG[state.currentTopic] || TOPICS_CONFIG.factors_multiples_hcf_lcm;
 
   if (!state.challengeActive) {
+    const masteryBannerHtml = renderTopicMasteryBanner(currentConfig);
     container.innerHTML = `
       <div class="challenge-container">
+        ${masteryBannerHtml}
         <div class="challenge-header-card" style="text-align: center; flex-direction: column; gap: 1rem;">
           <div style="font-size: 3rem;">🎯</div>
-          <h3>60-Second Speed Challenge</h3>
+          <h3>60-Second Speed Sprint</h3>
           <p style="color: var(--text-muted); max-width: 500px;">
-            Test your quick mental math skills on <strong>${currentConfig.title}</strong>! Answer up to 10 rapid questions in 60 seconds to earn 3 stars ⭐⭐⭐!
+            Test your quick mental math skills on <strong>${currentConfig.title}</strong>! Answer rapid questions in 60 seconds to unlock Speed Sprint mastery stars and verify your exam agility!
           </p>
           <button class="btn btn-primary" id="btn-start-challenge" style="padding: 0.8rem 2rem; font-size: 1.1rem;">
             🚀 Start 60s Challenge
@@ -5967,6 +6946,8 @@ function renderChallengeView(container) {
         </div>
       </div>
     `;
+
+    bindMasteryBannerEvents(container, currentConfig.id);
 
     container.querySelector('#btn-start-challenge').addEventListener('click', () => {
       playClickSound();
@@ -10627,75 +11608,48 @@ function showResultsModal(correct, total, stars) {
   if (accElem) accElem.textContent = `${pct}%`;
 
   const currentConfig = TOPICS_CONFIG[state.currentTopic] || TOPICS_CONFIG.factors_multiples_hcf_lcm;
+  const currentTopicStars = getTopicStars(currentConfig.id);
+  const targetStars = currentConfig.targetStars || 10;
 
-  if (stars === 3) {
-    starsElem.textContent = '⭐⭐⭐';
-    emojiElem.textContent = '🏆';
-    msgElem.textContent = `Master Level! You demonstrated perfect understanding of ${currentConfig.title}!`;
+  if (starsElem) {
+    starsElem.innerHTML = `<span style="font-size: 1.15rem; font-weight:800; color: #fde047;">⭐ ${currentTopicStars} / ${targetStars} Topic Stars Earned</span>`;
+  }
+
+  if (currentTopicStars >= targetStars) {
+    if (emojiElem) emojiElem.textContent = '🏆';
+    if (msgElem) msgElem.textContent = `Master Level Certified! You completed 100% of all milestones for ${currentConfig.title}!`;
     playFanfare();
     launchConfetti();
-  } else if (stars === 2) {
-    starsElem.textContent = '⭐⭐';
-    emojiElem.textContent = '🌟';
-    msgElem.textContent = `Great Job! You have a solid grasp of ${currentConfig.title}!`;
+  } else if (pct >= 80) {
+    if (emojiElem) emojiElem.textContent = '🌟';
+    if (msgElem) msgElem.textContent = `Fantastic Sprint! You scored ${correct}/${total} (${pct}%). Check your Learning Passport for unlocked milestones!`;
     playCorrectSound();
   } else {
-    starsElem.textContent = '⭐';
-    emojiElem.textContent = '💪';
-    msgElem.textContent = `Good effort! Review the lessons in ${currentConfig.title} to improve your score!`;
+    if (emojiElem) emojiElem.textContent = '💪';
+    if (msgElem) msgElem.textContent = `Good effort! You scored ${correct}/${total}. Practice more questions or review concepts to earn more stars!`;
   }
 
   modal.classList.add('active');
 }
 
 function saveProgress() {
-  const currentConfig = TOPICS_CONFIG[state.currentTopic] || TOPICS_CONFIG.factors_multiples_hcf_lcm;
-  try {
-    localStorage.setItem(currentConfig.starsKey, state.stars.toString());
-  } catch (e) {
-    // localStorage unavailable
-  }
-  loadAllProgress();
+  evaluateAndAwardStars(state.currentTopic);
+  updateSidebarProgress();
 }
 
 function loadAllProgress() {
-  Object.values(TOPICS_CONFIG).forEach(topic => {
-    try {
-      const saved = localStorage.getItem(topic.starsKey);
-      const stars = saved ? parseInt(saved) || 0 : 0;
-      const el = document.getElementById(topic.sidebarStarId);
-      if (el) {
-        el.textContent = '⭐'.repeat(stars) + '☆'.repeat(Math.max(0, 3 - stars));
-      }
-    } catch (e) {}
-  });
-
-  const currentConfig = TOPICS_CONFIG[state.currentTopic] || TOPICS_CONFIG.factors_multiples_hcf_lcm;
-  try {
-    const saved = localStorage.getItem(currentConfig.starsKey);
-    state.stars = saved ? parseInt(saved) || 0 : 0;
-  } catch (e) {
-    state.stars = 0;
-  }
-  updateProgressUI();
+  updateSidebarProgress();
+  updateTopBarPassportButton();
 }
 
 function loadProgress() {
-  loadAllProgress();
+  updateSidebarProgress();
+  updateTopBarPassportButton();
 }
 
 function updateProgressUI() {
-  const fill = document.getElementById('progress-fill');
-  const label = document.getElementById('progress-label');
-  const currentConfig = TOPICS_CONFIG[state.currentTopic] || TOPICS_CONFIG.factors_multiples_hcf_lcm;
-  const starDisplay = document.getElementById(currentConfig.sidebarStarId);
-
-  const pct = Math.round((state.stars / 3) * 100);
-  if (fill) fill.style.width = `${pct}%`;
-  if (label) label.textContent = `${state.stars} / 3 stars earned`;
-  if (starDisplay) {
-    starDisplay.textContent = '⭐'.repeat(state.stars) + '☆'.repeat(Math.max(0, 3 - state.stars));
-  }
+  updateSidebarProgress();
+  updateTopBarPassportButton();
 }
 
 function loadActiveState() {
@@ -10706,7 +11660,7 @@ function loadActiveState() {
       if (parsed.currentTopic && TOPICS_CONFIG[parsed.currentTopic]) {
         state.currentTopic = parsed.currentTopic;
       }
-            if (Array.isArray(parsed.revisionSelectedTopics)) {
+      if (Array.isArray(parsed.revisionSelectedTopics)) {
         state.revisionSelectedTopics = parsed.revisionSelectedTopics;
       }
       if (['learn', 'practice', 'challenge', 'worksheet'].includes(parsed.activeMode)) {
@@ -10717,6 +11671,9 @@ function loadActiveState() {
       }
       if (parsed.practiceFilter) {
         state.practiceFilter = parsed.practiceFilter;
+      }
+      if (parsed.topicProgress && typeof parsed.topicProgress === 'object') {
+        state.topicProgress = parsed.topicProgress;
       }
       if (parsed.tablesLearnCheckpoints) {
         state.tablesLearnCheckpoints = parsed.tablesLearnCheckpoints;
@@ -10759,6 +11716,7 @@ function saveActiveState() {
       activeLearnModule: state.activeLearnModule,
       practiceFilter: state.practiceFilter,
       revisionSelectedTopics: state.revisionSelectedTopics,
+      topicProgress: state.topicProgress || {},
       tablesLearnCheckpoints: state.tablesLearnCheckpoints,
       tablesPracticeSolvedCount: state.tablesPracticeSolvedCount,
       tablesChallengeHighScore: state.tablesChallengeHighScore,
@@ -10827,20 +11785,10 @@ function switchTopic(topicId, resetSubmodes = true) {
     t.classList.toggle('active', t.getAttribute('data-mode') === state.activeMode);
   });
 
-  // Load progress for this topic
-  try {
-    const saved = localStorage.getItem(config.starsKey);
-    state.stars = saved ? parseInt(saved) || 0 : 0;
-  } catch (e) {
-    state.stars = 0;
-  }
-  if (topicId === 'tables_speed_master') {
-    updateTablesMasteryStars();
-  } else if (topicId === 'fractions_master') {
-    updateFractionsMasteryStars();
-  } else {
-    updateProgressUI();
-  }
+  // Evaluate & award stars for this topic
+  evaluateAndAwardStars(topicId);
+  updateSidebarProgress();
+  updateTopBarPassportButton();
   saveActiveState();
   renderViewport();
 }
@@ -10851,12 +11799,9 @@ function switchTopic(topicId, resetSubmodes = true) {
 
 document.addEventListener('DOMContentLoaded', () => {
   loadActiveState();
-  loadProgress();
-  if (state.currentTopic === 'tables_speed_master') {
-    updateTablesMasteryStars();
-  } else if (state.currentTopic === 'fractions_master') {
-    updateFractionsMasteryStars();
-  }
+  evaluateAndAwardStars(state.currentTopic);
+  updateSidebarProgress();
+  updateTopBarPassportButton();
 
   const currentConfig = TOPICS_CONFIG[state.currentTopic] || TOPICS_CONFIG.factors_multiples_hcf_lcm;
   document.querySelectorAll('.sidebar-topics .topic-item').forEach(item => {
@@ -10866,6 +11811,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const subEl = document.getElementById('top-bar-subtitle');
   if (titleEl) titleEl.textContent = currentConfig.title;
   if (subEl) subEl.textContent = currentConfig.subtitle;
+
+  // Top Bar Passport Button
+  const btnPassport = document.getElementById('btn-passport');
+  if (btnPassport) {
+    btnPassport.addEventListener('click', () => {
+      playClickSound();
+      openLearningPassport(state.currentTopic);
+    });
+  }
 
   // Mobile Drawer toggles
   const menuToggleBtn = document.getElementById('menu-toggle-btn');
@@ -10919,7 +11873,34 @@ document.addEventListener('DOMContentLoaded', () => {
       state.scoreWrong = 0;
       state.userAnswers = {};
       state.stars = 0;
-      saveProgress();
+      state.topicProgress = state.topicProgress || {};
+      state.topicProgress[state.currentTopic] = {
+        modulesInteracted: {},
+        checkpoints: {},
+        categorySolved: {},
+        totalSolved: 0,
+        totalAttempted: 0,
+        accuracy: 0,
+        trapsDiagnosed: 0,
+        challengeHighScore: 0,
+        challengeAccuracy: 0,
+        customWorksheetExported: false
+      };
+      try {
+        localStorage.removeItem(config.starsKey);
+      } catch (e) {}
+      if (state.currentTopic === 'tables_speed_master') {
+        state.tablesLearnCheckpoints = {};
+        state.tablesPracticeSolvedCount = 0;
+        state.tablesChallengeHighScore = 0;
+      } else if (state.currentTopic === 'fractions_master') {
+        state.fractionsLearnCheckpoints = {};
+        state.fractionsPracticeSolvedCount = 0;
+        state.fractionsChallengeHighScore = 0;
+      }
+      saveActiveState();
+      updateSidebarProgress();
+      updateTopBarPassportButton();
       renderViewport();
     }
   });

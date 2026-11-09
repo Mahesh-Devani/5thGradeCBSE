@@ -57,8 +57,9 @@
           <p class="topic-desc">HCF vs LCM detective, short & long division, product relation, co-primes & school worksheet.</p>
           <div class="topic-meta">
             <span class="badge badge-active">Ready</span>
-            <span class="topic-stars" id="stars-factors-multiples">⭐⭐⭐</span>
+            <span class="chapter-star-badge" id="stars-factors-multiples">⭐ 0/10</span>
           </div>
+          <div class="sidebar-mini-progress"><div class="mini-progress-fill" id="fill-factors-multiples"></div></div>
         </div>
 
         <!-- Topic 2: Divisibility Rules (ACTIVE) -->
@@ -70,8 +71,9 @@
           <p class="topic-desc">Mental divisibility tricks for 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 & 12 with missing-digit puzzles.</p>
           <div class="topic-meta">
             <span class="badge badge-active">Ready</span>
-            <span class="topic-stars" id="stars-divisibility">☆☆☆</span>
+            <span class="chapter-star-badge" id="stars-divisibility">⭐ 0/10</span>
           </div>
+          <div class="sidebar-mini-progress"><div class="mini-progress-fill" id="fill-divisibility"></div></div>
         </div>
 
         <!-- Topic 3: Mathematical Expressions & Statements (ACTIVE) -->
@@ -83,8 +85,9 @@
           <p class="topic-desc">Converting verbal statements into mathematical expressions and vice-versa with order traps.</p>
           <div class="topic-meta">
             <span class="badge badge-active">Ready</span>
-            <span class="topic-stars" id="stars-expressions">☆☆☆</span>
+            <span class="chapter-star-badge" id="stars-expressions">⭐ 0/10</span>
           </div>
+          <div class="sidebar-mini-progress"><div class="mini-progress-fill" id="fill-expressions"></div></div>
         </div>
 
         <!-- Topic 4: Number Patterns (ACTIVE) -->
@@ -96,8 +99,9 @@
           <p class="topic-desc">Triangular numbers, square numbers, number towers & magic squares.</p>
           <div class="topic-meta">
             <span class="badge badge-active">Ready</span>
-            <span class="topic-stars" id="stars-patterns">☆☆☆</span>
+            <span class="chapter-star-badge" id="stars-patterns">⭐ 0/10</span>
           </div>
+          <div class="sidebar-mini-progress"><div class="mini-progress-fill" id="fill-patterns"></div></div>
         </div>
 
         <!-- Topic 5: Geometry, Shapes & Angles -->
@@ -109,8 +113,9 @@
           <p class="topic-desc">Points, lines, angles, triangles, quadrilaterals, polygons, circles & constructions.</p>
           <div class="topic-meta">
             <span class="badge badge-active">Ready</span>
-            <span class="topic-stars" id="stars-geometry">☆☆☆</span>
+            <span class="chapter-star-badge" id="stars-geometry">⭐ 0/10</span>
           </div>
+          <div class="sidebar-mini-progress"><div class="mini-progress-fill" id="fill-geometry"></div></div>
         </div>
 
         <!-- Topic 6: Multiplication Tables 1 to 20: Mental Math & Speed Master -->
@@ -122,8 +127,9 @@
           <p class="topic-desc">Interactive 20×20 grid, split & add hammer, Vedic teen tricks, dynamic drills & speed sprint.</p>
           <div class="topic-meta">
             <span class="badge badge-active">Ready</span>
-            <span class="topic-stars" id="stars-tables-speed">☆☆☆</span>
+            <span class="chapter-star-badge" id="stars-tables-speed">⭐ 0/10</span>
           </div>
+          <div class="sidebar-mini-progress"><div class="mini-progress-fill" id="fill-tables-speed"></div></div>
         </div>
 
         <!-- Topic 7: Fractions Master (Intuitive Discovery to Advanced CBSE Operations) -->
@@ -135,8 +141,9 @@
           <p class="topic-desc">Equal slices, proper/improper/mixed, equivalent scale, like/unlike operations, reciprocals & word problems.</p>
           <div class="topic-meta">
             <span class="badge badge-active">Ready</span>
-            <span class="topic-stars" id="stars-fractions">☆☆☆</span>
+            <span class="chapter-star-badge" id="stars-fractions">⭐ 0/10</span>
           </div>
+          <div class="sidebar-mini-progress"><div class="mini-progress-fill" id="fill-fractions"></div></div>
         </div>
 
         <!-- Special Module: Term Revision & Custom Worksheets -->
@@ -150,8 +157,9 @@
           <p class="topic-desc">Cumulative exam revision papers & custom worksheet generator — cherry-pick chapters to print.</p>
           <div class="topic-meta">
             <span class="badge badge-active" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4);">Exam Tool</span>
-            <span class="topic-stars" id="stars-revision">☆☆☆</span>
+            <span class="chapter-star-badge" id="stars-revision">⭐ 0/10</span>
           </div>
+          <div class="sidebar-mini-progress"><div class="mini-progress-fill" id="fill-revision"></div></div>
         </div>
 
         <!-- Future Curriculum Roadmap -->
@@ -170,11 +178,14 @@
       </div>
 
       <div class="progress-section">
-        <h4>Topic Progress</h4>
+        <div class="progress-title-row">
+          <h4>Overall Star Mastery</h4>
+          <span class="star-badge-total" id="star-badge-total">⭐ 0 / 80</span>
+        </div>
         <div class="progress-bar-container">
           <div class="progress-bar-fill" id="progress-fill"></div>
         </div>
-        <div class="progress-label" id="progress-label">0 / 3 stars earned</div>
+        <div class="progress-label" id="progress-label">0% Syllabus Mastered</div>
       </div>
     </aside>
 
@@ -196,6 +207,7 @@
           </div>
 
           <div class="top-bar-actions">
+            <button class="btn btn-secondary btn-sm" id="btn-passport" title="View Topic Learning Passport & Parent Report" aria-label="Learning Passport">📋 <span class="passport-btn-label">Passport</span></button>
             <button class="btn btn-icon" id="btn-print" title="Print Homework Worksheet">🖨️ <span class="desktop-only">Print</span></button>
             <button class="btn btn-icon" id="btn-reset" title="Reset Progress" aria-label="Reset">🔄</button>
           </div>
@@ -259,6 +271,41 @@
 
   <!-- ==================== PRINTABLE WORKSHEET CONTAINER (Visible only during Print) ==================== -->
   <div class="print-container" id="print-container"></div>
+
+  <!-- ==================== LEARNING PASSPORT & PARENT AUDIT MODAL ==================== -->
+  <div class="modal-overlay" id="passport-modal">
+    <div class="modal-card passport-modal-card">
+      <div class="passport-header">
+        <div class="passport-badge-icon" id="passport-icon">📋</div>
+        <div>
+          <h3 id="passport-title">Topic Mastery Passport</h3>
+          <p id="passport-subtitle">Pedagogical Checklist & Parent Audit Report</p>
+        </div>
+        <button class="modal-close-x" id="btn-passport-close-x" aria-label="Close">✕</button>
+      </div>
+
+      <div class="passport-summary-bar">
+        <div class="passport-stars-big" id="passport-stars-display">⭐ 0 / 10 Stars Earned</div>
+        <div class="passport-progress-track">
+          <div class="passport-progress-fill" id="passport-progress-fill"></div>
+        </div>
+        <div class="passport-status-text" id="passport-status-text">In Progress</div>
+      </div>
+
+      <div class="passport-milestones-list" id="passport-milestones-list">
+        <!-- Dynamically rendered milestones with checkmarks -->
+      </div>
+
+      <div class="parent-guarantee-box" id="passport-guarantee-box" style="display: none;">
+        <!-- Rendered when all stars earned -->
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="btn-passport-action">🚀 Continue Learning</button>
+        <button class="btn btn-ghost" id="btn-passport-close">✕ Close</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Shared Core Utilities -->
   <script src="../shared/js/sound.js"></script>
