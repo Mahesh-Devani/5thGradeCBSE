@@ -757,19 +757,43 @@ const CHAPTERS_DATA = [
   "learnCards": [
     {
       "badge": "Architectural Framework",
-      "title": "\ud83c\udfd7\ufe0f The Living Scaffolding & Blood Factory",
-      "metaphor": "The skeleton is not a dried-up museum relic \u2014 it is a living, blood-rich architectural marvel that holds our body upright!",
+      "title": "🏗️ The Living Scaffolding & Blood Factory",
+      "metaphor": "The skeleton is not a dried-up museum relic — it is a living, blood-rich architectural marvel that holds our body upright!",
       "points": [
         "<strong>Living Framework:</strong> An adult human skeleton contains <strong>206 bones</strong>. A newborn baby has over <strong>300 bones</strong>, but as the baby grows, many small bones fuse together!",
         "<strong>Vertebral Column (Spine):</strong> Made up of <strong>33 ring-like bones called vertebrae</strong>. It forms the main axis of our body, encloses and protects the delicate spinal cord, and allows bending and twisting.",
         "<strong>Bone Marrow Factory:</strong> The hollow interior of long bones (like the femur) contains a soft, spongy tissue called <strong>bone marrow</strong>, which manufactures millions of new red and white blood cells every day!",
-        "<strong>Mineral Storage:</strong> Bones serve as the body\u2019s primary storage bank for vital minerals like <strong>calcium and phosphorus</strong>."
+        "<strong>Mineral Storage:</strong> Bones serve as the body’s primary storage bank for vital minerals like <strong>calcium and phosphorus</strong>."
       ],
-      "thinkPrompt": "If an adult human had a single solid spine bone instead of 33 vertebrae, how would tying your shoelaces or sitting on a chair be affected?"
+      "thinkPrompt": "If an adult human had a single solid spine bone instead of 33 vertebrae, how would tying your shoelaces or sitting on a chair be affected?",
+      "checkQuestions": [
+        {
+          "subtopic": "Bone Count & Fusion",
+          "question": "Why does an adult human have 206 bones, while a newborn baby is born with over 300 bones?",
+          "options": [
+            "Adults shed nearly 100 bones as dead bone tissue during growth.",
+            "As a baby grows, many smaller bones and cartilage segments fuse solidly together into larger single bones.",
+            "Adult bones shrink and dissolve to make the adult skeleton lighter."
+          ],
+          "correct": 1,
+          "explanation": "A baby is born with over 300 softer bones and cartilage segments. As growth continues through childhood, many bones (such as in the skull and pelvis) fuse firmly together, leaving 206 distinct bones in an adult!"
+        },
+        {
+          "subtopic": "Bone Marrow Blood Factory",
+          "question": "Where in the human body are millions of fresh red and white blood cells manufactured continuously every day?",
+          "options": [
+            "Inside the spongy interior of long bones, in a soft tissue called bone marrow.",
+            "Inside the stomach lining during food digestion.",
+            "In the chambers of the heart as blood flows through."
+          ],
+          "correct": 0,
+          "explanation": "The hollow shaft of long bones (like the femur) houses soft bone marrow — the body's premier blood factory producing red blood cells, white blood cells, and platelets!"
+        }
+      ]
     },
     {
       "badge": "Biological Armor",
-      "title": "\ud83d\udee1\ufe0f The Skull Helmet & The Ribcage Shield",
+      "title": "🛡️ The Skull Helmet & The Ribcage Shield",
       "metaphor": "Your most precious organs are shielded inside biological helmets and cages engineered by nature!",
       "points": [
         "<strong>The Skull (22 Bones):</strong> 8 flat interlocking cranial bones fuse tightly like a motorcycle helmet to safeguard the brain. The remaining 14 bones form the facial framework.",
@@ -778,57 +802,177 @@ const CHAPTERS_DATA = [
         "<strong>The Ribcage (12 Pairs / 25 Bones):</strong> Made of 12 pairs of bow-shaped ribs plus the central breastbone (<strong>sternum</strong>). It forms a protective cage around the heart and lungs.",
         "<strong>Floating Ribs:</strong> The first 10 pairs attach to the sternum in front, but the <strong>last 2 pairs (11th and 12th)</strong> attach only to the backbone behind. They are called <strong>floating ribs</strong>, giving the diaphragm and lungs freedom to expand during deep breathing!"
       ],
-      "thinkPrompt": "Try to talk or chew while keeping your lower jaw completely still. Why is it biologically impossible to move only your upper jaw?"
+      "thinkPrompt": "Try to talk or chew while keeping your lower jaw completely still. Why is it biologically impossible to move only your upper jaw?",
+      "checkQuestions": [
+        {
+          "subtopic": "Skull & Mandible Mobility",
+          "question": "Why is the lower jaw (mandible) the ONLY movable bone in the entire human skull?",
+          "options": [
+            "The upper jaw is too heavy to move because it directly supports the brain.",
+            "The 8 cranial bones are fused immovable to protect the brain, while the lower jaw has a movable joint for chewing and speech!",
+            "All skull bones move freely, but only when we sneeze or cough."
+          ],
+          "correct": 1,
+          "explanation": "The 8 cranial bones have immovable fixed joints to create an unyielding helmet for the brain. Only the lower jaw (mandible) is hinged so we can talk, chew food, and yawn!"
+        },
+        {
+          "subtopic": "Floating Ribs Function",
+          "question": "Why are the 11th and 12th rib pairs specifically known as 'floating ribs'?",
+          "options": [
+            "They float freely in fluid without connecting to the backbone at all.",
+            "They attach to the backbone behind, but do not join the sternum in front, giving lungs room to expand during breathing!",
+            "They contain trapped air that helps the human body float in water."
+          ],
+          "correct": 1,
+          "explanation": "The last two pairs (11th and 12th) connect only to the vertebral column behind and remain free in front, providing flexible space for lung expansion!"
+        }
+      ]
     },
     {
       "badge": "Mechanical Bearings",
-      "title": "\ud83d\udd17 Movable Joints \u2014 Nature's Mechanical Bearings",
+      "title": "🔗 Movable Joints — Nature's Mechanical Bearings",
       "metaphor": "Wherever two bones meet, joints determine the directions and freedom of movement like mechanical hinges and swivels!",
       "points": [
-        "<strong>Ball and Socket Joint:</strong> The rounded ball-head of one bone fits inside the cup-like socket of another. Allows full <strong>360\u00b0 rotary motion in all directions</strong> (like a joystick!). Present in <strong>shoulders</strong> (humerus in pectoral girdle) and <strong>hips</strong> (femur in pelvic girdle).",
+        "<strong>Ball and Socket Joint:</strong> The rounded ball-head of one bone fits inside the cup-like socket of another. Allows full <strong>360° rotary motion in all directions</strong> (like a joystick!). Present in <strong>shoulders</strong> (humerus in pectoral girdle) and <strong>hips</strong> (femur in pelvic girdle).",
         "<strong>Hinge Joint:</strong> Works exactly like a <strong>door hinge</strong>, allowing movement back and forth in <strong>ONE direction only</strong>. Found in <strong>elbows, knees, fingers (phalanges), and toes</strong>.",
         "<strong>Why Knees Need Hinge Joints:</strong> If our knees had ball-and-socket joints like our shoulders, our legs would wobble, twist sideways, and buckle under our weight! Hinge joints provide rock-solid stability to carry our body upright and run.",
         "<strong>Pivot Joint:</strong> One bone rotates around a ring-like peg of another bone. Found between the <strong>skull and the first vertebra (atlas & axis)</strong>. Allows our head to turn sideways ('No') and nod up-and-down ('Yes')!",
         "<strong>Gliding Joint (Planar Joint):</strong> Flat bone surfaces slide or glide smoothly past one another. Present in <strong>wrists (carpals), ankles (tarsals)</strong>, and between adjacent vertebrae in the backbone."
       ],
-      "thinkPrompt": "Why did nature give us a hinge joint at the knee instead of a ball and socket joint? What would happen when you try to kick a football or run?"
+      "thinkPrompt": "Why did nature give us a hinge joint at the knee instead of a ball and socket joint? What would happen when you try to kick a football or run?",
+      "checkQuestions": [
+        {
+          "subtopic": "Ball and Socket vs Hinge Stability",
+          "question": "Why did nature place a ball-and-socket joint at the shoulder, but a hinge joint at the knee?",
+          "options": [
+            "Shoulders need 360° rotation to reach and throw, while knees need stable back-and-forth hinge support to bear body weight without buckling!",
+            "Knees have no bones, only soft muscle bands.",
+            "Ball and socket joints can only operate in small joints like toes."
+          ],
+          "correct": 0,
+          "explanation": "Shoulders require maximum angular freedom in all planes to reach and throw. Knees need rigid unidirectional hinge stability to keep legs from wobbling or collapsing under body weight!"
+        },
+        {
+          "subtopic": "Pivot & Gliding Joints",
+          "question": "Which joint between the skull and the first vertebra allows you to rotate your head side to side to say 'No'?",
+          "options": [
+            "Hinge joint",
+            "Gliding joint",
+            "Pivot joint (Atlas and Axis)"
+          ],
+          "correct": 2,
+          "explanation": "The pivot joint rotates around a central vertical axis! Between the skull and the top cervical vertebrae (atlas & axis), it allows us to shake our head 'No' and nod 'Yes'."
+        }
+      ]
     },
     {
       "badge": "Force & Locomotion",
-      "title": "\ud83d\udcaa Tendons, Ligaments & Antagonistic Muscle Pairs",
-      "metaphor": "Muscles are biological pull-cords \u2014 they can ONLY PULL, they NEVER PUSH!",
+      "title": "💪 Tendons, Ligaments & Antagonistic Muscle Pairs",
+      "metaphor": "Muscles are biological pull-cords — they can ONLY PULL, they NEVER PUSH!",
       "points": [
-        "<strong>The 3 Ls Rule:</strong> <strong>L</strong>igaments connect <strong>L</strong>ike to <strong>L</strong>ike \u2192 <strong>Bone to Bone</strong> at joints!",
-        "<strong>The 3 Ts Rule:</strong> <strong>T</strong>endons connect <strong>T</strong>wo <strong>T</strong>ypes \u2192 <strong>Bone to Muscle</strong>!",
+        "<strong>The 3 Ls Rule:</strong> <strong>L</strong>igaments connect <strong>L</strong>ike to <strong>L</strong>ike → <strong>Bone to Bone</strong> at joints!",
+        "<strong>The 3 Ts Rule:</strong> <strong>T</strong>endons connect <strong>T</strong>wo <strong>T</strong>ypes → <strong>Bone to Muscle</strong>!",
         "<strong>Cartilage Cushion:</strong> Tough, smooth, flexible tissue covering bone ends in movable joints to reduce friction and absorb shock.",
         "<strong>Antagonistic Muscle Pairs:</strong> Because muscle fibers can only contract (shorten and pull), they must work in opposing pairs! To <strong>bend the elbow</strong>, the <strong>Biceps contracts</strong> while the <strong>Triceps relaxes</strong>. To <strong>straighten the arm</strong>, the <strong>Triceps contracts</strong> while the <strong>Biceps relaxes</strong>.",
-        "<strong>Limbs Protection:</strong> Long limb bones bear great stress \u2014 the <strong>femur</strong> in the thigh, the <strong>tibia (shin bone)</strong> and <strong>fibula (calf bone)</strong> in the leg (shielded by cricket pads!), and the <strong>humerus, radius, and ulna</strong> in the arm."
+        "<strong>Limbs Protection:</strong> Long limb bones bear great stress — the <strong>femur</strong> in the thigh, the <strong>tibia (shin bone)</strong> and <strong>fibula (calf bone)</strong> in the leg (shielded by cricket pads!), and the <strong>humerus, radius, and ulna</strong> in the arm."
       ],
-      "thinkPrompt": "Can regular exercise convert body fat directly into muscle tissue? (Exam trap: Fat cells and muscle fibers are completely different biological tissues!)"
+      "thinkPrompt": "Can regular exercise convert body fat directly into muscle tissue? (Exam trap: Fat cells and muscle fibers are completely different biological tissues!)",
+      "checkQuestions": [
+        {
+          "subtopic": "The 3 Ls vs 3 Ts Rule",
+          "question": "What is the crucial anatomical difference between tendons and ligaments?",
+          "options": [
+            "Ligaments connect Bone to Bone (Like to Like), while Tendons connect Muscle to Bone (Two Types)!",
+            "Tendons connect bones together, while ligaments connect skin to blood vessels.",
+            "Ligaments are bones, while tendons are skin layers."
+          ],
+          "correct": 0,
+          "explanation": "Remember the 3 Ls Rule: Ligaments connect Like to Like (Bone to Bone). Remember the 3 Ts Rule: Tendons connect Two Types (Muscle to Bone)!"
+        },
+        {
+          "subtopic": "Antagonistic Muscle Working",
+          "question": "Why do muscles in our limbs always work in antagonistic pairs (like biceps and triceps)?",
+          "options": [
+            "Because muscles can ONLY pull by contracting, they can never push; an opposing muscle is required to pull the bone back!",
+            "Because one muscle sleeps while the other is awake.",
+            "Because bones push against muscles to bend them."
+          ],
+          "correct": 0,
+          "explanation": "Muscle fibers can ONLY contract (pull). They cannot push! Therefore, muscles work in pairs: when the biceps contracts, it bends the elbow; when the triceps contracts, it pulls the arm straight!"
+        }
+      ]
     },
     {
       "badge": "Muscle Control",
-      "title": "\ud83e\udd69 The 3 Muscle Types & Sports Physiology",
+      "title": "🥩 The 3 Muscle Types & Sports Physiology",
       "metaphor": "Voluntary muscles obey your thoughts; involuntary muscles protect your life 24/7 without being asked!",
       "points": [
         "<strong>Striated / Skeletal Muscle:</strong> Voluntary, striped fibers attached to bones by tendons. Controlled consciously by our cerebrum for walking, running, writing, and talking.",
         "<strong>Why Leg Muscles MUST Be Voluntary:</strong> You need conscious control to choose when to walk, run, sprint, jump, or stop. If leg muscles were involuntary, they would twitch and kick autonomously without your control!",
         "<strong>Smooth Muscle:</strong> Involuntary, unstriped spindle fibers in the walls of the stomach, intestines, and blood vessels. Churns food automatically via peristalsis.",
         "<strong>Cardiac Muscle:</strong> Involuntary, striated network exclusively in heart walls. Contracts rhythmically 24/7 throughout life without ever getting tired!",
-        "<strong>Sports Fatigue:</strong> When Keshav's legs ache after a 100m sprint, it is due to temporary lactic acid accumulation in hard-working voluntary muscles \u2014 resolved with rest, deep breathing, and hydration."
+        "<strong>Sports Fatigue:</strong> When Keshav's legs ache after a 100m sprint, it is due to temporary lactic acid accumulation in hard-working voluntary muscles — resolved with rest, deep breathing, and hydration."
       ],
-      "thinkPrompt": "What would happen if your heart muscles were voluntary instead of involuntary?"
+      "thinkPrompt": "What would happen if your heart muscles were voluntary instead of involuntary?",
+      "checkQuestions": [
+        {
+          "subtopic": "Voluntary vs Involuntary Control",
+          "question": "Why are the muscles of our stomach and digestive canal classified as involuntary smooth muscles?",
+          "options": [
+            "Because they operate automatically without needing any conscious thought or command from our cerebrum!",
+            "Because we must continuously concentrate on them to make them digest food.",
+            "Because they are attached to arm bones."
+          ],
+          "correct": 0,
+          "explanation": "Smooth muscles in internal organs operate involuntarily! They contract steadily through peristalsis 24/7 without requiring our conscious attention or thought."
+        },
+        {
+          "subtopic": "Cardiac Muscle Endurance",
+          "question": "What unique property makes cardiac muscle different from ordinary skeletal muscle?",
+          "options": [
+            "It is found exclusively in the heart and contracts tirelessly 24/7 for a lifetime without experiencing muscular fatigue!",
+            "It can be stopped consciously whenever we want to sleep.",
+            "It connects teeth directly to the jaw bone."
+          ],
+          "correct": 0,
+          "explanation": "Cardiac muscle is exclusive to heart walls. It features branched fibers that never stop or fatigue, pumping blood continuously throughout our entire lifetime!"
+        }
+      ]
     },
     {
       "badge": "Comparative Biology",
-      "title": "\ud83d\udc0d Endoskeletons vs Exoskeletons in Animals",
+      "title": "🐍 Endoskeletons vs Exoskeletons in Animals",
       "metaphor": "Vertebrates build their bone fortress INSIDE; invertebrates wear their armor OUTSIDE!",
       "points": [
         "<strong>Endoskeleton (Vertebrates):</strong> Internal framework of bones inside the body. Mammals, birds, reptiles, amphibians, and fish have backbones and endoskeletons. <em>Snakes are vertebrates with a flexible backbone and hundreds of ribs inside!</em>",
         "<strong>Exoskeleton (Invertebrates):</strong> Hard outer shell or casing enclosing the soft body. Insects (flies, beetles) have chitinous exoskeletons; snails have hard calcium shells.",
         "<strong>Hydrostatic Skeleton:</strong> Soft-bodied invertebrates like earthworms have neither bones nor shells; they rely on pressurized fluid in body segments to burrow."
       ],
-      "thinkPrompt": "Why can an animal with an endoskeleton (like an elephant or blue whale) grow vastly larger than an animal with an exoskeleton (like a beetle)?"
+      "thinkPrompt": "Why can an animal with an endoskeleton (like an elephant or blue whale) grow vastly larger than an animal with an exoskeleton (like a beetle)?",
+      "checkQuestions": [
+        {
+          "subtopic": "Vertebrate Skeleton & Snakes",
+          "question": "Is a snake an invertebrate or a vertebrate with an internal skeleton?",
+          "options": [
+            "A snake is an invertebrate because its flexible slithering body contains zero bones.",
+            "A snake is a true vertebrate with an internal endoskeleton consisting of a skull, a long vertebral column, and hundreds of ribs!",
+            "A snake wears an exoskeleton made of hard chitin shell like a beetle."
+          ],
+          "correct": 1,
+          "explanation": "Snakes are true vertebrates! Their extraordinary flexibility comes from having a long backbone of 200 to 400 vertebrae with attached ribs, forming an internal endoskeleton."
+        },
+        {
+          "subtopic": "Endoskeleton vs Exoskeleton Growth",
+          "question": "Why can vertebrates with endoskeletons (like blue whales and elephants) reach massive sizes that insects cannot?",
+          "options": [
+            "Living internal bones grow with the animal and efficiently support tremendous weight, whereas an external armor would become too heavy to lift!",
+            "Insects choose to stay tiny so they can hide under leaves.",
+            "Exoskeletons only exist inside cold oceans."
+          ],
+          "correct": 0,
+          "explanation": "An internal endoskeleton grows naturally with the body and efficiently bears enormous structural loads. A giant insect with an exoskeleton would need armor so thick and heavy that its muscles could never move it!"
+        }
+      ]
     }
   ],
   "examTraps": [
@@ -1702,6 +1846,7 @@ const CHAPTERS_DATA = [
   "sub": "Brain Regions, Spinal Cord Reflex Arc, Nerve Pathways & 5 Senses",
   "themeColor": "#8b5cf6",
   "icon": "🧠",
+  "targetStars": 10,
   "summary": "Master the central command network: Cerebrum, Cerebellum, Medulla, contralateral brain control, lightning-fast spinal reflex arcs, sensory vs motor nerves, and the 5 precision sense organs.",
   "learnCards": [
     {
@@ -1714,7 +1859,31 @@ const CHAPTERS_DATA = [
         "<strong>Spinal Cord Highway:</strong> A thick, tubular bundle of nerves emerging from the medulla that extends down through the protective vertebral column. It carries messages between the brain and the entire body.",
         "<strong>Cerebrospinal Fluid (CSF):</strong> The brain floats in a protective liquid layer between the brain tissue and the hard skull that acts as a hydraulic shock absorber, cushioning against sudden jerks and bumps!"
       ],
-      "thinkPrompt": "Why does a desktop computer need separate power, signal cables, and a central microprocessor, exactly like our nervous system has nerves, sensory inputs, and the brain?"
+      "thinkPrompt": "Why does a desktop computer need separate power, signal cables, and a central microprocessor, exactly like our nervous system has nerves, sensory inputs, and the brain?",
+      "checkQuestions": [
+        {
+          "subtopic": "3 Nervous System Pillars",
+          "question": "What are the three core structural components of the human nervous system?",
+          "options": [
+            "Heart, Blood Vessels, and Lungs",
+            "Brain, Spinal Cord, and Nerves",
+            "Stomach, Liver, and Small Intestine"
+          ],
+          "correct": 1,
+          "explanation": "The human nervous system consists of the Brain (command center), the Spinal Cord (main communication highway), and Nerves (branching cables carrying signals to every organ)!"
+        },
+        {
+          "subtopic": "Cerebrospinal Fluid (CSF)",
+          "question": "Why does the human brain float inside a layer of cerebrospinal fluid (CSF) inside the skull?",
+          "options": [
+            "To act as a hydraulic shock absorber, cushioning delicate brain tissue against sudden bumps and jerks!",
+            "To keep the skull light enough for walking upright.",
+            "To dissolve nutrients directly through the skull bones."
+          ],
+          "correct": 0,
+          "explanation": "Cerebrospinal fluid (CSF) surrounds and floats the brain, acting as a shock-absorbing liquid cushion to protect brain tissue from crashing against the hard cranial walls during movement!"
+        }
+      ]
     },
     {
       "badge": "The 3 Brain Departments",
@@ -1726,7 +1895,31 @@ const CHAPTERS_DATA = [
         "<strong>3. Medulla (Brain Stem — 24/7 Life Vitals):</strong> Connects the brain to the spinal cord. Governs <strong>involuntary vital reflexes</strong>: heartbeat, breathing, blood pressure, digestion, sneezing, and swallowing. <strong>It works continuously 24 hours a day, even while you are fast asleep!</strong>",
         "<strong>Contralateral Control:</strong> The left hemisphere of the cerebrum controls the <strong>right side</strong> of the body; the right hemisphere controls the <strong>left side</strong>!"
       ],
-      "thinkPrompt": "When you are in deep sleep at 2 AM, which part of your brain is tirelessly keeping your heart beating and lungs breathing?"
+      "thinkPrompt": "When you are in deep sleep at 2 AM, which part of your brain is tirelessly keeping your heart beating and lungs breathing?",
+      "checkQuestions": [
+        {
+          "subtopic": "Cerebrum vs Cerebellum",
+          "question": "When Priya is solving a difficult maths riddle while standing balanced on one foot, which brain regions are at work?",
+          "options": [
+            "Cerebrum processes the mathematical logic, while Cerebellum coordinates muscle balance on one foot!",
+            "Medulla solves the math riddle, while Cerebrum handles leg balance.",
+            "The spinal cord handles both math calculation and body balance."
+          ],
+          "correct": 0,
+          "explanation": "The Cerebrum is the thinking center (logic, reasoning, memory), while the Cerebellum coordinates voluntary muscles to maintain balance and posture!"
+        },
+        {
+          "subtopic": "Medulla 24/7 Vitals",
+          "question": "Which brain region tirelessly keeps your heart pumping and lungs breathing even when you are fast asleep at night?",
+          "options": [
+            "The Cerebrum, which dreams about breathing.",
+            "The Medulla (Brain Stem), which governs all involuntary vital life functions 24/7!",
+            "The Optic nerve in the eyes."
+          ],
+          "correct": 1,
+          "explanation": "The Medulla (Brain Stem) operates 24/7 without stopping, automatically controlling heartbeat, respiration, blood pressure, and digestion without requiring conscious thought!"
+        }
+      ]
     },
     {
       "badge": "Emergency Bypass",
@@ -1738,7 +1931,31 @@ const CHAPTERS_DATA = [
         "<strong>The 5-Step Reflex Pathway:</strong> Skin heat receptors → <strong>Sensory nerve</strong> → <strong>Spinal cord</strong> → <strong>Motor nerve</strong> → Arm bicep muscle contracts → Hand is yanked away in ~0.05 seconds!",
         "<strong>Brain Learns Afterwards:</strong> The sensory signal travels up to the conscious cerebrum <em>after</em> the hand is already pulled back, which is why you consciously register the burning pain only AFTER your hand is safely away!"
       ],
-      "thinkPrompt": "Why would waiting for the brain's cerebrum to process the thought 'Ouch, this stove is hot, I should lift my finger' lead to severe third-degree burns?"
+      "thinkPrompt": "Why would waiting for the brain's cerebrum to process the thought 'Ouch, this stove is hot, I should lift my finger' lead to severe third-degree burns?",
+      "checkQuestions": [
+        {
+          "subtopic": "Reflex Arc Emergency Bypass",
+          "question": "Why does your hand jerk away from a hot pan BEFORE you consciously feel the burning pain?",
+          "options": [
+            "The emergency reflex circuit is routed directly through the Spinal Cord, which commands muscles to yank back without waiting for slow brain analysis!",
+            "The hot pan magnetically repels your fingers.",
+            "The arm bones jump backwards on their own."
+          ],
+          "correct": 0,
+          "explanation": "Reflex actions bypass conscious brain deliberation to save critical milliseconds! The spinal cord immediately triggers the motor nerve to pull the hand away before third-degree burns occur."
+        },
+        {
+          "subtopic": "5-Step Reflex Loop Sequence",
+          "question": "What is the correct biological sequence in a reflex arc upon touching a thorn?",
+          "options": [
+            "Brain → Motor Nerve → Muscle → Sensory Nerve",
+            "Skin Receptor → Sensory Nerve → Spinal Cord → Motor Nerve → Muscle",
+            "Muscle → Spinal Cord → Bone → Brain"
+          ],
+          "correct": 1,
+          "explanation": "The reflex loop sequence is: Receptor (detects pain) → Sensory Nerve (transmits input) → Spinal Cord (integrates emergency command) → Motor Nerve (transmits output) → Effector Muscle (contracts instantly)!"
+        }
+      ]
     },
     {
       "badge": "Information Couriers",
@@ -1750,7 +1967,31 @@ const CHAPTERS_DATA = [
         "<strong>Mixed Nerves (Two-Way):</strong> Contain both sensory and motor nerve fibers, transmitting signals in <strong>both directions</strong> between the central nervous system and body tissues.",
         "<strong>No Isolated Nerves:</strong> A nerve can NEVER run directly from wrist to ankle on its own! All peripheral nerves must route through the spinal cord or brain central network."
       ],
-      "thinkPrompt": "If an accident cuts only the sensory nerves to a person's hand while motor nerves remain intact, could they pick up an apple? Could they feel if it is cold?"
+      "thinkPrompt": "If an accident cuts only the sensory nerves to a person's hand while motor nerves remain intact, could they pick up an apple? Could they feel if it is cold?",
+      "checkQuestions": [
+        {
+          "subtopic": "Sensory vs Motor Nerves",
+          "question": "If a patient can feel an ice cube placed on their foot but is completely unable to move their toes, what type of nerve is impaired?",
+          "options": [
+            "Sensory nerve, because feeling is normal.",
+            "Motor nerve, because sensory signals reach the CNS, but movement orders cannot reach the foot muscles!",
+            "The optic nerve in the eye."
+          ],
+          "correct": 1,
+          "explanation": "Sensory nerves carry feelings from receptors to the CNS (which is working). Motor nerves carry motion orders from the CNS to muscles. An inability to move muscles indicates damage to the motor nerve pathway!"
+        },
+        {
+          "subtopic": "Contralateral Brain Control",
+          "question": "Why does a stroke injury in the LEFT hemisphere of the cerebrum cause weakness or paralysis on the RIGHT side of the body?",
+          "options": [
+            "Because nerve tracts cross over to the opposite side in the brainstem (Contralateral Control)!",
+            "Because the right side of the body forgets how to move.",
+            "Because blood only flows to the left side of the human body."
+          ],
+          "correct": 0,
+          "explanation": "Due to contralateral control, neural pathways cross over in the brainstem! The left cerebrum controls muscles on the right half of the body, and the right cerebrum controls the left half."
+        }
+      ]
     },
     {
       "badge": "Sensory Detectors",
@@ -1763,7 +2004,31 @@ const CHAPTERS_DATA = [
         "<strong>Tongue:</strong> Taste buds detect sweet, salty, sour, and bitter. Nerves send taste signals to cerebrum. (Also essential for speech and swallowing!).",
         "<strong>Skin (Largest Organ):</strong> Contains microscopic receptors sensitive to <strong>touch, pressure, heat, cold, and pain</strong>. Sweat glands regulate body temperature."
       ],
-      "thinkPrompt": "Why does chocolate or hot soup taste completely bland and flavorless when your nose is severely blocked with a common cold?"
+      "thinkPrompt": "Why does chocolate or hot soup taste completely bland and flavorless when your nose is severely blocked with a common cold?",
+      "checkQuestions": [
+        {
+          "subtopic": "Retina Image Screen",
+          "question": "On which light-sensitive back screen of the eye is an inverted image focused before being transmitted to the brain?",
+          "options": [
+            "The Pupil",
+            "The Iris",
+            "The Retina"
+          ],
+          "correct": 2,
+          "explanation": "The Retina acts like the digital sensor screen in a camera! The lens focuses an inverted image onto retina photoreceptors, and the optic nerve transmits the signal to the cerebrum."
+        },
+        {
+          "subtopic": "Inner Ear Balance Semicircular Canals",
+          "question": "Besides hearing sound waves, what other vital role is performed by fluid inside the inner ear semicircular canals?",
+          "options": [
+            "Maintaining dynamic body balance and equilibrium as your head tilts and moves!",
+            "Filtering dust from entering the skull.",
+            "Controlling the vocal cords during singing."
+          ],
+          "correct": 0,
+          "explanation": "The inner ear has two vital responsibilities: the cochlea enables hearing, while the semicircular canals and fluid sensors detect orientation and movement to maintain dynamic balance and equilibrium!"
+        }
+      ]
     }
   ],
   "examTraps": [
@@ -4654,6 +4919,152 @@ const CHAPTERS_DATA = [
 
 
 const CHAPTER_MILESTONES = {
+  'ch3_skeletal': [
+    {
+      id: 'learn_part1',
+      title: 'Framework & Biological Armor',
+      desc: 'Solved concept checkpoint questions on the 206-bone framework, bone marrow blood factory, and skull helmet protection',
+      hint: 'Answer concept check questions on cards 1 & 2 in Learn mode',
+      check: (d) => (d.learnCards[0] && d.learnCards[1])
+    },
+    {
+      id: 'learn_part2',
+      title: 'Joints & Antagonistic Muscles',
+      desc: 'Solved concept checkpoint questions on 4 movable joints, tendons vs ligaments (3 Ls / 3 Ts), and antagonistic muscle pairs',
+      hint: 'Answer concept check questions on cards 3 & 4 in Learn mode',
+      check: (d) => (d.learnCards[2] && (d.learnCards[3] || d.learnCards[4]))
+    },
+    {
+      id: 'lab_investigation',
+      title: 'Skeletal Biomechanics & Muscle Lab',
+      desc: 'Tested interactive joint types (ball-socket, hinge, pivot, gliding) and biceps-triceps antagonistic arm flexion',
+      hint: 'Operate the interactive lab in Learn mode',
+      check: (d) => d.labInteracted
+    },
+    {
+      id: 'exam_traps',
+      title: 'Skeletal & Muscular Exam Traps',
+      desc: 'Diagnosed tricky CBSE student misconceptions in "Be the Teacher" (jaw mobility, tendons vs ligaments, muscles only pull)',
+      hint: 'Diagnose at least 4 traps in Spot Traps mode',
+      check: (d) => d.trapsCount >= 4
+    },
+    {
+      id: 'practice_mcq',
+      title: 'Skeletal Anatomy & Bone Factory MCQs',
+      desc: 'Solved foundational multiple-choice deduction questions on bones, joints, and marrow',
+      hint: 'Solve at least 4 MCQs correctly in Practice mode',
+      check: (d) => (d.categorySolved.mcq || 0) >= 4
+    },
+    {
+      id: 'practice_whoami',
+      title: 'Who Am I? Anatomical Riddles',
+      desc: 'Identified bones, joints, and muscles from functional and structural clues',
+      hint: 'Solve at least 3 Who Am I riddles in Practice mode',
+      check: (d) => (d.categorySolved.whoami || 0) >= 3
+    },
+    {
+      id: 'practice_compare',
+      title: 'Compare & Contrast Anatomies',
+      desc: 'Differentiated tendons vs ligaments, voluntary vs involuntary muscles, and hinge vs ball-and-socket joints',
+      hint: 'Solve at least 3 Compare & Contrast questions in Practice mode',
+      check: (d) => (d.categorySolved.compare || 0) >= 3
+    },
+    {
+      id: 'practice_scenarios',
+      title: 'Clinical & Biomechanical Scenarios',
+      desc: 'Solved real-world application scenarios (sports sprains, muscle cramps, cricket pads, posture)',
+      hint: 'Solve at least 3 scenario questions in Practice mode',
+      check: (d) => (d.categorySolved.scenario || 0) >= 3
+    },
+    {
+      id: 'practice_worksheet',
+      title: 'School Worksheet Master',
+      desc: 'Solved comprehensive questions from School Worksheets I, II, and III across all categories',
+      hint: 'Solve at least 15 total practice questions',
+      check: (d) => d.totalSolved >= 15
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Exam Readiness',
+      desc: 'Achieved ≥40 points in the 60s Sprint and ≥80% practice accuracy',
+      hint: 'Score 40+ points in 60-Second Science Sprint and maintain ≥80% accuracy',
+      check: (d) => d.sprintHighScore >= 40 && d.accuracy >= 80
+    }
+  ],
+
+  'ch4_nervous': [
+    {
+      id: 'learn_part1',
+      title: 'Central Command & Brain Regions',
+      desc: 'Solved concept checkpoint questions on the biological supercomputer, Cerebrum, Cerebellum, and Medulla',
+      hint: 'Answer concept check questions on cards 1 & 2 in Learn mode',
+      check: (d) => (d.learnCards[0] && d.learnCards[1])
+    },
+    {
+      id: 'learn_part2',
+      title: 'Reflex Arc & 5 Precision Senses',
+      desc: 'Solved concept checkpoint questions on lightning-fast spinal reflex arcs, sensory vs motor nerves, and sense organs',
+      hint: 'Answer concept check questions on cards 3 & 4 in Learn mode',
+      check: (d) => (d.learnCards[2] && (d.learnCards[3] || d.learnCards[4]))
+    },
+    {
+      id: 'lab_investigation',
+      title: 'Brain Blueprint & Reflex Arc Lab',
+      desc: 'Tested cerebrum, cerebellum, and medulla roles and triggered the lightning-fast spinal emergency reflex loop',
+      hint: 'Operate the interactive lab in Learn mode',
+      check: (d) => d.labInteracted
+    },
+    {
+      id: 'exam_traps',
+      title: 'Nervous System Exam Traps',
+      desc: 'Diagnosed tricky CBSE student exam traps in "Be the Teacher" (reflex vs brain thinking, contralateral control, ear balance)',
+      hint: 'Diagnose at least 4 traps in Spot Traps mode',
+      check: (d) => d.trapsCount >= 4
+    },
+    {
+      id: 'practice_mcq',
+      title: 'Brain, Nerves & Sense Organ MCQs',
+      desc: 'Solved foundational multiple-choice deduction questions',
+      hint: 'Solve at least 4 MCQs correctly in Practice mode',
+      check: (d) => (d.categorySolved.mcq || 0) >= 4
+    },
+    {
+      id: 'practice_whoami',
+      title: 'Who Am I? Neural Riddles',
+      desc: 'Identified brain parts, sensory receptors, and nerves from functional clues',
+      hint: 'Solve at least 2 Who Am I riddles in Practice mode',
+      check: (d) => (d.categorySolved.whoami || 0) >= 2
+    },
+    {
+      id: 'practice_compare',
+      title: 'Neural & Sensory Comparisons',
+      desc: 'Compared sensory vs motor nerves, cerebrum vs cerebellum, and voluntary vs involuntary reflex actions',
+      hint: 'Solve Compare & Contrast questions in Practice mode',
+      check: (d) => (d.categorySolved.compare || 0) >= 1
+    },
+    {
+      id: 'practice_scenarios',
+      title: 'Clinical & Reflex Scenarios',
+      desc: 'Solved real-world application scenarios (stove reflex, tightrope balance, eye blink)',
+      hint: 'Solve at least 2 scenario questions in Practice mode',
+      check: (d) => (d.categorySolved.scenario || 0) >= 2
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Nervous System Comprehensive Practice',
+      desc: 'Solved at least 12 questions across all practice categories',
+      hint: 'Solve at least 12 questions correctly in Practice mode',
+      check: (d) => d.totalSolved >= 12
+    },
+    {
+      id: 'sprint_mastery',
+      title: 'Mental Speed & Exam Readiness',
+      desc: 'Achieved ≥40 points in the 60s Sprint and ≥80% practice accuracy',
+      hint: 'Score 40+ points in 60-Second Science Sprint and maintain ≥80% accuracy',
+      check: (d) => d.sprintHighScore >= 40 && d.accuracy >= 80
+    }
+  ],
+
   'ch7_air_water': [
     {
       id: 'learn_part1',
@@ -5162,7 +5573,7 @@ function getChapterProgressData(chapterId) {
   };
 }
 
-function evaluateAndAwardStars(chapterId) {
+function evaluateAndAwardStars(chapterId, silent = false) {
   const ch = CHAPTERS_DATA.find(c => c.id === chapterId);
   if (!ch) return 0;
 
@@ -5175,11 +5586,13 @@ function evaluateAndAwardStars(chapterId) {
   const oldStars = getChapterStars(chapterId);
   if (stars > oldStars) {
     setChapterStars(chapterId, stars);
-    if (stars >= targetStars) {
-      AudioController.fanfare();
-      ConfettiController.launch();
-    } else {
-      AudioController.correct();
+    if (!silent) {
+      if (stars >= targetStars) {
+        AudioController.fanfare();
+        ConfettiController.launch();
+      } else {
+        AudioController.correct();
+      }
     }
   }
 
@@ -5447,6 +5860,12 @@ document.addEventListener('DOMContentLoaded', () => {
       state.activeMode = qMode;
     }
   } catch (e) {}
+
+  // Retroactively evaluate and award stars for any previously solved items silently
+  CHAPTERS_DATA.forEach(ch => {
+    evaluateAndAwardStars(ch.id, true);
+  });
+
   initSidebar();
   initTopBar();
   initModeTabs();
@@ -6624,6 +7043,7 @@ function attachSkeletalGadgetEvents() {
 }
 
 function toggleArmMovement() {
+  markLabInteracted('ch3_skeletal');
   AudioController.click();
   state.labStates.muscleArmState = (state.labStates.muscleArmState === 'flexed') ? 'extended' : 'flexed';
   updateSkeletalGadgetView();
@@ -6835,6 +7255,7 @@ function attachNervousGadgetEvents() {
   const reflexBtn = document.getElementById('btn-trigger-reflex');
   if (reflexBtn) {
     reflexBtn.addEventListener('click', () => {
+      markLabInteracted('ch4_nervous');
       AudioController.fanfare();
       state.labStates.reflexTriggered = true;
       brainBtns.forEach(b => b.classList.remove('active'));
