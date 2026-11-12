@@ -759,11 +759,22 @@ const CHAPTERS_DATA = [
       "badge": "Architectural Framework",
       "title": "🏗️ The Living Scaffolding & Blood Factory",
       "metaphor": "The skeleton is not a dried-up museum relic — it is a living, blood-rich architectural marvel that holds our body upright!",
+      "diagrams": [
+        {
+          "image": "images/l3_ws3_full_skeleton.png",
+          "caption": "<strong>Full Skeleton (206 Bones):</strong> Axial skeleton (skull, ribs, spine) & Appendicular skeleton (limbs & girdles)"
+        },
+        {
+          "image": "images/l3_ws2_vertebral_column.png",
+          "caption": "<strong>Vertebral Column (33 Vertebrae):</strong> S-curved shock absorber with cartilage discs protecting the spinal cord"
+        }
+      ],
       "points": [
-        "<strong>Living Framework:</strong> An adult human skeleton contains <strong>206 bones</strong>. A newborn baby has over <strong>300 bones</strong>, but as the baby grows, many small bones fuse together!",
+        "<strong>Living Framework:</strong> An adult human skeleton contains <strong>206 bones</strong>. A newborn baby has over <strong>300 bones</strong> and cartilage segments, but as the baby grows, many small bones fuse together!",
+        "<strong>The 4 Cardinal Functions:</strong> 1) Provides rigid shape and upright posture, 2) Protects delicate internal organs (brain, heart, lungs, spinal cord), 3) Enables locomotion with attached skeletal muscles, and 4) Houses the bone marrow blood factory.",
         "<strong>Vertebral Column (Spine):</strong> Made up of <strong>33 ring-like bones called vertebrae</strong>. It forms the main axis of our body, encloses and protects the delicate spinal cord, and allows bending and twisting.",
         "<strong>Bone Marrow Factory:</strong> The hollow interior of long bones (like the femur) contains a soft, spongy tissue called <strong>bone marrow</strong>, which manufactures millions of new red and white blood cells every day!",
-        "<strong>Mineral Storage:</strong> Bones serve as the body’s primary storage bank for vital minerals like <strong>calcium and phosphorus</strong>."
+        "<strong>Mineral Storage Vault:</strong> Bones serve as the body’s primary storage bank for vital minerals like <strong>calcium and phosphorus</strong>, maintaining bone density and mineral balance."
       ],
       "thinkPrompt": "If an adult human had a single solid spine bone instead of 33 vertebrae, how would tying your shoelaces or sitting on a chair be affected?",
       "checkQuestions": [
@@ -792,15 +803,30 @@ const CHAPTERS_DATA = [
       ]
     },
     {
-      "badge": "Biological Armor",
-      "title": "🛡️ The Skull Helmet & The Ribcage Shield",
+      "badge": "Biological Armor & Girdles",
+      "title": "🛡️ The Skull Helmet, Ribcage Shield & Girdles",
       "metaphor": "Your most precious organs are shielded inside biological helmets and cages engineered by nature!",
+      "diagrams": [
+        {
+          "image": "images/l3_ws3_skull.png",
+          "caption": "<strong>The Skull (22 Bones):</strong> 8 interlocking cranial suture plates & 14 facial bones with movable lower jaw (mandible)"
+        },
+        {
+          "image": "images/l3_ribcage.png",
+          "caption": "<strong>The Ribcage (12 Pairs):</strong> Sternum breastbone, true ribs (1-7), false ribs (8-10), and floating ribs (11-12) shielding heart & lungs"
+        },
+        {
+          "image": "images/l3_limbs_girdles.png",
+          "caption": "<strong>Limbs & Girdles:</strong> Pectoral (shoulder) girdle & Pelvic (hip) girdle connecting forelimbs and hindlimbs"
+        }
+      ],
       "points": [
         "<strong>The Skull (22 Bones):</strong> 8 flat interlocking cranial bones fuse tightly like a motorcycle helmet to safeguard the brain. The remaining 14 bones form the facial framework.",
-        "<strong>Why Cranial Joints are Immovable:</strong> The 8 cranial plates have fixed jigsaw-like suture joints so they can never slide upon impact. If cranial joints were movable, any cricket ball or fall would cause bones to press inward, crushing the brain!",
+        "<strong>Why Cranial Joints are Immovable:</strong> The 8 cranial plates have fixed jigsaw-like suture joints so they can never slide upon impact. If cranial joints were movable, any blow or fall would cause bones to press inward, crushing the brain!",
         "<strong>Only ONE Movable Skull Bone:</strong> Out of all 22 skull bones, <strong>only the lower jaw (mandible) is movable</strong>! This allows us to chew food, talk, yawn, and express emotions. The upper jaw is fused immovable.",
         "<strong>The Ribcage (12 Pairs / 25 Bones):</strong> Made of 12 pairs of bow-shaped ribs plus the central breastbone (<strong>sternum</strong>). It forms a protective cage around the heart and lungs.",
-        "<strong>Floating Ribs:</strong> The first 10 pairs attach to the sternum in front, but the <strong>last 2 pairs (11th and 12th)</strong> attach only to the backbone behind. They are called <strong>floating ribs</strong>, giving the diaphragm and lungs freedom to expand during deep breathing!"
+        "<strong>Floating Ribs (11th & 12th Pairs):</strong> The first 10 pairs attach to the sternum (directly or via cartilage), but the <strong>last 2 pairs</strong> attach only to the backbone behind. They are called <strong>floating ribs</strong>, giving the diaphragm and lungs freedom to expand during deep breathing!",
+        "<strong>Pectoral & Pelvic Girdles:</strong> The <strong>Pectoral girdle</strong> (clavicle collarbone + scapula shoulder blade) connects arms to the spine; the <strong>Pelvic girdle</strong> (hip bones) bears full torso weight and anchors the hindlimbs."
       ],
       "thinkPrompt": "Try to talk or chew while keeping your lower jaw completely still. Why is it biologically impossible to move only your upper jaw?",
       "checkQuestions": [
@@ -832,11 +858,30 @@ const CHAPTERS_DATA = [
       "badge": "Mechanical Bearings",
       "title": "🔗 Movable Joints — Nature's Mechanical Bearings",
       "metaphor": "Wherever two bones meet, joints determine the directions and freedom of movement like mechanical hinges and swivels!",
+      "diagrams": [
+        {
+          "image": "images/l3_ws3_joints_flowchart.png",
+          "caption": "<strong>Joints Classification Flowchart:</strong> Immovable (Skull Sutures) vs 4 Movable Synovial Joints"
+        },
+        {
+          "image": "images/l3_joints.png",
+          "caption": "<strong>The 4 Movable Joints:</strong> Ball & Socket, Hinge, Pivot, and Gliding anatomical diagrams"
+        },
+        {
+          "image": "images/l3_ws1_pivot_joint.png",
+          "caption": "<strong>Pivot Joint:</strong> Skull pivoting on Atlas ring and Axis peg for side-to-side rotation"
+        },
+        {
+          "image": "images/l3_ws2_knee_joint.png",
+          "caption": "<strong>Knee Hinge Joint:</strong> Unidirectional 180° swing with femur, patella, and tibia-fibula"
+        }
+      ],
       "points": [
+        "<strong>What is a Joint?</strong> A joint is a junction where two or more bones meet. Classified into <strong>Immovable joints</strong> (skull sutures) and <strong>Movable joints</strong> (cushioned by cartilage and lubricated with synovial fluid).",
         "<strong>Ball and Socket Joint:</strong> The rounded ball-head of one bone fits inside the cup-like socket of another. Allows full <strong>360° rotary motion in all directions</strong> (like a joystick!). Present in <strong>shoulders</strong> (humerus in pectoral girdle) and <strong>hips</strong> (femur in pelvic girdle).",
-        "<strong>Hinge Joint:</strong> Works exactly like a <strong>door hinge</strong>, allowing movement back and forth in <strong>ONE direction only</strong>. Found in <strong>elbows, knees, fingers (phalanges), and toes</strong>.",
+        "<strong>Hinge Joint:</strong> Works exactly like a <strong>door hinge</strong>, allowing movement back and forth in <strong>ONE direction only (180°)</strong>. Found in <strong>elbows, knees, fingers (phalanges), and toes</strong>.",
         "<strong>Why Knees Need Hinge Joints:</strong> If our knees had ball-and-socket joints like our shoulders, our legs would wobble, twist sideways, and buckle under our weight! Hinge joints provide rock-solid stability to carry our body upright and run.",
-        "<strong>Pivot Joint:</strong> One bone rotates around a ring-like peg of another bone. Found between the <strong>skull and the first vertebra (atlas & axis)</strong>. Allows our head to turn sideways ('No') and nod up-and-down ('Yes')!",
+        "<strong>Pivot Joint:</strong> One bone rotates around a ring-like peg of another bone. Found between the <strong>skull and the first two vertebrae (atlas & axis)</strong>. Allows our head to turn sideways ('No') and nod up-and-down ('Yes')!",
         "<strong>Gliding Joint (Planar Joint):</strong> Flat bone surfaces slide or glide smoothly past one another. Present in <strong>wrists (carpals), ankles (tarsals)</strong>, and between adjacent vertebrae in the backbone."
       ],
       "thinkPrompt": "Why did nature give us a hinge joint at the knee instead of a ball and socket joint? What would happen when you try to kick a football or run?",
@@ -869,12 +914,27 @@ const CHAPTERS_DATA = [
       "badge": "Force & Locomotion",
       "title": "💪 Tendons, Ligaments & Antagonistic Muscle Pairs",
       "metaphor": "Muscles are biological pull-cords — they can ONLY PULL, they NEVER PUSH!",
+      "diagrams": [
+        {
+          "image": "images/l3_arm_muscles.png",
+          "caption": "<strong>Antagonistic Action:</strong> Biceps contracts & bulges to flex elbow; Triceps contracts to extend arm"
+        },
+        {
+          "image": "images/l3_ws1_arm_tendon.png",
+          "caption": "<strong>Tendon (3 Ts):</strong> Inelastic collagen band connecting muscle belly firmly to bone lever"
+        },
+        {
+          "image": "images/l3_bow_analogy.png",
+          "caption": "<strong>Bow & Arrow Model:</strong> Stiff bone acts as bow; muscle contracts like pulled elastic string"
+        }
+      ],
       "points": [
-        "<strong>The 3 Ls Rule:</strong> <strong>L</strong>igaments connect <strong>L</strong>ike to <strong>L</strong>ike → <strong>Bone to Bone</strong> at joints!",
-        "<strong>The 3 Ts Rule:</strong> <strong>T</strong>endons connect <strong>T</strong>wo <strong>T</strong>ypes → <strong>Bone to Muscle</strong>!",
+        "<strong>The 3 Ls Rule:</strong> <strong>L</strong>igaments connect <strong>L</strong>ike to <strong>L</strong>ike → <strong>Bone to Bone</strong> at joints, holding articulating bones together and preventing dislocation!",
+        "<strong>The 3 Ts Rule:</strong> <strong>T</strong>endons connect <strong>T</strong>wo <strong>T</strong>ypes → <strong>Muscle to Bone</strong>, transmitting muscle contraction force directly to move the bone.",
         "<strong>Cartilage Cushion:</strong> Tough, smooth, flexible tissue covering bone ends in movable joints to reduce friction and absorb shock.",
-        "<strong>Antagonistic Muscle Pairs:</strong> Because muscle fibers can only contract (shorten and pull), they must work in opposing pairs! To <strong>bend the elbow</strong>, the <strong>Biceps contracts</strong> while the <strong>Triceps relaxes</strong>. To <strong>straighten the arm</strong>, the <strong>Triceps contracts</strong> while the <strong>Biceps relaxes</strong>.",
-        "<strong>Limbs Protection:</strong> Long limb bones bear great stress — the <strong>femur</strong> in the thigh, the <strong>tibia (shin bone)</strong> and <strong>fibula (calf bone)</strong> in the leg (shielded by cricket pads!), and the <strong>humerus, radius, and ulna</strong> in the arm."
+        "<strong>Muscles ONLY PULL — They NEVER Push:</strong> Muscle fibers can only contract (shorten and thicken). They cannot actively push a bone away; an opposing muscle is required to pull it back!",
+        "<strong>Antagonistic Muscle Pairs (Biceps & Triceps):</strong> To <strong>bend (flex) the elbow</strong>, the <strong>Biceps contracts</strong> while the <strong>Triceps relaxes</strong>. To <strong>straighten (extend) the arm</strong>, the <strong>Triceps contracts</strong> while the <strong>Biceps relaxes</strong>.",
+        "<strong>Limbs Anatomy & Protection:</strong> Long limb bones bear great stress — the <strong>femur</strong> in the thigh (longest & strongest bone in the body), the <strong>tibia (shin bone)</strong> and <strong>fibula (calf bone)</strong> in the leg (shielded by cricket pads!), and the <strong>humerus, radius, and ulna</strong> in the arm."
       ],
       "thinkPrompt": "Can regular exercise convert body fat directly into muscle tissue? (Exam trap: Fat cells and muscle fibers are completely different biological tissues!)",
       "checkQuestions": [
@@ -903,15 +963,26 @@ const CHAPTERS_DATA = [
       ]
     },
     {
-      "badge": "Muscle Control",
+      "badge": "Muscle Control & Movement",
       "title": "🥩 The 3 Muscle Types & Sports Physiology",
       "metaphor": "Voluntary muscles obey your thoughts; involuntary muscles protect your life 24/7 without being asked!",
+      "diagrams": [
+        {
+          "image": "images/l3_ws2_movements.png",
+          "caption": "<strong>Full-Body Biomechanics:</strong> Neck rotation, arm extension, knee flexion, and ankle plantarflexion"
+        },
+        {
+          "image": "images/l3_ws3_cricket_batsman.png",
+          "caption": "<strong>Athletic Movement:</strong> Synchronized voluntary muscles and hinge/ball-socket joints in sports"
+        }
+      ],
       "points": [
-        "<strong>Striated / Skeletal Muscle:</strong> Voluntary, striped fibers attached to bones by tendons. Controlled consciously by our cerebrum for walking, running, writing, and talking.",
-        "<strong>Why Leg Muscles MUST Be Voluntary:</strong> You need conscious control to choose when to walk, run, sprint, jump, or stop. If leg muscles were involuntary, they would twitch and kick autonomously without your control!",
-        "<strong>Smooth Muscle:</strong> Involuntary, unstriped spindle fibers in the walls of the stomach, intestines, and blood vessels. Churns food automatically via peristalsis.",
-        "<strong>Cardiac Muscle:</strong> Involuntary, striated network exclusively in heart walls. Contracts rhythmically 24/7 throughout life without ever getting tired!",
-        "<strong>Sports Fatigue:</strong> When Keshav's legs ache after a 100m sprint, it is due to temporary lactic acid accumulation in hard-working voluntary muscles — resolved with rest, deep breathing, and hydration."
+        "<strong>Over 600 Muscles:</strong> Over 600 muscles coordinate with 206 bones to produce all body movements, postures, and expressions.",
+        "<strong>Striated / Skeletal Muscle (Voluntary):</strong> Striped muscle fibers firmly attached to bones by tendons. Controlled consciously by our cerebrum for walking, running, writing, throwing, and speaking.",
+        "<strong>Why Leg Muscles MUST Be Voluntary:</strong> You need conscious control to choose when to walk, run, sprint, jump, or stop. If leg muscles were involuntary, they would twitch and kick autonomously without your command!",
+        "<strong>Smooth Muscle (Involuntary):</strong> Involuntary, unstriped spindle fibers forming the walls of the stomach, intestines, bladder, and blood vessels. Contracts rhythmically 24/7 (peristalsis) without conscious thought.",
+        "<strong>Cardiac Muscle (Involuntary Heart):</strong> Branched, striated network found exclusively in heart walls. Contracts rhythmically 24/7 throughout life without ever experiencing muscular fatigue!",
+        "<strong>Sports Fatigue & Recovery:</strong> When legs ache after a 100m sprint or cricket bowling spell, it is due to temporary lactic acid buildup in hard-working voluntary muscles — resolved with rest, deep breathing, and hydration."
       ],
       "thinkPrompt": "What would happen if your heart muscles were voluntary instead of involuntary?",
       "checkQuestions": [
@@ -940,13 +1011,21 @@ const CHAPTERS_DATA = [
       ]
     },
     {
-      "badge": "Comparative Biology",
+      "badge": "Comparative Zoology",
       "title": "🐍 Endoskeletons vs Exoskeletons in Animals",
       "metaphor": "Vertebrates build their bone fortress INSIDE; invertebrates wear their armor OUTSIDE!",
+      "diagrams": [
+        {
+          "image": "images/l3_ws1_animals_endoskeleton.png",
+          "caption": "<strong>Endoskeleton vs Exoskeleton:</strong> Snake (internal vertebrate endoskeleton) vs Fly, Crab, Snail (exoskeletons and shells)"
+        }
+      ],
       "points": [
-        "<strong>Endoskeleton (Vertebrates):</strong> Internal framework of bones inside the body. Mammals, birds, reptiles, amphibians, and fish have backbones and endoskeletons. <em>Snakes are vertebrates with a flexible backbone and hundreds of ribs inside!</em>",
-        "<strong>Exoskeleton (Invertebrates):</strong> Hard outer shell or casing enclosing the soft body. Insects (flies, beetles) have chitinous exoskeletons; snails have hard calcium shells.",
-        "<strong>Hydrostatic Skeleton:</strong> Soft-bodied invertebrates like earthworms have neither bones nor shells; they rely on pressurized fluid in body segments to burrow."
+        "<strong>Endoskeleton (Vertebrates):</strong> Internal framework of bones or cartilage inside the body. Mammals, birds, reptiles, amphibians, and fish have backbones and endoskeletons.",
+        "<strong>Snakes are True Vertebrates!</strong> Despite having no legs and exceptional flexibility, a snake is a true vertebrate with an internal endoskeleton consisting of a skull, a long vertebral column of <strong>200 to 400 vertebrae</strong>, and hundreds of paired ribs!",
+        "<strong>Exoskeleton (Invertebrates):</strong> Hard outer shell or casing enclosing the soft body. Insects (flies, beetles) have chitinous exoskeletons; crustaceans (crabs) have calcified shells; snails have hard calcium shells.",
+        "<strong>Why Insects Cannot Grow Giant:</strong> An exoskeleton must be molted (shed) for growth, and becomes excessively heavy as body mass expands. A giant insect's armor would be too heavy for its muscles to lift! Internal endoskeletons grow naturally with the body, supporting giant animals like elephants and blue whales.",
+        "<strong>Hydrostatic Skeleton:</strong> Soft-bodied invertebrates like earthworms have neither bones nor shells; they rely on pressurized fluid in body segments to crawl and burrow."
       ],
       "thinkPrompt": "Why can an animal with an endoskeleton (like an elephant or blue whale) grow vastly larger than an animal with an exoskeleton (like a beetle)?",
       "checkQuestions": [
@@ -6170,6 +6249,25 @@ function renderLearnView(container) {
         <span class="concept-badge">${card.badge}</span>
         <h4>${card.title}</h4>
         <div class="concept-metaphor">${card.metaphor}</div>
+
+        <!-- Authentic Anatomical Diagrams & Figures -->
+        ${card.image ? `
+          <div class="learn-diagram-wrap">
+            <img src="${card.image}" alt="${card.imageAlt || card.title}" class="learn-diagram-img" loading="lazy">
+            ${card.imageCaption ? `<div class="learn-diagram-caption">${card.imageCaption}</div>` : ''}
+          </div>
+        ` : ''}
+        ${card.diagrams && card.diagrams.length > 0 ? `
+          <div class="learn-diagram-grid ${card.diagrams.length === 1 ? 'single-item' : ''}">
+            ${card.diagrams.map(d => `
+              <div class="learn-diagram-item">
+                <img src="${d.image}" alt="${d.caption || d.label || ''}" class="learn-diagram-img" loading="lazy">
+                ${(d.caption || d.label) ? `<div class="learn-diagram-caption">${d.caption || d.label}</div>` : ''}
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+
         <ul class="concept-points">
           ${card.points.map(pt => `<li>${pt}</li>`).join('')}
         </ul>

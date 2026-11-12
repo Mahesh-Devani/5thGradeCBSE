@@ -39,8 +39,8 @@ An interactive, discovery-based Science learning studio for **CBSE Class 5 stude
 ## 🛠️ Modes & Features
 
 1. **📖 Learn & Explore**:
-   - Visual concept cards with bite-sized takeaways.
-   - Interactive gadgets: **Molecular Agitator**, **Tina's Balloon Balance Simulator**, **Nutrient Inspector**, **Animal Adaptation Blueprint**, and **Rock & Mineral Detective Lab**.
+   - Visual concept cards with authentic anatomical & textbook diagrams (full skeleton, skull sutures, vertebral column, ribcage & floating ribs, limbs & girdles, 4 movable joints, antagonistic muscle pairs, tendon attachments, and animal endoskeletons).
+   - Interactive gadgets: **Skeletal Joint & Antagonistic Arm Simulator**, **Molecular Agitator**, **Tina's Balloon Balance Simulator**, **Nutrient Inspector**, **Animal Adaptation Blueprint**, and **Rock & Mineral Detective Lab**.
    - Metacognitive `💡 Think About It` prompts.
 2. **🕵️ Spot Traps (Be the Teacher)**:
    - Diagnostic simulated test slips exposing subtle 5th-grade exam pitfalls.
