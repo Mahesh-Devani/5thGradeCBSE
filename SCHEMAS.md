@@ -257,7 +257,7 @@ All `localStorage` keys are explicitly namespaced to prevent collisions between 
 | **Mathematics** | `cbse5_maths_active_state` | `cbse5_math_topic_{id}_stars` |
 | **Science** | `cbse5_science_active_state` | `cbse5_science_stars_{id}` |
 | **English Grammar** | `grammar-master-active-state` | `grammar-master-progress` |
-| **Hindi Vyakaran** | `cbse5_hindi_active_state` | `cbse5_hindi_{module}_stars` |
+| **Hindi Vyakaran** | `cbse5_hindi_active_state`, `cbse5_hindi_module_progress` | `cbse5_hindi_sangya_stars`, `cbse5_hindi_vakyansh_stars`, `cbse5_chitra_varnan_stars` (80 Total Stars) |
 | **SST Chapters** | `cbse5_sst_active_state` | `cbse5_sst_stars_{id}` |
 | **SST Maps** | `sst-map-active-state` | `sst-map-progress` |
 | **General Knowledge** | `cbse5_gk_active_state` | `cbse5_gk_stars_{id}` |

@@ -122,9 +122,48 @@ Inside `.app-container`, `#sidebar-backdrop` and `#sidebar` must remain direct s
 ### Gotcha 4: Session State Persistence Across Refreshes (MANDATORY)
 Whenever adding or modifying interactive modes, subtabs, or filters in `hindi_vyakaran/`:
 - Always persist state changes via `this.saveAppState()` and restore them in `this.loadAppState()`.
-- Storage key: `cbse5_hindi_active_state`.
-- Fields persisted: `activeModule`, `currentSceneId`, `chitraMode`, `vakyanshMode`, `sangyaMode`, `sangyaSubtab`, `sangyaLabFilter`, `vakyanshFilter`, `showEnglish`, `imageViewMode`, `isBWMode`.
+- Storage keys:
+  - `cbse5_hindi_active_state`: activeModule, currentSceneId, chitraMode, vakyanshMode, sangyaMode, sangyaSubtab, sangyaLabFilter, vakyanshFilter, showEnglish, imageViewMode, isBWMode, chitraDrafts, in-progress quiz sessions.
+  - `cbse5_hindi_module_progress`: Detailed progression metrics across all 8 units (typesRead, cardsRead, hotspotsViewed, trapsDiagnosed, quizScores, challengeHighScores).
+  - `cbse5_hindi_sangya_stars`: 0-10 integer.
+  - `cbse5_hindi_vakyansh_stars`: 0-10 integer.
+  - `cbse5_chitra_varnan_stars`: `{ [sceneId]: 0-10 }` JSON map.
+- Total Curriculum Stars: **80 Stars** ($10 + 10 + 6 \times 10$).
 - **Future Scope (User Accounts)**: Maintain clean, structured JSON schemas to support upcoming Google Sign-In / account profile sync.
+
+---
+
+## 🌟 4.5. 10-Star Milestone Architecture & Learning Passport
+
+The app features an integrated 80-Star progression system across 8 units:
+1. `sangya` (संज्ञा व पाँच भेद): 10 Stars
+2. `vakyansh` (वाक्यांश के लिए एक शब्द): 10 Stars
+3. `chitra_park`, `chitra_rain`, `chitra_sports`, `chitra_birthday`, `chitra_village`, `chitra_zoo`: 10 Stars each (60 Stars)
+
+### Milestone Schema
+Defined in `HINDI_MILESTONES[unitKey]`:
+```javascript
+{
+  id: string,
+  title: string,
+  desc: string,
+  hint: string,
+  check: (progressData) => boolean
+}
+```
+
+### Diagnostic Exam Traps
+Defined in `HINDI_EXAM_TRAPS[moduleKey]`:
+```javascript
+{
+  title: string,
+  desc: string,
+  question: string,
+  options: string[],
+  correct: number,
+  exp: string
+}
+```
 
 ---
 
@@ -137,6 +176,13 @@ When modifying HTML or JavaScript, **DO NOT rename or delete these element IDs**
 | `nav-item-sangya` | Curriculum switcher button for Sangya |
 | `nav-item-vakyansh` | Curriculum switcher button for Vakyansh |
 | `nav-item-chitra` | Curriculum switcher button for Chitra Varnan |
+| `btn-passport` | Top bar Learning Passport trigger button |
+| `passport-modal` | Modal overlay for 10-Star Learning Passport |
+| `btn-passport-close-x` | Header close button in passport modal |
+| `btn-passport-close` | Footer close button in passport modal |
+| `btn-passport-action` | Action guidance button in passport modal |
+| `btn-modal-passport` | Launch passport from results modal |
+| `chitra-mastery-banner-container` | Container for Chitra scene mastery banner |
 | `sidebar-scenes-container`| Collapsible container for Chitra scenes (hidden in Vakyansh & Sangya modes) |
 | `sidebar-topics` | Container where the 6 scene buttons are populated dynamically |
 | `menu-toggle-btn` | Mobile drawer hamburger button (`☰ विषय`) |

@@ -102,6 +102,54 @@ Each scene features high-resolution **authentic exam-style photographs (Default)
 
 ---
 
+## 🌟 10-Star Comprehensive Mastery Progression & Learning Passport
+
+To mirror the rigorous pedagogical architecture of the Science, Mathematics, SST Chapters, and English Grammar Master apps, **Hindi Vyakaran & Rachna** implements an 80-Star curriculum across 8 distinct units:
+- **संज्ञा व पाँच भेद**: 10 Mastery Stars
+- **वाक्यांश के लिए एक शब्द**: 10 Mastery Stars
+- **चित्र वर्णन (6 दृश्य × 10 सितारे = 60 सितारे)**:
+  1. बगीचा / बाल उद्यान (10 ⭐)
+  2. वर्षा ऋतु / बारिश का दिन (10 ⭐)
+  3. विद्यालय का खेल मैदान (10 ⭐)
+  4. जन्मदिन की पार्टी (10 ⭐)
+  5. गाँव का प्रातःकाल (10 ⭐)
+  6. चिड़ियाघर की सैर (10 ⭐)
+
+Total curriculum stars: **80 Stars** ($10 + 10 + 6 \times 10$).
+
+### 📋 10-Star Progression Roadmap per Unit
+
+| स्टार | संज्ञा व पाँच भेद | वाक्यांश के लिए एक शब्द | चित्र वर्णन (प्रत्येक दृश्य) |
+|---|---|---|---|
+| **⭐ 1** | बुनियादी भेद: व्यक्तिवाचक व जातिवाचक कार्ड पढ़ें | स्वभाव व आचरण वर्ग (वाक्यांश 1-4) समझें | कम से कम 3 हॉटस्पॉट देखें |
+| **⭐ 2** | उन्नत भेद: भाववाचक, द्रव्यवाचक व समुदायवाचक कार्ड पढ़ें | कर्म व परिश्रम वर्ग (वाक्यांश 5-8) समझें | सभी 6 हॉटस्पॉट का संपूर्ण अवलोकन |
+| **⭐ 3** | तुलना दर्पण (Proper vs Common, etc.) का अन्वेषण | जीवन व प्रकृति वर्ग (वाक्यांश 9-12) समझें | वास्तविक फोटो व कार्टून रेखाचित्र दोनों देखें |
+| **⭐ 4** | भाववाचक निर्माण प्रयोगशाला में शब्दों की बनावट देखें | शब्द विश्लेषण व संधि सूत्र (Root Breakdown) समझें | प्रश्न-पत्र प्रारूप (B&W प्रिंट) में चित्र देखें |
+| **⭐ 5** | CBSE परीक्षा सावधानी जासूस (कम से कम 2 जालों का निदान) | CBSE परीक्षा सावधानी व विलोम भेद का निदान | शब्द भंडार (Vocabulary Bank) का अन्वेषण |
+| **⭐ 6** | 5-घड़े वर्गीकरण खेल आरंभ (5+ सही शब्द) | मिलान खेल आरंभ (4+ सही जोड़ियाँ) | वाक्य पहेली: स्थान व वातावरण (कदम 1 व 2) |
+| **⭐ 7** | 5-घड़े वर्गीकरण निपुणता (15+ सही शब्द) | मिलान खेल विजय (सभी जोड़ियाँ पूर्ण) | वाक्य पहेली: गतिविधि व बारीक विवरण (कदम 3 व 4) |
+| **⭐ 8** | अभ्यास क्विज़ सटीकता (5+ सही उत्तर) | अभ्यास क्विज़ सटीकता (5+ सही उत्तर) | 5-स्टेप वाक्य पहेली पूर्णता (कदम 5 पूर्ण) |
+| **⭐ 9** | अभ्यास क्विज़ विस्तार (10+ प्रश्न हल) | अभ्यास क्विज़ विस्तार (8+ प्रश्न हल) | आदर्श उत्तर व 5-स्टेप परीक्षा टिप्स पढ़ें |
+| **⭐ 10** | 60s स्पीड चैलेंज चैंपियन (7+ अंक) | 60s स्पीड चैलेंज चैंपियन (7+ अंक) | नोटपैड में 5-वाक्य रचना स्वयं लिखकर सहेजें |
+
+### 🎯 CBSE Diagnostic Exam Traps ("परीक्षा सावधानी जासूस")
+Students actively diagnose subtle CBSE pitfalls with interactive multiple-choice flaw detection:
+- **संज्ञा**:
+  1. *विशेषण vs भाववाचक संज्ञा*: मीठा (विशेषण) vs मिठास (भाववाचक संज्ञा)।
+  2. *द्रव्यवाचक vs जातिवाचक*: दूध (द्रव्यवाचक — लीटर में मापा) vs बोतल (जातिवाचक — गिनी जाने वाली वस्तु)।
+  3. *व्यक्तिवाचक vs जातिवाचक*: गंगा (अद्वितीय नदी) vs नदी (सम्पूर्ण वर्ग/जाति)।
+- **वाक्यांश**:
+  1. *मितभाषी vs वाचाल*: कम बोलने वाला (मित = कम) vs बहुत अधिक बोलने वाला (विलोम युग्म)।
+  2. *आस्तिक vs नास्तिक*: ईश्वर में विश्वास रखने वाला (अस्ति) vs न रखने वाला (न + आस्तिक)।
+  3. *सुलभ vs दुर्लभ*: सरलता से मिलने वाला (सु) vs कठिनाई से मिलने वाला (दुर्)।
+
+### 📜 Learning Passport Modal (`📋 ⭐ X/10 पासपोर्ट`)
+- Accessible from the top bar button (`#btn-passport`), modal triggers, and topic mastery banners.
+- Displays visual milestone progress cards with status badges (`पूर्ण ✓` / `बाकी`), actionable unlock hints, and direct guidance (`अगला सितारा अनलॉक करें →`).
+- **अभिभावक गारंटी (Parent Guarantee Certificate)**: Automatically unlocks upon reaching 10/10 stars, confirming 100% CBSE examination readiness.
+
+---
+
 ## 📱 Mobile-First Architecture & Zero Dependencies
 
 - **Off-Canvas Responsive Drawer**: Collapses navigation into a slide-out drawer on screens `≤ 860px` with an accessible `☰ विषय` button.

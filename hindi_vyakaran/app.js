@@ -2532,6 +2532,295 @@ const SANGYA_CHALLENGE_POOL = [
   }
 ];
 
+// ============================================
+// HINDI 10-STAR MASTERY MILESTONES & EXAM TRAPS
+// ============================================
+
+const HINDI_EXAM_TRAPS = {
+  sangya: [
+    {
+      title: 'विशेषण vs भाववाचक संज्ञा (Adjective vs Abstract Noun)',
+      desc: 'विद्यार्थी अक्सर ‘मीठा’ और ‘मिठास’ अथवा ‘सुंदर’ और ‘सुंदरता’ में भ्रमित हो जाते हैं।',
+      question: '‘गन्ने में बहुत मिठास है।’ इस वाक्य में ‘मिठास’ व्याकरण की दृष्टि से क्या है?',
+      options: ['गुणवाचक विशेषण', 'भाववाचक संज्ञा', 'जातिवाचक संज्ञा', 'क्रिया'],
+      correct: 1,
+      exp: '‘मीठा’ विशेषण है (आम मीठा है)। किंतु स्वाद का आंतरिक भाव ‘मिठास’ भाववाचक संज्ञा है!'
+    },
+    {
+      title: 'द्रव्यवाचक vs जातिवाचक (Material vs Common Noun)',
+      desc: 'द्रव्यवाचक वस्तु और उसे रखने वाले बर्तन में सूक्ष्म अंतर पहचानना।',
+      question: '‘मेज पर दूध की बोतल रखी है।’ इसमें ‘दूध’ और ‘बोतल’ क्रमशः कौन-सी संज्ञाएँ हैं?',
+      options: ['दोनों द्रव्यवाचक', 'द्रव्यवाचक और जातिवाचक', 'जातिवाचक और व्यक्तिवाचक', 'दोनों जातिवाचक'],
+      correct: 1,
+      exp: '‘दूध’ नापा-तौला जाता है ➔ द्रव्यवाचक संज्ञा। ‘बोतल’ गिनी जाती है और संपूर्ण वर्ग है ➔ जातिवाचक संज्ञा।'
+    },
+    {
+      title: 'व्यक्तिवाचक vs जातिवाचक (Proper vs Common Noun)',
+      desc: 'संपूर्ण जाति/वर्ग और उसके विशिष्ट अद्वितीय नाम में भेद पहचानना।',
+      question: '‘भारत में गंगा सबसे पवित्र नदी मानी जाती है।’ इस वाक्य में ‘गंगा’ और ‘नदी’ किस प्रकार की संज्ञाएँ हैं?',
+      options: ['दोनों व्यक्तिवाचक', 'व्यक्तिवाचक और जातिवाचक', 'जातिवाचक और भाववाचक', 'दोनों जातिवाचक'],
+      correct: 1,
+      exp: '‘गंगा’ एक विशेष नदी का अद्वितीय नाम है ➔ व्यक्तिवाचक संज्ञा। ‘नदी’ संपूर्ण वर्ग को दर्शाती है ➔ जातिवाचक संज्ञा।'
+    }
+  ],
+  vakyansh: [
+    {
+      title: 'मितभाषी vs वाचाल (Opposite Meanings)',
+      desc: 'कम बोलने वाले और बहुत अधिक बोलने वाले शब्दों में विलोम अर्थ का भ्रम।',
+      question: '‘जो बहुत अधिक और व्यर्थ बोलता हो’, उसके लिए एक सही शब्द क्या है?',
+      options: ['मितभाषी', 'वाचाल', 'मृदुभाषी', 'सत्यवादी'],
+      correct: 1,
+      exp: '‘मितभाषी’ वह है जो कम और नपा-तुला बोले (मित = कम)। जो बहुत अधिक बोले, वह ‘वाचाल’ कहलाता है!'
+    },
+    {
+      title: 'आस्तिक vs नास्तिक (Belief in God)',
+      desc: 'ईश्वर में विश्वास रखने और न रखने वाले के मूल शब्द में अंतर भूलना।',
+      question: '‘जो ईश्वर में विश्वास नहीं रखता हो’, उसके लिए शुद्ध एक शब्द पहचानें:',
+      options: ['आस्तिक', 'अनपढ़', 'नास्तिक', 'अमर'],
+      correct: 2,
+      exp: '‘अस्ति’ (ईश्वर है) मानने वाला ‘आस्तिक’। जो ईश्वर में विश्वास न रखे, वह ‘नास्तिक’ (न + आस्तिक) कहलाता है।'
+    },
+    {
+      title: 'सुलभ vs दुर्लभ (Prefix Meaning Clues)',
+      desc: '‘सु’ (सरल) और ‘दुर्’ (कठिन) उपसर्ग के अर्थ को पहचानना।',
+      question: '‘जो वस्तु बहुत कठिनाई से प्राप्त हो’, उसके लिए सही शब्द क्या है?',
+      options: ['सुलभ', 'अपव्ययी', 'दुर्लभ', 'अमर'],
+      correct: 2,
+      exp: '‘सु’ = आसानी से ➔ ‘सुलभ’ (सरलता से मिलने वाला)। ‘दुर्’ = कठिन ➔ ‘दुर्लभ’ (कठिनाई से मिलने वाला)।'
+    }
+  ]
+};
+
+function createChitraSceneMilestones(sceneId, sceneTitle) {
+  return [
+    {
+      id: 'chitra_hotspot_starter',
+      title: 'चित्र अवलोकन आरंभ',
+      desc: `चित्र में कम से कम 3 महत्वपूर्ण वस्तुओं व क्रियाओं के हॉटस्पॉट देखें (${sceneTitle})।`,
+      hint: 'चित्र पर बने कम से कम 3 नंबरों पर टैप करके शब्द व वाक्य पढ़ें।',
+      check: (d) => (d.hotspotsCount || 0) >= 3
+    },
+    {
+      id: 'chitra_hotspot_all',
+      title: 'संपूर्ण चित्र अवलोकन',
+      desc: 'चित्र के सभी 6 सूक्ष्म विवरणों और गतिविधियों का अन्वेषण करें।',
+      hint: 'चित्र के सभी 6 हॉटस्पॉट नंबरों पर टैप करके संपूर्ण दृश्य समझें।',
+      check: (d) => (d.hotspotsCount || 0) >= 6
+    },
+    {
+      id: 'chitra_view_modes',
+      title: 'वास्तविक फोटो व रेखाचित्र तुलना',
+      desc: 'परीक्षा फोटो और कार्टून रेखाचित्र दोनों रूपों में दृश्य का अध्ययन करें।',
+      hint: 'ऊपर दिए गए "वास्तविक" और "कार्टून" दोनों बटन दबाकर दृश्य देखें।',
+      check: (d) => !!(d.viewModes && d.viewModes['real'] && d.viewModes['cartoon'])
+    },
+    {
+      id: 'chitra_bw_exam',
+      title: 'प्रश्न-पत्र प्रारूप (B&W प्रिंट)',
+      desc: 'परीक्षा के ब्लैक एंड व्हाइट प्रश्न-पत्र प्रारूप में चित्र को देखकर अभ्यास करें।',
+      hint: '[🖨️ B&W प्रिंट] बटन दबाकर मोनोक्रोम प्रारूप का अनुभव करें।',
+      check: (d) => !!d.bwModeUsed
+    },
+    {
+      id: 'chitra_vocab',
+      title: 'शब्द भंडार अन्वेषण',
+      desc: 'दृश्य से संबंधित संज्ञा, क्रिया व विशेषण शब्दों का अध्ययन करें।',
+      hint: 'शब्द भंडार टैब खोलें और विभिन्न श्रेणियों के शब्द देखें।',
+      check: (d) => !!d.vocabExplored
+    },
+    {
+      id: 'chitra_puzzle_step1_2',
+      title: 'वाक्य पहेली: स्थान व वातावरण',
+      desc: '5-स्टेप फॉर्मूले के कदम 1 (स्थान परिचय) व कदम 2 (वातावरण) के वाक्य बनाएं।',
+      hint: 'वाक्य खेल में कदम 1 और कदम 2 के शब्दों को सही क्रम में जोड़ें।',
+      check: (d) => (d.puzzleStepsCompleted || 0) >= 2
+    },
+    {
+      id: 'chitra_puzzle_step3_4',
+      title: 'वाक्य पहेली: गतिविधि व बारीक विवरण',
+      desc: 'कदम 3 (मुख्य क्रिया) व कदम 4 (बारीक विवरण) के वाक्य सही क्रम में जोड़ें।',
+      hint: 'वाक्य खेल में कदम 3 और कदम 4 को सफलतापूर्वक पूरा करें।',
+      check: (d) => (d.puzzleStepsCompleted || 0) >= 4
+    },
+    {
+      id: 'chitra_puzzle_complete',
+      title: '5-स्टेप वाक्य पहेली पूर्णता',
+      desc: 'कदम 5 (निष्कर्ष/भाव) पूरा करके संपूर्ण 5 वाक्यों की रचना समाप्त करें।',
+      hint: 'वाक्य खेल के पांचों कदमों को सही हल करके पहेली पूर्ण करें।',
+      check: (d) => (d.puzzleStepsCompleted || 0) >= 5
+    },
+    {
+      id: 'chitra_model_answer',
+      title: 'आदर्श उत्तर व परीक्षा टिप्स',
+      desc: 'CBSE कक्षा 5 के संपूर्ण 5-7 वाक्यों के आदर्श पैराग्राफ व टिप्स का अध्ययन करें।',
+      hint: 'आदर्श उत्तर टैब खोलें और 5-स्टेप संरचना व टिप्स पढ़ें।',
+      check: (d) => !!d.modelAnswerRead
+    },
+    {
+      id: 'chitra_student_draft',
+      title: 'रचनात्मक लेखन अभ्यास पूर्ण',
+      desc: 'नोटपैड में 5 या अधिक वाक्य स्वयं लिखकर चित्र वर्णन अभ्यास पूरा करें।',
+      hint: 'नोटपैड में कम से कम 5 वाक्य लिखें और "⭐ अभ्यास पूर्ण किया!" पर क्लिक करें।',
+      check: (d) => !!d.draftCompleted
+    }
+  ];
+}
+
+const HINDI_MILESTONES = {
+  sangya: [
+    {
+      id: 'sangya_types_basic',
+      title: 'बुनियादी भेद: व्यक्तिवाचक व जातिवाचक',
+      desc: 'व्यक्तिवाचक व जातिवाचक संज्ञा की परिभाषा, पहचान सूत्र व उदाहरण सीखें।',
+      hint: 'सीखें मोड में व्यक्तिवाचक व जातिवाचक संज्ञा कार्ड को समझकर चिह्नित करें।',
+      check: (d) => !!(d.typesRead && d.typesRead[0] && d.typesRead[1])
+    },
+    {
+      id: 'sangya_types_advanced',
+      title: 'उन्नत भेद: भाववाचक, द्रव्यवाचक व समुदायवाचक',
+      desc: 'भाववाचक, द्रव्यवाचक व समुदायवाचक संज्ञा के पहचान सूत्र व उदाहरण समझें।',
+      hint: 'सीखें मोड में भाववाचक, द्रव्यवाचक व समुदायवाचक कार्ड को चिह्नित करें।',
+      check: (d) => !!(d.typesRead && d.typesRead[2] && d.typesRead[3] && d.typesRead[4])
+    },
+    {
+      id: 'sangya_mirror',
+      title: 'तुलना दर्पण अन्वेषण',
+      desc: 'नदी ↔ गंगा, दूध ↔ बोतल, सैनिक ↔ सेना के भेद की सूक्ष्म तुलना समझें।',
+      hint: 'सीखें मोड के "तुलना दर्पण" सबटैब को खोलकर पढ़ें।',
+      check: (d) => !!d.mirrorExplored
+    },
+    {
+      id: 'sangya_lab',
+      title: 'भाववाचक निर्माण प्रयोगशाला',
+      desc: 'जातिवाचक, विशेषण व क्रिया शब्दों से भाववाचक संज्ञा निर्माण के नियम समझें।',
+      hint: 'सीखें मोड के "निर्माण प्रयोगशाला" सबटैब में फ़िल्टर बदलकर शब्द निर्माण देखें।',
+      check: (d) => !!d.labExplored
+    },
+    {
+      id: 'sangya_traps',
+      title: 'CBSE परीक्षा सावधानी जासूस',
+      desc: 'विशेषण vs भाववाचक तथा द्रव्यवाचक vs जातिवाचक के सूक्ष्म परीक्षा जालों को पहचानें।',
+      hint: 'सीखें मोड में कम से कम 2 परीक्षा सावधानियों का निदान करें।',
+      check: (d) => (d.trapsDiagnosedCount || 0) >= 2
+    },
+    {
+      id: 'sangya_sort_starter',
+      title: '5-घड़े वर्गीकरण आरंभ',
+      desc: 'शब्दों को सही संज्ञा भेद के घड़े में डालने का अभ्यास शुरू करें।',
+      hint: 'भेद पहचानो खेल में कम से कम 5 शब्दों का सही वर्गीकरण करें।',
+      check: (d) => (d.sortHighScore || 0) >= 5
+    },
+    {
+      id: 'sangya_sort_master',
+      title: '5-घड़े वर्गीकरण निपुणता',
+      desc: 'सभी प्रकार के संज्ञा शब्दों को बिना गलती के उनके सही घड़े में छांटें।',
+      hint: 'भेद पहचानो खेल में 15 या अधिक अंक प्राप्त करें।',
+      check: (d) => (d.sortHighScore || 0) >= 15
+    },
+    {
+      id: 'sangya_quiz_accuracy',
+      title: 'अभ्यास क्विज़ सटीकता',
+      desc: 'परीक्षा प्रश्नों में संज्ञा भेदों की सटीक पहचान करें।',
+      hint: 'अभ्यास क्विज़ में कम से कम 5 प्रश्नों का सही उत्तर दें।',
+      check: (d) => (d.quizCorrect || 0) >= 5
+    },
+    {
+      id: 'sangya_quiz_breadth',
+      title: 'अभ्यास क्विज़ पाठ्यक्रम विस्तार',
+      desc: 'संज्ञा के सभी भेदों के विविध प्रश्नों का अभ्यास पूर्ण करें।',
+      hint: 'अभ्यास क्विज़ में कम से कम 10 प्रश्न हल करें।',
+      check: (d) => (d.quizTotalSolved || 0) >= 10
+    },
+    {
+      id: 'sangya_challenge_sprint',
+      title: '60s स्पीड चैलेंज चैंपियन',
+      desc: 'समय सीमा के दबाव में तीव्र गति से संज्ञा भेद पहचानें।',
+      hint: '60 सेकंड के स्पीड चैलेंज में 7 या अधिक अंक प्राप्त करें।',
+      check: (d) => (d.challengeHighScore || 0) >= 7
+    }
+  ],
+
+  vakyansh: [
+    {
+      id: 'vakyansh_cat_behavior',
+      title: 'स्वभाव व आचरण वर्ग',
+      desc: 'अमर, परोपकारी, मितभाषी व वाचाल के अर्थ व युक्ति समझें।',
+      hint: 'सीखें मोड में वाक्यांश 1 से 4 के कार्ड समझकर चिह्नित करें।',
+      check: (d) => !!(d.cardsRead && d.cardsRead[0] && d.cardsRead[1] && d.cardsRead[2] && d.cardsRead[3])
+    },
+    {
+      id: 'vakyansh_cat_action',
+      title: 'कर्म व परिश्रम वर्ग',
+      desc: 'सत्यवादी, आस्तिक, अनपढ़ व परिश्रमी के अर्थ व युक्ति समझें।',
+      hint: 'सीखें मोड में वाक्यांश 5 से 8 के कार्ड समझकर चिह्नित करें।',
+      check: (d) => !!(d.cardsRead && d.cardsRead[4] && d.cardsRead[5] && d.cardsRead[6] && d.cardsRead[7])
+    },
+    {
+      id: 'vakyansh_cat_nature',
+      title: 'जीवन व प्रकृति वर्ग',
+      desc: 'क्षम्य, सुलभ, अपव्ययी व ईर्ष्यालु के अर्थ व युक्ति समझें।',
+      hint: 'सीखें मोड में वाक्यांश 9 से 12 के कार्ड समझकर चिह्नित करें।',
+      check: (d) => !!(d.cardsRead && d.cardsRead[8] && d.cardsRead[9] && d.cardsRead[10] && d.cardsRead[11])
+    },
+    {
+      id: 'vakyansh_roots',
+      title: 'शब्द विश्लेषण व संधि सूत्र',
+      desc: 'उपसर्ग व मूल शब्दों की संरचना (e.g. पर + उपकार, मित + भाषी) समझें।',
+      hint: 'सीखें मोड में शब्द विश्लेषण सूत्र का अध्ययन करें।',
+      check: (d) => !!d.rootsExplored
+    },
+    {
+      id: 'vakyansh_traps',
+      title: 'CBSE परीक्षा सावधानी व विलोम भेद',
+      desc: 'मितभाषी ↔ वाचाल, आस्तिक ↔ नास्तिक, सुलभ ↔ दुर्लभ के विलोम अंतर को पहचानें।',
+      hint: 'सीखें मोड में कम से कम 2 परीक्षा सावधानियों का निदान करें।',
+      check: (d) => (d.trapsDiagnosedCount || 0) >= 2
+    },
+    {
+      id: 'vakyansh_match_starter',
+      title: 'मिलान खेल आरंभ',
+      desc: 'कार्ड पलटकर वाक्यांश और उसके एक शब्द के जोड़े बनाएं।',
+      hint: 'मिलान खेल में कम से कम 4 जोड़ियों का सही मिलान करें।',
+      check: (d) => (d.matchPairsCount || 0) >= 4 || !!d.matchCompleted
+    },
+    {
+      id: 'vakyansh_match_master',
+      title: 'मिलान खेल विजय',
+      desc: 'सभी 12 वाक्यांशों और उनके एक शब्दों का सफल मिलान पूर्ण करें।',
+      hint: 'मिलान खेल के सभी 12 जोड़ों को मिलाकर खेल समाप्त करें।',
+      check: (d) => !!d.matchCompleted
+    },
+    {
+      id: 'vakyansh_quiz_accuracy',
+      title: 'अभ्यास क्विज़ सटीकता',
+      desc: 'बहुविकल्पीय प्रश्नों में सही एक शब्द का चयन करें।',
+      hint: 'अभ्यास क्विज़ में कम से कम 5 प्रश्नों का सही उत्तर दें।',
+      check: (d) => (d.quizCorrect || 0) >= 5
+    },
+    {
+      id: 'vakyansh_quiz_breadth',
+      title: 'अभ्यास क्विज़ पाठ्यक्रम विस्तार',
+      desc: 'सभी 12 वाक्यांशों के प्रश्नों को हल करें।',
+      hint: 'अभ्यास क्विज़ में कम से कम 8 प्रश्न हल करें।',
+      check: (d) => (d.quizTotalSolved || 0) >= 8
+    },
+    {
+      id: 'vakyansh_challenge_sprint',
+      title: '60s स्पीड चैलेंज चैंपियन',
+      desc: 'तेजी से सही एक शब्द पहचानकर उच्च स्कोर बनाएं।',
+      hint: '60 सेकंड के स्पीड चैलेंज में 7 या अधिक अंक प्राप्त करें।',
+      check: (d) => (d.challengeHighScore || 0) >= 7
+    }
+  ],
+
+  chitra_park: createChitraSceneMilestones('park', 'बगीचा / बाल उद्यान'),
+  chitra_rain: createChitraSceneMilestones('rain', 'वर्षा ऋतु / बारिश का दिन'),
+  chitra_sports: createChitraSceneMilestones('sports', 'विद्यालय का खेल मैदान'),
+  chitra_birthday: createChitraSceneMilestones('birthday', 'जन्मदिन की पार्टी'),
+  chitra_village: createChitraSceneMilestones('village', 'गाँव का प्रातःकाल'),
+  chitra_zoo: createChitraSceneMilestones('zoo', 'चिड़ियाघर की सैर')
+};
+
 // --- APP CONTROLLER CLASS ---
 class HindiLearningApp {
   constructor() {
@@ -2598,15 +2887,27 @@ class HindiLearningApp {
         score: 0,
         answered: false
       },
-      chitraDrafts: {}
+      chitraDrafts: {},
+      moduleProgress: {
+        sangya: {},
+        vakyansh: {},
+        chitra: {}
+      }
     };
+
+    window.chitraApp = this;
+    window.app = this;
 
     this.initElements();
     this.loadAppState();
     this.bindEvents();
+    ['sangya', 'vakyansh', 'chitra_park', 'chitra_rain', 'chitra_sports', 'chitra_birthday', 'chitra_village', 'chitra_zoo'].forEach(unitKey => {
+      this.evaluateAndAwardStars(unitKey, true);
+    });
     this.updateCurriculumNavUI();
     this.renderSidebarTopics();
     this.updateProgressUI();
+    this.updateTopBarPassportButton();
     this.updateTranslateButtonUI();
     if (this.state.isBWMode) {
       if (this.pictureIllustrationWrapper) this.pictureIllustrationWrapper.classList.add('bw-exam-mode');
@@ -2678,6 +2979,18 @@ class HindiLearningApp {
           this.state.chitraDrafts = parsed.chitraDrafts;
         }
       }
+
+      const savedProg = localStorage.getItem('cbse5_hindi_module_progress');
+      if (savedProg) {
+        const parsedProg = JSON.parse(savedProg);
+        if (parsedProg && typeof parsedProg === 'object') {
+          this.state.moduleProgress = {
+            sangya: parsedProg.sangya || {},
+            vakyansh: parsedProg.vakyansh || {},
+            chitra: parsedProg.chitra || {}
+          };
+        }
+      }
     } catch (e) {
       console.warn('Failed to load active state:', e);
     }
@@ -2716,6 +3029,7 @@ class HindiLearningApp {
         };
       }
       localStorage.setItem('cbse5_hindi_active_state', JSON.stringify(toSave));
+      localStorage.setItem('cbse5_hindi_module_progress', JSON.stringify(this.state.moduleProgress || {}));
     } catch (e) {
       console.warn('Failed to save active state:', e);
     }
@@ -2748,7 +3062,7 @@ class HindiLearningApp {
   }
 
   saveVakyanshStars(stars) {
-    this.state.vakyanshStars = Math.max(this.state.vakyanshStars, stars);
+    this.state.vakyanshStars = Math.min(10, Math.max(this.state.vakyanshStars, stars));
     try {
       localStorage.setItem('cbse5_hindi_vakyansh_stars', String(this.state.vakyanshStars));
     } catch (e) {
@@ -2766,12 +3080,364 @@ class HindiLearningApp {
   }
 
   saveSangyaStars(stars) {
-    this.state.sangyaStars = Math.max(this.state.sangyaStars, stars);
+    this.state.sangyaStars = Math.min(10, Math.max(this.state.sangyaStars, stars));
     try {
       localStorage.setItem('cbse5_hindi_sangya_stars', String(this.state.sangyaStars));
     } catch (e) {
       console.warn('Storage save failed:', e);
     }
+  }
+
+  // ============================================
+  // 10-STAR MASTERY & LEARNING PASSPORT HELPERS
+  // ============================================
+  getActiveUnitKey() {
+    if (this.state.activeModule === 'sangya') return 'sangya';
+    if (this.state.activeModule === 'vakyansh') return 'vakyansh';
+    if (this.state.activeModule === 'chitra') return 'chitra_' + (this.state.currentSceneId || 'park');
+    return 'vakyansh';
+  }
+
+  getModuleStars(unitKey) {
+    if (unitKey === 'sangya') return this.state.sangyaStars || 0;
+    if (unitKey === 'vakyansh') return this.state.vakyanshStars || 0;
+    if (unitKey && unitKey.startsWith('chitra_')) {
+      const sceneId = unitKey.replace('chitra_', '');
+      return this.state.stars[sceneId] || 0;
+    }
+    return 0;
+  }
+
+  setModuleStars(unitKey, stars) {
+    const capped = Math.max(0, Math.min(10, stars));
+    if (unitKey === 'sangya') {
+      this.state.sangyaStars = capped;
+      this.saveSangyaStars(capped);
+    } else if (unitKey === 'vakyansh') {
+      this.state.vakyanshStars = capped;
+      this.saveVakyanshStars(capped);
+    } else if (unitKey && unitKey.startsWith('chitra_')) {
+      const sceneId = unitKey.replace('chitra_', '');
+      this.state.stars[sceneId] = capped;
+      this.saveStars();
+    }
+  }
+
+  getModuleProgressData(unitKey) {
+    if (!this.state.moduleProgress) {
+      this.state.moduleProgress = { sangya: {}, vakyansh: {}, chitra: {} };
+    }
+    if (unitKey === 'sangya') {
+      if (!this.state.moduleProgress.sangya) this.state.moduleProgress.sangya = {};
+      return this.state.moduleProgress.sangya;
+    }
+    if (unitKey === 'vakyansh') {
+      if (!this.state.moduleProgress.vakyansh) this.state.moduleProgress.vakyansh = {};
+      return this.state.moduleProgress.vakyansh;
+    }
+    if (unitKey && unitKey.startsWith('chitra_')) {
+      const sceneId = unitKey.replace('chitra_', '');
+      if (!this.state.moduleProgress.chitra) this.state.moduleProgress.chitra = {};
+      if (!this.state.moduleProgress.chitra[sceneId]) this.state.moduleProgress.chitra[sceneId] = {};
+      return this.state.moduleProgress.chitra[sceneId];
+    }
+    return {};
+  }
+
+  evaluateAndAwardStars(unitKey, silent = false) {
+    const milestones = HINDI_MILESTONES[unitKey];
+    if (!milestones) return 0;
+
+    const data = this.getModuleProgressData(unitKey);
+    let earnedCount = 0;
+    milestones.forEach(m => {
+      try {
+        if (m.check(data)) earnedCount++;
+      } catch (e) {
+        // ignore check errors
+      }
+    });
+
+    const previousStars = this.getModuleStars(unitKey);
+    if (earnedCount > previousStars) {
+      this.setModuleStars(unitKey, earnedCount);
+      if (!silent) {
+        synth.success();
+        this.confetti.burst(35);
+        this.flash(`⭐ नया सितारा अर्जित! (${earnedCount}/10)`, 'success');
+      }
+    }
+
+    this.updateProgressUI();
+    this.updateTopBarPassportButton();
+    if (unitKey.startsWith('chitra_')) {
+      const container = document.getElementById('chitra-mastery-banner-container');
+      if (container) container.innerHTML = this.renderTopicMasteryBanner(unitKey);
+    }
+    this.saveAppState();
+    return earnedCount;
+  }
+
+  updateTopBarPassportButton() {
+    const btn = document.getElementById('btn-passport');
+    if (!btn) return;
+    const unitKey = this.getActiveUnitKey();
+    const stars = this.getModuleStars(unitKey);
+    const label = btn.querySelector('.passport-btn-label');
+    if (label) {
+      label.innerHTML = `⭐ ${stars}/10 पासपोर्ट`;
+    } else {
+      btn.innerHTML = `📋 ⭐ ${stars}/10 पासपोर्ट`;
+    }
+  }
+
+  renderTopicMasteryBanner(unitKey) {
+    const stars = this.getModuleStars(unitKey);
+    const pct = Math.round((stars / 10) * 100);
+    let title = '';
+    if (unitKey === 'sangya') title = 'संज्ञा व पाँच भेद';
+    else if (unitKey === 'vakyansh') title = 'वाक्यांश के लिए एक शब्द';
+    else if (unitKey && unitKey.startsWith('chitra_')) {
+      const sceneId = unitKey.replace('chitra_', '');
+      const sc = SCENE_DATA.find(s => s.id === sceneId);
+      title = `चित्र वर्णन: ${sc ? sc.title : sceneId}`;
+    }
+
+    return `
+      <div class="topic-mastery-banner">
+        <div class="mastery-banner-left">
+          <span class="mastery-star-pill">⭐ ${stars} / 10 सितारे</span>
+          <span class="mastery-banner-title">${title}</span>
+        </div>
+        <div class="mastery-banner-center">
+          <div class="mastery-bar-track">
+            <div class="mastery-bar-fill" style="width: ${pct}%;"></div>
+          </div>
+        </div>
+        <div class="mastery-banner-right">
+          <span class="mastery-pct-label">${pct}%</span>
+          <button class="btn-passport-trigger" onclick="window.chitraApp.openLearningPassport('${unitKey}')">📋 पासपोर्ट खोलें</button>
+        </div>
+      </div>
+    `;
+  }
+
+  openLearningPassport(unitKey = null) {
+    synth.tap();
+    if (!unitKey) unitKey = this.getActiveUnitKey();
+    const modal = document.getElementById('passport-modal');
+    if (!modal) return;
+
+    const milestones = HINDI_MILESTONES[unitKey];
+    if (!milestones) return;
+
+    const data = this.getModuleProgressData(unitKey);
+    const earnedStars = this.getModuleStars(unitKey);
+    const pct = Math.round((earnedStars / 10) * 100);
+
+    let icon = '📖';
+    let title = '';
+    let subtitle = '';
+    if (unitKey === 'sangya') {
+      icon = '🏷️';
+      title = 'लर्निंग पासपोर्ट: संज्ञा व पाँच भेद';
+      subtitle = 'Nouns & 5 Types — 10-Star Pedagogical Mastery Progression';
+    } else if (unitKey === 'vakyansh') {
+      icon = '📜';
+      title = 'लर्निंग पासपोर्ट: वाक्यांश के लिए एक शब्द';
+      subtitle = 'One Word Substitutions — 10-Star Pedagogical Mastery Progression';
+    } else if (unitKey.startsWith('chitra_')) {
+      icon = '🎨';
+      const sceneId = unitKey.replace('chitra_', '');
+      const sc = SCENE_DATA.find(s => s.id === sceneId);
+      title = `लर्निंग पासपोर्ट: चित्र वर्णन (${sc ? sc.title : sceneId})`;
+      subtitle = 'Picture Composition — 10-Star Step-by-Step Pedagogical Mastery';
+    }
+
+    const iconEl = document.getElementById('passport-icon');
+    const titleEl = document.getElementById('passport-title');
+    const subtitleEl = document.getElementById('passport-subtitle');
+    const starsEl = document.getElementById('passport-stars-display');
+    const fillEl = document.getElementById('passport-progress-fill');
+    const statusEl = document.getElementById('passport-status-text');
+
+    if (iconEl) iconEl.textContent = icon;
+    if (titleEl) titleEl.textContent = title;
+    if (subtitleEl) subtitleEl.textContent = subtitle;
+    if (starsEl) starsEl.textContent = `⭐ ${earnedStars} / 10`;
+    if (fillEl) fillEl.style.width = `${pct}%`;
+
+    let statusText = `${pct}% पूर्ण — `;
+    if (earnedStars === 10) statusText += '🏆 पूर्ण निपुणता (100% CBSE Exam Ready!)';
+    else if (earnedStars >= 7) statusText += '🌟 उन्नत स्तर (Advanced Stage)';
+    else if (earnedStars >= 4) statusText += '⚡ विकासशील स्तर (Developing Stage)';
+    else statusText += '🌱 प्रारंभिक स्तर (Beginner Stage)';
+    if (statusEl) statusEl.textContent = statusText;
+
+    // Render milestones list
+    const listEl = document.getElementById('passport-milestones-list');
+    if (listEl) {
+      listEl.innerHTML = milestones.map((m, idx) => {
+        let isCleared = false;
+        try {
+          isCleared = !!m.check(data);
+        } catch (e) {
+          isCleared = false;
+        }
+        const starNum = idx + 1;
+        return `
+          <div class="milestone-card ${isCleared ? 'cleared' : 'pending'}">
+            <div class="milestone-left">
+              <div class="milestone-star-num">#${starNum}</div>
+              <div class="milestone-status-icon">${isCleared ? '⭐' : '☆'}</div>
+            </div>
+            <div class="milestone-center">
+              <div class="milestone-title">${m.title}</div>
+              <div class="milestone-desc">${m.desc}</div>
+              ${!isCleared ? `<div class="milestone-hint">💡 कैसे अनलॉक करें: ${m.hint}</div>` : ''}
+            </div>
+            <div class="milestone-right">
+              <span class="milestone-badge ${isCleared ? 'badge-cleared' : 'badge-pending'}">
+                ${isCleared ? 'पूर्ण ✓' : 'बाकी'}
+              </span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Parent guarantee certificate box if 10/10
+    const guaranteeBox = document.getElementById('passport-guarantee-box');
+    if (guaranteeBox) {
+      guaranteeBox.style.display = earnedStars >= 10 ? 'block' : 'none';
+    }
+
+    // Next star action
+    const actionBtn = document.getElementById('btn-passport-action');
+    if (actionBtn) {
+      if (earnedStars >= 10) {
+        actionBtn.textContent = '🎉 सभी 10 सितारे प्राप्त!';
+        actionBtn.onclick = () => {
+          synth.fanfare();
+          this.confetti.burst(60);
+          modal.classList.remove('open');
+        };
+      } else {
+        actionBtn.textContent = 'अगला सितारा अनलॉक करें →';
+        actionBtn.onclick = () => {
+          modal.classList.remove('open');
+          this.guideToNextMilestone(unitKey);
+        };
+      }
+    }
+
+    modal.classList.add('open');
+  }
+
+  guideToNextMilestone(unitKey) {
+    const milestones = HINDI_MILESTONES[unitKey];
+    if (!milestones) return;
+    const data = this.getModuleProgressData(unitKey);
+    const nextIdx = milestones.findIndex(m => {
+      try { return !m.check(data); } catch (e) { return true; }
+    });
+    if (nextIdx === -1) return;
+
+    if (unitKey === 'sangya') {
+      this.switchModule('sangya');
+      if (nextIdx === 0 || nextIdx === 1) {
+        this.state.sangyaMode = 'learn';
+        this.state.sangyaSubtab = 'types';
+      } else if (nextIdx === 2) {
+        this.state.sangyaMode = 'learn';
+        this.state.sangyaSubtab = 'mirror';
+      } else if (nextIdx === 3) {
+        this.state.sangyaMode = 'learn';
+        this.state.sangyaSubtab = 'lab';
+      } else if (nextIdx === 4) {
+        this.state.sangyaMode = 'learn';
+      } else if (nextIdx === 5 || nextIdx === 6) {
+        this.state.sangyaMode = 'sort';
+      } else if (nextIdx === 7 || nextIdx === 8) {
+        this.state.sangyaMode = 'quiz';
+      } else if (nextIdx === 9) {
+        this.state.sangyaMode = 'challenge';
+      }
+      this.updateModeTabsUI();
+      this.renderSangyaWorkspace();
+    } else if (unitKey === 'vakyansh') {
+      this.switchModule('vakyansh');
+      if (nextIdx < 5) {
+        this.state.vakyanshMode = 'learn';
+      } else if (nextIdx === 5 || nextIdx === 6) {
+        this.state.vakyanshMode = 'match';
+      } else if (nextIdx === 7 || nextIdx === 8) {
+        this.state.vakyanshMode = 'quiz';
+      } else if (nextIdx === 9) {
+        this.state.vakyanshMode = 'challenge';
+      }
+      this.updateModeTabsUI();
+      this.renderVakyanshWorkspace();
+    } else if (unitKey.startsWith('chitra_')) {
+      const sceneId = unitKey.replace('chitra_', '');
+      this.switchModule('chitra');
+      if (this.state.currentSceneId !== sceneId) {
+        this.loadScene(sceneId);
+      }
+      if (nextIdx < 4) {
+        this.state.chitraMode = 'explore';
+      } else if (nextIdx === 4) {
+        this.state.chitraMode = 'vocab';
+      } else if (nextIdx >= 5 && nextIdx <= 7) {
+        this.state.chitraMode = 'puzzle';
+      } else {
+        this.state.chitraMode = 'write';
+      }
+      this.updateModeTabsUI();
+      this.renderCurrentMode();
+    }
+  }
+
+  diagnoseExamTrap(moduleKey, trapIdx, selectedOption) {
+    const trap = HINDI_EXAM_TRAPS[moduleKey] && HINDI_EXAM_TRAPS[moduleKey][trapIdx];
+    if (!trap) return;
+
+    if (selectedOption === trap.correct) {
+      synth.success();
+      this.confetti.burst(25);
+      const d = this.getModuleProgressData(moduleKey);
+      if (!d.trapsDiagnosed) d.trapsDiagnosed = {};
+      d.trapsDiagnosed[trapIdx] = true;
+      d.trapsDiagnosedCount = Object.keys(d.trapsDiagnosed).length;
+      this.evaluateAndAwardStars(moduleKey);
+      this.flash('🎉 सही निदान! आपने परीक्षा जाल को सफलता से समझ लिया!', 'success');
+      if (moduleKey === 'sangya') {
+        this.renderSangyaLearnMode();
+      } else if (moduleKey === 'vakyansh') {
+        this.renderVakyanshLearnMode();
+      }
+    } else {
+      synth.error();
+      this.flash('❌ यह विकल्प गलत है! व्याख्या को ध्यान से पढ़ें और पुनः प्रयास करें।', 'error');
+    }
+  }
+
+  toggleSangyaTypeRead(typeIdx) {
+    synth.tap();
+    const d = this.getModuleProgressData('sangya');
+    if (!d.typesRead) d.typesRead = {};
+    d.typesRead[typeIdx] = !d.typesRead[typeIdx];
+    this.evaluateAndAwardStars('sangya');
+    this.renderSangyaLearnMode();
+  }
+
+  toggleVakyanshCardRead(cardIdx) {
+    synth.tap();
+    const d = this.getModuleProgressData('vakyansh');
+    if (!d.cardsRead) d.cardsRead = {};
+    d.cardsRead[cardIdx] = !d.cardsRead[cardIdx];
+    this.evaluateAndAwardStars('vakyansh');
+    this.renderVakyanshLearnMode();
   }
 
   initElements() {
@@ -2960,6 +3626,35 @@ class HindiLearningApp {
         this.renderSangyaWorkspace();
       }
     });
+
+    // Learning Passport Top Bar & Modal Trigger
+    const btnPassport = document.getElementById('btn-passport');
+    if (btnPassport) {
+      btnPassport.addEventListener('click', () => {
+        this.openLearningPassport();
+      });
+    }
+    const btnPassportCloseX = document.getElementById('btn-passport-close-x');
+    if (btnPassportCloseX) {
+      btnPassportCloseX.addEventListener('click', () => {
+        const modal = document.getElementById('passport-modal');
+        if (modal) modal.classList.remove('open');
+      });
+    }
+    const btnPassportClose = document.getElementById('btn-passport-close');
+    if (btnPassportClose) {
+      btnPassportClose.addEventListener('click', () => {
+        const modal = document.getElementById('passport-modal');
+        if (modal) modal.classList.remove('open');
+      });
+    }
+    const btnModalPassport = document.getElementById('btn-modal-passport');
+    if (btnModalPassport) {
+      btnModalPassport.addEventListener('click', () => {
+        this.resultsModal.classList.remove('open');
+        this.openLearningPassport();
+      });
+    }
   }
 
   toggleSidebar(open) {
@@ -3000,34 +3695,34 @@ class HindiLearningApp {
 
     // Chitra stars
     let chitraStars = 0;
-    Object.values(this.state.stars).forEach(s => chitraStars += s);
-    this.starsNavChitra.textContent = `${chitraStars}⭐`;
+    Object.values(this.state.stars).forEach(s => chitraStars += (s || 0));
+    this.starsNavChitra.textContent = `${chitraStars}/60 ⭐`;
 
     // Vakyansh stars
     const vStars = this.state.vakyanshStars || 0;
-    this.starsNavVakyansh.textContent = '⭐'.repeat(vStars) || '☆☆☆';
+    this.starsNavVakyansh.textContent = `${vStars}/10 ⭐`;
     if (this.vakyanshEarnedStars) {
-      this.vakyanshEarnedStars.textContent = `${vStars} / 3`;
+      this.vakyanshEarnedStars.textContent = `${vStars} / 10`;
     }
 
     // Sangya stars
     const sStars = this.state.sangyaStars || 0;
     if (this.starsNavSangya) {
-      this.starsNavSangya.textContent = '⭐'.repeat(sStars) || '☆☆☆';
+      this.starsNavSangya.textContent = `${sStars}/10 ⭐`;
     }
     if (this.sangyaEarnedStars) {
-      this.sangyaEarnedStars.textContent = `${sStars} / 3`;
+      this.sangyaEarnedStars.textContent = `${sStars} / 10`;
     }
   }
 
   updateProgressUI() {
     this.updateCurriculumNavUI();
-    const chitraTotal = SCENE_DATA.length * 3;
+    const chitraTotal = SCENE_DATA.length * 10; // 6 scenes * 10 = 60
     let earnedChitra = 0;
-    Object.values(this.state.stars).forEach(s => earnedChitra += s);
+    Object.values(this.state.stars).forEach(s => earnedChitra += (s || 0));
 
-    const totalPossible = chitraTotal + 3 + 3; // 18 + 3 (Vakyansh) + 3 (Sangya) = 24
-    const totalEarned = earnedChitra + this.state.vakyanshStars + this.state.sangyaStars;
+    const totalPossible = chitraTotal + 10 + 10; // 60 + 10 (Vakyansh) + 10 (Sangya) = 80
+    const totalEarned = earnedChitra + (this.state.vakyanshStars || 0) + (this.state.sangyaStars || 0);
     const pct = Math.round((totalEarned / totalPossible) * 100);
 
     this.progressFill.style.width = `${pct}%`;
@@ -3043,6 +3738,7 @@ class HindiLearningApp {
     this.welcomeScreen.style.display = 'none';
     this.updateCurriculumNavUI();
     this.updateModeTabsUI();
+    this.updateTopBarPassportButton();
 
     if (moduleName === 'chitra') {
       this.sidebarScenesContainer.style.display = 'block';
@@ -3050,6 +3746,7 @@ class HindiLearningApp {
       if (this.sangyaArea) this.sangyaArea.style.display = 'none';
       this.sceneArea.style.display = 'flex';
       this.loadScene(this.state.currentSceneId);
+      this.evaluateAndAwardStars('chitra_' + this.state.currentSceneId, true);
     } else if (moduleName === 'vakyansh') {
       this.sidebarScenesContainer.style.display = 'none';
       this.sceneArea.style.display = 'none';
@@ -3061,6 +3758,7 @@ class HindiLearningApp {
         ? 'One Word Substitution — Understand, learn & practice with memory clues'
         : '12 महत्वपूर्ण वाक्यांश — अर्थ, सूत्र, युक्ति व अभ्यास';
 
+      this.evaluateAndAwardStars('vakyansh', true);
       this.renderVakyanshWorkspace();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (moduleName === 'sangya') {
@@ -3074,6 +3772,7 @@ class HindiLearningApp {
         ? 'Nouns & 5 Types (Proper, Common, Abstract, Material, Collective)'
         : 'संज्ञा की परिभाषा, 5 मुख्य भेद, पहचान सूत्र, प्रयोगशाला व अभ्यास';
 
+      this.evaluateAndAwardStars('sangya', true);
       this.renderSangyaWorkspace();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -3173,8 +3872,14 @@ class HindiLearningApp {
       ? VAKYANSH_DATA
       : VAKYANSH_DATA.filter(item => item.category === filter);
 
+    const d = this.getModuleProgressData('vakyansh');
+    d.rootsExplored = true;
+    this.evaluateAndAwardStars('vakyansh', true);
+
     this.vakyanshWorkspace.innerHTML = `
       <div class="vakyansh-learn-panel">
+        ${this.renderTopicMasteryBanner('vakyansh')}
+
         <div class="vakyansh-controls-bar">
           <div class="vocab-filters">
             <button class="vocab-filter-btn ${filter === 'all' ? 'active' : ''}" data-filter="all">सभी 12 शब्द</button>
@@ -3192,6 +3897,37 @@ class HindiLearningApp {
         <div class="vakyansh-cards-grid" id="vakyansh-cards-grid">
           ${filteredList.map(item => this.getVakyanshCardHtml(item)).join('')}
         </div>
+
+        <!-- CBSE Diagnostic Exam Traps Section -->
+        <div class="exam-traps-section" style="margin-top:24px;">
+          <div class="exam-traps-title">🎯 परीक्षा सावधानी जासूस (CBSE Diagnostic Exam Traps)</div>
+          <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:12px;">वाक्यांशों में शब्दों के सूक्ष्म विलोम व अर्थ के जालों को समझें:</p>
+          <div class="traps-grid">
+            ${HINDI_EXAM_TRAPS.vakyansh.map((trap, tIdx) => {
+              const isDiagnosed = !!(d.trapsDiagnosed && d.trapsDiagnosed[tIdx]);
+              return `
+                <div class="trap-card ${isDiagnosed ? 'trap-completed' : ''}">
+                  <div class="trap-card-icon">${isDiagnosed ? '✅' : '⚠️'}</div>
+                  <div class="trap-card-content">
+                    <div class="trap-card-title">${trap.title}</div>
+                    <div class="trap-card-desc">${trap.desc}</div>
+                    <div class="trap-card-question"><strong>सवाल:</strong> ${trap.question}</div>
+                    <div class="trap-card-options">
+                      ${trap.options.map((opt, oIdx) => `
+                        <button class="trap-opt-btn ${isDiagnosed && oIdx === trap.correct ? 'opt-correct' : ''}"
+                          ${isDiagnosed ? 'disabled' : ''}
+                          onclick="window.chitraApp.diagnoseExamTrap('vakyansh', ${tIdx}, ${oIdx})">
+                          ${opt}
+                        </button>
+                      `).join('')}
+                    </div>
+                    ${isDiagnosed ? `<div style="margin-top:8px; font-size:0.85rem; color:#86efac;">💡 ${trap.exp}</div>` : ''}
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
       </div>
     `;
 
@@ -3207,34 +3943,43 @@ class HindiLearningApp {
 
     // Live search
     const searchInput = this.vakyanshWorkspace.querySelector('#vakyansh-search-input');
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.toLowerCase().trim();
-      const cards = this.vakyanshWorkspace.querySelectorAll('.vakyansh-card');
-      cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        card.style.display = text.includes(q) ? 'flex' : 'none';
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        const q = searchInput.value.toLowerCase().trim();
+        const cards = this.vakyanshWorkspace.querySelectorAll('.vakyansh-card');
+        cards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          card.style.display = text.includes(q) ? 'flex' : 'none';
+        });
       });
-    });
+    }
   }
 
   getVakyanshCardHtml(item) {
+    const d = this.getModuleProgressData('vakyansh');
+    const isRead = !!(d.cardsRead && d.cardsRead[item.id - 1]);
     const enPhrase = this.state.showEnglish ? `<div class="vakyansh-phrase-en">${item.phraseEn}</div>` : '';
     const enWord = this.state.showEnglish ? `<span class="vakyansh-word-en">${item.wordEn} (${item.translit})</span>` : '';
     const enExample = this.state.showEnglish ? `<div class="vakyansh-example-en">🌐 ${item.exampleEn}</div>` : '';
     const oppositeTag = item.oppositeHi ? `<div class="vakyansh-opposite-tag">🔄 विलोम: ${item.oppositeHi}</div>` : '';
 
     return `
-      <div class="vakyansh-card" data-id="${item.id}">
+      <div class="vakyansh-card ${isRead ? 'card-completed' : ''}" data-id="${item.id}">
         <div class="vakyansh-card-header">
           <div class="vakyansh-num-badge">${item.id}</div>
           <div class="vakyansh-phrase-group">
             <div class="vakyansh-phrase-title">${item.phraseHi}</div>
             ${enPhrase}
           </div>
-          <div class="vakyansh-word-badge">
-            <span class="vakyansh-word-hi">${item.wordHi}</span>
-            <button class="speech-btn" data-speak="${item.wordHi}" title="उच्चारण सुनें (Pronounce)">🔊</button>
-            ${enWord}
+          <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
+            <div class="vakyansh-word-badge">
+              <span class="vakyansh-word-hi">${item.wordHi}</span>
+              <button class="speech-btn" data-speak="${item.wordHi}" title="उच्चारण सुनें (Pronounce)">🔊</button>
+              ${enWord}
+            </div>
+            <button class="btn btn-sm ${isRead ? 'btn-success' : ''}" onclick="window.chitraApp.toggleVakyanshCardRead(${item.id - 1})">
+              ${isRead ? '✓ समझा हुआ' : '📖 समझ लिया'}
+            </button>
           </div>
         </div>
 
@@ -3385,10 +4130,14 @@ class HindiLearningApp {
         ms.matchedPairIds.push(first.pairId);
         ms.firstCard = null;
 
+        const d = this.getModuleProgressData('vakyansh');
+        d.matchPairsCount = Math.max(d.matchPairsCount || 0, ms.matchedPairIds.length);
         if (ms.matchedPairIds.length === ms.cards.length / 2) {
+          d.matchCompleted = true;
           synth.fanfare();
           this.confetti.burst(50);
         }
+        this.evaluateAndAwardStars('vakyansh');
         this.renderVakyanshMatchMode();
       } else {
         synth.error();
@@ -3526,6 +4275,11 @@ class HindiLearningApp {
 
         expBox.style.display = 'block';
         nextBtn.style.display = 'inline-flex';
+
+        const d = this.getModuleProgressData('vakyansh');
+        d.quizCorrect = Math.max(d.quizCorrect || 0, qs.score.correct);
+        d.quizTotalSolved = Math.max(d.quizTotalSolved || 0, qs.qIndex + 1);
+        this.evaluateAndAwardStars('vakyansh');
         this.saveAppState();
       });
     });
@@ -3542,19 +4296,16 @@ class HindiLearningApp {
       } else {
         // Quiz complete modal
         const pct = Math.round((qs.score.correct / totalQ) * 100);
-        const starsEarned = pct >= 80 ? 3 : (pct >= 50 ? 2 : 1);
+        const earnedStars = this.evaluateAndAwardStars('vakyansh');
 
-        this.saveVakyanshStars(starsEarned);
-        this.updateProgressUI();
-
-        if (starsEarned === 3) {
+        if (earnedStars >= 8) {
           synth.fanfare();
           this.confetti.burst(60);
         }
 
-        this.resultStars.textContent = '⭐'.repeat(starsEarned);
+        this.resultStars.textContent = `${earnedStars}/10 ⭐`;
         this.resultScore.textContent = `${pct}%`;
-        this.resultStarsCount.textContent = String(starsEarned);
+        this.resultStarsCount.textContent = String(earnedStars);
         this.resultsModal.classList.add('open');
 
         // Reset quiz session on completion
@@ -3693,21 +4444,21 @@ class HindiLearningApp {
     const cs = this.state.challengeState;
     const totalQ = cs.questions.length;
     const pct = Math.round((cs.score / totalQ) * 100);
-    const starsEarned = cs.score >= 8 ? 3 : (cs.score >= 5 ? 2 : 1);
 
-    this.saveVakyanshStars(starsEarned);
-    this.updateProgressUI();
+    const d = this.getModuleProgressData('vakyansh');
+    d.challengeHighScore = Math.max(d.challengeHighScore || 0, cs.score);
+    const earnedStars = this.evaluateAndAwardStars('vakyansh');
 
-    if (starsEarned === 3) {
+    if (cs.score >= 8) {
       synth.fanfare();
       this.confetti.burst(70);
     } else {
       synth.success();
     }
 
-    this.resultStars.textContent = '⭐'.repeat(starsEarned);
+    this.resultStars.textContent = `${earnedStars}/10 ⭐`;
     this.resultScore.textContent = `${pct}% (${cs.score}/${totalQ})`;
-    this.resultStarsCount.textContent = String(starsEarned);
+    this.resultStarsCount.textContent = String(earnedStars);
     this.resultsModal.classList.add('open');
 
     this.vakyanshWorkspace.innerHTML = `
@@ -3768,6 +4519,15 @@ class HindiLearningApp {
   // --- SANGYA MODE 1: LEARN & EXPLORE ---
   renderSangyaLearnMode() {
     const subtab = this.state.sangyaSubtab || 'types';
+    const d = this.getModuleProgressData('sangya');
+
+    if (subtab === 'mirror') {
+      d.mirrorExplored = true;
+      this.evaluateAndAwardStars('sangya', true);
+    } else if (subtab === 'lab') {
+      d.labExplored = true;
+      this.evaluateAndAwardStars('sangya', true);
+    }
 
     let subtabHtml = '';
     if (subtab === 'types') {
@@ -3841,6 +4601,8 @@ class HindiLearningApp {
 
     this.sangyaWorkspace.innerHTML = `
       <div class="sangya-learn-panel">
+        ${this.renderTopicMasteryBanner('sangya')}
+
         <!-- Grand Definition Card -->
         <div class="sangya-def-card">
           <div class="sangya-def-header">
@@ -3894,6 +4656,37 @@ class HindiLearningApp {
         <div class="sangya-subtab-content">
           ${subtabHtml}
         </div>
+
+        <!-- CBSE Diagnostic Exam Traps Section -->
+        <div class="exam-traps-section" style="margin-top:24px;">
+          <div class="exam-traps-title">🎯 परीक्षा सावधानी जासूस (CBSE Diagnostic Exam Traps)</div>
+          <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:12px;">विद्यार्थी अक्सर इन 3 जालों में भ्रमित होते हैं। प्रत्येक जाल का सही उत्तर पहचानकर अपनी समझ पक्की करें:</p>
+          <div class="traps-grid">
+            ${HINDI_EXAM_TRAPS.sangya.map((trap, tIdx) => {
+              const isDiagnosed = !!(d.trapsDiagnosed && d.trapsDiagnosed[tIdx]);
+              return `
+                <div class="trap-card ${isDiagnosed ? 'trap-completed' : ''}">
+                  <div class="trap-card-icon">${isDiagnosed ? '✅' : '⚠️'}</div>
+                  <div class="trap-card-content">
+                    <div class="trap-card-title">${trap.title}</div>
+                    <div class="trap-card-desc">${trap.desc}</div>
+                    <div class="trap-card-question"><strong>सवाल:</strong> ${trap.question}</div>
+                    <div class="trap-card-options">
+                      ${trap.options.map((opt, oIdx) => `
+                        <button class="trap-opt-btn ${isDiagnosed && oIdx === trap.correct ? 'opt-correct' : ''}"
+                          ${isDiagnosed ? 'disabled' : ''}
+                          onclick="window.chitraApp.diagnoseExamTrap('sangya', ${tIdx}, ${oIdx})">
+                          ${opt}
+                        </button>
+                      `).join('')}
+                    </div>
+                    ${isDiagnosed ? `<div style="margin-top:8px; font-size:0.85rem; color:#86efac;">💡 ${trap.exp}</div>` : ''}
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
       </div>
     `;
 
@@ -3919,8 +4712,10 @@ class HindiLearningApp {
   }
 
   getSangyaTypeCardHtml(t) {
+    const d = this.getModuleProgressData('sangya');
+    const isRead = !!(d.typesRead && d.typesRead[t.num - 1]);
     return `
-      <div class="sangya-type-card ${t.themeClass}">
+      <div class="sangya-type-card ${t.themeClass} ${isRead ? 'card-completed' : ''}">
         <div class="sangya-card-top">
           <div class="type-badge-group">
             <div class="type-badge-icon">${t.icon}</div>
@@ -3929,7 +4724,12 @@ class HindiLearningApp {
               ${this.state.showEnglish ? `<span>${t.nameEn}</span>` : ''}
             </div>
           </div>
-          <span class="type-num-badge">भेद #${t.num}</span>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button class="btn btn-sm ${isRead ? 'btn-success' : ''}" onclick="window.chitraApp.toggleSangyaTypeRead(${t.num - 1})">
+              ${isRead ? '✓ समझा हुआ' : '📖 समझ लिया'}
+            </button>
+            <span class="type-num-badge">भेद #${t.num}</span>
+          </div>
         </div>
 
         <div class="sangya-card-def">
@@ -3982,18 +4782,16 @@ class HindiLearningApp {
     // Victory state when all sorted
     if (st.currentIndex >= totalItems) {
       const pct = Math.round((st.score / totalItems) * 100);
-      let starsEarned = 1;
-      if (pct >= 90) starsEarned = 3;
-      else if (pct >= 70) starsEarned = 2;
-
-      this.saveSangyaStars(starsEarned);
+      const d = this.getModuleProgressData('sangya');
+      d.sortHighScore = Math.max(d.sortHighScore || 0, st.score);
+      const earnedStars = this.evaluateAndAwardStars('sangya');
 
       this.sangyaWorkspace.innerHTML = `
         <div class="sangya-sort-panel">
           <div class="sort-complete-card">
             <div class="sort-complete-icon">🏆</div>
             <h3>शानदार! वर्गीकरण खेल पूर्ण हुआ!</h3>
-            <div style="font-size:1.8rem; margin:6px 0;">${'⭐'.repeat(starsEarned)}</div>
+            <div style="font-size:1.8rem; margin:6px 0;">${earnedStars}/10 ⭐</div>
             <p>आपने ${totalItems} शब्दों में से <strong>${st.score}</strong> शब्द बिल्कुल सही वर्गीकृत किए (${pct}% सटीकता)!</p>
             <div style="display:flex; gap:12px; margin-top:8px;">
               <button class="btn btn-primary" id="btn-sort-restart">🔄 दोबारा खेलें (Play Again)</button>
@@ -4126,24 +4924,22 @@ class HindiLearningApp {
       const score = qs.score.correct;
       const pct = Math.round((score / totalQ) * 100);
 
-      let starsEarned = 1;
-      if (pct >= 90) starsEarned = 3;
-      else if (pct >= 70) starsEarned = 2;
+      const earnedStars = this.evaluateAndAwardStars('sangya');
+      if (earnedStars >= 8) {
+        this.confetti.burst(80);
+        synth.fanfare();
+      }
 
-      this.saveSangyaStars(starsEarned);
-      this.confetti.burst(80);
-      synth.fanfare();
-
-      this.resultStars.textContent = '⭐'.repeat(starsEarned);
+      this.resultStars.textContent = `${earnedStars}/10 ⭐`;
       this.resultScore.textContent = `${pct}% (${score}/${totalQ})`;
-      this.resultStarsCount.textContent = String(starsEarned);
+      this.resultStarsCount.textContent = String(earnedStars);
       this.resultsModal.classList.add('open');
 
       this.sangyaWorkspace.innerHTML = `
         <div class="sangya-quiz-panel" style="text-align:center; padding:36px 20px; background:var(--bg-card); border-radius:var(--radius-xl); border:var(--border-glass);">
           <div style="font-size:3.5rem;">🎉</div>
           <h3 style="font-size:1.6rem; color:var(--accent-saffron-light); margin-top:8px;">संज्ञा क्विज़ पूर्ण हुआ!</h3>
-          <div style="font-size:2rem; margin:8px 0;">${'⭐'.repeat(starsEarned)}</div>
+          <div style="font-size:2rem; margin:8px 0;">${earnedStars}/10 ⭐</div>
           <p style="color:var(--text-secondary); margin-bottom:20px;">
             आपने 15 में से <strong>${score}</strong> प्रश्नों के सही उत्तर दिए (${pct}% सटीकता)!
           </p>
@@ -4267,6 +5063,11 @@ class HindiLearningApp {
 
         expBox.style.display = 'block';
         nextBtn.style.display = 'inline-flex';
+
+        const d = this.getModuleProgressData('sangya');
+        d.quizCorrect = Math.max(d.quizCorrect || 0, qs.score.correct);
+        d.quizTotalSolved = Math.max(d.quizTotalSolved || 0, qs.qIndex + 1);
+        this.evaluateAndAwardStars('sangya');
         this.saveAppState();
       });
     });
@@ -4422,15 +5223,13 @@ class HindiLearningApp {
     synth.fanfare();
     this.confetti.burst(80);
 
-    let starsEarned = 1;
-    if (cs.score >= 12) starsEarned = 3;
-    else if (cs.score >= 8) starsEarned = 2;
+    const d = this.getModuleProgressData('sangya');
+    d.challengeHighScore = Math.max(d.challengeHighScore || 0, cs.score);
+    const earnedStars = this.evaluateAndAwardStars('sangya');
 
-    this.saveSangyaStars(starsEarned);
-
-    this.resultStars.textContent = '⭐'.repeat(starsEarned);
+    this.resultStars.textContent = `${earnedStars}/10 ⭐`;
     this.resultScore.textContent = `${cs.score} सही उत्तर`;
-    this.resultStarsCount.textContent = String(starsEarned);
+    this.resultStarsCount.textContent = String(earnedStars);
     this.resultsModal.classList.add('open');
 
     this.sangyaWorkspace.innerHTML = `
@@ -4461,7 +5260,7 @@ class HindiLearningApp {
       btn.dataset.id = scene.id;
 
       const stars = this.state.stars[scene.id] || 0;
-      const starsDisplay = '⭐'.repeat(stars) || '☆☆☆';
+      const starsDisplay = `${stars}/10 ⭐`;
 
       btn.innerHTML = `
         <div class="topic-nav-icon">${scene.icon}</div>
@@ -4470,6 +5269,9 @@ class HindiLearningApp {
           <div class="topic-nav-subtitle">${scene.titleEn}</div>
         </div>
         <div class="topic-nav-stars">${starsDisplay}</div>
+        <div class="sidebar-mini-progress">
+          <div class="mini-progress-fill" style="width: ${(stars / 10) * 100}%;"></div>
+        </div>
       `;
 
       btn.addEventListener('click', () => {
@@ -4493,6 +5295,13 @@ class HindiLearningApp {
 
     const scene = SCENE_DATA.find(s => s.id === sceneId);
     if (!scene) return;
+
+    // Mastery banner for current scene
+    const bannerContainer = document.getElementById('chitra-mastery-banner-container');
+    if (bannerContainer) {
+      bannerContainer.innerHTML = this.renderTopicMasteryBanner('chitra_' + sceneId);
+    }
+    this.updateTopBarPassportButton();
 
     // Update Top Bar
     this.topBarTitle.textContent = scene.title;
@@ -4532,6 +5341,10 @@ class HindiLearningApp {
     if (scene) {
       this.renderIllustration(scene);
       this.flash(mode === 'real' ? '📷 वास्तविक परीक्षा चित्र चालू (Real Photo)' : '🎨 कार्टून रेखाचित्र चालू (Cartoon Illustration)', 'info');
+      const d = this.getModuleProgressData('chitra_' + scene.id);
+      if (!d.viewModes) d.viewModes = {};
+      d.viewModes[mode] = true;
+      this.evaluateAndAwardStars('chitra_' + scene.id);
     }
   }
 
@@ -4539,6 +5352,12 @@ class HindiLearningApp {
     this.state.isBWMode = !this.state.isBWMode;
     this.saveAppState();
     this.updateBWModeUI();
+    const scene = SCENE_DATA.find(s => s.id === this.state.currentSceneId);
+    if (scene && this.state.isBWMode) {
+      const d = this.getModuleProgressData('chitra_' + scene.id);
+      d.bwModeUsed = true;
+      this.evaluateAndAwardStars('chitra_' + scene.id);
+    }
     this.flash(
       this.state.isBWMode
         ? '🖨️ प्रश्न-पत्र प्रारूप (B&W Print): वास्तविक परीक्षा जैसा श्वेत-श्याम दृश्य'
@@ -4634,6 +5453,15 @@ class HindiLearningApp {
 
   selectHotspot(hsId) {
     this.state.activeHotspotId = hsId;
+
+    if (hsId) {
+      const sceneId = this.state.currentSceneId;
+      const d = this.getModuleProgressData('chitra_' + sceneId);
+      if (!d.hotspotsViewed) d.hotspotsViewed = {};
+      d.hotspotsViewed[hsId] = true;
+      d.hotspotsCount = Object.keys(d.hotspotsViewed).length;
+      this.evaluateAndAwardStars('chitra_' + sceneId);
+    }
 
     // Update buttons in illustration
     document.querySelectorAll('.hotspot-btn').forEach(el => {
@@ -4732,6 +5560,10 @@ class HindiLearningApp {
   }
 
   renderVocabMode(scene) {
+    const d = this.getModuleProgressData('chitra_' + scene.id);
+    d.vocabExplored = true;
+    this.evaluateAndAwardStars('chitra_' + scene.id, true);
+
     const filter = this.state.vocabFilter;
     const filteredVocab = filter === 'all'
       ? scene.vocabulary
@@ -4812,14 +5644,11 @@ class HindiLearningApp {
         this.renderPuzzleMode(scene);
       });
 
-      if (!this.state.stars[scene.id] || this.state.stars[scene.id] < 3) {
-        this.state.stars[scene.id] = 3;
-        this.saveStars();
-        this.updateProgressUI();
-        this.renderSidebarTopics();
-        this.confetti.burst(80);
-        synth.fanfare();
-      }
+      const d = this.getModuleProgressData('chitra_' + scene.id);
+      d.puzzleStepsCompleted = 5;
+      const earnedStars = this.evaluateAndAwardStars('chitra_' + scene.id);
+      this.confetti.burst(80);
+      synth.fanfare();
       return;
     }
 
@@ -4934,6 +5763,9 @@ class HindiLearningApp {
         setTimeout(() => {
           this.state.puzzleProgress.stepIdx++;
           this.state.puzzleProgress.selectedWords = [];
+          const d = this.getModuleProgressData('chitra_' + scene.id);
+          d.puzzleStepsCompleted = Math.max(d.puzzleStepsCompleted || 0, this.state.puzzleProgress.stepIdx);
+          this.evaluateAndAwardStars('chitra_' + scene.id);
           this.renderPuzzleMode(scene);
         }, 1800);
 
@@ -4951,6 +5783,9 @@ class HindiLearningApp {
 
   renderWriteMode(scene) {
     const ans = scene.modelAnswer;
+    const d = this.getModuleProgressData('chitra_' + scene.id);
+    d.modelAnswerRead = true;
+    this.evaluateAndAwardStars('chitra_' + scene.id, true);
 
     this.modePanel.innerHTML = `
       <div class="write-panel">
@@ -5050,14 +5885,14 @@ class HindiLearningApp {
     this.modePanel.querySelector('#btn-complete-practice').addEventListener('click', () => {
       synth.fanfare();
       this.confetti.burst(60);
-      this.state.stars[scene.id] = 3;
-      this.saveStars();
-      this.updateProgressUI();
+      const d = this.getModuleProgressData('chitra_' + scene.id);
+      d.draftCompleted = true;
+      const earnedStars = this.evaluateAndAwardStars('chitra_' + scene.id);
       this.renderSidebarTopics();
 
-      this.resultStars.textContent = '⭐⭐⭐';
+      this.resultStars.textContent = `${earnedStars}/10 ⭐`;
       this.resultScore.textContent = '100%';
-      this.resultStarsCount.textContent = '3';
+      this.resultStarsCount.textContent = String(earnedStars);
       this.resultsModal.classList.add('open');
     });
   }

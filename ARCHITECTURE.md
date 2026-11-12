@@ -214,14 +214,21 @@ const state = {
   activeHotspotId: null,
   vocabFilter: 'all',
   vakyanshFilter: 'all',        // 'all' | 'behavior' | 'action' | 'nature'
-  stars: {},                    // Chitra Varnan stars per scene (0-3 each)
-  vakyanshStars: 0,             // Vakyansh challenge stars (0-3)
-  sangyaStars: 0,               // Sangya challenge stars (0-3)
+  stars: {},                    // Chitra Varnan stars per scene (0-10 each, 60 max)
+  vakyanshStars: 0,             // Vakyansh mastery stars (0-10)
+  sangyaStars: 0,               // Sangya mastery stars (0-10)
+  moduleProgress: {             // Granular progress tracker for 10-star architecture
+    sangya: {},
+    vakyansh: {},
+    chitra: {}
+  },
   sangyaSortState: { items: [], currentIndex: 0, score: 0, streak: 0, answered: false },
   sangyaQuizState: { qIndex: 0, score: { correct: 0, wrong: 0 }, answered: false },
   sangyaChallengeState: { timer: 60, timerInterval: null, qIndex: 0, score: 0, streak: 0, answered: false }
 };
 ```
+
+Total curriculum stars: **80 Stars** ($10 + 10 + 6 \times 10$). Includes Learning Passport modal (`#passport-modal`), Diagnostic Exam Traps (`HINDI_EXAM_TRAPS`), and Parent Guarantee Certificate.
 
 #### Sangya Data Schemas
 - **5 Types (`SANGYA_TYPES_DATA`)**: Schema for Proper, Common, Abstract, Material, and Collective nouns with bilingual definition, clue, examples, and exam trap.

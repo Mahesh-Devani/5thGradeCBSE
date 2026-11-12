@@ -111,6 +111,9 @@
           </div>
 
           <div class="top-bar-actions">
+            <button class="btn btn-secondary btn-sm" id="btn-passport" title="लर्निंग पासपोर्ट व प्रगति रिपोर्ट">
+              📋 <span class="passport-btn-label">पासपोर्ट (Passport)</span>
+            </button>
             <button class="btn btn-trans" id="btn-translate-toggle" title="Toggle English Translation">
               <span class="trans-icon">🌐</span>
               <span class="trans-text" id="trans-toggle-label">English: ON</span>
@@ -186,7 +189,7 @@
 
       <!-- Scene / Content Area -->
       <div class="scene-area" id="scene-area" style="display: none;">
-        
+        <div id="chitra-mastery-banner-container" style="width: 100%;"></div>
         <!-- Picture Presentation Card -->
         <div class="picture-card" id="picture-card">
           <div class="picture-header">
@@ -251,7 +254,7 @@
               <span class="vakyansh-stat-lbl">कुल शब्द</span>
             </div>
             <div class="vakyansh-stat-item">
-              <span class="vakyansh-stat-val" id="vakyansh-earned-stars">0 / 3</span>
+              <span class="vakyansh-stat-val" id="vakyansh-earned-stars">0 / 10</span>
               <span class="vakyansh-stat-lbl">सितारे ⭐</span>
             </div>
           </div>
@@ -278,7 +281,7 @@
               <span class="sangya-stat-lbl">मुख्य भेद</span>
             </div>
             <div class="sangya-stat-item">
-              <span class="sangya-stat-val" id="sangya-earned-stars">0 / 3</span>
+              <span class="sangya-stat-val" id="sangya-earned-stars">0 / 10</span>
               <span class="sangya-stat-lbl">सितारे ⭐</span>
             </div>
           </div>
@@ -311,8 +314,44 @@
         </div>
       </div>
       <div class="modal-actions">
-        <button class="btn btn-primary" id="btn-next-scene">अगला चित्र देखें →</button>
+        <button class="btn btn-primary" id="btn-next-scene">अगला अभ्यास देखें →</button>
+        <button class="btn btn-secondary" id="btn-modal-passport">📋 पासपोर्ट देखें (View Passport)</button>
         <button class="btn" id="btn-close-modal">✖ बंद करें (Close)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== LEARNING PASSPORT & PARENT AUDIT MODAL ==================== -->
+  <div class="modal-overlay" id="passport-modal">
+    <div class="modal passport-modal-card">
+      <div class="passport-header">
+        <div class="passport-badge-icon" id="passport-icon">📋</div>
+        <div>
+          <h3 id="passport-title">लर्निंग पासपोर्ट (Learning Passport)</h3>
+          <p id="passport-subtitle">अभिभावक व शिक्षक विस्तृत प्रगति रिपोर्ट (Parent & Teacher Audit)</p>
+        </div>
+        <button class="passport-close-x" id="btn-passport-close-x" aria-label="Close">✕</button>
+      </div>
+
+      <div class="passport-summary-bar">
+        <div class="passport-stars-tally" id="passport-stars-display">⭐ 0 / 10 सितारे अर्जित (Stars Earned)</div>
+        <div class="passport-progress-bar">
+          <div class="passport-progress-fill" id="passport-progress-fill" style="width: 0%;"></div>
+        </div>
+        <div class="passport-status-label" id="passport-status-text">0% पूर्ण (10 लक्ष्य शेष)</div>
+      </div>
+
+      <div class="passport-milestones-list" id="passport-milestones-list">
+        <!-- Populated dynamically by app.js -->
+      </div>
+
+      <div class="parent-guarantee-box" id="passport-guarantee-box" style="display: none;">
+        <!-- Shown when 10/10 stars earned -->
+      </div>
+
+      <div class="modal-actions" style="margin-top: 1.5rem;">
+        <button class="btn btn-primary" id="btn-passport-action">🚀 अगला लक्ष्य पूरा करें (Resume Milestone)</button>
+        <button class="btn btn-ghost" id="btn-passport-close">✕ बंद करें (Close)</button>
       </div>
     </div>
   </div>
