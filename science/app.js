@@ -1932,11 +1932,17 @@ const CHAPTERS_DATA = [
       "badge": "Central Command",
       "title": "💻 The Biological Supercomputer & Nerve Cables",
       "metaphor": "Your nervous system is the ultimate biological supercomputer: Brain is the CPU, spinal cord is the main data highway, and nerves are the fiber-optic cables!",
+      "diagrams": [
+        {
+          "image": "images/l4_brain_parts.png",
+          "caption": "<strong>Central Command Network:</strong> Cerebrum (CPU & Logic), Cerebellum (Balance), Medulla (Brainstem Vitals) & Spinal Cord Highway"
+        }
+      ],
       "points": [
-        "<strong>3 Master Components:</strong> The human nervous system consists of the <strong>Brain</strong>, the <strong>Spinal Cord</strong>, and a vast interconnected network of <strong>Nerves</strong> spreading throughout the body.",
+        "<strong>3 Master Components:</strong> The human nervous system consists of the <strong>Brain</strong> (central command unit), the <strong>Spinal Cord</strong> (main communication highway), and a vast interconnected network of <strong>Nerves</strong> branching to every organ and tissue.",
         "<strong>The Neuron (Nerve Cell):</strong> Nerves are composed of billions of specialized microscopic cells called <strong>neurons</strong>. Spanish neuroscientist <em>Santiago Ramón y Cajal</em> proved that neurons communicate by transmitting electrochemical signals.",
-        "<strong>Spinal Cord Highway:</strong> A thick, tubular bundle of nerves emerging from the medulla that extends down through the protective vertebral column. It carries messages between the brain and the entire body.",
-        "<strong>Cerebrospinal Fluid (CSF):</strong> The brain floats in a protective liquid layer between the brain tissue and the hard skull that acts as a hydraulic shock absorber, cushioning against sudden jerks and bumps!"
+        "<strong>Spinal Cord Highway:</strong> A thick, tubular bundle of millions of nerve fibers emerging from the medulla that extends down through the protective canal of the <strong>vertebral column (33 vertebrae)</strong>. It carries messages between the brain and the entire body.",
+        "<strong>Cerebrospinal Fluid (CSF):</strong> The brain and spinal cord float inside a protective liquid bath called <strong>cerebrospinal fluid (CSF)</strong> between neural tissue and the hard cranial bones, acting as a hydraulic shock absorber against sudden knocks and bumps!"
       ],
       "thinkPrompt": "Why does a desktop computer need separate power, signal cables, and a central microprocessor, exactly like our nervous system has nerves, sensory inputs, and the brain?",
       "checkQuestions": [
@@ -1968,11 +1974,17 @@ const CHAPTERS_DATA = [
       "badge": "The 3 Brain Departments",
       "title": "🧠 Cerebrum, Cerebellum & Medulla",
       "metaphor": "The brain has three specialized managers running your body's operations 24 hours a day!",
+      "diagrams": [
+        {
+          "image": "images/l4_brain_parts.png",
+          "caption": "<strong>Human Brain Architecture:</strong> Folded Cerebrum (~85% weight), Lower Cerebellum (Balance & Equilibrium), and Medulla Oblongata (24/7 Life Vitals)"
+        }
+      ],
       "points": [
-        "<strong>1. Cerebrum (Thinking & Senses):</strong> The top dome-shaped, largest part (~85% of brain weight). Its surface is folded into ridges and grooves resembling a walnut. It controls <strong>thinking, memory, logic, speech, emotions, learning</strong>, and interprets signals from all 5 sense organs!",
-        "<strong>2. Cerebellum (Balance & Muscle Coordination):</strong> Located at the lower back of the head beneath the cerebrum. Coordinates voluntary muscle movements to maintain <strong>balance, equilibrium, and upright posture</strong> (walking, cycling, dancing).",
-        "<strong>3. Medulla (Brain Stem — 24/7 Life Vitals):</strong> Connects the brain to the spinal cord. Governs <strong>involuntary vital reflexes</strong>: heartbeat, breathing, blood pressure, digestion, sneezing, and swallowing. <strong>It works continuously 24 hours a day, even while you are fast asleep!</strong>",
-        "<strong>Contralateral Control:</strong> The left hemisphere of the cerebrum controls the <strong>right side</strong> of the body; the right hemisphere controls the <strong>left side</strong>!"
+        "<strong>1. Cerebrum (Thinking, Memory & Senses):</strong> The top dome-shaped, largest part of the brain (~85% of total brain weight). Its surface is folded into ridges and grooves resembling a walnut. It controls <strong>thinking, memory, logic, speech, emotions, learning</strong>, and processes incoming signals from all 5 sense organs!",
+        "<strong>2. Cerebellum (Balance & Muscle Coordination):</strong> Located at the lower back of the head beneath the cerebrum. Coordinates voluntary muscle movements to maintain <strong>balance, equilibrium, and upright posture</strong> during walking, cycling, jumping, and gymnastics.",
+        "<strong>3. Medulla Oblongata (Brain Stem — 24/7 Life Vitals):</strong> Connects the brain to the spinal cord. Governs <strong>involuntary vital reflexes</strong>: heartbeat, breathing, blood pressure, digestion, sneezing, and swallowing. <strong>It works continuously 24 hours a day, even while you are fast asleep!</strong>",
+        "<strong>Contralateral Control:</strong> The left hemisphere of the cerebrum controls the <strong>right side</strong> of the body; the right hemisphere controls the <strong>left side</strong>! A left-side stroke affects right-side motor function."
       ],
       "thinkPrompt": "When you are in deep sleep at 2 AM, which part of your brain is tirelessly keeping your heart beating and lungs breathing?",
       "checkQuestions": [
@@ -2004,11 +2016,17 @@ const CHAPTERS_DATA = [
       "badge": "Emergency Bypass",
       "title": "⚡ The Lightning Reflex Arc (Spinal Bypass)",
       "metaphor": "When a house catches fire, you don't wait for a letter from the president — the local emergency fire alarm rings instantly!",
+      "diagrams": [
+        {
+          "image": "images/l4_reflex_arc.png",
+          "caption": "<strong>The Reflex Arc:</strong> Skin Receptor → Sensory Nerve → Spinal Cord Emergency Bypass → Motor Nerve → Biceps Effector (Hand Yanked in ~0.05s!)"
+        }
+      ],
       "points": [
-        "<strong>What is a Reflex Action?</strong> An extremely rapid, automatic, involuntary response to a dangerous stimulus that <strong>DOES NOT wait for the brain to think</strong>!",
-        "<strong>Controlled by Spinal Cord:</strong> The emergency decision is made directly by the <strong>Spinal Cord</strong> to save precious milliseconds and prevent severe tissue damage.",
-        "<strong>The 5-Step Reflex Pathway:</strong> Skin heat receptors → <strong>Sensory nerve</strong> → <strong>Spinal cord</strong> → <strong>Motor nerve</strong> → Arm bicep muscle contracts → Hand is yanked away in ~0.05 seconds!",
-        "<strong>Brain Learns Afterwards:</strong> The sensory signal travels up to the conscious cerebrum <em>after</em> the hand is already pulled back, which is why you consciously register the burning pain only AFTER your hand is safely away!"
+        "<strong>What is a Reflex Action?</strong> An extremely rapid, automatic, involuntary response to a sudden dangerous stimulus that <strong>DOES NOT wait for the brain to think</strong>!",
+        "<strong>Controlled by the Spinal Cord:</strong> The emergency decision is integrated directly by the <strong>Spinal Cord</strong> to save precious milliseconds and prevent severe tissue damage or deep burns.",
+        "<strong>The 5-Step Reflex Pathway:</strong> Skin heat receptors → <strong>1. Sensory nerve</strong> → <strong>2. Spinal cord interneuron</strong> → <strong>3. Motor nerve</strong> → <strong>4. Effector muscle</strong> (biceps contracts) → <strong>5. Hand is yanked away in ~0.05 seconds!</strong>",
+        "<strong>Brain Learns Afterwards:</strong> The nerve impulse travels up to the conscious cerebrum <em>after</em> the hand is already pulled back, which is why you consciously register the burning pain only AFTER your hand is safely away!"
       ],
       "thinkPrompt": "Why would waiting for the brain's cerebrum to process the thought 'Ouch, this stove is hot, I should lift my finger' lead to severe third-degree burns?",
       "checkQuestions": [
@@ -2040,10 +2058,16 @@ const CHAPTERS_DATA = [
       "badge": "Information Couriers",
       "title": "📡 Sensory, Motor & Mixed Nerves",
       "metaphor": "Nerves are one-way and two-way telephone lines transmitting biological telegrams across the body!",
+      "diagrams": [
+        {
+          "image": "images/l4_reflex_arc.png",
+          "caption": "<strong>Neural Signal Flow:</strong> Inbound Sensory Nerves (Receptors → CNS) vs Outbound Motor Nerves (CNS → Muscles)"
+        }
+      ],
       "points": [
-        "<strong>Sensory Nerves (Inputs):</strong> Carry messages <strong>FROM the sense organs TO the brain and spinal cord</strong> ('I see red light', 'This ice is freezing', 'The bell is ringing').",
-        "<strong>Motor Nerves (Outputs):</strong> Carry orders <strong>FROM the brain and spinal cord TO muscles and glands</strong> ('Contract leg muscles', 'Secrete sweat', 'Blink eyelids').",
-        "<strong>Mixed Nerves (Two-Way):</strong> Contain both sensory and motor nerve fibers, transmitting signals in <strong>both directions</strong> between the central nervous system and body tissues.",
+        "<strong>Sensory Nerves (Inbound Inputs):</strong> Carry messages <strong>FROM the sense organs TO the brain and spinal cord</strong> ('I see red light', 'This ice is freezing', 'The bell is ringing', 'The flower smells sweet').",
+        "<strong>Motor Nerves (Outbound Outputs):</strong> Carry orders <strong>FROM the brain and spinal cord TO muscles and glands</strong> ('Contract leg muscles', 'Secrete sweat', 'Blink eyelids', 'Salivate').",
+        "<strong>Mixed Nerves (Two-Way Highways):</strong> Contain both sensory and motor nerve fibers running side-by-side, transmitting signals in <strong>both directions</strong> between the central nervous system and body tissues.",
         "<strong>No Isolated Nerves:</strong> A nerve can NEVER run directly from wrist to ankle on its own! All peripheral nerves must route through the spinal cord or brain central network."
       ],
       "thinkPrompt": "If an accident cuts only the sensory nerves to a person's hand while motor nerves remain intact, could they pick up an apple? Could they feel if it is cold?",
@@ -2076,12 +2100,23 @@ const CHAPTERS_DATA = [
       "badge": "Sensory Detectors",
       "title": "👁️ The 5 Precision Sense Organs",
       "metaphor": "Your 5 sense organs are high-definition environmental sensors streaming real-time data to your brain!",
+      "diagrams": [
+        {
+          "image": "images/l4_eye_structure.png",
+          "caption": "<strong>The Eye (Biological Camera):</strong> Cornea, Iris (colored ring), Pupil aperture, Lens, Retina screen (inverted image), & Optic Nerve"
+        },
+        {
+          "image": "images/l4_ear_structure.png",
+          "caption": "<strong>The Ear (Hearing & Balance):</strong> Pinna, Eardrum, 3 Bones, Cochlea (hearing), Semicircular Canals (balance!), & Auditory Nerve"
+        }
+      ],
       "points": [
-        "<strong>Eye (Biological Camera):</strong> Light passes through the transparent <strong>cornea</strong> → enters through the <strong>pupil</strong> (regulated by colored <strong>iris</strong>) → focused by lens → inverted image forms on the <strong>retina</strong> → <strong>optic nerve</strong> transmits image signals to cerebrum.",
-        "<strong>Ear (Hearing & Balance!):</strong> Outer ear (<strong>pinna</strong>) collects sound waves → <strong>eardrum</strong> vibrates → 3 tiny middle ear bones amplify → fluid-filled snail <strong>cochlea</strong> turns vibrations into nerve signals → auditory nerve. <em>Inner ear semicircular canals maintain body balance!</em>",
-        "<strong>Nose:</strong> Nasal cavity lined with olfactory nerve receptors. Hair and mucus trap airborne dirt and bacteria.",
-        "<strong>Tongue:</strong> Taste buds detect sweet, salty, sour, and bitter. Nerves send taste signals to cerebrum. (Also essential for speech and swallowing!).",
-        "<strong>Skin (Largest Organ):</strong> Contains microscopic receptors sensitive to <strong>touch, pressure, heat, cold, and pain</strong>. Sweat glands regulate body temperature."
+        "<strong>Eye (Biological Camera):</strong> Light enters through the transparent <strong>cornea</strong> → passes through the <strong>pupil</strong> (aperture adjusted by colored <strong>iris</strong>) → focused by the biological lens → inverted image forms on the light-sensitive <strong>retina</strong> screen → <strong>optic nerve</strong> transmits signals to cerebrum, which flips the image upright!",
+        "<strong>Ear (Hearing & Body Balance!):</strong> Outer ear (<strong>pinna</strong>) collects sound waves → <strong>eardrum</strong> vibrates → 3 tiny middle ear bones (hammer, anvil, stirrup — smallest bones in the human body!) amplify vibrations → fluid-filled snail <strong>cochlea</strong> converts vibrations into nerve signals → <strong>auditory nerve</strong>.",
+        "<strong>Balance Semicircular Canals:</strong> The 3 fluid-filled semicircular canals in the inner ear detect head tilt and rotational motion, working closely with the cerebellum to maintain dynamic balance and prevent falling!",
+        "<strong>Nose (Olfactory Detector):</strong> Upper nasal cavity lined with sensitive olfactory nerve endings that detect airborne scent molecules. Mucus and nasal hairs filter out dust and germs.",
+        "<strong>Tongue (Taste Sensor):</strong> Covered with taste buds detecting 5 primary tastes: sweet, salty, sour, bitter, and umami. (Smell and taste work together to create flavor).",
+        "<strong>Skin (Largest Sense Organ):</strong> Houses millions of microscopic sensory receptors for <strong>touch, pressure, heat, cold, and pain</strong>, while sweat glands regulate body temperature."
       ],
       "thinkPrompt": "Why does chocolate or hot soup taste completely bland and flavorless when your nose is severely blocked with a common cold?",
       "checkQuestions": [
