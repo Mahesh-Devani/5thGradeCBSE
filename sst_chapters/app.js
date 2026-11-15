@@ -322,42 +322,88 @@ const CHAPTERS_DATA = [
       {
         title: 'Geographic Location in the Frigid Zone',
         icon: '🌐',
-        body: 'Greenland is the <strong>largest island in the world</strong> that is not a continent. The Arctic Circle passes through its southern part, placing most of Greenland in the <strong>Frigid Zone</strong> of the Northern Hemisphere. It is a self-governing province of <strong>Denmark</strong>, and its capital city is <strong>Nuuk</strong> (formerly known as Godthab).'
+        diagrams: [
+          {
+            image: 'images/l6_greenland_map.png',
+            caption: '<strong>Physical Map of Greenland:</strong> Arctic Circle, Nuuk (capital), Sisimiut, Baffin Bay, Davis Strait & Greenland Ice Sheet'
+          }
+        ],
+        body: 'Greenland is the <strong>largest island in the world</strong> that is not a continent. The Arctic Circle passes through its southern part, placing most of Greenland in the <strong>Frigid Zone</strong> of the Northern Hemisphere. It is a self-governing province of <strong>Denmark</strong>, and its capital city is <strong>Nuuk</strong> (formerly known as Godthab). Waters surrounding Greenland include the <strong>Arctic Ocean</strong>, <strong>Baffin Bay</strong>, <strong>Davis Strait</strong>, and <strong>Denmark Strait</strong>.'
       },
       {
         title: 'Settlers & The Clever Name Mystery',
         icon: '⛵',
-        body: 'The <strong>Inuit</strong> people were the first settlers, crossing from North America in batches about 5,000 years ago. Around 1,000 years ago, Norse settlers arrived led by <strong>Eric the Red</strong>, an explorer from Norway. He cleverly named the ice-bound island <em>"Greenland"</em> hoping the pleasant name would attract more settlers from Europe!'
+        body: 'The <strong>Inuit</strong> people were the first settlers, crossing over from North America in migration batches about <strong>5,000 years ago</strong>. Around 1,000 years ago, Norse settlers arrived led by <strong>Eric the Red</strong>, an explorer from Norway. He cleverly named the ice-bound island <em>"Greenland"</em> hoping the pleasant name would encourage and attract more people from Europe to come and settle there!'
       },
       {
         title: 'Climate, Landscape & The Ice Sheet',
         icon: '🧊',
-        body: 'Greenland has an extremely cold and dry Arctic climate. Over <strong>80 per cent</strong> of its land is permanently buried under a massive blanket of ice called the <strong>Greenland Ice Sheet</strong>. The landscape is mostly flat, bordered by a narrow mountainous coastal belt. The <strong>south-western coast</strong> is the warmest part of Greenland.'
+        body: 'Greenland has an extremely cold and dry Arctic climate. Over <strong>80 per cent</strong> of its land is permanently buried under a massive blanket of ice called the <strong>Greenland Ice Sheet</strong>. The landscape is mostly flat, bordered by a narrow mountainous coastal belt. The <strong>south-western coast</strong> is the warmest part of the country, which is why almost all major settlements are located there.'
       },
       {
         title: 'The Hidden Menace of Icebergs',
         icon: '🚢',
-        body: 'Huge chunks of ice frequently snap off (calve) from the ice sheet and drift into ocean shipping lanes. These are called <strong>icebergs</strong>. Because ice is less dense than sea water, <strong>nearly 90% of an iceberg is hidden underwater</strong> with only a small tip visible on the surface! This makes icebergs extremely dangerous to sailing ships (such as the Titanic).'
+        body: 'Huge chunks of ice frequently break off (calve) from the continental ice sheet and float in the sea. These are called <strong>icebergs</strong>. Because ice is less dense than sea water, <strong>nearly 90% (about 8/9ths) of an iceberg is hidden underwater</strong> with only a small tip visible on the surface! They pose great danger to sailing ships (such as the Titanic) because unseen underwater spurs can rip open ship hulls.'
       },
       {
         title: 'Vegetation: The Treeless Tundra',
         icon: '🌱',
-        body: 'Nothing can grow across the ice-covered interior. The unfrozen coastal fringe is covered by <strong>tundra</strong> — a flat, treeless landscape. During the brief Arctic summer, low-growing plants like <strong>mosses, lichens, sedges, and cotton grass</strong> bloom quickly before freezing winter returns.'
+        diagrams: [
+          {
+            image: 'images/l6_tundra_vegetation.png',
+            caption: '<strong>Tundra Summer Flora:</strong> Low-growing cotton grass, sedges, mosses, and lichens blooming in southern Greenland during brief summer'
+          }
+        ],
+        body: 'Nothing can grow across the ice-covered interior. The unfrozen coastal fringe is covered by <strong>tundra</strong> — a flat, treeless landscape. During the brief Arctic summer, low-growing plants like <strong>mosses, lichens, sedges, and cotton grass</strong> bloom quickly before sub-zero winter temperatures return.'
       },
       {
         title: 'Cold-Adapted Wildlife & Marine Life',
         icon: '🐻‍❄️',
-        body: 'Only animals with specialized cold adaptations survive here: <strong>polar bears, reindeers, musk oxen, Arctic foxes, and seals</strong>. Thick layers of fat (blubber) and dense waterproof fur protect them against sub-zero blizzards. Coastal waters teem with rich varieties of fish, whales, and seabirds.'
+        diagrams: [
+          {
+            image: 'images/l6_polar_bear.png',
+            caption: '<strong>Polar Bear:</strong> Apex Arctic hunter with thick blubber fat and hollow waterproof white fur'
+          },
+          {
+            image: 'images/l6_baby_seal.png',
+            caption: '<strong>Baby Seal:</strong> Coastal marine mammal with dense insulating coat'
+          },
+          {
+            image: 'images/l6_reindeer.png',
+            caption: '<strong>Reindeer (Caribou):</strong> Wide hooves for walking over snow and digging for lichens'
+          }
+        ],
+        body: 'Only animals that can withstand extreme polar cold survive in Greenland: <strong>polar bears, reindeers, musk oxen, Arctic foxes, and seals</strong>. Thick layers of subcutaneous fat (<strong>blubber</strong>) and dense waterproof fur trap body heat. Coastal waters teem with rich varieties of fish, whales, and seabirds.'
       },
       {
         title: 'Inuit Culture: Tradition to Modernity',
         icon: '🧥',
-        body: 'The Inuit (mainly the <strong>Kalaallit</strong> tribe) traditionally lived a nomadic life hunting seals and fishing from narrow skin-covered boats called <strong>kayaks</strong>, while dog-pulled sledges traveled over snow. They built temporary dome-shaped winter ice shelters called <strong>igloos (aputiaks)</strong> and summer sealskin tents. They wore warm animal fur jackets with fur-lined hoods called <strong>parkas</strong>. Today, they lead settled lives in modern heated houses with schools, hospitals, motorboats, and snowmobiles.'
+        diagrams: [
+          {
+            image: 'images/l6_ws_kayak.png',
+            caption: '<strong>The Kayak (Freedom Worksheet Q5):</strong> Narrow traditional sea-hunting boat propelled with double-bladed paddle'
+          },
+          {
+            image: 'images/l6_inuit_kayak.png',
+            caption: '<strong>Inuit Seal Hunter:</strong> Navigating coastal Arctic waters for sea fishing and seal hunting'
+          },
+          {
+            image: 'images/l6_igloo.png',
+            caption: '<strong>The Igloo (Aputiak):</strong> Dome-shaped temporary winter shelter built using blocks of compacted snow and ice'
+          }
+        ],
+        body: 'The Inuit (predominantly the <strong>Kalaallit</strong> tribe) are the original inhabitants. In the past, they were <strong>nomadic</strong>, moving throughout the year to hunt and fish. Over snow, they used <strong>sledges pulled by dogs</strong>; for fishing and sea-hunting, they used narrow boats called <strong>kayaks</strong>. They built temporary dome-shaped winter shelters called <strong>igloos (aputiaks)</strong> of ice blocks, and lived in sealskin tents in summer. They wore clothes of animal skin and fur, including hooded jackets called <strong>parkas</strong> and long boots.'
       },
       {
         title: 'Economy, Transport & Climate Alerts',
         icon: '🐟',
-        body: '<strong>Fish processing</strong> is Greenland\'s primary export industry. Agriculture is very limited due to freezing permafrost, though southwest farms grow potatoes, lettuce, and turnips. With almost no roads (longest road is only 33 km), Greenland has <strong>more boats than cars</strong>, and the sea functions as a highway! Rapid melting of the ice sheet due to global warming poses a serious global environmental threat.'
+        diagrams: [
+          {
+            image: 'images/l6_inuit_clothing.png',
+            caption: '<strong>Inuit Women in Traditional Dress:</strong> Parkas and kamik boots, now settled in modern coastal towns'
+          }
+        ],
+        body: 'Today, most Inuit lead a settled life in coastal villages and towns like <strong>Nuuk</strong> and <strong>Sisimiut</strong> with modern electricity, permanent heated houses, schools, and hospitals. Motorised snowmobiles and motorboats have replaced dog sledges. Greenland has a mixed population of Inuit and Europeans totaling only <strong>about 56,000 people</strong>. <strong>Fish processing</strong> is the major industry. With no intercity highways (longest road is only 33 km), Greenland has <strong>more boats than cars</strong>, and the sea functions as a highway!'
       }
     ],
     examTraps: [
@@ -460,6 +506,22 @@ const CHAPTERS_DATA = [
         hint: 'Marine harvest of shrimp, cod, and halibut packaged for export.',
         explanation: 'Fish processing is the backbone of Greenland’s economy and its leading export.'
       },
+      {
+        id: 'grn_b11',
+        type: 'blank',
+        prompt: 'Name one traditional means of transport used by people in Greenland\'s snowy regions: _______.',
+        acceptableAnswers: ['sledge', 'dog sledge', 'dogsled', 'sledge pulled by dogs', 'sledge pulled by huskies', 'sled', 'kayak', 'umiak'],
+        hint: 'A vehicle on runners pulled by husky dogs, or a light sealskin boat.',
+        explanation: 'Sledges pulled by teams of huskies (and kayaks/umiaks on water) are traditional means of transport in Greenland.'
+      },
+      {
+        id: 'grn_mcq_ar',
+        type: 'blank',
+        prompt: 'Assertion (A): Over eighty per cent of Greenland stays permanently covered with ice. Reason (R): Greenland is the largest island in the world that is not a continent. Choose (A/B/C/D): [A: Both true and R explains A | B: Both true but R is not correct explanation | C: A true, R false | D: A false, R true] Answer: Option _______.',
+        acceptableAnswers: ['b', 'option b', 'both a and r are true but r is not the correct explanation of a', 'both are true but r is not the correct explanation'],
+        hint: 'Both statements are true facts, but does island status cause the permanent ice, or does polar Frigid Zone location?',
+        explanation: 'Option B is correct. Both statements are true facts, but Greenland is covered with ice because of its Arctic Frigid Zone location near the North Pole, not simply because it is an island.'
+      },
 
       // True / False with Corrections
       {
@@ -521,6 +583,14 @@ const CHAPTERS_DATA = [
         prompt: 'Icebergs pose a danger to ships because only a small fraction is visible above the sea water.',
         isTrue: true,
         explanation: 'Around 90% of an iceberg is hidden underwater, making its true boundaries and sharp spurs invisible to lookouts.'
+      },
+      {
+        id: 'grn_tf9',
+        type: 'tf',
+        prompt: 'Most of Greenland\'s population lives in the ice-covered interior.',
+        isTrue: false,
+        correction: 'Most of the population lives in towns along the south-western coast where climate is milder and waters are ice-free; the interior is covered by the uninhabitable ice sheet.',
+        explanation: 'False! The vast interior of Greenland is buried under a massive permanent ice sheet. Almost all citizens live along the ice-free south-western coast.'
       },
 
       // Match the Following
@@ -617,6 +687,60 @@ const CHAPTERS_DATA = [
         keyPoints: [
           'Greenland has rugged mountainous terrain, glaciers, and fjords, resulting in almost no road connectivity between towns (the longest road is only ~33 km).',
           'Because all major towns are situated along the coast, the open sea acts as a natural highway, making boats the most convenient mode of travel.'
+        ]
+      },
+      {
+        id: 'grn_ws_kayak',
+        type: 'short',
+        prompt: 'Observe the image and answer the questions that follow: (a) Identify the vehicle shown. (b) State any two purposes this transport is used for.',
+        image: 'images/l6_ws_kayak.png',
+        imageCaption: 'Freedom International School Worksheet: Figure Observation',
+        imageAlt: 'Traditional Inuit Kayak',
+        thinkingClue: '💡 Think About It: What is this light, narrow sealskin boat called, and how does an Inuit hunter navigate Arctic waters in it?',
+        keyPoints: [
+          '(a) Identification: The image shows a Kayak (a small, narrow, lightweight boat covered with animal sealskin, navigated with a double-bladed paddle).',
+          '(b) Purpose 1: Used by Inuit hunters for sea mammal hunting (catching seals, walruses, and small whales).',
+          '(b) Purpose 2: Used for fishing and swift, silent water transport through icy coastal bays and fjords.'
+        ]
+      },
+      {
+        id: 'grn_ws_sparse',
+        type: 'short',
+        prompt: 'Greenland is sparsely populated with only around 56,000 people. Justify this statement with reasons.',
+        thinkingClue: '💡 Think About It: Compare Greenland\'s massive land area (>21 lakh sq km) with its permanent ice cover and extreme freezing climate.',
+        keyPoints: [
+          'Greenland has a total population of only around 56,000 spread over a vast area of more than 21.6 lakh sq km, giving it one of the lowest population densities in the world.',
+          'Over 80% of the island is permanently buried under a colossal ice sheet with freezing sub-zero temperatures, harsh blizzards, and permafrost where agriculture cannot take place.'
+        ]
+      },
+      {
+        id: 'grn_ws_coastal',
+        type: 'short',
+        prompt: 'Why do you think most settlements in Greenland are located along the coast rather than inland?',
+        thinkingClue: '💡 Think About It: What covers the entire interior of Greenland, and why are south-western coastal waters ice-free?',
+        keyPoints: [
+          'The entire interior of Greenland is buried under a thick, uninhabitable ice sheet thousands of meters deep with hostile freezing winds and zero soil.',
+          'The south-western coast is warmed by ocean currents, leaving coastal waters ice-free for year-round fishing, boat navigation, trade, and building permanent towns with modern facilities.'
+        ]
+      },
+      {
+        id: 'grn_ws_food',
+        type: 'short',
+        prompt: 'The food habits of Greenlandic Inuits are influenced by the extremely cold climate and their natural surroundings. Elucidate.',
+        thinkingClue: '💡 Think About It: Can crops grow in permafrost? What local animals provide high calories and body warmth in sub-zero Arctic temperatures?',
+        keyPoints: [
+          'Because freezing sub-zero temperatures and frozen permafrost make crop farming impossible, the traditional Inuit diet relies almost entirely on hunting and fishing (seals, whales, fish, seabirds, and caribou).',
+          'Consuming meat and animal blubber (fat) provides the high calories, body heat, and vital nutrition needed to withstand the extreme Arctic cold.'
+        ]
+      },
+      {
+        id: 'grn_ws_moving',
+        type: 'short',
+        prompt: 'Imagine you are moving to Greenland from India. Name two major lifestyle changes you would make in your daily life to adjust to its climate.',
+        thinkingClue: '💡 Think About It: Compare tropical India with Arctic Greenland in terms of clothing, indoor heating, and day-night patterns.',
+        keyPoints: [
+          'Clothing & Shelter: Replace light cotton garments with multi-layered thermal wear, heavy fur/waterproof parkas, and insulated kamik boots, and live in centrally-heated insulated homes.',
+          'Daily Routine & Environment: Adjust to extreme polar day-night cycles (continuous daylight / midnight sun in summer, and continuous dark polar nights in winter) and consume higher-calorie foods.'
         ]
       },
 
@@ -2246,50 +2370,50 @@ const CHAPTER_MILESTONES = {
       id: 'learn_part2',
       title: 'Mineral Wealth & Pygmy Culture',
       desc: 'Explored DRC\'s cobalt & industrial diamond wealth, shifting cultivation, and indigenous Bambuti pygmies',
-      hint: 'Review concept cards 3, 4 & 5 in Learn mode',
-      check: (d) => d.learnCardsRead >= 4
+      hint: 'Review concept cards 3, 4 & 5 in Learn mode or solve 14 practice questions',
+      check: (d) => (d.learnCardsRead >= 4 || d.totalSolved >= 14)
     },
     {
       id: 'exam_traps',
       title: 'Rainforest & Evergreen Traps',
       desc: 'Diagnosed tricky CBSE exam misconceptions in "Be the Teacher" (evergreen leaf shedding vs deciduous, mineral paradox)',
-      hint: 'Read and diagnose the exam traps in Learn mode',
-      check: (d) => d.trapsDiagnosed >= 2
+      hint: 'Read and diagnose the exam traps in Learn mode or solve 12 practice questions',
+      check: (d) => (d.trapsDiagnosed >= 2 || d.totalSolved >= 12)
     },
     {
       id: 'practice_blanks',
       title: 'Geographical Fact Precision (Blanks)',
       desc: 'Correctly completed foundational fill-in-the-blank questions on DRC\'s rivers, capital, and climate',
-      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode',
-      check: (d) => (d.categorySolved.blank || 0) >= 3
+      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode (or 2 questions total)',
+      check: (d) => ((d.categorySolved.blank || 0) >= 3 || d.totalSolved >= 2)
     },
     {
       id: 'practice_tf',
       title: 'True/False Deductions & Corrections',
       desc: 'Evaluated True/False statements with geographic reasoning',
-      hint: 'Solve at least 3 True/False questions in Practice mode',
-      check: (d) => (d.categorySolved.tf || 0) >= 3
+      hint: 'Solve at least 3 True/False questions in Practice mode (or 4 questions total)',
+      check: (d) => ((d.categorySolved.tf || 0) >= 3 || d.totalSolved >= 4)
     },
     {
       id: 'practice_match',
       title: 'Resource & Agricultural Matching',
       desc: 'Paired DRC\'s crops, minerals, and indigenous groups to their roles',
-      hint: 'Solve Match the Following questions in Practice mode',
-      check: (d) => (d.categorySolved.match || 0) >= 1
+      hint: 'Solve Match the Following questions in Practice mode (or 6 questions total)',
+      check: (d) => ((d.categorySolved.match || 0) >= 1 || d.totalSolved >= 6)
     },
     {
       id: 'practice_short',
       title: 'Short Answer Reasoning (2 Marks)',
       desc: 'Formulated concise 2-mark conceptual explanations (4 o\'clock rain, transport challenges)',
-      hint: 'Solve at least 2 Short Answer questions in Practice mode',
-      check: (d) => (d.categorySolved.short || 0) >= 2
+      hint: 'Solve at least 2 Short Answer questions in Practice mode (or 8 questions total)',
+      check: (d) => ((d.categorySolved.short || 0) >= 2 || d.totalSolved >= 8)
     },
     {
       id: 'practice_long',
       title: 'Long Answer Scaffold Mastery (5 Marks)',
       desc: 'Chunked and conquered 5-mark subjective exam questions using the 4-pillar scaffold',
-      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
-      check: (d) => (d.categorySolved.long || 0) >= 1
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode (or 10 questions total)',
+      check: (d) => ((d.categorySolved.long || 0) >= 1 || d.totalSolved >= 10)
     },
     {
       id: 'practice_breadth',
@@ -2302,8 +2426,8 @@ const CHAPTER_MILESTONES = {
       id: 'sprint_mastery',
       title: 'Mental Speed & Exam Readiness',
       desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
-      hint: 'Score 7+ points in the 60s Challenge',
-      check: (d) => d.sprintHighScore >= 7
+      hint: 'Score 7+ points in the 60s Challenge or complete 16 practice questions',
+      check: (d) => (d.sprintHighScore >= 7 || d.totalSolved >= 16)
     }
   ],
 
@@ -2319,64 +2443,64 @@ const CHAPTER_MILESTONES = {
       id: 'learn_part2',
       title: 'Tundra Ecology & Inuit Culture',
       desc: 'Mastered Arctic flora/fauna adaptations and traditional vs modern Inuit lifestyles (kayaks, igloos, Nuuk)',
-      hint: 'Review concept cards 3, 4 & 5 in Learn mode',
-      check: (d) => d.learnCardsRead >= 5
+      hint: 'Review concept cards 3, 4 & 5 in Learn mode or solve 14 practice questions',
+      check: (d) => (d.learnCardsRead >= 4 || d.totalSolved >= 14)
     },
     {
       id: 'exam_traps',
       title: 'Arctic Misconceptions Diagnostic',
       desc: 'Diagnosed tricky CBSE exam traps (Greenland naming irony, permanent vs temporary snow igloos, iceberg mass)',
-      hint: 'Read and diagnose at least 3 exam traps in Learn mode',
-      check: (d) => d.trapsDiagnosed >= 3
+      hint: 'Read and diagnose at least 2 exam traps in Learn mode or solve 12 practice questions',
+      check: (d) => (d.trapsDiagnosed >= 2 || d.totalSolved >= 12)
     },
     {
       id: 'practice_blanks',
       title: 'Arctic Fact Precision (Blanks)',
       desc: 'Correctly completed foundational fill-in-the-blank questions on Nuuk, icebergs, harpoons, and tundra',
-      hint: 'Solve at least 5 Fill in the Blanks questions in Practice mode',
-      check: (d) => (d.categorySolved.blank || 0) >= 5
+      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode (or 2 questions total)',
+      check: (d) => ((d.categorySolved.blank || 0) >= 3 || d.totalSolved >= 2)
     },
     {
       id: 'practice_tf',
       title: 'Polar True/False Deductions',
       desc: 'Evaluated True/False statements regarding Arctic flora, fauna, and seasons with reasoning',
-      hint: 'Solve at least 4 True/False questions in Practice mode',
-      check: (d) => (d.categorySolved.tf || 0) >= 4
+      hint: 'Solve at least 3 True/False questions in Practice mode (or 4 questions total)',
+      check: (d) => ((d.categorySolved.tf || 0) >= 3 || d.totalSolved >= 4)
     },
     {
       id: 'practice_match',
       title: 'Arctic Terminology & Gear Matching',
       desc: 'Matched Inuit terms (Parka, Kayak, Umiak, Harpoon, Igloo) with precision',
-      hint: 'Solve at least 2 Match the Following sets in Practice mode',
-      check: (d) => (d.categorySolved.match || 0) >= 2
+      hint: 'Solve at least 1 Match the Following set in Practice mode (or 6 questions total)',
+      check: (d) => ((d.categorySolved.match || 0) >= 1 || d.totalSolved >= 6)
     },
     {
       id: 'practice_short',
       title: 'Polar Conceptual Reasoning (2 Marks)',
       desc: 'Formulated concise 2-mark conceptual explanations (why trees don\'t grow, iceberg danger to ships)',
-      hint: 'Solve at least 3 Short Answer questions in Practice mode',
-      check: (d) => (d.categorySolved.short || 0) >= 3
+      hint: 'Solve at least 2 Short Answer questions in Practice mode (or 8 questions total)',
+      check: (d) => ((d.categorySolved.short || 0) >= 2 || d.totalSolved >= 8)
     },
     {
       id: 'practice_long',
       title: 'Long Answer Scaffold Mastery (5 Marks)',
       desc: 'Chunked and conquered 5-mark subjective exam questions on Inuit lifestyle changes and climate',
-      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
-      check: (d) => (d.categorySolved.long || 0) >= 1
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode (or 10 questions total)',
+      check: (d) => ((d.categorySolved.long || 0) >= 1 || d.totalSolved >= 10)
     },
     {
       id: 'practice_breadth',
       title: 'Comprehensive Arctic Practice Breadth',
-      desc: 'Solved at least 15 questions across all practice categories',
-      hint: 'Solve at least 15 total practice questions',
-      check: (d) => d.totalSolved >= 15
+      desc: 'Solved at least 10 questions across all practice categories',
+      hint: 'Solve at least 10 total practice questions',
+      check: (d) => d.totalSolved >= 10
     },
     {
       id: 'sprint_mastery',
       title: 'Mental Speed & Polar Recall',
       desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
-      hint: 'Score 7+ points in the 60s Challenge',
-      check: (d) => d.sprintHighScore >= 7
+      hint: 'Score 7+ points in the 60s Challenge or complete 16 practice questions',
+      check: (d) => (d.sprintHighScore >= 7 || d.totalSolved >= 16)
     }
   ],
 
@@ -2392,50 +2516,50 @@ const CHAPTER_MILESTONES = {
       id: 'learn_part2',
       title: 'Water Solutions & Modern Economy',
       desc: 'Mastered desalination plants, drip irrigation, Bedouin traditions, and modern Riyadh & Jeddah',
-      hint: 'Review concept cards 3, 4 & 5 in Learn mode',
-      check: (d) => d.learnCardsRead >= 4
+      hint: 'Review concept cards 3, 4 & 5 in Learn mode or solve 14 practice questions',
+      check: (d) => (d.learnCardsRead >= 4 || d.totalSolved >= 14)
     },
     {
       id: 'exam_traps',
       title: 'Desert Climate & Oasis Traps',
       desc: 'Diagnosed tricky CBSE exam traps (extreme diurnal temperature range, oasis underground water source)',
-      hint: 'Read and diagnose the exam traps in Learn mode',
-      check: (d) => d.trapsDiagnosed >= 2
+      hint: 'Read and diagnose the exam traps in Learn mode or solve 12 practice questions',
+      check: (d) => (d.trapsDiagnosed >= 2 || d.totalSolved >= 12)
     },
     {
       id: 'practice_blanks',
       title: 'Desert Geography Precision (Blanks)',
       desc: 'Completed foundational blanks on Riyadh, Rub\' al Khali, Red Sea, and oil fields',
-      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode',
-      check: (d) => (d.categorySolved.blank || 0) >= 3
+      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode (or 2 questions total)',
+      check: (d) => ((d.categorySolved.blank || 0) >= 3 || d.totalSolved >= 2)
     },
     {
       id: 'practice_tf',
       title: 'True/False Desert Deductions',
       desc: 'Evaluated statements on Arabian climate, rivers (wadis), and Bedouin tents with corrections',
-      hint: 'Solve at least 3 True/False questions in Practice mode',
-      check: (d) => (d.categorySolved.tf || 0) >= 3
+      hint: 'Solve at least 3 True/False questions in Practice mode (or 4 questions total)',
+      check: (d) => ((d.categorySolved.tf || 0) >= 3 || d.totalSolved >= 4)
     },
     {
       id: 'practice_match',
       title: 'Arabian Culture & Resource Matching',
       desc: 'Connected Saudi garments (Thobe, Ghutrah), cities, and resources to their roles',
-      hint: 'Solve Match the Following questions in Practice mode',
-      check: (d) => (d.categorySolved.match || 0) >= 1
+      hint: 'Solve Match the Following questions in Practice mode (or 6 questions total)',
+      check: (d) => ((d.categorySolved.match || 0) >= 1 || d.totalSolved >= 6)
     },
     {
       id: 'practice_short',
       title: 'Short Answer Reasoning (2 Marks)',
       desc: 'Formulated concise 2-mark conceptual explanations (why camel is ship of the desert, how oil transformed life)',
-      hint: 'Solve at least 2 Short Answer questions in Practice mode',
-      check: (d) => (d.categorySolved.short || 0) >= 2
+      hint: 'Solve at least 2 Short Answer questions in Practice mode (or 8 questions total)',
+      check: (d) => ((d.categorySolved.short || 0) >= 2 || d.totalSolved >= 8)
     },
     {
       id: 'practice_long',
       title: 'Long Answer Scaffold Mastery (5 Marks)',
       desc: 'Chunked and conquered 5-mark subjective exam questions on Saudi Arabia\'s transformation',
-      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
-      check: (d) => (d.categorySolved.long || 0) >= 1
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode (or 10 questions total)',
+      check: (d) => ((d.categorySolved.long || 0) >= 1 || d.totalSolved >= 10)
     },
     {
       id: 'practice_breadth',
@@ -2448,8 +2572,8 @@ const CHAPTER_MILESTONES = {
       id: 'sprint_mastery',
       title: 'Mental Speed & Desert Recall',
       desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
-      hint: 'Score 7+ points in the 60s Challenge',
-      check: (d) => d.sprintHighScore >= 7
+      hint: 'Score 7+ points in the 60s Challenge or complete 16 practice questions',
+      check: (d) => (d.sprintHighScore >= 7 || d.totalSolved >= 16)
     }
   ],
 
@@ -2465,50 +2589,50 @@ const CHAPTER_MILESTONES = {
       id: 'learn_part2',
       title: 'Economic Exploitation & 1857 Spark',
       desc: 'Mastered Doctrine of Lapse, forced indigo/cotton farming, greased cartridges, Mangal Pandey, and Crown Rule (1858)',
-      hint: 'Review concept cards 3, 4 & 5 in Learn mode',
-      check: (d) => d.learnCardsRead >= 4
+      hint: 'Review concept cards 3, 4 & 5 in Learn mode or solve 14 practice questions',
+      check: (d) => (d.learnCardsRead >= 4 || d.totalSolved >= 14)
     },
     {
       id: 'exam_traps',
       title: 'Colonial Exploitation Traps',
       desc: 'Diagnosed tricky CBSE exam traps (Company rule vs Crown rule, economic vs religious causes of 1857)',
-      hint: 'Read and diagnose the exam traps in Learn mode',
-      check: (d) => d.trapsDiagnosed >= 2
+      hint: 'Read and diagnose the exam traps in Learn mode or solve 12 practice questions',
+      check: (d) => (d.trapsDiagnosed >= 2 || d.totalSolved >= 12)
     },
     {
       id: 'practice_blanks',
       title: 'Historical Chronology (Blanks)',
       desc: 'Completed blanks on Plassey, Bahadur Shah Zafar, Rani Lakshmibai, and Queen Victoria\'s proclamation',
-      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode',
-      check: (d) => (d.categorySolved.blank || 0) >= 3
+      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode (or 2 questions total)',
+      check: (d) => ((d.categorySolved.blank || 0) >= 3 || d.totalSolved >= 2)
     },
     {
       id: 'practice_tf',
       title: '1857 Revolt True/False Deductions',
       desc: 'Evaluated historical statements with cause-and-effect reasoning',
-      hint: 'Solve at least 3 True/False questions in Practice mode',
-      check: (d) => (d.categorySolved.tf || 0) >= 3
+      hint: 'Solve at least 3 True/False questions in Practice mode (or 4 questions total)',
+      check: (d) => ((d.categorySolved.tf || 0) >= 3 || d.totalSolved >= 4)
     },
     {
       id: 'practice_match',
       title: '1857 Revolt Leaders & Centers',
       desc: 'Matched revolutionary leaders (Nana Saheb, Tantia Tope, Rani Lakshmibai, Kunwar Singh) to their centers',
-      hint: 'Solve Match the Following questions in Practice mode',
-      check: (d) => (d.categorySolved.match || 0) >= 1
+      hint: 'Solve Match the Following questions in Practice mode (or 6 questions total)',
+      check: (d) => ((d.categorySolved.match || 0) >= 1 || d.totalSolved >= 6)
     },
     {
       id: 'practice_short',
       title: 'Short Answer Historical Reasoning (2 Marks)',
       desc: 'Formulated 2-mark explanations (why Indian weavers suffered, why the 1857 revolt failed to dislodge British)',
-      hint: 'Solve at least 2 Short Answer questions in Practice mode',
-      check: (d) => (d.categorySolved.short || 0) >= 2
+      hint: 'Solve at least 2 Short Answer questions in Practice mode (or 8 questions total)',
+      check: (d) => ((d.categorySolved.short || 0) >= 2 || d.totalSolved >= 8)
     },
     {
       id: 'practice_long',
       title: 'Long Answer Scaffold Mastery (5 Marks)',
       desc: 'Mastered 5-mark subjective answers on causes of the 1857 Revolt and aftermath',
-      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
-      check: (d) => (d.categorySolved.long || 0) >= 1
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode (or 10 questions total)',
+      check: (d) => ((d.categorySolved.long || 0) >= 1 || d.totalSolved >= 10)
     },
     {
       id: 'practice_breadth',
@@ -2521,8 +2645,8 @@ const CHAPTER_MILESTONES = {
       id: 'sprint_mastery',
       title: 'Mental Speed & Freedom Chronology',
       desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
-      hint: 'Score 7+ points in the 60s Challenge',
-      check: (d) => d.sprintHighScore >= 7
+      hint: 'Score 7+ points in the 60s Challenge or complete 16 practice questions',
+      check: (d) => (d.sprintHighScore >= 7 || d.totalSolved >= 16)
     }
   ],
 
@@ -2538,50 +2662,50 @@ const CHAPTER_MILESTONES = {
       id: 'learn_part2',
       title: 'Radicals, Partition of Bengal & Swadeshi',
       desc: 'Mastered Lal-Bal-Pal, Tilak\'s Swaraj proclamation, 1905 Partition of Bengal, Swadeshi bonfires, and Revolutionaries',
-      hint: 'Review concept cards 3, 4 & 5 in Learn mode',
-      check: (d) => d.learnCardsRead >= 4
+      hint: 'Review concept cards 3, 4 & 5 in Learn mode or solve 14 practice questions',
+      check: (d) => (d.learnCardsRead >= 4 || d.totalSolved >= 14)
     },
     {
       id: 'exam_traps',
       title: 'Nationalist Movement Traps',
       desc: 'Diagnosed tricky CBSE exam traps (Moderates vs Radicals methods, Bengal partition real motive vs British excuse)',
-      hint: 'Read and diagnose the exam traps in Learn mode',
-      check: (d) => d.trapsDiagnosed >= 2
+      hint: 'Read and diagnose the exam traps in Learn mode or solve 12 practice questions',
+      check: (d) => (d.trapsDiagnosed >= 2 || d.totalSolved >= 12)
     },
     {
       id: 'practice_blanks',
       title: 'Nationalist Chronology (Blanks)',
       desc: 'Completed blanks on Bombay 1885, Lord Curzon 1905, Kesari, and Swadeshi',
-      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode',
-      check: (d) => (d.categorySolved.blank || 0) >= 3
+      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode (or 2 questions total)',
+      check: (d) => ((d.categorySolved.blank || 0) >= 3 || d.totalSolved >= 2)
     },
     {
       id: 'practice_tf',
       title: 'True/False Nationalist Deductions',
       desc: 'Evaluated historical statements on Moderate prayers vs Radical direct action',
-      hint: 'Solve at least 3 True/False questions in Practice mode',
-      check: (d) => (d.categorySolved.tf || 0) >= 3
+      hint: 'Solve at least 3 True/False questions in Practice mode (or 4 questions total)',
+      check: (d) => ((d.categorySolved.tf || 0) >= 3 || d.totalSolved >= 4)
     },
     {
       id: 'practice_match',
       title: 'Leaders, Publications & Movements',
       desc: 'Matched leaders (Tilak, Gokhale, Khudiram Bose, Curzon) to their contributions',
-      hint: 'Solve Match the Following questions in Practice mode',
-      check: (d) => (d.categorySolved.match || 0) >= 1
+      hint: 'Solve Match the Following questions in Practice mode (or 6 questions total)',
+      check: (d) => ((d.categorySolved.match || 0) >= 1 || d.totalSolved >= 6)
     },
     {
       id: 'practice_short',
       title: 'Short Answer Reasoning (2 Marks)',
       desc: 'Formulated 2-mark conceptual explanations (difference between Moderates and Radicals, Swadeshi movement)',
-      hint: 'Solve at least 2 Short Answer questions in Practice mode',
-      check: (d) => (d.categorySolved.short || 0) >= 2
+      hint: 'Solve at least 2 Short Answer questions in Practice mode (or 8 questions total)',
+      check: (d) => ((d.categorySolved.short || 0) >= 2 || d.totalSolved >= 8)
     },
     {
       id: 'practice_long',
       title: 'Long Answer Scaffold Mastery (5 Marks)',
       desc: 'Mastered 5-mark subjective answers on Partition of Bengal and the Swadeshi & Boycott Movement',
-      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
-      check: (d) => (d.categorySolved.long || 0) >= 1
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode (or 10 questions total)',
+      check: (d) => ((d.categorySolved.long || 0) >= 1 || d.totalSolved >= 10)
     },
     {
       id: 'practice_breadth',
@@ -2594,8 +2718,8 @@ const CHAPTER_MILESTONES = {
       id: 'sprint_mastery',
       title: 'Mental Speed & Nationalist Recall',
       desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
-      hint: 'Score 7+ points in the 60s Challenge',
-      check: (d) => d.sprintHighScore >= 7
+      hint: 'Score 7+ points in the 60s Challenge or complete 16 practice questions',
+      check: (d) => (d.sprintHighScore >= 7 || d.totalSolved >= 16)
     }
   ],
 
@@ -2611,50 +2735,50 @@ const CHAPTER_MILESTONES = {
       id: 'learn_part2',
       title: 'Civil Disobedience, Quit India & INA',
       desc: 'Mastered Dandi Salt March (1930), Quit India ("Do or Die" 1942), Netaji Subhas Chandra Bose & INA, and 15 August 1947',
-      hint: 'Review concept cards 4, 5 & 6 in Learn mode',
-      check: (d) => d.learnCardsRead >= 5
+      hint: 'Review concept cards 4, 5 & 6 in Learn mode or solve 14 practice questions',
+      check: (d) => (d.learnCardsRead >= 5 || d.totalSolved >= 14)
     },
     {
       id: 'exam_traps',
       title: 'Mass Movement Traps',
       desc: 'Diagnosed tricky CBSE exam traps (why Non-Cooperation was suspended after Chauri Chaura, Simon Commission boycott reason)',
-      hint: 'Read and diagnose the exam traps in Learn mode',
-      check: (d) => d.trapsDiagnosed >= 2
+      hint: 'Read and diagnose the exam traps in Learn mode or solve 12 practice questions',
+      check: (d) => (d.trapsDiagnosed >= 2 || d.totalSolved >= 12)
     },
     {
       id: 'practice_blanks',
       title: 'Gandhian Movements Precision (Blanks)',
       desc: 'Completed blanks on Satyagraha, Dyer, Dandi, Chauri Chaura, and INA',
-      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode',
-      check: (d) => (d.categorySolved.blank || 0) >= 3
+      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode (or 2 questions total)',
+      check: (d) => ((d.categorySolved.blank || 0) >= 3 || d.totalSolved >= 2)
     },
     {
       id: 'practice_tf',
       title: 'Freedom Movement True/False Deductions',
       desc: 'Evaluated historical statements on non-violence, salt tax defiance, and Azad Hind Fauj',
-      hint: 'Solve at least 3 True/False questions in Practice mode',
-      check: (d) => (d.categorySolved.tf || 0) >= 3
+      hint: 'Solve at least 3 True/False questions in Practice mode (or 4 questions total)',
+      check: (d) => ((d.categorySolved.tf || 0) >= 3 || d.totalSolved >= 4)
     },
     {
       id: 'practice_match',
       title: 'Freedom Slogans & Historic Years',
       desc: 'Matched iconic slogans ("Jai Hind", "Do or Die", "Give me blood") and key years (1919, 1930, 1942, 1947)',
-      hint: 'Solve Match the Following questions in Practice mode',
-      check: (d) => (d.categorySolved.match || 0) >= 1
+      hint: 'Solve Match the Following questions in Practice mode (or 6 questions total)',
+      check: (d) => ((d.categorySolved.match || 0) >= 1 || d.totalSolved >= 6)
     },
     {
       id: 'practice_short',
       title: 'Short Answer Historical Reasoning (2 Marks)',
       desc: 'Formulated 2-mark conceptual explanations (why Gandhiji picked salt for civil disobedience, why Simon Commission was boycotted)',
-      hint: 'Solve at least 2 Short Answer questions in Practice mode',
-      check: (d) => (d.categorySolved.short || 0) >= 2
+      hint: 'Solve at least 2 Short Answer questions in Practice mode (or 8 questions total)',
+      check: (d) => ((d.categorySolved.short || 0) >= 2 || d.totalSolved >= 8)
     },
     {
       id: 'practice_long',
       title: 'Long Answer Scaffold Mastery (5 Marks)',
       desc: 'Mastered 5-mark subjective answers on Jallianwala Bagh and the Dandi March',
-      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
-      check: (d) => (d.categorySolved.long || 0) >= 1
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode (or 10 questions total)',
+      check: (d) => ((d.categorySolved.long || 0) >= 1 || d.totalSolved >= 10)
     },
     {
       id: 'practice_breadth',
@@ -2667,8 +2791,8 @@ const CHAPTER_MILESTONES = {
       id: 'sprint_mastery',
       title: 'Mental Speed & Freedom Milestones',
       desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
-      hint: 'Score 7+ points in the 60s Challenge',
-      check: (d) => d.sprintHighScore >= 7
+      hint: 'Score 7+ points in the 60s Challenge or complete 16 practice questions',
+      check: (d) => (d.sprintHighScore >= 7 || d.totalSolved >= 16)
     }
   ],
 
@@ -2684,50 +2808,50 @@ const CHAPTER_MILESTONES = {
       id: 'learn_part2',
       title: 'Parliament, President & Courts',
       desc: 'Mastered Lok Sabha vs Rajya Sabha, Head of State (President) vs Head of Government (PM), and Supreme Court in New Delhi',
-      hint: 'Review concept cards 3, 4 & 5 in Learn mode',
-      check: (d) => d.learnCardsRead >= 4
+      hint: 'Review concept cards 3, 4 & 5 in Learn mode or solve 14 practice questions',
+      check: (d) => (d.learnCardsRead >= 4 || d.totalSolved >= 14)
     },
     {
       id: 'exam_traps',
       title: 'Constitutional Roles Traps',
       desc: 'Diagnosed tricky CBSE exam traps (President vs Prime Minister powers, Lok Sabha vs Rajya Sabha membership term)',
-      hint: 'Read and diagnose the exam traps in Learn mode',
-      check: (d) => d.trapsDiagnosed >= 2
+      hint: 'Read and diagnose the exam traps in Learn mode or solve 12 practice questions',
+      check: (d) => (d.trapsDiagnosed >= 2 || d.totalSolved >= 12)
     },
     {
       id: 'practice_blanks',
       title: 'Governance Fact Precision (Blanks)',
       desc: 'Completed blanks on Parliament, Chief Justice, Vidhan Sabha, and Lok Sabha elections',
-      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode',
-      check: (d) => (d.categorySolved.blank || 0) >= 3
+      hint: 'Solve at least 3 Fill in the Blanks questions in Practice mode (or 2 questions total)',
+      check: (d) => ((d.categorySolved.blank || 0) >= 3 || d.totalSolved >= 2)
     },
     {
       id: 'practice_tf',
       title: 'Constitutional True/False Deductions',
       desc: 'Evaluated statements on democratic branches, Supreme Court authority, and election ages',
-      hint: 'Solve at least 3 True/False questions in Practice mode',
-      check: (d) => (d.categorySolved.tf || 0) >= 3
+      hint: 'Solve at least 3 True/False questions in Practice mode (or 4 questions total)',
+      check: (d) => ((d.categorySolved.tf || 0) >= 3 || d.totalSolved >= 4)
     },
     {
       id: 'practice_match',
       title: 'Constitutional Roles & Organs',
       desc: 'Matched organs (Legislature, Executive, Judiciary) and constitutional heads (President, PM, Chief Justice, Governor)',
-      hint: 'Solve Match the Following questions in Practice mode',
-      check: (d) => (d.categorySolved.match || 0) >= 1
+      hint: 'Solve Match the Following questions in Practice mode (or 6 questions total)',
+      check: (d) => ((d.categorySolved.match || 0) >= 1 || d.totalSolved >= 6)
     },
     {
       id: 'practice_short',
       title: 'Short Answer Governance Reasoning (2 Marks)',
       desc: 'Formulated 2-mark conceptual explanations (why judiciary must be independent, how Lok Sabha members are elected)',
-      hint: 'Solve at least 2 Short Answer questions in Practice mode',
-      check: (d) => (d.categorySolved.short || 0) >= 2
+      hint: 'Solve at least 2 Short Answer questions in Practice mode (or 8 questions total)',
+      check: (d) => ((d.categorySolved.short || 0) >= 2 || d.totalSolved >= 8)
     },
     {
       id: 'practice_long',
       title: 'Long Answer Scaffold Mastery (5 Marks)',
       desc: 'Mastered 5-mark subjective answers on the 3 Organs of Government and Lok Sabha vs Rajya Sabha',
-      hint: 'Review and solve at least 1 Long Answer question in Practice mode',
-      check: (d) => (d.categorySolved.long || 0) >= 1
+      hint: 'Review and solve at least 1 Long Answer question in Practice mode (or 10 questions total)',
+      check: (d) => ((d.categorySolved.long || 0) >= 1 || d.totalSolved >= 10)
     },
     {
       id: 'practice_breadth',
@@ -2740,8 +2864,8 @@ const CHAPTER_MILESTONES = {
       id: 'sprint_mastery',
       title: 'Mental Speed & Civics Recall',
       desc: 'Achieved ≥7 points in the 60-Second Rapid-Fire Challenge',
-      hint: 'Score 7+ points in the 60s Challenge',
-      check: (d) => d.sprintHighScore >= 7
+      hint: 'Score 7+ points in the 60s Challenge or complete 16 practice questions',
+      check: (d) => (d.sprintHighScore >= 7 || d.totalSolved >= 16)
     }
   ]
 };
@@ -2977,13 +3101,43 @@ class SSTApp {
 
   setChapterStars(chapterId, stars) {
     try {
-      const cur = this.getChapterStars(chapterId);
-      if (stars > cur) {
-        localStorage.setItem(STORAGE_KEY_STARS_PREFIX + chapterId, stars.toString());
-      }
+      localStorage.setItem(STORAGE_KEY_STARS_PREFIX + chapterId, stars.toString());
     } catch (e) {
       console.warn(e);
     }
+  }
+
+  resetChapterProgress(chapterId) {
+    try {
+      localStorage.removeItem(STORAGE_KEY_STARS_PREFIX + chapterId);
+      localStorage.setItem(STORAGE_KEY_STARS_PREFIX + chapterId, '0');
+    } catch (e) {
+      console.warn(e);
+    }
+    if (this.chapterProgress && this.chapterProgress[chapterId]) {
+      this.chapterProgress[chapterId] = {
+        cardsRead: {},
+        trapsDiagnosed: {},
+        interactiveExplored: false,
+        sprintHighScore: 0
+      };
+    }
+    const chap = CHAPTERS_DATA.find(c => c.id === chapterId);
+    if (chap && chap.practiceQuestions) {
+      chap.practiceQuestions.forEach(q => {
+        delete this.practiceAnswered[q.id];
+      });
+    } else {
+      this.practiceAnswered = {};
+    }
+    this.practiceIndex = 0;
+    this.practiceScore = { correct: 0, incorrect: 0 };
+    this.studentDrafts = {};
+    this.saveActiveState();
+    this.updateProgressHUD();
+    this.renderSidebar();
+    this.updateTopBarPassportButton();
+    this.renderCurrentMode();
   }
 
   // ==================== MULTI-MILESTONE EVALUATOR & PASSPORT ====================
@@ -3061,10 +3215,10 @@ class SSTApp {
           this.confetti.blast();
         }
       }
-      this.updateProgressHUD();
-      this.renderSidebar();
-      this.updateTopBarPassportButton();
     }
+    this.updateProgressHUD();
+    this.renderSidebar();
+    this.updateTopBarPassportButton();
     return earnedStars;
   }
 
@@ -3323,13 +3477,8 @@ class SSTApp {
     const resetBtn = document.getElementById('btn-reset');
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
-        if (confirm('🔄 Restart practice session for this chapter from Question 1?')) {
-          this.practiceIndex = 0;
-          this.practiceAnswered = {};
-          this.practiceScore = { correct: 0, incorrect: 0 };
-          this.studentDrafts = {};
-          this.saveActiveState();
-          this.renderCurrentMode();
+        if (confirm('🔄 Reset Chapter Progress: Reset this chapter\'s stars, practice answers, and progress back to 0 so you can practice and earn all 10 stars again?')) {
+          this.resetChapterProgress(this.activeChapterId);
           sfx.click();
         }
       });
@@ -3665,6 +3814,22 @@ class SSTApp {
           <span class="concept-card-icon">${c.icon}</span>
           <h3 class="concept-card-title">${c.title}</h3>
         </div>
+        ${c.image ? `
+          <div class="learn-diagram-wrap">
+            <img src="${c.image}" alt="${c.imageAlt || c.title}" class="learn-diagram-img" loading="lazy">
+            ${c.imageCaption ? `<div class="learn-diagram-caption">${c.imageCaption}</div>` : ''}
+          </div>
+        ` : ''}
+        ${c.diagrams && c.diagrams.length > 0 ? `
+          <div class="learn-diagram-grid ${c.diagrams.length === 1 ? 'single-item' : ''}">
+            ${c.diagrams.map(d => `
+              <div class="learn-diagram-item">
+                <img src="${d.image}" alt="${d.caption || d.label || ''}" class="learn-diagram-img" loading="lazy">
+                ${(d.caption || d.label) ? `<div class="learn-diagram-caption">${d.caption || d.label}</div>` : ''}
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
         <div class="concept-card-body">${c.body}</div>
         <div style="margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border-color); display: flex; justify-content: flex-end;">
           <button class="btn btn-sm ${isRead ? 'btn-success' : 'btn-secondary'} btn-mark-read">
@@ -3809,7 +3974,6 @@ class SSTApp {
     `;
     statsBar.querySelector('#btn-practice-restart').addEventListener('click', () => {
       this.practiceIndex = 0;
-      this.practiceAnswered = {};
       this.practiceScore = { correct: 0, incorrect: 0 };
       this.studentDrafts = {};
       this.saveActiveState();
@@ -3843,6 +4007,17 @@ class SSTApp {
     qPrompt.className = 'question-prompt';
     qPrompt.textContent = currentQ.prompt;
     qCard.appendChild(qPrompt);
+
+    // Question Authentic Diagram / Image (e.g. Worksheet Image)
+    if (currentQ.image) {
+      const imgWrap = document.createElement('div');
+      imgWrap.className = 'question-diagram-wrap';
+      imgWrap.innerHTML = `
+        <img src="${currentQ.image}" alt="${currentQ.imageAlt || 'Question Diagram'}" class="question-diagram-img" loading="lazy">
+        ${currentQ.imageCaption ? `<div class="question-diagram-caption">${currentQ.imageCaption}</div>` : ''}
+      `;
+      qCard.appendChild(imgWrap);
+    }
 
     // Interaction Body depending on type
     const interactionBody = document.createElement('div');
@@ -4735,6 +4910,12 @@ class SSTApp {
         ${chap.practiceQuestions.filter(q => q.type === 'short' || q.type === 'long').map((q, idx) => `
           <div class="paper-q">
             <strong>${idx + 1}.</strong> ${q.prompt}
+            ${q.image ? `
+              <div class="ws-diagram-wrap" style="margin: 8px 0; text-align: center;">
+                <img src="${q.image}" alt="${q.imageAlt || 'Diagram'}" style="max-height: 140px; max-width: 100%; border-radius: 6px; border: 1px solid #cbd5e1;">
+                ${q.imageCaption ? `<div style="font-size: 0.8rem; font-style: italic; color: #64748b; margin-top: 4px;">${q.imageCaption}</div>` : ''}
+              </div>
+            ` : ''}
             <div class="paper-lines"></div>
             <div class="paper-lines"></div>
           </div>
@@ -4806,6 +4987,12 @@ class SSTApp {
           ${chap.practiceQuestions.filter(q => q.type === 'short' || q.type === 'long').map((q, idx) => `
             <div class="paper-q">
               <strong>${idx + 1}.</strong> ${q.prompt}
+              ${q.image ? `
+                <div class="ws-diagram-wrap" style="margin: 8px 0; text-align: center;">
+                  <img src="${q.image}" alt="${q.imageAlt || 'Diagram'}" style="max-height: 140px; max-width: 100%; border-radius: 6px; border: 1px solid #cbd5e1;">
+                  ${q.imageCaption ? `<div style="font-size: 0.8rem; font-style: italic; color: #64748b; margin-top: 4px;">${q.imageCaption}</div>` : ''}
+                </div>
+              ` : ''}
               <div class="paper-lines"></div>
               <div class="paper-lines"></div>
             </div>
@@ -4866,7 +5053,6 @@ class SSTApp {
       retryBtn.onclick = () => {
         modal.classList.remove('active');
         this.practiceIndex = 0;
-        this.practiceAnswered = {};
         this.practiceScore = { correct: 0, incorrect: 0 };
         this.saveActiveState();
         this.renderPracticeMode(document.getElementById('content-viewport'));

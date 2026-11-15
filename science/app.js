@@ -5626,14 +5626,46 @@ function getChapterStars(chapterId) {
 
 function setChapterStars(chapterId, stars) {
   try {
-    const current = getChapterStars(chapterId);
-    if (stars > current) {
-      localStorage.setItem(STORAGE_KEY_STARS_PREFIX + chapterId, stars.toString());
-      updateSidebarProgress();
-    }
+    localStorage.setItem(STORAGE_KEY_STARS_PREFIX + chapterId, stars.toString());
+    updateSidebarProgress();
   } catch (e) {
     // Storage fallback
   }
+}
+
+function resetChapterProgress(chapterId) {
+  try {
+    localStorage.removeItem(STORAGE_KEY_STARS_PREFIX + chapterId);
+    localStorage.setItem(STORAGE_KEY_STARS_PREFIX + chapterId, '0');
+  } catch (e) {
+    console.warn(e);
+  }
+  if (state.chapterProgress && state.chapterProgress[chapterId]) {
+    state.chapterProgress[chapterId] = {
+      learnCards: {},
+      learnAnswers: {},
+      labInteracted: false,
+      sprintHighScore: 0
+    };
+  }
+  const ch = CHAPTERS_DATA.find(c => c.id === chapterId);
+  if (ch && ch.questions) {
+    ch.questions.forEach(q => {
+      if (state.answeredMap) delete state.answeredMap[q.id];
+    });
+  }
+  if (ch && ch.examTraps) {
+    ch.examTraps.forEach(t => {
+      if (state.trapAnswers) delete state.trapAnswers[t.id];
+    });
+  }
+  state.currentQuestionIndex = 0;
+  state.scoreCorrect = 0;
+  state.scoreWrong = 0;
+  saveActiveState();
+  updateSidebarProgress();
+  updateTopBarPassportButton();
+  renderCurrentView();
 }
 
 function getChapterProgressData(chapterId) {
@@ -6134,14 +6166,8 @@ function initTopBar() {
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
       AudioController.click();
-      if (confirm('🔄 Restart current chapter drill? Your score for this session will reset.')) {
-        state.currentQuestionIndex = 0;
-        state.scoreCorrect = 0;
-        state.scoreWrong = 0;
-        state.answeredMap = {};
-        state.trapAnswers = {};
-        saveActiveState();
-        renderCurrentView();
+      if (confirm('🔄 Reset Chapter Progress: Reset this chapter\'s stars, practice answers, and progress back to 0 so you can practice and earn all 10 stars again?')) {
+        resetChapterProgress(state.activeChapterId);
       }
     });
   }
