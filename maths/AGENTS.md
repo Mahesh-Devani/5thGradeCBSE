@@ -9,7 +9,13 @@ Welcome, AI Agent! This document defines the operational rules, DOM contracts, m
 1. **Zero External Runtime Dependencies**:
    - Strictly 100% vanilla HTML5, CSS3, and ES6+ JavaScript.
    - Do NOT install npm packages or build tools. Runs directly from root static files on GitHub Pages.
-2. **CBSE / NCERT Class 5 Curriculum Target (Ages 9–11)**:
+2. **Modular Architecture**:
+   - `maths/engines/solvers.js`: Fundamental number theory solvers (Euclidean GCD, LCM, prime factors, short/long division).
+   - `maths/engines/tables_lab.js`: Specialized lab engine for Multiplication Tables 1 to 20 (20×20 matrix, Split-and-Add hammer, Vedic shortcuts, dynamic generator, worksheets).
+   - `maths/engines/fractions_lab.js`: Specialized lab engine for Fractions Master (visual pizzas/bars, equivalent scale, mixed converter, arithmetic, dynamic generator, worksheets).
+   - `maths/data/topic*.js`: Curriculum chapter datasets (Topics 1 to 9).
+   - `maths/app.js`: Clean application orchestrator, navigation router, state machine, and practice/challenge runner.
+3. **CBSE / NCERT Class 5 Curriculum Target (Ages 9–11)**:
    - Foster thinking and deductive reasoning over rote memorization.
    - Explain *why* a problem needs HCF vs LCM (e.g., *The Equal Cutter* vs *The Cycle Synchronizer*).
    - Maintain the **Mental Estimator** boundary rules (Upper/Lower bounds, Co-Prime shortcuts) and **Spot the Mistakes** diagnostic slips.

@@ -326,10 +326,16 @@ $$(10 + a)(10 + b) = 100 + 10(a + b) + ab = 10(10 + a + b) + ab$$
 
 ---
 
-## 📱 Mobile-First Architecture & Zero Dependencies
+## 📱 Mobile-First Architecture & Modular Structure
 
 - **Off-Canvas Responsive Drawer**: Pinned sidebar on desktop, smooth slide-out drawer on screens $\le 860$px with sticky top bar `☰ Topics` button and `🏠` home shortcut.
 - **100% Vanilla Web Stack**: HTML5, CSS3, ES6+ JS. No node/npm runtime dependencies, works on GitHub Pages.
+- **Modular Specialized Lab Engines**:
+  - `maths/engines/solvers.js`: Core Euclidean GCD, LCM, prime factors, and division step calculators.
+  - `maths/engines/tables_lab.js`: 20×20 Interactive Matrix, Split-and-Add Hammer, Vedic Teen Tricks, dynamic problem generator, and worksheets.
+  - `maths/engines/fractions_lab.js`: Visual pizza/bar partitioning, equivalent fractions scale, mixed/improper converter, reciprocal calculator, and dynamic worksheets.
+  - `maths/data/*.js`: Isolated curriculum data files for Topics 1–5, 8, 9, and Revision.
+  - `maths/app.js`: Core controller, router, state machine, and challenge runner.
 - **Synthesizer & Particle Systems**: Native Web Audio API `AudioContext` and Canvas confetti.
 - **💾 Session & State Persistence**: Active topic (e.g. Topic 1 to Topic 5), learning mode (`learn`, `practice`, `challenge`, `worksheet`), sub-learning module, and practice filter are saved to `localStorage` (`cbse5_maths_active_state`) and restored on page refresh.
 - **🔐 Future Scope (User Accounts & Cloud Sync)**: State schemas are structured as clean, modular JSON payloads for future sync with Google OAuth and student user profiles.
