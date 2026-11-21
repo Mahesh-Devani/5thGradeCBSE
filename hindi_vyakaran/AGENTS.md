@@ -18,7 +18,20 @@
 
 ---
 
-## 🏛️ 2. Tri-Module Architecture
+## 🏛️ 2. Modular Data Architecture
+
+The curriculum datasets, question pools, and milestones are modularized in `hindi_vyakaran/data/`:
+- `data/chitra_varnan.js` (`SCENE_DATA`: 6 Class 5 scenarios with SVGs, real photos, and hotspots)
+- `data/vakyansh.js` (`VAKYANSH_DATA` + `VAKYANSH_QUIZ_POOL`)
+- `data/sangya.js` (`SANGYA_TYPES_DATA`, `BHAVVACHAK_NIRMAN_DATA`, `SANGYA_COMPARISON_DATA`, `SANGYA_SORT_ITEMS`, `SANGYA_QUIZ_POOL`, `SANGYA_CHALLENGE_POOL`)
+- `data/milestones.js` (`HINDI_EXAM_TRAPS`, `createChitraSceneMilestones`, `HINDI_MILESTONES`)
+
+> [!IMPORTANT]
+> **AI Token Optimization Rule**: When modifying questions, scenes, words, or milestones, ALWAYS edit the targeted `hindi_vyakaran/data/*.js` file directly. Never add static curriculum data to `app.js`.
+
+---
+
+## 🏛️ 3. Tri-Module Architecture
 
 The application hosts three primary curriculum modules switchable via `switchModule(moduleName)`:
 

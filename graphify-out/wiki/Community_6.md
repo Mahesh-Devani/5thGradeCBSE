@@ -1,6 +1,6 @@
 # Community 6
 
-> 48 nodes
+> 53 nodes
 
 ## Key Concepts
 
@@ -26,10 +26,10 @@
 - **renderCipherGame()** (4 connections) — `general_knowledge/app.js`
 - **renderStrikeGame()** (4 connections) — `general_knowledge/app.js`
 - **updateSidebarMonthButtons()** (4 connections) — `general_knowledge/app.js`
+- **confetti.js** (4 connections) — `shared/js/confetti.js`
 - **nextSprintQuestion()** (3 connections) — `general_knowledge/app.js`
 - **renderMatchGame()** (3 connections) — `general_knowledge/app.js`
-- **checkMatch()** (3 connections) — `general_knowledge/app.js`
-- *... and 23 more nodes in this community*
+- *... and 28 more nodes in this community*
 
 ## Relationships
 
@@ -39,11 +39,12 @@
 
 - `general_knowledge/AGENTS.md`
 - `general_knowledge/app.js`
+- `shared/js/confetti.js`
 
 ## Audit Trail
 
-- EXTRACTED: 107 (94%)
-- INFERRED: 7 (6%)
+- EXTRACTED: 112 (93%)
+- INFERRED: 8 (7%)
 - AMBIGUOUS: 0 (0%)
 
 ---

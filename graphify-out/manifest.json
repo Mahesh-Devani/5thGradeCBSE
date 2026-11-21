@@ -1,8 +1,8 @@
 {
   "check-invariants.py": {
-    "mtime": 1795283830.367592,
-    "seen": 1795283925.115194,
-    "ast_hash": "e4dd473614da66a2568b2482d4add931",
+    "mtime": 1795284651.96734,
+    "seen": 1795284737.93698,
+    "ast_hash": "3868f18d7a2a9e9af0eda571e8975753",
     "semantic_hash": ""
   },
   "english_grammer/app.js": {
@@ -24,9 +24,9 @@
     "semantic_hash": ""
   },
   "hindi_vyakaran/app.js": {
-    "mtime": 1794465195.370594,
-    "seen": 1795238041.923925,
-    "ast_hash": "542f35ec5a9a46e69d8ff964122f1e7e",
+    "mtime": 1795284597.1580036,
+    "seen": 1795284737.936987,
+    "ast_hash": "e3400f2d85d24c7d00c7958062b94434",
     "semantic_hash": ""
   },
   "hub.js": {
@@ -198,9 +198,9 @@
     "semantic_hash": ""
   },
   "sw.js": {
-    "mtime": 1795283772.3515284,
-    "seen": 1795283925.115229,
-    "ast_hash": "6df6b3adc779aa14c75a99e8c25bfa8d",
+    "mtime": 1795284639.379471,
+    "seen": 1795284737.9370182,
+    "ast_hash": "ddc515cb48f2c4301d175655f42042b2",
     "semantic_hash": ""
   },
   "tests/__init__.py": {
@@ -300,21 +300,21 @@
     "semantic_hash": ""
   },
   "hindi_vyakaran/AGENTS.md": {
-    "mtime": 1794465343.353584,
-    "seen": 1795238041.923981,
-    "ast_hash": "c6910c2dceac71fbb3e4f9dad99b328b",
+    "mtime": 1795284703.609928,
+    "seen": 1795284737.937027,
+    "ast_hash": "ad4817c1b41bc3f958f172216b5b4d7b",
     "semantic_hash": ""
   },
   "hindi_vyakaran/README.md": {
-    "mtime": 1794465317.099383,
-    "seen": 1795238041.9239821,
-    "ast_hash": "a55baaa209a86a51d6a68866e505a849",
+    "mtime": 1795284684.8746061,
+    "seen": 1795284737.9370282,
+    "ast_hash": "9db358b35dd3d60fe79e5df41dcd5bfd",
     "semantic_hash": ""
   },
   "hindi_vyakaran/index.html": {
-    "mtime": 1794464032.5530221,
-    "seen": 1795238041.9239838,
-    "ast_hash": "7bb7d48453f5cd66b1fdd9e81fd69a5f",
+    "mtime": 1795284627.3033288,
+    "seen": 1795284737.9370282,
+    "ast_hash": "d1dfe1f7167c27735e36b843f13d9124",
     "semantic_hash": ""
   },
   "index.html": {
@@ -969,6 +969,30 @@
     "mtime": 1795283691.452333,
     "seen": 1795283925.115228,
     "ast_hash": "05048fc98191fd6c90bae6488a2f1680",
+    "semantic_hash": ""
+  },
+  "hindi_vyakaran/data/chitra_varnan.js": {
+    "mtime": 1795284597.157305,
+    "seen": 1795284737.9369879,
+    "ast_hash": "e87e67bac0e0919be13a93abab7a67a8",
+    "semantic_hash": ""
+  },
+  "hindi_vyakaran/data/milestones.js": {
+    "mtime": 1795284597.1576667,
+    "seen": 1795284737.9369879,
+    "ast_hash": "95510967bf423d50b715070239673f18",
+    "semantic_hash": ""
+  },
+  "hindi_vyakaran/data/sangya.js": {
+    "mtime": 1795284597.157564,
+    "seen": 1795284737.9369888,
+    "ast_hash": "1c871a5ceaeb170620b75f7c842868cd",
+    "semantic_hash": ""
+  },
+  "hindi_vyakaran/data/vakyansh.js": {
+    "mtime": 1795284597.1574473,
+    "seen": 1795284737.93699,
+    "ast_hash": "fdc55e456f47030912a6727feda942eb",
     "semantic_hash": ""
   }
 }

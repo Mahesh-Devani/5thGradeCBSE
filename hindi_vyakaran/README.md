@@ -152,6 +152,11 @@ Students actively diagnose subtle CBSE pitfalls with interactive multiple-choice
 
 ## 📱 Mobile-First Architecture & Zero Dependencies
 
+- **Modular Architecture**: Curriculum datasets and 10-star milestones reside in `hindi_vyakaran/data/`:
+  - `data/chitra_varnan.js`: 6 CBSE Class 5 scenarios with interactive SVG & photo hotspots.
+  - `data/vakyansh.js`: 12 essential words with root formulas, clues, and quiz pool.
+  - `data/sangya.js`: Noun types, comparison mirror, formation lab, and quiz/sprint pools.
+  - `data/milestones.js`: 10-star milestone evaluators and exam trap diagnostics.
 - **Off-Canvas Responsive Drawer**: Collapses navigation into a slide-out drawer on screens `≤ 860px` with an accessible `☰ विषय` button.
 - **Pure Static Web Stack**: 100% vanilla HTML5, CSS3, ES6+ JS. No npm dependencies, runs offline, deployed to GitHub Pages.
 - **Native Synthesizer**: Uses Web Audio API `AudioContext` for non-intrusive sound feedback and HTML5 Canvas for confetti.

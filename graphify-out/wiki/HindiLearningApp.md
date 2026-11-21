@@ -14,22 +14,22 @@
 - .getModuleProgressData() `EXTRACTED`
 - .bindEvents() `EXTRACTED`
 - .constructor() `EXTRACTED`
-- .renderSangyaQuizMode() `EXTRACTED`
-- .switchModule() `EXTRACTED`
 - .renderVakyanshLearnMode() `EXTRACTED`
-- .renderVakyanshQuizMode() `EXTRACTED`
 - .renderSangyaLearnMode() `EXTRACTED`
-- .renderPuzzleMode() `EXTRACTED`
 - .saveAppState() `EXTRACTED`
+- .switchModule() `EXTRACTED`
 - .loadScene() `EXTRACTED`
+- .renderSangyaQuizMode() `EXTRACTED`
+- .renderVakyanshQuizMode() `EXTRACTED`
+- .renderPuzzleMode() `EXTRACTED`
 - .renderWriteMode() `EXTRACTED`
-- .openLearningPassport() `EXTRACTED`
 - .guideToNextMilestone() `EXTRACTED`
-- .diagnoseExamTrap() `EXTRACTED`
-- .handleMatchCardClick() `EXTRACTED`
-- .finishChallenge() `EXTRACTED`
 - .renderVakyanshWorkspace() `EXTRACTED`
 - .renderSangyaWorkspace() `EXTRACTED`
+- .renderCurrentMode() `EXTRACTED`
+- .renderSangyaSortMode() `EXTRACTED`
+- .setImageMode() `EXTRACTED`
+- .toggleBWMode() `EXTRACTED`
 - *…and 48 more `method` connection(s) not listed (lowest-degree first to go)*
 
 ### references

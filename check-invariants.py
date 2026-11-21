@@ -248,7 +248,8 @@ def check_question_schema_integrity():
         'english_grammer/app.js',
     ] + sorted([str(p.relative_to(PROJECT_ROOT)) for p in PROJECT_ROOT.glob('maths/data/*.js')]) \
       + sorted([str(p.relative_to(PROJECT_ROOT)) for p in PROJECT_ROOT.glob('science/data/*.js')]) \
-      + sorted([str(p.relative_to(PROJECT_ROOT)) for p in PROJECT_ROOT.glob('sst_chapters/data/*.js')])
+      + sorted([str(p.relative_to(PROJECT_ROOT)) for p in PROJECT_ROOT.glob('sst_chapters/data/*.js')]) \
+      + sorted([str(p.relative_to(PROJECT_ROOT)) for p in PROJECT_ROOT.glob('hindi_vyakaran/data/*.js')])
     
     id_pattern = re.compile(r'''\b(?:id)\s*:\s*['"]([a-zA-Z0-9_-]+)['"]''')
     

@@ -1,14 +1,11 @@
 # Community 50
 
-> 5 nodes
+> 2 nodes
 
 ## Key Concepts
 
-- **confetti.js** (4 connections) — `shared/js/confetti.js`
-- **getCanvas()** (2 connections) — `shared/js/confetti.js`
-- **resize()** (2 connections) — `shared/js/confetti.js`
-- **createParticles()** (1 connections) — `shared/js/confetti.js`
-- **loop()** (1 connections) — `shared/js/confetti.js`
+- **chitra_varnan.js** (1 connections) — `hindi_vyakaran/data/chitra_varnan.js`
+- **SCENE_DATA** (1 connections) — `hindi_vyakaran/data/chitra_varnan.js`
 
 ## Relationships
 
@@ -16,11 +13,11 @@
 
 ## Source Files
 
-- `shared/js/confetti.js`
+- `hindi_vyakaran/data/chitra_varnan.js`
 
 ## Audit Trail
 
-- EXTRACTED: 5 (100%)
+- EXTRACTED: 1 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

@@ -1,16 +1,21 @@
 # Community 13
 
-> 21 nodes
+> 26 nodes
 
 ## Key Concepts
 
-- **🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines** (8 connections) — `hindi_vyakaran/AGENTS.md`
+- **🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines** (9 connections) — `hindi_vyakaran/AGENTS.md`
 - **⚠️ 4. Critical Technical Gotchas & Rules** (5 connections) — `hindi_vyakaran/AGENTS.md`
-- **🏛️ 2. Tri-Module Architecture** (4 connections) — `hindi_vyakaran/AGENTS.md`
+- **🏛️ 3. Tri-Module Architecture** (4 connections) — `hindi_vyakaran/AGENTS.md`
+- **hindi_vyakaran/data/milestones.js** (3 connections) — `hindi_vyakaran/data/milestones.js`
 - **📷 3. Exam Photograph & Monochrome Print Features** (3 connections) — `hindi_vyakaran/AGENTS.md`
 - **🌟 4.5. 10-Star Milestone Architecture & Learning Passport** (3 connections) — `hindi_vyakaran/AGENTS.md`
 - **🚀 6. Developer Extension Recipes** (3 connections) — `hindi_vyakaran/AGENTS.md`
+- **createChitraSceneMilestones()** (2 connections) — `hindi_vyakaran/data/milestones.js`
 - **📌 1. Project Overview** (2 connections) — `hindi_vyakaran/AGENTS.md`
+- **🏛️ 2. Modular Data Architecture** (2 connections) — `hindi_vyakaran/AGENTS.md`
+- **HINDI_EXAM_TRAPS** (1 connections) — `hindi_vyakaran/data/milestones.js`
+- **HINDI_MILESTONES** (1 connections) — `hindi_vyakaran/data/milestones.js`
 - **🔗 5. DOM Contract (Element IDs in `index.html`)** (1 connections) — `hindi_vyakaran/AGENTS.md`
 - **A. Real Exam Photo vs. Cartoon Illustration (`this.state.imageViewMode`)** (1 connections) — `hindi_vyakaran/AGENTS.md`
 - **B. Black & White Exam Paper Print Simulation (`this.state.isBWMode`)** (1 connections) — `hindi_vyakaran/AGENTS.md`
@@ -24,7 +29,7 @@
 - **Module 2: वाक्यांश के लिए एक शब्द (`vakyansh` — Default Launch Topic)** (1 connections) — `hindi_vyakaran/AGENTS.md`
 - **Module 3: रचनात्मक लेखन: चित्र वर्णन (`chitra`)** (1 connections) — `hindi_vyakaran/AGENTS.md`
 - **Recipe 1: Adding a 13th Vakyansh Statement** (1 connections) — `hindi_vyakaran/AGENTS.md`
-- **Recipe 2: Adding a 7th Chitra Varnan Scene** (1 connections) — `hindi_vyakaran/AGENTS.md`
+- *... and 1 more nodes in this community*
 
 ## Relationships
 
@@ -34,11 +39,12 @@
 ## Source Files
 
 - `hindi_vyakaran/AGENTS.md`
+- `hindi_vyakaran/data/milestones.js`
 
 ## Audit Trail
 
-- EXTRACTED: 21 (95%)
-- INFERRED: 1 (5%)
+- EXTRACTED: 25 (93%)
+- INFERRED: 2 (7%)
 - AMBIGUOUS: 0 (0%)
 
 ---

@@ -2,7 +2,7 @@
 
 > God node · 17 connections · `maths/app.js`
 
-**Community:** [Community 7](Community_7.md)
+**Community:** [Community 74](Community_74.md)
 
 ## Connections by Relation
 

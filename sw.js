@@ -2,7 +2,7 @@
    5th Grade CBSE — Service Worker (Offline & Auto-Update Engine)
    ========================================================== */
 
-const CACHE_NAME = 'cbse5-app-v2.6.0';
+const CACHE_NAME = 'cbse5-app-v2.7.0';
 
 // Core App Shell assets to pre-cache immediately on install
 const PRECACHE_ASSETS = [
@@ -62,6 +62,10 @@ const PRECACHE_ASSETS = [
   // Hindi Vyakaran
   './hindi_vyakaran/index.html',
   './hindi_vyakaran/styles.css',
+  './hindi_vyakaran/data/chitra_varnan.js',
+  './hindi_vyakaran/data/vakyansh.js',
+  './hindi_vyakaran/data/sangya.js',
+  './hindi_vyakaran/data/milestones.js',
   './hindi_vyakaran/app.js',
   // SST Chapters
   './sst_chapters/index.html',
@@ -127,9 +131,10 @@ self.addEventListener('activate', (event) => {
 
 /* ----------------------------------------------------------
    Fetch Strategy:
-   - Navigation (HTML pages): Network-First with Cache Fallback
-     ensures fresh deployments & scripts load immediately when online.
-   - Assets (JS, CSS, Images): Stale-While-Revalidate
+   - Navigation (HTML) & Code Scripts (JS): Network-First with Cache Fallback
+     ensures fresh deployments & matching script tags load immediately when online,
+     preventing stale code version mismatches while guaranteeing 100% offline support.
+   - Heavy Assets (CSS, Images, Fonts, Audio): Stale-While-Revalidate
      provides sub-millisecond local launch with background updating.
    ---------------------------------------------------------- */
 self.addEventListener('fetch', (event) => {
@@ -139,12 +144,13 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return;
   if (!request.url.startsWith('http')) return;
 
-  // 1. Navigation Requests (HTML): Network-First
-  if (request.mode === 'navigate') {
+  // 1. Navigation (HTML) & Scripts (JS): Network-First
+  const isCodeScript = request.url.endsWith('.js') || request.url.includes('.js?');
+  if (request.mode === 'navigate' || isCodeScript) {
     event.respondWith(
       fetch(request)
         .then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
+          if (networkResponse && (networkResponse.status === 200 || networkResponse.type === 'opaque')) {
             const copy = networkResponse.clone();
             caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
           }
@@ -154,8 +160,10 @@ self.addEventListener('fetch', (event) => {
           const cache = await caches.open(CACHE_NAME);
           const cached = await cache.match(request);
           if (cached) return cached;
-          const fallback = await cache.match('./index.html');
-          if (fallback) return fallback;
+          if (request.mode === 'navigate') {
+            const fallback = await cache.match('./index.html');
+            if (fallback) return fallback;
+          }
           return new Response('Offline: Content not yet cached.', {
             status: 503,
             statusText: 'Service Unavailable',
@@ -166,7 +174,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 2. Static Assets: Stale-While-Revalidate
+  // 2. Static Assets (CSS, Images, Fonts, Audio): Stale-While-Revalidate
   event.respondWith(
     caches.open(CACHE_NAME).then(async (cache) => {
       const cachedResponse = await cache.match(request);

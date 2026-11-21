@@ -1,26 +1,28 @@
 # Community 15
 
-> 3 nodes
+> 7 nodes
 
 ## Key Concepts
 
-- **renderAnglesProtractorModule()** (4 connections) — `maths/app.js`
-- **render()** (4 connections) — `maths/app.js`
-- **getAngleType()** (2 connections) — `maths/app.js`
+- **sangya.js** (6 connections) — `hindi_vyakaran/data/sangya.js`
+- **BHAVVACHAK_NIRMAN_DATA** (1 connections) — `hindi_vyakaran/data/sangya.js`
+- **SANGYA_CHALLENGE_POOL** (1 connections) — `hindi_vyakaran/data/sangya.js`
+- **SANGYA_COMPARISON_DATA** (1 connections) — `hindi_vyakaran/data/sangya.js`
+- **SANGYA_QUIZ_POOL** (1 connections) — `hindi_vyakaran/data/sangya.js`
+- **SANGYA_SORT_ITEMS** (1 connections) — `hindi_vyakaran/data/sangya.js`
+- **SANGYA_TYPES_DATA** (1 connections) — `hindi_vyakaran/data/sangya.js`
 
 ## Relationships
 
-- [Community 7](Community_7.md) (2 shared connections)
-- [Community 3](Community_3.md) (1 shared connections)
-- [Community 11](Community_11.md) (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
-- `maths/app.js`
+- `hindi_vyakaran/data/sangya.js`
 
 ## Audit Trail
 
-- EXTRACTED: 7 (100%)
+- EXTRACTED: 6 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

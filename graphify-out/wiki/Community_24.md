@@ -1,13 +1,12 @@
 # Community 24
 
-> 15 nodes
+> 14 nodes
 
 ## Key Concepts
 
 - **🤖 Agent Guidelines — Mathematics Master** (9 connections) — `maths/AGENTS.md`
 - **5. Topic 6 Architecture: Tables (1 to 20) & Mental Speed Master** (4 connections) — `maths/AGENTS.md`
 - **3. Math Engine Schemas & Algorithms** (3 connections) — `maths/AGENTS.md`
-- **C. Dynamic Printable Worksheet** (3 connections) — `maths/AGENTS.md`
 - **5. Extension Recipes: Adding Subsequent Topics** (2 connections) — `maths/AGENTS.md`
 - **B. Procedural Dynamic Question Generator** (2 connections) — `maths/AGENTS.md`
 - **1. Core Directives & Standards** (1 connections) — `maths/AGENTS.md`
@@ -22,7 +21,7 @@
 
 ## Relationships
 
-- [Community 75](Community_75.md) (2 shared connections)
+- [Community 75](Community_75.md) (1 shared connections)
 - [Community 33](Community_33.md) (1 shared connections)
 - [Community 45](Community_45.md) (1 shared connections)
 
@@ -32,8 +31,8 @@
 
 ## Audit Trail
 
-- EXTRACTED: 15 (83%)
-- INFERRED: 3 (17%)
+- EXTRACTED: 15 (94%)
+- INFERRED: 1 (6%)
 - AMBIGUOUS: 0 (0%)
 
 ---
