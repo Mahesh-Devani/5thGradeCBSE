@@ -58,6 +58,67 @@ const LEARN_MODULES_TOPIC_9 = {
    INTERACTIVE LEARN RENDERERS FOR TOPIC 9
    ========================================================================== */
 
+function renderVolumeCheckpointCard({ cpId, badgeText, prompt, options, correctIdx }) {
+  const isCleared = typeof window.isTopicCheckpointCleared === 'function'
+    ? window.isTopicCheckpointCleared('volume_capacity', cpId)
+    : false;
+
+  const optionsHtml = options.map((opt, idx) => `
+    <button class="checkpoint-opt-btn" data-opt-idx="${idx}" data-correct="${idx === correctIdx}">
+      <span>${String.fromCharCode(65 + idx)}</span>
+      <strong>${opt}</strong>
+    </button>
+  `).join('');
+
+  return `
+    <div class="learn-checkpoint-box ${isCleared ? 'cleared' : ''}" id="${cpId}-box" style="margin-top: 1.5rem;">
+      <div class="checkpoint-header">
+        <div class="checkpoint-badge ${isCleared ? 'cleared' : ''}">
+          ${isCleared ? '✓ Checkpoint Cleared' : badgeText}
+        </div>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Required for Topic Star ⭐</span>
+      </div>
+      <div class="checkpoint-prompt">
+        ${prompt}
+      </div>
+      <div class="checkpoint-interactive-area">
+        <div class="checkpoint-options-grid">
+          ${optionsHtml}
+        </div>
+        <div class="checkpoint-feedback" id="${cpId}-feedback"></div>
+      </div>
+    </div>
+  `;
+}
+
+function attachVolumeCheckpointListeners(container, cpId, correctIdx, explanation) {
+  const box = container.querySelector(`#${cpId}-box`);
+  if (!box) return;
+  const feedback = box.querySelector(`#${cpId}-feedback`);
+  box.querySelectorAll('.checkpoint-opt-btn').forEach((btn, idx) => {
+    btn.addEventListener('click', () => {
+      const isCorrect = idx === correctIdx;
+      if (isCorrect) {
+        btn.classList.add('correct');
+        box.querySelectorAll('.checkpoint-opt-btn').forEach(b => b.disabled = true);
+        if (typeof window.completeTopicLearnCheckpoint === 'function') {
+          window.completeTopicLearnCheckpoint('volume_capacity', cpId, feedback, box);
+        }
+      } else {
+        btn.classList.add('wrong');
+        if (typeof window.playWrongSound === 'function') {
+          window.playWrongSound();
+        }
+        if (feedback) {
+          feedback.className = 'checkpoint-feedback error';
+          feedback.innerHTML = `<strong>Not quite!</strong> ${explanation}`;
+          feedback.style.display = 'block';
+        }
+      }
+    });
+  });
+}
+
 function renderSolids3DFoundationsModule(container) {
   container.innerHTML = `
     <div class="think-callout-math">
@@ -127,7 +188,25 @@ function renderSolids3DFoundationsModule(container) {
         The volume of a cube of side 1 cm is <strong>1 cu cm</strong> (or 1 cm³). <span style="color:#10b981; font-weight:bold;">✓ CORRECT</span>
       </p>
     </div>
-  `;
+  ` + renderVolumeCheckpointCard({
+    cpId: 'checkpoint_vol_1',
+    badgeText: '⭐ Checkpoint 1 of 5 • Required for Star 1 ⭐',
+    prompt: '<strong>3D Solid Properties Challenge:</strong> Which statement is completely correct about a cuboid and cubic units?',
+    options: [
+      'A cuboid has 6 flat rectangular faces, 12 straight edges, and 8 vertices; volume is measured in cubic units (cm³, m³)',
+      'A cuboid has 8 faces, 12 vertices, and 6 edges; volume is measured in square cm',
+      'A cuboid has 6 faces and volume is measured in linear cm',
+      'A cube and a cuboid have different numbers of edges and corners'
+    ],
+    correctIdx: 0
+  });
+
+  attachVolumeCheckpointListeners(
+    container,
+    'checkpoint_vol_1',
+    0,
+    'A cuboid has 6 flat rectangular faces, 12 straight edges, and 8 corner vertices. 3D space occupied is volume, measured in cubic units (cm³, m³)!'
+  );
 }
 
 function renderCubeCuboidFormulasModule(container) {
@@ -162,7 +241,25 @@ function renderCubeCuboidFormulasModule(container) {
         Volume = 3 cm × 2 cm × 4 cm = <strong>24 cm³</strong> (or 24 cu cm)
       </div>
     </div>
-  `;
+  ` + renderVolumeCheckpointCard({
+    cpId: 'checkpoint_vol_2',
+    badgeText: '⭐ Checkpoint 2 of 5 • Required for Star 2 ⭐',
+    prompt: '<strong>Volume Comparison Challenge:</strong> Solid Cube A has a side of 5 cm. Solid Cuboid B has dimensions 10 cm × 5 cm × 2 cm. Which solid occupies more space (larger volume)?',
+    options: [
+      'Cuboid B has larger volume (100 cm³ vs 25 cm³)',
+      'Cube A has larger volume (125 cm³ vs 100 cm³)',
+      'Both solids have the exact same volume of 100 cm³',
+      'Cube A has larger volume because 5 + 5 + 5 = 15 cm'
+    ],
+    correctIdx: 1
+  });
+
+  attachVolumeCheckpointListeners(
+    container,
+    'checkpoint_vol_2',
+    1,
+    'Volume of Cube A = 5 × 5 × 5 = 125 cm³. Volume of Cuboid B = 10 × 5 × 2 = 100 cm³. Therefore, Cube A is larger by 25 cm³!'
+  );
 }
 
 function renderBaseAreaHeightModule(container) {
@@ -198,7 +295,25 @@ function renderBaseAreaHeightModule(container) {
         </div>
       </div>
     </div>
-  `;
+  ` + renderVolumeCheckpointCard({
+    cpId: 'checkpoint_vol_3',
+    badgeText: '⭐ Checkpoint 3 of 5 • Required for Star 3 ⭐',
+    prompt: '<strong>Base Area × Height Master Challenge:</strong> A water tank has a rectangular base with an area of 45 sq cm. If its total volume is 360 cu cm, what is the height of the tank?',
+    options: [
+      '16,200 cm',
+      '405 cm',
+      '8 cm',
+      '315 cm'
+    ],
+    correctIdx: 2
+  });
+
+  attachVolumeCheckpointListeners(
+    container,
+    'checkpoint_vol_3',
+    2,
+    'Master formula: Volume = Area of Base × Height. Therefore: Height = Volume ÷ Area of Base = 360 ÷ 45 = 8 cm!'
+  );
 }
 
 function renderVolumeCapacityModule(container) {
@@ -228,7 +343,25 @@ function renderVolumeCapacityModule(container) {
         </div>
       </div>
     </div>
-  `;
+  ` + renderVolumeCheckpointCard({
+    cpId: 'checkpoint_vol_4',
+    badgeText: '⭐ Checkpoint 4 of 5 • Required for Star 4 ⭐',
+    prompt: '<strong>Volume & Capacity Equivalence:</strong> A container has a volume of 2,500 cm³. How much liquid can it hold in litres and millilitres?',
+    options: [
+      '25 Litres',
+      '2.5 Litres (2 Litres 500 mL)',
+      '250 Litres',
+      '0.25 Litres'
+    ],
+    correctIdx: 1
+  });
+
+  attachVolumeCheckpointListeners(
+    container,
+    'checkpoint_vol_4',
+    1,
+    'Remember the Golden Equivalence: 1,000 cm³ = 1 Litre (and 1 cm³ = 1 mL). Therefore, 2,500 cm³ = 2,500 mL = 2.5 Litres!'
+  );
 }
 
 function renderCaseStudiesModule(container) {
@@ -253,7 +386,25 @@ function renderCaseStudiesModule(container) {
         • Number of ice cubes = 64 ÷ 8 = <strong>8 ice cubes</strong>!
       </div>
     </div>
-  `;
+  ` + renderVolumeCheckpointCard({
+    cpId: 'checkpoint_vol_5',
+    badgeText: '⭐ Checkpoint 5 of 5 • Required for Star 5 ⭐',
+    prompt: '<strong>Carton Packing Challenge:</strong> A carton box has dimensions 30 cm × 20 cm × 10 cm. How many wooden unit cubes of side 2 cm can be completely packed inside this carton?',
+    options: [
+      '3,000 cubes',
+      '6,000 cubes',
+      '750 cubes',
+      '1,500 cubes'
+    ],
+    correctIdx: 2
+  });
+
+  attachVolumeCheckpointListeners(
+    container,
+    'checkpoint_vol_5',
+    2,
+    'Carton volume = 30 × 20 × 10 = 6,000 cm³. Each 2 cm cube has volume = 2 × 2 × 2 = 8 cm³. Number of cubes = 6,000 ÷ 8 = 750 cubes! (Or along dimensions: 15 × 10 × 5 = 750 cubes).'
+  );
 }
 
 /* ==========================================================================

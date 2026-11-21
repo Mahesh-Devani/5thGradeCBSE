@@ -2117,35 +2117,42 @@ const TOPIC_MILESTONES = {
       id: 'area_foundations',
       title: 'Perimeter vs Area Foundations',
       desc: 'Mastered the boundary fence vs turf carpet mental metaphor and standard units (sq cm, sq m)',
-      hint: 'Explore the Perimeter vs Area module in Learn mode and solve at least 1 question',
-      check: (d) => (!!d.modulesInteracted.area_foundations_perim && d.totalSolved >= 1) || d.totalSolved >= 2
+      hint: 'Clear Learn Checkpoint 1 (or solve 2 questions total in Practice mode)',
+      check: (d) => !!d.checkpoints.checkpoint_area_1 || (d.categorySolved.foundations_formulas || 0) >= 2 || d.totalSolved >= 2
     },
     {
       id: 'same_area_factors',
       title: 'Factor Pairs & Same Area',
       desc: 'Understood that different rectangles can share identical areas (factors of 12, 18, 24)',
-      hint: 'Explore the Same Area, Different Shapes module (or solve 4 questions total)',
-      check: (d) => (!!d.modulesInteracted.same_area_diff_shapes && d.totalSolved >= 2) || d.totalSolved >= 4
+      hint: 'Clear Learn Checkpoint 2 (or solve 4 questions total in Practice mode)',
+      check: (d) => !!d.checkpoints.checkpoint_area_2 || (d.categorySolved.factor_pairs_same_area || 0) >= 2 || d.totalSolved >= 4
     },
     {
       id: 'triangle_half_rule',
       title: 'The Half-Rectangle Triangle Rule',
       desc: 'Mastered finding triangle area by dividing into right-angled halves inside bounding rectangles',
-      hint: 'Explore the Triangles on Grids module (or solve 6 questions total)',
-      check: (d) => (!!d.modulesInteracted.triangle_grid_half && d.totalSolved >= 3) || d.totalSolved >= 6
+      hint: 'Clear Learn Checkpoint 3 (or solve 6 questions total in Practice mode)',
+      check: (d) => !!d.checkpoints.checkpoint_area_3 || (d.categorySolved.triangle_irregular_grids || 0) >= 2 || d.totalSolved >= 6
     },
     {
       id: 'irregular_grid_rule',
       title: 'Irregular Shapes & 4-Step Grid Rule',
       desc: 'Applied the official CBSE 4-step rule (full, >half, half, ignore) to estimate real-world areas',
-      hint: 'Explore the Irregular Shapes module (or solve 8 questions total)',
-      check: (d) => (!!d.modulesInteracted.irregular_shapes_grid && d.totalSolved >= 4) || d.totalSolved >= 8
+      hint: 'Clear Learn Checkpoint 4 (or solve 8 questions total in Practice mode)',
+      check: (d) => !!d.checkpoints.checkpoint_area_4 || (d.categorySolved.triangle_irregular_grids || 0) >= 4 || d.totalSolved >= 8
+    },
+    {
+      id: 'tiling_mastery',
+      title: 'Floor Tiling & Real-World Paving',
+      desc: 'Mastered Room Area ÷ Tile Area calculations and cost estimations',
+      hint: 'Clear Learn Checkpoint 5 (or solve 10 questions total in Practice mode)',
+      check: (d) => !!d.checkpoints.checkpoint_area_5 || (d.categorySolved.tiling_word_problems || 0) >= 2 || d.totalSolved >= 10
     },
     {
       id: 'practice_formulas',
       title: 'Formula Calculations Precision',
       desc: 'Solved rectangle (l × b) and square (s²) area & perimeter calculations',
-      hint: 'Solve at least 3 formula questions in Practice mode (or 3 questions total)',
+      hint: 'Solve at least 3 formula questions in Practice mode',
       check: (d) => (d.categorySolved.foundations_formulas || 0) >= 3 || d.totalSolved >= 3
     },
     {
@@ -2156,32 +2163,25 @@ const TOPIC_MILESTONES = {
       check: (d) => (d.categorySolved.factor_pairs_same_area || 0) >= 2 || d.totalSolved >= 5
     },
     {
-      id: 'practice_grids',
-      title: 'Grid Triangle & Irregular Calculations',
-      desc: 'Calculated triangle areas and estimated unit square grid shapes',
-      hint: 'Solve at least 2 grid questions in Practice mode (or 7 questions total)',
-      check: (d) => (d.categorySolved.triangle_irregular_grids || 0) >= 2 || d.totalSolved >= 7
-    },
-    {
       id: 'practice_tiling',
-      title: 'Floor Tiling & Real-World Paving',
+      title: 'Floor Tiling Word Problems',
       desc: 'Solved room marble slab paving, crossword puzzle areas, and carpeting cost problems',
-      hint: 'Solve at least 2 tiling word problems in Practice mode (or 9 questions total)',
-      check: (d) => (d.categorySolved.tiling_word_problems || 0) >= 2 || d.totalSolved >= 9
+      hint: 'Solve at least 2 tiling word problems in Practice mode (or 7 questions total)',
+      check: (d) => (d.categorySolved.tiling_word_problems || 0) >= 2 || d.totalSolved >= 7
     },
     {
       id: 'practice_breadth',
       title: 'Area Curriculum Breadth',
-      desc: 'Solved at least 12 curriculum questions across all categories of Chapter 8 Area',
-      hint: 'Solve at least 12 practice questions with ≥70% accuracy',
-      check: (d) => d.totalSolved >= 12 && (d.accuracy || 0) >= 70
+      desc: 'Solved at least 10 curriculum questions across all categories of Chapter 8 Area',
+      hint: 'Solve at least 10 practice questions with ≥70% accuracy',
+      check: (d) => d.totalSolved >= 10 && (d.accuracy || 0) >= 70
     },
     {
       id: 'sprint_speed',
       title: 'Area Speed Master',
-      desc: 'Completed the 60s Area Sprint Challenge or achieved 15 practice questions',
-      hint: 'Earn at least 5 correct answers on the 60s Sprint (or solve 15 questions total)',
-      check: (d) => (d.challengeHighScore || 0) >= 5 || d.totalSolved >= 15
+      desc: 'Completed the 60s Area Sprint Challenge or achieved 12 practice questions',
+      hint: 'Earn at least 4 correct answers on the 60s Sprint (or solve 12 questions total)',
+      check: (d) => (d.challengeHighScore || 0) >= 4 || d.totalSolved >= 12
     }
   ],
   volume_capacity: [
@@ -2189,29 +2189,36 @@ const TOPIC_MILESTONES = {
       id: 'solids_foundations',
       title: 'Solid 3D Shapes & Volume Units',
       desc: 'Mastered faces, edges, and vertices of 3D solids and cubic units (cm³, m³)',
-      hint: 'Explore 3D Solid Shapes in Learn mode and solve at least 1 question',
-      check: (d) => (!!d.modulesInteracted.solids_3d_foundations && d.totalSolved >= 1) || d.totalSolved >= 2
+      hint: 'Clear Learn Checkpoint 1 (or solve 2 questions total in Practice mode)',
+      check: (d) => !!d.checkpoints.checkpoint_vol_1 || (d.categorySolved.solids_3d_properties || 0) >= 2 || d.totalSolved >= 2
     },
     {
       id: 'cube_cuboid_rule',
       title: 'Cube & Cuboid Volume Formulas',
       desc: 'Mastered l × b × h and s³ by counting centimetre cube layers',
-      hint: 'Explore Cube & Cuboid Formulas in Learn mode (or solve 4 questions total)',
-      check: (d) => (!!d.modulesInteracted.cube_cuboid_formulas && d.totalSolved >= 2) || d.totalSolved >= 4
+      hint: 'Clear Learn Checkpoint 2 (or solve 4 questions total in Practice mode)',
+      check: (d) => !!d.checkpoints.checkpoint_vol_2 || (d.categorySolved.cube_cuboid_volume || 0) >= 2 || d.totalSolved >= 4
     },
     {
       id: 'base_area_relation',
       title: 'Base Area × Height Master Relation',
       desc: 'Mastered Volume = Base Area × Height and inverse height deductions',
-      hint: 'Explore Base Area × Height in Learn mode (or solve 6 questions total)',
-      check: (d) => (!!d.modulesInteracted.base_area_height_relation && d.totalSolved >= 3) || d.totalSolved >= 6
+      hint: 'Clear Learn Checkpoint 3 (or solve 6 questions total in Practice mode)',
+      check: (d) => !!d.checkpoints.checkpoint_vol_3 || (d.categorySolved.base_area_height || 0) >= 2 || d.totalSolved >= 6
     },
     {
       id: 'capacity_equivalence',
       title: 'The Golden Equivalence (1 L = 1000 cm³)',
       desc: 'Mastered liquid capacity conversions (1 L = 1000 mL = 1000 cm³) and water displacement',
-      hint: 'Explore Volume & Capacity in Learn mode (or solve 8 questions total)',
-      check: (d) => (!!d.modulesInteracted.volume_and_capacity && d.totalSolved >= 4) || d.totalSolved >= 8
+      hint: 'Clear Learn Checkpoint 4 (or solve 8 questions total in Practice mode)',
+      check: (d) => !!d.checkpoints.checkpoint_vol_4 || (d.categorySolved.capacity_conversions || 0) >= 2 || d.totalSolved >= 8
+    },
+    {
+      id: 'packing_mastery',
+      title: 'Cube Packing & Real-World Dimensions',
+      desc: 'Mastered packing cartons with unit cubes and dimensional deductions',
+      hint: 'Clear Learn Checkpoint 5 (or solve 10 questions total in Practice mode)',
+      check: (d) => !!d.checkpoints.checkpoint_vol_5 || (d.categorySolved.real_world_packing || 0) >= 2 || d.totalSolved >= 10
     },
     {
       id: 'practice_solids',
@@ -2228,32 +2235,25 @@ const TOPIC_MILESTONES = {
       check: (d) => (d.categorySolved.cube_cuboid_volume || 0) >= 3 || d.totalSolved >= 5
     },
     {
-      id: 'practice_base_height',
-      title: 'Base Area & Height Applications',
-      desc: 'Deduced height from base area and compared object volumes (book vs box)',
-      hint: 'Solve at least 2 base area questions (or 7 questions total)',
-      check: (d) => (d.categorySolved.base_area_height || 0) >= 2 || d.totalSolved >= 7
-    },
-    {
       id: 'practice_capacity',
       title: 'Litre & Millilitre Conversions',
       desc: 'Converted cm³ to litres/mL and calculated water displacement volume',
-      hint: 'Solve at least 2 capacity conversion questions (or 9 questions total)',
-      check: (d) => (d.categorySolved.capacity_conversions || 0) >= 2 || d.totalSolved >= 9
+      hint: 'Solve at least 2 capacity conversion questions (or 7 questions total)',
+      check: (d) => (d.categorySolved.capacity_conversions || 0) >= 2 || d.totalSolved >= 7
     },
     {
       id: 'practice_breadth',
       title: 'Volume Curriculum Breadth',
-      desc: 'Solved at least 12 curriculum questions across all categories of Chapter 9 Volume',
-      hint: 'Solve at least 12 practice questions with ≥70% accuracy',
-      check: (d) => d.totalSolved >= 12 && (d.accuracy || 0) >= 70
+      desc: 'Solved at least 10 curriculum questions across all categories of Chapter 9 Volume',
+      hint: 'Solve at least 10 practice questions with ≥70% accuracy',
+      check: (d) => d.totalSolved >= 10 && (d.accuracy || 0) >= 70
     },
     {
       id: 'sprint_speed',
       title: 'Volume Speed Master',
-      desc: 'Completed the 60s Volume Sprint Challenge or achieved 15 practice questions',
-      hint: 'Earn at least 5 correct answers on the 60s Sprint (or solve 15 questions total)',
-      check: (d) => (d.challengeHighScore || 0) >= 5 || (d.sprintHighScore || 0) >= 5 || d.totalSolved >= 15
+      desc: 'Completed the 60s Volume Sprint Challenge or achieved 12 practice questions',
+      hint: 'Earn at least 4 correct answers on the 60s Sprint (or solve 12 questions total)',
+      check: (d) => (d.challengeHighScore || 0) >= 4 || (d.sprintHighScore || 0) >= 4 || d.totalSolved >= 12
     }
   ]
 };
@@ -2357,6 +2357,22 @@ function getTopicProgressData(topicId) {
   };
 }
 
+function updateMasteryBannerLive(topicId, stars) {
+  const config = TOPICS_CONFIG[topicId];
+  if (!config) return;
+  const target = config.targetStars || 10;
+  const pct = Math.round((stars / target) * 100);
+
+  const starCountEl = document.getElementById('topic-banner-stars-count');
+  if (starCountEl) starCountEl.textContent = stars.toString();
+
+  const fillEl = document.getElementById('topic-banner-fill');
+  if (fillEl) fillEl.style.width = `${pct}%`;
+
+  const labelEl = document.getElementById('topic-banner-pct-label');
+  if (labelEl) labelEl.textContent = `${pct}% Mastered ${stars === target ? '• 🏅 Certified!' : ''}`;
+}
+
 function evaluateAndAwardStars(topicId) {
   const config = TOPICS_CONFIG[topicId];
   if (!config) return 0;
@@ -2387,8 +2403,42 @@ function evaluateAndAwardStars(topicId) {
 
   updateSidebarProgress();
   updateTopBarPassportButton();
+  updateMasteryBannerLive(topicId, stars);
   return stars;
 }
+
+function completeTopicLearnCheckpoint(topicId, checkpointId, feedbackEl, boxEl) {
+  state.topicProgress = state.topicProgress || {};
+  const tp = state.topicProgress[topicId] = state.topicProgress[topicId] || {};
+  tp.checkpoints = tp.checkpoints || {};
+  
+  const wasCleared = !!tp.checkpoints[checkpointId];
+  tp.checkpoints[checkpointId] = true;
+  saveActiveState();
+  evaluateAndAwardStars(topicId);
+  if (!wasCleared) {
+    playCorrectSound();
+  }
+
+  if (feedbackEl) {
+    feedbackEl.className = 'checkpoint-feedback success';
+    feedbackEl.innerHTML = '<strong>🎉 Checkpoint Cleared!</strong> You solved this correctly and earned progress towards topic mastery stars ⭐!';
+    feedbackEl.style.display = 'block';
+  }
+
+  if (boxEl) {
+    boxEl.classList.add('cleared');
+    const badge = boxEl.querySelector('.checkpoint-badge');
+    if (badge) {
+      badge.className = 'checkpoint-badge cleared';
+      badge.innerHTML = '✓ Checkpoint Cleared';
+    }
+  }
+}
+window.completeTopicLearnCheckpoint = completeTopicLearnCheckpoint;
+window.playCorrectSound = playCorrectSound;
+window.playWrongSound = playWrongSound;
+window.playClickSound = playClickSound;
 
 function markModuleInteracted(topicId, moduleId) {
   state.topicProgress = state.topicProgress || {};
@@ -2410,12 +2460,12 @@ function renderTopicMasteryBanner(config) {
       <div class="mastery-banner-left">
         <div class="mastery-star-pill">
           <span>⭐</span>
-          <span><strong>${stars}</strong> / ${target} Stars</span>
+          <span><strong id="topic-banner-stars-count">${stars}</strong> / ${target} Stars</span>
         </div>
         <div class="mastery-bar-track">
-          <div class="mastery-bar-fill" style="width: ${pct}%;"></div>
+          <div class="mastery-bar-fill" id="topic-banner-fill" style="width: ${pct}%;"></div>
         </div>
-        <span class="mastery-pct-label">${pct}% Mastered ${stars === target ? '• 🏅 Certified!' : ''}</span>
+        <span class="mastery-pct-label" id="topic-banner-pct-label">${pct}% Mastered ${stars === target ? '• 🏅 Certified!' : ''}</span>
       </div>
       <div class="mastery-banner-right">
         <button class="btn-passport-trigger" id="btn-banner-passport">
@@ -2636,6 +2686,10 @@ const state = {
   stars: 0,
   // Detailed topic progress & milestone tracking
   topicProgress: {}
+};
+window.state = state;
+window.isTopicCheckpointCleared = function(topicId, checkpointId) {
+  return !!(state.topicProgress && state.topicProgress[topicId] && state.topicProgress[topicId].checkpoints && state.topicProgress[topicId].checkpoints[checkpointId]);
 };
 
 /* ==========================================================================

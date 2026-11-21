@@ -1,10 +1,10 @@
 # Community 3
 
-> 53 nodes
+> 51 nodes
 
 ## Key Concepts
 
-- **maths/app.js** (146 connections) — `maths/app.js`
+- **maths/app.js** (148 connections) — `maths/app.js`
 - **preparePrintContent()** (10 connections) — `maths/app.js`
 - **renderSpotMistakesGeneric()** (7 connections) — `maths/app.js`
 - **populatePrintTopicFractions()** (4 connections) — `maths/app.js`
@@ -29,16 +29,16 @@
 - **renderSpotMistakesTopic3()** (2 connections) — `maths/app.js`
 - **renderSpotMistakesTopic4()** (2 connections) — `maths/app.js`
 - **renderSpotMistakesTopic5()** (2 connections) — `maths/app.js`
-- *... and 28 more nodes in this community*
+- *... and 26 more nodes in this community*
 
 ## Relationships
 
-- [Community 12](Community_12.md) (35 shared connections)
-- [Community 15](Community_15.md) (22 shared connections)
+- [Community 7](Community_7.md) (35 shared connections)
+- [Community 12](Community_12.md) (33 shared connections)
 - [Community 11](Community_11.md) (20 shared connections)
-- [Community 7](Community_7.md) (17 shared connections)
-- [Community 45](Community_45.md) (6 shared connections)
+- [Community 45](Community_45.md) (13 shared connections)
 - [Community 48](Community_48.md) (2 shared connections)
+- [Community 15](Community_15.md) (1 shared connections)
 
 ## Source Files
 

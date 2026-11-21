@@ -183,7 +183,7 @@ To prevent massive AI token consumption, memory bloat, and context truncation:
 > **Every AI agent MUST run `python3 check-invariants.py` or `python3 run-regressions.py` before concluding any turn, pushing commits, or completing a task.**
 > A pre-commit hook is active at `.git/hooks/pre-commit` and will reject commits if any invariant fails.
 
-The project maintains **10 non-negotiable architectural invariants** verified locally in < 1 second with standard Python and macOS WebKit JSC:
+The project maintains **11 non-negotiable architectural invariants** verified locally in < 1 second with standard Python and macOS WebKit JSC:
 
 | Rule ID | Invariant Name | Scope & Check Description |
 |---|---|---|
@@ -197,10 +197,11 @@ The project maintains **10 non-negotiable architectural invariants** verified lo
 | **INV-8** | **State Persistence & Storage Key Isolation** | All subject mini-apps strictly use their designated namespaced `localStorage` prefix. |
 | **INV-9** | **Mobile Responsive Drawer Layout Contract** | All subject `index.html` files provide `.sidebar-backdrop`, `.sidebar`, and Home link. |
 | **INV-10** | **Cartographic Compliance & Clean Git Hygiene** | Survey of India official boundaries; no `*.pdf` files tracked in git (`.gitignore` enforced). |
+| **INV-11** | **Learn Mode Interactive Checkpoint Contract** | All topic learn modules MUST provide interactive checkpoint questions with instant feedback and star credit. Prevents empty learn stalls. |
 
 ### Running Invariants & Regressions:
 ```bash
-# Fast check of all 10 architectural invariants (< 1s):
+# Fast check of all 11 architectural invariants (< 1s):
 python3 check-invariants.py
 
 # Change-aware regression runner (runs invariant checks + simulation suites):

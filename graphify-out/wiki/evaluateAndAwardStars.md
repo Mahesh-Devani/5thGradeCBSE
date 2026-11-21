@@ -1,6 +1,6 @@
 # evaluateAndAwardStars()
 
-> God node · 14 connections · `maths/app.js`
+> God node · 16 connections · `maths/app.js`
 
 **Community:** [Community 12](Community_12.md)
 
@@ -16,10 +16,12 @@
 - launchConfetti() `EXTRACTED`
 - switchTopic() `EXTRACTED`
 - saveProgress() `EXTRACTED`
+- completeTopicLearnCheckpoint() `EXTRACTED`
 - playFanfare() `EXTRACTED`
 - markModuleInteracted() `EXTRACTED`
 - getTopicProgressData() `EXTRACTED`
 - setTopicStars() `EXTRACTED`
+- updateMasteryBannerLive() `EXTRACTED`
 
 ### contains
 - maths/app.js `EXTRACTED`

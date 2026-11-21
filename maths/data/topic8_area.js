@@ -58,6 +58,67 @@ const LEARN_MODULES_TOPIC_8 = {
    INTERACTIVE LEARN RENDERERS FOR TOPIC 8
    ========================================================================== */
 
+function renderAreaCheckpointCard({ cpId, badgeText, prompt, options, correctIdx }) {
+  const isCleared = typeof window.isTopicCheckpointCleared === 'function'
+    ? window.isTopicCheckpointCleared('area_perimeter', cpId)
+    : false;
+
+  const optionsHtml = options.map((opt, idx) => `
+    <button class="checkpoint-opt-btn" data-opt-idx="${idx}" data-correct="${idx === correctIdx}">
+      <span>${String.fromCharCode(65 + idx)}</span>
+      <strong>${opt}</strong>
+    </button>
+  `).join('');
+
+  return `
+    <div class="learn-checkpoint-box ${isCleared ? 'cleared' : ''}" id="${cpId}-box" style="margin-top: 1.5rem;">
+      <div class="checkpoint-header">
+        <div class="checkpoint-badge ${isCleared ? 'cleared' : ''}">
+          ${isCleared ? '✓ Checkpoint Cleared' : badgeText}
+        </div>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Required for Topic Star ⭐</span>
+      </div>
+      <div class="checkpoint-prompt">
+        ${prompt}
+      </div>
+      <div class="checkpoint-interactive-area">
+        <div class="checkpoint-options-grid">
+          ${optionsHtml}
+        </div>
+        <div class="checkpoint-feedback" id="${cpId}-feedback"></div>
+      </div>
+    </div>
+  `;
+}
+
+function attachAreaCheckpointListeners(container, cpId, correctIdx, explanation) {
+  const box = container.querySelector(`#${cpId}-box`);
+  if (!box) return;
+  const feedback = box.querySelector(`#${cpId}-feedback`);
+  box.querySelectorAll('.checkpoint-opt-btn').forEach((btn, idx) => {
+    btn.addEventListener('click', () => {
+      const isCorrect = idx === correctIdx;
+      if (isCorrect) {
+        btn.classList.add('correct');
+        box.querySelectorAll('.checkpoint-opt-btn').forEach(b => b.disabled = true);
+        if (typeof window.completeTopicLearnCheckpoint === 'function') {
+          window.completeTopicLearnCheckpoint('area_perimeter', cpId, feedback, box);
+        }
+      } else {
+        btn.classList.add('wrong');
+        if (typeof window.playWrongSound === 'function') {
+          window.playWrongSound();
+        }
+        if (feedback) {
+          feedback.className = 'checkpoint-feedback error';
+          feedback.innerHTML = `<strong>Not quite!</strong> ${explanation}`;
+          feedback.style.display = 'block';
+        }
+      }
+    });
+  });
+}
+
 function renderAreaFoundationsModule(container) {
   container.innerHTML = `
     <div class="think-callout-math">
@@ -128,7 +189,25 @@ function renderAreaFoundationsModule(container) {
         </g>
       </svg>
     </div>
-  `;
+  ` + renderAreaCheckpointCard({
+    cpId: 'checkpoint_area_1',
+    badgeText: '⭐ Checkpoint 1 of 5 • Required for Star 1 ⭐',
+    prompt: '<strong>Perimeter vs Area Challenge:</strong> A rectangular garden has length 8 m and breadth 4 m. The gardener needs to buy a fence for the boundary and grass turf for the ground. What are the perimeter and area?',
+    options: [
+      'Perimeter = 12 m, Area = 32 sq m',
+      'Perimeter = 24 m, Area = 32 sq m',
+      'Perimeter = 32 m, Area = 24 sq m',
+      'Perimeter = 24 sq m, Area = 32 m'
+    ],
+    correctIdx: 1
+  });
+
+  attachAreaCheckpointListeners(
+    container,
+    'checkpoint_area_1',
+    1,
+    'Fence is perimeter (1D boundary): 2 × (8 + 4) = 24 m. Grass turf is area (2D space): 8 × 4 = 32 sq m. Remember: perimeter is linear (m), area is square units (sq m)!'
+  );
 }
 
 function renderSameAreaModule(container) {
@@ -163,7 +242,25 @@ function renderSameAreaModule(container) {
         For a fixed area, the closer length and breadth are to each other (more square-shaped), the <strong>smaller the perimeter</strong>! Long skinny shapes have a huge perimeter for the same area.
       </p>
     </div>
-  `;
+  ` + renderAreaCheckpointCard({
+    cpId: 'checkpoint_area_2',
+    badgeText: '⭐ Checkpoint 2 of 5 • Required for Star 2 ⭐',
+    prompt: '<strong>Factor Pairs & Perimeter Comparison:</strong> Two rectangular rugs both have an area of 24 sq cm. Rug A is 6 cm × 4 cm. Rug B is 12 cm × 2 cm. What can you say about their perimeters?',
+    options: [
+      'Both have identical perimeters because their areas are equal',
+      'Rug A has perimeter 20 cm, Rug B has perimeter 28 cm',
+      'Rug A has a larger perimeter than Rug B',
+      'Rug B has perimeter 14 cm, Rug A has perimeter 10 cm'
+    ],
+    correctIdx: 1
+  });
+
+  attachAreaCheckpointListeners(
+    container,
+    'checkpoint_area_2',
+    1,
+    'Even with identical area (24 sq cm), Rug A has perimeter 2 × (6 + 4) = 20 cm, while skinny Rug B has perimeter 2 × (12 + 2) = 28 cm! The closer dimensions are to each other, the smaller the perimeter.'
+  );
 }
 
 function renderTriangleGridModule(container) {
@@ -199,7 +296,25 @@ function renderTriangleGridModule(container) {
       <p style="margin: 0.25rem 0; font-size: 0.92rem; color: #cbd5e1;">2. Pink rectangle: 2 cm × 5 cm = 10 sq cm ⟹ Triangle part = ½ × 10 = <strong>5 sq cm</strong></p>
       <p style="margin: 0.25rem 0; font-size: 0.92rem; color: #10b981; font-weight: bold;">3. Total Triangle Area = 10 sq cm + 5 sq cm = 15 sq cm</p>
     </div>
-  `;
+  ` + renderAreaCheckpointCard({
+    cpId: 'checkpoint_area_3',
+    badgeText: '⭐ Checkpoint 3 of 5 • Required for Star 3 ⭐',
+    prompt: '<strong>Half-Rectangle Triangle Rule:</strong> A right-angled triangle has a base of 6 cm and height of 4 cm. It fits inside a 6 cm × 4 cm rectangle. What is the area of this triangle?',
+    options: [
+      '24 sq cm',
+      '10 sq cm',
+      '12 sq cm',
+      '20 sq cm'
+    ],
+    correctIdx: 2
+  });
+
+  attachAreaCheckpointListeners(
+    container,
+    'checkpoint_area_3',
+    2,
+    'A right triangle is exactly half of the surrounding bounding rectangle. Area = ½ × (Base × Height) = ½ × (6 × 4) = ½ × 24 = 12 sq cm!'
+  );
 }
 
 function renderIrregularGridModule(container) {
@@ -224,7 +339,25 @@ function renderIrregularGridModule(container) {
         <br>• Total approximate area = 2 + 6 = <strong>8 sq units</strong>.
       </p>
     </div>
-  `;
+  ` + renderAreaCheckpointCard({
+    cpId: 'checkpoint_area_4',
+    badgeText: '⭐ Checkpoint 4 of 5 • Required for Star 4 ⭐',
+    prompt: '<strong>Irregular Grid Estimation Rule:</strong> A student traces a leaf on 1 cm grid paper. The leaf covers: 5 fully covered squares, 4 more than half-covered squares, 2 exactly half-covered squares, and 3 less than half-covered squares. What is the estimated area according to CBSE rules?',
+    options: [
+      '14 sq cm',
+      '10 sq cm',
+      '11 sq cm',
+      '9 sq cm'
+    ],
+    correctIdx: 1
+  });
+
+  attachAreaCheckpointListeners(
+    container,
+    'checkpoint_area_4',
+    1,
+    'Using the CBSE 4-step rule: 5 full (5 sq cm) + 4 more-than-half (4 sq cm) + 2 half (2 × 0.5 = 1 sq cm) + 3 less-than-half (ignored: 0) = 5 + 4 + 1 + 0 = 10 sq cm!'
+  );
 }
 
 function renderTilingWordProblemsModule(container) {
@@ -247,7 +380,25 @@ function renderTilingWordProblemsModule(container) {
         <em>⚡ Shortcut: Along length: 120 ÷ 15 = 8 slabs; Along breadth: 90 ÷ 15 = 6 slabs; Total = 8 × 6 = <strong>48 slabs</strong>!</em>
       </div>
     </div>
-  `;
+  ` + renderAreaCheckpointCard({
+    cpId: 'checkpoint_area_5',
+    badgeText: '⭐ Checkpoint 5 of 5 • Required for Star 5 ⭐',
+    prompt: '<strong>Floor Tiling Application:</strong> A rectangular room floor is 4 m long and 3 m wide (400 cm × 300 cm). How many square tiles of side 50 cm are needed to pave the floor?',
+    options: [
+      '24 tiles',
+      '48 tiles',
+      '96 tiles',
+      '12 tiles'
+    ],
+    correctIdx: 1
+  });
+
+  attachAreaCheckpointListeners(
+    container,
+    'checkpoint_area_5',
+    1,
+    'Floor area = 400 × 300 = 120,000 sq cm. Tile area = 50 × 50 = 2,500 sq cm. Number of tiles = 120,000 ÷ 2,500 = 48 tiles! (Or shortcut: 400 ÷ 50 = 8 tiles along length; 300 ÷ 50 = 6 tiles along width; Total = 8 × 6 = 48 tiles).'
+  );
 }
 
 /* ==========================================================================

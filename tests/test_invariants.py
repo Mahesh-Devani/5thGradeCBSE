@@ -57,6 +57,10 @@ class TestArchitecturalInvariants(unittest.TestCase):
         res = check_invariants.check_git_hygiene_and_compliance()
         self.assertTrue(res.passed, f"INV-10 Failed:\n" + "\n".join(res.details))
 
+    def test_inv11_learn_mode_checkpoints(self):
+        res = check_invariants.check_learn_mode_checkpoints()
+        self.assertTrue(res.passed, f"INV-11 Failed:\n" + "\n".join(res.details))
+
 
 if __name__ == '__main__':
     unittest.main()

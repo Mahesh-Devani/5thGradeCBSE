@@ -1,6 +1,6 @@
 # Community 49
 
-> 5 nodes
+> 6 nodes
 
 ## Key Concepts
 
@@ -8,6 +8,7 @@
 - **os** (3 connections)
 - **make_polygon()** (2 connections) — `social_sicence_maps/scripts/build_app.py`
 - **wp()** (2 connections) — `social_sicence_maps/scripts/build_app.py`
+- **json** (2 connections)
 - **esc()** (1 connections) — `social_sicence_maps/scripts/build_app.py`
 
 ## Relationships
@@ -21,7 +22,7 @@
 
 ## Audit Trail
 
-- EXTRACTED: 8 (100%)
+- EXTRACTED: 9 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

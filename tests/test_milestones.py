@@ -241,6 +241,115 @@ class TestMilestoneProgression(unittest.TestCase):
         res = run_jsc_simulation(source_files, test_script)
         self.assertIn("MATHS_RESET_OK", res.stdout, f"Maths simulation failed:\n{res.stdout}\n{res.stderr}")
 
+    def test_maths_area_volume_learn_checkpoints(self):
+        """Verify that Area & Volume Learn mode checkpoints award stars monotonically."""
+        source_files = [
+            PROJECT_ROOT / 'shared' / 'js' / 'sound.js',
+            PROJECT_ROOT / 'shared' / 'js' / 'confetti.js',
+            PROJECT_ROOT / 'shared' / 'js' / 'drawer.js',
+            PROJECT_ROOT / 'shared' / 'js' / 'storage.js',
+            PROJECT_ROOT / 'maths' / 'engines' / 'solvers.js',
+            PROJECT_ROOT / 'maths' / 'data' / 'topic1_hcf_lcm.js',
+            PROJECT_ROOT / 'maths' / 'data' / 'topic2_divisibility.js',
+            PROJECT_ROOT / 'maths' / 'data' / 'topic3_expressions.js',
+            PROJECT_ROOT / 'maths' / 'data' / 'topic4_patterns.js',
+            PROJECT_ROOT / 'maths' / 'data' / 'topic5_geometry.js',
+            PROJECT_ROOT / 'maths' / 'data' / 'topic_tables.js',
+            PROJECT_ROOT / 'maths' / 'data' / 'topic_fractions.js',
+            PROJECT_ROOT / 'maths' / 'data' / 'topic_revision.js',
+            PROJECT_ROOT / 'maths' / 'data' / 'topic8_area.js',
+            PROJECT_ROOT / 'maths' / 'data' / 'topic9_volume.js',
+            PROJECT_ROOT / 'maths' / 'app.js',
+        ]
+        test_script = """
+        // Initialize state
+        state.topicProgress = state.topicProgress || {};
+
+        // 1. Area & Perimeter progression
+        state.topicProgress['area_perimeter'] = {
+            modulesInteracted: {},
+            checkpoints: {},
+            categorySolved: {},
+            totalSolved: 0,
+            totalAttempted: 0,
+            accuracy: 0,
+            trapsDiagnosed: 0,
+            challengeHighScore: 0
+        };
+        let s0 = evaluateAndAwardStars('area_perimeter');
+        if (s0 !== 0) throw new Error('Initial area stars must be 0, got ' + s0);
+
+        // Checkpoint 1 -> 1 star
+        state.topicProgress['area_perimeter'].checkpoints['checkpoint_area_1'] = true;
+        let s1 = evaluateAndAwardStars('area_perimeter');
+        if (s1 !== 1) throw new Error('Area checkpoint 1 should award 1 star, got ' + s1);
+
+        // Checkpoint 2 -> 2 stars
+        state.topicProgress['area_perimeter'].checkpoints['checkpoint_area_2'] = true;
+        let s2 = evaluateAndAwardStars('area_perimeter');
+        if (s2 !== 2) throw new Error('Area checkpoint 2 should award 2 stars, got ' + s2);
+
+        // Checkpoint 3 -> 3 stars
+        state.topicProgress['area_perimeter'].checkpoints['checkpoint_area_3'] = true;
+        let s3 = evaluateAndAwardStars('area_perimeter');
+        if (s3 !== 3) throw new Error('Area checkpoint 3 should award 3 stars, got ' + s3);
+
+        // Checkpoint 4 -> 4 stars
+        state.topicProgress['area_perimeter'].checkpoints['checkpoint_area_4'] = true;
+        let s4 = evaluateAndAwardStars('area_perimeter');
+        if (s4 !== 4) throw new Error('Area checkpoint 4 should award 4 stars, got ' + s4);
+
+        // Checkpoint 5 -> 5 stars
+        state.topicProgress['area_perimeter'].checkpoints['checkpoint_area_5'] = true;
+        let s5 = evaluateAndAwardStars('area_perimeter');
+        if (s5 !== 5) throw new Error('Area checkpoint 5 should award 5 stars, got ' + s5);
+
+        // Practice solve advancement
+        state.topicProgress['area_perimeter'].categorySolved = {
+            foundations_formulas: 3,
+            factor_pairs_same_area: 2,
+            triangle_irregular_grids: 2,
+            tiling_word_problems: 2
+        };
+        state.topicProgress['area_perimeter'].totalSolved = 10;
+        state.topicProgress['area_perimeter'].totalAttempted = 10;
+        state.topicProgress['area_perimeter'].accuracy = 100;
+        let sAdv = evaluateAndAwardStars('area_perimeter');
+        if (sAdv < 9) throw new Error('Expected at least 9 stars for comprehensive practice solving in Area, got ' + sAdv);
+
+        // 2. Volume & Capacity progression
+        state.topicProgress['volume_capacity'] = {
+            modulesInteracted: {},
+            checkpoints: {},
+            categorySolved: {},
+            totalSolved: 0,
+            totalAttempted: 0,
+            accuracy: 0,
+            trapsDiagnosed: 0,
+            challengeHighScore: 0
+        };
+        let vs0 = evaluateAndAwardStars('volume_capacity');
+        if (vs0 !== 0) throw new Error('Initial volume stars must be 0, got ' + vs0);
+
+        state.topicProgress['volume_capacity'].checkpoints['checkpoint_vol_1'] = true;
+        let vs1 = evaluateAndAwardStars('volume_capacity');
+        if (vs1 !== 1) throw new Error('Volume checkpoint 1 should award 1 star, got ' + vs1);
+
+        state.topicProgress['volume_capacity'].checkpoints['checkpoint_vol_2'] = true;
+        let vs2 = evaluateAndAwardStars('volume_capacity');
+        if (vs2 !== 2) throw new Error('Volume checkpoint 2 should award 2 stars, got ' + vs2);
+
+        state.topicProgress['volume_capacity'].checkpoints['checkpoint_vol_3'] = true;
+        state.topicProgress['volume_capacity'].checkpoints['checkpoint_vol_4'] = true;
+        state.topicProgress['volume_capacity'].checkpoints['checkpoint_vol_5'] = true;
+        let vs5 = evaluateAndAwardStars('volume_capacity');
+        if (vs5 !== 5) throw new Error('Volume checkpoints 1-5 should award 5 stars, got ' + vs5);
+
+        print('MATHS_AREA_VOLUME_CHECKPOINTS_OK');
+        """
+        res = run_jsc_simulation(source_files, test_script)
+        self.assertIn("MATHS_AREA_VOLUME_CHECKPOINTS_OK", res.stdout, f"Simulation failed:\n{res.stdout}\n{res.stderr}")
+
 
 if __name__ == '__main__':
     unittest.main()

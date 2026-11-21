@@ -23,6 +23,7 @@ Invariant Categories:
     8.  [INV-8]  State Persistence & Storage Key Isolation
     9.  [INV-9]  Mobile Responsive Drawer Layout Contract
     10. [INV-10] Cartographic Compliance & Clean Git Hygiene
+    11. [INV-11] Learn Mode Interactive Checkpoint & Question Contract
 """
 
 import os
@@ -427,6 +428,67 @@ def check_git_hygiene_and_compliance():
     )
 
 
+# ── Invariant 11: Learn Mode Interactive Checkpoint & Question Contract ─────
+def check_learn_mode_checkpoints():
+    """Verify that curriculum topics with Learn modules contain interactive checkpoints."""
+    violations = []
+
+    # 1. Check maths/data/topic8_area.js
+    area_file = PROJECT_ROOT / 'maths' / 'data' / 'topic8_area.js'
+    if area_file.exists():
+        content = area_file.read_text(encoding='utf-8')
+        for i in range(1, 6):
+            cp_id = f"checkpoint_area_{i}"
+            if cp_id not in content:
+                violations.append(f"maths/data/topic8_area.js missing interactive checkpoint '{cp_id}'")
+        if 'completeTopicLearnCheckpoint' not in content:
+            violations.append("maths/data/topic8_area.js does not wire completeTopicLearnCheckpoint")
+        if 'learn-checkpoint-box' not in content:
+            violations.append("maths/data/topic8_area.js missing learn-checkpoint-box UI element")
+    else:
+        violations.append("maths/data/topic8_area.js does not exist")
+
+    # 2. Check maths/data/topic9_volume.js
+    volume_file = PROJECT_ROOT / 'maths' / 'data' / 'topic9_volume.js'
+    if volume_file.exists():
+        content = volume_file.read_text(encoding='utf-8')
+        for i in range(1, 6):
+            cp_id = f"checkpoint_vol_{i}"
+            if cp_id not in content:
+                violations.append(f"maths/data/topic9_volume.js missing interactive checkpoint '{cp_id}'")
+        if 'completeTopicLearnCheckpoint' not in content:
+            violations.append("maths/data/topic9_volume.js does not wire completeTopicLearnCheckpoint")
+        if 'learn-checkpoint-box' not in content:
+            violations.append("maths/data/topic9_volume.js missing learn-checkpoint-box UI element")
+    else:
+        violations.append("maths/data/topic9_volume.js does not exist")
+
+    # 3. Check maths/app.js milestone integration
+    maths_app = PROJECT_ROOT / 'maths' / 'app.js'
+    if maths_app.exists():
+        content = maths_app.read_text(encoding='utf-8')
+        for i in range(1, 6):
+            if f"checkpoint_area_{i}" not in content:
+                violations.append(f"maths/app.js TOPIC_MILESTONES['area_perimeter'] does not evaluate 'checkpoint_area_{i}'")
+            if f"checkpoint_vol_{i}" not in content:
+                violations.append(f"maths/app.js TOPIC_MILESTONES['volume_capacity'] does not evaluate 'checkpoint_vol_{i}'")
+        if 'completeTopicLearnCheckpoint' not in content:
+            violations.append("maths/app.js missing completeTopicLearnCheckpoint implementation")
+        if 'updateMasteryBannerLive' not in content:
+            violations.append("maths/app.js missing live banner update handler")
+    else:
+        violations.append("maths/app.js does not exist")
+
+    return InvariantResult(
+        name="Learn Mode Interactive Checkpoint & Question Contract",
+        passed=len(violations) == 0,
+        details=violations if violations else [
+            "All curriculum Learn modules provide interactive checkpoints with immediate feedback and live star credit"
+        ],
+        rule_id='INV-11'
+    )
+
+
 # ── Main Runner ─────────────────────────────────────────────────────────────
 def main():
     print(f"\n{BOLD}{CYAN}5thGradeCBSE — Architectural Invariant Verifier{RESET}")
@@ -445,6 +507,7 @@ def main():
         check_storage_key_isolation,
         check_mobile_drawer_contract,
         check_git_hygiene_and_compliance,
+        check_learn_mode_checkpoints,
     ]
 
     all_passed = True

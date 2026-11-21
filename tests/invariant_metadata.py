@@ -168,6 +168,24 @@ INVARIANT_RULES = {
         'example_bad': 'git add reference_worksheet.pdf',
         'example_good': '// Transcribe questions into data.js; keep reference PDFs out of repository',
     },
+    'INV-11': {
+        'title': 'Learn Mode Interactive Checkpoint & Question Contract',
+        'rule_ref': 'AGENTS.md § 1.5 & ARCHITECTURE.md § 2 (Learn Checkpoints)',
+        'root_cause': (
+            "When students enter a new topic or chapter, Learn mode is the primary entry point.\n"
+            "If learn modules contain only static reading text/SVGs without interactive check\n"
+            "questions or checkpoints, students cannot test their comprehension or earn topic\n"
+            "mastery stars in Learn mode, leading to stalls and confusion."
+        ),
+        'remediation': (
+            "Every curriculum topic with structured Learn modules MUST provide interactive\n"
+            "comprehension checkpoints or check questions (with option buttons, immediate pedagogical\n"
+            "feedback, and state tracking via completeTopicLearnCheckpoint or equivalent),\n"
+            "and milestone evaluators must award stars when checkpoints are cleared."
+        ),
+        'example_bad': "function renderLearnModule(c) { c.innerHTML = '<p>Static text</p>'; } // Zero interactive questions or checkpoints",
+        'example_good': "function renderLearnModule(c) { c.innerHTML = '<p>Text</p>' + renderCheckpointCard({...}); attachCheckpointListeners(...); }",
+    },
 }
 
 
