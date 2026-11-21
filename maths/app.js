@@ -1478,6 +1478,49 @@ const TOPICS_CONFIG = {
     ],
     challengePool: CHALLENGE_QUESTIONS_REVISION,
     worksheetRenderer: renderWorksheetViewRevision
+  },
+  area_perimeter: {
+    id: 'area_perimeter',
+    title: 'Area & Perimeter Master',
+    subtitle: 'CBSE Class 5 Chapter 8 — Formulas, Grid Calculations, Triangles & Irregular Shapes',
+    icon: '📐',
+    themeColor: '#10b981',
+    targetStars: 10,
+    starsKey: 'cbse_maths_area_stars',
+    sidebarStarId: 'stars-area',
+    defaultLearnModule: 'area_foundations_perim',
+    learnModules: LEARN_MODULES_TOPIC_8,
+    practicePool: PRACTICE_POOL_TOPIC_8,
+    practiceCategories: [
+      { id: 'all', label: '🌟 All Questions' },
+      { id: 'foundations_formulas', label: '📏 Foundations & Formulas' },
+      { id: 'factor_pairs_same_area', label: '🔲 Factor Pairs & Same Area' },
+      { id: 'triangle_irregular_grids', label: '📐 Triangles & Grid Estimation' },
+      { id: 'tiling_word_problems', label: '🧱 Floor Tiling & Real Life' }
+    ],
+    challengePool: CHALLENGE_QUESTIONS_TOPIC_8
+  },
+  volume_capacity: {
+    id: 'volume_capacity',
+    title: 'Volume & Capacity Master',
+    subtitle: 'CBSE Class 5 Chapter 9 — 3D Solids, Cuboid (l × b × h), Base Area × Height & Liquid Litres',
+    icon: '📦',
+    themeColor: '#8b5cf6',
+    targetStars: 10,
+    starsKey: 'cbse_maths_volume_stars',
+    sidebarStarId: 'stars-volume',
+    defaultLearnModule: 'solids_3d_foundations',
+    learnModules: LEARN_MODULES_TOPIC_9,
+    practicePool: PRACTICE_POOL_TOPIC_9,
+    practiceCategories: [
+      { id: 'all', label: '🌟 All Questions' },
+      { id: 'solids_3d_properties', label: '🧊 3D Solid Properties' },
+      { id: 'cube_cuboid_volume', label: '📦 Cube & Cuboid Volume' },
+      { id: 'base_area_height', label: '📐 Base Area × Height' },
+      { id: 'capacity_conversions', label: '💧 Capacity & Litre Conversions' },
+      { id: 'real_world_packing', label: '🐠 Real-World & Cube Packing' }
+    ],
+    challengePool: CHALLENGE_QUESTIONS_TOPIC_9
   }
 };
 
@@ -2067,6 +2110,150 @@ const TOPIC_MILESTONES = {
       desc: 'Achieved ≥8 correct answers in the comprehensive 60-Second Speed Challenge',
       hint: 'Score 8+ correct answers in the 60s Speed Challenge',
       check: (d) => d.challengeHighScore >= 8
+    }
+  ],
+  area_perimeter: [
+    {
+      id: 'area_foundations',
+      title: 'Perimeter vs Area Foundations',
+      desc: 'Mastered the boundary fence vs turf carpet mental metaphor and standard units (sq cm, sq m)',
+      hint: 'Explore the Perimeter vs Area module in Learn mode (or solve 2 questions total)',
+      check: (d) => !!d.modulesInteracted.area_foundations_perim || d.totalSolved >= 2
+    },
+    {
+      id: 'same_area_factors',
+      title: 'Factor Pairs & Same Area',
+      desc: 'Understood that different rectangles can share identical areas (factors of 12, 18, 24)',
+      hint: 'Explore the Same Area, Different Shapes module (or solve 4 questions total)',
+      check: (d) => !!d.modulesInteracted.same_area_diff_shapes || d.totalSolved >= 4
+    },
+    {
+      id: 'triangle_half_rule',
+      title: 'The Half-Rectangle Triangle Rule',
+      desc: 'Mastered finding triangle area by dividing into right-angled halves inside bounding rectangles',
+      hint: 'Explore the Triangles on Grids module (or solve 6 questions total)',
+      check: (d) => !!d.modulesInteracted.triangle_grid_half || d.totalSolved >= 6
+    },
+    {
+      id: 'irregular_grid_rule',
+      title: 'Irregular Shapes & 4-Step Grid Rule',
+      desc: 'Applied the official CBSE 4-step rule (full, >half, half, ignore) to estimate real-world areas',
+      hint: 'Explore the Irregular Shapes module (or solve 8 questions total)',
+      check: (d) => !!d.modulesInteracted.irregular_shapes_grid || d.totalSolved >= 8
+    },
+    {
+      id: 'practice_formulas',
+      title: 'Formula Calculations Precision',
+      desc: 'Solved rectangle (l × b) and square (s²) area & perimeter calculations',
+      hint: 'Solve at least 3 formula questions in Practice mode (or 2 questions total)',
+      check: (d) => (d.categorySolved.foundations_formulas || 0) >= 3 || d.totalSolved >= 2
+    },
+    {
+      id: 'practice_factors',
+      title: 'Factor Pairs & Dimension Deductions',
+      desc: 'Correctly deduced length, breadth, and perimeter comparisons for given areas',
+      hint: 'Solve at least 2 factor pairs questions in Practice mode (or 4 questions total)',
+      check: (d) => (d.categorySolved.factor_pairs_same_area || 0) >= 2 || d.totalSolved >= 4
+    },
+    {
+      id: 'practice_grids',
+      title: 'Grid Triangle & Irregular Calculations',
+      desc: 'Calculated triangle areas and estimated unit square grid shapes',
+      hint: 'Solve at least 2 grid questions in Practice mode (or 6 questions total)',
+      check: (d) => (d.categorySolved.triangle_irregular_grids || 0) >= 2 || d.totalSolved >= 6
+    },
+    {
+      id: 'practice_tiling',
+      title: 'Floor Tiling & Real-World Paving',
+      desc: 'Solved room marble slab paving, crossword puzzle areas, and carpeting cost problems',
+      hint: 'Solve at least 2 tiling word problems in Practice mode (or 8 questions total)',
+      check: (d) => (d.categorySolved.tiling_word_problems || 0) >= 2 || d.totalSolved >= 8
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Area Curriculum Breadth',
+      desc: 'Solved at least 10 curriculum questions across all categories of Chapter 8 Area',
+      hint: 'Solve at least 10 practice questions total',
+      check: (d) => d.totalSolved >= 10
+    },
+    {
+      id: 'sprint_speed',
+      title: 'Area Speed Master',
+      desc: 'Completed the 60s Area Sprint Challenge or achieved 12 practice questions',
+      hint: 'Earn at least 5 correct answers on the 60s Sprint (or solve 12 questions total)',
+      check: (d) => (d.challengeHighScore || 0) >= 5 || d.totalSolved >= 12
+    }
+  ],
+  volume_capacity: [
+    {
+      id: 'solids_foundations',
+      title: 'Solid 3D Shapes & Volume Units',
+      desc: 'Mastered faces, edges, and vertices of 3D solids and cubic units (cm³, m³)',
+      hint: 'Explore 3D Solid Shapes in Learn mode (or solve 2 questions total)',
+      check: (d) => !!d.modulesInteracted.solids_3d_foundations || d.totalSolved >= 2
+    },
+    {
+      id: 'cube_cuboid_rule',
+      title: 'Cube & Cuboid Volume Formulas',
+      desc: 'Mastered l × b × h and s³ by counting centimetre cube layers',
+      hint: 'Explore Cube & Cuboid Formulas in Learn mode (or solve 4 questions total)',
+      check: (d) => !!d.modulesInteracted.cube_cuboid_formulas || d.totalSolved >= 4
+    },
+    {
+      id: 'base_area_relation',
+      title: 'Base Area × Height Master Relation',
+      desc: 'Mastered Volume = Base Area × Height and inverse height deductions',
+      hint: 'Explore Base Area × Height in Learn mode (or solve 6 questions total)',
+      check: (d) => !!d.modulesInteracted.base_area_height_relation || d.totalSolved >= 6
+    },
+    {
+      id: 'capacity_equivalence',
+      title: 'The Golden Equivalence (1 L = 1000 cm³)',
+      desc: 'Mastered liquid capacity conversions (1 L = 1000 mL = 1000 cm³) and water displacement',
+      hint: 'Explore Volume & Capacity in Learn mode (or solve 8 questions total)',
+      check: (d) => !!d.modulesInteracted.volume_and_capacity || d.totalSolved >= 8
+    },
+    {
+      id: 'practice_solids',
+      title: '3D Solid Properties Precision',
+      desc: 'Solved questions on faces, edges, vertices, and cubic unit conventions',
+      hint: 'Solve at least 2 solid properties questions (or 2 questions total)',
+      check: (d) => (d.categorySolved.solids_3d_properties || 0) >= 2 || d.totalSolved >= 2
+    },
+    {
+      id: 'practice_cuboid',
+      title: 'Cube & Cuboid Volume Calculations',
+      desc: 'Calculated box volumes and deduced missing dimensions using l × b × h',
+      hint: 'Solve at least 3 cuboid volume questions (or 4 questions total)',
+      check: (d) => (d.categorySolved.cube_cuboid_volume || 0) >= 3 || d.totalSolved >= 4
+    },
+    {
+      id: 'practice_base_height',
+      title: 'Base Area & Height Applications',
+      desc: 'Deduced height from base area and compared object volumes (book vs box)',
+      hint: 'Solve at least 2 base area questions (or 6 questions total)',
+      check: (d) => (d.categorySolved.base_area_height || 0) >= 2 || d.totalSolved >= 6
+    },
+    {
+      id: 'practice_capacity',
+      title: 'Litre & Millilitre Conversions',
+      desc: 'Converted cm³ to litres/mL and calculated water displacement volume',
+      hint: 'Solve at least 2 capacity conversion questions (or 8 questions total)',
+      check: (d) => (d.categorySolved.capacity_conversions || 0) >= 2 || d.totalSolved >= 8
+    },
+    {
+      id: 'practice_breadth',
+      title: 'Volume Curriculum Breadth',
+      desc: 'Solved at least 10 curriculum questions across all categories of Chapter 9 Volume',
+      hint: 'Solve at least 10 practice questions total',
+      check: (d) => d.totalSolved >= 10
+    },
+    {
+      id: 'sprint_speed',
+      title: 'Volume Speed Master',
+      desc: 'Completed the 60s Volume Sprint Challenge or achieved 12 practice questions',
+      hint: 'Earn at least 5 correct answers on the 60s Sprint (or solve 12 questions total)',
+      check: (d) => (d.sprintHighScore || 0) >= 5 || d.totalSolved >= 12
     }
   ]
 };

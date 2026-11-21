@@ -154,6 +154,8 @@ class TestMilestoneProgression(unittest.TestCase):
             PROJECT_ROOT / 'maths' / 'data' / 'topic_tables.js',
             PROJECT_ROOT / 'maths' / 'data' / 'topic_fractions.js',
             PROJECT_ROOT / 'maths' / 'data' / 'topic_revision.js',
+            PROJECT_ROOT / 'maths' / 'data' / 'topic8_area.js',
+            PROJECT_ROOT / 'maths' / 'data' / 'topic9_volume.js',
             PROJECT_ROOT / 'maths' / 'app.js',
         ]
         test_script = """
@@ -162,6 +164,14 @@ class TestMilestoneProgression(unittest.TestCase):
 
         setTopicStars('factors_multiples_hcf_lcm', 0);
         if (getTopicStars('factors_multiples_hcf_lcm') !== 0) throw new Error('Maths setTopicStars failed to reset to 0');
+
+        // Test Area topic milestones exist and evaluate
+        let areaMilestones = TOPIC_MILESTONES['area_perimeter'];
+        if (!areaMilestones || areaMilestones.length !== 10) throw new Error('Area topic must have 10 milestones');
+
+        // Test Volume topic milestones exist and evaluate
+        let volMilestones = TOPIC_MILESTONES['volume_capacity'];
+        if (!volMilestones || volMilestones.length !== 10) throw new Error('Volume topic must have 10 milestones');
 
         print('MATHS_RESET_OK');
         """

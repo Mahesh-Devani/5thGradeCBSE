@@ -158,6 +158,8 @@ The Mathematics module is divided into dedicated data files and calculation engi
 - `maths/data/topic5_geometry.js`: Topic 5 foundations, angle/line relationships, and practice pool.
 - `maths/data/topic_tables.js`: Topic 6 multiplication learn modules.
 - `maths/data/topic_fractions.js`: Topic 7 fractions learn modules.
+- `maths/data/topic8_area.js`: Chapter 8 Area & Perimeter learn modules, practice pool, and 60s sprint.
+- `maths/data/topic9_volume.js`: Chapter 9 Volume & Capacity learn modules, practice pool, and 60s sprint.
 - `maths/data/topic_revision.js`: Mixed revision learn modules and practice pool.
 - `maths/app.js`: State manager, view coordinators, and interactive UI renderers.
 
