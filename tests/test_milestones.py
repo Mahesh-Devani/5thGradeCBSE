@@ -173,6 +173,69 @@ class TestMilestoneProgression(unittest.TestCase):
         let volMilestones = TOPIC_MILESTONES['volume_capacity'];
         if (!volMilestones || volMilestones.length !== 10) throw new Error('Volume topic must have 10 milestones');
 
+        // Test Zero-Effort Prevention: With 0 solved questions, NO topic may award stars merely by clicking modules!
+        Object.keys(TOPICS_CONFIG).forEach(topicId => {
+            state.topicProgress = state.topicProgress || {};
+            state.topicProgress[topicId] = {
+                modulesInteracted: {
+                    area_foundations_perim: true,
+                    same_area_diff_shapes: true,
+                    triangle_grid_half: true,
+                    irregular_shapes_grid: true,
+                    solids_3d_foundations: true,
+                    cube_cuboid_formulas: true,
+                    base_area_height_relation: true,
+                    volume_and_capacity: true,
+                    hcf_lcm_detective: true,
+                    all_rules_table: true,
+                    clue_words_dictionary: true,
+                    pattern_detective: true,
+                    blueprint_overview: true
+                },
+                checkpoints: { checkpoint_grid: true, checkpoint_frac_1: true },
+                categorySolved: {},
+                totalSolved: 0,
+                totalAttempted: 0,
+                accuracy: 0,
+                trapsDiagnosed: 0,
+                challengeHighScore: 0
+            };
+            let stars = evaluateAndAwardStars(topicId);
+            if (stars !== 0) {
+                throw new Error('Topic ' + topicId + ' awarded ' + stars + ' stars with totalSolved = 0!');
+            }
+        });
+
+        // Test legitimate progression: solving questions awards stars
+        state.topicProgress['area_perimeter'] = {
+            modulesInteracted: { area_foundations_perim: true },
+            checkpoints: {},
+            categorySolved: { foundations_formulas: 3 },
+            totalSolved: 3,
+            totalAttempted: 3,
+            accuracy: 100,
+            trapsDiagnosed: 0,
+            challengeHighScore: 0
+        };
+        let areaStars = evaluateAndAwardStars('area_perimeter');
+        if (areaStars < 2) throw new Error('Expected at least 2 stars for area_perimeter with 3 solved questions, got ' + areaStars);
+
+        // Test downward sync: cleans corrupted 10 stars down to 0 when progress is 0
+        localStorage.setItem('cbse5_math_topic_volume_capacity_stars', '10');
+        state.topicProgress['volume_capacity'] = {
+            modulesInteracted: {},
+            checkpoints: {},
+            categorySolved: {},
+            totalSolved: 0,
+            totalAttempted: 0,
+            accuracy: 0,
+            trapsDiagnosed: 0,
+            challengeHighScore: 0
+        };
+        let cleanedStars = evaluateAndAwardStars('volume_capacity');
+        if (cleanedStars !== 0) throw new Error('evaluateAndAwardStars failed to clean corrupted stars down to 0, got ' + cleanedStars);
+        if (getTopicStars('volume_capacity') !== 0) throw new Error('localStorage stars not updated down to 0');
+
         print('MATHS_RESET_OK');
         """
         res = run_jsc_simulation(source_files, test_script)

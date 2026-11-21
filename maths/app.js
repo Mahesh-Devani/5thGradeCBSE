@@ -1534,8 +1534,8 @@ const TOPIC_MILESTONES = {
       id: 'metaphor_detective',
       title: 'HCF vs LCM Mental Metaphors',
       desc: 'Mastered "The Equal Cutter" (HCF chopping down) vs "The Cycle Synchronizer" (LCM meeting ahead)',
-      hint: 'Explore the HCF vs LCM Detective module in Learn mode',
-      check: (d) => !!d.modulesInteracted.hcf_lcm_detective || d.totalSolved >= 3
+      hint: 'Explore the HCF vs LCM Detective module in Learn mode and solve at least 1 question',
+      check: (d) => (!!d.modulesInteracted.hcf_lcm_detective && d.totalSolved >= 1) || d.totalSolved >= 3
     },
     {
       id: 'division_methods',
@@ -1556,7 +1556,7 @@ const TOPIC_MILESTONES = {
       title: 'Diagnostic Trap Buster',
       desc: 'Spotted exam traps: HCF cannot exceed the smaller number, LCM cannot be less than the larger number',
       hint: 'Explore the Spot the Mistakes module in Learn mode',
-      check: (d) => !!d.modulesInteracted.spot_the_mistakes || d.totalSolved >= 10
+      check: (d) => (!!d.modulesInteracted.spot_the_mistakes && d.totalSolved >= 5) || d.totalSolved >= 10
     },
     {
       id: 'word_problems',
@@ -1577,7 +1577,7 @@ const TOPIC_MILESTONES = {
       title: 'Worksheet Printing & Self-Test',
       desc: 'Inspected or printed printable worksheets for school homework practice',
       hint: 'Switch to Worksheet Mode or explore homework printable sheets',
-      check: (d) => !!d.modulesInteracted.worksheet_mode || d.totalSolved >= 16
+      check: (d) => (!!d.modulesInteracted.worksheet_mode && d.totalSolved >= 8) || d.totalSolved >= 16
     },
     {
       id: 'practice_breadth',
@@ -1607,8 +1607,8 @@ const TOPIC_MILESTONES = {
       id: 'rules_overview',
       title: 'Complete 2 to 12 Divisibility Matrix',
       desc: 'Explored the quick divisibility shortcuts for 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, and 12',
-      hint: 'Review the Divisibility Rules Table in Learn mode',
-      check: (d) => !!d.modulesInteracted.all_rules_table || d.totalSolved >= 3
+      hint: 'Review the Divisibility Rules Table in Learn mode and solve at least 1 question',
+      check: (d) => (!!d.modulesInteracted.all_rules_table && d.totalSolved >= 1) || d.totalSolved >= 3
     },
     {
       id: 'sum_rules_3_9',
@@ -1650,7 +1650,7 @@ const TOPIC_MILESTONES = {
       title: 'Diagnostic Trap Buster',
       desc: 'Avoided the false "Rule 8 ends in 8" trap and composite factor traps',
       hint: 'Explore Spot the Mistakes in Learn mode or solve 18 questions',
-      check: (d) => !!d.modulesInteracted.spot_the_mistakes || d.totalSolved >= 18
+      check: (d) => (!!d.modulesInteracted.spot_the_mistakes && d.totalSolved >= 9) || d.totalSolved >= 18
     },
     {
       id: 'practice_breadth',
@@ -1680,8 +1680,8 @@ const TOPIC_MILESTONES = {
       id: 'clue_words',
       title: 'Verbal Clue Words Dictionary',
       desc: 'Mastered mathematical keywords: Sum, Difference, Product, Quotient, Times, and Less Than',
-      hint: 'Explore Clue Words Dictionary in Learn mode',
-      check: (d) => !!d.modulesInteracted.clue_words_dictionary || d.totalSolved >= 3
+      hint: 'Explore Clue Words Dictionary in Learn mode and solve at least 1 question',
+      check: (d) => (!!d.modulesInteracted.clue_words_dictionary && d.totalSolved >= 1) || d.totalSolved >= 3
     },
     {
       id: 'statement_to_expr',
@@ -1716,14 +1716,14 @@ const TOPIC_MILESTONES = {
       title: 'Order of Operations & BODMAS',
       desc: 'Evaluated expressions following Brackets, Orders, Division/Multiplication, then Addition/Subtraction',
       hint: 'Explore the Order of Operations module in Learn mode or solve 16 questions',
-      check: (d) => !!d.modulesInteracted.order_of_operations || d.totalSolved >= 16
+      check: (d) => (!!d.modulesInteracted.order_of_operations && d.totalSolved >= 8) || d.totalSolved >= 16
     },
     {
       id: 'trap_buster',
       title: 'Diagnostic Trap Buster',
       desc: 'Spotted exam slips in word order and missing parentheses in Spot the Mistakes',
       hint: 'Explore Spot the Mistakes in Learn mode or solve 18 questions',
-      check: (d) => !!d.modulesInteracted.spot_the_mistakes || d.totalSolved >= 18
+      check: (d) => (!!d.modulesInteracted.spot_the_mistakes && d.totalSolved >= 9) || d.totalSolved >= 18
     },
     {
       id: 'practice_breadth',
@@ -1753,8 +1753,8 @@ const TOPIC_MILESTONES = {
       id: 'pattern_detective',
       title: 'The Pattern Detective',
       desc: 'Identified constant step differences, alternating patterns, and sequences of multiples',
-      hint: 'Explore the Pattern Detective module in Learn mode',
-      check: (d) => !!d.modulesInteracted.pattern_detective || d.totalSolved >= 3
+      hint: 'Explore the Pattern Detective module in Learn mode and solve at least 1 question',
+      check: (d) => (!!d.modulesInteracted.pattern_detective && d.totalSolved >= 1) || d.totalSolved >= 3
     },
     {
       id: 'arithmetic_patterns',
@@ -1796,7 +1796,7 @@ const TOPIC_MILESTONES = {
       title: 'Diagnostic Trap Buster',
       desc: 'Diagnosed deceptive pattern slips where the second difference changes',
       hint: 'Explore Spot the Mistakes in Learn mode or solve 18 questions',
-      check: (d) => !!d.modulesInteracted.spot_the_mistakes || d.totalSolved >= 18
+      check: (d) => (!!d.modulesInteracted.spot_the_mistakes && d.totalSolved >= 9) || d.totalSolved >= 18
     },
     {
       id: 'practice_breadth',
@@ -1876,7 +1876,7 @@ const TOPIC_MILESTONES = {
       title: 'Diagnostic Trap Buster',
       desc: 'Avoided protractor inner vs outer scale misreadings and line vs ray confusion',
       hint: 'Explore Spot the Mistakes in Learn mode or solve 20 questions',
-      check: (d) => !!d.modulesInteracted.spot_the_mistakes || d.totalSolved >= 20
+      check: (d) => (!!d.modulesInteracted.spot_the_mistakes && d.totalSolved >= 10) || d.totalSolved >= 20
     },
     {
       id: 'practice_breadth',
@@ -1899,29 +1899,29 @@ const TOPIC_MILESTONES = {
       id: 'grid_explorer',
       title: '20×20 Grid & Square Symmetry',
       desc: 'Explored the multiplication table matrix and diagonal symmetry (a × b = b × a)',
-      hint: 'Explore the 20×20 Grid Explorer in Learn mode',
-      check: (d) => !!d.checkpoints.checkpoint_grid || !!d.modulesInteracted.grid_explorer_20 || d.totalSolved >= 3
+      hint: 'Explore the 20×20 Grid Explorer in Learn mode and solve at least 1 question',
+      check: (d) => ((!!d.checkpoints.checkpoint_grid || !!d.modulesInteracted.grid_explorer_20) && d.totalSolved >= 1) || d.totalSolved >= 3
     },
     {
       id: 'split_and_add',
       title: 'The Split-and-Add Hammer',
       desc: 'Decomposed 2-digit numbers into tens and units (e.g. 18 × 4 = 10 × 4 + 8 × 4 = 40 + 32 = 72)',
       hint: 'Clear the Split-and-Add checkpoint or solve 3 split questions',
-      check: (d) => !!d.checkpoints.checkpoint_split || (d.categorySolved.split_mental_math || 0) >= 3 || d.totalSolved >= 6
+      check: (d) => (!!d.checkpoints.checkpoint_split && d.totalSolved >= 2) || (d.categorySolved.split_mental_math || 0) >= 3 || d.totalSolved >= 6
     },
     {
       id: 'vedic_teen_shortcuts',
       title: 'Vedic Teen × Teen 2-Second Trick',
       desc: 'Applied Base-10 cross addition: (10+a)(10+b) = ((10+a)+b)×10 + a×b in under 3 seconds',
       hint: 'Clear the Vedic checkpoint or solve 3 Vedic teen questions',
-      check: (d) => !!d.checkpoints.checkpoint_vedic || (d.categorySolved.vedic_sprint || 0) >= 3 || d.totalSolved >= 9
+      check: (d) => (!!d.checkpoints.checkpoint_vedic && d.totalSolved >= 3) || (d.categorySolved.vedic_sprint || 0) >= 3 || d.totalSolved >= 9
     },
     {
       id: 'trap_buster',
       title: 'Diagnostic Carry Trap Buster',
       desc: 'Spotted unit-digit miscalculations and carry-over slips in mental multiplication',
       hint: 'Clear the Traps checkpoint or explore Spot the Mistakes',
-      check: (d) => !!d.checkpoints.checkpoint_traps || !!d.modulesInteracted.tables_traps || d.totalSolved >= 12
+      check: (d) => ((!!d.checkpoints.checkpoint_traps || !!d.modulesInteracted.tables_traps) && d.totalSolved >= 4) || d.totalSolved >= 12
     },
     {
       id: 'foundational_teens',
@@ -1972,43 +1972,43 @@ const TOPIC_MILESTONES = {
       id: 'partition_basics',
       title: 'Equal Cuts & Visual Foundations',
       desc: 'Mastered numerator (shaded pieces) over denominator (total equal cuts) with visual diagrams',
-      hint: 'Clear Learn Checkpoint 1 or solve 3 Equal Cuts questions in Practice mode',
-      check: (d) => !!d.checkpoints.checkpoint_frac_1 || (d.categorySolved.partition_basics || 0) >= 3 || d.totalSolved >= 3
+      hint: 'Clear Learn Checkpoint 1 and solve at least 1 question (or solve 3 questions in Practice mode)',
+      check: (d) => (!!d.checkpoints.checkpoint_frac_1 && d.totalSolved >= 1) || (d.categorySolved.partition_basics || 0) >= 3 || d.totalSolved >= 3
     },
     {
       id: 'types_and_mixed',
       title: 'Proper, Improper & Mixed Numbers',
       desc: 'Converted between improper fractions and mixed numerals (e.g. 11/4 = 2 ¾)',
       hint: 'Clear Learn Checkpoint 2 or solve 3 Mixed Numbers questions',
-      check: (d) => !!d.checkpoints.checkpoint_frac_2 || (d.categorySolved.types_and_mixed || 0) >= 3 || d.totalSolved >= 6
+      check: (d) => (!!d.checkpoints.checkpoint_frac_2 && d.totalSolved >= 2) || (d.categorySolved.types_and_mixed || 0) >= 3 || d.totalSolved >= 6
     },
     {
       id: 'equivalent_fractions',
       title: 'Equivalence & Lowest Terms Simplifier',
       desc: 'Found equivalent fractions by scaling and simplified to lowest terms by dividing by HCF',
       hint: 'Clear Learn Checkpoint 3 or solve 3 Equivalence questions',
-      check: (d) => !!d.checkpoints.checkpoint_frac_3 || (d.categorySolved.equivalent_simplest || 0) >= 3 || d.totalSolved >= 9
+      check: (d) => (!!d.checkpoints.checkpoint_frac_3 && d.totalSolved >= 3) || (d.categorySolved.equivalent_simplest || 0) >= 3 || d.totalSolved >= 9
     },
     {
       id: 'comparison_ordering',
       title: 'Fraction Comparison & LCM Common Base',
       desc: 'Compared and ordered like, unlike, and unit fractions using cross-multiplication and LCM',
       hint: 'Clear Learn Checkpoint 4 or solve 3 Comparison questions',
-      check: (d) => !!d.checkpoints.checkpoint_frac_4 || (d.categorySolved.comparison_ordering || 0) >= 3 || d.totalSolved >= 12
+      check: (d) => (!!d.checkpoints.checkpoint_frac_4 && d.totalSolved >= 4) || (d.categorySolved.comparison_ordering || 0) >= 3 || d.totalSolved >= 12
     },
     {
       id: 'add_sub_operations',
       title: 'Addition & Subtraction of Fractions',
       desc: 'Added and subtracted like and unlike fractions with common denominators',
       hint: 'Clear Learn Checkpoint 5 or solve 3 Addition/Subtraction questions',
-      check: (d) => !!d.checkpoints.checkpoint_frac_5 || (d.categorySolved.add_sub_operations || 0) >= 3 || d.totalSolved >= 15
+      check: (d) => (!!d.checkpoints.checkpoint_frac_5 && d.totalSolved >= 5) || (d.categorySolved.add_sub_operations || 0) >= 3 || d.totalSolved >= 15
     },
     {
       id: 'multiplication_of',
       title: '"Of" & Fraction Multiplication',
       desc: 'Mastered fraction of a whole number (e.g. ⅗ of 35 = 21) and fraction × fraction',
       hint: 'Clear Learn Checkpoint 6 or solve 3 Multiplication questions',
-      check: (d) => !!d.checkpoints.checkpoint_frac_6 || (d.categorySolved.multiply_of || 0) >= 3 || d.totalSolved >= 18
+      check: (d) => (!!d.checkpoints.checkpoint_frac_6 && d.totalSolved >= 6) || (d.categorySolved.multiply_of || 0) >= 3 || d.totalSolved >= 18
     },
     {
       id: 'division_reciprocals',
@@ -2045,8 +2045,8 @@ const TOPIC_MILESTONES = {
       id: 'blueprint_overview',
       title: 'CBSE Exam Blueprint & Weightage',
       desc: 'Inspected the CBSE Class 5 term examination blueprint and mark allocation across topics',
-      hint: 'Explore the Exam Blueprint Overview in Learn mode',
-      check: (d) => !!d.modulesInteracted.blueprint_overview || d.totalSolved >= 3
+      hint: 'Explore the Exam Blueprint Overview in Learn mode and solve at least 1 question',
+      check: (d) => (!!d.modulesInteracted.blueprint_overview && d.totalSolved >= 1) || d.totalSolved >= 3
     },
     {
       id: 'factors_hcf_lcm_rev',
@@ -2088,7 +2088,7 @@ const TOPIC_MILESTONES = {
       title: 'Worksheet Builder Cherry-Picker',
       desc: 'Customized chapters in the Worksheet Builder and previewed custom school revision papers',
       hint: 'Switch to Worksheet Mode and customize chapter selections',
-      check: (d) => !!d.customWorksheetExported || !!d.modulesInteracted.worksheet_builder || d.totalSolved >= 20
+      check: (d) => ((!!d.customWorksheetExported || !!d.modulesInteracted.worksheet_builder) && d.totalSolved >= 10) || d.totalSolved >= 20
     },
     {
       id: 'cumulative_breadth',
@@ -2117,71 +2117,71 @@ const TOPIC_MILESTONES = {
       id: 'area_foundations',
       title: 'Perimeter vs Area Foundations',
       desc: 'Mastered the boundary fence vs turf carpet mental metaphor and standard units (sq cm, sq m)',
-      hint: 'Explore the Perimeter vs Area module in Learn mode (or solve 2 questions total)',
-      check: (d) => !!d.modulesInteracted.area_foundations_perim || d.totalSolved >= 2
+      hint: 'Explore the Perimeter vs Area module in Learn mode and solve at least 1 question',
+      check: (d) => (!!d.modulesInteracted.area_foundations_perim && d.totalSolved >= 1) || d.totalSolved >= 2
     },
     {
       id: 'same_area_factors',
       title: 'Factor Pairs & Same Area',
       desc: 'Understood that different rectangles can share identical areas (factors of 12, 18, 24)',
       hint: 'Explore the Same Area, Different Shapes module (or solve 4 questions total)',
-      check: (d) => !!d.modulesInteracted.same_area_diff_shapes || d.totalSolved >= 4
+      check: (d) => (!!d.modulesInteracted.same_area_diff_shapes && d.totalSolved >= 2) || d.totalSolved >= 4
     },
     {
       id: 'triangle_half_rule',
       title: 'The Half-Rectangle Triangle Rule',
       desc: 'Mastered finding triangle area by dividing into right-angled halves inside bounding rectangles',
       hint: 'Explore the Triangles on Grids module (or solve 6 questions total)',
-      check: (d) => !!d.modulesInteracted.triangle_grid_half || d.totalSolved >= 6
+      check: (d) => (!!d.modulesInteracted.triangle_grid_half && d.totalSolved >= 3) || d.totalSolved >= 6
     },
     {
       id: 'irregular_grid_rule',
       title: 'Irregular Shapes & 4-Step Grid Rule',
       desc: 'Applied the official CBSE 4-step rule (full, >half, half, ignore) to estimate real-world areas',
       hint: 'Explore the Irregular Shapes module (or solve 8 questions total)',
-      check: (d) => !!d.modulesInteracted.irregular_shapes_grid || d.totalSolved >= 8
+      check: (d) => (!!d.modulesInteracted.irregular_shapes_grid && d.totalSolved >= 4) || d.totalSolved >= 8
     },
     {
       id: 'practice_formulas',
       title: 'Formula Calculations Precision',
       desc: 'Solved rectangle (l × b) and square (s²) area & perimeter calculations',
-      hint: 'Solve at least 3 formula questions in Practice mode (or 2 questions total)',
-      check: (d) => (d.categorySolved.foundations_formulas || 0) >= 3 || d.totalSolved >= 2
+      hint: 'Solve at least 3 formula questions in Practice mode (or 3 questions total)',
+      check: (d) => (d.categorySolved.foundations_formulas || 0) >= 3 || d.totalSolved >= 3
     },
     {
       id: 'practice_factors',
       title: 'Factor Pairs & Dimension Deductions',
       desc: 'Correctly deduced length, breadth, and perimeter comparisons for given areas',
-      hint: 'Solve at least 2 factor pairs questions in Practice mode (or 4 questions total)',
-      check: (d) => (d.categorySolved.factor_pairs_same_area || 0) >= 2 || d.totalSolved >= 4
+      hint: 'Solve at least 2 factor pairs questions in Practice mode (or 5 questions total)',
+      check: (d) => (d.categorySolved.factor_pairs_same_area || 0) >= 2 || d.totalSolved >= 5
     },
     {
       id: 'practice_grids',
       title: 'Grid Triangle & Irregular Calculations',
       desc: 'Calculated triangle areas and estimated unit square grid shapes',
-      hint: 'Solve at least 2 grid questions in Practice mode (or 6 questions total)',
-      check: (d) => (d.categorySolved.triangle_irregular_grids || 0) >= 2 || d.totalSolved >= 6
+      hint: 'Solve at least 2 grid questions in Practice mode (or 7 questions total)',
+      check: (d) => (d.categorySolved.triangle_irregular_grids || 0) >= 2 || d.totalSolved >= 7
     },
     {
       id: 'practice_tiling',
       title: 'Floor Tiling & Real-World Paving',
       desc: 'Solved room marble slab paving, crossword puzzle areas, and carpeting cost problems',
-      hint: 'Solve at least 2 tiling word problems in Practice mode (or 8 questions total)',
-      check: (d) => (d.categorySolved.tiling_word_problems || 0) >= 2 || d.totalSolved >= 8
+      hint: 'Solve at least 2 tiling word problems in Practice mode (or 9 questions total)',
+      check: (d) => (d.categorySolved.tiling_word_problems || 0) >= 2 || d.totalSolved >= 9
     },
     {
       id: 'practice_breadth',
       title: 'Area Curriculum Breadth',
-      desc: 'Solved at least 10 curriculum questions across all categories of Chapter 8 Area',
-      hint: 'Solve at least 10 practice questions total',
-      check: (d) => d.totalSolved >= 10
+      desc: 'Solved at least 12 curriculum questions across all categories of Chapter 8 Area',
+      hint: 'Solve at least 12 practice questions with ≥70% accuracy',
+      check: (d) => d.totalSolved >= 12 && (d.accuracy || 0) >= 70
     },
     {
       id: 'sprint_speed',
       title: 'Area Speed Master',
-      desc: 'Completed the 60s Area Sprint Challenge or achieved 12 practice questions',
-      hint: 'Earn at least 5 correct answers on the 60s Sprint (or solve 12 questions total)',
-      check: (d) => (d.challengeHighScore || 0) >= 5 || d.totalSolved >= 12
+      desc: 'Completed the 60s Area Sprint Challenge or achieved 15 practice questions',
+      hint: 'Earn at least 5 correct answers on the 60s Sprint (or solve 15 questions total)',
+      check: (d) => (d.challengeHighScore || 0) >= 5 || d.totalSolved >= 15
     }
   ],
   volume_capacity: [
@@ -2189,71 +2189,71 @@ const TOPIC_MILESTONES = {
       id: 'solids_foundations',
       title: 'Solid 3D Shapes & Volume Units',
       desc: 'Mastered faces, edges, and vertices of 3D solids and cubic units (cm³, m³)',
-      hint: 'Explore 3D Solid Shapes in Learn mode (or solve 2 questions total)',
-      check: (d) => !!d.modulesInteracted.solids_3d_foundations || d.totalSolved >= 2
+      hint: 'Explore 3D Solid Shapes in Learn mode and solve at least 1 question',
+      check: (d) => (!!d.modulesInteracted.solids_3d_foundations && d.totalSolved >= 1) || d.totalSolved >= 2
     },
     {
       id: 'cube_cuboid_rule',
       title: 'Cube & Cuboid Volume Formulas',
       desc: 'Mastered l × b × h and s³ by counting centimetre cube layers',
       hint: 'Explore Cube & Cuboid Formulas in Learn mode (or solve 4 questions total)',
-      check: (d) => !!d.modulesInteracted.cube_cuboid_formulas || d.totalSolved >= 4
+      check: (d) => (!!d.modulesInteracted.cube_cuboid_formulas && d.totalSolved >= 2) || d.totalSolved >= 4
     },
     {
       id: 'base_area_relation',
       title: 'Base Area × Height Master Relation',
       desc: 'Mastered Volume = Base Area × Height and inverse height deductions',
       hint: 'Explore Base Area × Height in Learn mode (or solve 6 questions total)',
-      check: (d) => !!d.modulesInteracted.base_area_height_relation || d.totalSolved >= 6
+      check: (d) => (!!d.modulesInteracted.base_area_height_relation && d.totalSolved >= 3) || d.totalSolved >= 6
     },
     {
       id: 'capacity_equivalence',
       title: 'The Golden Equivalence (1 L = 1000 cm³)',
       desc: 'Mastered liquid capacity conversions (1 L = 1000 mL = 1000 cm³) and water displacement',
       hint: 'Explore Volume & Capacity in Learn mode (or solve 8 questions total)',
-      check: (d) => !!d.modulesInteracted.volume_and_capacity || d.totalSolved >= 8
+      check: (d) => (!!d.modulesInteracted.volume_and_capacity && d.totalSolved >= 4) || d.totalSolved >= 8
     },
     {
       id: 'practice_solids',
       title: '3D Solid Properties Precision',
       desc: 'Solved questions on faces, edges, vertices, and cubic unit conventions',
-      hint: 'Solve at least 2 solid properties questions (or 2 questions total)',
-      check: (d) => (d.categorySolved.solids_3d_properties || 0) >= 2 || d.totalSolved >= 2
+      hint: 'Solve at least 2 solid properties questions (or 3 questions total)',
+      check: (d) => (d.categorySolved.solids_3d_properties || 0) >= 2 || d.totalSolved >= 3
     },
     {
       id: 'practice_cuboid',
       title: 'Cube & Cuboid Volume Calculations',
       desc: 'Calculated box volumes and deduced missing dimensions using l × b × h',
-      hint: 'Solve at least 3 cuboid volume questions (or 4 questions total)',
-      check: (d) => (d.categorySolved.cube_cuboid_volume || 0) >= 3 || d.totalSolved >= 4
+      hint: 'Solve at least 3 cuboid volume questions (or 5 questions total)',
+      check: (d) => (d.categorySolved.cube_cuboid_volume || 0) >= 3 || d.totalSolved >= 5
     },
     {
       id: 'practice_base_height',
       title: 'Base Area & Height Applications',
       desc: 'Deduced height from base area and compared object volumes (book vs box)',
-      hint: 'Solve at least 2 base area questions (or 6 questions total)',
-      check: (d) => (d.categorySolved.base_area_height || 0) >= 2 || d.totalSolved >= 6
+      hint: 'Solve at least 2 base area questions (or 7 questions total)',
+      check: (d) => (d.categorySolved.base_area_height || 0) >= 2 || d.totalSolved >= 7
     },
     {
       id: 'practice_capacity',
       title: 'Litre & Millilitre Conversions',
       desc: 'Converted cm³ to litres/mL and calculated water displacement volume',
-      hint: 'Solve at least 2 capacity conversion questions (or 8 questions total)',
-      check: (d) => (d.categorySolved.capacity_conversions || 0) >= 2 || d.totalSolved >= 8
+      hint: 'Solve at least 2 capacity conversion questions (or 9 questions total)',
+      check: (d) => (d.categorySolved.capacity_conversions || 0) >= 2 || d.totalSolved >= 9
     },
     {
       id: 'practice_breadth',
       title: 'Volume Curriculum Breadth',
-      desc: 'Solved at least 10 curriculum questions across all categories of Chapter 9 Volume',
-      hint: 'Solve at least 10 practice questions total',
-      check: (d) => d.totalSolved >= 10
+      desc: 'Solved at least 12 curriculum questions across all categories of Chapter 9 Volume',
+      hint: 'Solve at least 12 practice questions with ≥70% accuracy',
+      check: (d) => d.totalSolved >= 12 && (d.accuracy || 0) >= 70
     },
     {
       id: 'sprint_speed',
       title: 'Volume Speed Master',
-      desc: 'Completed the 60s Volume Sprint Challenge or achieved 12 practice questions',
-      hint: 'Earn at least 5 correct answers on the 60s Sprint (or solve 12 questions total)',
-      check: (d) => (d.sprintHighScore || 0) >= 5 || d.totalSolved >= 12
+      desc: 'Completed the 60s Volume Sprint Challenge or achieved 15 practice questions',
+      hint: 'Earn at least 5 correct answers on the 60s Sprint (or solve 15 questions total)',
+      check: (d) => (d.challengeHighScore || 0) >= 5 || (d.sprintHighScore || 0) >= 5 || d.totalSolved >= 15
     }
   ]
 };
@@ -2277,11 +2277,10 @@ function setTopicStars(topicId, stars) {
   const config = TOPICS_CONFIG[topicId];
   if (!config) return;
   try {
-    const current = getTopicStars(topicId);
-    if (stars === 0 || stars > current) {
-      localStorage.setItem(config.starsKey, stars.toString());
-      updateSidebarProgress();
-    }
+    const target = config.targetStars || 10;
+    const s = Math.min(target, Math.max(0, parseInt(stars, 10) || 0));
+    localStorage.setItem(config.starsKey, s.toString());
+    updateSidebarProgress();
   } catch (e) {}
 }
 
@@ -2340,23 +2339,6 @@ function getTopicProgressData(topicId) {
     }
   }
 
-  // Legacy star fallback: if user already had legacy 3 stars saved, grant appropriate minimum progress
-  const legacySaved = parseInt(localStorage.getItem(config.starsKey) || '0', 10);
-  if (legacySaved > 0 && totalSolved === 0 && challengeHighScore === 0) {
-    if (legacySaved >= 1) {
-      totalSolved = Math.max(totalSolved, 5);
-      challengeHighScore = Math.max(challengeHighScore, 5);
-    }
-    if (legacySaved >= 2) {
-      totalSolved = Math.max(totalSolved, 12);
-      challengeHighScore = Math.max(challengeHighScore, 7);
-    }
-    if (legacySaved >= 3) {
-      totalSolved = Math.max(totalSolved, 20);
-      challengeHighScore = Math.max(challengeHighScore, 10);
-    }
-  }
-
   const accuracy = totalAttempted > 0 ? Math.round((totalSolved / totalAttempted) * 100) : (totalSolved > 0 ? 85 : 0);
 
   return {
@@ -2394,7 +2376,8 @@ function evaluateAndAwardStars(topicId) {
     } else {
       playCorrectSound();
     }
-  } else if (oldStars === 0 && stars > 0) {
+  } else if (stars < oldStars) {
+    // Sync storage down if stars were reset, cleared, or previously inflated by bug
     setTopicStars(topicId, stars);
   }
 
@@ -11986,7 +11969,8 @@ function switchTopic(topicId, resetSubmodes = true) {
 
 document.addEventListener('DOMContentLoaded', () => {
   loadActiveState();
-  evaluateAndAwardStars(state.currentTopic);
+  // Evaluate and sync stars across all registered topics to clean any inflated legacy values
+  Object.keys(TOPICS_CONFIG).forEach(tId => evaluateAndAwardStars(tId));
   updateSidebarProgress();
   updateTopBarPassportButton();
 
