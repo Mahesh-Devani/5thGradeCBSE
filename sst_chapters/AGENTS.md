@@ -36,7 +36,24 @@ Welcome, AI Agent! This guide specifies the architectural standards, 10-Star Mas
 
 ---
 
-## 2. Data Schemas
+## 2. Modular Data Architecture
+
+The curriculum datasets and milestones are modularized in `sst_chapters/data/`:
+- `data/chapter_l5_drc.js` (`CHAPTER_L5_DRC`)
+- `data/chapter_l6_greenland.js` (`CHAPTER_L6_GREENLAND`)
+- `data/chapter_l7_saudi.js` (`CHAPTER_L7_SAUDI`)
+- `data/chapter_l17_revolt1857.js` (`CHAPTER_L17_REVOLT1857`)
+- `data/chapter_l18_struggle.js` (`CHAPTER_L18_STRUGGLE`)
+- `data/chapter_l19_freedom.js` (`CHAPTER_L19_FREEDOM`)
+- `data/chapter_l20_government.js` (`CHAPTER_L20_GOVERNMENT`)
+- `data/milestones.js` (`CHAPTER_MILESTONES`)
+
+> [!IMPORTANT]
+> **AI Token Optimization Rule**: When editing or adding curriculum content, ALWAYS edit the specific `data/chapter_*.js` or `data/milestones.js` file. Never bloat `app.js` with static question data.
+
+---
+
+## 3. Data Schemas
 
 ### Chapter Schema (`CHAPTERS_DATA`)
 ```javascript

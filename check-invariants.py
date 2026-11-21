@@ -246,7 +246,9 @@ def check_question_schema_integrity():
         'science/app.js',
         'general_knowledge/data.js',
         'english_grammer/app.js',
-    ] + sorted([str(p.relative_to(PROJECT_ROOT)) for p in PROJECT_ROOT.glob('maths/data/*.js')])
+    ] + sorted([str(p.relative_to(PROJECT_ROOT)) for p in PROJECT_ROOT.glob('maths/data/*.js')]) \
+      + sorted([str(p.relative_to(PROJECT_ROOT)) for p in PROJECT_ROOT.glob('science/data/*.js')]) \
+      + sorted([str(p.relative_to(PROJECT_ROOT)) for p in PROJECT_ROOT.glob('sst_chapters/data/*.js')])
     
     id_pattern = re.compile(r'''\b(?:id)\s*:\s*['"]([a-zA-Z0-9_-]+)['"]''')
     
@@ -276,13 +278,15 @@ def check_star_milestone_progression():
     violations = []
     
     # Check SST chapters milestone rules
-    sst_app = PROJECT_ROOT / 'sst_chapters' / 'app.js'
-    if sst_app.exists():
-        content = sst_app.read_text(encoding='utf-8')
+    sst_milestones = PROJECT_ROOT / 'sst_chapters' / 'data' / 'milestones.js'
+    if not sst_milestones.exists():
+        sst_milestones = PROJECT_ROOT / 'sst_chapters' / 'app.js'
+    if sst_milestones.exists():
+        content = sst_milestones.read_text(encoding='utf-8')
         # Ensure CHAPTER_MILESTONES has fallbacks
         if 'CHAPTER_MILESTONES' in content:
             # Check if any chapter in milestones lacks totalSolved fallback
-            milestone_block = content[content.find('const CHAPTER_MILESTONES'):content.find('function evaluateMilestones')]
+            milestone_block = content[content.find('const CHAPTER_MILESTONES'):]
             chapters = re.findall(r"['\"]([a-zA-Z0-9_]+)['\"]\s*:\s*\[", milestone_block)
             for ch in chapters:
                 # Extract chapter's milestones array
@@ -290,9 +294,11 @@ def check_star_milestone_progression():
                 if ch_idx == -1:
                     ch_idx = milestone_block.find(f'"{ch}"')
                 next_ch_idx = milestone_block.find("],", ch_idx)
+                if next_ch_idx == -1:
+                    next_ch_idx = milestone_block.find("]", ch_idx)
                 ch_text = milestone_block[ch_idx:next_ch_idx] if next_ch_idx != -1 else ""
                 if 'totalSolved' not in ch_text:
-                    violations.append(f"sst_chapters/app.js: Chapter '{ch}' milestones lack progressive 'totalSolved' fallbacks")
+                    violations.append(f"sst_chapters: Chapter '{ch}' milestones lack progressive 'totalSolved' fallbacks")
 
     return InvariantResult(
         name="Star Milestone Evaluator Contract & Progressive Fallbacks",

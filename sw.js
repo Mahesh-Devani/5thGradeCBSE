@@ -66,6 +66,14 @@ const PRECACHE_ASSETS = [
   // SST Chapters
   './sst_chapters/index.html',
   './sst_chapters/styles.css',
+  './sst_chapters/data/chapter_l5_drc.js',
+  './sst_chapters/data/chapter_l6_greenland.js',
+  './sst_chapters/data/chapter_l7_saudi.js',
+  './sst_chapters/data/chapter_l17_revolt1857.js',
+  './sst_chapters/data/chapter_l18_struggle.js',
+  './sst_chapters/data/chapter_l19_freedom.js',
+  './sst_chapters/data/chapter_l20_government.js',
+  './sst_chapters/data/milestones.js',
   './sst_chapters/app.js',
   // Social Science Maps
   './social_sicence_maps/index.html',

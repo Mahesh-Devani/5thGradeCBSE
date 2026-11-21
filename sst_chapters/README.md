@@ -75,13 +75,30 @@ The platform provides comprehensive coverage of 7 key curriculum chapters (70 Ma
 
 ---
 
-## 🏗️ Adding New Chapters (Extensibility)
+## 🏗️ Modular Architecture & Adding New Chapters
+
+SST Chapters features a clean, modular data architecture:
+```
+sst_chapters/
+├── index.html                  # Main application shell
+├── styles.css                  # Responsive styles & mobile drawer
+├── app.js                      # Core UI, state machine & practice runner (~2,100 lines)
+├── data/
+│   ├── chapter_l5_drc.js       # L-5 DRC curriculum dataset
+│   ├── chapter_l6_greenland.js # L-6 Greenland curriculum dataset
+│   ├── chapter_l7_saudi.js     # L-7 Saudi Arabia curriculum dataset
+│   ├── chapter_l17_revolt1857.js # L-17 British Raj & 1857 Revolt
+│   ├── chapter_l18_struggle.js # L-18 Struggle for Independence
+│   ├── chapter_l19_freedom.js  # L-19 Freedom at Last!
+│   ├── chapter_l20_government.js # L-20 Our Government
+│   └── milestones.js           # 10 progressive mastery milestones per chapter
+```
 
 To add a new chapter (e.g., L-1 The Globe, L-2 Maps, or Term 2 chapters):
-1. Open `sst_chapters/app.js`.
-2. Add a new object to the `CHAPTERS_DATA` array following the standard schema in `SCHEMAS.md`.
-3. Add 10 corresponding pedagogical milestones in `CHAPTER_MILESTONES[newChapterId]`.
-4. Update `index.html` total stars display target (`CHAPTERS_DATA.length * 10`).
+1. Create `sst_chapters/data/chapter_<id>.js` following the standard schema in `SCHEMAS.md`.
+2. Add 10 corresponding pedagogical milestones in `sst_chapters/data/milestones.js`.
+3. Register the chapter in the `CHAPTERS_DATA` array in `sst_chapters/app.js`.
+4. Include the `<script>` tag in `sst_chapters/index.html` and register in `sw.js` `PRECACHE_ASSETS`.
 
 ---
 

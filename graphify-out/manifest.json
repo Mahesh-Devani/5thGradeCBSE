@@ -1,8 +1,8 @@
 {
   "check-invariants.py": {
-    "mtime": 1795280849.43478,
-    "seen": 1795281281.973784,
-    "ast_hash": "0bbbbdaad55bb888df74d9932af0db5e",
+    "mtime": 1795283830.367592,
+    "seen": 1795283925.115194,
+    "ast_hash": "e4dd473614da66a2568b2482d4add931",
     "semantic_hash": ""
   },
   "english_grammer/app.js": {
@@ -192,15 +192,15 @@
     "semantic_hash": ""
   },
   "sst_chapters/app.js": {
-    "mtime": 1794715536.5418034,
-    "seen": 1795238041.92396,
-    "ast_hash": "02688c4fe72b0222f0b7677481842538",
+    "mtime": 1795283726.3063495,
+    "seen": 1795283925.115223,
+    "ast_hash": "8741fc2cc8bed3342bf61c6873114386",
     "semantic_hash": ""
   },
   "sw.js": {
-    "mtime": 1795281247.7776911,
-    "seen": 1795281281.973814,
-    "ast_hash": "0acfbf77d9f582d4547f00f9de971093",
+    "mtime": 1795283772.3515284,
+    "seen": 1795283925.115229,
+    "ast_hash": "6df6b3adc779aa14c75a99e8c25bfa8d",
     "semantic_hash": ""
   },
   "tests/__init__.py": {
@@ -222,9 +222,9 @@
     "semantic_hash": ""
   },
   "tests/test_milestones.py": {
-    "mtime": 1795280805.0252495,
-    "seen": 1795281281.9738162,
-    "ast_hash": "79b0c13a96202a448afedd5989877118",
+    "mtime": 1795283806.6519842,
+    "seen": 1795283925.115231,
+    "ast_hash": "36275c2cf7a068cfb636fd54df056e8a",
     "semantic_hash": ""
   },
   "AGENTS.md": {
@@ -390,21 +390,21 @@
     "semantic_hash": ""
   },
   "sst_chapters/AGENTS.md": {
-    "mtime": 1794218265.941028,
-    "seen": 1795238041.924,
-    "ast_hash": "0b2f3b89571fd587c3594c95da65b2a7",
+    "mtime": 1795283878.517383,
+    "seen": 1795283925.115247,
+    "ast_hash": "b6a0a6907a549a4ebab92a3e3a1411e0",
     "semantic_hash": ""
   },
   "sst_chapters/README.md": {
-    "mtime": 1794218249.3914022,
-    "seen": 1795238041.924001,
-    "ast_hash": "581e3a78c934731a7d24e83349403452",
+    "mtime": 1795283861.3457003,
+    "seen": 1795283925.1152482,
+    "ast_hash": "53139ed2a29c8f3f7d2870387a0ee6c4",
     "semantic_hash": ""
   },
   "sst_chapters/index.html": {
-    "mtime": 1794217137.5244174,
-    "seen": 1795238041.924002,
-    "ast_hash": "85e4abb67544f411d54a64ca7bd315ec",
+    "mtime": 1795283756.3823535,
+    "seen": 1795283925.1152482,
+    "ast_hash": "81fe2833d223514940da8c6857816d1c",
     "semantic_hash": ""
   },
   "hindi_vyakaran/images/scene_birthday_real.jpg": {
@@ -921,6 +921,54 @@
     "mtime": 1795280688.6278071,
     "seen": 1795281281.973805,
     "ast_hash": "941b84f4e44ec0498e60abd379c115ac",
+    "semantic_hash": ""
+  },
+  "sst_chapters/data/chapter_l17_revolt1857.js": {
+    "mtime": 1795283691.451982,
+    "seen": 1795283925.1152241,
+    "ast_hash": "62cb914d65dea42d4a6485b2d771c16e",
+    "semantic_hash": ""
+  },
+  "sst_chapters/data/chapter_l18_struggle.js": {
+    "mtime": 1795283691.4520676,
+    "seen": 1795283925.115225,
+    "ast_hash": "e7524c811bd5558278a35973aad83db4",
+    "semantic_hash": ""
+  },
+  "sst_chapters/data/chapter_l19_freedom.js": {
+    "mtime": 1795283691.45216,
+    "seen": 1795283925.115225,
+    "ast_hash": "d0cfb3b95184adc05c99d821fbd39450",
+    "semantic_hash": ""
+  },
+  "sst_chapters/data/chapter_l20_government.js": {
+    "mtime": 1795283691.4522502,
+    "seen": 1795283925.115226,
+    "ast_hash": "ab46e1a2b57735410965eda22647412a",
+    "semantic_hash": ""
+  },
+  "sst_chapters/data/chapter_l5_drc.js": {
+    "mtime": 1795283691.4515939,
+    "seen": 1795283925.115227,
+    "ast_hash": "bfb61a2afd397cecfa9f1cfd1900048d",
+    "semantic_hash": ""
+  },
+  "sst_chapters/data/chapter_l6_greenland.js": {
+    "mtime": 1795283691.4517765,
+    "seen": 1795283925.115227,
+    "ast_hash": "ef2a09bc354113ffeee2ec50b8d36064",
+    "semantic_hash": ""
+  },
+  "sst_chapters/data/chapter_l7_saudi.js": {
+    "mtime": 1795283691.4518943,
+    "seen": 1795283925.115228,
+    "ast_hash": "8db7d164db8dbd3f6a8a51a3ee0977c4",
+    "semantic_hash": ""
+  },
+  "sst_chapters/data/milestones.js": {
+    "mtime": 1795283691.452333,
+    "seen": 1795283925.115228,
+    "ast_hash": "05048fc98191fd6c90bae6488a2f1680",
     "semantic_hash": ""
   }
 }

@@ -121,7 +121,20 @@ class TestMilestoneProgression(unittest.TestCase):
 
         print('SST_SIMULATION_OK');
         """
-        res = run_jsc_simulation([PROJECT_ROOT / 'sst_chapters' / 'app.js'], test_script)
+        source_files = [
+            PROJECT_ROOT / 'shared' / 'js' / 'sound.js',
+            PROJECT_ROOT / 'shared' / 'js' / 'confetti.js',
+            PROJECT_ROOT / 'sst_chapters' / 'data' / 'chapter_l5_drc.js',
+            PROJECT_ROOT / 'sst_chapters' / 'data' / 'chapter_l6_greenland.js',
+            PROJECT_ROOT / 'sst_chapters' / 'data' / 'chapter_l7_saudi.js',
+            PROJECT_ROOT / 'sst_chapters' / 'data' / 'chapter_l17_revolt1857.js',
+            PROJECT_ROOT / 'sst_chapters' / 'data' / 'chapter_l18_struggle.js',
+            PROJECT_ROOT / 'sst_chapters' / 'data' / 'chapter_l19_freedom.js',
+            PROJECT_ROOT / 'sst_chapters' / 'data' / 'chapter_l20_government.js',
+            PROJECT_ROOT / 'sst_chapters' / 'data' / 'milestones.js',
+            PROJECT_ROOT / 'sst_chapters' / 'app.js'
+        ]
+        res = run_jsc_simulation(source_files, test_script)
         self.assertIn("SST_SIMULATION_OK", res.stdout, f"SST simulation failed:\n{res.stdout}\n{res.stderr}")
 
     def test_science_star_reset(self):

@@ -1,17 +1,17 @@
 # Graph Report - 5thGradeCBSE  (2026-11-21)
 
 ## Corpus Check
-- 68 files · ~1,085,124 words
+- 76 files · ~1,085,322 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 10 file(s) not represented in the graph (top: .css 8, (none) 1, .webmanifest 1)
 
 ## Summary
-- 1153 nodes · 2384 edges · 73 communities (51 shown, 22 thin omitted)
+- 1159 nodes · 2352 edges · 84 communities (54 shown, 30 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 68 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `446a9318`
+- Built from commit: `1ff1b972`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -86,6 +86,17 @@
 - chapter_l5_health.js
 - chapter_l7_air_water.js
 - milestones.js
+- renderPracticeView
+- generateDynamicFractionQuestion
+- generateFreshWorksheetTablesData
+- chapter_l17_revolt1857.js
+- chapter_l18_struggle.js
+- chapter_l19_freedom.js
+- chapter_l20_government.js
+- chapter_l5_drc.js
+- chapter_l6_greenland.js
+- chapter_l7_saudi.js
+- sst_chapters/data/milestones.js
 
 ## God Nodes (most connected - your core abstractions)
 1. `HindiLearningApp` - 70 edges
@@ -106,15 +117,15 @@
   hindi_vyakaran/AGENTS.md → hindi_vyakaran/app.js
 - `B. Procedural Dynamic Question Generator` --references--> `shuffleOptionsAndGetCorrect()`  [INFERRED]
   maths/AGENTS.md → maths/app.js
-- `3. Storage Schema & Session Restore` --references--> `loadState()`  [INFERRED]
-  general_knowledge/AGENTS.md → general_knowledge/app.js
-- `2. Architecture & File Layout` --references--> `renderArcadeMode()`  [INFERRED]
-  general_knowledge/AGENTS.md → general_knowledge/app.js
+- `C. Dynamic Printable Worksheet` --references--> `renderWorksheetViewTables()`  [INFERRED]
+  maths/AGENTS.md → maths/app.js
+- `C. Dynamic Printable Worksheet` --references--> `printWorksheetTables()`  [INFERRED]
+  maths/AGENTS.md → maths/app.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (73 total, 22 thin omitted)
+## Communities (84 total, 30 thin omitted)
 
 ### Community 0 - "HindiLearningApp"
 Cohesion: 0.09
@@ -125,12 +136,12 @@ Cohesion: 0.09
 Nodes (63): attachGadgetEvents(), attachNervousGadgetEvents(), attachSkeletalGadgetEvents(), AudioController, bindMasteryBannerEvents(), CHAPTERS_DATA, closeMobileSidebar(), ConfettiController (+55 more)
 
 ### Community 2 - "SSTApp"
-Cohesion: 0.12
-Nodes (6): CHAPTER_MILESTONES, CHAPTERS_DATA, ConfettiEngine, sfx, SoundFX, SSTApp
+Cohesion: 0.15
+Nodes (4): CHAPTERS_DATA, ConfettiEngine, sfx, SSTApp
 
 ### Community 3 - "maths/app.js"
 Cohesion: 0.06
-Nodes (41): CHALLENGE_QUESTIONS_TOPIC_FRACTIONS, CHALLENGE_QUESTIONS_TOPIC_TABLES, MISTAKES_TOPIC_1, MISTAKES_TOPIC_2, MISTAKES_TOPIC_3, MISTAKES_TOPIC_4, MISTAKES_TOPIC_5, populatePrintRevision() (+33 more)
+Nodes (40): CHALLENGE_QUESTIONS_TOPIC_FRACTIONS, CHALLENGE_QUESTIONS_TOPIC_TABLES, MISTAKES_TOPIC_1, MISTAKES_TOPIC_2, MISTAKES_TOPIC_3, MISTAKES_TOPIC_4, MISTAKES_TOPIC_5, populatePrintRevision() (+32 more)
 
 ### Community 4 - "social_sicence_maps/app.js"
 Cohesion: 0.10
@@ -145,8 +156,8 @@ Cohesion: 0.10
 Nodes (44): 1. Content Boundary (MANDATORY), 2. Architecture & File Layout, 3. Storage Schema & Session Restore, 4. Front-End Gotchas & Verification, 🤖 Agent Guidelines — General Knowledge (GK Master), AppState, AudioController, closeModal() (+36 more)
 
 ### Community 7 - "render"
-Cohesion: 0.08
-Nodes (52): completeFractionsLearnCheckpoint(), formatFrac(), formatFracOrMixed(), formatMixed(), gcd(), generateDynamicFractionQuestion(), generateFreshWorksheetFractionsData(), getRandomChoice() (+44 more)
+Cohesion: 0.10
+Nodes (43): completeFractionsLearnCheckpoint(), formatFrac(), formatFracOrMixed(), formatMixed(), getRandomChoice(), playWrongSound(), renderAddSubtractLabModule(), render() (+35 more)
 
 ### Community 8 - "4. Mini-App Specifications"
 Cohesion: 0.05
@@ -161,12 +172,12 @@ Cohesion: 0.14
 Nodes (13): check_css_brace_balance(), check_git_hygiene_and_compliance(), check_image_asset_integrity(), check_js_syntax_integrity(), check_learn_mode_checkpoints(), check_mobile_drawer_contract(), check_progress_reset_contract(), check_question_schema_integrity() (+5 more)
 
 ### Community 11 - "playClickSound"
-Cohesion: 0.08
-Nodes (29): initAudio(), launchConfetti(), playClickSound(), playCorrectSound(), playFanfare(), playTone(), renderAllRulesTable(), renderCoprimeCompositeModule() (+21 more)
+Cohesion: 0.09
+Nodes (25): initAudio(), playClickSound(), playCorrectSound(), playTone(), renderAllRulesTable(), renderCoprimeCompositeModule(), renderCoprimesModule(), renderDetectiveModule() (+17 more)
 
 ### Community 12 - "renderPracticeView"
-Cohesion: 0.13
-Nodes (32): bindMasteryBannerEvents(), completeTopicLearnCheckpoint(), endChallenge(), evaluateAndAwardStars(), generateDynamicFractionChallengePool(), generateFractionsPracticeQueue(), generateTablesPracticeQueue(), getFilteredPracticeQuestions() (+24 more)
+Cohesion: 0.19
+Nodes (20): completeTopicLearnCheckpoint(), endChallenge(), evaluateAndAwardStars(), getTopicStars(), launchConfetti(), loadAllProgress(), loadProgress(), markModuleInteracted() (+12 more)
 
 ### Community 13 - "🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines"
 Cohesion: 0.10
@@ -209,8 +220,8 @@ Cohesion: 0.14
 Nodes (12): BHAVVACHAK_NIRMAN_DATA, HINDI_EXAM_TRAPS, HINDI_MILESTONES, SANGYA_CHALLENGE_POOL, SANGYA_COMPARISON_DATA, SANGYA_QUIZ_POOL, SANGYA_SORT_ITEMS, SANGYA_TYPES_DATA (+4 more)
 
 ### Community 24 - "🤖 Agent Guidelines — Mathematics Master"
-Cohesion: 0.18
-Nodes (11): 1. Core Directives & Standards, 2. DOM Contract (`index.html` ↔ `app.js`), 3. Math Engine Schemas & Algorithms, 4.5 Modular Architecture & AI Token Efficiency (MANDATORY), 4. CSS Brace Balance & Mobile Drawer Gotchas, 5. Extension Recipes: Adding Subsequent Topics, 6. Pre-Commit Verification Checklist, A. Short Division Algorithms (+3 more)
+Cohesion: 0.13
+Nodes (15): 1. Core Directives & Standards, 2. DOM Contract (`index.html` ↔ `app.js`), 3. Math Engine Schemas & Algorithms, 4.5 Modular Architecture & AI Token Efficiency (MANDATORY), 4. CSS Brace Balance & Mobile Drawer Gotchas, 5. Extension Recipes: Adding Subsequent Topics, 5. Topic 6 Architecture: Tables (1 to 20) & Mental Speed Master, 6. Pre-Commit Verification Checklist (+7 more)
 
 ### Community 25 - "profile.js"
 Cohesion: 0.45
@@ -270,7 +281,7 @@ Nodes (8): CHALLENGE_QUESTIONS_TOPIC_3, CLUE_WORDS_DATA, DILEMMA_PRESETS, EXPR_P
 
 ### Community 41 - "🌍 SST Chapters Practice — Class 5 CBSE"
 Cohesion: 0.22
-Nodes (8): ⭐ 10-Star Chapter Mastery Architecture, 🏗️ Adding New Chapters (Extensibility), 📚 Curriculum Coverage (Term Revision), 📋 Learning Passport & Parent Audit Report, 🛠️ Modes & Features, 🎯 Pedagogical Philosophy, 🌍 SST Chapters Practice — Class 5 CBSE, 📱 Technical Standards
+Nodes (8): ⭐ 10-Star Chapter Mastery Architecture, 📚 Curriculum Coverage (Term Revision), 📋 Learning Passport & Parent Audit Report, 🛠️ Modes & Features, 🏗️ Modular Architecture & Adding New Chapters, 🎯 Pedagogical Philosophy, 🌍 SST Chapters Practice — Class 5 CBSE, 📱 Technical Standards
 
 ### Community 42 - "topic8_area.js"
 Cohesion: 0.36
@@ -281,12 +292,12 @@ Cohesion: 0.29
 Nodes (6): 1. Core Directives, 2. Modular Architecture & Data Schema, 3. State Persistence Pattern, 4. Front-End Gotchas & Verification, Adding a New Chapter, 🤖 Agent Guidelines — Science Master (Class 5 CBSE)
 
 ### Community 44 - "🤖 SST Chapters Practice — Agent Guidelines"
-Cohesion: 0.29
-Nodes (6): 1. Core Principles, 2. Data Schemas, 3. CSS & Responsive Drawer Rules, Chapter Schema (`CHAPTERS_DATA`), Milestone Schema (`CHAPTER_MILESTONES`), 🤖 SST Chapters Practice — Agent Guidelines
+Cohesion: 0.25
+Nodes (7): 1. Core Principles, 2. Modular Data Architecture, 3. CSS & Responsive Drawer Rules, 3. Data Schemas, Chapter Schema (`CHAPTERS_DATA`), Milestone Schema (`CHAPTER_MILESTONES`), 🤖 SST Chapters Practice — Agent Guidelines
 
 ### Community 45 - "getRandomInt"
-Cohesion: 0.16
-Nodes (19): 5. Topic 6 Architecture: Tables (1 to 20) & Mental Speed Master, A. Anti-Rote 3-Star Milestone Rules, B. Procedural Dynamic Question Generator, C. Dynamic Printable Worksheet, completeTablesLearnCheckpoint(), generateDynamicChallengePool(), generateDynamicTableQuestion(), generateFreshWorksheetTablesData() (+11 more)
+Cohesion: 0.39
+Nodes (8): completeTablesLearnCheckpoint(), getRandomInt(), renderSplitAddLabModule(), render(), renderSpotExamTrapsModule(), renderVedicTeenTeenModule(), render(), shuffleOptionsAndGetCorrect()
 
 ### Community 46 - "🔬 Science Master — Class 5 CBSE (EVS Curriculum)"
 Cohesion: 0.29
@@ -320,23 +331,35 @@ Nodes (10): attachVolumeCheckpointListeners(), CHALLENGE_QUESTIONS_TOPIC_9, LEAR
 Cohesion: 0.46
 Nodes (5): attachRefreshControls(), checkForUpdate(), injectPwaStyles(), showStatusToast(), showUpdateToast()
 
+### Community 73 - "renderPracticeView"
+Cohesion: 0.18
+Nodes (18): bindMasteryBannerEvents(), generateDynamicChallengePool(), generateDynamicFractionChallengePool(), generateDynamicTableQuestion(), generateFractionsPracticeQueue(), generateTablesPracticeQueue(), getFilteredPracticeQuestions(), getTopicProgressData() (+10 more)
+
+### Community 74 - "generateDynamicFractionQuestion"
+Cohesion: 0.29
+Nodes (10): gcd(), generateDynamicFractionQuestion(), generateFreshWorksheetFractionsData(), lcm(), renderProductFormulaModule(), verifyProduct(), renderWorksheetViewFractions(), shuffleFracOptionsAndGetCorrect() (+2 more)
+
+### Community 75 - "generateFreshWorksheetTablesData"
+Cohesion: 0.60
+Nodes (5): generateFreshWorksheetTablesData(), populatePrintTopicTables(), printWorksheetTables(), renderWorksheetViewTables(), render()
+
 ## Knowledge Gaps
-- **22 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **30 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `🤖 Agent Guidelines — Mathematics Master` connect `🤖 Agent Guidelines — Mathematics Master` to `AGENTS.md`, `getRandomInt`?**
-  _High betweenness centrality (0.121) - this node is a cross-community bridge._
+- **Why does `🤖 Agent Guidelines — Mathematics Master` connect `🤖 Agent Guidelines — Mathematics Master` to `AGENTS.md`?**
+  _High betweenness centrality (0.118) - this node is a cross-community bridge._
 - **Should `HindiLearningApp` be split into smaller, more focused modules?**
   _Cohesion score 0.09454983438723276 - nodes in this community are weakly interconnected._
-- **Why does `5. Topic 6 Architecture: Tables (1 to 20) & Mental Speed Master` connect `getRandomInt` to `🤖 Agent Guidelines — Mathematics Master`?**
-  _High betweenness centrality (0.114) - this node is a cross-community bridge._
+- **Why does `🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines` connect `🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines` to `AGENTS.md`?**
+  _High betweenness centrality (0.107) - this node is a cross-community bridge._
 - **Should `science/app.js` be split into smaller, more focused modules?**
   _Cohesion score 0.09086538461538461 - nodes in this community are weakly interconnected._
-- **Why does `🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines` connect `🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines` to `AGENTS.md`?**
-  _High betweenness centrality (0.102) - this node is a cross-community bridge._
-- **Should `SSTApp` be split into smaller, more focused modules?**
-  _Cohesion score 0.12368972746331237 - nodes in this community are weakly interconnected._
 - **Should `maths/app.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.0596078431372549 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.060408163265306125 - nodes in this community are weakly interconnected._
+- **Should `social_sicence_maps/app.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.09577677224736049 - nodes in this community are weakly interconnected._
+- **Should `english_grammer/app.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.11879432624113476 - nodes in this community are weakly interconnected._

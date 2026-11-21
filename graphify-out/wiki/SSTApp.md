@@ -14,22 +14,22 @@
 - .renderPracticeMode() `EXTRACTED`
 - .saveActiveState() `EXTRACTED`
 - .init() `EXTRACTED`
+- .getChapterStars() `EXTRACTED`
+- .showResultsModal() `EXTRACTED`
+- .setMode() `EXTRACTED`
 - .renderLearnMode() `EXTRACTED`
 - .renderChallengeMode() `EXTRACTED`
-- .showResultsModal() `EXTRACTED`
-- .getChapterStars() `EXTRACTED`
-- .renderSidebar() `EXTRACTED`
-- .setMode() `EXTRACTED`
 - .endChallenge() `EXTRACTED`
+- .renderSidebar() `EXTRACTED`
 - .updateProgressHUD() `EXTRACTED`
 - .renderCurrentMode() `EXTRACTED`
-- .renderMatchInteraction() `EXTRACTED`
 - .resetChapterProgress() `EXTRACTED`
 - .switchChapter() `EXTRACTED`
+- .flashFeedback() `EXTRACTED`
+- .openLearningPassport() `EXTRACTED`
 - .bindGlobalEvents() `EXTRACTED`
 - .renderBlankInteraction() `EXTRACTED`
 - .renderTFInteraction() `EXTRACTED`
-- .renderShortInteraction() `EXTRACTED`
 - *…and 16 more `method` connection(s) not listed (lowest-degree first to go)*
 
 ---

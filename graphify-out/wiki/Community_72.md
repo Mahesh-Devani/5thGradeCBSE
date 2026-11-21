@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- **milestones.js** (1 connections) — `science/data/milestones.js`
+- **science/data/milestones.js** (1 connections) — `science/data/milestones.js`
 - **CHAPTER_MILESTONES** (1 connections) — `science/data/milestones.js`
 
 ## Relationships
