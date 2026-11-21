@@ -1,10 +1,10 @@
 # Community 5
 
-> 48 nodes
+> 44 nodes
 
 ## Key Concepts
 
-- **english_grammer/app.js** (46 connections) — `english_grammer/app.js`
+- **english_grammer/app.js** (43 connections) — `english_grammer/app.js`
 - **init()** (15 connections) — `english_grammer/app.js`
 - **evaluateAndAwardStars()** (14 connections) — `english_grammer/app.js`
 - **finishExercises()** (10 connections) — `english_grammer/app.js`
@@ -20,16 +20,16 @@
 - **clearTimer()** (6 connections) — `english_grammer/app.js`
 - **renderLearnMode()** (6 connections) — `english_grammer/app.js`
 - **diagnoseTrap()** (5 connections) — `english_grammer/app.js`
-- **playCorrectSound()** (5 connections) — `english_grammer/app.js`
 - **setStars()** (5 connections) — `english_grammer/app.js`
 - **startTimer()** (5 connections) — `english_grammer/app.js`
 - **toggleSectionRead()** (5 connections) — `english_grammer/app.js`
 - **closeSidebar()** (4 connections) — `english_grammer/app.js`
-- **getAudioCtx()** (4 connections) — `english_grammer/app.js`
 - **getTopicProgressData()** (4 connections) — `english_grammer/app.js`
-- **launchConfetti()** (4 connections) — `english_grammer/app.js`
 - **loadActiveState()** (4 connections) — `english_grammer/app.js`
-- *... and 23 more nodes in this community*
+- **nextExercise()** (4 connections) — `english_grammer/app.js`
+- **openLearningPassport()** (4 connections) — `english_grammer/app.js`
+- **playCorrectSound()** (4 connections) — `english_grammer/app.js`
+- *... and 19 more nodes in this community*
 
 ## Relationships
 
@@ -41,7 +41,7 @@
 
 ## Audit Trail
 
-- EXTRACTED: 131 (97%)
+- EXTRACTED: 124 (97%)
 - INFERRED: 4 (3%)
 - AMBIGUOUS: 0 (0%)
 

@@ -88,21 +88,25 @@ The application is engineered with an **off-canvas responsive drawer** pattern:
 
 ---
 
-## 🗂️ File Structure
+## 🗂️ Modular Architecture & Data Store
 
+English Grammar Master features a clean, modular data architecture:
 ```
 english_grammer/
 ├── index.html        # Shell markup, mobile top bar, modals & backdrop
 ├── styles.css        # Glassmorphic dark design system & responsive drawer
-├── app.js            # Topic lessons, 70+ exercises, audio synthesizer, game state
-└── README.md         # This documentation file
+├── app.js            # Core UI, state machine & exercise controllers (~1,040 lines)
+├── data/
+│   ├── topics.js     # TOPIC_DATA: 7 curriculum topics, lesson cards & 70+ exercises
+│   └── milestones.js # TOPIC_MILESTONES: 10 progressive mastery milestones per topic
+└── README.md         # Documentation & pedagogical reference
 ```
 
 ---
 
 ## 🛠️ Adding New Exercises
 
-To add new exercises, open `app.js` and locate `TOPIC_DATA['topic_id'].exercises`. Append question objects following this schema:
+To add new exercises, open `english_grammer/data/topics.js` and locate `TOPIC_DATA['topic_id'].exercises`. Append question objects following this schema:
 
 ```javascript
 {

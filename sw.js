@@ -58,6 +58,8 @@ const PRECACHE_ASSETS = [
   // English Grammar
   './english_grammer/index.html',
   './english_grammer/styles.css',
+  './english_grammer/data/topics.js',
+  './english_grammer/data/milestones.js',
   './english_grammer/app.js',
   // Hindi Vyakaran
   './hindi_vyakaran/index.html',

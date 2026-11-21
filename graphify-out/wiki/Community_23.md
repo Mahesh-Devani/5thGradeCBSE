@@ -1,12 +1,10 @@
 # Community 23
 
-> 3 nodes
+> 1 nodes
 
 ## Key Concepts
 
-- **vakyansh.js** (2 connections) — `hindi_vyakaran/data/vakyansh.js`
-- **VAKYANSH_DATA** (1 connections) — `hindi_vyakaran/data/vakyansh.js`
-- **VAKYANSH_QUIZ_POOL** (1 connections) — `hindi_vyakaran/data/vakyansh.js`
+- **vakyansh.js** (0 connections) — `hindi_vyakaran/data/vakyansh.js`
 
 ## Relationships
 
@@ -18,7 +16,7 @@
 
 ## Audit Trail
 
-- EXTRACTED: 2 (100%)
+- EXTRACTED: 0 (0%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

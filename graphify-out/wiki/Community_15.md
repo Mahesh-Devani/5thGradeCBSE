@@ -1,16 +1,10 @@
 # Community 15
 
-> 7 nodes
+> 1 nodes
 
 ## Key Concepts
 
-- **sangya.js** (6 connections) — `hindi_vyakaran/data/sangya.js`
-- **BHAVVACHAK_NIRMAN_DATA** (1 connections) — `hindi_vyakaran/data/sangya.js`
-- **SANGYA_CHALLENGE_POOL** (1 connections) — `hindi_vyakaran/data/sangya.js`
-- **SANGYA_COMPARISON_DATA** (1 connections) — `hindi_vyakaran/data/sangya.js`
-- **SANGYA_QUIZ_POOL** (1 connections) — `hindi_vyakaran/data/sangya.js`
-- **SANGYA_SORT_ITEMS** (1 connections) — `hindi_vyakaran/data/sangya.js`
-- **SANGYA_TYPES_DATA** (1 connections) — `hindi_vyakaran/data/sangya.js`
+- **sangya.js** (0 connections) — `hindi_vyakaran/data/sangya.js`
 
 ## Relationships
 
@@ -22,7 +16,7 @@
 
 ## Audit Trail
 
-- EXTRACTED: 6 (100%)
+- EXTRACTED: 0 (0%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

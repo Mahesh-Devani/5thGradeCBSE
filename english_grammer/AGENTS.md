@@ -71,7 +71,18 @@ Do **NOT** rename, remove, or alter the IDs of these DOM elements. They are hard
 
 ---
 
-## 3. Data Schema & Content Architecture
+## 3. Modular Data Architecture
+
+The curriculum datasets and 10-star milestones reside in `english_grammer/data/`:
+- `data/topics.js` (`TOPIC_DATA`: Articles, Simple Tenses, Continuous Tenses, Personification, Present Perfect, Past Perfect, Hyperbole)
+- `data/milestones.js` (`TOPIC_MILESTONES`: 10 progressive mastery milestones per topic)
+
+> [!IMPORTANT]
+> **AI Token Optimization Rule**: When editing lessons, exercises, or exam traps, ALWAYS edit `english_grammer/data/topics.js` or `data/milestones.js` directly. Never add static curriculum data to `app.js`.
+
+---
+
+## 4. Data Schema & Content Architecture
 
 Topics are defined in `TOPIC_DATA` inside `app.js` with 10 Mastery Stars and diagnostic exam traps:
 

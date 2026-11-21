@@ -1,17 +1,17 @@
-# Graph Report - 5thGradeCBSE  (2026-11-21)
+# Graph Report - 5thGradeCBSE  (2026-11-22)
 
 ## Corpus Check
-- 80 files · ~1,085,257 words
+- 82 files · ~1,085,271 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 10 file(s) not represented in the graph (top: .css 8, (none) 1, .webmanifest 1)
 
 ## Summary
-- 1154 nodes · 2289 edges · 84 communities (53 shown, 31 thin omitted)
+- 1142 nodes · 2272 edges · 86 communities (52 shown, 34 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 70 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a053f08e`
+- Built from commit: `0d37c5bd`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,7 +31,6 @@
 - renderPracticeView
 - 🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines
 - initProfilesUI
-- sangya.js
 - 📐 Data Schemas & Contracts — 5thGradeCBSE
 - 📱 Multi-Platform App Distribution Roadmap — 5thGradeCBSE
 - google-drive-sync.js
@@ -39,7 +38,6 @@
 - 🇮🇳 हिंदी व्याकरण व रचना — Class 5 CBSE Learning Hub
 - storage.js
 - TestArchitecturalInvariants
-- vakyansh.js
 - 🤖 Agent Guidelines — Mathematics Master
 - profile.js
 - 🗺️ SST Map Master — Class 5 CBSE Practice
@@ -65,7 +63,6 @@
 - format_remediation_box
 - renderWorksheetViewRevision
 - build_app.py
-- chitra_varnan.js
 - initDrawer
 - topic1_hcf_lcm.js
 - topic2_divisibility.js
@@ -125,7 +122,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (84 total, 31 thin omitted)
+## Communities (86 total, 34 thin omitted)
 
 ### Community 0 - "HindiLearningApp"
 Cohesion: 0.09
@@ -148,8 +145,8 @@ Cohesion: 0.10
 Nodes (49): applyZoom(), clearTimer(), closeResultsModal(), closeSidebar(), closeWorksheetModal(), endQuiz(), fireConfetti(), getPathCenter() (+41 more)
 
 ### Community 5 - "english_grammer/app.js"
-Cohesion: 0.12
-Nodes (44): clearTimer(), closeModal(), closeSidebar(), diagnoseTrap(), evaluateAndAwardStars(), finishExercises(), flashFeedback(), formatTime() (+36 more)
+Cohesion: 0.13
+Nodes (41): clearTimer(), closeModal(), closeSidebar(), diagnoseTrap(), evaluateAndAwardStars(), finishExercises(), flashFeedback(), formatTime() (+33 more)
 
 ### Community 6 - "general_knowledge/app.js"
 Cohesion: 0.08
@@ -181,15 +178,11 @@ Nodes (20): completeTopicLearnCheckpoint(), endChallenge(), evaluateAndAwardStar
 
 ### Community 13 - "🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines"
 Cohesion: 0.08
-Nodes (25): 📌 1. Project Overview, 🏛️ 2. Modular Data Architecture, 📷 3. Exam Photograph & Monochrome Print Features, 🏛️ 3. Tri-Module Architecture, 🌟 4.5. 10-Star Milestone Architecture & Learning Passport, ⚠️ 4. Critical Technical Gotchas & Rules, 🔗 5. DOM Contract (Element IDs in `index.html`), 🚀 6. Developer Extension Recipes (+17 more)
+Nodes (23): 📌 1. Project Overview, 🏛️ 2. Modular Data Architecture, 📷 3. Exam Photograph & Monochrome Print Features, 🏛️ 3. Tri-Module Architecture, 🌟 4.5. 10-Star Milestone Architecture & Learning Passport, ⚠️ 4. Critical Technical Gotchas & Rules, 🔗 5. DOM Contract (Element IDs in `index.html`), 🚀 6. Developer Extension Recipes (+15 more)
 
 ### Community 14 - "initProfilesUI"
 Cohesion: 0.22
 Nodes (16): calculateTotalStars(), initAuthUI(), initBackupRestore(), initGoogleSyncUI(), closeModal(), formatTimeAgo(), renderModalState(), initProfilesUI() (+8 more)
-
-### Community 15 - "sangya.js"
-Cohesion: 0.29
-Nodes (6): BHAVVACHAK_NIRMAN_DATA, SANGYA_CHALLENGE_POOL, SANGYA_COMPARISON_DATA, SANGYA_QUIZ_POOL, SANGYA_SORT_ITEMS, SANGYA_TYPES_DATA
 
 ### Community 16 - "📐 Data Schemas & Contracts — 5thGradeCBSE"
 Cohesion: 0.10
@@ -260,8 +253,8 @@ Cohesion: 0.20
 Nodes (10): 1. View Locally, 2. Host on GitHub Pages, 📚 5th Grade CBSE — Interactive Learning Hub, 🛠️ Architecture & Development Standards, 📋 Available Subjects & Roadmap, 🤝 Contributing, 🔮 Future Roadmap & Scope, 🌟 Key Highlights (+2 more)
 
 ### Community 37 - "🤖 Agent Guidelines — English Grammar Master"
-Cohesion: 0.22
-Nodes (9): 10-Star Milestone Architecture Schema, 1. Pedagogical Directives (Class 5 CBSE), 2. DOM Contract (`index.html` ↔ `app.js`), 3. Data Schema & Content Architecture, 4. Native Web Audio Synthesizer, 5. Mobile Drawer & CSS Isolation Gotchas, 6. How to Add a New Grammar Topic (e.g. Prepositions), 7. Pre-Commit Verification Checklist (+1 more)
+Cohesion: 0.20
+Nodes (10): 10-Star Milestone Architecture Schema, 1. Pedagogical Directives (Class 5 CBSE), 2. DOM Contract (`index.html` ↔ `app.js`), 3. Modular Data Architecture, 4. Data Schema & Content Architecture, 4. Native Web Audio Synthesizer, 5. Mobile Drawer & CSS Isolation Gotchas, 6. How to Add a New Grammar Topic (e.g. Prepositions) (+2 more)
 
 ### Community 38 - "Key Improvements"
 Cohesion: 0.22
@@ -269,7 +262,7 @@ Nodes (8): 1. Off-Canvas Mobile Navigation Drawer, 2. Touch-Friendly Top Navigat
 
 ### Community 39 - "📝 English Grammar Master — Class 5 CBSE"
 Cohesion: 0.22
-Nodes (9): 🌟 10 Pedagogical Stars Per Topic, 🛠️ Adding New Exercises, 📝 English Grammar Master — Class 5 CBSE, 🗂️ File Structure, 🎮 Learning Modes, 🎮 Learning Modes & 10-Star Mastery Architecture, 📋 Learning Passport & Parent Audit Report, 📱 Mobile-First Architecture (+1 more)
+Nodes (9): 🌟 10 Pedagogical Stars Per Topic, 🛠️ Adding New Exercises, 📝 English Grammar Master — Class 5 CBSE, 🎮 Learning Modes, 🎮 Learning Modes & 10-Star Mastery Architecture, 📋 Learning Passport & Parent Audit Report, 📱 Mobile-First Architecture, 🗂️ Modular Architecture & Data Store (+1 more)
 
 ### Community 40 - "topic3_expressions.js"
 Cohesion: 0.22
@@ -340,21 +333,21 @@ Cohesion: 0.53
 Nodes (6): C. Dynamic Printable Worksheet, generateFreshWorksheetTablesData(), populatePrintTopicTables(), printWorksheetTables(), renderWorksheetViewTables(), render()
 
 ## Knowledge Gaps
-- **31 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **34 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `🤖 Agent Guidelines — Mathematics Master` connect `🤖 Agent Guidelines — Mathematics Master` to `AGENTS.md`?**
-  _High betweenness centrality (0.114) - this node is a cross-community bridge._
+  _High betweenness centrality (0.122) - this node is a cross-community bridge._
 - **Should `HindiLearningApp` be split into smaller, more focused modules?**
   _Cohesion score 0.09366901147723065 - nodes in this community are weakly interconnected._
 - **Why does `5. Topic 6 Architecture: Tables (1 to 20) & Mental Speed Master` connect `🤖 Agent Guidelines — Mathematics Master` to `generateFreshWorksheetTablesData`?**
-  _High betweenness centrality (0.107) - this node is a cross-community bridge._
+  _High betweenness centrality (0.115) - this node is a cross-community bridge._
 - **Should `science/app.js` be split into smaller, more focused modules?**
   _Cohesion score 0.09086538461538461 - nodes in this community are weakly interconnected._
-- **Why does `🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines` connect `🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines` to `AGENTS.md`?**
-  _High betweenness centrality (0.089) - this node is a cross-community bridge._
+- **Why does `C. Dynamic Printable Worksheet` connect `generateFreshWorksheetTablesData` to `🤖 Agent Guidelines — Mathematics Master`?**
+  _High betweenness centrality (0.082) - this node is a cross-community bridge._
 - **Should `maths/app.js` be split into smaller, more focused modules?**
   _Cohesion score 0.060408163265306125 - nodes in this community are weakly interconnected._
 - **Should `social_sicence_maps/app.js` be split into smaller, more focused modules?**

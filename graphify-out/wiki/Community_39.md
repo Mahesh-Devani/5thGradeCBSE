@@ -8,10 +8,10 @@
 - **🎮 Learning Modes & 10-Star Mastery Architecture** (2 connections) — `english_grammer/README.md`
 - **🌟 10 Pedagogical Stars Per Topic** (1 connections) — `english_grammer/README.md`
 - **🛠️ Adding New Exercises** (1 connections) — `english_grammer/README.md`
-- **🗂️ File Structure** (1 connections) — `english_grammer/README.md`
 - **🎮 Learning Modes** (1 connections) — `english_grammer/README.md`
 - **📋 Learning Passport & Parent Audit Report** (1 connections) — `english_grammer/README.md`
 - **📱 Mobile-First Architecture** (1 connections) — `english_grammer/README.md`
+- **🗂️ Modular Architecture & Data Store** (1 connections) — `english_grammer/README.md`
 - **🎯 Pedagogical Concept: Thinking Over Memorizing** (1 connections) — `english_grammer/README.md`
 
 ## Relationships
