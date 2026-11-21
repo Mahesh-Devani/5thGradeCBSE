@@ -1,6 +1,6 @@
 # Community 10
 
-> 31 nodes
+> 30 nodes
 
 ## Key Concepts
 
@@ -20,7 +20,6 @@
 - **check_learn_mode_checkpoints()** (4 connections) — `check-invariants.py`
 - **check_mobile_drawer_contract()** (4 connections) — `check-invariants.py`
 - **check_drc_bbox.py** (2 connections) — `social_sicence_maps/scripts/check_drc_bbox.py`
-- **sys** (2 connections)
 - **.__init__()** (1 connections) — `check-invariants.py`
 - **Verify zero external runtime frameworks or unapproved CDN scripts.** (1 connections) — `check-invariants.py`
 - **Verify all JS files compile cleanly via WebKit JavaScriptCore (jsc).** (1 connections) — `check-invariants.py`
@@ -29,12 +28,14 @@
 - **Verify that question items in topic/chapter data have unique IDs and required…** (1 connections) — `check-invariants.py`
 - **Verify milestone evaluators implement progressive fallbacks (e.g. ||…** (1 connections) — `check-invariants.py`
 - **Verify setStars allows reset (stars === 0) and drill restart preserves chapter…** (1 connections) — `check-invariants.py`
-- *... and 6 more nodes in this community*
+- **Verify each mini-app strictly uses subject-namespaced localStorage keys.** (1 connections) — `check-invariants.py`
+- *... and 5 more nodes in this community*
 
 ## Relationships
 
-- [Community 29](Community_29.md) (7 shared connections)
+- [Community 29](Community_29.md) (4 shared connections)
 - [Community 47](Community_47.md) (3 shared connections)
+- [Community 27](Community_27.md) (3 shared connections)
 - [Community 49](Community_49.md) (2 shared connections)
 
 ## Source Files
@@ -44,7 +45,7 @@
 
 ## Audit Trail
 
-- EXTRACTED: 61 (85%)
+- EXTRACTED: 60 (85%)
 - INFERRED: 11 (15%)
 - AMBIGUOUS: 0 (0%)
 

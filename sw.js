@@ -2,7 +2,7 @@
    5th Grade CBSE — Service Worker (Offline & Auto-Update Engine)
    ========================================================== */
 
-const CACHE_NAME = 'cbse5-app-v2.5.0';
+const CACHE_NAME = 'cbse5-app-v2.6.0';
 
 // Core App Shell assets to pre-cache immediately on install
 const PRECACHE_ASSETS = [
@@ -46,6 +46,14 @@ const PRECACHE_ASSETS = [
   // Science
   './science/index.html',
   './science/styles.css',
+  './science/data/chapter_l2_animals.js',
+  './science/data/chapter_l3_skeletal.js',
+  './science/data/chapter_l4_nervous.js',
+  './science/data/chapter_l5_health.js',
+  './science/data/chapter_l7_air_water.js',
+  './science/data/chapter_l11_rocks.js',
+  './science/data/chapter_l13_matter.js',
+  './science/data/milestones.js',
   './science/app.js',
   // English Grammar
   './english_grammer/index.html',
@@ -71,9 +79,10 @@ const PRECACHE_ASSETS = [
 ];
 
 /* ----------------------------------------------------------
-   Install Event: Cache core shell
+   Install Event: Cache core shell & skip waiting immediately
    ---------------------------------------------------------- */
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       // Use cache.addAll with individual catch to avoid failure if one optional file fails
@@ -84,9 +93,6 @@ self.addEventListener('install', (event) => {
           });
         })
       );
-    }).then(() => {
-      // Do not skipWaiting immediately by default so active tabs aren't disrupted mid-quiz
-      // Skip waiting will be triggered when user clicks "Update Now"
     })
   );
 });
@@ -112,10 +118,11 @@ self.addEventListener('activate', (event) => {
 });
 
 /* ----------------------------------------------------------
-   Fetch Strategy: Stale-While-Revalidate
-   - Return cached asset immediately for sub-millisecond response & offline support
-   - Fetch network in background and update cache silently
-   - Fall back to cache or offline shell if offline
+   Fetch Strategy:
+   - Navigation (HTML pages): Network-First with Cache Fallback
+     ensures fresh deployments & scripts load immediately when online.
+   - Assets (JS, CSS, Images): Stale-While-Revalidate
+     provides sub-millisecond local launch with background updating.
    ---------------------------------------------------------- */
 self.addEventListener('fetch', (event) => {
   const request = event.request;
@@ -124,19 +131,45 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return;
   if (!request.url.startsWith('http')) return;
 
+  // 1. Navigation Requests (HTML): Network-First
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const copy = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          }
+          return networkResponse;
+        })
+        .catch(async () => {
+          const cache = await caches.open(CACHE_NAME);
+          const cached = await cache.match(request);
+          if (cached) return cached;
+          const fallback = await cache.match('./index.html');
+          if (fallback) return fallback;
+          return new Response('Offline: Content not yet cached.', {
+            status: 503,
+            statusText: 'Service Unavailable',
+            headers: new Headers({ 'Content-Type': 'text/plain' })
+          });
+        })
+    );
+    return;
+  }
+
+  // 2. Static Assets: Stale-While-Revalidate
   event.respondWith(
     caches.open(CACHE_NAME).then(async (cache) => {
       const cachedResponse = await cache.match(request);
 
       // Background network fetch promise
       const networkFetch = fetch(request).then((networkResponse) => {
-        // Cache valid responses (status 200 or opaque responses for CDNs/Google Fonts)
         if (networkResponse && (networkResponse.status === 200 || networkResponse.type === 'opaque')) {
           cache.put(request, networkResponse.clone());
         }
         return networkResponse;
       }).catch((err) => {
-        // Network failed (offline)
         return null;
       });
 
@@ -151,17 +184,9 @@ self.addEventListener('fetch', (event) => {
         return networkResponse;
       }
 
-      // If both network and cache fail:
-      // For navigation requests (HTML pages), return cached index.html
-      if (request.mode === 'navigate') {
-        const fallbackPage = await cache.match('./index.html');
-        if (fallbackPage) return fallbackPage;
-      }
-
-      return new Response('Offline: Content not yet cached.', {
-        status: 503,
-        statusText: 'Service Unavailable',
-        headers: new Headers({ 'Content-Type': 'text/plain' })
+      return new Response('Offline: Asset not found.', {
+        status: 404,
+        statusText: 'Not Found'
       });
     })
   );

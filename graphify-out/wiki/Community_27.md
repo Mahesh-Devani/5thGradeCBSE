@@ -1,10 +1,11 @@
 # Community 27
 
-> 15 nodes
+> 16 nodes
 
 ## Key Concepts
 
 - **run_jsc_simulation()** (8 connections) — `tests/test_milestones.py`
+- **subprocess** (8 connections)
 - **test_milestones.py** (7 connections) — `tests/test_milestones.py`
 - **TestMilestoneProgression** (6 connections) — `tests/test_milestones.py`
 - **.test_maths_area_volume_learn_checkpoints()** (3 connections) — `tests/test_milestones.py`
@@ -22,7 +23,8 @@
 
 ## Relationships
 
-- [Community 29](Community_29.md) (4 shared connections)
+- [Community 29](Community_29.md) (5 shared connections)
+- [Community 10](Community_10.md) (3 shared connections)
 
 ## Source Files
 
@@ -30,7 +32,7 @@
 
 ## Audit Trail
 
-- EXTRACTED: 23 (100%)
+- EXTRACTED: 29 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

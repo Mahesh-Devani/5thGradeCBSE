@@ -21,14 +21,14 @@ Welcome, AI Agent! This guide specifies the rules, technical constraints, data s
 
 ---
 
-## 2. Architecture & Data Schema
+## 2. Modular Architecture & Data Schema
 
 ### Adding a New Chapter
-To add a new chapter (e.g., L-1 Plants, L-6 Simple Machines):
-1. Open `science/app.js`.
-2. Add a new chapter object to `CHAPTERS_DATA` conforming to this schema:
+Thanks to the modular architecture, you **never** need to edit monolithic files:
+1. Create a dedicated chapter file `science/data/chapter_<id>.js` (e.g. `science/data/chapter_l1_plants.js`).
+2. Define `const CHAPTER_L1_PLANTS = { ... };` conforming to the schema below:
 ```javascript
-{
+const CHAPTER_L1_PLANTS = {
   id: 'ch1_plants',
   number: 'L-1',
   title: 'Reproduction in Plants',

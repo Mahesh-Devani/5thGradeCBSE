@@ -126,6 +126,19 @@ class TestMilestoneProgression(unittest.TestCase):
 
     def test_science_star_reset(self):
         """Verify Science resetChapterProgress resets stars to 0 and clears chapter state."""
+        source_files = [
+            PROJECT_ROOT / 'shared' / 'js' / 'sound.js',
+            PROJECT_ROOT / 'shared' / 'js' / 'confetti.js',
+            PROJECT_ROOT / 'science' / 'data' / 'chapter_l2_animals.js',
+            PROJECT_ROOT / 'science' / 'data' / 'chapter_l3_skeletal.js',
+            PROJECT_ROOT / 'science' / 'data' / 'chapter_l4_nervous.js',
+            PROJECT_ROOT / 'science' / 'data' / 'chapter_l5_health.js',
+            PROJECT_ROOT / 'science' / 'data' / 'chapter_l7_air_water.js',
+            PROJECT_ROOT / 'science' / 'data' / 'chapter_l11_rocks.js',
+            PROJECT_ROOT / 'science' / 'data' / 'chapter_l13_matter.js',
+            PROJECT_ROOT / 'science' / 'data' / 'milestones.js',
+            PROJECT_ROOT / 'science' / 'app.js',
+        ]
         test_script = """
         setChapterStars('ch3_skeletal', 8);
         if (getChapterStars('ch3_skeletal') !== 8) throw new Error('Failed to set chapter stars to 8');
@@ -135,7 +148,7 @@ class TestMilestoneProgression(unittest.TestCase):
 
         print('SCIENCE_RESET_OK');
         """
-        res = run_jsc_simulation([PROJECT_ROOT / 'science' / 'app.js'], test_script)
+        res = run_jsc_simulation(source_files, test_script)
         self.assertIn("SCIENCE_RESET_OK", res.stdout, f"Science simulation failed:\n{res.stdout}\n{res.stderr}")
 
     def test_maths_star_reset(self):

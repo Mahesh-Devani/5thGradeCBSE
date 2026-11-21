@@ -1,10 +1,10 @@
 # Community 1
 
-> 66 nodes
+> 65 nodes
 
 ## Key Concepts
 
-- **science/app.js** (65 connections) — `science/app.js`
+- **science/app.js** (64 connections) — `science/app.js`
 - **evaluateAndAwardStars()** (13 connections) — `science/app.js`
 - **renderCurrentView()** (13 connections) — `science/app.js`
 - **attachGadgetEvents()** (12 connections) — `science/app.js`
@@ -29,7 +29,7 @@
 - **updateTopBarPassportButton()** (6 connections) — `science/app.js`
 - **endSprintGame()** (5 connections) — `science/app.js`
 - **getSkeletalStageHTML()** (5 connections) — `science/app.js`
-- *... and 41 more nodes in this community*
+- *... and 40 more nodes in this community*
 
 ## Relationships
 
@@ -41,7 +41,7 @@
 
 ## Audit Trail
 
-- EXTRACTED: 192 (99%)
+- EXTRACTED: 191 (99%)
 - INFERRED: 2 (1%)
 - AMBIGUOUS: 0 (0%)
 

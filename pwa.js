@@ -8,7 +8,7 @@
 (() => {
   'use strict';
 
-  const APP_VERSION = '2.5.0';
+  const APP_VERSION = '2.6.0';
 
   // Determine sw.js URL and root scope relative to this script's location
   const currentScript = document.currentScript;

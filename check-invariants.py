@@ -214,12 +214,14 @@ def check_image_asset_integrity():
                 continue
             total_images_checked += 1
             
-            # Resolve relative to declaring file
+            # Resolve relative to declaring file (or HTML host)
             target1 = (f.parent / clean_m).resolve()
             # Resolve relative to project root
             target2 = (PROJECT_ROOT / clean_m.lstrip('/')).resolve()
+            # Resolve relative to subject root if script is inside a data/ or engines/ subfolder
+            target3 = (f.parent.parent / clean_m).resolve()
             
-            if not target1.exists() and not target2.exists():
+            if not target1.exists() and not target2.exists() and not target3.exists():
                 missing_paths.add(f"{f.relative_to(PROJECT_ROOT)} references non-existent: '{m}'")
 
     if missing_paths:

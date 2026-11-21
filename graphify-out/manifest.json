@@ -1,8 +1,8 @@
 {
   "check-invariants.py": {
-    "mtime": 1795244992.0001037,
-    "seen": 1795245091.100096,
-    "ast_hash": "423643b444d240499231ffaf88e5fbd4",
+    "mtime": 1795280849.43478,
+    "seen": 1795281281.973784,
+    "ast_hash": "0bbbbdaad55bb888df74d9932af0db5e",
     "semantic_hash": ""
   },
   "english_grammer/app.js": {
@@ -96,9 +96,9 @@
     "semantic_hash": ""
   },
   "pwa.js": {
-    "mtime": 1795249919.1933806,
-    "seen": 1795249943.2744179,
-    "ast_hash": "f9555335c0c28bc921d659a2dae5986c",
+    "mtime": 1795281258.6126735,
+    "seen": 1795281281.973799,
+    "ast_hash": "b909d13c592c812f096aa273f816478a",
     "semantic_hash": ""
   },
   "run-regressions.py": {
@@ -108,9 +108,9 @@
     "semantic_hash": ""
   },
   "science/app.js": {
-    "mtime": 1794714803.1767664,
-    "seen": 1795238041.9239428,
-    "ast_hash": "ae620e17d272e30f62e9a84580d0611f",
+    "mtime": 1795280775.877584,
+    "seen": 1795281281.9738,
+    "ast_hash": "01bc50c9ec8002e0fec851452c3910c3",
     "semantic_hash": ""
   },
   "shared/js/auth.js": {
@@ -198,9 +198,9 @@
     "semantic_hash": ""
   },
   "sw.js": {
-    "mtime": 1795249869.9696496,
-    "seen": 1795249943.274428,
-    "ast_hash": "adcf181ba82b79f22e98e0b5f5ccc4a6",
+    "mtime": 1795281247.7776911,
+    "seen": 1795281281.973814,
+    "ast_hash": "0acfbf77d9f582d4547f00f9de971093",
     "semantic_hash": ""
   },
   "tests/__init__.py": {
@@ -222,9 +222,9 @@
     "semantic_hash": ""
   },
   "tests/test_milestones.py": {
-    "mtime": 1795245076.2242653,
-    "seen": 1795245091.100123,
-    "ast_hash": "4f84e8722da3046ad5a45278f1488834",
+    "mtime": 1795280805.0252495,
+    "seen": 1795281281.9738162,
+    "ast_hash": "79b0c13a96202a448afedd5989877118",
     "semantic_hash": ""
   },
   "AGENTS.md": {
@@ -342,21 +342,21 @@
     "semantic_hash": ""
   },
   "science/AGENTS.md": {
-    "mtime": 1793723569.2184095,
-    "seen": 1795238041.92399,
-    "ast_hash": "9c30be3136b7f98d506553e110fdf5bd",
+    "mtime": 1795280901.5099852,
+    "seen": 1795281281.9738271,
+    "ast_hash": "529ced771bf5b72489f1307c87e93089",
     "semantic_hash": ""
   },
   "science/README.md": {
-    "mtime": 1794667212.4073787,
-    "seen": 1795238041.923991,
-    "ast_hash": "f9e71a013cc8ff5fa1dcd107413846ad",
+    "mtime": 1795280883.1338174,
+    "seen": 1795281281.973828,
+    "ast_hash": "e1dce4b9854da076cd51f200d0df76ec",
     "semantic_hash": ""
   },
   "science/index.html": {
-    "mtime": 1793723569.227094,
-    "seen": 1795238041.9239922,
-    "ast_hash": "3d5dc41bc326f54e518dfcedcc8a2eab",
+    "mtime": 1795280724.647259,
+    "seen": 1795281281.973828,
+    "ast_hash": "ce8232f396a2ef3c32f4594f632a9a64",
     "semantic_hash": ""
   },
   "social_sicence_maps/AGENTS.md": {
@@ -873,6 +873,54 @@
     "mtime": 1795244847.6314435,
     "seen": 1795245091.1001081,
     "ast_hash": "b678dd4ce57aacf568397e8eae92a7e3",
+    "semantic_hash": ""
+  },
+  "science/data/chapter_l11_rocks.js": {
+    "mtime": 1795280688.6275475,
+    "seen": 1795281281.973801,
+    "ast_hash": "dae704678ca286196e20d83c75010757",
+    "semantic_hash": ""
+  },
+  "science/data/chapter_l13_matter.js": {
+    "mtime": 1795280688.627686,
+    "seen": 1795281281.973802,
+    "ast_hash": "866068ab02830f0e1b3d137255ad0975",
+    "semantic_hash": ""
+  },
+  "science/data/chapter_l2_animals.js": {
+    "mtime": 1795280688.626669,
+    "seen": 1795281281.973803,
+    "ast_hash": "c98ca57470bea8a53e9e4f2a2fefd6a0",
+    "semantic_hash": ""
+  },
+  "science/data/chapter_l3_skeletal.js": {
+    "mtime": 1795280688.6269248,
+    "seen": 1795281281.973803,
+    "ast_hash": "9b873fd629b9dec919e424bc14d28990",
+    "semantic_hash": ""
+  },
+  "science/data/chapter_l4_nervous.js": {
+    "mtime": 1795280688.627113,
+    "seen": 1795281281.973804,
+    "ast_hash": "3f6d612f2b0616a9c62a4334c726fa29",
+    "semantic_hash": ""
+  },
+  "science/data/chapter_l5_health.js": {
+    "mtime": 1795280688.6272597,
+    "seen": 1795281281.973804,
+    "ast_hash": "750aef7a12c5ce1ddd9e2259508b1965",
+    "semantic_hash": ""
+  },
+  "science/data/chapter_l7_air_water.js": {
+    "mtime": 1795280688.6273928,
+    "seen": 1795281281.973805,
+    "ast_hash": "845f4e799474db43f437e03f3e668985",
+    "semantic_hash": ""
+  },
+  "science/data/milestones.js": {
+    "mtime": 1795280688.6278071,
+    "seen": 1795281281.973805,
+    "ast_hash": "941b84f4e44ec0498e60abd379c115ac",
     "semantic_hash": ""
   }
 }

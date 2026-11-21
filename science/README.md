@@ -60,8 +60,25 @@ An interactive, discovery-based Science learning studio for **CBSE Class 5 stude
 ## 📱 Technical Standards
 
 - **Zero External Dependencies**: 100% vanilla HTML5, CSS3, and ES6+ JavaScript.
-- **Audio Feedback**: Native Web Audio API (`AudioContext`) oscillator synthesizer (no external sound files).
-- **Celebratory Confetti**: Native HTML5 Canvas particle system.
+- **Audio Feedback**: Unified Web Audio API synthesizer via `shared/js/sound.js`.
+- **Celebratory Confetti**: Native HTML5 Canvas particle system via `shared/js/confetti.js`.
 - **State & Session Persistence**: `localStorage` key `cbse5_science_active_state` and `cbse5_science_stars_*`.
 - **Mobile First**: Sliding drawer on screens $\le 860\text{px}$, 44px+ touch targets, `touch-action: manipulation;`.
 - **CSS Brace Balance**: Verified `Open braces: 0`.
+
+---
+
+## 📂 Modular Architecture & File Layout
+
+- `science/index.html`: Entry point & mobile responsive shell.
+- `science/styles.css`: Subject stylesheet (verified `Open braces: 0`).
+- `science/data/`:
+  - `chapter_l2_animals.js`: L-2 Animals in Their Surroundings.
+  - `chapter_l3_skeletal.js`: L-3 The Skeletal and Muscular System.
+  - `chapter_l4_nervous.js`: L-4 The Nervous System & Sense Organs.
+  - `chapter_l5_health.js`: L-5 Good Health & Nutrition.
+  - `chapter_l7_air_water.js`: L-7 Air and Water.
+  - `chapter_l11_rocks.js`: L-11 Rocks and Minerals.
+  - `chapter_l13_matter.js`: L-13 States of Matter.
+  - `milestones.js`: 10-star progressive milestones per chapter (INV-6).
+- `science/app.js`: Core UI navigation, mode switching, quiz runner, and state engine (~3,780 lines).

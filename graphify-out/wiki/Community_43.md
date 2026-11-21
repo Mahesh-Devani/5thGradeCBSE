@@ -6,7 +6,7 @@
 
 - **🤖 Agent Guidelines — Science Master (Class 5 CBSE)** (5 connections) — `science/AGENTS.md`
 - **science/AGENTS.md** (2 connections) — `science/AGENTS.md`
-- **2. Architecture & Data Schema** (2 connections) — `science/AGENTS.md`
+- **2. Modular Architecture & Data Schema** (2 connections) — `science/AGENTS.md`
 - **1. Core Directives** (1 connections) — `science/AGENTS.md`
 - **3. State Persistence Pattern** (1 connections) — `science/AGENTS.md`
 - **4. Front-End Gotchas & Verification** (1 connections) — `science/AGENTS.md`
