@@ -7,20 +7,20 @@
 ## Connections by Relation
 
 ### calls
-- [renderPracticeView()](renderPracticeView.md) `EXTRACTED`
 - playCorrectSound() `EXTRACTED`
+- renderPracticeView() `EXTRACTED`
 - updateSidebarProgress() `EXTRACTED`
-- endChallenge() `EXTRACTED`
-- updateTopBarPassportButton() `EXTRACTED`
-- getTopicStars() `EXTRACTED`
 - launchConfetti() `EXTRACTED`
+- updateTopBarPassportButton() `EXTRACTED`
+- endChallenge() `EXTRACTED`
+- getTopicStars() `EXTRACTED`
 - switchTopic() `EXTRACTED`
-- saveProgress() `EXTRACTED`
 - completeTopicLearnCheckpoint() `EXTRACTED`
 - playFanfare() `EXTRACTED`
 - markModuleInteracted() `EXTRACTED`
 - getTopicProgressData() `EXTRACTED`
 - setTopicStars() `EXTRACTED`
+- saveProgress() `EXTRACTED`
 - updateMasteryBannerLive() `EXTRACTED`
 
 ### contains

@@ -1,29 +1,32 @@
-# getRandomChoice()
+# render()
 
-> God node · 15 connections · `maths/app.js`
+> God node · 19 connections · `maths/engines/fractions_lab.js`
 
-**Community:** [Community 7](Community_7.md)
+**Community:** [Community 45](Community_45.md)
 
 ## Connections by Relation
 
 ### calls
-- generateDynamicFractionQuestion() `EXTRACTED`
 - [render()](render.md) `EXTRACTED`
 - [render()](render.md) `EXTRACTED`
 - generateFreshWorksheetFractionsData() `EXTRACTED`
 - [render()](render.md) `EXTRACTED`
-- generateDynamicTableQuestion() `EXTRACTED`
 - [render()](render.md) `EXTRACTED`
 - [render()](render.md) `EXTRACTED`
-- generateFreshWorksheetTablesData() `EXTRACTED`
+- [render()](render.md) `EXTRACTED`
+- [render()](render.md) `EXTRACTED`
 - renderProperImproperMixedModule() `EXTRACTED`
 - renderAddSubtractLabModule() `EXTRACTED`
 - renderDivisionReciprocalsModule() `EXTRACTED`
 - renderEquivalentComparisonModule() `EXTRACTED`
 - renderMultiplicationOfMagicModule() `EXTRACTED`
+- renderEqualSliceDetectiveModule() `EXTRACTED`
+- renderSpotTheTrapsFractionsModule() `EXTRACTED`
+- printWorksheetFractions() `EXTRACTED`
+- [render()](render.md) `EXTRACTED`
 
 ### contains
-- maths/app.js `EXTRACTED`
+- renderWorksheetViewFractions() `EXTRACTED`
 
 ---
 

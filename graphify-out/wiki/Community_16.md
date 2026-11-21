@@ -1,11 +1,12 @@
 # Community 16
 
-> 20 nodes
+> 24 nodes
 
 ## Key Concepts
 
-- **📐 Data Schemas & Contracts — 5thGradeCBSE** (10 connections) — `SCHEMAS.md`
+- **📐 Data Schemas & Contracts — 5thGradeCBSE** (11 connections) — `SCHEMAS.md`
 - **8. Google Drive Family Sync Contract (`window.GoogleDriveSync`)** (5 connections) — `SCHEMAS.md`
+- **9. Modular Subject Architecture Contracts & File Roles** (4 connections) — `SCHEMAS.md`
 - **6. Pluggable Storage & Backup Contract (`window.AppStorage`)** (3 connections) — `SCHEMAS.md`
 - **SCHEMAS.md** (2 connections) — `SCHEMAS.md`
 - **1. Unified Question Object Schema** (2 connections) — `SCHEMAS.md`
@@ -20,9 +21,12 @@
 - **API Reference (`window.GoogleDriveSync`)** (1 connections) — `SCHEMAS.md`
 - **Backup JSON Schema** (1 connections) — `SCHEMAS.md`
 - **Clean JS Object Example (MCQ)** (1 connections) — `SCHEMAS.md`
+- **Decoupled Data File Roles** (1 connections) — `SCHEMAS.md`
+- **Global Safe-Declaration Pattern for Data Files** (1 connections) — `SCHEMAS.md`
 - **Merging Strategy** (1 connections) — `SCHEMAS.md`
 - **Session Schema** (1 connections) — `SCHEMAS.md`
 - **Standard 10-Star Progression Roadmap** (1 connections) — `SCHEMAS.md`
+- **Standard Mini-App Directory Layout** (1 connections) — `SCHEMAS.md`
 - **Storage & OAuth Configuration** (1 connections) — `SCHEMAS.md`
 
 ## Relationships
@@ -35,7 +39,7 @@
 
 ## Audit Trail
 
-- EXTRACTED: 20 (100%)
+- EXTRACTED: 24 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

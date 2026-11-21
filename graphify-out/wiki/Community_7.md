@@ -1,20 +1,15 @@
 # Community 7
 
-> 34 nodes
+> 29 nodes
 
 ## Key Concepts
 
-- **render()** (54 connections) — `maths/app.js`
-- **getRandomChoice()** (15 connections) — `maths/app.js`
-- **generateFreshWorksheetFractionsData()** (8 connections) — `maths/app.js`
-- **render()** (7 connections) — `maths/app.js`
-- **renderProperImproperMixedModule()** (5 connections) — `maths/app.js`
-- **renderAddSubtractLabModule()** (4 connections) — `maths/app.js`
+- **render()** (28 connections) — `maths/app.js`
+- **launchConfetti()** (7 connections) — `maths/app.js`
+- **render()** (6 connections) — `maths/app.js`
+- **render()** (6 connections) — `maths/app.js`
 - **renderAnglesProtractorModule()** (4 connections) — `maths/app.js`
 - **render()** (4 connections) — `maths/app.js`
-- **renderDivisionReciprocalsModule()** (4 connections) — `maths/app.js`
-- **renderEquivalentComparisonModule()** (4 connections) — `maths/app.js`
-- **renderMultiplicationOfMagicModule()** (4 connections) — `maths/app.js`
 - **render()** (4 connections) — `maths/app.js`
 - **renderClockAnglesModule()** (3 connections) — `maths/app.js`
 - **render()** (3 connections) — `maths/app.js`
@@ -22,23 +17,26 @@
 - **render()** (3 connections) — `maths/app.js`
 - **renderGeomFoundationsModule()** (3 connections) — `maths/app.js`
 - **render()** (3 connections) — `maths/app.js`
+- **renderLineRelationshipsModule()** (3 connections) — `maths/app.js`
 - **renderMagicShapesModule()** (3 connections) — `maths/app.js`
 - **render()** (3 connections) — `maths/app.js`
 - **renderNumberTowersModule()** (3 connections) — `maths/app.js`
 - **render()** (3 connections) — `maths/app.js`
 - **renderParenthesesLabModule()** (3 connections) — `maths/app.js`
 - **render()** (3 connections) — `maths/app.js`
-- **renderQuadrilateralsCirclesModule()** (3 connections) — `maths/app.js`
-- *... and 9 more nodes in this community*
+- **renderPatternDetectiveModule()** (3 connections) — `maths/app.js`
+- **renderTrianglesPolygonsModule()** (3 connections) — `maths/app.js`
+- **renderTriangularSquareModule()** (3 connections) — `maths/app.js`
+- **render()** (3 connections) — `maths/app.js`
+- **playConfetti()** (2 connections) — `maths/app.js`
+- *... and 4 more nodes in this community*
 
 ## Relationships
 
-- [Community 3](Community_3.md) (21 shared connections)
-- [Community 74](Community_74.md) (20 shared connections)
-- [Community 11](Community_11.md) (19 shared connections)
-- [Community 45](Community_45.md) (8 shared connections)
-- [Community 75](Community_75.md) (3 shared connections)
-- [Community 73](Community_73.md) (1 shared connections)
+- [Community 3](Community_3.md) (14 shared connections)
+- [Community 11](Community_11.md) (14 shared connections)
+- [Community 74](Community_74.md) (5 shared connections)
+- [Community 12](Community_12.md) (1 shared connections)
 
 ## Source Files
 
@@ -46,8 +44,8 @@
 
 ## Audit Trail
 
-- EXTRACTED: 125 (99%)
-- INFERRED: 1 (1%)
+- EXTRACTED: 76 (100%)
+- INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
 ---

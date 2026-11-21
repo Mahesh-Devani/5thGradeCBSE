@@ -1,11 +1,11 @@
 # Community 8
 
-> 41 nodes
+> 42 nodes
 
 ## Key Concepts
 
+- **5. Developer Recipes & Extension Guides** (8 connections) — `ARCHITECTURE.md`
 - **4. Mini-App Specifications** (7 connections) — `ARCHITECTURE.md`
-- **5. Developer Recipes & Extension Guides** (7 connections) — `ARCHITECTURE.md`
 - **🏛️ Technical Architecture & Developer Guide** (7 connections) — `ARCHITECTURE.md`
 - **C. हिंदी व्याकरण व रचना (`/hindi_vyakaran/`)** (6 connections) — `ARCHITECTURE.md`
 - **E. Social Science (SST) Chapters Practice Mini-App (`/sst_chapters/`)** (5 connections) — `ARCHITECTURE.md`
@@ -29,7 +29,7 @@
 - **Long Answer Chunk & Conquer Engine** (1 connections) — `ARCHITECTURE.md`
 - **Math Engine Algorithms** (1 connections) — `ARCHITECTURE.md`
 - **Native Audio Synthesizer** (1 connections) — `ARCHITECTURE.md`
-- *... and 16 more nodes in this community*
+- *... and 17 more nodes in this community*
 
 ## Relationships
 
@@ -41,7 +41,7 @@
 
 ## Audit Trail
 
-- EXTRACTED: 41 (100%)
+- EXTRACTED: 42 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

@@ -373,5 +373,46 @@ interface GoogleDriveSession {
 - `GoogleDriveSync.simulateSync(options)`: Offline / demo simulator mode for instant testing without Google credentials.
 - `GoogleDriveSync.disconnect()`: Revokes token, signs out, and clears session.
 
+---
+
+## 9. Modular Subject Architecture Contracts & File Roles
+
+To prevent massive monolithic files, keep Git diffs surgical, and ensure fast initial page loads, all subject mini-apps follow a standardized directory and data decoupling contract:
+
+### Standard Mini-App Directory Layout
+```
+<subject_directory>/
+├── index.html              # Clean DOM structure, includes shared scripts + data/*.js + app.js
+├── styles.css              # Glassmorphic responsive styling (Brace balance = 0)
+├── engines/                # (Optional) Specialized interactive labs and heavy solvers
+│   ├── solvers.js          # Core algorithmic helpers (e.g. Euclidean GCD/LCM, prime factors)
+│   ├── tables_lab.js       # Specialized lab (e.g. 20x20 matrix, Vedic teen sprint)
+│   └── fractions_lab.js    # Specialized lab (e.g. pizza partitioning, equivalent scale)
+├── data/                   # Isolated curriculum content files (one file per chapter/topic)
+│   ├── chapter_l*.js       # Chapter/topic questions, learn cards, and exam traps
+│   └── milestones.js       # 10-star passport milestones & diagnostic evaluations
+└── app.js                  # Lean orchestrator: navigation router, state machine, event listeners
+```
+
+### Decoupled Data File Roles
+
+| Mini-App | Modular Content Files (`data/` or `engines/`) | Monolith Lines Before | Clean `app.js` Now | Lines Extracted |
+|---|---|---|---|---|
+| **Science Master** | `data/chapter_l2_animals.js`, `chapter_l3_skeletal.js`, `chapter_l4_nervous.js`, `chapter_l5_health.js`, `chapter_l7_air_water.js`, `chapter_l11_rocks.js`, `chapter_l13_matter.js`, `milestones.js` | 9,259 | 3,788 | 5,471 |
+| **SST Chapters** | `data/chapter_l5_drc.js`, `chapter_l6_greenland.js`, `chapter_l7_saudi.js`, `chapter_l17_revolt1857.js`, `chapter_l18_struggle.js`, `chapter_l19_freedom.js`, `chapter_l20_government.js`, `milestones.js` | 5,079 | 2,134 | 2,945 |
+| **Hindi Vyakaran** | `data/chitra_varnan.js`, `data/vakyansh.js`, `data/sangya.js`, `data/milestones.js` | 5,904 | 3,107 | 2,797 |
+| **English Grammar** | `data/topics.js`, `data/milestones.js` | 2,212 | 1,040 | 1,172 |
+| **Maths Master** | `engines/tables_lab.js`, `engines/fractions_lab.js`, `data/topic1_hcf_lcm.js` ... `topic9_volume.js` | 12,177 | 8,212 | 3,965 |
+| **Total Project** | **28 modular data & lab engine files** | **34,631** | **18,281** | **16,350 lines decoupled** |
+
+### Global Safe-Declaration Pattern for Data Files
+All files in `data/` and `engines/` use global safe-declaration to prevent cache collisions:
+```javascript
+const G = (typeof window !== 'undefined' ? window : this);
+G.DATA_OBJECT_NAME = G.DATA_OBJECT_NAME || { ... };
+```
+This guarantees zero `SyntaxError: Identifier 'X' has already been declared` even during PWA service worker background cache updates.
+
+
 
 

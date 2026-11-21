@@ -1,33 +1,30 @@
 # Community 75
 
-> 6 nodes
+> 7 nodes
 
 ## Key Concepts
 
-- **generateFreshWorksheetTablesData()** (6 connections) — `maths/app.js`
-- **renderWorksheetViewTables()** (5 connections) — `maths/app.js`
-- **render()** (5 connections) — `maths/app.js`
-- **populatePrintTopicTables()** (4 connections) — `maths/app.js`
-- **printWorksheetTables()** (4 connections) — `maths/app.js`
-- **C. Dynamic Printable Worksheet** (3 connections) — `maths/AGENTS.md`
+- **🇮🇳 हिंदी व्याकरण व रचना — Class 5 CBSE Learning Hub** (5 connections) — `hindi_vyakaran/README.md`
+- **🌟 10-Star Comprehensive Mastery Progression & Learning Passport** (4 connections) — `hindi_vyakaran/README.md`
+- **📋 10-Star Progression Roadmap per Unit** (1 connections) — `hindi_vyakaran/README.md`
+- **🎯 CBSE Diagnostic Exam Traps ("परीक्षा सावधानी जासूस")** (1 connections) — `hindi_vyakaran/README.md`
+- **🌐 Instant Bilingual Toggle (`[🌐 English: ON/OFF]`)** (1 connections) — `hindi_vyakaran/README.md`
+- **📜 Learning Passport Modal (`📋 ⭐ X/10 पासपोर्ट`)** (1 connections) — `hindi_vyakaran/README.md`
+- **📱 Mobile-First Architecture & Zero Dependencies** (1 connections) — `hindi_vyakaran/README.md`
 
 ## Relationships
 
-- [Community 3](Community_3.md) (5 shared connections)
-- [Community 7](Community_7.md) (3 shared connections)
-- [Community 45](Community_45.md) (1 shared connections)
-- [Community 11](Community_11.md) (1 shared connections)
-- [Community 24](Community_24.md) (1 shared connections)
+- [Community 33](Community_33.md) (1 shared connections)
+- [Community 20](Community_20.md) (1 shared connections)
 
 ## Source Files
 
-- `maths/AGENTS.md`
-- `maths/app.js`
+- `hindi_vyakaran/README.md`
 
 ## Audit Trail
 
-- EXTRACTED: 16 (84%)
-- INFERRED: 3 (16%)
+- EXTRACTED: 8 (100%)
+- INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
 ---

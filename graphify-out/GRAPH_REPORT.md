@@ -1,17 +1,17 @@
 # Graph Report - 5thGradeCBSE  (2026-11-22)
 
 ## Corpus Check
-- 82 files · ~1,085,271 words
+- 84 files · ~1,086,265 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 10 file(s) not represented in the graph (top: .css 8, (none) 1, .webmanifest 1)
 
 ## Summary
-- 1142 nodes · 2272 edges · 86 communities (52 shown, 34 thin omitted)
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 70 edges (avg confidence: 0.87)
+- 1148 nodes · 2225 edges · 87 communities (53 shown, 34 thin omitted)
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 68 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0d37c5bd`
+- Built from commit: `2f16909a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -38,7 +38,7 @@
 - 🇮🇳 हिंदी व्याकरण व रचना — Class 5 CBSE Learning Hub
 - storage.js
 - TestArchitecturalInvariants
-- 🤖 Agent Guidelines — Mathematics Master
+- tables_lab.js
 - profile.js
 - 🗺️ SST Map Master — Class 5 CBSE Practice
 - test_milestones.py
@@ -58,7 +58,7 @@
 - topic8_area.js
 - 🤖 Agent Guidelines — Science Master (Class 5 CBSE)
 - 🤖 SST Chapters Practice — Agent Guidelines
-- getRandomInt
+- fractions_lab.js
 - 🔬 Science Master — Class 5 CBSE (EVS Curriculum)
 - format_remediation_box
 - renderWorksheetViewRevision
@@ -84,8 +84,8 @@
 - chapter_l7_air_water.js
 - milestones.js
 - renderPracticeView
-- playWrongSound
-- generateFreshWorksheetTablesData
+- playCorrectSound
+- 🇮🇳 हिंदी व्याकरण व रचना — Class 5 CBSE Learning Hub
 - chapter_l17_revolt1857.js
 - chapter_l18_struggle.js
 - chapter_l19_freedom.js
@@ -94,18 +94,19 @@
 - chapter_l6_greenland.js
 - chapter_l7_saudi.js
 - sst_chapters/data/milestones.js
+- renderPuzzleBoard
 
 ## God Nodes (most connected - your core abstractions)
 1. `HindiLearningApp` - 70 edges
-2. `render()` - 54 edges
-3. `playClickSound()` - 47 edges
-4. `SSTApp` - 37 edges
-5. `renderPracticeView()` - 18 edges
-6. `playWrongSound()` - 17 edges
-7. `evaluateAndAwardStars()` - 16 edges
-8. `init()` - 15 edges
-9. `getRandomChoice()` - 15 edges
-10. `InvariantResult` - 14 edges
+2. `SSTApp` - 37 edges
+3. `playClickSound()` - 35 edges
+4. `render()` - 28 edges
+5. `render()` - 19 edges
+6. `evaluateAndAwardStars()` - 16 edges
+7. `init()` - 15 edges
+8. `InvariantResult` - 14 edges
+9. `evaluateAndAwardStars()` - 14 edges
+10. `init()` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `7. Architectural Invariant Verifier & Pre-Commit Regressions (MANDATORY)` --references--> `setStars()`  [INFERRED]
@@ -113,7 +114,7 @@
 - `📌 1. Project Overview` --references--> `HindiLearningApp`  [INFERRED]
   hindi_vyakaran/AGENTS.md → hindi_vyakaran/app.js
 - `B. Procedural Dynamic Question Generator` --references--> `shuffleOptionsAndGetCorrect()`  [INFERRED]
-  maths/AGENTS.md → maths/app.js
+  maths/AGENTS.md → maths/engines/tables_lab.js
 - `ConfettiController` --indirect_call--> `resize()`  [INFERRED]
   general_knowledge/app.js → shared/js/confetti.js
 - `3. Storage Schema & Session Restore` --references--> `loadState()`  [INFERRED]
@@ -122,7 +123,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (86 total, 34 thin omitted)
+## Communities (87 total, 34 thin omitted)
 
 ### Community 0 - "HindiLearningApp"
 Cohesion: 0.09
@@ -137,8 +138,8 @@ Cohesion: 0.15
 Nodes (4): CHAPTERS_DATA, ConfettiEngine, sfx, SSTApp
 
 ### Community 3 - "maths/app.js"
-Cohesion: 0.06
-Nodes (40): CHALLENGE_QUESTIONS_TOPIC_FRACTIONS, CHALLENGE_QUESTIONS_TOPIC_TABLES, MISTAKES_TOPIC_1, MISTAKES_TOPIC_2, MISTAKES_TOPIC_3, MISTAKES_TOPIC_4, MISTAKES_TOPIC_5, populatePrintRevision() (+32 more)
+Cohesion: 0.07
+Nodes (35): MISTAKES_TOPIC_1, MISTAKES_TOPIC_2, MISTAKES_TOPIC_3, MISTAKES_TOPIC_4, MISTAKES_TOPIC_5, populatePrintRevision(), populatePrintTopic1(), populatePrintTopic2() (+27 more)
 
 ### Community 4 - "social_sicence_maps/app.js"
 Cohesion: 0.10
@@ -153,12 +154,12 @@ Cohesion: 0.08
 Nodes (46): 1. Content Boundary (MANDATORY), 2. Architecture & File Layout, 3. Storage Schema & Session Restore, 4. Front-End Gotchas & Verification, 🤖 Agent Guidelines — General Knowledge (GK Master), AppState, AudioController, closeModal() (+38 more)
 
 ### Community 7 - "render"
-Cohesion: 0.09
-Nodes (33): generateFreshWorksheetFractionsData(), getRandomChoice(), renderAddSubtractLabModule(), renderAnglesProtractorModule(), getAngleType(), render(), renderClockAnglesModule(), render() (+25 more)
+Cohesion: 0.10
+Nodes (27): launchConfetti(), playConfetti(), renderAnglesProtractorModule(), getAngleType(), render(), renderClockAnglesModule(), render(), renderClueWordsModule() (+19 more)
 
 ### Community 8 - "4. Mini-App Specifications"
 Cohesion: 0.05
-Nodes (41): 10-Star Chapter Mastery Architecture & Learning Passport, 1. Architectural Philosophy, 2. Design System & CSS Tokens, 3. Mobile-First Responsive Drawer Pattern, 4. Mini-App Specifications, 5. Developer Recipes & Extension Guides, 6. Testing & Quality Checklist, A. English Grammar Master (`/english_grammer/`) (+33 more)
+Nodes (42): 10-Star Chapter Mastery Architecture & Learning Passport, 1. Architectural Philosophy, 2. Design System & CSS Tokens, 3. Mobile-First Responsive Drawer Pattern, 4. Mini-App Specifications, 5. Developer Recipes & Extension Guides, 6. Testing & Quality Checklist, A. English Grammar Master (`/english_grammer/`) (+34 more)
 
 ### Community 9 - "🔢 Mathematics Master — Class 5 CBSE Learning Hub"
 Cohesion: 0.06
@@ -169,12 +170,12 @@ Cohesion: 0.13
 Nodes (13): check_css_brace_balance(), check_git_hygiene_and_compliance(), check_image_asset_integrity(), check_js_syntax_integrity(), check_learn_mode_checkpoints(), check_mobile_drawer_contract(), check_progress_reset_contract(), check_question_schema_integrity() (+5 more)
 
 ### Community 11 - "playClickSound"
-Cohesion: 0.09
-Nodes (27): initAudio(), playClickSound(), playCorrectSound(), playTone(), renderAllRulesTable(), renderCoprimeCompositeModule(), renderCoprimesModule(), renderDetectiveModule() (+19 more)
+Cohesion: 0.11
+Nodes (14): playClickSound(), renderAllRulesTable(), renderCoprimeCompositeModule(), renderCoprimesModule(), renderDetectiveModule(), renderLiveTester(), renderLongDivisionModule(), renderProductFormulaModule() (+6 more)
 
 ### Community 12 - "renderPracticeView"
-Cohesion: 0.19
-Nodes (20): completeTopicLearnCheckpoint(), endChallenge(), evaluateAndAwardStars(), getTopicStars(), launchConfetti(), loadAllProgress(), loadProgress(), markModuleInteracted() (+12 more)
+Cohesion: 0.35
+Nodes (11): evaluateAndAwardStars(), getTopicStars(), loadAllProgress(), loadProgress(), saveProgress(), setTopicStars(), switchTopic(), updateMasteryBannerLive() (+3 more)
 
 ### Community 13 - "🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines"
 Cohesion: 0.08
@@ -185,8 +186,8 @@ Cohesion: 0.22
 Nodes (16): calculateTotalStars(), initAuthUI(), initBackupRestore(), initGoogleSyncUI(), closeModal(), formatTimeAgo(), renderModalState(), initProfilesUI() (+8 more)
 
 ### Community 16 - "📐 Data Schemas & Contracts — 5thGradeCBSE"
-Cohesion: 0.10
-Nodes (19): 1. Unified Question Object Schema, 2. Topic / Chapter Metadata Schema, 3. Diagnostic "Spot the Trap / Be the Teacher" Schema, 4. State Persistence Schema (`localStorage`), 5. 10-Star Mastery Architecture & Milestones Schema, 6. Pluggable Storage & Backup Contract (`window.AppStorage`), 6. Storage Key Conventions, 7. Multi-Child Profile Schema (`AppProfile` & `cbse_family_profiles`) (+11 more)
+Cohesion: 0.08
+Nodes (23): 1. Unified Question Object Schema, 2. Topic / Chapter Metadata Schema, 3. Diagnostic "Spot the Trap / Be the Teacher" Schema, 4. State Persistence Schema (`localStorage`), 5. 10-Star Mastery Architecture & Milestones Schema, 6. Pluggable Storage & Backup Contract (`window.AppStorage`), 6. Storage Key Conventions, 7. Multi-Child Profile Schema (`AppProfile` & `cbse_family_profiles`) (+15 more)
 
 ### Community 17 - "📱 Multi-Platform App Distribution Roadmap — 5thGradeCBSE"
 Cohesion: 0.11
@@ -201,16 +202,16 @@ Cohesion: 0.18
 Nodes (15): areCoprime(), checkDivisibility(), gcd(), gcdArray(), getAllDivisibilityResults(), getLongDivision3Numbers(), getLongDivisionHCF(), getPrimesUpTo() (+7 more)
 
 ### Community 20 - "🇮🇳 हिंदी व्याकरण व रचना — Class 5 CBSE Learning Hub"
-Cohesion: 0.12
-Nodes (17): 🌟 10-Star Comprehensive Mastery Progression & Learning Passport, 📋 10-Star Progression Roadmap per Unit, 1. 🏷️ हिंदी व्याकरण: संज्ञा व संज्ञा के पाँच भेद (Nouns & 5 Types), 2. 🔤 हिंदी व्याकरण: वाक्यांश के लिए एक शब्द (One Word Substitution), 3. 🖼️ रचनात्मक लेखन: चित्र वर्णन (Picture Description), 🎮 4 Interactive Learning Modes for Sangya, 🎮 4 Interactive Learning Modes for Vakyansh, 🏆 6 CBSE Exam-Focused Scenes (Real Exam Photos & Cartoons) (+9 more)
+Cohesion: 0.20
+Nodes (10): 1. 🏷️ हिंदी व्याकरण: संज्ञा व संज्ञा के पाँच भेद (Nouns & 5 Types), 2. 🔤 हिंदी व्याकरण: वाक्यांश के लिए एक शब्द (One Word Substitution), 3. 🖼️ रचनात्मक लेखन: चित्र वर्णन (Picture Description), 🎮 4 Interactive Learning Modes for Sangya, 🎮 4 Interactive Learning Modes for Vakyansh, 🏆 6 CBSE Exam-Focused Scenes (Real Exam Photos & Cartoons), 📚 Curriculum Topics Included, 📋 The 12 Essential CBSE Phrases (+2 more)
 
 ### Community 21 - "storage.js"
 Cohesion: 0.21
 Nodes (10): clearAllAppData(), downloadBackup(), exportData(), get(), importData(), importFromFile(), isAppKey(), _migrate() (+2 more)
 
-### Community 24 - "🤖 Agent Guidelines — Mathematics Master"
-Cohesion: 0.14
-Nodes (14): 1. Core Directives & Standards, 2. DOM Contract (`index.html` ↔ `app.js`), 3. Math Engine Schemas & Algorithms, 4.5 Modular Architecture & AI Token Efficiency (MANDATORY), 4. CSS Brace Balance & Mobile Drawer Gotchas, 5. Extension Recipes: Adding Subsequent Topics, 5. Topic 6 Architecture: Tables (1 to 20) & Mental Speed Master, 6. Pre-Commit Verification Checklist (+6 more)
+### Community 24 - "tables_lab.js"
+Cohesion: 0.10
+Nodes (35): 1. Core Directives & Standards, 2. DOM Contract (`index.html` ↔ `app.js`), 3. Math Engine Schemas & Algorithms, 4.5 Modular Architecture & AI Token Efficiency (MANDATORY), 4. CSS Brace Balance & Mobile Drawer Gotchas, 5. Extension Recipes: Adding Subsequent Topics, 5. Topic 6 Architecture: Tables (1 to 20) & Mental Speed Master, 6. Pre-Commit Verification Checklist (+27 more)
 
 ### Community 25 - "profile.js"
 Cohesion: 0.45
@@ -284,9 +285,9 @@ Nodes (6): 1. Core Directives, 2. Modular Architecture & Data Schema, 3. State P
 Cohesion: 0.25
 Nodes (7): 1. Core Principles, 2. Modular Data Architecture, 3. CSS & Responsive Drawer Rules, 3. Data Schemas, Chapter Schema (`CHAPTERS_DATA`), Milestone Schema (`CHAPTER_MILESTONES`), 🤖 SST Chapters Practice — Agent Guidelines
 
-### Community 45 - "getRandomInt"
-Cohesion: 0.29
-Nodes (10): completeTablesLearnCheckpoint(), getRandomInt(), renderGridExplorerModule(), render(), renderSplitAddLabModule(), render(), renderSpotExamTrapsModule(), renderVedicTeenTeenModule() (+2 more)
+### Community 45 - "fractions_lab.js"
+Cohesion: 0.17
+Nodes (34): completeFractionsLearnCheckpoint(), formatFrac(), formatFracOrMixed(), formatMixed(), gcd(), generateDynamicFractionChallengePool(), generateDynamicFractionQuestion(), generateFractionsPracticeQueue() (+26 more)
 
 ### Community 46 - "🔬 Science Master — Class 5 CBSE (EVS Curriculum)"
 Cohesion: 0.29
@@ -321,16 +322,20 @@ Cohesion: 0.46
 Nodes (5): attachRefreshControls(), checkForUpdate(), injectPwaStyles(), showStatusToast(), showUpdateToast()
 
 ### Community 73 - "renderPracticeView"
-Cohesion: 0.18
-Nodes (18): bindMasteryBannerEvents(), generateDynamicChallengePool(), generateDynamicFractionChallengePool(), generateDynamicTableQuestion(), generateFractionsPracticeQueue(), generateTablesPracticeQueue(), getFilteredPracticeQuestions(), getTopicProgressData() (+10 more)
+Cohesion: 0.27
+Nodes (13): bindMasteryBannerEvents(), endChallenge(), getFilteredPracticeQuestions(), getTopicProgressData(), markModuleInteracted(), openLearningPassport(), renderChallengeView(), renderLearnView() (+5 more)
 
-### Community 74 - "playWrongSound"
-Cohesion: 0.23
-Nodes (19): completeFractionsLearnCheckpoint(), formatFrac(), formatFracOrMixed(), formatMixed(), gcd(), generateDynamicFractionQuestion(), lcm(), playWrongSound() (+11 more)
+### Community 74 - "playCorrectSound"
+Cohesion: 0.27
+Nodes (11): completeTopicLearnCheckpoint(), initAudio(), playCorrectSound(), playFanfare(), playTone(), playWrongSound(), renderMentalEstimatorModule(), renderView() (+3 more)
 
-### Community 75 - "generateFreshWorksheetTablesData"
-Cohesion: 0.53
-Nodes (6): C. Dynamic Printable Worksheet, generateFreshWorksheetTablesData(), populatePrintTopicTables(), printWorksheetTables(), renderWorksheetViewTables(), render()
+### Community 75 - "🇮🇳 हिंदी व्याकरण व रचना — Class 5 CBSE Learning Hub"
+Cohesion: 0.29
+Nodes (7): 🌟 10-Star Comprehensive Mastery Progression & Learning Passport, 📋 10-Star Progression Roadmap per Unit, 🎯 CBSE Diagnostic Exam Traps ("परीक्षा सावधानी जासूस"), 🌐 Instant Bilingual Toggle (`[🌐 English: ON/OFF]`), 📜 Learning Passport Modal (`📋 ⭐ X/10 पासपोर्ट`), 📱 Mobile-First Architecture & Zero Dependencies, 🇮🇳 हिंदी व्याकरण व रचना — Class 5 CBSE Learning Hub
+
+### Community 86 - "renderPuzzleBoard"
+Cohesion: 1.00
+Nodes (3): renderMissingDigitModule(), renderPuzzleBoard(), updateFeedback()
 
 ## Knowledge Gaps
 - **34 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
@@ -338,17 +343,17 @@ Nodes (6): C. Dynamic Printable Worksheet, generateFreshWorksheetTablesData(), p
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `🤖 Agent Guidelines — Mathematics Master` connect `🤖 Agent Guidelines — Mathematics Master` to `AGENTS.md`?**
-  _High betweenness centrality (0.122) - this node is a cross-community bridge._
+- **Why does `🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines` connect `🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines` to `AGENTS.md`?**
+  _High betweenness centrality (0.057) - this node is a cross-community bridge._
 - **Should `HindiLearningApp` be split into smaller, more focused modules?**
   _Cohesion score 0.09366901147723065 - nodes in this community are weakly interconnected._
-- **Why does `5. Topic 6 Architecture: Tables (1 to 20) & Mental Speed Master` connect `🤖 Agent Guidelines — Mathematics Master` to `generateFreshWorksheetTablesData`?**
-  _High betweenness centrality (0.115) - this node is a cross-community bridge._
+- **Why does `HindiLearningApp` connect `HindiLearningApp` to `🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines`?**
+  _High betweenness centrality (0.054) - this node is a cross-community bridge._
 - **Should `science/app.js` be split into smaller, more focused modules?**
   _Cohesion score 0.09086538461538461 - nodes in this community are weakly interconnected._
-- **Why does `C. Dynamic Printable Worksheet` connect `generateFreshWorksheetTablesData` to `🤖 Agent Guidelines — Mathematics Master`?**
-  _High betweenness centrality (0.082) - this node is a cross-community bridge._
+- **Why does `📌 1. Project Overview` connect `🤖 AGENTS.md — Hindi Vyakaran & Rachna Guidelines` to `HindiLearningApp`?**
+  _High betweenness centrality (0.049) - this node is a cross-community bridge._
 - **Should `maths/app.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.060408163265306125 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0708245243128964 - nodes in this community are weakly interconnected._
 - **Should `social_sicence_maps/app.js` be split into smaller, more focused modules?**
   _Cohesion score 0.09577677224736049 - nodes in this community are weakly interconnected._

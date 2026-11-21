@@ -1,38 +1,49 @@
 # Community 24
 
-> 14 nodes
+> 38 nodes
 
 ## Key Concepts
 
+- **tables_lab.js** (18 connections) — `maths/engines/tables_lab.js`
+- **render()** (11 connections) — `maths/engines/tables_lab.js`
 - **🤖 Agent Guidelines — Mathematics Master** (9 connections) — `maths/AGENTS.md`
+- **getRandomInt()** (7 connections) — `maths/engines/tables_lab.js`
+- **completeTablesLearnCheckpoint()** (6 connections) — `maths/engines/tables_lab.js`
+- **generateDynamicTableQuestion()** (6 connections) — `maths/engines/tables_lab.js`
+- **generateFreshWorksheetTablesData()** (6 connections) — `maths/engines/tables_lab.js`
+- **render()** (5 connections) — `maths/engines/tables_lab.js`
+- **render()** (5 connections) — `maths/engines/tables_lab.js`
+- **shuffleOptionsAndGetCorrect()** (5 connections) — `maths/engines/tables_lab.js`
+- **printWorksheetTables()** (4 connections) — `maths/engines/tables_lab.js`
+- **renderSplitAddLabModule()** (4 connections) — `maths/engines/tables_lab.js`
+- **renderVedicTeenTeenModule()** (4 connections) — `maths/engines/tables_lab.js`
+- **renderWorksheetViewTables()** (4 connections) — `maths/engines/tables_lab.js`
 - **5. Topic 6 Architecture: Tables (1 to 20) & Mental Speed Master** (4 connections) — `maths/AGENTS.md`
+- **getRandomChoice()** (3 connections) — `maths/engines/tables_lab.js`
+- **populatePrintTopicTables()** (3 connections) — `maths/engines/tables_lab.js`
+- **renderGridExplorerModule()** (3 connections) — `maths/engines/tables_lab.js`
+- **render()** (3 connections) — `maths/engines/tables_lab.js`
 - **3. Math Engine Schemas & Algorithms** (3 connections) — `maths/AGENTS.md`
-- **5. Extension Recipes: Adding Subsequent Topics** (2 connections) — `maths/AGENTS.md`
-- **B. Procedural Dynamic Question Generator** (2 connections) — `maths/AGENTS.md`
-- **1. Core Directives & Standards** (1 connections) — `maths/AGENTS.md`
-- **2. DOM Contract (`index.html` ↔ `app.js`)** (1 connections) — `maths/AGENTS.md`
-- **4.5 Modular Architecture & AI Token Efficiency (MANDATORY)** (1 connections) — `maths/AGENTS.md`
-- **4. CSS Brace Balance & Mobile Drawer Gotchas** (1 connections) — `maths/AGENTS.md`
-- **6. Pre-Commit Verification Checklist** (1 connections) — `maths/AGENTS.md`
-- **A. Anti-Rote 3-Star Milestone Rules** (1 connections) — `maths/AGENTS.md`
-- **A. Short Division Algorithms** (1 connections) — `maths/AGENTS.md`
-- **B. Long Division Algorithm (`getLongDivisionHCF(a, b)`)** (1 connections) — `maths/AGENTS.md`
-- **Recipe: Adding Topic 2 (Divisibility Rules for 2 to 12)** (1 connections) — `maths/AGENTS.md`
+- **C. Dynamic Printable Worksheet** (3 connections) — `maths/AGENTS.md`
+- **generateDynamicChallengePool()** (2 connections) — `maths/engines/tables_lab.js`
+- **generateTablesPracticeQueue()** (2 connections) — `maths/engines/tables_lab.js`
+- **renderSpotExamTrapsModule()** (2 connections) — `maths/engines/tables_lab.js`
+- **updateTablesMasteryStars()** (2 connections) — `maths/engines/tables_lab.js`
+- *... and 13 more nodes in this community*
 
 ## Relationships
 
-- [Community 75](Community_75.md) (1 shared connections)
 - [Community 33](Community_33.md) (1 shared connections)
-- [Community 45](Community_45.md) (1 shared connections)
 
 ## Source Files
 
 - `maths/AGENTS.md`
+- `maths/engines/tables_lab.js`
 
 ## Audit Trail
 
-- EXTRACTED: 15 (94%)
-- INFERRED: 1 (6%)
+- EXTRACTED: 67 (96%)
+- INFERRED: 3 (4%)
 - AMBIGUOUS: 0 (0%)
 
 ---

@@ -1,39 +1,48 @@
 # Community 45
 
-> 10 nodes
+> 36 nodes
 
 ## Key Concepts
 
-- **getRandomInt()** (11 connections) — `maths/app.js`
-- **completeTablesLearnCheckpoint()** (8 connections) — `maths/app.js`
-- **render()** (7 connections) — `maths/app.js`
-- **render()** (7 connections) — `maths/app.js`
-- **render()** (5 connections) — `maths/app.js`
-- **shuffleOptionsAndGetCorrect()** (5 connections) — `maths/app.js`
-- **renderSplitAddLabModule()** (4 connections) — `maths/app.js`
-- **renderVedicTeenTeenModule()** (4 connections) — `maths/app.js`
-- **renderGridExplorerModule()** (3 connections) — `maths/app.js`
-- **renderSpotExamTrapsModule()** (3 connections) — `maths/app.js`
+- **fractions_lab.js** (27 connections) — `maths/engines/fractions_lab.js`
+- **render()** (19 connections) — `maths/engines/fractions_lab.js`
+- **getRandomChoice()** (13 connections) — `maths/engines/fractions_lab.js`
+- **generateDynamicFractionQuestion()** (11 connections) — `maths/engines/fractions_lab.js`
+- **formatFrac()** (10 connections) — `maths/engines/fractions_lab.js`
+- **completeFractionsLearnCheckpoint()** (8 connections) — `maths/engines/fractions_lab.js`
+- **generateFreshWorksheetFractionsData()** (8 connections) — `maths/engines/fractions_lab.js`
+- **render()** (8 connections) — `maths/engines/fractions_lab.js`
+- **simplifyFrac()** (8 connections) — `maths/engines/fractions_lab.js`
+- **render()** (7 connections) — `maths/engines/fractions_lab.js`
+- **render()** (7 connections) — `maths/engines/fractions_lab.js`
+- **formatFracOrMixed()** (6 connections) — `maths/engines/fractions_lab.js`
+- **formatMixed()** (6 connections) — `maths/engines/fractions_lab.js`
+- **render()** (6 connections) — `maths/engines/fractions_lab.js`
+- **gcd()** (5 connections) — `maths/engines/fractions_lab.js`
+- **getRandomInt()** (5 connections) — `maths/engines/fractions_lab.js`
+- **lcm()** (5 connections) — `maths/engines/fractions_lab.js`
+- **render()** (5 connections) — `maths/engines/fractions_lab.js`
+- **render()** (5 connections) — `maths/engines/fractions_lab.js`
+- **renderProperImproperMixedModule()** (5 connections) — `maths/engines/fractions_lab.js`
+- **renderAddSubtractLabModule()** (4 connections) — `maths/engines/fractions_lab.js`
+- **renderDivisionReciprocalsModule()** (4 connections) — `maths/engines/fractions_lab.js`
+- **renderEquivalentComparisonModule()** (4 connections) — `maths/engines/fractions_lab.js`
+- **renderMultiplicationOfMagicModule()** (4 connections) — `maths/engines/fractions_lab.js`
+- **populatePrintTopicFractions()** (3 connections) — `maths/engines/fractions_lab.js`
+- *... and 11 more nodes in this community*
 
 ## Relationships
 
-- [Community 7](Community_7.md) (8 shared connections)
-- [Community 3](Community_3.md) (7 shared connections)
-- [Community 74](Community_74.md) (6 shared connections)
-- [Community 11](Community_11.md) (4 shared connections)
-- [Community 12](Community_12.md) (2 shared connections)
-- [Community 73](Community_73.md) (2 shared connections)
-- [Community 75](Community_75.md) (1 shared connections)
-- [Community 24](Community_24.md) (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
-- `maths/app.js`
+- `maths/engines/fractions_lab.js`
 
 ## Audit Trail
 
-- EXTRACTED: 43 (98%)
-- INFERRED: 1 (2%)
+- EXTRACTED: 109 (100%)
+- INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
 ---

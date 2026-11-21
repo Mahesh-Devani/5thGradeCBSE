@@ -462,10 +462,11 @@ science/
 ## 5. Developer Recipes & Extension Guides
 
 ### Recipe 1: Adding a New English Grammar Topic
-1. Open `english_grammer/app.js`.
-2. Add a new key to the `TOPIC_DATA` object matching the schema in Section 4.A.
+1. Open `english_grammer/data/topics.js`.
+2. Add a new key to `TOPIC_DATA` matching the schema in `SCHEMAS.md`.
 3. Include at least 8–12 questions with varied types (`mcq`, `fill`, `spot`).
-4. The sidebar, stars tracker, lesson viewer, and challenge modes will automatically discover and render the new topic with zero additional HTML changes.
+4. In `english_grammer/data/milestones.js`, add corresponding 10-star milestones to `TOPIC_MILESTONES`.
+5. The sidebar, stars tracker, lesson viewer, and challenge modes will automatically discover and render the new topic with zero additional HTML changes.
 
 ### Recipe 2: Adding a New Subject Card to the Main Hub
 1. Open `index.html`.
@@ -493,34 +494,43 @@ science/
 4. Create `subject_folder/` following the zero-dependency structure.
 
 ### Recipe 3: Adding a New Hindi Sangya Word, Formation Pair, or Quiz Question
-1. **Adding to 5-Bucket Classifier**: In `hindi_vyakaran/app.js`, append an object to `SANGYA_SORT_ITEMS`:
+1. **Adding to 5-Bucket Classifier**: In `hindi_vyakaran/data/sangya.js`, append an object to `SANGYA_SORT_ITEMS`:
    ```javascript
    { word: 'सोना', type: 'material', hint: 'मापा या तौला जाता है (Material)', en: 'Gold' }
    ```
-2. **Adding to Abstract Formation Lab**: Append an object to `BHAVVACHAK_NIRMAN_DATA`:
+2. **Adding to Abstract Formation Lab**: In `hindi_vyakaran/data/sangya.js`, append an object to `BHAVVACHAK_NIRMAN_DATA`:
    ```javascript
-   { originType: 'jati', baseWord: 'शिशु', baseMeaning: 'Infant', abstractNoun: 'शैशव', abstractMeaning: 'Infancy', suffix: '+ अ', sentenceHi: 'शैशव काल जीवन का सबसे कोमल समय होता है।' }
+   { originType: 'jati', baseWord: 'शिशु', baseMeaning: 'Infant', abstractNoun: 'शशैश्व', abstractMeaning: 'Infancy', suffix: '+ अ', sentenceHi: 'शैशव काल जीवन का सबसे कोमल समय होता है।' }
    ```
-3. **Adding to Practice Quiz**: Append a question object to `SANGYA_QUIZ_POOL`:
+3. **Adding to Practice Quiz**: In `hindi_vyakaran/data/sangya.js`, append a question object to `SANGYA_QUIZ_POOL`:
    ```javascript
    { question: '...', options: ['A', 'B', 'C', 'D'], correct: 0, clue: '...', explanation: '...', explanationEn: '...' }
    ```
 
 ### Recipe 4: Adding a New Hindi Vakyansh Statement
-1. Open `hindi_vyakaran/app.js`.
+1. Open `hindi_vyakaran/data/vakyansh.js`.
 2. Append a new object to `VAKYANSH_DATA` with `id`, `phraseHi`, `phraseEn`, `wordHi`, `wordEn`, `translit`, `formula`, `clue`, `exampleHi`, `exampleEn`, `oppositeHi`, and `category`.
 3. Add corresponding multiple-choice question(s) to `VAKYANSH_QUIZ_POOL`.
 4. The Learn card grid, search bar, Match Game, Practice Quiz, and 60s Challenge will automatically include the new phrase!
 
 ### Recipe 5: Adding a New Chitra Varnan Scene
 1. Save the authentic exam photograph in `hindi_vyakaran/images/scene_<id>_real.jpg`.
-2. In `hindi_vyakaran/app.js`, append a new scene object to `SCENE_DATA` with `id`, `title`, `realImage`, `hotspotsReal`, `hotspots`, `svg`, `puzzleSteps`, and `modelAnswer`.
-3. The sidebar scene list, navigation, hotspot renderer, and progress tracker will automatically recognize the new scene.
+2. In `hindi_vyakaran/data/chitra_varnan.js`, append a new scene object to `SCENE_DATA` with `id`, `title`, `realImage`, `hotspotsReal`, `hotspots`, `svg`, `puzzleSteps`, and `modelAnswer`.
+3. In `hindi_vyakaran/data/milestones.js`, add the scene's milestones via `createChitraSceneMilestones(sceneId)`.
+4. The sidebar scene list, navigation, hotspot renderer, and progress tracker will automatically recognize the new scene.
 
-### Recipe 6: Adding a New Mathematics Topic (e.g. Divisibility Rules)
-1. In `maths/index.html`, remove `.disabled` from the corresponding topic in `.sidebar-topics` and update the badge to `Ready`.
-2. In `maths/app.js`, add the topic's learn modules and practice question objects to `PRACTICE_POOL`.
-3. The curriculum drawer, progress bar, practice filters, and challenge pool will dynamically scale to include the new topic.
+### Recipe 6: Adding a New Mathematics Topic
+1. Create `maths/data/topic<N>_<topic_name>.js` defining `LEARN_MODULES_TOPIC_<N>`, `PRACTICE_POOL_TOPIC_<N>`, and `CHALLENGE_QUESTIONS_TOPIC_<N>`.
+2. Register the script tag in `maths/index.html` and precache in `sw.js`.
+3. Add the topic metadata in `TOPICS_CONFIG` in `maths/app.js`.
+4. Add 10-star milestones in `TOPIC_MILESTONES` in `maths/app.js`.
+5. The curriculum drawer, progress bar, practice filters, and challenge pool will dynamically scale to include the new topic.
+
+### Recipe 7: Adding a New Science or SST Chapter
+1. Create `science/data/chapter_<chapter_id>.js` (or `sst_chapters/data/chapter_<chapter_id>.js`).
+2. Add the chapter's learn cards, questions by category, and diagnostic traps.
+3. Add the chapter's 10-star passport milestones in `milestones.js`.
+4. Include the script tag in `index.html` and register in `sw.js` `PRECACHE_ASSETS`.
 
 ---
 

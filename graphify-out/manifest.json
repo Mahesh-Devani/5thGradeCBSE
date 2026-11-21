@@ -36,9 +36,9 @@
     "semantic_hash": ""
   },
   "maths/app.js": {
-    "mtime": 1795244897.4487333,
-    "seen": 1795245091.1001039,
-    "ast_hash": "dc4ae5b3711decc04cc2ccd9404e5fb7",
+    "mtime": 1795287025.5806205,
+    "seen": 1795287330.272624,
+    "ast_hash": "9101ae75c288c8104670f6013bfe6563",
     "semantic_hash": ""
   },
   "maths/data/topic1_hcf_lcm.js": {
@@ -198,9 +198,9 @@
     "semantic_hash": ""
   },
   "sw.js": {
-    "mtime": 1795285883.978237,
-    "seen": 1795285995.061475,
-    "ast_hash": "08572d499e33a3c7dc6191476f32c05c",
+    "mtime": 1795286987.454288,
+    "seen": 1795287330.272656,
+    "ast_hash": "da93af4c725d6104f53190112bd42806",
     "semantic_hash": ""
   },
   "tests/__init__.py": {
@@ -222,9 +222,9 @@
     "semantic_hash": ""
   },
   "tests/test_milestones.py": {
-    "mtime": 1795283806.6519842,
-    "seen": 1795283925.115231,
-    "ast_hash": "36275c2cf7a068cfb636fd54df056e8a",
+    "mtime": 1795287042.4436226,
+    "seen": 1795287330.2726579,
+    "ast_hash": "732fc0e8a78bd83f24db5228f4354294",
     "semantic_hash": ""
   },
   "AGENTS.md": {
@@ -240,9 +240,9 @@
     "semantic_hash": ""
   },
   "ARCHITECTURE.md": {
-    "mtime": 1794465355.9982786,
-    "seen": 1795238041.923968,
-    "ast_hash": "2c8a0272d12d23ccf5ed0494d9ea7c7d",
+    "mtime": 1795287320.2427933,
+    "seen": 1795287330.27266,
+    "ast_hash": "07f3d383705ba8d80c11a730f21bb342",
     "semantic_hash": ""
   },
   "README.md": {
@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "SCHEMAS.md": {
-    "mtime": 1794465366.6015627,
-    "seen": 1795238041.9239712,
-    "ast_hash": "918f67566819dc612ba8d3cbc61fc16c",
+    "mtime": 1795287301.6657047,
+    "seen": 1795287330.272661,
+    "ast_hash": "90bf91a0a18df8b6b0874bd1a2aa92c8",
     "semantic_hash": ""
   },
   "english_grammer/AGENTS.md": {
@@ -324,21 +324,21 @@
     "semantic_hash": ""
   },
   "maths/AGENTS.md": {
-    "mtime": 1795239258.7749417,
-    "seen": 1795240634.088702,
-    "ast_hash": "71afca2b557d7cae61049695f3434768",
+    "mtime": 1795287076.189759,
+    "seen": 1795287330.272667,
+    "ast_hash": "705867b266ebf27d20268c9c8ea5568a",
     "semantic_hash": ""
   },
   "maths/README.md": {
-    "mtime": 1793723569.2160304,
-    "seen": 1795238041.923987,
-    "ast_hash": "0beba501b8396535fa02631f7ad2f1b8",
+    "mtime": 1795287085.8945222,
+    "seen": 1795287330.272667,
+    "ast_hash": "10d519f7aa60634d73879d1b4f6520c8",
     "semantic_hash": ""
   },
   "maths/index.html": {
-    "mtime": 1795238962.8245347,
-    "seen": 1795239215.342871,
-    "ast_hash": "635759fe23a24f42bff96e9eb4dbf520",
+    "mtime": 1795286974.3523676,
+    "seen": 1795287330.272668,
+    "ast_hash": "33227dc2216f63611c3dd41c1bc07675",
     "semantic_hash": ""
   },
   "science/AGENTS.md": {
@@ -1005,6 +1005,18 @@
     "mtime": 1795285854.5074313,
     "seen": 1795285995.06144,
     "ast_hash": "34b9b2f90540a3160bdbbcb08331a1c3",
+    "semantic_hash": ""
+  },
+  "maths/engines/fractions_lab.js": {
+    "mtime": 1795286941.1242824,
+    "seen": 1795287330.272636,
+    "ast_hash": "3fa9d127de38782c463860afd99bfdfc",
+    "semantic_hash": ""
+  },
+  "maths/engines/tables_lab.js": {
+    "mtime": 1795286941.123693,
+    "seen": 1795287330.272637,
+    "ast_hash": "dffe4cba5ee7d9d61886f4ed2cf2e7c8",
     "semantic_hash": ""
   }
 }
