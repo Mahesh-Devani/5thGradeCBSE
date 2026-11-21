@@ -2091,7 +2091,7 @@ function setTopicStars(topicId, stars) {
   if (!config) return;
   try {
     const current = getTopicStars(topicId);
-    if (stars > current) {
+    if (stars === 0 || stars > current) {
       localStorage.setItem(config.starsKey, stars.toString());
       updateSidebarProgress();
     }

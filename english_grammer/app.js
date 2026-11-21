@@ -1304,7 +1304,7 @@ function getStars(topicId) {
 
 function setStars(topicId, stars) {
   const current = getStars(topicId);
-  if (stars > current) {
+  if (stars === 0 || stars > current) {
     state.progress[topicId] = stars;
     saveProgress();
   }
