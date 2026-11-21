@@ -96,9 +96,9 @@
     "semantic_hash": ""
   },
   "pwa.js": {
-    "mtime": 1793723569.2181904,
-    "seen": 1795238041.9239402,
-    "ast_hash": "9751db7ec4247ff16f727725d71e9182",
+    "mtime": 1795249919.1933806,
+    "seen": 1795249943.2744179,
+    "ast_hash": "f9555335c0c28bc921d659a2dae5986c",
     "semantic_hash": ""
   },
   "run-regressions.py": {
@@ -198,9 +198,9 @@
     "semantic_hash": ""
   },
   "sw.js": {
-    "mtime": 1793723569.2391446,
-    "seen": 1795238041.9239612,
-    "ast_hash": "69107a664ea06738f20d2fb16d7203b7",
+    "mtime": 1795249869.9696496,
+    "seen": 1795249943.274428,
+    "ast_hash": "adcf181ba82b79f22e98e0b5f5ccc4a6",
     "semantic_hash": ""
   },
   "tests/__init__.py": {

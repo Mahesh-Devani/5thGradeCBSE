@@ -1,12 +1,17 @@
 # Community 57
 
-> 3 nodes
+> 8 nodes
 
 ## Key Concepts
 
-- **pwa.js** (2 connections) — `pwa.js`
+- **pwa.js** (7 connections) — `pwa.js`
+- **checkForUpdate()** (4 connections) — `pwa.js`
+- **injectPwaStyles()** (4 connections) — `pwa.js`
+- **attachRefreshControls()** (3 connections) — `pwa.js`
+- **showStatusToast()** (3 connections) — `pwa.js`
+- **showUpdateToast()** (3 connections) — `pwa.js`
+- **forceRefresh()** (1 connections) — `pwa.js`
 - **promptInstall()** (1 connections) — `pwa.js`
-- **showUpdateToast()** (1 connections) — `pwa.js`
 
 ## Relationships
 
@@ -18,8 +23,8 @@
 
 ## Audit Trail
 
-- EXTRACTED: 1 (50%)
-- INFERRED: 1 (50%)
+- EXTRACTED: 9 (69%)
+- INFERRED: 4 (31%)
 - AMBIGUOUS: 0 (0%)
 
 ---
