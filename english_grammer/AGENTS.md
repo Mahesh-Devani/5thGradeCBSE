@@ -229,3 +229,19 @@ playFanfare();      // Celebratory multi-tone fanfare for 3-star challenge victo
 - [ ] Off-canvas drawer opens smoothly via `☰ Topics` and closes upon topic selection.
 - [ ] Practice mode provides instant feedback with explanations.
 - [ ] Challenge mode timer counts down, awards stars, and triggers confetti.
+
+---
+
+## 8. Voice Q&A Mode Architecture
+
+English Grammar Master serves as the pilot subject for **Voice Q&A Mode**:
+
+### Core Flow
+1. **Mode Activation**: A dedicated "🎙️ Switch to Voice Q&A" toggle in Practice Mode turns on voice read-aloud and microphone input.
+2. **Audio Question Playback**: When a question loads or when tapping "🔊 Listen / Repeat Question", `VoiceIO.speak(spokenPrompt, 'en-IN')` speaks the question aloud (replacing blank lines `___` with the word `"blank"`).
+3. **Voice Answer Capture**: Tapping the large 44px+ microphone button triggers `VoiceIO.listen({ lang: 'en-IN', maxMs: 8000 })`. The live interim and final transcript populates an editable input box so students can correct any misheard word before submission.
+4. **Grading & Evaluation**:
+   - `VoiceGrader.gradeClosed()` strictly evaluates the spoken transcript against acceptable answers and option letters (`Option B`, `Choice B`, `an`, etc.).
+   - If rule-based grading is not matched and the user has enabled an active AI provider in Voice & AI settings, `LLMProviders.grade()` provides a nuanced second opinion for open-ended answers.
+5. **Spoken Feedback**: `VoiceIO.speak()` reads out the encouraging praise or the specific correction, while on-screen cards visually reinforce the learning point.
+6. **State Persistence**: Active voice toggle is persisted within `grammar-master-active-state.practiceSession.voiceMode` across browser refreshes.

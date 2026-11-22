@@ -545,3 +545,79 @@ Before committing changes to this repository, verify:
 - [ ] **Bilingual Toggle Verification**: English translation labels appear and disappear correctly when toggled.
 - [ ] **Keyboard & Focus Accessibility**: Tab key navigates between interactive buttons; `Escape` key closes drawers/modals.
 - [ ] **Cartographic Integrity**: Indian boundaries strictly respect Survey of India demarcations.
+
+---
+
+## 7. Voice Q&A & Pluggable AI Architecture
+
+The application provides an optional, fully accessible **Voice Q&A mode** designed for Class 5 CBSE students (ages 9–11). Students listen to questions spoken aloud, answer verbally into their microphone, and receive real-time spoken and visual feedback with corrections.
+
+### Architecture Overview
+
+```
+┌────────────────────────────────────────────────────────┐
+│ Student Voice Interaction Layer                        │
+│                                                        │
+│  ├── VoiceIO (shared/js/voice.js)                      │
+│  │    ├── TTS: window.speechSynthesis (en-IN / hi-IN)   │
+│  │    └── STT: webkitSpeechRecognition / native STT    │
+│  │                                                     │
+│  ├── Rule-Based Evaluator (shared/js/grader.js)        │
+│  │    ├── Normalizer: fillers, homophones, numbers     │
+│  │    └── Strict Closed Evaluator: zero-fuzzy on short │
+│  │                                                     │
+│  └── Pluggable AI Grader (shared/js/llm-providers.js)  │
+│       ├── Off: 100% rule-based (default)               │
+│       ├── Local WebLLM: in-browser WebGPU (no cloud)   │
+│       ├── Anthropic Claude: direct browser call        │
+│       ├── OpenAI: direct browser call (JSON mode)      │
+│       └── Google Gemini: Generative Language API       │
+└────────────────────────────────────────────────────────┘
+```
+
+### 1. Zero-Dependency Exception: Lazy Opt-in WebLLM
+- The default app load strictly adheres to zero external runtime dependencies (`INV-2`).
+- `@mlc-ai/web-llm` is loaded **strictly on demand via dynamic `import()`** only when the user explicitly enables Local WebLLM mode in Voice & AI settings.
+- If WebGPU is not supported by the browser/device (`navigator.gpu == null`), Local mode is disabled with a helpful notification suggesting cloud or rule-based grading.
+- Service Worker (`sw.js`) explicitly bypasses model weights fetches from `huggingface.co`, `hf.co`, `raw.githubusercontent.com`, and ESM CDNs, ensuring downloads stream reliably and stay cached inside the browser's native Cache API.
+
+### 2. Per-Subject Hook Contract
+Any subject mini-app opts into Voice Q&A mode by exposing two standardized lifecycle functions:
+
+```typescript
+/**
+ * 1. getVoiceQuestions: Exposes questions formatted for voice synthesis and evaluation
+ */
+function getVoiceQuestions(): Array<{
+  id: string;
+  prompt: string;         // Visual question prompt
+  spokenPrompt?: string;  // Optimized for TTS (e.g., '__' replaced with 'blank')
+  accepted: string[];     // Array of acceptable answers/tokens
+  explanation: string;    // Pedagogical reasoning/rubric
+  lang: string;           // 'en-IN' | 'hi-IN'
+  type: 'closed' | 'open';
+}>;
+
+/**
+ * 2. onVoiceResult: Dispatched when an answer is evaluated
+ */
+function onVoiceResult(result: {
+  id: string;
+  correct: boolean;
+  transcript: string;
+  feedback: string;
+}): void;
+```
+
+### 3. Key Isolation & Safety Rules
+- API keys live exclusively in `localStorage['cbse5_voice_ai_keys']`.
+- `shared/js/storage.js` filters out all sensitive keys matching `api_key`, `ai_keys`, `secret`, and `_token` during both `AppStorage.exportData()` and Google Drive cloud sync.
+- Transcripts from students are treated as **untrusted user input**:
+  - Delimited with `<student_transcript>` tags.
+  - Stripped of prompt injection or tag breakout attempts.
+  - The system prompt explicitly commands the model to ignore any instructions embedded within the transcript.
+
+### 4. Extension Points for Other Subjects
+- **Hindi Vyakaran**: Extend `shared/js/grader.js` homophone maps for Devanagari numerals and common Hindi phonetic variants; expose `getVoiceQuestions()` in `hindi_vyakaran/app.js`.
+- **Science / SST**: Connect `type: 'open'` questions to `LLMProviders.grade()` for verbal concept explanations (e.g., explaining why camel humps store fat, or how Greenlanders travel across ice).
+- **Maths Tables**: Fast verbal speed drill ("What is 14 times 7?") utilizing `VoiceGrader` number parsing.

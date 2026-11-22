@@ -100,6 +100,9 @@
           <button type="button" class="btn-backup btn-cloud-sync" id="btn-open-google-sync" title="Sync progress across devices with Google Drive">
             ☁️ Cloud Sync
           </button>
+          <button type="button" class="btn-backup btn-voice-settings" id="btn-open-voice-settings" title="Configure Voice Q&amp;A and AI Grading Engine">
+            🎙️ Voice &amp; AI
+          </button>
           <button type="button" class="btn-backup" id="btn-enter-access-code" title="Enter school or promotional access code">
             🔑 Access Pass
           </button>
@@ -433,6 +436,136 @@
       </div>
     </div>
 
+    <!-- ==================== VOICE & AI SETTINGS MODAL ==================== -->
+    <div class="modal-overlay" id="modal-voice-settings" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-voice-settings-title">
+      <div class="modal-card voice-settings-modal-card">
+        <div class="modal-header">
+          <h3 id="modal-voice-settings-title">🎙️ Voice Q&amp;A &amp; AI Settings</h3>
+          <button type="button" class="modal-close-btn" id="btn-close-voice-modal" aria-label="Close modal">✕</button>
+        </div>
+
+        <p class="modal-description">
+          Configure spoken questions &amp; answers, voice speed, and pluggable AI evaluation for open-ended answers.
+        </p>
+
+        <!-- Voice General Controls -->
+        <div class="voice-settings-section">
+          <div class="voice-setting-row">
+            <div class="voice-setting-label">
+              <strong>🎙️ Voice Q&amp;A Mode</strong>
+              <small>Enable voice read-aloud and microphone answer input</small>
+            </div>
+            <label class="switch-toggle" for="toggle-voice-enabled">
+              <input type="checkbox" id="toggle-voice-enabled" checked />
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="voice-setting-row">
+            <div class="voice-setting-label">
+              <strong>🗣️ Speech Speed: <span id="label-speech-rate">1.0x</span></strong>
+              <small>Speed of voice reading questions and feedback</small>
+            </div>
+            <div class="voice-slider-wrapper">
+              <input type="range" id="slider-speech-rate" min="0.8" max="1.2" step="0.05" value="1.0" class="voice-slider" />
+            </div>
+          </div>
+
+          <div class="voice-setting-row">
+            <div class="voice-setting-label">
+              <strong>🌐 Voice Language</strong>
+              <small>Preferred accent for text-to-speech</small>
+            </div>
+            <select id="select-voice-lang" class="form-input form-select" style="max-width: 160px; padding: 4px 8px;">
+              <option value="en-IN">English (India) 🇮🇳</option>
+              <option value="hi-IN">Hindi 🇮🇳</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- AI Grading Engine Section -->
+        <div class="voice-settings-section" style="margin-top: 14px;">
+          <h4 style="margin: 0 0 6px 0; font-size: 0.92rem; color: #f1f5f9;">🤖 AI Grading Engine (Open Answers)</h4>
+          <p style="font-size: 0.76rem; color: var(--text-muted); margin: 0 0 10px 0;">
+            Closed questions are always graded instantly by local rules. An AI engine is used for open-ended or ambiguous questions.
+          </p>
+
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label for="select-ai-provider" style="font-size: 0.8rem;">Select Grading Provider</label>
+            <select id="select-ai-provider" class="form-input form-select">
+              <option value="off">Off (Rule-Based Only — Recommended for Kids) 🛡️</option>
+              <option value="local">Local WebLLM (In-Browser WebGPU, Zero Cloud Data) 💻</option>
+              <option value="anthropic">Anthropic Claude (Direct Browser Call — Claude 3.5 Haiku) ⚡</option>
+              <option value="openai">OpenAI (Direct Browser Call — GPT-4o-mini) 🤖</option>
+              <option value="gemini">Google Gemini (Generative Language API — Gemini 1.5 Flash) ✨</option>
+            </select>
+          </div>
+
+          <!-- Dynamic Panel for Cloud Providers -->
+          <div id="panel-cloud-provider" style="display: none;">
+            <div class="form-group" style="margin-bottom: 10px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <label for="input-api-key" style="font-size: 0.78rem;">API Key</label>
+                <button type="button" class="btn-text-toggle" id="btn-toggle-key-visibility" style="font-size: 0.75rem;">👁️ Show Key</button>
+              </div>
+              <input type="password" id="input-api-key" class="form-input" style="font-family: monospace; font-size: 0.82rem;" placeholder="Paste API key here..." autocomplete="off" />
+            </div>
+
+            <div class="form-group" style="margin-bottom: 10px;">
+              <label for="input-model-id" style="font-size: 0.78rem;">Model ID (User-Editable)</label>
+              <input type="text" id="input-model-id" class="form-input" style="font-family: monospace; font-size: 0.82rem;" />
+            </div>
+
+            <div style="display: flex; gap: 8px; align-items: center; margin-top: 10px; flex-wrap: wrap;">
+              <button type="button" class="btn-backup" id="btn-test-connection" style="font-size: 0.8rem; padding: 6px 12px;">
+                🧪 Test Connection
+              </button>
+              <span id="test-connection-status" style="font-size: 0.78rem; color: var(--text-muted);"></span>
+            </div>
+          </div>
+
+          <!-- Dynamic Panel for Local WebLLM -->
+          <div id="panel-local-webllm" style="display: none;">
+            <div class="webllm-status-box" id="webllm-status-box" style="background: rgba(30, 41, 59, 0.6); padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 10px;">
+              <div id="webllm-gpu-support" style="font-size: 0.82rem; margin-bottom: 8px; font-weight: 600;"></div>
+              <div class="form-group" style="margin-bottom: 8px;">
+                <label for="select-webllm-model" style="font-size: 0.78rem;">Prebuilt Local Model</label>
+                <select id="select-webllm-model" class="form-input form-select" style="font-size: 0.8rem;">
+                  <!-- populated dynamically -->
+                </select>
+              </div>
+              <p style="font-size: 0.76rem; color: #fde047; margin: 4px 0 8px 0; line-height: 1.4;">
+                ⚠️ <strong>Note:</strong> Model download (~0.9 to 1.1 GB) happens once in the browser and is cached locally for offline use. Small local models are less capable in Hindi; rule-based grading remains primary.
+              </p>
+              <div id="webllm-storage-info" style="font-size: 0.76rem; color: var(--text-muted); margin-bottom: 8px;"></div>
+              <div style="display: flex; gap: 8px;">
+                <button type="button" class="btn-backup" id="btn-remove-webllm-model" style="font-size: 0.78rem; padding: 4px 10px; color: #fca5a5;">
+                  🗑️ Remove Downloaded Model
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Privacy & Security Notice Card -->
+        <div class="voice-privacy-notice" style="margin-top: 14px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 10px 12px;">
+          <h5 style="margin: 0 0 6px 0; font-size: 0.8rem; color: #93c5fd;">🔒 Privacy, Keys &amp; Device Safety</h5>
+          <ul style="margin: 0; padding-left: 18px; font-size: 0.74rem; color: var(--text-muted); line-height: 1.45;">
+            <li><strong>Audio &amp; Voice:</strong> Speech recognition processes audio via the browser. No audio recordings are saved or stored.</li>
+            <li><strong>Cloud AI Data:</strong> Only question text and transcribed answers are sent to the chosen AI provider. Off &amp; Local modes send zero data to AI clouds.</li>
+            <li><strong>Key Storage:</strong> API keys stay exclusively in this browser's local storage. They are <em>never</em> synced to Google Drive or included in backup file exports.</li>
+            <li><strong>Security Warning:</strong> Anyone with access to this browser profile can read stored keys. Please use an API key with a low spending limit.</li>
+            <li><strong>Device-Level Setting:</strong> Engine choice and keys apply to this browser/device, not per child profile.</li>
+          </ul>
+        </div>
+
+        <div class="modal-actions" style="margin-top: 16px;">
+          <button type="button" class="btn-profile-save" id="btn-save-voice-settings" style="flex: 1;">💾 Save Settings</button>
+          <button type="button" class="btn-profile-cancel" id="btn-dismiss-voice-modal">Close</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script src="shared/js/storage.js"></script>
@@ -440,7 +573,8 @@
   <script src="shared/js/auth.js"></script>
   <script src="shared/js/curriculum.js"></script>
   <script src="shared/js/google-drive-sync.js"></script>
-  <script src="hub.js"></script>
-  <script src="pwa.js"></script>
+  <script src="shared/js/llm-providers.js?v=2.9.0"></script>
+  <script src="hub.js?v=2.9.0"></script>
+  <script src="pwa.js?v=2.9.0"></script>
 </body>
 </html>

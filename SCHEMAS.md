@@ -413,6 +413,66 @@ G.DATA_OBJECT_NAME = G.DATA_OBJECT_NAME || { ... };
 ```
 This guarantees zero `SyntaxError: Identifier 'X' has already been declared` even during PWA service worker background cache updates.
 
+---
+
+## 10. Voice Q&A & AI Grading Schemas
+
+### Device Voice Settings Schema (`cbse5_voice_settings`)
+Stored in `localStorage` under `cbse5_voice_settings`. Device-level settings (not per child profile):
+
+```typescript
+interface CBSEVoiceSettings {
+  /** Master toggle for spoken Q&A reading and microphone input */
+  voiceEnabled: boolean;
+
+  /** Text-to-speech speech rate multiplier (0.8x to 1.2x) */
+  speechRate: number;
+
+  /** Speech recognition and TTS language/accent ('en-IN' | 'hi-IN') */
+  lang: string;
+
+  /** Active AI grading engine for open-ended answers */
+  provider: 'off' | 'local' | 'anthropic' | 'openai' | 'gemini';
+
+  /** Configured model IDs per provider */
+  models: {
+    anthropic: string; // Default: 'claude-3-5-haiku-20241022'
+    openai: string;    // Default: 'gpt-4o-mini'
+    gemini: string;    // Default: 'gemini-1.5-flash'
+    local: string;     // Default: 'Llama-3.2-1B-Instruct-q4f32_1-MLC'
+  };
+}
+```
+
+### Sensitive AI Keys Schema (`cbse5_voice_ai_keys`)
+Stored in `localStorage` under `cbse5_voice_ai_keys`. Strictly excluded from cloud sync (`drive.appdata`) and backup file exports:
+
+```typescript
+interface CBSEVoiceAIKeys {
+  /** Anthropic Claude API Key (sk-ant-...) */
+  anthropic: string;
+
+  /** OpenAI API Key (sk-...) */
+  openai: string;
+
+  /** Google Gemini API Key (AIzaSy...) */
+  gemini: string;
+}
+```
+
+### In-Progress Practice Session Schema Extension
+Inside subject active state (e.g. `grammar-master-active-state.practiceSession`):
+```typescript
+interface InProgressPracticeSession {
+  exerciseIndex: number;
+  score: { correct: number; incorrect: number; total: number };
+  answered: boolean;
+  selectedOption: number | null;
+  exerciseIndices: number[];
+  voiceMode?: boolean; // Persists whether student enabled Voice Q&A mode
+}
+```
+
 
 
 

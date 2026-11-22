@@ -931,10 +931,223 @@
     });
   }
 
+  /* ==========================================================
+     Voice Q&A & AI Grading Settings Controller
+     ========================================================== */
+  function initVoiceSettingsUI() {
+    const btnOpen = document.getElementById('btn-open-voice-settings');
+    const modal = document.getElementById('modal-voice-settings');
+    if (!modal) return;
+
+    const btnClose = document.getElementById('btn-close-voice-modal');
+    const btnDismiss = document.getElementById('btn-dismiss-voice-modal');
+    const btnSave = document.getElementById('btn-save-voice-settings');
+
+    const toggleVoice = document.getElementById('toggle-voice-enabled');
+    const sliderRate = document.getElementById('slider-speech-rate');
+    const labelRate = document.getElementById('label-speech-rate');
+    const selectLang = document.getElementById('select-voice-lang');
+    const selectProvider = document.getElementById('select-ai-provider');
+
+    const panelCloud = document.getElementById('panel-cloud-provider');
+    const panelLocal = document.getElementById('panel-local-webllm');
+    const inputApiKey = document.getElementById('input-api-key');
+    const btnToggleKey = document.getElementById('btn-toggle-key-visibility');
+    const inputModelId = document.getElementById('input-model-id');
+    const btnTest = document.getElementById('btn-test-connection');
+    const testStatus = document.getElementById('test-connection-status');
+
+    const selectWebLlmModel = document.getElementById('select-webllm-model');
+    const gpuSupportEl = document.getElementById('webllm-gpu-support');
+    const storageInfoEl = document.getElementById('webllm-storage-info');
+    const btnRemoveModel = document.getElementById('btn-remove-webllm-model');
+
+    let keyVisible = false;
+
+    // Populate WebLLM options
+    if (selectWebLlmModel && window.LLMProviders && LLMProviders.PREBUILT_LOCAL_MODELS) {
+      selectWebLlmModel.innerHTML = '';
+      LLMProviders.PREBUILT_LOCAL_MODELS.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m.id;
+        opt.textContent = `${m.name}`;
+        selectWebLlmModel.appendChild(opt);
+      });
+    }
+
+    function refreshStorageInfo() {
+      if (!storageInfoEl || !window.LLMProviders) return;
+      LLMProviders.getStorageEstimate().then(est => {
+        if (est) {
+          storageInfoEl.textContent = `💾 Browser Storage: ~${est.usageMB} MB used (Quota: ~${est.quotaMB} MB)`;
+        } else {
+          storageInfoEl.textContent = '';
+        }
+      });
+    }
+
+    function syncProviderPanels() {
+      const p = selectProvider ? selectProvider.value : 'off';
+      const isCloud = p === 'anthropic' || p === 'openai' || p === 'gemini';
+      const isLocal = p === 'local';
+
+      if (panelCloud) panelCloud.style.display = isCloud ? 'block' : 'none';
+      if (panelLocal) panelLocal.style.display = isLocal ? 'block' : 'none';
+
+      if (isCloud && window.LLMProviders) {
+        const settings = LLMProviders.getSettings();
+        const keys = LLMProviders.getKeys();
+        if (inputApiKey) inputApiKey.value = keys[p] || '';
+        if (inputModelId) inputModelId.value = (settings.models && settings.models[p]) || '';
+        if (testStatus) testStatus.textContent = '';
+      }
+
+      if (isLocal && window.LLMProviders) {
+        const gpuOk = LLMProviders.isWebGPUSupported();
+        if (gpuSupportEl) {
+          gpuSupportEl.innerHTML = gpuOk
+            ? '✅ <span style="color: #86efac;">WebGPU Hardware Acceleration Active</span>'
+            : '⚠️ <span style="color: #fca5a5;">WebGPU Not Detected in this browser (Local mode unavailable)</span>';
+        }
+        const settings = LLMProviders.getSettings();
+        if (selectWebLlmModel && settings.models && settings.models.local) {
+          selectWebLlmModel.value = settings.models.local;
+        }
+        refreshStorageInfo();
+      }
+    }
+
+    function loadUIFromStorage() {
+      if (!window.LLMProviders) return;
+      const s = LLMProviders.getSettings();
+      if (toggleVoice) toggleVoice.checked = s.voiceEnabled;
+      if (sliderRate) {
+        sliderRate.value = s.speechRate;
+        if (labelRate) labelRate.textContent = `${s.speechRate.toFixed(2)}x`;
+      }
+      if (selectLang) selectLang.value = s.lang;
+      if (selectProvider) selectProvider.value = s.provider;
+      syncProviderPanels();
+    }
+
+    function closeModal() {
+      if (modal) modal.style.display = 'none';
+    }
+
+    if (btnOpen) {
+      btnOpen.addEventListener('click', () => {
+        loadUIFromStorage();
+        if (modal) modal.style.display = 'flex';
+      });
+    }
+
+    if (btnClose) btnClose.addEventListener('click', closeModal);
+    if (btnDismiss) btnDismiss.addEventListener('click', closeModal);
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    if (sliderRate && labelRate) {
+      sliderRate.addEventListener('input', () => {
+        const v = parseFloat(sliderRate.value) || 1.0;
+        labelRate.textContent = `${v.toFixed(2)}x`;
+      });
+    }
+
+    if (selectProvider) {
+      selectProvider.addEventListener('change', syncProviderPanels);
+    }
+
+    if (btnToggleKey && inputApiKey) {
+      btnToggleKey.addEventListener('click', () => {
+        keyVisible = !keyVisible;
+        inputApiKey.type = keyVisible ? 'text' : 'password';
+        btnToggleKey.textContent = keyVisible ? '🙈 Hide Key' : '👁️ Show Key';
+      });
+    }
+
+    if (btnTest && testStatus && window.LLMProviders) {
+      btnTest.addEventListener('click', async () => {
+        const p = selectProvider.value;
+        const key = inputApiKey ? inputApiKey.value.trim() : '';
+        const modelId = inputModelId ? inputModelId.value.trim() : '';
+        testStatus.textContent = 'Testing connection...';
+        testStatus.style.color = '#93c5fd';
+        btnTest.disabled = true;
+
+        const res = await LLMProviders.testConnection(p, key, modelId);
+        btnTest.disabled = false;
+        if (res.success) {
+          testStatus.textContent = `✅ ${res.message}`;
+          testStatus.style.color = '#86efac';
+        } else {
+          testStatus.textContent = `❌ ${res.error}`;
+          testStatus.style.color = '#fca5a5';
+        }
+      });
+    }
+
+    if (btnRemoveModel && window.LLMProviders) {
+      btnRemoveModel.addEventListener('click', async () => {
+        if (confirm('Are you sure you want to delete downloaded local models from browser storage?')) {
+          btnRemoveModel.disabled = true;
+          btnRemoveModel.textContent = 'Removing...';
+          await LLMProviders.removeDownloadedModel();
+          btnRemoveModel.disabled = false;
+          btnRemoveModel.textContent = '🗑️ Remove Downloaded Model';
+          refreshStorageInfo();
+          alert('Local model cache cleared from browser storage.');
+        }
+      });
+    }
+
+    if (btnSave && window.LLMProviders) {
+      btnSave.addEventListener('click', () => {
+        const p = selectProvider ? selectProvider.value : 'off';
+        const rate = sliderRate ? parseFloat(sliderRate.value) || 1.0 : 1.0;
+        const lang = selectLang ? selectLang.value : 'en-IN';
+        const enabled = toggleVoice ? toggleVoice.checked : true;
+
+        const currentSettings = LLMProviders.getSettings();
+        const currentModels = Object.assign({}, currentSettings.models);
+
+        if (p === 'anthropic' || p === 'openai' || p === 'gemini') {
+          if (inputModelId && inputModelId.value.trim()) {
+            currentModels[p] = inputModelId.value.trim();
+          }
+          const keys = LLMProviders.getKeys();
+          keys[p] = inputApiKey ? inputApiKey.value.trim() : '';
+          LLMProviders.saveKeys(keys);
+        } else if (p === 'local') {
+          if (selectWebLlmModel && selectWebLlmModel.value) {
+            currentModels.local = selectWebLlmModel.value;
+          }
+        }
+
+        LLMProviders.saveSettings({
+          voiceEnabled: enabled,
+          speechRate: rate,
+          lang: lang,
+          provider: p,
+          models: currentModels
+        });
+
+        closeModal();
+        if (typeof showFeedback === 'function') {
+          showFeedback('🎙️ Voice & AI settings saved successfully!');
+        }
+      });
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initProfilesUI();
     initAuthUI();
     initGoogleSyncUI();
+    initVoiceSettingsUI();
     renderCurriculum(currentViewingGrade);
     calculateTotalStars();
     updateStreak();

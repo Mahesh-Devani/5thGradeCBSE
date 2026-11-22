@@ -32,6 +32,10 @@ A modern, responsive, zero-dependency web application designed for **Class 5 CBS
   - Full mobile responsiveness across viewports (360px smartphones, 390px iPhones, 768px tablets, and desktop displays).
   - Off-canvas slide-out topic drawer (`☰ Topics`) with dark blurred backdrop.
   - Finger-friendly 44px+ touch targets and active tap feedback.
+- **🎙️ Voice Q&A & Pluggable AI Grading**:
+  - Optional hands-free verbal learning mode: listen to questions read aloud, speak answers into the microphone, and receive immediate spoken praise and targeted corrections.
+  - Pilot live in English Grammar with automatic speech recognition, intelligent normalizer, strict zero-fuzzy short answer guardrails, and editable transcripts.
+  - Multi-provider AI grading engine for open-ended answers: Local WebLLM (zero-cloud WebGPU), Anthropic Claude, OpenAI, and Google Gemini with browser-level API key isolation.
 - **⚡ 100% Zero Dependencies**:
   - Pure HTML5, CSS3, and ES6+ JavaScript.
   - Zero build step, zero package managers, runs completely offline from a local browser.

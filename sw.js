@@ -2,7 +2,7 @@
    5th Grade CBSE — Service Worker (Offline & Auto-Update Engine)
    ========================================================== */
 
-const CACHE_NAME = 'cbse5-app-v2.8.0';
+const CACHE_NAME = 'cbse5-app-v2.9.0';
 
 // Core App Shell assets to pre-cache immediately on install
 const PRECACHE_ASSETS = [
@@ -26,6 +26,7 @@ const PRECACHE_ASSETS = [
   './shared/js/storage.js',
   './shared/js/grader.js',
   './shared/js/voice.js',
+  './shared/js/llm-providers.js',
   './shared/js/profile.js',
   './shared/js/auth.js',
   './shared/js/curriculum.js',
@@ -149,6 +150,24 @@ self.addEventListener('fetch', (event) => {
   // Only handle GET requests from http / https schemes
   if (request.method !== 'GET') return;
   if (!request.url.startsWith('http')) return;
+
+  // Exclude external CDNs, model hosts, and AI API endpoints from service worker caching
+  // (Preserves WebLLM model download streaming and browser cache isolation)
+  try {
+    const reqUrl = new URL(request.url);
+    if (
+      reqUrl.hostname.includes('huggingface.co') ||
+      reqUrl.hostname.includes('hf.co') ||
+      reqUrl.hostname.includes('raw.githubusercontent.com') ||
+      reqUrl.hostname.includes('esm.run') ||
+      reqUrl.hostname.includes('jsdelivr.net') ||
+      reqUrl.hostname.includes('anthropic.com') ||
+      reqUrl.hostname.includes('openai.com') ||
+      reqUrl.hostname.includes('googleapis.com')
+    ) {
+      return; // Direct browser network fetch without SW interception
+    }
+  } catch (e) {}
 
   // 1. Navigation (HTML) & Scripts (JS): Network-First
   const isCodeScript = request.url.endsWith('.js') || request.url.includes('.js?');
