@@ -24,7 +24,10 @@ const state = {
   shuffledExercises: [],
   sortState: { selectedItem: null, placements: {} },
   topicProgress: {},
-  answeredExercises: {}
+  answeredExercises: {},
+  voiceMode: false,
+  voiceTranscript: '',
+  voiceListening: false
 };
 
 const STORAGE_KEY = 'grammar-master-progress';
@@ -38,6 +41,9 @@ function loadActiveState() {
       const parsed = JSON.parse(saved);
       if (parsed.topicProgress) state.topicProgress = parsed.topicProgress;
       if (parsed.answeredExercises) state.answeredExercises = parsed.answeredExercises;
+      if (parsed.practiceSession && parsed.practiceSession.voiceMode !== undefined) {
+        state.voiceMode = !!parsed.practiceSession.voiceMode;
+      }
       return parsed;
     }
   } catch (e) {}
@@ -60,7 +66,8 @@ function saveActiveState() {
           exerciseIndex: state.exerciseIndex,
           score: state.score,
           answered: state.answered,
-          selectedOption: state.selectedOption
+          selectedOption: state.selectedOption,
+          voiceMode: state.voiceMode
         };
       }
       localStorage.setItem(ACTIVE_STATE_KEY, JSON.stringify(payload));
@@ -717,6 +724,18 @@ function renderExercise() {
     ` : ''}
   </div>`;
 
+  // Voice mode toggle bar (Practice mode only)
+  if (state.currentMode === 'practice') {
+    html += `
+      <div class="voice-mode-toggle-bar">
+        <button type="button" class="voice-toggle-btn ${state.voiceMode ? 'active' : ''}" id="btn-toggle-voice-mode" onclick="toggleVoiceMode()" title="Toggle voice question & answer mode">
+          <span>${state.voiceMode ? '🎙️ Voice Mode Active' : '🎙️ Switch to Voice Q&A'}</span>
+          <span class="voice-toggle-pill">${state.voiceMode ? 'ON' : 'OFF'}</span>
+        </button>
+      </div>
+    `;
+  }
+
   // Question card
   html += `<div class="question-card" id="question-card">`;
 
@@ -725,19 +744,69 @@ function renderExercise() {
                     ex.type === 'spot' ? '🔍 Spot the Error' : '🧩 Exercise';
 
   html += `<div class="question-type-badge">${typeBadge}</div>`;
+  html += `<div class="question-text">${ex.question}</div>`;
 
-  if (ex.type === 'mcq' || ex.type === 'fill') {
-    html += `<div class="question-text">${ex.question}</div>`;
-    html += `<div class="options-grid">`;
-    const letters = ['A', 'B', 'C', 'D'];
-    ex.options.forEach((opt, i) => {
-      html += `<button class="option-btn" data-index="${i}" onclick="handleAnswer(${i})">
-        <span class="option-letter">${letters[i]}</span>
-        <span>${opt}</span>
-      </button>`;
-    });
-    html += `</div>`;
+  // Interactive Voice Q&A Panel
+  if (state.voiceMode && state.currentMode === 'practice') {
+    const isSupported = typeof window !== 'undefined' && window.VoiceIO && VoiceIO.isSupported();
+    if (!isSupported) {
+      html += `
+        <div class="voice-unsupported-notice">
+          🎙️ <strong>Voice Recognition Note:</strong> Speech recognition is not available in this browser. You can still practice using the standard buttons below!
+        </div>
+      `;
+    } else {
+      html += `
+        <div class="voice-qa-card" id="voice-qa-card">
+          <div class="voice-prompt-action">
+            <button type="button" class="btn-speak-question" id="btn-repeat-question" onclick="speakCurrentQuestion()" title="Listen to question spoken aloud">
+              🔊 Listen / Repeat Question
+            </button>
+          </div>
+
+          <div class="voice-mic-container">
+            <button type="button" class="voice-mic-btn ${state.voiceListening ? 'listening' : ''}" id="voice-mic-btn" onclick="startVoiceAnswer()" aria-label="Toggle voice answer recording" ${state.answered ? 'disabled' : ''}>
+              ${state.voiceListening ? '⏹️' : '🎤'}
+            </button>
+            <div class="voice-status-label ${state.voiceListening ? 'listening' : ''}" id="voice-status-label">
+              ${state.voiceListening ? '🔴 Listening... Speak clearly' : (state.voiceTranscript ? 'Ready to check. Click Check or speak again.' : 'Tap mic to speak your answer')}
+            </div>
+          </div>
+
+          <div class="voice-transcript-wrapper">
+            <label for="voice-transcript-input">Heard Answer:</label>
+            <input type="text" id="voice-transcript-input" class="voice-transcript-input" value="${escapeHtml(state.voiceTranscript)}" placeholder="Your spoken answer will appear here..." oninput="onTranscriptInput(this.value)" ${state.answered ? 'disabled' : ''} />
+            <small>💡 Tap box to edit if any word was misheard</small>
+          </div>
+
+          ${!state.answered ? `
+            <div class="voice-actions-row">
+              <button type="button" class="btn btn-primary" id="btn-check-voice" onclick="checkVoiceAnswer()">
+                ✅ Check Answer
+              </button>
+              <button type="button" class="btn btn-secondary" onclick="tryAgainVoiceAnswer()">
+                🎤 Speak Again
+              </button>
+              <button type="button" class="btn btn-ghost" onclick="nextExercise()">
+                ⏭️ Skip
+              </button>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
   }
+
+  // Options Grid
+  html += `<div class="options-grid">`;
+  const letters = ['A', 'B', 'C', 'D'];
+  ex.options.forEach((opt, i) => {
+    html += `<button class="option-btn" data-index="${i}" onclick="handleAnswer(${i})">
+      <span class="option-letter">${letters[i]}</span>
+      <span>${opt}</span>
+    </button>`;
+  });
+  html += `</div>`;
 
   html += `<div id="explanation-area"></div>`;
   html += `</div>`; // question-card
@@ -791,12 +860,269 @@ function nextExercise() {
   state.exerciseIndex++;
   state.answered = false;
   state.selectedOption = null;
+  state.voiceTranscript = '';
+  state.voiceListening = false;
+  if (typeof window !== 'undefined' && window.VoiceIO) {
+    VoiceIO.stopSpeaking();
+    VoiceIO.stopListening();
+  }
   saveActiveState();
   if (state.exerciseIndex >= state.shuffledExercises.length) {
     finishExercises();
   } else {
     renderExercise();
+    if (state.voiceMode) {
+      setTimeout(() => {
+        speakCurrentQuestion();
+      }, 350);
+    }
   }
+}
+
+// ============================================
+// VOICE Q&A INTEGRATION (VOICE I/O & GRADING)
+// ============================================
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function toggleVoiceMode() {
+  state.voiceMode = !state.voiceMode;
+  state.voiceTranscript = '';
+  state.voiceListening = false;
+  if (typeof window !== 'undefined' && window.VoiceIO) {
+    VoiceIO.stopSpeaking();
+    VoiceIO.stopListening();
+  }
+  saveActiveState();
+  renderExercise();
+  if (state.voiceMode && !state.answered) {
+    setTimeout(() => {
+      speakCurrentQuestion();
+    }, 350);
+  }
+}
+
+function speakCurrentQuestion() {
+  const ex = state.shuffledExercises[state.exerciseIndex];
+  if (!ex || typeof window === 'undefined' || !window.VoiceIO) return;
+  const spokenPrompt = ex.question.replace(/_{2,}/g, 'blank').replace(/<[^>]+>/g, '');
+  VoiceIO.speak(spokenPrompt, 'en-IN');
+}
+
+function onTranscriptInput(val) {
+  state.voiceTranscript = val;
+}
+
+function tryAgainVoiceAnswer() {
+  state.voiceTranscript = '';
+  const inputEl = document.getElementById('voice-transcript-input');
+  if (inputEl) inputEl.value = '';
+  startVoiceAnswer();
+}
+
+function startVoiceAnswer() {
+  if (state.answered) return;
+  if (typeof window === 'undefined' || !window.VoiceIO || !VoiceIO.isSupported()) {
+    return;
+  }
+
+  const micBtn = document.getElementById('voice-mic-btn');
+  const statusEl = document.getElementById('voice-status-label');
+  const inputEl = document.getElementById('voice-transcript-input');
+
+  if (state.voiceListening) {
+    VoiceIO.stopListening();
+    state.voiceListening = false;
+    if (micBtn) micBtn.classList.remove('listening');
+    if (statusEl) {
+      statusEl.textContent = 'Stopped. Tap Check Answer or speak again.';
+      statusEl.classList.remove('listening');
+    }
+    return;
+  }
+
+  state.voiceListening = true;
+  if (micBtn) micBtn.classList.add('listening');
+  if (statusEl) {
+    statusEl.textContent = '🔴 Listening... Speak clearly now';
+    statusEl.classList.add('listening');
+  }
+
+  VoiceIO.listen({
+    lang: 'en-IN',
+    maxMs: 8000,
+    onInterim: (interim) => {
+      if (inputEl) inputEl.value = interim;
+      state.voiceTranscript = interim;
+    }
+  }).then(result => {
+    state.voiceListening = false;
+    if (micBtn) micBtn.classList.remove('listening');
+    if (statusEl) statusEl.classList.remove('listening');
+
+    if (result.transcript) {
+      state.voiceTranscript = result.transcript.trim();
+      if (inputEl) inputEl.value = state.voiceTranscript;
+      if (statusEl) statusEl.textContent = 'Answer heard! Checking...';
+      checkVoiceAnswer();
+    } else if (result.error === 'not-allowed') {
+      if (statusEl) {
+        statusEl.textContent = '⚠️ Microphone permission denied. Please allow microphone access.';
+        statusEl.style.color = '#ef4444';
+      }
+    } else {
+      if (statusEl) {
+        statusEl.textContent = "I didn't catch that. Tap mic to try again!";
+        statusEl.style.color = '#fde047';
+      }
+    }
+  });
+}
+
+async function checkVoiceAnswer() {
+  if (state.answered) return;
+
+  const inputEl = document.getElementById('voice-transcript-input');
+  const transcript = inputEl ? inputEl.value.trim() : state.voiceTranscript.trim();
+
+  if (!transcript) {
+    const statusEl = document.getElementById('voice-status-label');
+    if (statusEl) {
+      statusEl.textContent = "I didn't catch that. Please speak or type your answer!";
+      statusEl.style.color = '#fde047';
+    }
+    if (typeof window !== 'undefined' && window.VoiceIO) {
+      VoiceIO.speak("I didn't catch that, please try speaking again!");
+    }
+    return;
+  }
+
+  const ex = state.shuffledExercises[state.exerciseIndex];
+  const letters = ['a', 'b', 'c', 'd'];
+  const correctOpt = ex.options[ex.correct] || '';
+  const correctLetter = letters[ex.correct] || '';
+
+  const accepted = [
+    correctOpt,
+    correctLetter,
+    `option ${correctLetter}`,
+    `choice ${correctLetter}`,
+    `letter ${correctLetter}`
+  ];
+  if (correctOpt.includes(',')) {
+    accepted.push(correctOpt.replace(/,/g, ' and '));
+    accepted.push(correctOpt.replace(/,/g, ' '));
+  }
+
+  let isCorrect = false;
+  let feedbackText = '';
+  let correctionText = '';
+
+  // 1. Rule-based evaluation (Pure Grader)
+  const gradeResult = (typeof window !== 'undefined' && window.VoiceGrader) ? VoiceGrader.gradeClosed({
+    transcript: transcript,
+    accepted: accepted,
+    lang: 'en-IN'
+  }) : { correct: false, score: 0 };
+
+  isCorrect = gradeResult.correct;
+
+  // 2. Pluggable LLM fallback hook for open-ended or ambiguous questions
+  if (!isCorrect && typeof window !== 'undefined' && window.LLMProviders && LLMProviders.getActiveProvider() !== 'off') {
+    try {
+      const llmRes = await LLMProviders.grade({
+        question: ex.question,
+        expected: correctOpt,
+        transcript: transcript,
+        rubric: ex.explanation,
+        lang: 'en-IN',
+        studentClass: 'Class 5'
+      });
+      if (llmRes && llmRes.correct !== undefined) {
+        isCorrect = llmRes.correct;
+        feedbackText = llmRes.feedback || '';
+        correctionText = llmRes.correction || '';
+      }
+    } catch (e) {
+      // Fallback silently to rule-based result
+    }
+  }
+
+  state.voiceTranscript = transcript;
+  const chosenIndex = isCorrect ? ex.correct : (ex.correct === 0 ? 1 : 0);
+  handleAnswer(chosenIndex);
+
+  // Spoken feedback
+  if (typeof window !== 'undefined' && window.VoiceIO) {
+    if (isCorrect) {
+      const praise = feedbackText || "Superb! That is correct.";
+      VoiceIO.speak(praise);
+    } else {
+      const spokenCorrection = correctionText || `Not quite! The correct answer is: ${correctOpt}.`;
+      VoiceIO.speak(spokenCorrection);
+    }
+  }
+}
+
+/**
+ * Per-Subject Hook Contract: getVoiceQuestions
+ */
+function getVoiceQuestions() {
+  const topic = TOPIC_DATA[state.currentTopic];
+  if (!topic || !Array.isArray(topic.exercises)) return [];
+
+  return topic.exercises.map((ex, idx) => {
+    const letters = ['a', 'b', 'c', 'd'];
+    const correctLetter = letters[ex.correct] || '';
+    const correctOpt = ex.options[ex.correct] || '';
+
+    const accepted = [
+      correctOpt,
+      correctLetter,
+      `option ${correctLetter}`,
+      `choice ${correctLetter}`,
+      `letter ${correctLetter}`
+    ];
+    if (correctOpt.includes(',')) {
+      accepted.push(correctOpt.replace(/,/g, ' and '));
+      accepted.push(correctOpt.replace(/,/g, ' '));
+    }
+
+    return {
+      id: `${state.currentTopic}_ex_${idx}`,
+      prompt: ex.question,
+      spokenPrompt: ex.question.replace(/_{2,}/g, 'blank').replace(/<[^>]+>/g, ''),
+      accepted: accepted,
+      explanation: ex.explanation,
+      lang: 'en-IN',
+      type: 'closed',
+      exerciseIndex: idx
+    };
+  });
+}
+
+/**
+ * Per-Subject Hook Contract: onVoiceResult
+ */
+function onVoiceResult({ id, correct, transcript, feedback }) {
+  const ex = state.shuffledExercises[state.exerciseIndex];
+  if (!ex) return;
+  const chosenIndex = correct ? ex.correct : (ex.correct === 0 ? 1 : 0);
+  handleAnswer(chosenIndex);
+}
+
+// Expose hooks to global window
+if (typeof window !== 'undefined') {
+  window.getVoiceQuestions = getVoiceQuestions;
+  window.onVoiceResult = onVoiceResult;
 }
 
 // ============================================

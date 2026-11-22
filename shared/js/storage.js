@@ -16,8 +16,18 @@
   // Pluggable remote sync provider
   let activeSyncProvider = null;
 
+  // Sensitive keys (API keys, provider secrets) must NEVER be exported or cloud synced
+  const SENSITIVE_KEY_SUBSTRINGS = ['api_key', 'ai_keys', 'secret', '_token'];
+
+  function isSensitiveKey(key) {
+    if (!key || typeof key !== 'string') return false;
+    const lower = key.toLowerCase();
+    return SENSITIVE_KEY_SUBSTRINGS.some(sub => lower.includes(sub));
+  }
+
   function isAppKey(key) {
     if (!key || typeof key !== 'string') return false;
+    if (isSensitiveKey(key)) return false;
     return APP_PREFIXES.some(prefix => key.startsWith(prefix));
   }
 

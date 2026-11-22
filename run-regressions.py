@@ -36,24 +36,25 @@ RESET = '\033[0m'
 
 # Mapping from source file patterns to test modules
 FILE_TO_TESTS_MAP = {
-    'check-invariants.py': ['tests.test_invariants', 'tests.test_milestones'],
-    'tests/': ['tests.test_invariants', 'tests.test_milestones'],
+    'check-invariants.py': ['tests.test_invariants', 'tests.test_milestones', 'tests.test_voice_grader'],
+    'tests/': ['tests.test_invariants', 'tests.test_milestones', 'tests.test_voice_grader'],
     'styles.css': ['tests.test_invariants'],
     'maths/': ['tests.test_invariants', 'tests.test_milestones'],
     'science/': ['tests.test_invariants', 'tests.test_milestones'],
     'sst_chapters/': ['tests.test_invariants', 'tests.test_milestones'],
-    'english_grammer/': ['tests.test_invariants'],
+    'english_grammer/': ['tests.test_invariants', 'tests.test_voice_grader'],
     'hindi_vyakaran/': ['tests.test_invariants'],
     'general_knowledge/': ['tests.test_invariants'],
     'social_sicence_maps/': ['tests.test_invariants'],
-    'shared/': ['tests.test_invariants', 'tests.test_milestones'],
-    'index.html': ['tests.test_invariants'],
-    'hub.js': ['tests.test_invariants'],
+    'shared/': ['tests.test_invariants', 'tests.test_milestones', 'tests.test_voice_grader'],
+    'index.html': ['tests.test_invariants', 'tests.test_voice_grader'],
+    'hub.js': ['tests.test_invariants', 'tests.test_voice_grader'],
 }
 
 ALL_TEST_MODULES = [
     'tests.test_invariants',
     'tests.test_milestones',
+    'tests.test_voice_grader',
 ]
 
 

@@ -24,6 +24,8 @@ const PRECACHE_ASSETS = [
   './shared/js/drawer.js',
   './shared/js/speech.js',
   './shared/js/storage.js',
+  './shared/js/grader.js',
+  './shared/js/voice.js',
   './shared/js/profile.js',
   './shared/js/auth.js',
   './shared/js/curriculum.js',
